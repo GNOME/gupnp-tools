@@ -1,0 +1,18 @@
+GUPnP Tools
+===========
+
+GUPnP is an object-oriented open source framework for creating UPnP devices and
+control points, written in C using GObject and libsoup. The GUPnP API is
+intended to be easy to use, efficient and flexible.
+
+GUPnP Tools are free replacements of Intel UPnP tools that use GUPnP. They
+provides the following client and server side tools which enable one to easily
+test and debug one's UPnP devices and control points:
+
+  * Universal Control Point: a tool that enables one to discover UPnP devices
+    and services, retrieve information about them, subscribe to events and
+    invoke actions.
+
+  * Network Light (not implemented yet): a virtual light bulb that allows
+    control points to switch it on and off, change its dimming level and
+    query its current status.
