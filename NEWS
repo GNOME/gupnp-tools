@@ -1,3 +1,13 @@
+0.1.1
+=====
+
+Minor release.
+
+- BUGFIX: Pack the text and pixbuf in the same column of device treeview.
+- Require libglade 2.6.0 rather than 2.6.1.
+- Print a warning when introspection creation fails.
+- Some more english fixes with the help of Robert McQueen.
+
 0.1
 ===
 

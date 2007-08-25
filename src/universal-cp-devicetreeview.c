@@ -330,11 +330,15 @@ append_service_tree (GUPnPServiceInfo *info,
                                               &service_iter);
                         g_object_unref (introspection);
                 } else if (error) {
+                        char *scpd_url;
+
+                        scpd_url = gupnp_service_info_get_scpd_url (info);
                         g_warning (
                            "Failed to create introspection from '%s': %s",
-                           id,
+                           scpd_url,
                            error->message);
 
+                        g_free (scpd_url);
                         g_error_free (error);
                 }
 
