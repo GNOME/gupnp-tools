@@ -1,5 +1,11 @@
 2007-08-27  Zeeshan Ali  <zeenix@gstreamer.net>
 
+	* src/xml/SwitchPower-scpd.xml:
+
+	Correct a typo in SwitchPower SCPD.
+
+2007-08-27  Zeeshan Ali  <zeenix@gstreamer.net>
+
 	* configure.ac:
 	* NEWS:
 
