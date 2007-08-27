@@ -1,5 +1,11 @@
 2007-08-27  Zeeshan Ali  <zeenix@gstreamer.net>
 
+	* src/pixmaps/network-light.png:
+
+	Add icon for network light.
+
+2007-08-27  Zeeshan Ali  <zeenix@gstreamer.net>
+
 	* src/xml/Dimming-scpd.xml:
 	* src/xml/SwitchPower-scpd.xml:
 	* src/xml/network-light-desc.xml:
