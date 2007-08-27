@@ -41,9 +41,9 @@ interrupt_signal_handler (int signum)
 }
 
 static void
-on_get_status(GUPnPService       *service,
-              GUPnPServiceAction *action,
-              gpointer            user_data)
+on_get_status (GUPnPService       *service,
+               GUPnPServiceAction *action,
+               gpointer            user_data)
 {
         gupnp_service_action_set (action,
                                   "ResultStatus",
@@ -55,13 +55,46 @@ on_get_status(GUPnPService       *service,
 }
 
 static void
+on_get_target (GUPnPService       *service,
+               GUPnPServiceAction *action,
+               gpointer            user_data)
+{
+        gupnp_service_action_set (action,
+                                  "RetTargetValue",
+                                  G_TYPE_BOOLEAN,
+                                  light_status,
+                                  NULL);
+
+        gupnp_service_action_return (action);
+}
+
+static void
+on_set_target (GUPnPService       *service,
+               GUPnPServiceAction *action,
+               gpointer            user_data)
+{
+        gupnp_service_action_get (action,
+                                  "NewTargetValue",
+                                  G_TYPE_BOOLEAN,
+                                  &light_status,
+                                  NULL);
+        gupnp_service_action_return (action);
+
+        gupnp_service_notify (service,
+                              "Status",
+                              G_TYPE_BOOLEAN,
+                              light_status,
+                              NULL);
+}
+
+static void
 on_query_status (GUPnPService *service,
                  const char   *variable_name,
                  GValue       *value,
                  gpointer      user_data)
 {
         g_value_init (value, G_TYPE_BOOLEAN);
-        g_value_set_uint (value, light_status);
+        g_value_set_boolean (value, light_status);
 }
 
 static void
@@ -137,9 +170,21 @@ main (int argc, char **argv)
                                   "action-invoked::GetStatus",
                                   G_CALLBACK (on_get_status),
                                   NULL);
+                g_signal_connect (switch_power,
+                                  "action-invoked::GetTarget",
+                                  G_CALLBACK (on_get_target),
+                                  NULL);
+                g_signal_connect (switch_power,
+                                  "action-invoked::SetTarget",
+                                  G_CALLBACK (on_set_target),
+                                  NULL);
 
                 g_signal_connect (switch_power,
                                   "query-variable::Status",
+                                  G_CALLBACK (on_query_status),
+                                  NULL);
+                g_signal_connect (switch_power,
+                                  "query-variable::Target",
                                   G_CALLBACK (on_query_status),
                                   NULL);
 
