@@ -1,6 +1,20 @@
 2007-08-27  Zeeshan Ali  <zeenix@gstreamer.net>
 
 	* src/network-light.c:
+	* src/universal-cp-actiondialog.c:
+	* src/universal-cp-actiondialog.h:
+	* src/universal-cp-devicetreeview.c:
+	* src/universal-cp-devicetreeview.h:
+	* src/universal-cp-gui.c:
+	* src/universal-cp-gui.h:
+	* src/universal-cp.c:
+	* src/universal-cp.h:
+
+	Fix copyright notice.
+
+2007-08-27  Zeeshan Ali  <zeenix@gstreamer.net>
+
+	* src/network-light.c:
 
 	No need to print "damn". :)
 
