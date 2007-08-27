@@ -1,5 +1,11 @@
 2007-08-27  Zeeshan Ali  <zeenix@gstreamer.net>
 
+	* src/network-light.c:
+
+	No need to print "damn". :)
+
+2007-08-27  Zeeshan Ali  <zeenix@gstreamer.net>
+
 	* src/pixmaps/network-light.png:
 
 	Add icon for network light.

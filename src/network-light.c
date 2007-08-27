@@ -157,8 +157,6 @@ main (int argc, char **argv)
                                   NULL);
 
                 g_timeout_add (5000, timeout, switch_power);
-        } else {
-                g_print ("damn\n");
         }
 
         /* Run */
