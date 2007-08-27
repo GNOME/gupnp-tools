@@ -1,6 +1,12 @@
 2007-08-27  Zeeshan Ali  <zeenix@gstreamer.net>
 
 	* src/network-light.c:
+
+	Remove unneeded prints and use g_warning for warnings.
+
+2007-08-27  Zeeshan Ali  <zeenix@gstreamer.net>
+
+	* src/network-light.c:
 	* src/universal-cp-actiondialog.c:
 	* src/universal-cp-actiondialog.h:
 	* src/universal-cp-devicetreeview.c:

@@ -44,21 +44,6 @@ on_get_status(GUPnPService       *service,
               GUPnPServiceAction *action,
               gpointer            user_data)
 {
-        GList *locales;
-
-        g_print ("The \"GetStatus\" action was invoked.\n");
-
-        g_print ("\tLocales: ");
-        locales = gupnp_service_action_get_locales (action);
-        while (locales) {
-                g_print ("%s", (char *) locales->data);
-                g_free (locales->data);
-                locales = g_list_delete_link (locales, locales);
-                if (locales)
-                        g_print (", ");
-        }
-        g_print ("\n");
-
         gupnp_service_action_set (action,
                                   "ResultStatus", G_TYPE_BOOLEAN, TRUE,
                                   NULL);
@@ -82,7 +67,7 @@ on_notify_failed (GUPnPService *service,
                   const GError *reason,
                   gpointer      user_data)
 {
-        g_print ("NOTIFY failed: %s\n", reason->message);
+        g_warning ("NOTIFY failed: %s\n", reason->message);
 }
 
 static gboolean
