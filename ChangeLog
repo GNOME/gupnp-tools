@@ -2,6 +2,12 @@
 
 	* src/network-light.c:
 
+	Add a variable for light status.
+
+2007-08-27  Zeeshan Ali  <zeenix@gstreamer.net>
+
+	* src/network-light.c:
+
 	Remove unneeded prints and use g_warning for warnings.
 
 2007-08-27  Zeeshan Ali  <zeenix@gstreamer.net>

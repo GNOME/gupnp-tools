@@ -32,6 +32,7 @@
 #define SWITCH_SERVICE "urn:schemas-upnp-org:service:SwitchPower:1"
 
 GMainLoop *main_loop;
+gboolean   light_status;
 
 static void
 interrupt_signal_handler (int signum)
@@ -45,7 +46,9 @@ on_get_status(GUPnPService       *service,
               gpointer            user_data)
 {
         gupnp_service_action_set (action,
-                                  "ResultStatus", G_TYPE_BOOLEAN, TRUE,
+                                  "ResultStatus",
+                                  G_TYPE_BOOLEAN,
+                                  light_status,
                                   NULL);
 
         gupnp_service_action_return (action);
@@ -58,7 +61,7 @@ on_query_status (GUPnPService *service,
                  gpointer      user_data)
 {
         g_value_init (value, G_TYPE_BOOLEAN);
-        g_value_set_uint (value, FALSE);
+        g_value_set_uint (value, light_status);
 }
 
 static void
@@ -76,7 +79,7 @@ timeout (gpointer user_data)
         gupnp_service_notify (GUPNP_SERVICE (user_data),
                               "Status",
                               G_TYPE_BOOLEAN,
-                              FALSE,
+                              light_status,
                               NULL);
 
         return FALSE;
@@ -95,6 +98,9 @@ main (int argc, char **argv)
         g_thread_init (NULL);
         g_type_init ();
         setlocale (LC_ALL, "");
+
+        /* Light is off in the beginning */
+        light_status = FALSE;
 
         error = NULL;
         context = gupnp_context_new (NULL, NULL, 0, &error);
