@@ -1,3 +1,9 @@
+0.1.2
+=====
+
+Another minor release to fix the treeview headers that broke because of
+the fixes in the last release.
+
 0.1.1
 =====
 

@@ -1,5 +1,16 @@
 2007-08-27  Zeeshan Ali  <zeenix@gstreamer.net>
 
+	* configure.ac:
+	* NEWS:
+
+	Bump up the version to 0.1.2 and update the NEWS file.
+
+	* src/universal-cp-gui.c:
+
+	Fix the treeview headers that broke because of recent changes.
+
+2007-08-27  Zeeshan Ali  <zeenix@gstreamer.net>
+
 	* src/network-light.c:
 
 	Implement SwitchPower service.

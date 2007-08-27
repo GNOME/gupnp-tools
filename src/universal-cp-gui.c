@@ -196,6 +196,7 @@ setup_treeview (GtkWidget    *treeview,
                 column = gtk_tree_view_column_new ();
                 renderer = gtk_cell_renderer_text_new ();
                 gtk_tree_view_column_pack_end (column, renderer, FALSE);
+                gtk_tree_view_column_set_title (column, headers[i]);
                 gtk_tree_view_column_add_attribute (column,
                                                     renderer,
                                                     "text", i + render_index);
