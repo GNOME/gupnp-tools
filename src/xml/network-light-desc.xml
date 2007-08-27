@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<root xmlns="urn:schemas-upnp-org:device-1-0">
+<specVersion>
+<major>1</major>
+<minor>0</minor>
+</specVersion>
+<device>
+<deviceType>urn:schemas-upnp-org:device:DimmableLight:1</deviceType>
+<friendlyName>GUPnP Network Light</friendlyName>
+<manufacturer>GUPnP Tools Developers</manufacturer>
+<manufacturerURL>http://www.gupnp.org</manufacturerURL>
+<modelDescription>A virtual light that can be controled by UPnP control points
+</modelDescription>
+<modelName>Network Light</modelName>
+<modelNumber>0.1</modelNumber>
+<modelURL>http://www.gupnp.org</modelURL>
+<serialNumber>0.1</serialNumber>
+<UDN>uuid:23b0189c-549f-11dc-a7c7-001641597c49</UDN>
+<UPC></UPC>
+<iconList>
+<icon>
+<mimetype>image/png</mimetype>
+<width>112</width>
+<height>172</height>
+<depth>32</depth>
+<url>pixmaps/network-light.png</url>
+</icon>
+</iconList>
+<serviceList>
+<service>
+<serviceType>urn:schemas-upnp-org:service:SwitchPower:1</serviceType>
+<serviceId>urn:upnp-org:serviceId:SwitchPower:1</serviceId>
+<SCPDURL>/xml/SwitchPower-scpd.xml</SCPDURL>
+<controlURL>/SwitchPower/Control</controlURL>
+<eventSubURL>/SwitchPower/Events</eventSubURL>
+</service>
+<service>
+<serviceType>urn:schemas-upnp-org:service:Dimming:1</serviceType>
+<serviceId>urn:upnp-org:serviceId:Dimming:1</serviceId>
+<SCPDURL>/xml/Dimming-scpd.xml</SCPDURL>
+<controlURL>/Dimming/Control</controlURL>
+<eventSubURL>/Dimming/Events</eventSubURL>
+</service>
+</serviceList>
+<presentationURL></presentationURL>
+</device>
+</root>
+

@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<scpd xmlns="urn:schemas-upnp-org:service-1-0">
+<specVersion>
+<major>1</major>
+<minor>0</minor>
+</specVersion>
+
+<actionList>
+<action>
+<name>SetLoadLevelTarget</name>
+<argumentList>
+<argument>
+<name>newLoadlevelTarget</name>
+<direction>in</direction>
+<relatedStateVariable>LoadLevelTarget</relatedStateVariable>
+</argument>
+</argumentList>
+</action>
+
+<action>
+<name>GetLoadLevelTarget</name>
+<argumentList>
+<argument>
+<name>retLoadlevelTarget</name>
+<direction>out</direction>
+<retval />
+<relatedStateVariable>LoadLevelTarget</relatedStateVariable>
+</argument>
+</argumentList>
+</action>
+
+<action>
+<name>GetLoadLevelStatus</name>
+<argumentList>
+<argument>
+<name>retLoadlevelStatus</name>
+<direction>out</direction>
+<retval />
+<relatedStateVariable>LoadLevelStatus</relatedStateVariable>
+</argument>
+</argumentList>
+</action>
+</actionList>
+
+
+<serviceStateTable>
+<stateVariable sendEvents="no">
+<name>LoadLevelTarget</name>
+<dataType>ui1</dataType>
+<defaultValue>0</defaultValue>
+<allowedValueRange>
+<minimum>0</minimum>
+<maximum>100</maximum>
+</allowedValueRange>
+</stateVariable>
+
+<stateVariable sendEvents="yes">
+<name>LoadLevelStatus</name>
+<dataType>ui1</dataType>
+<defaultValue>0</defaultValue>
+<allowedValueRange>
+<minimum>0</minimum>
+<maximum>100</maximum>
+</allowedValueRange>
+</stateVariable>
+</serviceStateTable>
+
+</scpd>
+
+
