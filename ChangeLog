@@ -1,5 +1,11 @@
 2007-08-28  Zeeshan Ali  <zeenix@gstreamer.net>
 
+	* src/network-light.c:
+
+	Refactorize the main function.
+
+2007-08-28  Zeeshan Ali  <zeenix@gstreamer.net>
+
 	* src/pixmaps/Makefile.am:
 
 	Add network light icons to the build.

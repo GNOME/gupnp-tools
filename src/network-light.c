@@ -31,8 +31,11 @@
 #define DIMMING_SERVICE "urn:schemas-upnp-org:service:Dimming:1"
 #define SWITCH_SERVICE "urn:schemas-upnp-org:service:SwitchPower:1"
 
-GMainLoop *main_loop;
-gboolean   light_status;
+static GUPnPContext     *context;
+static GUPnPRootDevice  *dev;
+static GUPnPServiceInfo *switch_power;
+static GMainLoop        *main_loop;
+static gboolean          light_status;
 
 static void
 interrupt_signal_handler (int signum)
@@ -118,30 +121,20 @@ timeout (gpointer user_data)
         return FALSE;
 }
 
-int
-main (int argc, char **argv)
+static gboolean
+init_upnp (void)
 {
         GError *error;
-        GUPnPContext *context;
         xmlDoc *doc;
-        GUPnPRootDevice *dev;
-        GUPnPServiceInfo *switch_power;
-        struct sigaction sig_action;
-
-        g_thread_init (NULL);
-        g_type_init ();
-        setlocale (LC_ALL, "");
-
-        /* Light is off in the beginning */
-        light_status = FALSE;
 
         error = NULL;
         context = gupnp_context_new (NULL, NULL, 0, &error);
+
         if (error) {
                 g_error (error->message);
                 g_error_free (error);
 
-                return 1;
+                return FALSE;
         }
 
         g_print ("Running on port %d\n", gupnp_context_get_port (context));
@@ -199,6 +192,33 @@ main (int argc, char **argv)
         /* Run */
         gupnp_root_device_set_available (dev, TRUE);
 
+        return TRUE;
+}
+
+static void
+deinit_upnp (void)
+{
+        g_object_unref (switch_power);
+        g_object_unref (dev);
+        g_object_unref (context);
+}
+
+int
+main (int argc, char **argv)
+{
+        struct sigaction sig_action;
+
+        g_thread_init (NULL);
+        g_type_init ();
+        setlocale (LC_ALL, "");
+
+        /* Light is off in the beginning */
+        light_status = FALSE;
+
+        if (!init_upnp ()) {
+                return -1;
+        }
+
         main_loop = g_main_loop_new (NULL, FALSE);
 
         /* Hook the handler for SIGTERM */
@@ -207,13 +227,9 @@ main (int argc, char **argv)
         sigaction (SIGINT, &sig_action, NULL);
 
         g_main_loop_run (main_loop);
+
         g_main_loop_unref (main_loop);
-
-        if (switch_power)
-                g_object_unref (switch_power);
-
-        g_object_unref (dev);
-        g_object_unref (context);
+        deinit_upnp ();
 
         return 0;
 }
