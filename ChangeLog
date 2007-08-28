@@ -1,3 +1,13 @@
+2007-08-28  Zeeshan Ali  <zeenix@gstreamer.net>
+
+	* src/pixmaps/network-light-off.png:
+	* src/pixmaps/network-light-on.png:
+	* src/pixmaps/network-light.png:
+	* src/xml/network-light-desc.xml:
+
+	Setup the icons for the network light service. Courtesy of Tango
+	project.
+
 2007-08-27  Zeeshan Ali  <zeenix@gstreamer.net>
 
 	* src/xml/SwitchPower-scpd.xml:
