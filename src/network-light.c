@@ -34,8 +34,10 @@
 static GUPnPContext     *context;
 static GUPnPRootDevice  *dev;
 static GUPnPServiceInfo *switch_power;
+static GUPnPServiceInfo *dimming;
 static GMainLoop        *main_loop;
 static gboolean          light_status;
+static guint8            light_load_level;
 
 static void
 interrupt_signal_handler (int signum)
@@ -101,6 +103,63 @@ on_query_status (GUPnPService *service,
 }
 
 static void
+on_get_load_level_status (GUPnPService       *service,
+                          GUPnPServiceAction *action,
+                          gpointer            user_data)
+{
+        gupnp_service_action_set (action,
+                                  "retLoadlevelStatus",
+                                  G_TYPE_UINT,
+                                  light_load_level,
+                                  NULL);
+
+        gupnp_service_action_return (action);
+}
+
+static void
+on_get_load_level_target (GUPnPService       *service,
+                          GUPnPServiceAction *action,
+                          gpointer            user_data)
+{
+        gupnp_service_action_set (action,
+                                  "retLoadlevelTarget",
+                                  G_TYPE_UINT,
+                                  light_load_level,
+                                  NULL);
+
+        gupnp_service_action_return (action);
+}
+
+static void
+on_set_load_level_target (GUPnPService       *service,
+                          GUPnPServiceAction *action,
+                          gpointer            user_data)
+{
+        gupnp_service_action_get (action,
+                                  "newLoadlevelTarget",
+                                  G_TYPE_UINT,
+                                  &light_load_level,
+                                  NULL);
+        gupnp_service_action_return (action);
+
+        gupnp_service_notify (service,
+                              "LoadLevelStatus",
+                              G_TYPE_UINT,
+                              light_load_level,
+                              NULL);
+}
+
+static void
+on_query_load_level (GUPnPService *service,
+                     const char   *variable_name,
+                     GValue       *value,
+                     gpointer      user_data)
+{
+        g_value_init (value, G_TYPE_UINT);
+        g_value_set_uint (value, light_load_level);
+}
+
+static void
 on_notify_failed (GUPnPService *service,
                   const GList  *callback_urls,
                   const GError *reason,
@@ -112,10 +171,16 @@ on_notify_failed (GUPnPService *service,
 static gboolean
 timeout (gpointer user_data)
 {
-        gupnp_service_notify (GUPNP_SERVICE (user_data),
+        gupnp_service_notify (GUPNP_SERVICE (switch_power),
                               "Status",
                               G_TYPE_BOOLEAN,
                               light_status,
+                              NULL);
+
+        gupnp_service_notify (GUPNP_SERVICE (dimming),
+                              "LoadLevelStatus",
+                              G_TYPE_UINT,
+                              light_load_level,
                               NULL);
 
         return FALSE;
@@ -153,7 +218,6 @@ init_upnp (void)
         /* Free doc when root device is destroyed */
         g_object_weak_ref (G_OBJECT (dev), (GWeakNotify) xmlFreeDoc, doc);
 
-        /* Implement Browse action on ContentDirectory if available */
         switch_power = gupnp_device_info_get_service
                          (GUPNP_DEVICE_INFO (dev),
                          SWITCH_SERVICE);
@@ -185,9 +249,42 @@ init_upnp (void)
                                   "notify-failed",
                                   G_CALLBACK (on_notify_failed),
                                   NULL);
-
-                g_timeout_add (5000, timeout, switch_power);
         }
+
+        dimming = gupnp_device_info_get_service
+                         (GUPNP_DEVICE_INFO (dev),
+                         DIMMING_SERVICE);
+
+        if (dimming) {
+                g_signal_connect (dimming,
+                                  "action-invoked::GetLoadLevelStatus",
+                                  G_CALLBACK (on_get_load_level_status),
+                                  NULL);
+                g_signal_connect (dimming,
+                                  "action-invoked::GetLoadLevelTarget",
+                                  G_CALLBACK (on_get_load_level_target),
+                                  NULL);
+                g_signal_connect (dimming,
+                                  "action-invoked::SetLoadLevelTarget",
+                                  G_CALLBACK (on_set_load_level_target),
+                                  NULL);
+
+                g_signal_connect (dimming,
+                                  "query-variable::LoadLevelStatus",
+                                  G_CALLBACK (on_query_load_level),
+                                  NULL);
+                g_signal_connect (dimming,
+                                  "query-variable::LoadLevelTarget",
+                                  G_CALLBACK (on_query_load_level),
+                                  NULL);
+
+                g_signal_connect (dimming,
+                                  "notify-failed",
+                                  G_CALLBACK (on_notify_failed),
+                                  NULL);
+        }
+
+        g_timeout_add (5000, timeout, NULL);
 
         /* Run */
         gupnp_root_device_set_available (dev, TRUE);
@@ -199,6 +296,7 @@ static void
 deinit_upnp (void)
 {
         g_object_unref (switch_power);
+        g_object_unref (dimming);
         g_object_unref (dev);
         g_object_unref (context);
 }
@@ -214,6 +312,7 @@ main (int argc, char **argv)
 
         /* Light is off in the beginning */
         light_status = FALSE;
+        light_load_level = 100;
 
         if (!init_upnp ()) {
                 return -1;

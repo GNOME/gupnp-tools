@@ -1,3 +1,9 @@
+2007-08-29  Zeeshan Ali  <zeenix@gstreamer.net>
+
+	* src/network-light.c:
+
+	Implement Dimming service.
+
 2007-08-28  Zeeshan Ali  <zeenix@gstreamer.net>
 
 	* src/network-light.c:
