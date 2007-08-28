@@ -1,5 +1,11 @@
 2007-08-28  Zeeshan Ali  <zeenix@gstreamer.net>
 
+	* src/pixmaps/Makefile.am:
+
+	Add network light icons to the build.
+
+2007-08-28  Zeeshan Ali  <zeenix@gstreamer.net>
+
 	* src/pixmaps/network-light-off.png:
 	* src/pixmaps/network-light-on.png:
 	* src/pixmaps/network-light.png:
