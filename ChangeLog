@@ -1,3 +1,13 @@
+2007-08-31  Zeeshan Ali  <zeenix@gstreamer.net>
+
+	* src/Makefile.am:
+	* src/network-light-gui.c:
+	* src/network-light-gui.h:
+	* src/network-light.c:
+
+	Add basic GUI for network light and let it handle the light status
+	and load_level.
+
 2007-08-29  Zeeshan Ali  <zeenix@gstreamer.net>
 
 	* src/network-light.c:

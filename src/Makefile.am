@@ -19,7 +19,9 @@ gupnp_universal_cp_SOURCES = universal-cp.c \
 gupnp_universal_cp_LDADD = $(LIBGLADE_LIBS) $(LIBGUPNP_LIBS)
 gupnp_universal_cp_LDFLAGS = -export-dynamic
 
-gupnp_network_light_SOURCES = network-light.c
+gupnp_network_light_SOURCES = network-light.c \
+			      network-light-gui.c \
+			      network-light-gui.h
 gupnp_network_light_LDADD = $(LIBGLADE_LIBS) $(LIBGUPNP_LIBS)
 gupnp_network_light_LDFLAGS = -export-dynamic
 
