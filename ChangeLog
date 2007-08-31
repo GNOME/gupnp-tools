@@ -1,5 +1,11 @@
 2007-08-31  Zeeshan Ali  <zeenix@gstreamer.net>
 
+	* src/pixmaps/network-light-on.png:
+
+	Use image from Markus Berg <markus.berg@tkk.fi> for "on".
+
+2007-08-31  Zeeshan Ali  <zeenix@gstreamer.net>
+
 	* src/Makefile.am:
 	* src/network-light-gui.c:
 	* src/network-light-gui.h:
