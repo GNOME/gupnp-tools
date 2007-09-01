@@ -1,5 +1,12 @@
 2007-09-02  Zeeshan Ali  <zeenix@gstreamer.net>
 
+	* src/network-light-gui.c:
+	* src/network-light-gui.h:
+
+	Use int for load_level and use CLAMP macro to keep it under limits.
+
+2007-09-02  Zeeshan Ali  <zeenix@gstreamer.net>
+
 	* src/gupnp-network-light.glade:
 	* src/network-light-gui.c:
 

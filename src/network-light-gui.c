@@ -33,7 +33,7 @@ static GdkPixbuf *on_pixbuf;
 static GdkPixbuf *off_pixbuf;
 
 static gboolean light_status;
-static guint    light_load_level;
+static gint     light_load_level;
 
 static void
 update_image (void)
@@ -80,15 +80,15 @@ get_status (void)
 }
 
 void
-set_load_level (guint load_level)
+set_load_level (gint load_level)
 {
         if (load_level != light_load_level) {
-                light_load_level = load_level, 0, 100;
+                light_load_level = CLAMP (load_level, 0, 100);
                 update_image ();
         }
 }
 
-guint
+gint
 get_load_level (void)
 {
         return light_load_level;

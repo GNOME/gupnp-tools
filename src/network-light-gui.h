@@ -31,9 +31,9 @@ gboolean
 get_status         (void);
 
 void
-set_load_level     (guint load_level);
+set_load_level     (gint load_level);
 
-guint
+gint
 get_load_level     (void);
 
 gboolean
