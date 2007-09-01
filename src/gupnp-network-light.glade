@@ -4,6 +4,7 @@
 <glade-interface>
 
 <widget class="GtkWindow" id="main-window">
+  <property name="events">GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
   <property name="title" translatable="yes">GUPnP Network Light</property>
   <property name="type">GTK_WINDOW_TOPLEVEL</property>
   <property name="window_position">GTK_WIN_POS_CENTER</property>
@@ -17,6 +18,7 @@
   <property name="gravity">GDK_GRAVITY_NORTH_WEST</property>
   <property name="focus_on_map">True</property>
   <signal name="delete_event" handler="on_delete_event"/>
+  <signal name="button_release_event" handler="on_main_window_button_event" last_modification_time="Sat, 01 Sep 2007 20:25:29 GMT"/>
 
   <child>
     <widget class="GtkImage" id="light-bulb-image">
@@ -38,8 +40,8 @@ Inspired by Intel Tools for UPnP.</property>
   <property name="license" translatable="yes">LGPL</property>
   <property name="authors">Zeeshan Ali &lt;zeenix@gstreamer.net&gt;</property>
   <property name="translator_credits" translatable="yes" comments="TRANSLATORS: Replace this string with your names, one name per line.">translator-credits</property>
-  <signal name="delete_event" handler="gtk_widget_hide" object="about-dialog"/>
-  <signal name="response" handler="gtk_widget_hide" object="about-dialog"/>
+  <signal name="close" handler="gtk_widget_hide" last_modification_time="Sat, 01 Sep 2007 20:46:06 GMT"/>
+  <signal name="response" handler="gtk_widget_hide" last_modification_time="Sat, 01 Sep 2007 20:46:21 GMT"/>
 
   <child internal-child="vbox">
     <widget class="GtkVBox" id="dialog-vbox1">
@@ -57,6 +59,58 @@ Inspired by Intel Tools for UPnP.</property>
 	  <property name="pack_type">GTK_PACK_END</property>
 	</packing>
       </child>
+    </widget>
+  </child>
+</widget>
+
+<widget class="GtkMenu" id="popup-menu">
+
+  <child>
+    <widget class="GtkCheckMenuItem" id="light-status-menuitem">
+      <property name="visible">True</property>
+      <property name="label" translatable="yes">On</property>
+      <property name="use_underline">True</property>
+      <property name="active">False</property>
+      <signal name="activate" handler="on_light_status_menuitem_activate" last_modification_time="Sat, 01 Sep 2007 19:52:54 GMT"/>
+    </widget>
+  </child>
+
+  <child>
+    <widget class="GtkSeparatorMenuItem" id="separator1">
+      <property name="visible">True</property>
+    </widget>
+  </child>
+
+  <child>
+    <widget class="GtkMenuItem" id="increase_luminance_menuitem">
+      <property name="visible">True</property>
+      <property name="label" translatable="yes">increase luminance by 20%</property>
+      <property name="use_underline">True</property>
+      <signal name="activate" handler="on_increase_luminance_menuitem_activate" last_modification_time="Sat, 01 Sep 2007 21:10:19 GMT"/>
+    </widget>
+  </child>
+
+  <child>
+    <widget class="GtkMenuItem" id="decrease_luminance_menuitem">
+      <property name="visible">True</property>
+      <property name="label" translatable="yes">decrease luminance by 20%</property>
+      <property name="use_underline">True</property>
+      <signal name="activate" handler="on_decrease_luminance_menuitem_activate" last_modification_time="Sat, 01 Sep 2007 21:10:19 GMT"/>
+    </widget>
+  </child>
+
+  <child>
+    <widget class="GtkSeparatorMenuItem" id="separator2">
+      <property name="visible">True</property>
+    </widget>
+  </child>
+
+  <child>
+    <widget class="GtkMenuItem" id="about_menuitem">
+      <property name="visible">True</property>
+      <property name="label" translatable="yes">about</property>
+      <property name="use_underline">True</property>
+      <signal name="activate" handler="on_about_menuitem_activate" last_modification_time="Sat, 01 Sep 2007 17:12:47 GMT"/>
     </widget>
   </child>
 </widget>

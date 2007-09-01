@@ -94,6 +94,95 @@ get_load_level (void)
         return light_load_level;
 }
 
+void
+on_light_status_menuitem_activate (GtkCheckMenuItem *menuitem,
+                                   gpointer          user_data)
+{
+        set_status (gtk_check_menu_item_get_active (menuitem));
+}
+
+void
+on_about_menuitem_activate (GtkMenuItem *menuitem,
+                            gpointer     user_data)
+{
+        GtkWidget *about_dialog;
+
+        about_dialog = glade_xml_get_widget (glade_xml, "about-dialog");
+        g_assert (about_dialog != NULL);
+
+        gtk_widget_show (about_dialog);
+}
+
+void
+on_increase_luminance_menuitem_activate (GtkMenuItem *menuitem,
+                                         gpointer     user_data)
+{
+        set_load_level (get_load_level () + 20);
+}
+
+void
+on_decrease_luminance_menuitem_activate (GtkMenuItem *menuitem,
+                                         gpointer     user_data)
+{
+        set_load_level (get_load_level () - 20);
+}
+
+static void
+setup_popup ()
+{
+        GtkWidget *status_menuitem;
+        GtkWidget *label;
+        char      *label_str;
+
+        status_menuitem = glade_xml_get_widget (glade_xml,
+                                                "light-status-menuitem");
+        g_assert (status_menuitem != NULL);
+
+        if (get_status ())
+                label_str = "<b>Off</b>";
+        else
+                label_str = "<b>On</b>";
+
+        label = gtk_bin_get_child (GTK_BIN (status_menuitem));
+        g_assert (status_menuitem != NULL);
+
+        gtk_label_set_markup (GTK_LABEL (label), label_str);
+}
+
+static void
+on_main_window_right_clicked (GdkEventButton *event)
+{
+        GtkWidget *popup;
+
+        popup = glade_xml_get_widget (glade_xml, "popup-menu");
+        g_assert (popup != NULL);
+
+        setup_popup ();
+
+        gtk_menu_popup (GTK_MENU (popup),
+                        NULL,
+                        NULL,
+                        NULL,
+                        NULL,
+                        event->button,
+                        event->time);
+}
+
+gboolean
+on_main_window_button_event (GtkWidget      *widget,
+                             GdkEventButton *event,
+                             gpointer        user_data)
+{
+        if (event->type == GDK_BUTTON_RELEASE &&
+            event->button == 3) {
+                on_main_window_right_clicked (event);
+
+                return TRUE;
+        } else {
+                return FALSE;
+        }
+}
+
 gboolean
 on_delete_event (GtkWidget *widget,
                  GdkEvent  *event,

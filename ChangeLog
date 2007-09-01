@@ -1,3 +1,10 @@
+2007-09-02  Zeeshan Ali  <zeenix@gstreamer.net>
+
+	* src/gupnp-network-light.glade:
+	* src/network-light-gui.c:
+
+	Add popup menu.
+
 2007-09-01  Zeeshan Ali  <zeenix@gstreamer.net>
 
 	* src/gupnp-network-light.glade:
