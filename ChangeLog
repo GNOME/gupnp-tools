@@ -1,6 +1,12 @@
 2007-09-02  Zeeshan Ali  <zeenix@gstreamer.net>
 
 	* src/gupnp-network-light.glade:
+
+	Put plenty of space around the light-bulb image.
+
+2007-09-02  Zeeshan Ali  <zeenix@gstreamer.net>
+
+	* src/gupnp-network-light.glade:
 	* src/network-light-gui.c:
 
 	Double-click inverts the light-bulb status.
