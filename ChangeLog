@@ -1,5 +1,12 @@
 2007-09-02  Zeeshan Ali  <zeenix@gstreamer.net>
 
+	* src/gupnp-network-light.glade:
+	* src/network-light-gui.c:
+
+	Double-click inverts the light-bulb status.
+
+2007-09-02  Zeeshan Ali  <zeenix@gstreamer.net>
+
 	* src/network-light-gui.c:
 	* src/network-light-gui.h:
 

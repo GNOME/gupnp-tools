@@ -178,6 +178,11 @@ on_main_window_button_event (GtkWidget      *widget,
                 on_main_window_right_clicked (event);
 
                 return TRUE;
+        } else if (event->type == GDK_2BUTTON_PRESS &&
+                   event->button == 1) {
+                set_status (!get_status ());
+
+                return TRUE;
         } else {
                 return FALSE;
         }
