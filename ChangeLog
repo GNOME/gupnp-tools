@@ -1,5 +1,11 @@
 2007-09-01  Zeeshan Ali  <zeenix@gstreamer.net>
 
+	* src/gupnp-network-light.glade:
+
+	Add about dialog.
+
+2007-09-01  Zeeshan Ali  <zeenix@gstreamer.net>
+
 	* src/Makefile.am:
 	* src/gupnp-network-light.glade:
 	* src/network-light-gui.c:
