@@ -22,6 +22,7 @@
 #define __GUPNP_NETWORK_LIGHT_GUI_H__
 
 #include <gtk/gtk.h>
+#include <glade/glade.h>
 
 void
 set_status         (gboolean status);
@@ -38,5 +39,8 @@ get_load_level     (void);
 gboolean
 init_ui            (gint             *argc,
                     gchar           **argv[]);
+
+void
+deinit_ui          (void);
 
 #endif /* __GUPNP_NETWORK_LIGHT_GUI_H__ */

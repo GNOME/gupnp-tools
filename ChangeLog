@@ -1,3 +1,13 @@
+2007-09-01  Zeeshan Ali  <zeenix@gstreamer.net>
+
+	* src/Makefile.am:
+	* src/gupnp-network-light.glade:
+	* src/network-light-gui.c:
+	* src/network-light-gui.h:
+	* src/network-light.c:
+
+	Use glade for consistancy.
+
 2007-08-31  Zeeshan Ali  <zeenix@gstreamer.net>
 
 	* src/pixmaps/network-light-on.png:

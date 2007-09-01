@@ -317,6 +317,7 @@ main (int argc, char **argv)
 
         gtk_main ();
 
+        deinit_ui ();
         deinit_upnp ();
 
         return 0;

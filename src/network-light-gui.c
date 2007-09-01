@@ -24,13 +24,13 @@
 
 #include "network-light-gui.h"
 
-#define OFF_FILE "pixmaps/network-light-off.png"
-#define ON_FILE  "pixmaps/network-light-on.png"
+#define GLADE_FILE "gupnp-network-light.glade"
+#define OFF_FILE   "pixmaps/network-light-off.png"
+#define ON_FILE    "pixmaps/network-light-on.png"
 
-static GtkWidget *main_window;
+static GladeXML  *glade_xml;
 static GdkPixbuf *on_pixbuf;
 static GdkPixbuf *off_pixbuf;
-static GtkWidget *image;
 
 static gboolean light_status;
 static guint    light_load_level;
@@ -38,8 +38,12 @@ static guint    light_load_level;
 static void
 update_image (void)
 {
+        GtkWidget *image;
         GdkPixbuf *pixbuf;
         gfloat     alpha;
+
+        image = glade_xml_get_widget (glade_xml, "light-bulb-image");
+        g_assert (image != NULL);
 
         if (light_status) {
                 alpha = light_load_level * 2.5;
@@ -91,17 +95,45 @@ get_load_level (void)
 }
 
 gboolean
+on_delete_event (GtkWidget *widget,
+                 GdkEvent  *event,
+                 gpointer   user_data)
+{
+        gtk_main_quit ();
+        return TRUE;
+}
+
+gboolean
 init_ui (gint   *argc,
          gchar **argv[])
 {
-        gtk_init (argc, argv);
+        GtkWidget *main_window;
+        gchar     *glade_path = NULL;
 
-        main_window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-        g_object_connect (main_window,
-                          "signal::delete-event",
-                          gtk_main_quit,
-                          main_window,
-                          NULL);
+        gtk_init (argc, argv);
+        glade_init ();
+
+        /* Try to fetch the glade file from the CWD first */
+        glade_path = GLADE_FILE;
+        if (!g_file_test (glade_path, G_FILE_TEST_EXISTS)) {
+                /* Then Try to fetch it from the system path */
+                glade_path = UI_DIR "/" GLADE_FILE;
+
+                if (!g_file_test (glade_path, G_FILE_TEST_EXISTS))
+                        glade_path = NULL;
+        }
+
+        if (glade_path == NULL) {
+                g_critical ("Unable to load the GUI file %s", GLADE_FILE);
+                return FALSE;
+        }
+
+        glade_xml = glade_xml_new (glade_path, NULL, NULL);
+        if (glade_xml == NULL)
+                return FALSE;
+
+        main_window = glade_xml_get_widget (glade_xml, "main-window");
+        g_assert (main_window != NULL);
 
         on_pixbuf = gdk_pixbuf_new_from_file (ON_FILE, NULL);
         off_pixbuf = gdk_pixbuf_new_from_file (OFF_FILE, NULL);
@@ -112,18 +144,21 @@ init_ui (gint   *argc,
                 return FALSE;
         }
 
-        image = gtk_image_new_from_pixbuf (off_pixbuf);
-        gtk_container_add (GTK_CONTAINER (main_window), image);
-
-        /* Put window into the center of the screen */
-        gtk_window_set_position (GTK_WINDOW (main_window), GTK_WIN_POS_CENTER);
-
-        gtk_widget_show_all (main_window);
+        glade_xml_signal_autoconnect (glade_xml);
 
         /* Light is off in the beginning */
         light_status = FALSE;
         light_load_level = 100;
+        update_image ();
+
+        gtk_widget_show_all (main_window);
 
         return TRUE;
+}
+
+void
+deinit_ui (void)
+{
+        g_object_unref (glade_xml);
 }
 

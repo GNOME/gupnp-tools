@@ -1,7 +1,8 @@
 SUBDIRS = pixmaps
 
 uidir = $(datadir)/gupnp-tools
-dist_ui_DATA = $(srcdir)/gupnp-universal-cp.glade
+dist_ui_DATA = $(srcdir)/gupnp-universal-cp.glade \
+	       $(srcdir)/gupnp-network-light.glade
 
 AM_CFLAGS = $(LIBGUPNP_CFLAGS) $(LIBGLADE_CFLAGS) -I$(top_srcdir) \
 	    -DUI_DIR='"$(uidir)"'
