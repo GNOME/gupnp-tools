@@ -41,6 +41,14 @@
 
 	Use glade for consistancy.
 
+2007-09-01  Zeeshan Ali  <zeenix@gstreamer.net>
+
+	* src/pixmaps/network-light-off.png:
+	* src/pixmaps/network-light-on.png:
+
+	New cool icons for network-light from Lapo Calamandrei
+	<calamandrei@gmail.com>.
+
 2007-08-31  Zeeshan Ali  <zeenix@gstreamer.net>
 
 	* src/pixmaps/network-light-on.png:
