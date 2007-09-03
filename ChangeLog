@@ -1,5 +1,13 @@
 2007-09-04  Zeeshan Ali  <zeenix@gstreamer.net>
 
+	* src/pixmaps/network-light-off.png:
+	* src/pixmaps/network-light-on.png:
+
+	Use newer, cool icons from Lapo Calamandrei
+	<calamandrei@gmail.com> for network light.
+
+2007-09-04  Zeeshan Ali  <zeenix@gstreamer.net>
+
 	* src/xml/network-light-desc.xml:
 
 	Append a '/' to icon URL.
