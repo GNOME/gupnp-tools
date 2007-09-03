@@ -132,21 +132,28 @@ setup_popup ()
 {
         GtkWidget *status_menuitem;
         GtkWidget *label;
-        char      *label_str;
 
         status_menuitem = glade_xml_get_widget (glade_xml,
                                                 "light-status-menuitem");
         g_assert (status_menuitem != NULL);
 
-        if (get_status ())
-                label_str = "<b>Off</b>";
-        else
-                label_str = "<b>On</b>";
-
         label = gtk_bin_get_child (GTK_BIN (status_menuitem));
+        g_assert (label != NULL);
+
+        gtk_label_set_markup (GTK_LABEL (label), "<b>On</b>");
+}
+
+static void
+prepare_popup ()
+{
+        GtkWidget *status_menuitem;
+
+        status_menuitem = glade_xml_get_widget (glade_xml,
+                                                "light-status-menuitem");
         g_assert (status_menuitem != NULL);
 
-        gtk_label_set_markup (GTK_LABEL (label), label_str);
+        gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (status_menuitem),
+                                        get_status ());
 }
 
 static void
@@ -157,7 +164,7 @@ on_main_window_right_clicked (GdkEventButton *event)
         popup = glade_xml_get_widget (glade_xml, "popup-menu");
         g_assert (popup != NULL);
 
-        setup_popup ();
+        prepare_popup ();
 
         gtk_menu_popup (GTK_MENU (popup),
                         NULL,
@@ -239,6 +246,8 @@ init_ui (gint   *argc,
         }
 
         glade_xml_signal_autoconnect (glade_xml);
+
+        setup_popup ();
 
         /* Light is off in the beginning */
         light_status = FALSE;

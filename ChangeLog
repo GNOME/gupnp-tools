@@ -1,5 +1,12 @@
 2007-09-04  Zeeshan Ali  <zeenix@gstreamer.net>
 
+	* src/network-light-gui.c:
+
+	Initialize label of the "On" menuitem only at startup and set it's state
+	according to light-bulb status each time it pop's up.
+
+2007-09-04  Zeeshan Ali  <zeenix@gstreamer.net>
+
 	* src/gupnp-network-light.glade:
 
 	Remove all the spacing around the light-bulb image as it doesn't suit
