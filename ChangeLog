@@ -1,5 +1,12 @@
 2007-09-04  Zeeshan Ali  <zeenix@gstreamer.net>
 
+	* src/gupnp-network-light.glade:
+
+	Remove all the spacing around the light-bulb image as it doesn't suit
+	the new background color of the image.
+
+2007-09-04  Zeeshan Ali  <zeenix@gstreamer.net>
+
 	* src/pixmaps/network-light-off.png:
 	* src/pixmaps/network-light-on.png:
 
