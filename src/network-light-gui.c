@@ -25,8 +25,8 @@
 #include "network-light-gui.h"
 
 #define GLADE_FILE "gupnp-network-light.glade"
-#define OFF_FILE   "pixmaps/network-light-off.png"
-#define ON_FILE    "pixmaps/network-light-on.png"
+#define OFF_FILE   UI_DIR "/pixmaps/network-light-off.png"
+#define ON_FILE    UI_DIR "/pixmaps/network-light-on.png"
 
 static GladeXML  *glade_xml;
 static GdkPixbuf *on_pixbuf;
