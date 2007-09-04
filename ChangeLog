@@ -26,6 +26,17 @@
 
 	Append a '/' to icon URL.
 
+2007-09-03  Zeeshan Ali  <zeenix@gstreamer.net>
+
+	* src/Makefile.am:
+	* src/universal-cp-devicetreeview.c:
+	* src/universal-cp-gui.c:
+	* src/universal-cp-gui.h:
+	* src/universal-cp-icons.c:
+	* src/universal-cp-icons.h:
+
+	Put icons handling into a separate module.
+
 2007-09-02  Zeeshan Ali  <zeenix@gstreamer.net>
 
 	* src/gupnp-network-light.glade:

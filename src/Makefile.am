@@ -13,10 +13,12 @@ gupnp_universal_cp_SOURCES = universal-cp.c \
 			     universal-cp-gui.c \
 			     universal-cp-devicetreeview.c \
 			     universal-cp-actiondialog.c \
+			     universal-cp-icons.c \
 			     universal-cp.h \
 			     universal-cp-gui.h \
 			     universal-cp-devicetreeview.h \
-			     universal-cp-actiondialog.h
+			     universal-cp-actiondialog.h \
+			     universal-cp-icons.h
 gupnp_universal_cp_LDADD = $(LIBGLADE_LIBS) $(LIBGUPNP_LIBS)
 gupnp_universal_cp_LDFLAGS = -export-dynamic
 

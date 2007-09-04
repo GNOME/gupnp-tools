@@ -23,6 +23,7 @@
 #include <config.h>
 
 #include "universal-cp-gui.h"
+#include "universal-cp-icons.h"
 #include "universal-cp.h"
 
 static const char *default_details[] = {

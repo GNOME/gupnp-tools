@@ -18,38 +18,31 @@
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  */
 
-#ifndef __GUPNP_UNIVERSAL_CP_GUI_H__
-#define __GUPNP_UNIVERSAL_CP_GUI_H__
+#ifndef __GUPNP_UNIVERSAL_CP_ICONS_H__
+#define __GUPNP_UNIVERSAL_CP_ICONS_H__
 
 #include <libgupnp/gupnp-control-point.h>
 #include <gtk/gtk.h>
 #include <glade/glade.h>
 
-#include "universal-cp-devicetreeview.h"
+enum
+{
+        ICON_DEVICES,
+        ICON_DEVICE,
+        ICON_SERVICE,
+        ICON_VARIABLES,
+        ICON_VARIABLE,
+        ICON_ACTION,
+        ICON_ACTION_ARG,
+        ICON_LAST
+};
 
-extern GladeXML  *glade_xml;
-
-void
-display_event      (const char       *notified_at,
-                    const char       *friendly_name,
-                    const char       *service_id,
-                    const char       *variable_name,
-                    const char       *value);
-
-void
-update_details     (const char      **tuples);
-
-void
-setup_treeview     (GtkWidget    *treeview,
-                    GtkTreeModel *model,
-                    char         *headers[],
-                    int           render_index);
-
-gboolean
-init_ui            (gint             *argc,
-                    gchar           **argv[]);
+extern GdkPixbuf *icons[ICON_LAST];
 
 void
-deinit_ui          (void);
+init_icons (GladeXML *glade_xml);
 
-#endif /* __GUPNP_UNIVERSAL_CP_GUI_H__ */
+void
+deinit_icons (void);
+
+#endif /* __GUPNP_UNIVERSAL_CP_ICONS_H__ */

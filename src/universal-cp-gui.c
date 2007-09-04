@@ -25,62 +25,12 @@
 #include "universal-cp-gui.h"
 #include "universal-cp-devicetreeview.h"
 #include "universal-cp-actiondialog.h"
+#include "universal-cp-icons.h"
 #include "universal-cp.h"
 
 #define GLADE_FILE "gupnp-universal-cp.glade"
 
-GladeXML  *glade_xml;
-GdkPixbuf *icons[ICON_LAST];
-
-static void
-init_icons (void)
-{
-        GtkWidget *image;
-        int        i;
-        char      *file_names[] = {
-                "pixmaps/devices.png",         /* ICON_DEVICES    */
-                "pixmaps/device.png",          /* ICON_DEVICE     */
-                "pixmaps/service.png",         /* ICON_SERVICE    */
-                "pixmaps/state-variables.png", /* ICON_VARIABLES  */
-                "pixmaps/state-variable.png",  /* ICON_VARIABLE   */
-                "pixmaps/action.png",          /* ICON_ACTION     */
-                "pixmaps/state-variable.png",  /* ICON_ACTION_ARG */
-        };
-
-        for (i = 0; i < ICON_LAST; i++) {
-                /* Try to fetch the pixmap from the CWD first */
-                icons[i] = gdk_pixbuf_new_from_file (file_names[i], NULL);
-                if (icons[i] == NULL) {
-                        char *pixmap_path;
-
-                        /* Then Try to fetch it from the system path */
-                        pixmap_path = g_strjoin ("/",
-                                                 UI_DIR,
-                                                 file_names[i],
-                                                 NULL);
-
-                        icons[i] = gdk_pixbuf_new_from_file (pixmap_path, NULL);
-                        g_free (pixmap_path);
-                }
-
-                g_assert (icons[i] != NULL);
-        }
-
-        image = glade_xml_get_widget (glade_xml, "device-image");
-        g_assert (image != NULL);
-        gtk_image_set_from_pixbuf (GTK_IMAGE (image),
-                                   icons[ICON_DEVICE]);
-
-        image = glade_xml_get_widget (glade_xml, "service-image");
-        g_assert (image != NULL);
-        gtk_image_set_from_pixbuf (GTK_IMAGE (image),
-                                   icons[ICON_SERVICE]);
-
-        image = glade_xml_get_widget (glade_xml, "action-image");
-        g_assert (image != NULL);
-        gtk_image_set_from_pixbuf (GTK_IMAGE (image),
-                                   icons[ICON_ACTION]);
-}
+GladeXML *glade_xml;
 
 void
 display_event (const char *notified_at,
@@ -424,7 +374,7 @@ init_ui (gint   *argc,
 
         glade_xml_signal_autoconnect (glade_xml);
 
-        init_icons ();
+        init_icons (glade_xml);
         setup_treeviews ();
         init_action_dialog ();
 
@@ -448,6 +398,7 @@ init_ui (gint   *argc,
 void
 deinit_ui (void)
 {
+        deinit_icons ();
         g_object_unref (glade_xml);
 }
 
