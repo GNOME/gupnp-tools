@@ -40,6 +40,8 @@ typedef struct {
         GUPnPDeviceInfo *info;
         SoupMessage     *message;
         gchar           *mime_type;
+        gint             width;
+        gint             height;
 } GetIconURLData;
 
 static void
@@ -69,9 +71,15 @@ get_icon_from_message (SoupMessage    *msg,
                                  error);
         pixbuf = gdk_pixbuf_loader_get_pixbuf (loader);
         if (pixbuf) {
+                gfloat aspect_ratio;
+                gint   height;
+
+                /* Preserve the aspect-ratio of the original image */
+                aspect_ratio = (gfloat) data->width / data->height;
+                height = (gint) (PREFERED_WIDTH / aspect_ratio);
                 pixbuf = gdk_pixbuf_scale_simple (pixbuf,
                                                   PREFERED_WIDTH,
-                                                  PREFERED_HEIGHT,
+                                                  height,
                                                   GDK_INTERP_NEAREST);
         }
 
@@ -127,8 +135,8 @@ schedule_icon_update (GUPnPDeviceInfo *info)
                          TRUE,
                          &data->mime_type,
                          NULL,
-                         NULL,
-                         NULL);
+                         &data->width,
+                         &data->height);
         if (icon_url == NULL)
                 return;
 

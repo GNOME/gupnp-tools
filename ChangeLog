@@ -1,3 +1,9 @@
+2007-09-05  Zeeshan Ali  <zeenix@gstreamer.net>
+
+	* src/universal-cp-icons.c:
+                
+	Preserve the aspect-ratio of the original image.
+
 2007-09-04  Zeeshan Ali  <zeenix@gstreamer.net>
 
 	* src/universal-cp-devicetreeview.c:
