@@ -1,5 +1,11 @@
 2007-09-04  Zeeshan Ali  <zeenix@gstreamer.net>
 
+	* src/universal-cp-devicetreeview.c:
+
+	Use icon types rather than icons to identify the treeview rows.
+
+2007-09-04  Zeeshan Ali  <zeenix@gstreamer.net>
+
 	* src/network-light-gui.c:
 
 	Initialize label of the "On" menuitem only at startup and set it's state
