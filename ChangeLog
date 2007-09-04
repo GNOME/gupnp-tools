@@ -26,6 +26,16 @@
 
 	Append a '/' to icon URL.
 
+2007-09-04  Zeeshan Ali  <zeenix@gstreamer.net>
+	* src/universal-cp-devicetreeview.c:
+	* src/universal-cp-devicetreeview.h:
+	* src/universal-cp-gui.c:
+	* src/universal-cp-icons.c:
+	* src/universal-cp-icons.h:
+	* src/universal-cp.c:
+
+	Prefer to use icon from the device to reprent it.
+
 2007-09-03  Zeeshan Ali  <zeenix@gstreamer.net>
 
 	* src/Makefile.am:

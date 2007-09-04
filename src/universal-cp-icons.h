@@ -40,9 +40,15 @@ enum
 extern GdkPixbuf *icons[ICON_LAST];
 
 void
-init_icons (GladeXML *glade_xml);
+schedule_icon_update   (GUPnPDeviceInfo *info);
 
 void
-deinit_icons (void);
+unschedule_icon_update (GUPnPDeviceInfo *info);
+
+void
+init_icons             (GladeXML *glade_xml);
+
+void
+deinit_icons           (void);
 
 #endif /* __GUPNP_UNIVERSAL_CP_ICONS_H__ */

@@ -318,7 +318,6 @@ init_upnp (void)
 {
         GError *error;
 
-        g_thread_init (NULL);
         g_type_init ();
 
         error = NULL;

@@ -42,6 +42,10 @@ remove_device           (GUPnPDeviceInfo           *info);
 void
 append_device           (GUPnPDeviceInfo            *info);
 
+void
+update_device_icon      (GUPnPDeviceInfo            *info,
+                         GdkPixbuf                  *icon);
+
 GtkTreeModel *
 create_device_treemodel (void);
 

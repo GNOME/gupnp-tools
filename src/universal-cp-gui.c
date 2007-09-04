@@ -338,6 +338,7 @@ init_ui (gint   *argc,
 
         gtk_init (argc, argv);
         glade_init ();
+        g_thread_init (NULL);
 
         /* Try to fetch the glade file from the CWD first */
         glade_path = GLADE_FILE;
