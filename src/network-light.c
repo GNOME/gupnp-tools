@@ -37,7 +37,7 @@ static GUPnPRootDevice  *dev;
 static GUPnPServiceInfo *switch_power;
 static GUPnPServiceInfo *dimming;
 
-static void
+void
 on_get_status (GUPnPService       *service,
                GUPnPServiceAction *action,
                gpointer            user_data)
@@ -51,7 +51,7 @@ on_get_status (GUPnPService       *service,
         gupnp_service_action_return (action);
 }
 
-static void
+void
 on_get_target (GUPnPService       *service,
                GUPnPServiceAction *action,
                gpointer            user_data)
@@ -65,7 +65,7 @@ on_get_target (GUPnPService       *service,
         gupnp_service_action_return (action);
 }
 
-static void
+void
 on_set_target (GUPnPService       *service,
                GUPnPServiceAction *action,
                gpointer            user_data)
@@ -88,7 +88,7 @@ on_set_target (GUPnPService       *service,
                               NULL);
 }
 
-static void
+void
 on_query_status (GUPnPService *service,
                  const char   *variable_name,
                  GValue       *value,
@@ -98,7 +98,17 @@ on_query_status (GUPnPService *service,
         g_value_set_boolean (value, get_status ());
 }
 
-static void
+void
+on_query_target (GUPnPService *service,
+                 const char   *variable_name,
+                 GValue       *value,
+                 gpointer      user_data)
+{
+        g_value_init (value, G_TYPE_BOOLEAN);
+        g_value_set_boolean (value, get_status ());
+}
+
+void
 on_get_load_level_status (GUPnPService       *service,
                           GUPnPServiceAction *action,
                           gpointer            user_data)
@@ -112,7 +122,7 @@ on_get_load_level_status (GUPnPService       *service,
         gupnp_service_action_return (action);
 }
 
-static void
+void
 on_get_load_level_target (GUPnPService       *service,
                           GUPnPServiceAction *action,
                           gpointer            user_data)
@@ -126,7 +136,7 @@ on_get_load_level_target (GUPnPService       *service,
         gupnp_service_action_return (action);
 }
 
-static void
+void
 on_set_load_level_target (GUPnPService       *service,
                           GUPnPServiceAction *action,
                           gpointer            user_data)
@@ -150,11 +160,21 @@ on_set_load_level_target (GUPnPService       *service,
                               NULL);
 }
 
-static void
-on_query_load_level (GUPnPService *service,
-                     const char   *variable_name,
-                     GValue       *value,
-                     gpointer      user_data)
+void
+on_query_load_level_status (GUPnPService *service,
+                            const char   *variable_name,
+                            GValue       *value,
+                            gpointer      user_data)
+{
+        g_value_init (value, G_TYPE_UINT);
+        g_value_set_uint (value, get_load_level ());
+}
+
+void
+on_query_load_level_target (GUPnPService *service,
+                            const char   *variable_name,
+                            GValue       *value,
+                            gpointer      user_data)
 {
         g_value_init (value, G_TYPE_UINT);
         g_value_set_uint (value, get_load_level ());
@@ -232,32 +252,14 @@ init_upnp (void)
         /* Free doc when root device is destroyed */
         g_object_weak_ref (G_OBJECT (dev), (GWeakNotify) xmlFreeDoc, doc);
 
-        switch_power = gupnp_device_info_get_service
-                         (GUPNP_DEVICE_INFO (dev),
-                         SWITCH_SERVICE);
+        switch_power = gupnp_device_info_get_service (GUPNP_DEVICE_INFO (dev),
+                                                      SWITCH_SERVICE);
 
         if (switch_power) {
-                g_signal_connect (switch_power,
-                                  "action-invoked::GetStatus",
-                                  G_CALLBACK (on_get_status),
-                                  NULL);
-                g_signal_connect (switch_power,
-                                  "action-invoked::GetTarget",
-                                  G_CALLBACK (on_get_target),
-                                  NULL);
-                g_signal_connect (switch_power,
-                                  "action-invoked::SetTarget",
-                                  G_CALLBACK (on_set_target),
-                                  NULL);
-
-                g_signal_connect (switch_power,
-                                  "query-variable::Status",
-                                  G_CALLBACK (on_query_status),
-                                  NULL);
-                g_signal_connect (switch_power,
-                                  "query-variable::Target",
-                                  G_CALLBACK (on_query_status),
-                                  NULL);
+                gupnp_service_signals_autoconnect
+                                (GUPNP_SERVICE (switch_power),
+                                 NULL,
+                                 &error);
 
                 g_signal_connect (switch_power,
                                   "notify-failed",
@@ -265,32 +267,13 @@ init_upnp (void)
                                   NULL);
         }
 
-        dimming = gupnp_device_info_get_service
-                         (GUPNP_DEVICE_INFO (dev),
-                         DIMMING_SERVICE);
+        dimming = gupnp_device_info_get_service (GUPNP_DEVICE_INFO (dev),
+                                                 DIMMING_SERVICE);
 
         if (dimming) {
-                g_signal_connect (dimming,
-                                  "action-invoked::GetLoadLevelStatus",
-                                  G_CALLBACK (on_get_load_level_status),
-                                  NULL);
-                g_signal_connect (dimming,
-                                  "action-invoked::GetLoadLevelTarget",
-                                  G_CALLBACK (on_get_load_level_target),
-                                  NULL);
-                g_signal_connect (dimming,
-                                  "action-invoked::SetLoadLevelTarget",
-                                  G_CALLBACK (on_set_load_level_target),
-                                  NULL);
-
-                g_signal_connect (dimming,
-                                  "query-variable::LoadLevelStatus",
-                                  G_CALLBACK (on_query_load_level),
-                                  NULL);
-                g_signal_connect (dimming,
-                                  "query-variable::LoadLevelTarget",
-                                  G_CALLBACK (on_query_load_level),
-                                  NULL);
+                gupnp_service_signals_autoconnect (GUPNP_SERVICE (dimming),
+                                                   NULL,
+                                                   &error);
 
                 g_signal_connect (dimming,
                                   "notify-failed",

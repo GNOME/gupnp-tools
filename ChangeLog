@@ -1,5 +1,11 @@
 2007-09-05  Zeeshan Ali  <zeenix@gstreamer.net>
 
+	* src/network-light.c:
+
+	Simplify code using the power of gupnp_service_signals_autoconnect().
+
+2007-09-05  Zeeshan Ali  <zeenix@gstreamer.net>
+
 	* src/network-light-gui.c:
 
 	Cleaner code for loading pixbufs.
