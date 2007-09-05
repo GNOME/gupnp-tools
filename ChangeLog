@@ -1,5 +1,11 @@
 2007-09-05  Zeeshan Ali  <zeenix@gstreamer.net>
 
+	* src/Makefile.am:
+
+	Make xml dir part of the build.
+
+2007-09-05  Zeeshan Ali  <zeenix@gstreamer.net>
+
 	* src/network-light.c:
 
 	Simplify code using the power of gupnp_service_signals_autoconnect().

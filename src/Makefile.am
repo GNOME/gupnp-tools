@@ -1,4 +1,4 @@
-SUBDIRS = pixmaps
+SUBDIRS = pixmaps xml
 
 shareddir = $(datadir)/gupnp-tools
 dist_shared_DATA = $(srcdir)/gupnp-universal-cp.glade \
