@@ -20,10 +20,10 @@
 <iconList>
 <icon>
 <mimetype>image/png</mimetype>
-<width>112</width>
-<height>172</height>
+<width>236</width>
+<height>276</height>
 <depth>32</depth>
-<url>/pixmaps/network-light-off.png</url>
+<url>/pixmaps/network-light.png</url>
 </icon>
 </iconList>
 <serviceList>

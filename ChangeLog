@@ -26,6 +26,14 @@
 
 2007-09-05  Zeeshan Ali  <zeenix@gstreamer.net>
 
+	* src/network-light-gui.c:
+	* src/pixmaps/network-light.png:
+	* src/xml/network-light-desc.xml:
+
+	Add icon for window decorations and clients.
+
+2007-09-05  Zeeshan Ali  <zeenix@gstreamer.net>
+
 	* src/universal-cp-icons.c:
                 
 	Preserve the aspect-ratio of the original image.

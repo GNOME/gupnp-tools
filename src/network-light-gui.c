@@ -25,6 +25,7 @@
 #include "network-light-gui.h"
 
 #define GLADE_FILE "gupnp-network-light.glade"
+#define ICON_FILE  "pixmaps/network-light.png"
 #define OFF_FILE   "pixmaps/network-light-off.png"
 #define ON_FILE    "pixmaps/network-light-on.png"
 
@@ -209,6 +210,7 @@ init_ui (gint   *argc,
          gchar **argv[])
 {
         GtkWidget *main_window;
+        GdkPixbuf *icon_pixbuf;
         gchar     *glade_path = NULL;
 
         gtk_init (argc, argv);
@@ -238,20 +240,50 @@ init_ui (gint   *argc,
 
 	/* Try in source */
         on_pixbuf = gdk_pixbuf_new_from_file (ON_FILE, NULL);
+        if (on_pixbuf == NULL) {
+                g_warning ("failed to get image %s\n", ON_FILE);
+
+                return FALSE;
+        }
+
         off_pixbuf = gdk_pixbuf_new_from_file (OFF_FILE, NULL);
-        if (off_pixbuf == NULL || on_pixbuf == NULL) {
+        if (off_pixbuf == NULL) {
+	        /* Try installed */
+	        off_pixbuf = gdk_pixbuf_new_from_file (DATA_DIR "/" OFF_FILE,
+						       NULL);
+                if (off_pixbuf == NULL) {
+                        g_warning ("failed to get image %s\n", OFF_FILE);
+
+                        return FALSE;
+                }
+        }
+
+        on_pixbuf = gdk_pixbuf_new_from_file (ON_FILE, NULL);
+        if (on_pixbuf == NULL) {
 	        /* Try installed */
 	        on_pixbuf = gdk_pixbuf_new_from_file (DATA_DIR "/" ON_FILE,
 						      NULL);
-	        off_pixbuf = gdk_pixbuf_new_from_file (DATA_DIR "/" OFF_FILE,
-						       NULL);
+                if (on_pixbuf == NULL) {
+                        g_warning ("failed to get image %s\n", ON_FILE);
 
-               if (off_pixbuf == NULL || on_pixbuf == NULL) {
-		        g_warning ("failed to get image %s\n",
-				   (on_pixbuf == NULL)? ON_FILE: OFF_FILE);
                         return FALSE;
-	       }
+                }
         }
+
+        icon_pixbuf = gdk_pixbuf_new_from_file (ICON_FILE, NULL);
+        if (icon_pixbuf == NULL) {
+	        /* Try installed */
+	        icon_pixbuf = gdk_pixbuf_new_from_file (DATA_DIR "/" ICON_FILE,
+						        NULL);
+                if (icon_pixbuf == NULL) {
+                        g_warning ("failed to get image %s\n", ICON_FILE);
+
+                        return FALSE;
+                }
+        }
+
+        gtk_window_set_icon (GTK_WINDOW (main_window), icon_pixbuf);
+        g_object_unref (icon_pixbuf);
 
         glade_xml_signal_autoconnect (glade_xml);
 
