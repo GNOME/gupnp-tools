@@ -41,19 +41,21 @@ display_event (const char *notified_at,
 {
         GtkWidget        *treeview;
         GtkTreeModel     *model;
+        GtkTreeIter       iter;
 
         treeview = glade_xml_get_widget (glade_xml, "event-treeview");
         g_assert (treeview != NULL);
         model = gtk_tree_view_get_model (GTK_TREE_VIEW (treeview));
 
-        gtk_list_store_insert_with_values (GTK_LIST_STORE (model),
-                                           NULL, -1,
-                                           0, notified_at,
-                                           1, friendly_name,
-                                           2, service_id,
-                                           3, variable_name,
-                                           4, value,
-                                           -1);
+        gtk_list_store_prepend (GTK_LIST_STORE (model), &iter);
+        gtk_list_store_set (GTK_LIST_STORE (model),
+                            &iter,
+                            0, notified_at,
+                            1, friendly_name,
+                            2, service_id,
+                            3, variable_name,
+                            4, value,
+                            -1);
 }
 
 void

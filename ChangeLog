@@ -2,6 +2,12 @@
 
 	* src/universal-cp-gui.c:
 
+	Prepend rather than append the events to the event log treeview.
+
+2007-09-06  Zeeshan Ali  <zeenix@gstreamer.net>
+
+	* src/universal-cp-gui.c:
+
 	Double-click on a service row, inverts the subscription status to that
 	service.
 
