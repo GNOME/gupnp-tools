@@ -316,6 +316,23 @@ on_device_treeview_button_release (GtkWidget      *widget,
         return TRUE;
 }
 
+void
+on_device_treeview_row_activate (GtkMenuItem *menuitem,
+                                 gpointer     user_data)
+{
+        GUPnPServiceProxy         *proxy;
+        GUPnPServiceActionInfo    *action_info;
+        GUPnPServiceIntrospection *introspection;
+
+        action_info = get_selected_action (&proxy, &introspection);
+        if (action_info != NULL) {
+                run_action_dialog (action_info,
+                                   proxy,
+                                   introspection);
+                g_object_unref (G_OBJECT (introspection));
+        }
+}
+
 gboolean
 on_delete_event (GtkWidget *widget,
                  GdkEvent  *event,

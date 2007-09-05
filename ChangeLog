@@ -1,3 +1,14 @@
+2007-09-06  Zeeshan Ali  <zeenix@gstreamer.net>
+
+	* src/gupnp-universal-cp.glade:
+	* src/universal-cp-actiondialog.c:
+	* src/universal-cp-actiondialog.h:
+	* src/universal-cp-gui.c:
+
+	Rename the device treeview row activation signal handler so it doesn't
+	look bad when we use the same handler for service subscription and
+	move it to -gui module.
+
 2007-09-05  Zeeshan Ali  <zeenix@gstreamer.net>
 
 	* src/universal-cp-devicetreeview.c:

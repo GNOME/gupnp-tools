@@ -327,17 +327,15 @@ find_arguments_by_direction (GList                         *arguments,
 }
 
 void
-on_invoke_action_activate (GtkMenuItem *menuitem,
-                           gpointer     user_data)
+run_action_dialog (GUPnPServiceActionInfo    *action_info,
+                   GUPnPServiceProxy         *proxy,
+                   GUPnPServiceIntrospection *introspection)
 {
-        GUPnPServiceProxy         *proxy;
-        GUPnPServiceActionInfo    *action_info;
-        GUPnPServiceIntrospection *introspection;
-        GtkWidget                 *dialog;
-        GtkWidget                 *in_table;
-        GtkWidget                 *out_table;
-        GList                     *in_arguments;
-        GList                     *out_arguments;
+        GtkWidget *dialog;
+        GtkWidget *in_table;
+        GtkWidget *out_table;
+        GList     *in_arguments;
+        GList     *out_arguments;
 
         dialog = glade_xml_get_widget (glade_xml, "action-invocation-dialog");
         g_assert (dialog != NULL);
@@ -347,10 +345,6 @@ on_invoke_action_activate (GtkMenuItem *menuitem,
         out_table = glade_xml_get_widget (glade_xml,
                                          "out-action-arguments-table");
         g_assert (out_table != NULL);
-
-        action_info = get_selected_action (&proxy, &introspection);
-        if (action_info == NULL)
-                return;
 
         setup_action_dialog_labels (GUPNP_SERVICE_INFO (proxy), action_info);
 
@@ -375,7 +369,6 @@ on_invoke_action_activate (GtkMenuItem *menuitem,
         gtk_dialog_run (GTK_DIALOG (dialog));
         gtk_widget_hide (dialog);
 
-        g_object_unref (G_OBJECT (introspection));
 }
 
 static void

@@ -180,7 +180,7 @@
 		  <property name="hover_selection">False</property>
 		  <property name="hover_expand">False</property>
 		  <signal name="button_release_event" handler="on_device_treeview_button_release"/>
-		  <signal name="row_activated" handler="on_invoke_action_activate"/>
+		  <signal name="row_activated" handler="on_device_treeview_row_activate"/>
 		</widget>
 	      </child>
 	    </widget>
@@ -308,7 +308,7 @@ Inspired by Intel Tools for UPnP.</property>
       <property name="visible">True</property>
       <property name="label" translatable="yes">Invoke</property>
       <property name="use_underline">True</property>
-      <signal name="activate" handler="on_invoke_action_activate"/>
+      <signal name="activate" handler="on_device_treeview_row_activate"/>
     </widget>
   </child>
 
