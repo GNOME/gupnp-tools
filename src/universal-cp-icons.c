@@ -211,7 +211,7 @@ init_icons (GladeXML *glade_xml)
 
                         /* Then Try to fetch it from the system path */
                         pixmap_path = g_strjoin ("/",
-                                                 UI_DIR,
+                                                 DATA_DIR,
                                                  file_names[i],
                                                  NULL);
 

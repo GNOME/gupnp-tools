@@ -1,3 +1,23 @@
+2007-09-05  Zeeshan Ali  <zeenix@gstreamer.net>
+2007-09-05  Matthew Allum  <mallum@openedhand.com>
+
+	* configure.ac:
+	* src/Makefile.am:
+	* src/gupnp-network-light.glade:
+	* src/gupnp-universal-cp.glade:
+	* src/network-light-gui.c:
+	* src/network-light-gui.h:
+	* src/network-light.c:
+	* src/universal-cp-actiondialog.c:
+	* src/universal-cp-devicetreeview.c:
+	* src/universal-cp-gui.c:
+	* src/universal-cp-icons.c:
+	* src/universal-cp.c:
+	* src/xml/Makefile.am:
+
+	Install the xml files too and make network-light be able to run
+	installed.
+
 2007-09-04  Matthew Allum  <mallum@openedhand.com>
 
 	* src/network-light-gui.c:

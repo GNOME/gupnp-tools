@@ -191,7 +191,7 @@ static gboolean
 init_upnp (void)
 {
         GError *error;
-        xmlDoc *doc;
+        xmlDoc *doc = NULL;
 
         g_thread_init (NULL);
 
@@ -207,11 +207,22 @@ init_upnp (void)
 
         g_print ("Running on port %d\n", gupnp_context_get_port (context));
 
-        /* Host current directory */
+        /* Host current directory (for running uninstalled) */
         gupnp_context_host_path (context, ".", "");
+        /* Host our xml dir (for running installed) */
+        gupnp_context_host_path (context, DATA_DIR, "");
 
-        /* Parse device description file */
-        doc = xmlParseFile (DESCRIPTION_DOC);
+	/* Parse device description file */
+	if (!g_file_test (DESCRIPTION_DOC, G_FILE_TEST_EXISTS))
+	        doc = xmlParseFile (DATA_DIR "/" DESCRIPTION_DOC);
+	else
+	        doc = xmlParseFile (DESCRIPTION_DOC);
+
+	if (doc == NULL) {
+	        g_critical ("Unable to load the XML description file %s",
+			    DESCRIPTION_DOC);
+                return FALSE;
+	}
 
         /* Create root device */
         dev = gupnp_root_device_new (context,

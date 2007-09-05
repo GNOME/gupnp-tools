@@ -344,7 +344,7 @@ init_ui (gint   *argc,
         glade_path = GLADE_FILE;
         if (!g_file_test (glade_path, G_FILE_TEST_EXISTS)) {
                 /* Then Try to fetch it from the system path */
-                glade_path = UI_DIR "/" GLADE_FILE;
+                glade_path = DATA_DIR "/" GLADE_FILE;
 
                 if (!g_file_test (glade_path, G_FILE_TEST_EXISTS))
                         glade_path = NULL;

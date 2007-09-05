@@ -25,8 +25,8 @@
 #include "network-light-gui.h"
 
 #define GLADE_FILE "gupnp-network-light.glade"
-#define OFF_FILE   UI_DIR "/pixmaps/network-light-off.png"
-#define ON_FILE    UI_DIR "/pixmaps/network-light-on.png"
+#define OFF_FILE   "pixmaps/network-light-off.png"
+#define ON_FILE    "pixmaps/network-light-on.png"
 
 static GladeXML  *glade_xml;
 static GdkPixbuf *on_pixbuf;
@@ -218,7 +218,7 @@ init_ui (gint   *argc,
         glade_path = GLADE_FILE;
         if (!g_file_test (glade_path, G_FILE_TEST_EXISTS)) {
                 /* Then Try to fetch it from the system path */
-                glade_path = UI_DIR "/" GLADE_FILE;
+                glade_path = DATA_DIR "/" GLADE_FILE;
 
                 if (!g_file_test (glade_path, G_FILE_TEST_EXISTS))
                         glade_path = NULL;
@@ -236,13 +236,21 @@ init_ui (gint   *argc,
         main_window = glade_xml_get_widget (glade_xml, "main-window");
         g_assert (main_window != NULL);
 
+	/* Try in source */
         on_pixbuf = gdk_pixbuf_new_from_file (ON_FILE, NULL);
         off_pixbuf = gdk_pixbuf_new_from_file (OFF_FILE, NULL);
         if (off_pixbuf == NULL || on_pixbuf == NULL) {
-                g_warning ("failed to get image %s\n",
-                           (on_pixbuf == NULL)? ON_FILE: OFF_FILE);
+	        /* Try installed */
+	        on_pixbuf = gdk_pixbuf_new_from_file (DATA_DIR "/" ON_FILE,
+						      NULL);
+	        off_pixbuf = gdk_pixbuf_new_from_file (DATA_DIR "/" OFF_FILE,
+						       NULL);
 
-                return FALSE;
+               if (off_pixbuf == NULL || on_pixbuf == NULL) {
+		        g_warning ("failed to get image %s\n",
+				   (on_pixbuf == NULL)? ON_FILE: OFF_FILE);
+                        return FALSE;
+	       }
         }
 
         glade_xml_signal_autoconnect (glade_xml);

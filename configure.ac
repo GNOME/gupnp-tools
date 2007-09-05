@@ -43,4 +43,5 @@ AC_OUTPUT([
 Makefile
 src/Makefile
 src/pixmaps/Makefile
+src/xml/Makefile
 ])
