@@ -8,6 +8,12 @@
 
 	* src/network-light-gui.c:
 
+	Fix a small oops.
+
+2007-09-05  Zeeshan Ali  <zeenix@gstreamer.net>
+
+	* src/network-light-gui.c:
+
 	Cleaner code for loading pixbufs.
 
 2007-09-05  Zeeshan Ali  <zeenix@gstreamer.net>

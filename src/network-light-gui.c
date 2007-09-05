@@ -264,7 +264,7 @@ init_ui (gint   *argc,
         g_assert (main_window != NULL);
 
         on_pixbuf = load_pixbuf_file (ON_FILE);
-        if (icon_pixbuf == NULL)
+        if (on_pixbuf == NULL)
                 return FALSE;
 
         off_pixbuf = load_pixbuf_file (OFF_FILE);
