@@ -1,5 +1,11 @@
 2007-09-05  Zeeshan Ali  <zeenix@gstreamer.net>
 
+	* src/universal-cp-devicetreeview.c:
+
+	services are subscribed to, by default.
+
+2007-09-05  Zeeshan Ali  <zeenix@gstreamer.net>
+
 	* src/network-light.c:
 
 	Only host the dir where the description doc is found.

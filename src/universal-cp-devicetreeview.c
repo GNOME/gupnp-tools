@@ -322,6 +322,10 @@ append_service_tree (GUPnPServiceInfo *info,
                                                    5, ICON_SERVICE,
                                                    -1);
 
+                /* Services are subscribed to by default */
+                gupnp_service_proxy_set_subscribed (GUPNP_SERVICE_PROXY (info),
+                                                    TRUE);
+
                 error = NULL;
                 introspection = gupnp_service_info_get_introspection (info,
                                                                       &error);
