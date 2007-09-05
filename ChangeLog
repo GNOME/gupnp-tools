@@ -1,5 +1,12 @@
 2007-09-06  Zeeshan Ali  <zeenix@gstreamer.net>
 
+	* src/universal-cp-gui.c:
+
+	Double-click on a service row, inverts the subscription status to that
+	service.
+
+2007-09-06  Zeeshan Ali  <zeenix@gstreamer.net>
+
 	* src/gupnp-universal-cp.glade:
 	* src/universal-cp-actiondialog.c:
 	* src/universal-cp-actiondialog.h:

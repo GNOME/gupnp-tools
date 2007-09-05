@@ -324,12 +324,24 @@ on_device_treeview_row_activate (GtkMenuItem *menuitem,
         GUPnPServiceActionInfo    *action_info;
         GUPnPServiceIntrospection *introspection;
 
-        action_info = get_selected_action (&proxy, &introspection);
-        if (action_info != NULL) {
-                run_action_dialog (action_info,
-                                   proxy,
-                                   introspection);
-                g_object_unref (G_OBJECT (introspection));
+        /* See if a service is selected */
+        proxy = get_selected_service ();
+        if (proxy != NULL) {
+                gboolean subscribed;
+
+                subscribed = gupnp_service_proxy_get_subscribed (proxy);
+                gupnp_service_proxy_set_subscribed (proxy, !subscribed);
+        } else {
+                GUPnPServiceActionInfo *action;
+
+                /* See if an action is selected */
+                action_info = get_selected_action (&proxy, &introspection);
+                if (action_info != NULL) {
+                        run_action_dialog (action_info,
+                                        proxy,
+                                        introspection);
+                        g_object_unref (G_OBJECT (introspection));
+                }
         }
 }
 
