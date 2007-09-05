@@ -1,5 +1,11 @@
 2007-09-05  Zeeshan Ali  <zeenix@gstreamer.net>
 
+	* src/network-light-gui.c:
+
+	Cleaner code for loading pixbufs.
+
+2007-09-05  Zeeshan Ali  <zeenix@gstreamer.net>
+
 	* src/pixmaps/Makefile.am:
 
 	Add network-light icon to build.

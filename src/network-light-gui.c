@@ -205,6 +205,31 @@ on_delete_event (GtkWidget *widget,
         return TRUE;
 }
 
+static GdkPixbuf *
+load_pixbuf_file (const char *file_name)
+{
+        GdkPixbuf *pixbuf;
+
+	/* First try uninstalled */
+        pixbuf = gdk_pixbuf_new_from_file (file_name, NULL);
+        if (pixbuf == NULL) {
+	        /* Now try installed */
+                char *path;
+
+                path = g_strjoin ("/",
+                                  DATA_DIR,
+                                  file_name,
+                                  NULL);
+	        pixbuf = gdk_pixbuf_new_from_file (path, NULL);
+                if (pixbuf == NULL)
+                        g_critical ("failed to get image %s\n", file_name);
+
+                g_free (path);
+        }
+
+        return pixbuf;
+}
+
 gboolean
 init_ui (gint   *argc,
          gchar **argv[])
@@ -238,48 +263,21 @@ init_ui (gint   *argc,
         main_window = glade_xml_get_widget (glade_xml, "main-window");
         g_assert (main_window != NULL);
 
-	/* Try in source */
-        on_pixbuf = gdk_pixbuf_new_from_file (ON_FILE, NULL);
-        if (on_pixbuf == NULL) {
-                g_warning ("failed to get image %s\n", ON_FILE);
+        on_pixbuf = load_pixbuf_file (ON_FILE);
+        if (icon_pixbuf == NULL)
+                return FALSE;
 
+        off_pixbuf = load_pixbuf_file (OFF_FILE);
+        if (off_pixbuf == NULL) {
+                g_object_unref (on_pixbuf);
                 return FALSE;
         }
 
-        off_pixbuf = gdk_pixbuf_new_from_file (OFF_FILE, NULL);
-        if (off_pixbuf == NULL) {
-	        /* Try installed */
-	        off_pixbuf = gdk_pixbuf_new_from_file (DATA_DIR "/" OFF_FILE,
-						       NULL);
-                if (off_pixbuf == NULL) {
-                        g_warning ("failed to get image %s\n", OFF_FILE);
-
-                        return FALSE;
-                }
-        }
-
-        on_pixbuf = gdk_pixbuf_new_from_file (ON_FILE, NULL);
-        if (on_pixbuf == NULL) {
-	        /* Try installed */
-	        on_pixbuf = gdk_pixbuf_new_from_file (DATA_DIR "/" ON_FILE,
-						      NULL);
-                if (on_pixbuf == NULL) {
-                        g_warning ("failed to get image %s\n", ON_FILE);
-
-                        return FALSE;
-                }
-        }
-
-        icon_pixbuf = gdk_pixbuf_new_from_file (ICON_FILE, NULL);
+        icon_pixbuf = load_pixbuf_file (ICON_FILE);
         if (icon_pixbuf == NULL) {
-	        /* Try installed */
-	        icon_pixbuf = gdk_pixbuf_new_from_file (DATA_DIR "/" ICON_FILE,
-						        NULL);
-                if (icon_pixbuf == NULL) {
-                        g_warning ("failed to get image %s\n", ICON_FILE);
-
-                        return FALSE;
-                }
+                g_object_unref (on_pixbuf);
+                g_object_unref (off_pixbuf);
+                return FALSE;
         }
 
         gtk_window_set_icon (GTK_WINDOW (main_window), icon_pixbuf);
