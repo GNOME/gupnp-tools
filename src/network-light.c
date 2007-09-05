@@ -227,16 +227,16 @@ init_upnp (void)
 
         g_print ("Running on port %d\n", gupnp_context_get_port (context));
 
-        /* Host current directory (for running uninstalled) */
-        gupnp_context_host_path (context, ".", "");
-        /* Host our xml dir (for running installed) */
-        gupnp_context_host_path (context, DATA_DIR, "");
-
 	/* Parse device description file */
-	if (!g_file_test (DESCRIPTION_DOC, G_FILE_TEST_EXISTS))
+	if (!g_file_test (DESCRIPTION_DOC, G_FILE_TEST_EXISTS)) {
+                /* Running installed */
 	        doc = xmlParseFile (DATA_DIR "/" DESCRIPTION_DOC);
-	else
+                gupnp_context_host_path (context, DATA_DIR, "");
+        } else {
+                /* Running uninstalled */
 	        doc = xmlParseFile (DESCRIPTION_DOC);
+                gupnp_context_host_path (context, ".", "");
+        }
 
 	if (doc == NULL) {
 	        g_critical ("Unable to load the XML description file %s",
