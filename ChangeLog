@@ -1,5 +1,12 @@
 2007-09-06  Zeeshan Ali  <zeenix@gstreamer.net>
 
+	* src/network-light.c:
+
+	notify the clients of the actual load level set, not what is
+	requested.
+
+2007-09-06  Zeeshan Ali  <zeenix@gstreamer.net>
+
 	* src/network-light-gui.c:
 	* src/network-light-gui.h:
 	* src/network-light.c:

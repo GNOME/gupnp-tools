@@ -73,7 +73,7 @@ set_load_level (gint load_level)
         gupnp_service_notify (GUPNP_SERVICE (dimming),
                               "LoadLevelStatus",
                               G_TYPE_UINT,
-                              load_level,
+                              light_load_level,
                               NULL);
 }
 
