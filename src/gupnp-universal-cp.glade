@@ -246,6 +246,8 @@
 		      <property name="fixed_height_mode">False</property>
 		      <property name="hover_selection">False</property>
 		      <property name="hover_expand">False</property>
+		      <signal name="row_activated" handler="on_event_treeview_row_activate" last_modification_time="Thu, 06 Sep 2007 12:17:27 GMT"/>
+		      <signal name="button_release_event" handler="on_event_treeview_button_release" last_modification_time="Thu, 06 Sep 2007 12:17:57 GMT"/>
 		    </widget>
 		  </child>
 		</widget>
@@ -797,6 +799,42 @@ Inspired by Intel Tools for UPnP.</property>
       <property name="label" translatable="yes">Copy All</property>
       <property name="use_underline">True</property>
       <signal name="activate" handler="on_copy_all_details_activate" last_modification_time="Thu, 06 Sep 2007 11:00:18 GMT"/>
+    </widget>
+  </child>
+</widget>
+
+<widget class="GtkMenu" id="event-popup">
+
+  <child>
+    <widget class="GtkMenuItem" id="copy-event-menuitem">
+      <property name="visible">True</property>
+      <property name="label" translatable="yes">Copy event</property>
+      <property name="use_underline">True</property>
+      <signal name="activate" handler="on_event_treeview_row_activate" last_modification_time="Thu, 06 Sep 2007 12:10:06 GMT"/>
+    </widget>
+  </child>
+
+  <child>
+    <widget class="GtkMenuItem" id="copy-all-events-menuitem">
+      <property name="visible">True</property>
+      <property name="label" translatable="yes">Copy all events</property>
+      <property name="use_underline">True</property>
+      <signal name="activate" handler="on_copy_all_events_activate" last_modification_time="Thu, 06 Sep 2007 12:10:40 GMT"/>
+    </widget>
+  </child>
+
+  <child>
+    <widget class="GtkSeparatorMenuItem" id="separator6">
+      <property name="visible">True</property>
+    </widget>
+  </child>
+
+  <child>
+    <widget class="GtkMenuItem" id="clear-event-log-menuitem">
+      <property name="visible">True</property>
+      <property name="label" translatable="yes">Clear event log</property>
+      <property name="use_underline">True</property>
+      <signal name="activate" handler="on_clear_event_log_activate" last_modification_time="Thu, 06 Sep 2007 12:12:49 GMT"/>
     </widget>
   </child>
 </widget>

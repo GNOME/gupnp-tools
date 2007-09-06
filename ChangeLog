@@ -1,6 +1,14 @@
 2007-09-06  Zeeshan Ali  <zeenix@gstreamer.net>
 
 	* src/gupnp-universal-cp.glade:
+	* src/universal-cp-eventtreeview.c:
+
+	- Add event treeview context menu.
+	- Add ability to copy&paste from event treeview.
+
+2007-09-06  Zeeshan Ali  <zeenix@gstreamer.net>
+
+	* src/gupnp-universal-cp.glade:
 	* src/universal-cp-detailstreeview.c:
 
 	- Add details treeview context menu.
