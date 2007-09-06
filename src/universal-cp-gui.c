@@ -39,7 +39,11 @@ setup_treeview (GtkWidget    *treeview,
                 char         *headers[],
                 int           render_index)
 {
+        GtkTreeSelection *selection;
         int i;
+
+        selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (treeview));
+        g_assert (selection != NULL);
 
         for (i = 0; headers[i] != NULL; i++) {
                 GtkCellRenderer   *renderer;
@@ -62,6 +66,7 @@ setup_treeview (GtkWidget    *treeview,
 
         gtk_tree_view_set_model (GTK_TREE_VIEW (treeview),
                                  model);
+        gtk_tree_selection_set_mode (selection, GTK_SELECTION_SINGLE);
 }
 
 static void
