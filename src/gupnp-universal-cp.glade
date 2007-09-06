@@ -787,7 +787,7 @@ Inspired by Intel Tools for UPnP.</property>
   <child>
     <widget class="GtkMenuItem" id="copy-value-menuitem">
       <property name="visible">True</property>
-      <property name="label" translatable="yes">Copy Value</property>
+      <property name="label" translatable="yes">Copy value</property>
       <property name="use_underline">True</property>
       <signal name="activate" handler="on_details_treeview_row_activate" last_modification_time="Thu, 06 Sep 2007 11:00:18 GMT"/>
     </widget>
@@ -796,7 +796,7 @@ Inspired by Intel Tools for UPnP.</property>
   <child>
     <widget class="GtkMenuItem" id="copy-all-menuitem">
       <property name="visible">True</property>
-      <property name="label" translatable="yes">Copy All</property>
+      <property name="label" translatable="yes">Copy all details</property>
       <property name="use_underline">True</property>
       <signal name="activate" handler="on_copy_all_details_activate" last_modification_time="Thu, 06 Sep 2007 11:00:18 GMT"/>
     </widget>

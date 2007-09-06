@@ -1,5 +1,11 @@
 2007-09-06  Zeeshan Ali  <zeenix@gstreamer.net>
 
+	* src/gupnp-universal-cp.glade:
+
+	Small stylistic change.
+
+2007-09-06  Zeeshan Ali  <zeenix@gstreamer.net>
+
 	* src/universal-cp-gui.c:
 
 	Set the selection mode of all treeviews to GTK_SELECTION_SINGLE.
