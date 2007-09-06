@@ -1,5 +1,11 @@
 2007-09-06  Zeeshan Ali  <zeenix@gstreamer.net>
 
+	* src/universal-cp-devicetreeview.c:
+
+	subscribe to events after settting the notify callbacks.
+
+2007-09-06  Zeeshan Ali  <zeenix@gstreamer.net>
+
 	* src/universal-cp-gui.c:
 
 	Prepend rather than append the events to the event log treeview.
