@@ -24,6 +24,7 @@
 
 #include "universal-cp-gui.h"
 #include "universal-cp-icons.h"
+#include "universal-cp-actiondialog.h"
 #include "universal-cp.h"
 
 static const char *default_details[] = {
@@ -106,6 +107,119 @@ get_service_device (GUPnPServiceInfo *service_info)
                 gtk_tree_model_get (model, &iter, 2, &info, -1);
 
        return info;
+}
+
+static void
+setup_device_popup (GtkWidget *popup)
+{
+        GUPnPServiceProxy *proxy;
+        GtkWidget         *subscribe_menuitem;
+        GtkWidget         *action_menuitem;
+        GtkWidget         *separator;
+
+        subscribe_menuitem = glade_xml_get_widget (glade_xml,
+                                         "subscribe-to-events");
+        g_assert (subscribe_menuitem != NULL);
+        action_menuitem = glade_xml_get_widget (glade_xml,
+                                         "invoke-action");
+        g_assert (action_menuitem != NULL);
+        separator = glade_xml_get_widget (glade_xml,
+                                          "device-popup-separator");
+        g_assert (separator != NULL);
+
+        /* See if a service is selected */
+        proxy = get_selected_service ();
+        if (proxy != NULL) {
+                g_object_set (G_OBJECT (subscribe_menuitem),
+                              "visible",
+                              TRUE,
+                              "active",
+                              gupnp_service_proxy_get_subscribed (proxy),
+                              NULL);
+
+                g_object_set (G_OBJECT (action_menuitem),
+                              "visible",
+                              FALSE,
+                              NULL);
+        } else {
+                GUPnPServiceActionInfo *action;
+
+                g_object_set (G_OBJECT (subscribe_menuitem),
+                              "visible",
+                              FALSE,
+                              NULL);
+
+                /* See if an action is selected */
+                action = get_selected_action (NULL, NULL);
+                g_object_set (G_OBJECT (action_menuitem),
+                              "visible",
+                              action != NULL,
+                              NULL);
+        }
+
+        /* Separator should be visible only if either service or action row is
+         * selected
+         */
+        g_object_set (G_OBJECT (separator),
+                      "visible",
+                      (proxy != NULL),
+                      NULL);
+        if (proxy)
+                g_object_unref (G_OBJECT (proxy));
+}
+
+gboolean
+on_device_treeview_button_release (GtkWidget      *widget,
+                                   GdkEventButton *event,
+                                   gpointer        user_data)
+{
+        GtkWidget *popup;
+
+        if (event->type != GDK_BUTTON_RELEASE ||
+            event->button != 3)
+                return FALSE;
+
+        popup = glade_xml_get_widget (glade_xml, "device-popup");
+        g_assert (popup != NULL);
+
+        setup_device_popup (popup);
+
+        gtk_menu_popup (GTK_MENU (popup),
+                        NULL,
+                        NULL,
+                        NULL,
+                        NULL,
+                        event->button,
+                        event->time);
+        return TRUE;
+}
+
+void
+on_device_treeview_row_activate (GtkMenuItem *menuitem,
+                                 gpointer     user_data)
+{
+        GUPnPServiceProxy         *proxy;
+        GUPnPServiceIntrospection *introspection;
+
+        /* See if a service is selected */
+        proxy = get_selected_service ();
+        if (proxy != NULL) {
+                gboolean subscribed;
+
+                subscribed = gupnp_service_proxy_get_subscribed (proxy);
+                gupnp_service_proxy_set_subscribed (proxy, !subscribed);
+        } else {
+                GUPnPServiceActionInfo *action_info;
+
+                /* See if an action is selected */
+                action_info = get_selected_action (&proxy, &introspection);
+                if (action_info != NULL) {
+                        run_action_dialog (action_info,
+                                        proxy,
+                                        introspection);
+                        g_object_unref (G_OBJECT (introspection));
+                }
+        }
 }
 
 static void

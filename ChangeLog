@@ -1,5 +1,12 @@
 2007-09-06  Zeeshan Ali  <zeenix@gstreamer.net>
 
+	* src/universal-cp-devicetreeview.c:
+	* src/universal-cp-gui.c:
+
+	Move remaining device treeview code to the relevent module.
+
+2007-09-06  Zeeshan Ali  <zeenix@gstreamer.net>
+
 	* src/gupnp-universal-cp.glade:
 	* src/universal-cp-eventtreeview.c:
 
