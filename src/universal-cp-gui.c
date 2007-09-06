@@ -323,7 +323,6 @@ on_device_treeview_row_activate (GtkMenuItem *menuitem,
                                  gpointer     user_data)
 {
         GUPnPServiceProxy         *proxy;
-        GUPnPServiceActionInfo    *action_info;
         GUPnPServiceIntrospection *introspection;
 
         /* See if a service is selected */
@@ -334,7 +333,7 @@ on_device_treeview_row_activate (GtkMenuItem *menuitem,
                 subscribed = gupnp_service_proxy_get_subscribed (proxy);
                 gupnp_service_proxy_set_subscribed (proxy, !subscribed);
         } else {
-                GUPnPServiceActionInfo *action;
+                GUPnPServiceActionInfo *action_info;
 
                 /* See if an action is selected */
                 action_info = get_selected_action (&proxy, &introspection);
