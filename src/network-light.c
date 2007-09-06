@@ -27,6 +27,7 @@
 #include <string.h>
 
 #include "network-light-gui.h"
+#include "network-light.h"
 
 #define DESCRIPTION_DOC "xml/network-light-desc.xml"
 #define DIMMING_SERVICE "urn:schemas-upnp-org:service:Dimming:1"
@@ -36,6 +37,51 @@ static GUPnPContext     *context;
 static GUPnPRootDevice  *dev;
 static GUPnPServiceInfo *switch_power;
 static GUPnPServiceInfo *dimming;
+
+static gboolean light_status;
+static gint     light_load_level;
+
+void
+set_status (gboolean status)
+{
+        if (status != light_status) {
+                light_status = status;
+                update_image ();
+        }
+
+        gupnp_service_notify (GUPNP_SERVICE (switch_power),
+                              "Status",
+                              G_TYPE_BOOLEAN,
+                              get_status (),
+                              NULL);
+}
+
+gboolean
+get_status (void)
+{
+        return light_status;
+}
+
+void
+set_load_level (gint load_level)
+{
+        if (load_level != light_load_level) {
+                light_load_level = CLAMP (load_level, 0, 100);
+                update_image ();
+        }
+
+        gupnp_service_notify (GUPNP_SERVICE (dimming),
+                              "LoadLevelStatus",
+                              G_TYPE_UINT,
+                              load_level,
+                              NULL);
+}
+
+gint
+get_load_level (void)
+{
+        return light_load_level;
+}
 
 void
 on_get_status (GUPnPService       *service,
@@ -80,12 +126,6 @@ on_set_target (GUPnPService       *service,
         gupnp_service_action_return (action);
 
         set_status (status);
-
-        gupnp_service_notify (service,
-                              "Status",
-                              G_TYPE_BOOLEAN,
-                              get_status (),
-                              NULL);
 }
 
 void
@@ -152,12 +192,6 @@ on_set_load_level_target (GUPnPService       *service,
 
         load_level = CLAMP (load_level, 0, 100);
         set_load_level (load_level);
-
-        gupnp_service_notify (service,
-                              "LoadLevelStatus",
-                              G_TYPE_UINT,
-                              load_level,
-                              NULL);
 }
 
 void
@@ -301,6 +335,10 @@ deinit_upnp (void)
 int
 main (int argc, char **argv)
 {
+        /* Light is off in the beginning */
+        light_status = FALSE;
+        light_load_level = 100;
+
         if (!init_ui (&argc, &argv)) {
                 return -1;
         }

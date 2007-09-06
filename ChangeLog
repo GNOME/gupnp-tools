@@ -1,5 +1,15 @@
 2007-09-06  Zeeshan Ali  <zeenix@gstreamer.net>
 
+	* src/network-light-gui.c:
+	* src/network-light-gui.h:
+	* src/network-light.c:
+	* src/network-light.h:
+
+	- Move the light status handling back to main module.
+	- Notify the clients when the status changes from the UI.
+
+2007-09-06  Zeeshan Ali  <zeenix@gstreamer.net>
+
 	* src/gupnp-universal-cp.glade:
 
 	Small stylistic change.

@@ -23,6 +23,7 @@
 #include <config.h>
 
 #include "network-light-gui.h"
+#include "network-light.h"
 
 #define GLADE_FILE "gupnp-network-light.glade"
 #define ICON_FILE  "pixmaps/network-light.png"
@@ -33,10 +34,7 @@ static GladeXML  *glade_xml;
 static GdkPixbuf *on_pixbuf;
 static GdkPixbuf *off_pixbuf;
 
-static gboolean light_status;
-static gint     light_load_level;
-
-static void
+void
 update_image (void)
 {
         GtkWidget *image;
@@ -46,8 +44,8 @@ update_image (void)
         image = glade_xml_get_widget (glade_xml, "light-bulb-image");
         g_assert (image != NULL);
 
-        if (light_status) {
-                alpha = light_load_level * 2.5;
+        if (get_status ()) {
+                alpha = get_load_level () * 2.5;
         } else {
                 alpha = 0.0;
         }
@@ -63,36 +61,6 @@ update_image (void)
                               (int) alpha);
         gtk_image_set_from_pixbuf (GTK_IMAGE (image), pixbuf);
         g_object_unref (pixbuf);
-}
-
-void
-set_status (gboolean status)
-{
-        if (status != light_status) {
-                light_status = status;
-                update_image ();
-        }
-}
-
-gboolean
-get_status (void)
-{
-        return light_status;
-}
-
-void
-set_load_level (gint load_level)
-{
-        if (load_level != light_load_level) {
-                light_load_level = CLAMP (load_level, 0, 100);
-                update_image ();
-        }
-}
-
-gint
-get_load_level (void)
-{
-        return light_load_level;
 }
 
 void
@@ -286,10 +254,6 @@ init_ui (gint   *argc,
         glade_xml_signal_autoconnect (glade_xml);
 
         setup_popup ();
-
-        /* Light is off in the beginning */
-        light_status = FALSE;
-        light_load_level = 100;
         update_image ();
 
         gtk_widget_show_all (main_window);
