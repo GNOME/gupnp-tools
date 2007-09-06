@@ -23,6 +23,7 @@
 #include <config.h>
 
 #include "network-light-gui.h"
+#include "network-light-upnp.h"
 #include "network-light.h"
 
 #define GLADE_FILE "gupnp-network-light.glade"

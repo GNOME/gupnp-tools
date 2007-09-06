@@ -1,5 +1,16 @@
 2007-09-06  Zeeshan Ali  <zeenix@gstreamer.net>
 
+	* src/Makefile.am:
+	* src/network-light-gui.c:
+	* src/network-light-upnp.c:
+	* src/network-light-upnp.h:
+	* src/network-light.c:
+
+	- Put the UPnP code of network-light into a separate module.
+	- Oops! forgot to add network-light.h to Makefile.am.
+
+2007-09-06  Zeeshan Ali  <zeenix@gstreamer.net>
+
 	* src/network-light.c:
 
 	notify the clients of the actual load level set, not what is
