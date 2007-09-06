@@ -215,6 +215,8 @@
 		      <property name="fixed_height_mode">False</property>
 		      <property name="hover_selection">False</property>
 		      <property name="hover_expand">False</property>
+		      <signal name="row_activated" handler="on_details_treeview_row_activate" last_modification_time="Thu, 06 Sep 2007 11:33:57 GMT"/>
+		      <signal name="button_release_event" handler="on_details_treeview_button_release" last_modification_time="Thu, 06 Sep 2007 11:16:28 GMT"/>
 		    </widget>
 		  </child>
 		</widget>
@@ -774,6 +776,27 @@ Inspired by Intel Tools for UPnP.</property>
 	  <property name="fill">True</property>
 	</packing>
       </child>
+    </widget>
+  </child>
+</widget>
+
+<widget class="GtkMenu" id="details-popup">
+
+  <child>
+    <widget class="GtkMenuItem" id="copy-value-menuitem">
+      <property name="visible">True</property>
+      <property name="label" translatable="yes">Copy Value</property>
+      <property name="use_underline">True</property>
+      <signal name="activate" handler="on_details_treeview_row_activate" last_modification_time="Thu, 06 Sep 2007 11:00:18 GMT"/>
+    </widget>
+  </child>
+
+  <child>
+    <widget class="GtkMenuItem" id="copy-all-menuitem">
+      <property name="visible">True</property>
+      <property name="label" translatable="yes">Copy All</property>
+      <property name="use_underline">True</property>
+      <signal name="activate" handler="on_copy_all_details_activate" last_modification_time="Thu, 06 Sep 2007 11:00:18 GMT"/>
     </widget>
   </child>
 </widget>

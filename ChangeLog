@@ -1,5 +1,13 @@
 2007-09-06  Zeeshan Ali  <zeenix@gstreamer.net>
 
+	* src/gupnp-universal-cp.glade:
+	* src/universal-cp-detailstreeview.c:
+
+	- Add details treeview context menu.
+	- Add ability to copy&paste from details treeview.
+
+2007-09-06  Zeeshan Ali  <zeenix@gstreamer.net>
+
 	* src/Makefile.am:
 	* src/universal-cp-detailstreeview.c:
 	* src/universal-cp-detailstreeview.h:
