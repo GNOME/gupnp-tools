@@ -1,5 +1,17 @@
 2007-09-06  Zeeshan Ali  <zeenix@gstreamer.net>
 
+	* src/Makefile.am:
+	* src/universal-cp-detailstreeview.c:
+	* src/universal-cp-detailstreeview.h:
+	* src/universal-cp-eventtreeview.c:
+	* src/universal-cp-eventtreeview.h:
+	* src/universal-cp-gui.c:
+	* src/universal-cp-gui.h:
+
+	Put details and event treeview handling in separate modules.
+
+2007-09-06  Zeeshan Ali  <zeenix@gstreamer.net>
+
 	* src/universal-cp-gui.c:
 
 	Fix a small build problem.

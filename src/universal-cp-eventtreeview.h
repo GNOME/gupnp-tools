@@ -18,36 +18,21 @@
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  */
 
-#ifndef __GUPNP_UNIVERSAL_CP_GUI_H__
-#define __GUPNP_UNIVERSAL_CP_GUI_H__
+#ifndef __GUPNP_UNIVERSAL_CP_EVENT_TREEVIEW_H__
+#define __GUPNP_UNIVERSAL_CP_EVENT_TREEVIEW_H__
 
 #include <libgupnp/gupnp-control-point.h>
 #include <gtk/gtk.h>
 #include <glade/glade.h>
 
-#include "universal-cp-devicetreeview.h"
-#include "universal-cp-detailstreeview.h"
-
-extern GladeXML  *glade_xml;
-
 void
-display_event      (const char       *notified_at,
-                    const char       *friendly_name,
-                    const char       *service_id,
-                    const char       *variable_name,
-                    const char       *value);
+display_event           (const char       *notified_at,
+                         const char       *friendly_name,
+                         const char       *service_id,
+                         const char       *variable_name,
+                         const char       *value);
 
-void
-setup_treeview     (GtkWidget    *treeview,
-                    GtkTreeModel *model,
-                    char         *headers[],
-                    int           render_index);
+GtkTreeModel *
+create_event_treemodel  (void);
 
-gboolean
-init_ui            (gint             *argc,
-                    gchar           **argv[]);
-
-void
-deinit_ui          (void);
-
-#endif /* __GUPNP_UNIVERSAL_CP_GUI_H__ */
+#endif /* __GUPNP_UNIVERSAL_CP_EVENT_TREEVIEW_H__ */

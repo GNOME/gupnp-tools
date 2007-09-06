@@ -24,6 +24,7 @@
 
 #include "universal-cp-gui.h"
 #include "universal-cp-devicetreeview.h"
+#include "universal-cp-eventtreeview.h"
 #include "universal-cp-actiondialog.h"
 #include "universal-cp-icons.h"
 #include "universal-cp.h"
@@ -31,107 +32,6 @@
 #define GLADE_FILE "gupnp-universal-cp.glade"
 
 GladeXML *glade_xml;
-
-void
-display_event (const char *notified_at,
-               const char *friendly_name,
-               const char *service_id,
-               const char *variable_name,
-               const char *value)
-{
-        GtkWidget        *treeview;
-        GtkTreeModel     *model;
-        GtkTreeIter       iter;
-
-        treeview = glade_xml_get_widget (glade_xml, "event-treeview");
-        g_assert (treeview != NULL);
-        model = gtk_tree_view_get_model (GTK_TREE_VIEW (treeview));
-
-        gtk_list_store_prepend (GTK_LIST_STORE (model), &iter);
-        gtk_list_store_set (GTK_LIST_STORE (model),
-                            &iter,
-                            0, notified_at,
-                            1, friendly_name,
-                            2, service_id,
-                            3, variable_name,
-                            4, value,
-                            -1);
-}
-
-void
-update_details (const char **tuples)
-{
-        GtkWidget    *treeview;
-        GtkTreeModel *model;
-        const char  **tuple;
-
-        treeview = glade_xml_get_widget (glade_xml, "details-treeview");
-        g_assert (treeview != NULL);
-        model = gtk_tree_view_get_model (GTK_TREE_VIEW (treeview));
-        gtk_list_store_clear (GTK_LIST_STORE (model));
-
-        for (tuple = tuples; *tuple; tuple = tuple + 2) {
-                if (*(tuples + 1) == NULL)
-                        continue;
-
-                gtk_list_store_insert_with_values (
-                                GTK_LIST_STORE (model),
-                                NULL, -1,
-                                0, *tuple,
-                                1, *(tuple + 1), -1);
-        }
-}
-
-static void
-clear_event_treeview (void)
-{
-        GtkWidget    *treeview;
-        GtkTreeModel *model;
-        GtkTreeIter   iter;
-        gboolean      more;
-
-        treeview = glade_xml_get_widget (glade_xml, "event-treeview");
-        g_assert (treeview != NULL);
-        model = gtk_tree_view_get_model (GTK_TREE_VIEW (treeview));
-        more = gtk_tree_model_get_iter_first (model, &iter);
-
-        while (more)
-                more = gtk_list_store_remove (GTK_LIST_STORE (model), &iter);
-}
-
-void
-on_clear_event_log_activate (GtkMenuItem *menuitem,
-                             gpointer     user_data)
-{
-        clear_event_treeview ();
-}
-
-static GtkTreeModel *
-create_details_treemodel (void)
-{
-        GtkListStore *store;
-
-        store = gtk_list_store_new (2,
-                                    G_TYPE_STRING,  /* Name */
-                                    G_TYPE_STRING); /* Value */
-
-        return GTK_TREE_MODEL (store);
-}
-
-static GtkTreeModel *
-create_event_treemodel (void)
-{
-        GtkListStore *store;
-
-        store = gtk_list_store_new (5,
-                                    G_TYPE_STRING,  /* Time                  */
-                                    G_TYPE_STRING,  /* Source Device         */
-                                    G_TYPE_STRING,  /* Source Service        */
-                                    G_TYPE_STRING,  /* State Variable (name) */
-                                    G_TYPE_STRING); /* Value                 */
-
-        return GTK_TREE_MODEL (store);
-}
 
 void
 setup_treeview (GtkWidget    *treeview,
@@ -199,38 +99,6 @@ setup_treeviews (void)
                 setup_treeview (treeviews[i], treemodels[i], headers[i], 0);
 
         setup_device_treeview (treeviews[2], treemodels[2], headers[2], 1);
-}
-
-void
-on_event_log_activate (GtkCheckMenuItem *menuitem,
-                       gpointer          user_data)
-{
-        GtkWidget *scrolled_window;
-
-        scrolled_window = glade_xml_get_widget (glade_xml,
-                                                "event-scrolledwindow");
-        g_assert (scrolled_window != NULL);
-
-        g_object_set (G_OBJECT (scrolled_window),
-                      "visible",
-                      gtk_check_menu_item_get_active (menuitem),
-                      NULL);
-}
-
-void
-on_subscribe_to_events_activate (GtkCheckMenuItem *menuitem,
-                                 gpointer          user_data)
-{
-        GUPnPServiceProxy *proxy;
-        gboolean           subscribed;
-
-        proxy = get_selected_service ();
-        if (proxy != NULL) {
-                subscribed = gtk_check_menu_item_get_active (menuitem);
-                gupnp_service_proxy_set_subscribed (proxy, subscribed);
-
-                g_object_unref (G_OBJECT (proxy));
-        }
 }
 
 static void
