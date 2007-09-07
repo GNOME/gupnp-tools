@@ -1,5 +1,11 @@
 2007-09-07  Zeeshan Ali  <zeenix@gstreamer.net>
 
+	* AUTHORS:
+
+	Add Lapo Calamandrei to AUTHORS file.
+
+2007-09-07  Zeeshan Ali  <zeenix@gstreamer.net>
+
 	* src/gupnp-network-light.glade:
 	* src/gupnp-universal-cp.glade:
 	* src/network-light-gui.c:
