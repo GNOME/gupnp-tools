@@ -1,5 +1,11 @@
 2007-09-07  Zeeshan Ali  <zeenix@gstreamer.net>
 
+	* src/xml/network-light-desc.xml:
+
+	Clean-up the network-light description document.
+
+2007-09-07  Zeeshan Ali  <zeenix@gstreamer.net>
+
 	* src/universal-cp.c:
 
 	Don't display model description twice.

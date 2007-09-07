@@ -7,16 +7,14 @@
 <device>
 <deviceType>urn:schemas-upnp-org:device:DimmableLight:1</deviceType>
 <friendlyName>GUPnP Network Light</friendlyName>
-<manufacturer>GUPnP Tools Developers</manufacturer>
+<manufacturer>GUPnP Developers</manufacturer>
 <manufacturerURL>http://www.gupnp.org</manufacturerURL>
-<modelDescription>A virtual light that can be controled by UPnP control points
-</modelDescription>
+<modelDescription>Software emulated UPnP light bulb</modelDescription>
 <modelName>Network Light</modelName>
 <modelNumber>0.1</modelNumber>
 <modelURL>http://www.gupnp.org</modelURL>
 <serialNumber>0.1</serialNumber>
 <UDN>uuid:23b0189c-549f-11dc-a7c7-001641597c49</UDN>
-<UPC></UPC>
 <iconList>
 <icon>
 <mimetype>image/png</mimetype>
