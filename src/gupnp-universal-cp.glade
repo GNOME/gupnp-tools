@@ -279,8 +279,11 @@
   <property name="copyright" translatable="yes">Copyright (C) 2007 Zeeshan Ali</property>
   <property name="comments" translatable="yes">A Generic Control Point based on GUPnP framework.
 Inspired by Intel Tools for UPnP.</property>
-  <property name="license" translatable="yes">LGPL</property>
+  <property name="license" translatable="yes">GPL</property>
+  <property name="website">http://www.gupnp.org</property>
+  <property name="website_label" translatable="yes">GUPnP homepage</property>
   <property name="authors">Zeeshan Ali &lt;zeenix@gstreamer.net&gt;</property>
+  <property name="artists">Lapo Calamandrei &lt;calamandrei@gmail.com&gt;</property>
   <property name="translator_credits" translatable="yes" comments="TRANSLATORS: Replace this string with your names, one name per line.">translator-credits</property>
   <signal name="delete_event" handler="gtk_widget_hide" object="about-dialog"/>
   <signal name="response" handler="gtk_widget_hide" object="about-dialog"/>
@@ -592,9 +595,10 @@ Inspired by Intel Tools for UPnP.</property>
 
 	      <child>
 		<widget class="GtkHBox" id="hbox1">
+		  <property name="border_width">12</property>
 		  <property name="visible">True</property>
 		  <property name="homogeneous">False</property>
-		  <property name="spacing">2</property>
+		  <property name="spacing">12</property>
 
 		  <child>
 		    <widget class="GtkImage" id="image1">

@@ -1,5 +1,13 @@
 2007-09-07  Zeeshan Ali  <zeenix@gstreamer.net>
 
+	* src/gupnp-network-light.glade:
+	* src/gupnp-universal-cp.glade:
+	* src/network-light-gui.c:
+
+	Polish the about dialog boxes.
+
+2007-09-07  Zeeshan Ali  <zeenix@gstreamer.net>
+
 	* src/xml/network-light-desc.xml:
 
 	Clean-up the network-light description document.

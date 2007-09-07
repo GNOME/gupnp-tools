@@ -38,8 +38,11 @@
   <property name="copyright" translatable="yes">Copyright (C) 2007 Zeeshan Ali</property>
   <property name="comments" translatable="yes">A virtual network light bulb based on GUPnP framework.
 Inspired by Intel Tools for UPnP.</property>
-  <property name="license" translatable="yes">LGPL</property>
+  <property name="license" translatable="yes">GPL</property>
+  <property name="website">http://www.gupnp.org/</property>
+  <property name="website_label" translatable="yes">GUPnP homepage</property>
   <property name="authors">Zeeshan Ali &lt;zeenix@gstreamer.net&gt;</property>
+  <property name="artists">Lapo Calamandrei &lt;calamandrei@gmail.com&gt;</property>
   <property name="translator_credits" translatable="yes" comments="TRANSLATORS: Replace this string with your names, one name per line.">translator-credits</property>
   <signal name="close" handler="gtk_widget_hide" last_modification_time="Sat, 01 Sep 2007 20:46:06 GMT"/>
   <signal name="response" handler="gtk_widget_hide" last_modification_time="Sat, 01 Sep 2007 20:46:21 GMT"/>

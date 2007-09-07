@@ -204,6 +204,7 @@ init_ui (gint   *argc,
          gchar **argv[])
 {
         GtkWidget *main_window;
+        GtkWidget *about_dialog;
         GdkPixbuf *icon_pixbuf;
         gchar     *glade_path = NULL;
 
@@ -232,6 +233,9 @@ init_ui (gint   *argc,
         main_window = glade_xml_get_widget (glade_xml, "main-window");
         g_assert (main_window != NULL);
 
+        about_dialog = glade_xml_get_widget (glade_xml, "about-dialog");
+        g_assert (about_dialog != NULL);
+
         on_pixbuf = load_pixbuf_file (ON_FILE);
         if (on_pixbuf == NULL)
                 return FALSE;
@@ -250,6 +254,10 @@ init_ui (gint   *argc,
         }
 
         gtk_window_set_icon (GTK_WINDOW (main_window), icon_pixbuf);
+        gtk_window_set_icon (GTK_WINDOW (about_dialog), icon_pixbuf);
+        gtk_about_dialog_set_logo (GTK_ABOUT_DIALOG (about_dialog),
+                                   icon_pixbuf);
+
         g_object_unref (icon_pixbuf);
 
         glade_xml_signal_autoconnect (glade_xml);
