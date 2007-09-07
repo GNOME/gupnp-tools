@@ -280,8 +280,6 @@ show_device_details (GUPnPDeviceInfo *info)
         details[i++] = gupnp_device_info_get_model_name (info);
         details[i++] = "Model Number";
         details[i++] = gupnp_device_info_get_model_number (info);
-        details[i++] = "Model Description";
-        details[i++] = gupnp_device_info_get_model_description (info);
         details[i++] = "Model URL";
         details[i++] = gupnp_device_info_get_model_url (info);
         details[i++] = "Serial Number";
