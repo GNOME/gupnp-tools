@@ -415,6 +415,50 @@ append_introspection (GUPnPServiceProxy         *proxy,
 }
 
 static void
+got_introspection (GUPnPServiceInfo          *info,
+                   GUPnPServiceIntrospection *introspection,
+                   GError                    *error,
+                   gpointer                   user_data)
+{
+        GtkWidget    *treeview;
+        GtkTreeModel *model;
+        GtkTreeIter  *service_iter;
+
+        service_iter = (GtkTreeIter *) user_data;
+
+        treeview = glade_xml_get_widget (glade_xml, "device-treeview");
+        g_assert (treeview != NULL);
+        model = gtk_tree_view_get_model (GTK_TREE_VIEW (treeview));
+        g_assert (model != NULL);
+
+        if (error) {
+                char *scpd_url;
+
+                scpd_url = gupnp_service_info_get_scpd_url (info);
+                g_warning ("Failed to create introspection from '%s': %s",
+                           scpd_url,
+                           error->message);
+
+                g_free (scpd_url);
+                g_error_free (error);
+                g_slice_free (GtkTreeIter, service_iter);
+
+                return;
+        }
+
+        append_introspection (GUPNP_SERVICE_PROXY (info),
+                              introspection,
+                              GTK_TREE_STORE (model),
+                              service_iter);
+
+        g_slice_free (GtkTreeIter, service_iter);
+        g_object_unref (introspection);
+
+        /* Services are subscribed to by default */
+        gupnp_service_proxy_set_subscribed (GUPNP_SERVICE_PROXY (info), TRUE);
+}
+
+static void
 append_service_tree (GUPnPServiceInfo *info,
                      GtkTreeStore     *store,
                      GtkTreeIter      *device_iter)
@@ -423,12 +467,11 @@ append_service_tree (GUPnPServiceInfo *info,
 
         id = gupnp_service_info_get_id (info);
         if (id) {
-                GUPnPServiceIntrospection *introspection;
-                GtkTreeIter                service_iter;
-                GError                    *error;
+                GtkTreeIter *service_iter;
 
+                service_iter = g_slice_new (GtkTreeIter);
                 gtk_tree_store_insert_with_values (store,
-                                                   &service_iter,
+                                                   service_iter,
                                                    device_iter, -1,
                                                    0, icons[ICON_SERVICE],
                                                    1, id,
@@ -436,31 +479,9 @@ append_service_tree (GUPnPServiceInfo *info,
                                                    5, ICON_SERVICE,
                                                    -1);
 
-                error = NULL;
-                introspection = gupnp_service_info_get_introspection (info,
-                                                                      &error);
-                if (introspection) {
-                        append_introspection (GUPNP_SERVICE_PROXY (info),
-                                              introspection,
-                                              store,
-                                              &service_iter);
-                        g_object_unref (introspection);
-
-                        /* Services are subscribed to by default */
-                        gupnp_service_proxy_set_subscribed
-                                        (GUPNP_SERVICE_PROXY (info), TRUE);
-                } else if (error) {
-                        char *scpd_url;
-
-                        scpd_url = gupnp_service_info_get_scpd_url (info);
-                        g_warning (
-                           "Failed to create introspection from '%s': %s",
-                           scpd_url,
-                           error->message);
-
-                        g_free (scpd_url);
-                        g_error_free (error);
-                }
+                gupnp_service_info_get_introspection_async (info,
+                                                            got_introspection,
+                                                            service_iter);
 
                 g_free (id);
         }
