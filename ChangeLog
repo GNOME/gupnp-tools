@@ -1,3 +1,9 @@
+2007-09-09  Zeeshan Ali  <zeenix@gstreamer.net>
+
+	* src/universal-cp-devicetreeview.c:
+
+	Treat the error in the introspection callback as constant.
+
 2007-09-08  Zeeshan Ali  <zeenix@gstreamer.net>
 
 	* src/universal-cp-devicetreeview.c:

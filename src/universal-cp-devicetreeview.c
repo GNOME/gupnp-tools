@@ -417,7 +417,7 @@ append_introspection (GUPnPServiceProxy         *proxy,
 static void
 got_introspection (GUPnPServiceInfo          *info,
                    GUPnPServiceIntrospection *introspection,
-                   GError                    *error,
+                   const GError              *error,
                    gpointer                   user_data)
 {
         GtkWidget    *treeview;
@@ -440,7 +440,6 @@ got_introspection (GUPnPServiceInfo          *info,
                            error->message);
 
                 g_free (scpd_url);
-                g_error_free (error);
                 g_slice_free (GtkTreeIter, service_iter);
 
                 return;
