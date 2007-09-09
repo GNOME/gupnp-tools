@@ -1,3 +1,9 @@
+2007-09-10  Zeeshan Ali  <zeenix@gstreamer.net>
+
+	* src/universal-cp-devicetreeview.c:
+
+	Use the id instead of SCPD URL of the service in the warning message.
+
 2007-09-09  Zeeshan Ali  <zeenix@gstreamer.net>
 
 	* src/universal-cp-devicetreeview.c:

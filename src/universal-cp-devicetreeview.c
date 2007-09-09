@@ -432,14 +432,15 @@ got_introspection (GUPnPServiceInfo          *info,
         g_assert (model != NULL);
 
         if (error) {
-                char *scpd_url;
+                char *id;
 
-                scpd_url = gupnp_service_info_get_scpd_url (info);
-                g_warning ("Failed to create introspection from '%s': %s",
-                           scpd_url,
+                id = gupnp_service_info_get_id (info);
+                g_warning ("Failed to create introspection for '%s': %s",
+                           id,
                            error->message);
 
-                g_free (scpd_url);
+                if (id)
+                        g_free (id);
                 g_slice_free (GtkTreeIter, service_iter);
 
                 return;
