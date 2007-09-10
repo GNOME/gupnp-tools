@@ -1,11 +1,11 @@
-pixmaps_DATA = action.png \
-	       network.png \
-	       device.png \
-	       service.png \
-	       state-variable.png \
-	       state-variables.png \
-	       network-light-on.png \
-	       network-light-off.png \
+pixmaps_DATA = upnp-action.png 		\
+	       upnp-network.png 	\
+	       upnp-device.png 		\
+	       upnp-service.png 	\
+	       upnp-state-variable.png  \
+	       upnp-state-variables.png \
+	       network-light-on.png 	\
+	       network-light-off.png 	\
 	       network-light.png
 
 pixmapsdir = $(datadir)/gupnp-tools/pixmaps

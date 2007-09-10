@@ -1,6 +1,25 @@
 2007-09-10  Zeeshan Ali  <zeenix@gstreamer.net>
 
 	* src/pixmaps/Makefile.am:
+	* src/pixmaps/action.png:
+	* src/pixmaps/device.png:
+	* src/pixmaps/network.png:
+	* src/pixmaps/service.png:
+	* src/pixmaps/state-variable.png:
+	* src/pixmaps/state-variables.png:
+	* src/pixmaps/upnp-action.png:
+	* src/pixmaps/upnp-device.png:
+	* src/pixmaps/upnp-network.png:
+	* src/pixmaps/upnp-service.png:
+	* src/pixmaps/upnp-state-variable.png:
+	* src/pixmaps/upnp-state-variables.png:
+	* src/universal-cp-icons.c:
+
+	Add 'upnp-' prefix to all universal-cp icons.
+
+2007-09-10  Zeeshan Ali  <zeenix@gstreamer.net>
+
+	* src/pixmaps/Makefile.am:
 	* src/pixmaps/devices.png:
 	* src/pixmaps/network.png:
 	* src/universal-cp-devicetreeview.c:

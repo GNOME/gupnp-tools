@@ -194,13 +194,13 @@ init_icons (GladeXML *glade_xml)
         GtkWidget *image;
         int        i;
         char      *file_names[] = {
-                "pixmaps/network.png",         /* ICON_NETWORK    */
-                "pixmaps/device.png",          /* ICON_DEVICE     */
-                "pixmaps/service.png",         /* ICON_SERVICE    */
-                "pixmaps/state-variables.png", /* ICON_VARIABLES  */
-                "pixmaps/state-variable.png",  /* ICON_VARIABLE   */
-                "pixmaps/action.png",          /* ICON_ACTION     */
-                "pixmaps/state-variable.png",  /* ICON_ACTION_ARG */
+                "pixmaps/upnp-network.png",         /* ICON_NETWORK    */
+                "pixmaps/upnp-device.png",          /* ICON_DEVICE     */
+                "pixmaps/upnp-service.png",         /* ICON_SERVICE    */
+                "pixmaps/upnp-state-variables.png", /* ICON_VARIABLES  */
+                "pixmaps/upnp-state-variable.png",  /* ICON_VARIABLE   */
+                "pixmaps/upnp-action.png",          /* ICON_ACTION     */
+                "pixmaps/upnp-state-variable.png",  /* ICON_ACTION_ARG */
         };
 
         for (i = 0; i < ICON_LAST; i++) {
