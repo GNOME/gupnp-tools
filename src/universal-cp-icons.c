@@ -194,7 +194,7 @@ init_icons (GladeXML *glade_xml)
         GtkWidget *image;
         int        i;
         char      *file_names[] = {
-                "pixmaps/devices.png",         /* ICON_DEVICES    */
+                "pixmaps/network.png",         /* ICON_NETWORK    */
                 "pixmaps/device.png",          /* ICON_DEVICE     */
                 "pixmaps/service.png",         /* ICON_SERVICE    */
                 "pixmaps/state-variables.png", /* ICON_VARIABLES  */

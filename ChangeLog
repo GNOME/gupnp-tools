@@ -1,5 +1,16 @@
 2007-09-10  Zeeshan Ali  <zeenix@gstreamer.net>
 
+	* src/pixmaps/Makefile.am:
+	* src/pixmaps/devices.png:
+	* src/pixmaps/network.png:
+	* src/universal-cp-devicetreeview.c:
+	* src/universal-cp-icons.c:
+	* src/universal-cp-icons.h:
+
+	Rename "UPnP Devices" to "UPnP Network" everwhere.
+
+2007-09-10  Zeeshan Ali  <zeenix@gstreamer.net>
+
 	* src/universal-cp-devicetreeview.c:
 
 	Use the id instead of SCPD URL of the service in the warning message.

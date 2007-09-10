@@ -235,7 +235,7 @@ on_something_selected (GtkTreeSelection *selection,
                 gtk_tree_model_get (model, &iter, 5, &icon_type, -1);
 
                 /* We recognise things by how they look, don't we? */
-                if (icon_type == ICON_DEVICES ||
+                if (icon_type == ICON_NETWORK ||
                     icon_type == ICON_VARIABLES) {
                         update_details (default_details);
                 } else if (icon_type == ICON_DEVICE) {
@@ -611,9 +611,9 @@ create_device_treemodel (void)
                                     G_TYPE_UINT);    /* icon type           */
 
         gtk_tree_store_insert_with_values (store, NULL, NULL, 0,
-                                        0, icons[ICON_DEVICES],
-                                        1, "UPnP Devices",
-                                        5, ICON_DEVICES,
+                                        0, icons[ICON_NETWORK],
+                                        1, "UPnP Network",
+                                        5, ICON_NETWORK,
                                         -1);
         return GTK_TREE_MODEL (store);
 }

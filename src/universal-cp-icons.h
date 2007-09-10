@@ -27,7 +27,7 @@
 
 enum
 {
-        ICON_DEVICES,
+        ICON_NETWORK,
         ICON_DEVICE,
         ICON_SERVICE,
         ICON_VARIABLES,

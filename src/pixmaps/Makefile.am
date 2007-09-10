@@ -1,6 +1,6 @@
 pixmaps_DATA = action.png \
+	       network.png \
 	       device.png \
-	       devices.png \
 	       service.png \
 	       state-variable.png \
 	       state-variables.png \
