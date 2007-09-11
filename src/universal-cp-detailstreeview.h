@@ -27,7 +27,7 @@
 void
 update_details                  (const char      **tuples);
 
-GtkTreeModel *
-create_details_treemodel        (void);
+void
+setup_details_treeview          (GladeXML *glade_xml);
 
 #endif /* __GUPNP_UNIVERSAL_CP_DETAILS_TREEVIEW_H__ */

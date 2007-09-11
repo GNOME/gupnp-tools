@@ -32,7 +32,13 @@ static const char *default_details[] = {
         "Version", VERSION,
         "Author", "Zeeshan Ali <zeenix@gstreamer.net>", NULL};
 
-gboolean expanded;
+static GtkWidget *treeview;
+static GtkWidget *popup;
+static GtkWidget *subscribe_menuitem;
+static GtkWidget *action_menuitem;
+static GtkWidget *separator;
+
+static gboolean   expanded;
 
 gboolean
 find_device (GtkTreeModel *model,
@@ -88,14 +94,11 @@ GUPnPDeviceInfo *
 get_service_device (GUPnPServiceInfo *service_info)
 {
        GUPnPDeviceInfo *info = NULL;
-       GtkWidget       *treeview;
        GtkTreeModel    *model;
        GtkTreeIter      root_iter;
        GtkTreeIter      iter;
        const char      *udn;
 
-       treeview = glade_xml_get_widget (glade_xml, "device-treeview");
-       g_assert (treeview != NULL);
        model = gtk_tree_view_get_model (GTK_TREE_VIEW (treeview));
        g_assert (model != NULL);
 
@@ -113,19 +116,6 @@ static void
 setup_device_popup (GtkWidget *popup)
 {
         GUPnPServiceProxy *proxy;
-        GtkWidget         *subscribe_menuitem;
-        GtkWidget         *action_menuitem;
-        GtkWidget         *separator;
-
-        subscribe_menuitem = glade_xml_get_widget (glade_xml,
-                                         "subscribe-to-events");
-        g_assert (subscribe_menuitem != NULL);
-        action_menuitem = glade_xml_get_widget (glade_xml,
-                                         "invoke-action");
-        g_assert (action_menuitem != NULL);
-        separator = glade_xml_get_widget (glade_xml,
-                                          "device-popup-separator");
-        g_assert (separator != NULL);
 
         /* See if a service is selected */
         proxy = get_selected_service ();
@@ -173,14 +163,9 @@ on_device_treeview_button_release (GtkWidget      *widget,
                                    GdkEventButton *event,
                                    gpointer        user_data)
 {
-        GtkWidget *popup;
-
         if (event->type != GDK_BUTTON_RELEASE ||
             event->button != 3)
                 return FALSE;
-
-        popup = glade_xml_get_widget (glade_xml, "device-popup");
-        g_assert (popup != NULL);
 
         setup_device_popup (popup);
 
@@ -275,14 +260,11 @@ on_something_selected (GtkTreeSelection *selection,
 void
 remove_device (GUPnPDeviceInfo *info)
 {
-        GtkWidget    *treeview;
         GtkTreeModel *model;
         GtkTreeIter   root_iter;
         GtkTreeIter   iter;
         const char   *udn;
 
-        treeview = glade_xml_get_widget (glade_xml, "device-treeview");
-        g_assert (treeview != NULL);
         model = gtk_tree_view_get_model (GTK_TREE_VIEW (treeview));
         g_assert (model != NULL);
 
@@ -309,13 +291,14 @@ append_action_arguments (GList        *arguments,
 
                 info = iter->data;
 
-                gtk_tree_store_insert_with_values (store,
-                                                   NULL, action_iter, -1,
-                                                   0, icons[ICON_ACTION_ARG],
-                                                   1, info->name,
-                                                   4, info,
-                                                   5, ICON_ACTION_ARG,
-                                                   -1);
+                gtk_tree_store_insert_with_values
+                                (store,
+                                 NULL, action_iter, -1,
+                                 0, get_icon_by_id (ICON_ACTION_ARG),
+                                 1, info->name,
+                                 4, info,
+                                 5, ICON_ACTION_ARG,
+                                 -1);
         }
 }
 
@@ -334,15 +317,16 @@ append_actions (GUPnPServiceProxy         *proxy,
 
                 info = iter->data;
 
-                gtk_tree_store_insert_with_values (store, &action_iter,
-                                                   service_iter, -1,
-                                                   0, icons[ICON_ACTION],
-                                                   1, info->name,
-                                                   2, proxy,
-                                                   3, introspection,
-                                                   4, info,
-                                                   5, ICON_ACTION,
-                                                   -1);
+                gtk_tree_store_insert_with_values
+                                (store, &action_iter,
+                                 service_iter, -1,
+                                 0, get_icon_by_id (ICON_ACTION),
+                                 1, info->name,
+                                 2, proxy,
+                                 3, introspection,
+                                 4, info,
+                                 5, ICON_ACTION,
+                                 -1);
                 append_action_arguments (info->arguments,
                                          store,
                                          &action_iter);
@@ -361,7 +345,7 @@ append_state_variables (GUPnPServiceProxy *proxy,
         gtk_tree_store_insert_with_values (store,
                                            &variables_iter,
                                            service_iter, -1,
-                                           0, icons[ICON_VARIABLES],
+                                           0, get_icon_by_id (ICON_VARIABLES),
                                            1, "State variables",
                                            5, ICON_VARIABLES,
                                            -1);
@@ -371,14 +355,15 @@ append_state_variables (GUPnPServiceProxy *proxy,
 
                 info = iter->data;
 
-                gtk_tree_store_insert_with_values (store,
-                                                   NULL, &variables_iter, -1,
-                                                   0, icons[ICON_VARIABLE],
-                                                   1, info->name,
-                                                   2, proxy,
-                                                   4, info,
-                                                   5, ICON_VARIABLE,
-                                                   -1);
+                gtk_tree_store_insert_with_values
+                                (store,
+                                 NULL, &variables_iter, -1,
+                                 0, get_icon_by_id (ICON_VARIABLE),
+                                 1, info->name,
+                                 2, proxy,
+                                 4, info,
+                                 5, ICON_VARIABLE,
+                                 -1);
 
                 /* Set-up event notitications for variable */
                 gupnp_service_proxy_add_notify (proxy,
@@ -420,14 +405,11 @@ got_introspection (GUPnPServiceInfo          *info,
                    const GError              *error,
                    gpointer                   user_data)
 {
-        GtkWidget    *treeview;
         GtkTreeModel *model;
         GtkTreeIter  *service_iter;
 
         service_iter = (GtkTreeIter *) user_data;
 
-        treeview = glade_xml_get_widget (glade_xml, "device-treeview");
-        g_assert (treeview != NULL);
         model = gtk_tree_view_get_model (GTK_TREE_VIEW (treeview));
         g_assert (model != NULL);
 
@@ -470,14 +452,15 @@ append_service_tree (GUPnPServiceInfo *info,
                 GtkTreeIter *service_iter;
 
                 service_iter = g_slice_new (GtkTreeIter);
-                gtk_tree_store_insert_with_values (store,
-                                                   service_iter,
-                                                   device_iter, -1,
-                                                   0, icons[ICON_SERVICE],
-                                                   1, id,
-                                                   2, info,
-                                                   5, ICON_SERVICE,
-                                                   -1);
+                gtk_tree_store_insert_with_values
+                                (store,
+                                 service_iter,
+                                 device_iter, -1,
+                                 0, get_icon_by_id (ICON_SERVICE),
+                                 1, id,
+                                 2, info,
+                                 5, ICON_SERVICE,
+                                 -1);
 
                 gupnp_service_info_get_introspection_async (info,
                                                             got_introspection,
@@ -499,13 +482,14 @@ append_device_tree (GUPnPDeviceInfo *info,
                 GtkTreeIter device_iter;
                 GList *child;
 
-                gtk_tree_store_insert_with_values (GTK_TREE_STORE (model),
-                                                   &device_iter, parent_iter, -1,
-                                                   0, icons[ICON_DEVICE],
-                                                   1, friendly_name,
-                                                   2, info,
-                                                   5, ICON_DEVICE,
-                                                   -1);
+                gtk_tree_store_insert_with_values
+                                (GTK_TREE_STORE (model),
+                                 &device_iter, parent_iter, -1,
+                                 0, get_icon_by_id (ICON_DEVICE),
+                                 1, friendly_name,
+                                 2, info,
+                                 5, ICON_DEVICE,
+                                 -1);
                 g_free (friendly_name);
 
                 schedule_icon_update (info);
@@ -533,14 +517,11 @@ append_device_tree (GUPnPDeviceInfo *info,
 void
 append_device (GUPnPDeviceInfo *info)
 {
-        GtkWidget    *treeview;
         GtkTreeModel *model;
         GtkTreeIter   root_iter;
         GtkTreeIter   iter;
         const char   *udn;
 
-        treeview = glade_xml_get_widget (glade_xml, "device-treeview");
-        g_assert (treeview != NULL);
         model = gtk_tree_view_get_model (GTK_TREE_VIEW (treeview));
         g_assert (model != NULL);
 
@@ -571,14 +552,11 @@ void
 update_device_icon (GUPnPDeviceInfo *info,
                     GdkPixbuf       *icon)
 {
-        GtkWidget    *treeview;
         GtkTreeModel *model;
         GtkTreeIter   root_iter;
         GtkTreeIter   device_iter;
         const char   *udn;
 
-        treeview = glade_xml_get_widget (glade_xml, "device-treeview");
-        g_assert (treeview != NULL);
         model = gtk_tree_view_get_model (GTK_TREE_VIEW (treeview));
         g_assert (model != NULL);
 
@@ -597,7 +575,7 @@ update_device_icon (GUPnPDeviceInfo *info,
         }
 }
 
-GtkTreeModel *
+static GtkTreeModel *
 create_device_treemodel (void)
 {
         GtkTreeStore *store;
@@ -611,7 +589,7 @@ create_device_treemodel (void)
                                     G_TYPE_UINT);    /* icon type           */
 
         gtk_tree_store_insert_with_values (store, NULL, NULL, 0,
-                                        0, icons[ICON_NETWORK],
+                                        0, get_icon_by_id (ICON_NETWORK),
                                         1, "UPnP Network",
                                         5, ICON_NETWORK,
                                         -1);
@@ -619,16 +597,31 @@ create_device_treemodel (void)
 }
 
 void
-setup_device_treeview (GtkWidget    *treeview,
-                       GtkTreeModel *model,
-                       char         *headers[],
-                       int           render_index)
+setup_device_treeview (GladeXML *glade_xml)
 {
+        GtkTreeModel      *model;
         GtkTreeSelection  *selection;
         GtkCellRenderer   *renderer;
         GtkTreeViewColumn *column;
+        char              *headers[] = { "Device", NULL};
 
-        setup_treeview (treeview, model, headers, render_index);
+        treeview = glade_xml_get_widget (glade_xml, "device-treeview");
+        g_assert (treeview != NULL);
+        popup = glade_xml_get_widget (glade_xml, "device-popup");
+        g_assert (popup != NULL);
+
+        subscribe_menuitem = glade_xml_get_widget (glade_xml,
+                                                   "subscribe-to-events");
+        g_assert (subscribe_menuitem != NULL);
+        action_menuitem = glade_xml_get_widget (glade_xml, "invoke-action");
+        g_assert (action_menuitem != NULL);
+        separator = glade_xml_get_widget (glade_xml, "device-popup-separator");
+        g_assert (separator != NULL);
+
+        model = create_device_treemodel ();
+        g_assert (model != NULL);
+
+        setup_treeview (treeview, model, headers, 1);
 
         column = gtk_tree_view_get_column (GTK_TREE_VIEW (treeview), 0);
         renderer = gtk_cell_renderer_pixbuf_new ();
@@ -643,19 +636,18 @@ setup_device_treeview (GtkWidget    *treeview,
                           "changed",
                           G_CALLBACK (on_something_selected),
                           NULL);
+
+        expanded = FALSE;
 }
 
 GUPnPServiceProxy *
 get_selected_service (void)
 {
         GUPnPServiceProxy *proxy = NULL;
-        GtkWidget         *treeview;
         GtkTreeModel      *model;
         GtkTreeSelection  *selection;
         GtkTreeIter        iter;
 
-        treeview = glade_xml_get_widget (glade_xml, "device-treeview");
-        g_assert (treeview != NULL);
         model = gtk_tree_view_get_model (GTK_TREE_VIEW (treeview));
         g_assert (model != NULL);
         selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (treeview));
@@ -682,13 +674,10 @@ get_selected_action (GUPnPServiceProxy         **ret_proxy,
         GUPnPServiceProxy         *proxy;
         GUPnPServiceIntrospection *introspection;
         GUPnPServiceActionInfo    *action_info = NULL;
-        GtkWidget                 *treeview;
         GtkTreeModel              *model;
         GtkTreeSelection          *selection;
         GtkTreeIter                iter;
 
-        treeview = glade_xml_get_widget (glade_xml, "device-treeview");
-        g_assert (treeview != NULL);
         model = gtk_tree_view_get_model (GTK_TREE_VIEW (treeview));
         g_assert (model != NULL);
         selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (treeview));
@@ -736,11 +725,6 @@ void
 on_expand_devices_activate (GtkMenuItem *menuitem,
                             gpointer     user_data)
 {
-        GtkWidget *treeview;
-
-        treeview = glade_xml_get_widget (glade_xml, "device-treeview");
-        g_assert (treeview != NULL);
-
         gtk_tree_view_expand_all (GTK_TREE_VIEW (treeview));
 }
 
@@ -748,11 +732,6 @@ void
 on_collapse_devices_activate (GtkMenuItem *menuitem,
                               gpointer     user_data)
 {
-        GtkWidget *treeview;
-
-        treeview = glade_xml_get_widget (glade_xml, "device-treeview");
-        g_assert (treeview != NULL);
-
         gtk_tree_view_collapse_all (GTK_TREE_VIEW (treeview));
 }
 

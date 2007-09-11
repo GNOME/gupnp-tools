@@ -25,8 +25,9 @@
 #include <gtk/gtk.h>
 #include <glade/glade.h>
 
-enum
+typedef enum
 {
+        ICON_FIRST = -1,
         ICON_NETWORK,
         ICON_DEVICE,
         ICON_SERVICE,
@@ -35,15 +36,16 @@ enum
         ICON_ACTION,
         ICON_ACTION_ARG,
         ICON_LAST
-};
-
-extern GdkPixbuf *icons[ICON_LAST];
+} IconID;
 
 void
 schedule_icon_update   (GUPnPDeviceInfo *info);
 
 void
 unschedule_icon_update (GUPnPDeviceInfo *info);
+
+GdkPixbuf *
+get_icon_by_id         (IconID icon_id);
 
 void
 init_icons             (GladeXML *glade_xml);

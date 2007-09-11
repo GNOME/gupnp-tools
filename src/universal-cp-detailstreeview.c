@@ -25,15 +25,16 @@
 #include "universal-cp-detailstreeview.h"
 #include "universal-cp-gui.h"
 
+static GtkWidget *treeview;
+static GtkWidget *copy_value_menuitem;
+static GtkWidget *popup;
+
 static gboolean
 get_selected_row (GtkTreeIter *iter)
 {
-        GtkWidget         *treeview;
         GtkTreeModel      *model;
         GtkTreeSelection  *selection;
 
-        treeview = glade_xml_get_widget (glade_xml, "details-treeview");
-        g_assert (treeview != NULL);
         model = gtk_tree_view_get_model (GTK_TREE_VIEW (treeview));
         g_assert (model != NULL);
         selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (treeview));
@@ -45,12 +46,6 @@ get_selected_row (GtkTreeIter *iter)
 static void
 setup_details_popup (GtkWidget *popup)
 {
-        GtkWidget *copy_value_menuitem;
-
-        copy_value_menuitem = glade_xml_get_widget (glade_xml,
-                                                    "copy-value-menuitem");
-        g_assert (copy_value_menuitem != NULL);
-
         /* Only show "Copy Value" menuitem when a row is selected */
         g_object_set (copy_value_menuitem,
                       "visible",
@@ -63,14 +58,9 @@ on_details_treeview_button_release (GtkWidget      *widget,
                                     GdkEventButton *event,
                                     gpointer        user_data)
 {
-        GtkWidget *popup;
-
         if (event->type != GDK_BUTTON_RELEASE ||
             event->button != 3)
                 return FALSE;
-
-        popup = glade_xml_get_widget (glade_xml, "details-popup");
-        g_assert (popup != NULL);
 
         setup_details_popup (popup);
 
@@ -88,12 +78,9 @@ void
 on_details_treeview_row_activate (GtkMenuItem *menuitem,
                                   gpointer     user_data)
 {
-        GtkWidget    *treeview;
         GtkTreeModel *model;
         GtkTreeIter   iter;
 
-        treeview = glade_xml_get_widget (glade_xml, "details-treeview");
-        g_assert (treeview != NULL);
         model = gtk_tree_view_get_model (GTK_TREE_VIEW (treeview));
         g_assert (model != NULL);
 
@@ -118,13 +105,10 @@ on_copy_all_details_activate (GtkMenuItem *menuitem,
                               gpointer     user_data)
 {
         GtkClipboard *clipboard;
-        GtkWidget    *treeview;
         GtkTreeModel *model;
         GtkTreeIter   iter;
         char         *copied;
 
-        treeview = glade_xml_get_widget (glade_xml, "details-treeview");
-        g_assert (treeview != NULL);
         model = gtk_tree_view_get_model (GTK_TREE_VIEW (treeview));
         g_assert (model != NULL);
         clipboard = gtk_clipboard_get (GDK_SELECTION_CLIPBOARD);
@@ -169,12 +153,9 @@ on_copy_all_details_activate (GtkMenuItem *menuitem,
 void
 update_details (const char **tuples)
 {
-        GtkWidget    *treeview;
         GtkTreeModel *model;
         const char  **tuple;
 
-        treeview = glade_xml_get_widget (glade_xml, "details-treeview");
-        g_assert (treeview != NULL);
         model = gtk_tree_view_get_model (GTK_TREE_VIEW (treeview));
         gtk_list_store_clear (GTK_LIST_STORE (model));
 
@@ -190,7 +171,7 @@ update_details (const char **tuples)
         }
 }
 
-GtkTreeModel *
+static GtkTreeModel *
 create_details_treemodel (void)
 {
         GtkListStore *store;
@@ -200,5 +181,27 @@ create_details_treemodel (void)
                                     G_TYPE_STRING); /* Value */
 
         return GTK_TREE_MODEL (store);
+}
+
+void
+setup_details_treeview (GladeXML *glade_xml)
+{
+        GtkTreeModel *model;
+        char         *headers[3] = { "Name",
+                                     "Value",
+                                     NULL };
+
+        treeview = glade_xml_get_widget (glade_xml, "details-treeview");
+        g_assert (treeview != NULL);
+        copy_value_menuitem = glade_xml_get_widget (glade_xml,
+                                                    "copy-value-menuitem");
+        g_assert (copy_value_menuitem != NULL);
+        popup = glade_xml_get_widget (glade_xml, "details-popup");
+        g_assert (popup != NULL);
+
+        model = create_details_treemodel ();
+        g_assert (model != NULL);
+
+        setup_treeview (treeview, model, headers, 0);
 }
 

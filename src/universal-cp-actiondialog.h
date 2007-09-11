@@ -30,6 +30,6 @@ run_action_dialog       (GUPnPServiceActionInfo         *action_info,
                          GUPnPServiceProxy              *proxy,
                          GUPnPServiceIntrospection      *introspection);
 void
-init_action_dialog      (void);
+init_action_dialog      (GladeXML *glade_xml);
 
 #endif /* __GUPNP_UNIVERSAL_CP_ACTIONDIALOG_H__ */

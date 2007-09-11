@@ -72,38 +72,9 @@ setup_treeview (GtkWidget    *treeview,
 static void
 setup_treeviews (void)
 {
-        GtkWidget        *treeviews[3];
-        GtkTreeModel     *treemodels[3];
-        int               i;
-        char             *headers[3][6] = { {"Name",
-                                         "Value",
-                                         NULL },
-                                        {"Time",
-                                         "Device",
-                                         "Service",
-                                         "State Variable",
-                                         "Value",
-                                         NULL } ,
-                                        {"Device",
-                                         NULL} };
-
-        treeviews[0] = glade_xml_get_widget (glade_xml,
-                        "details-treeview");
-        treeviews[1] = glade_xml_get_widget (glade_xml,
-                        "event-treeview");
-        treeviews[2] = glade_xml_get_widget (glade_xml,
-                        "device-treeview");
-        treemodels[0] = create_details_treemodel ();
-        treemodels[1] = create_event_treemodel ();
-        treemodels[2] = create_device_treemodel ();
-        g_assert (treeviews[0] != NULL &&
-                  treeviews[1] != NULL &&
-                  treeviews[2] != NULL);
-
-        for (i = 0; i < 2; i++)
-                setup_treeview (treeviews[i], treemodels[i], headers[i], 0);
-
-        setup_device_treeview (treeviews[2], treemodels[2], headers[2], 1);
+        setup_details_treeview (glade_xml);
+        setup_event_treeview (glade_xml);
+        setup_device_treeview (glade_xml);
 }
 
 gboolean
@@ -167,7 +138,7 @@ init_ui (gint   *argc,
 
         init_icons (glade_xml);
         setup_treeviews ();
-        init_action_dialog ();
+        init_action_dialog (glade_xml);
 
         gtk_widget_show_all (main_window);
 
@@ -180,8 +151,6 @@ init_ui (gint   *argc,
         g_object_get (G_OBJECT (vpaned), "max-position", &position, NULL);
         position = position * 60 / 100;
         g_object_set (G_OBJECT (vpaned), "position", position, NULL);
-
-        expanded = FALSE;
 
         return TRUE;
 }

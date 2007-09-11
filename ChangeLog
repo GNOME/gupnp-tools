@@ -1,3 +1,21 @@
+2007-09-11  Zeeshan Ali  <zeenix@gstreamer.net>
+
+	* src/universal-cp-actiondialog.c:
+	* src/universal-cp-actiondialog.h:
+	* src/universal-cp-detailstreeview.c:
+	* src/universal-cp-detailstreeview.h:
+	* src/universal-cp-devicetreeview.c:
+	* src/universal-cp-devicetreeview.h:
+	* src/universal-cp-eventtreeview.c:
+	* src/universal-cp-eventtreeview.h:
+	* src/universal-cp-gui.c:
+	* src/universal-cp-gui.h:
+	* src/universal-cp-icons.c:
+	* src/universal-cp-icons.h:
+
+	Cleanup: No shared global variables between modules and every module
+	communicate with the others through function calls only.
+
 2007-09-10  Zeeshan Ali  <zeenix@gstreamer.net>
 
 	* src/pixmaps/Makefile.am:

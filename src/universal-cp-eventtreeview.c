@@ -25,15 +25,17 @@
 #include "universal-cp-eventtreeview.h"
 #include "universal-cp-gui.h"
 
+static GtkWidget *treeview;
+static GtkWidget *popup;
+static GtkWidget *scrolled_window;
+static GtkWidget *copy_event_menuitem;
+
 static gboolean
 get_selected_row (GtkTreeIter *iter)
 {
-        GtkWidget         *treeview;
         GtkTreeModel      *model;
         GtkTreeSelection  *selection;
 
-        treeview = glade_xml_get_widget (glade_xml, "event-treeview");
-        g_assert (treeview != NULL);
         model = gtk_tree_view_get_model (GTK_TREE_VIEW (treeview));
         g_assert (model != NULL);
         selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (treeview));
@@ -45,12 +47,6 @@ get_selected_row (GtkTreeIter *iter)
 static void
 setup_event_popup (GtkWidget *popup)
 {
-        GtkWidget *copy_event_menuitem;
-
-        copy_event_menuitem = glade_xml_get_widget (glade_xml,
-                                                    "copy-event-menuitem");
-        g_assert (copy_event_menuitem != NULL);
-
         /* Only show "Copy Value" menuitem when a row is selected */
         g_object_set (copy_event_menuitem,
                       "visible",
@@ -63,14 +59,9 @@ on_event_treeview_button_release (GtkWidget      *widget,
                                   GdkEventButton *event,
                                   gpointer        user_data)
 {
-        GtkWidget *popup;
-
         if (event->type != GDK_BUTTON_RELEASE ||
             event->button != 3)
                 return FALSE;
-
-        popup = glade_xml_get_widget (glade_xml, "event-popup");
-        g_assert (popup != NULL);
 
         setup_event_popup (popup);
 
@@ -89,12 +80,9 @@ on_event_treeview_row_activate (GtkMenuItem *menuitem,
                                 gpointer     user_data)
 {
         GtkClipboard *clipboard;
-        GtkWidget    *treeview;
         GtkTreeModel *model;
         GtkTreeIter   iter;
 
-        treeview = glade_xml_get_widget (glade_xml, "event-treeview");
-        g_assert (treeview != NULL);
         model = gtk_tree_view_get_model (GTK_TREE_VIEW (treeview));
         g_assert (model != NULL);
         clipboard = gtk_clipboard_get (GDK_SELECTION_CLIPBOARD);
@@ -136,13 +124,10 @@ on_copy_all_events_activate (GtkMenuItem *menuitem,
                              gpointer     user_data)
 {
         GtkClipboard *clipboard;
-        GtkWidget    *treeview;
         GtkTreeModel *model;
         GtkTreeIter   iter;
         char         *copied;
 
-        treeview = glade_xml_get_widget (glade_xml, "event-treeview");
-        g_assert (treeview != NULL);
         model = gtk_tree_view_get_model (GTK_TREE_VIEW (treeview));
         g_assert (model != NULL);
         clipboard = gtk_clipboard_get (GDK_SELECTION_CLIPBOARD);
@@ -197,12 +182,9 @@ display_event (const char *notified_at,
                const char *variable_name,
                const char *value)
 {
-        GtkWidget        *treeview;
         GtkTreeModel     *model;
         GtkTreeIter       iter;
 
-        treeview = glade_xml_get_widget (glade_xml, "event-treeview");
-        g_assert (treeview != NULL);
         model = gtk_tree_view_get_model (GTK_TREE_VIEW (treeview));
 
         gtk_list_store_prepend (GTK_LIST_STORE (model), &iter);
@@ -219,13 +201,10 @@ display_event (const char *notified_at,
 static void
 clear_event_treeview (void)
 {
-        GtkWidget    *treeview;
         GtkTreeModel *model;
         GtkTreeIter   iter;
         gboolean      more;
 
-        treeview = glade_xml_get_widget (glade_xml, "event-treeview");
-        g_assert (treeview != NULL);
         model = gtk_tree_view_get_model (GTK_TREE_VIEW (treeview));
         more = gtk_tree_model_get_iter_first (model, &iter);
 
@@ -240,7 +219,7 @@ on_clear_event_log_activate (GtkMenuItem *menuitem,
         clear_event_treeview ();
 }
 
-GtkTreeModel *
+static GtkTreeModel *
 create_event_treemodel (void)
 {
         GtkListStore *store;
@@ -256,15 +235,37 @@ create_event_treemodel (void)
 }
 
 void
-on_event_log_activate (GtkCheckMenuItem *menuitem,
-                       gpointer          user_data)
+setup_event_treeview (GladeXML *glade_xml)
 {
-        GtkWidget *scrolled_window;
+        GtkTreeModel *model;
+        char         *headers[6] = {"Time",
+                                   "Device",
+                                   "Service",
+                                   "State Variable",
+                                   "Value",
+                                   NULL };
 
+        treeview = glade_xml_get_widget (glade_xml, "event-treeview");
+        g_assert (treeview != NULL);
+        copy_event_menuitem = glade_xml_get_widget (glade_xml,
+                                                    "copy-event-menuitem");
+        g_assert (copy_event_menuitem != NULL);
+        popup = glade_xml_get_widget (glade_xml, "event-popup");
+        g_assert (popup != NULL);
         scrolled_window = glade_xml_get_widget (glade_xml,
                                                 "event-scrolledwindow");
         g_assert (scrolled_window != NULL);
 
+        model = create_event_treemodel ();
+        g_assert (model != NULL);
+
+        setup_treeview (treeview, model, headers, 0);
+}
+
+void
+on_event_log_activate (GtkCheckMenuItem *menuitem,
+                       gpointer          user_data)
+{
         g_object_set (G_OBJECT (scrolled_window),
                       "visible",
                       gtk_check_menu_item_get_active (menuitem),

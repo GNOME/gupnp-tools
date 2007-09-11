@@ -28,8 +28,6 @@
 #include "universal-cp-devicetreeview.h"
 #include "universal-cp-detailstreeview.h"
 
-extern GladeXML  *glade_xml;
-
 void
 display_event      (const char       *notified_at,
                     const char       *friendly_name,

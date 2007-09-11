@@ -32,7 +32,7 @@ display_event           (const char       *notified_at,
                          const char       *variable_name,
                          const char       *value);
 
-GtkTreeModel *
-create_event_treemodel  (void);
+void
+setup_event_treeview    (GladeXML         *glade_xml);
 
 #endif /* __GUPNP_UNIVERSAL_CP_EVENT_TREEVIEW_H__ */

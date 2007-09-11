@@ -25,8 +25,6 @@
 #include <stdlib.h>
 #include <config.h>
 
-extern gboolean expanded;
-
 gboolean
 find_device             (GtkTreeModel              *model,
                          const char                *udn,
@@ -46,14 +44,8 @@ void
 update_device_icon      (GUPnPDeviceInfo            *info,
                          GdkPixbuf                  *icon);
 
-GtkTreeModel *
-create_device_treemodel (void);
-
 void
-setup_device_treeview   (GtkWidget                  *treeview,
-                         GtkTreeModel               *model,
-                         char                       *headers[],
-                         int                         render_index);
+setup_device_treeview   (GladeXML                   *glade_xml);
 
 GUPnPServiceProxy *
 get_selected_service    (void);

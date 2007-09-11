@@ -188,12 +188,19 @@ unschedule_icon_update (GUPnPDeviceInfo *info)
         }
 }
 
+GdkPixbuf *
+get_icon_by_id (IconID icon_id)
+{
+        g_return_val_if_fail (icon_id > ICON_FIRST && icon_id < ICON_LAST, NULL);
+
+        return icons[icon_id];
+}
+
 void
 init_icons (GladeXML *glade_xml)
 {
-        GtkWidget *image;
-        int        i;
-        char      *file_names[] = {
+        int   i;
+        char *file_names[] = {
                 "pixmaps/upnp-network.png",         /* ICON_NETWORK    */
                 "pixmaps/upnp-device.png",          /* ICON_DEVICE     */
                 "pixmaps/upnp-service.png",         /* ICON_SERVICE    */
@@ -221,21 +228,6 @@ init_icons (GladeXML *glade_xml)
 
                 g_assert (icons[i] != NULL);
         }
-
-        image = glade_xml_get_widget (glade_xml, "device-image");
-        g_assert (image != NULL);
-        gtk_image_set_from_pixbuf (GTK_IMAGE (image),
-                                   icons[ICON_DEVICE]);
-
-        image = glade_xml_get_widget (glade_xml, "service-image");
-        g_assert (image != NULL);
-        gtk_image_set_from_pixbuf (GTK_IMAGE (image),
-                                   icons[ICON_SERVICE]);
-
-        image = glade_xml_get_widget (glade_xml, "action-image");
-        g_assert (image != NULL);
-        gtk_image_set_from_pixbuf (GTK_IMAGE (image),
-                                   icons[ICON_ACTION]);
 
         session = soup_session_async_new ();
         g_assert (session != NULL);

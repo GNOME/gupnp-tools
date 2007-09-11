@@ -24,8 +24,17 @@
 
 #include "universal-cp-gui.h"
 #include "universal-cp-devicetreeview.h"
+#include "universal-cp-icons.h"
 #include "universal-cp.h"
 
+static GtkWidget *dialog;
+static GtkWidget *in_args_table;
+static GtkWidget *out_args_table;
+static GtkWidget *device_label;
+static GtkWidget *service_label;
+static GtkWidget *action_label;
+static GtkWidget *in_args_label;
+static GtkWidget *out_args_label;
 static GtkSizeGroup *arguments_label_group;
 static GtkSizeGroup *arguments_widget_group;
 
@@ -66,13 +75,9 @@ prepare_action_arguments_table (GtkContainer                  *table,
         }
 
         if (direction == GUPNP_SERVICE_ACTION_ARG_DIRECTION_IN) {
-                label = glade_xml_get_widget (
-                                glade_xml,
-                                "in-action-arguments-label");
+                label = in_args_label;
         } else {
-                label = glade_xml_get_widget (
-                                glade_xml,
-                                "out-action-arguments-label");
+                label = out_args_label;
         }
 
         if (arguments) {
@@ -283,26 +288,19 @@ setup_action_dialog_labels (GUPnPServiceInfo       *service_info,
                             GUPnPServiceActionInfo *action_info)
 {
         GUPnPDeviceInfo *device_info;
-        GtkWidget       *label;
         gchar           *friendly_name;
         gchar           *id;
 
-        label = glade_xml_get_widget (glade_xml, "device-label");
-        g_assert (label != NULL);
         device_info = get_service_device (service_info);
         friendly_name = gupnp_device_info_get_friendly_name (device_info);
-        gtk_label_set_text (GTK_LABEL (label), friendly_name);
+        gtk_label_set_text (GTK_LABEL (device_label), friendly_name);
         g_free (friendly_name);
 
-        label = glade_xml_get_widget (glade_xml, "service-label");
-        g_assert (label != NULL);
         id = gupnp_service_info_get_id (service_info);
-        gtk_label_set_text (GTK_LABEL (label), id);
+        gtk_label_set_text (GTK_LABEL (service_label), id);
         g_free (id);
 
-        label = glade_xml_get_widget (glade_xml, "action-label");
-        g_assert (label != NULL);
-        gtk_label_set_text (GTK_LABEL (label), action_info->name);
+        gtk_label_set_text (GTK_LABEL (action_label), action_info->name);
 }
 
 static GList *
@@ -331,20 +329,8 @@ run_action_dialog (GUPnPServiceActionInfo    *action_info,
                    GUPnPServiceProxy         *proxy,
                    GUPnPServiceIntrospection *introspection)
 {
-        GtkWidget *dialog;
-        GtkWidget *in_table;
-        GtkWidget *out_table;
-        GList     *in_arguments;
-        GList     *out_arguments;
-
-        dialog = glade_xml_get_widget (glade_xml, "action-invocation-dialog");
-        g_assert (dialog != NULL);
-        in_table = glade_xml_get_widget (glade_xml,
-                                         "in-action-arguments-table");
-        g_assert (in_table != NULL);
-        out_table = glade_xml_get_widget (glade_xml,
-                                         "out-action-arguments-table");
-        g_assert (out_table != NULL);
+        GList *in_arguments;
+        GList *out_arguments;
 
         setup_action_dialog_labels (GUPNP_SERVICE_INFO (proxy), action_info);
 
@@ -352,7 +338,7 @@ run_action_dialog (GUPnPServiceActionInfo    *action_info,
                         action_info->arguments,
                         GUPNP_SERVICE_ACTION_ARG_DIRECTION_IN);
         populate_action_arguments_table (
-                        in_table,
+                        in_args_table,
                         in_arguments,
                         GUPNP_SERVICE_ACTION_ARG_DIRECTION_IN,
                         introspection);
@@ -361,7 +347,7 @@ run_action_dialog (GUPnPServiceActionInfo    *action_info,
                         action_info->arguments,
                         GUPNP_SERVICE_ACTION_ARG_DIRECTION_OUT);
         populate_action_arguments_table (
-                        out_table,
+                        out_args_table,
                         out_arguments,
                         GUPNP_SERVICE_ACTION_ARG_DIRECTION_OUT,
                         introspection);
@@ -559,20 +545,16 @@ retrieve_in_action_arguments (GUPnPServiceIntrospection *introspection,
                               GUPnPServiceActionInfo    *action_info)
 {
         GHashTable *in_args;
-        GtkWidget  *table;
         GList      *arg_node;
-
-        table = glade_xml_get_widget (glade_xml, "in-action-arguments-table");
-        g_assert (table != NULL);
 
         in_args = g_hash_table_new_full (g_str_hash,
                                          g_direct_equal,
                                          NULL,
                                          g_value_free);
 
-        for (arg_node = gtk_container_get_children (GTK_CONTAINER (table));
-             arg_node;
-             arg_node = arg_node->next) {
+        arg_node = gtk_container_get_children (GTK_CONTAINER (in_args_table));
+
+        for (; arg_node; arg_node = arg_node->next) {
                 GtkWidget *arg_widget;
                 gchar     *name;
                 GValue    *value;
@@ -636,19 +618,15 @@ display_action_out_arguments (GHashTable *out_args)
 {
         GUPnPServiceIntrospection *introspection;
         GUPnPServiceActionInfo    *action_info;
-        GtkWidget                 *table;
         GList                     *arg_node;
-
-        table = glade_xml_get_widget (glade_xml, "out-action-arguments-table");
-        g_assert (table != NULL);
 
         action_info = get_selected_action (NULL, &introspection);
         if (action_info == NULL)
                 return;
 
-        for (arg_node = gtk_container_get_children (GTK_CONTAINER (table));
-             arg_node;
-             arg_node = arg_node->next) {
+        arg_node = gtk_container_get_children (GTK_CONTAINER (out_args_table));
+
+        for (; arg_node; arg_node = arg_node->next) {
                 GtkWidget *arg_widget;
                 gchar     *name;
                 GValue    *value;
@@ -749,11 +727,53 @@ on_action_invocation (GtkButton *button,
 }
 
 void
-init_action_dialog ()
+init_action_dialog (GladeXML *glade_xml)
 {
+        GtkWidget *image;
+
         arguments_label_group =
                 gtk_size_group_new (GTK_SIZE_GROUP_HORIZONTAL);
         arguments_widget_group =
                 gtk_size_group_new (GTK_SIZE_GROUP_HORIZONTAL);
+
+        /* Dialog box and tables */
+        dialog = glade_xml_get_widget (glade_xml, "action-invocation-dialog");
+        g_assert (dialog != NULL);
+        in_args_table = glade_xml_get_widget (glade_xml,
+                                              "in-action-arguments-table");
+        g_assert (in_args_table != NULL);
+        out_args_table = glade_xml_get_widget (glade_xml,
+                                               "out-action-arguments-table");
+        g_assert (out_args_table != NULL);
+
+        /* All the labels */
+        in_args_label = glade_xml_get_widget (glade_xml,
+                                              "in-action-arguments-label");
+        g_assert (in_args_label != NULL);
+        out_args_label = glade_xml_get_widget (glade_xml,
+                                              "out-action-arguments-label");
+        g_assert (out_args_label != NULL);
+        device_label = glade_xml_get_widget (glade_xml, "device-label");
+        g_assert (device_label != NULL);
+        service_label = glade_xml_get_widget (glade_xml, "service-label");
+        g_assert (service_label != NULL);
+        action_label = glade_xml_get_widget (glade_xml, "action-label");
+        g_assert (action_label != NULL);
+
+        /* the images */
+        image = glade_xml_get_widget (glade_xml, "device-image");
+        g_assert (image != NULL);
+        gtk_image_set_from_pixbuf (GTK_IMAGE (image),
+                                   get_icon_by_id (ICON_DEVICE));
+
+        image = glade_xml_get_widget (glade_xml, "service-image");
+        g_assert (image != NULL);
+        gtk_image_set_from_pixbuf (GTK_IMAGE (image),
+                                   get_icon_by_id (ICON_SERVICE));
+
+        image = glade_xml_get_widget (glade_xml, "action-image");
+        g_assert (image != NULL);
+        gtk_image_set_from_pixbuf (GTK_IMAGE (image),
+                                   get_icon_by_id (ICON_ACTION));
 }
 
