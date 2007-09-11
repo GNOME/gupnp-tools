@@ -646,6 +646,8 @@ display_action_out_arguments (GHashTable *out_args)
                                                    action_info,
                                                    value);
         }
+
+        g_object_unref (introspection);
 }
 
 static void
@@ -684,6 +686,7 @@ on_action_complete (GUPnPServiceProxy       *proxy,
         }
 
         g_hash_table_destroy (out_args);
+        g_object_unref (introspection);
 }
 
 void
@@ -724,6 +727,7 @@ on_action_invocation (GtkButton *button,
 
         g_hash_table_destroy (in_args);
         g_object_unref (G_OBJECT (proxy));
+        g_object_unref (G_OBJECT (introspection));
 }
 
 void

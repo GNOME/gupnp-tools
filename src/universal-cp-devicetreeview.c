@@ -200,11 +200,14 @@ on_device_treeview_row_activate (GtkMenuItem *menuitem,
                 action_info = get_selected_action (&proxy, &introspection);
                 if (action_info != NULL) {
                         run_action_dialog (action_info,
-                                        proxy,
-                                        introspection);
+                                           proxy,
+                                           introspection);
                         g_object_unref (G_OBJECT (introspection));
                 }
         }
+
+        if (proxy != NULL)
+                g_object_unref (G_OBJECT (proxy));
 }
 
 static void

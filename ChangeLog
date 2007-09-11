@@ -1,3 +1,10 @@
+2007-09-12  Zeeshan Ali  <zeenix@gstreamer.net>
+
+	* src/universal-cp-actiondialog.c:
+	* src/universal-cp-devicetreeview.c:
+
+	Fix some ref leaks and a small stylistic change.
+
 2007-09-11  Zeeshan Ali  <zeenix@gstreamer.net>
 
 	* src/universal-cp-eventtreeview.c:
