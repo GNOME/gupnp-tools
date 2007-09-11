@@ -1,5 +1,15 @@
 2007-09-12  Zeeshan Ali  <zeenix@gstreamer.net>
 
+	* src/network-light-upnp.c:
+	* src/universal-cp-actiondialog.c:
+	* src/universal-cp-devicetreeview.c:
+	* src/universal-cp-eventtreeview.c:
+	* src/universal-cp-gui.c:
+
+	Remove the unneeded usage of G_OBJECT() macro.
+
+2007-09-12  Zeeshan Ali  <zeenix@gstreamer.net>
+
 	* src/universal-cp-actiondialog.c:
 	* src/universal-cp-devicetreeview.c:
 

@@ -189,7 +189,7 @@ create_widget_for_argument (GUPnPServiceActionArgInfo *arg_info,
 
                         text_view = GTK_TEXT_VIEW (gtk_text_view_new ());
                         widget = gtk_scrolled_window_new (NULL, NULL);
-                        g_object_set (G_OBJECT (widget),
+                        g_object_set (widget,
                                       "shadow-type", GTK_SHADOW_IN,
                                       "hscrollbar-policy", GTK_POLICY_AUTOMATIC,
                                       "vscrollbar-policy", GTK_POLICY_AUTOMATIC,
@@ -726,8 +726,8 @@ on_action_invocation (GtkButton *button,
         }
 
         g_hash_table_destroy (in_args);
-        g_object_unref (G_OBJECT (proxy));
-        g_object_unref (G_OBJECT (introspection));
+        g_object_unref (proxy);
+        g_object_unref (introspection);
 }
 
 void

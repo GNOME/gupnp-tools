@@ -274,7 +274,7 @@ void
 on_event_log_activate (GtkCheckMenuItem *menuitem,
                        gpointer          user_data)
 {
-        g_object_set (G_OBJECT (scrolled_window),
+        g_object_set (scrolled_window,
                       "visible",
                       gtk_check_menu_item_get_active (menuitem),
                       NULL);
@@ -292,7 +292,7 @@ on_subscribe_to_events_activate (GtkCheckMenuItem *menuitem,
                 subscribed = gtk_check_menu_item_get_active (menuitem);
                 gupnp_service_proxy_set_subscribed (proxy, subscribed);
 
-                g_object_unref (G_OBJECT (proxy));
+                g_object_unref (proxy);
         }
 }
 

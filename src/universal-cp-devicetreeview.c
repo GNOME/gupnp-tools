@@ -75,7 +75,7 @@ find_device (GtkTreeModel *model,
                 }
 
                 if (info)
-                        g_object_unref (G_OBJECT (info));
+                        g_object_unref (info);
 
                 /* recurse into embedded-devices */
                 found = find_device (model, udn, iter, &tmp);
@@ -120,28 +120,28 @@ setup_device_popup (GtkWidget *popup)
         /* See if a service is selected */
         proxy = get_selected_service ();
         if (proxy != NULL) {
-                g_object_set (G_OBJECT (subscribe_menuitem),
+                g_object_set (subscribe_menuitem,
                               "visible",
                               TRUE,
                               "active",
                               gupnp_service_proxy_get_subscribed (proxy),
                               NULL);
 
-                g_object_set (G_OBJECT (action_menuitem),
+                g_object_set (action_menuitem,
                               "visible",
                               FALSE,
                               NULL);
         } else {
                 GUPnPServiceActionInfo *action;
 
-                g_object_set (G_OBJECT (subscribe_menuitem),
+                g_object_set (subscribe_menuitem,
                               "visible",
                               FALSE,
                               NULL);
 
                 /* See if an action is selected */
                 action = get_selected_action (NULL, NULL);
-                g_object_set (G_OBJECT (action_menuitem),
+                g_object_set (action_menuitem,
                               "visible",
                               action != NULL,
                               NULL);
@@ -150,12 +150,12 @@ setup_device_popup (GtkWidget *popup)
         /* Separator should be visible only if either service or action row is
          * selected
          */
-        g_object_set (G_OBJECT (separator),
+        g_object_set (separator,
                       "visible",
                       (proxy != NULL),
                       NULL);
         if (proxy)
-                g_object_unref (G_OBJECT (proxy));
+                g_object_unref (proxy);
 }
 
 gboolean
@@ -202,12 +202,12 @@ on_device_treeview_row_activate (GtkMenuItem *menuitem,
                         run_action_dialog (action_info,
                                            proxy,
                                            introspection);
-                        g_object_unref (G_OBJECT (introspection));
+                        g_object_unref (introspection);
                 }
         }
 
         if (proxy != NULL)
-                g_object_unref (G_OBJECT (proxy));
+                g_object_unref (proxy);
 }
 
 static void
@@ -231,13 +231,13 @@ on_something_selected (GtkTreeSelection *selection,
 
                         gtk_tree_model_get (model, &iter, 2, &info, -1);
                         show_device_details (info);
-                        g_object_unref (G_OBJECT (info));
+                        g_object_unref (info);
                 } else if (icon_type == ICON_SERVICE) {
                         GUPnPServiceInfo *info;
 
                         gtk_tree_model_get (model, &iter, 2, &info, -1);
                         show_service_details (info);
-                        g_object_unref (G_OBJECT (info));
+                        g_object_unref (info);
                 } else if (icon_type == ICON_VARIABLE) {
                         GUPnPServiceStateVariableInfo *info;
 

@@ -143,14 +143,14 @@ init_ui (gint   *argc,
         gtk_widget_show_all (main_window);
 
         /* Give device treeview 40% of the main window */
-        g_object_get (G_OBJECT (hpaned), "max-position", &position, NULL);
+        g_object_get (hpaned, "max-position", &position, NULL);
         position = position * 40 / 100;
-        g_object_set (G_OBJECT (hpaned), "position", position, NULL);
+        g_object_set (hpaned, "position", position, NULL);
 
         /* Give details treeview 60% of 60% of the main window */
-        g_object_get (G_OBJECT (vpaned), "max-position", &position, NULL);
+        g_object_get (vpaned, "max-position", &position, NULL);
         position = position * 60 / 100;
-        g_object_set (G_OBJECT (vpaned), "position", position, NULL);
+        g_object_set (vpaned, "position", position, NULL);
 
         return TRUE;
 }
