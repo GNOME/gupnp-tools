@@ -1,5 +1,11 @@
 2007-09-11  Zeeshan Ali  <zeenix@gstreamer.net>
 
+	* src/universal-cp-eventtreeview.c:
+
+	Bugfix: Don't leave out the 'value' when copying the event(s).
+
+2007-09-11  Zeeshan Ali  <zeenix@gstreamer.net>
+
 	* src/universal-cp-actiondialog.c:
 	* src/universal-cp-actiondialog.h:
 	* src/universal-cp-detailstreeview.c:

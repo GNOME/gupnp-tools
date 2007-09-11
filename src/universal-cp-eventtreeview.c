@@ -89,29 +89,33 @@ on_event_treeview_row_activate (GtkMenuItem *menuitem,
         g_assert (clipboard != NULL);
 
         if (get_selected_row (&iter)) {
-                char *fields[4];
+                char *fields[5];
                 char *event_str;
 
                 gtk_tree_model_get (model, &iter,
                                     0, &fields[0],
                                     1, &fields[1],
                                     2, &fields[2],
-                                    3, &fields[3], -1);
+                                    3, &fields[3],
+                                    4, &fields[4], -1);
                 if (G_UNLIKELY (!fields[0] ||
                                 !fields[1] ||
                                 !fields[2] ||
-                                !fields[3]))
+                                !fields[3] ||
+                                !fields[4]))
                         return;
 
                 event_str = g_strjoin (" ",
                                        fields[0],
                                        fields[1],
                                        fields[2],
-                                       fields[3], NULL);
+                                       fields[3],
+                                       fields[4], NULL);
                 g_free (fields[0]);
                 g_free (fields[1]);
                 g_free (fields[2]);
                 g_free (fields[3]);
+                g_free (fields[4]);
 
                 gtk_clipboard_set_text (clipboard, event_str, -1);
 
@@ -138,7 +142,7 @@ on_copy_all_events_activate (GtkMenuItem *menuitem,
 
         copied = g_strdup ("");
         do {
-                char *fields[4];
+                char *fields[5];
                 char *event_str;
                 char *tmp;
 
@@ -146,22 +150,26 @@ on_copy_all_events_activate (GtkMenuItem *menuitem,
                                     0, &fields[0],
                                     1, &fields[1],
                                     2, &fields[2],
-                                    3, &fields[3], -1);
+                                    3, &fields[3],
+                                    4, &fields[4], -1);
                 if (G_UNLIKELY (!fields[0] ||
                                 !fields[1] ||
                                 !fields[2] ||
-                                !fields[3]))
+                                !fields[3] ||
+                                !fields[4]))
                         continue;
 
                 event_str = g_strjoin (" ",
                                        fields[0],
                                        fields[1],
                                        fields[2],
-                                       fields[3], NULL);
+                                       fields[3],
+                                       fields[4], NULL);
                 g_free (fields[0]);
                 g_free (fields[1]);
                 g_free (fields[2]);
                 g_free (fields[3]);
+                g_free (fields[4]);
 
                 tmp = copied;
                 copied = g_strjoin ("\n", copied, event_str, NULL);
