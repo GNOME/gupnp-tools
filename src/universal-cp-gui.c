@@ -136,7 +136,7 @@ init_ui (gint   *argc,
 
         glade_xml_signal_autoconnect (glade_xml);
 
-        init_icons (glade_xml);
+        init_icons ();
         setup_treeviews ();
         init_action_dialog (glade_xml);
 

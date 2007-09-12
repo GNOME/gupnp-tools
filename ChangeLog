@@ -1,5 +1,13 @@
 2007-09-12  Zeeshan Ali  <zeenix@gstreamer.net>
 
+	* src/universal-cp-gui.c:
+	* src/universal-cp-icons.c:
+	* src/universal-cp-icons.h:
+
+	No need to pass glade_xml file to init_icons().
+
+2007-09-12  Zeeshan Ali  <zeenix@gstreamer.net>
+
 	* src/network-light-upnp.c:
 	* src/universal-cp-actiondialog.c:
 	* src/universal-cp-devicetreeview.c:

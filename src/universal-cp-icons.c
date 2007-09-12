@@ -197,7 +197,7 @@ get_icon_by_id (IconID icon_id)
 }
 
 void
-init_icons (GladeXML *glade_xml)
+init_icons (void)
 {
         int   i;
         char *file_names[] = {
