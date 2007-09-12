@@ -1,5 +1,14 @@
 2007-09-12  Zeeshan Ali  <zeenix@gstreamer.net>
 
+	* src/universal-cp-devicetreeview.c:
+	* src/universal-cp-icons.c:
+	* src/universal-cp-icons.h:
+
+	Display a message in the device treeview instead of a warning on the
+	console when introspection is not available for a service.
+
+2007-09-12  Zeeshan Ali  <zeenix@gstreamer.net>
+
 	* src/universal-cp-gui.c:
 	* src/universal-cp-icons.c:
 	* src/universal-cp-icons.h:

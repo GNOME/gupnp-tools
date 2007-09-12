@@ -35,6 +35,7 @@ typedef enum
         ICON_VARIABLE,
         ICON_ACTION,
         ICON_ACTION_ARG,
+        ICON_MISSING,
         ICON_LAST
 } IconID;
 

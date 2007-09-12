@@ -199,8 +199,10 @@ get_icon_by_id (IconID icon_id)
 void
 init_icons (void)
 {
-        int   i;
-        char *file_names[] = {
+        GtkWidget *image;
+        GdkPixbuf *pixbuf;
+        int        i;
+        char      *file_names[ICON_LAST] = {
                 "pixmaps/upnp-network.png",         /* ICON_NETWORK    */
                 "pixmaps/upnp-device.png",          /* ICON_DEVICE     */
                 "pixmaps/upnp-service.png",         /* ICON_SERVICE    */
@@ -210,7 +212,7 @@ init_icons (void)
                 "pixmaps/upnp-state-variable.png",  /* ICON_ACTION_ARG */
         };
 
-        for (i = 0; i < ICON_LAST; i++) {
+        for (i = 0; i < ICON_MISSING; i++) {
                 /* Try to fetch the pixmap from the CWD first */
                 icons[i] = gdk_pixbuf_new_from_file (file_names[i], NULL);
                 if (icons[i] == NULL) {
@@ -228,6 +230,20 @@ init_icons (void)
 
                 g_assert (icons[i] != NULL);
         }
+
+        image = gtk_image_new ();
+        g_object_ref_sink (image);
+        pixbuf = gtk_widget_render_icon (image,
+                                         GTK_STOCK_MISSING_IMAGE,
+                                         GTK_ICON_SIZE_DIALOG,
+                                         "gupnp-universal-cp");
+        g_assert (pixbuf);
+        icons[ICON_MISSING] = gdk_pixbuf_scale_simple (pixbuf,
+                                                       PREFERED_WIDTH,
+                                                       PREFERED_HEIGHT,
+                                                       GDK_INTERP_HYPER);
+        g_assert (icons[ICON_MISSING]);
+        g_object_unref (image);
 
         session = soup_session_async_new ();
         g_assert (session != NULL);

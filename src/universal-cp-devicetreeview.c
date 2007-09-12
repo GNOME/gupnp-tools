@@ -223,10 +223,7 @@ on_something_selected (GtkTreeSelection *selection,
                 gtk_tree_model_get (model, &iter, 5, &icon_type, -1);
 
                 /* We recognise things by how they look, don't we? */
-                if (icon_type == ICON_NETWORK ||
-                    icon_type == ICON_VARIABLES) {
-                        update_details (default_details);
-                } else if (icon_type == ICON_DEVICE) {
+                if (icon_type == ICON_DEVICE) {
                         GUPnPDeviceInfo *info;
 
                         gtk_tree_model_get (model, &iter, 2, &info, -1);
@@ -253,7 +250,8 @@ on_something_selected (GtkTreeSelection *selection,
 
                         gtk_tree_model_get (model, &iter, 4, &info, -1);
                         show_action_arg_details (info);
-                }
+                } else
+                        update_details (default_details);
         }
 
         else
@@ -385,6 +383,17 @@ append_introspection (GUPnPServiceProxy         *proxy,
 {
         const GList *list;
 
+        if (introspection == NULL) {
+                gtk_tree_store_insert_with_values (store,
+                                 NULL, service_iter, -1,
+                                 0, get_icon_by_id (ICON_MISSING),
+                                 1, "Information not available",
+                                 5, ICON_MISSING,
+                                 -1);
+
+                return;
+        }
+
         list = gupnp_service_introspection_list_state_variables (
                         introspection);
         if (list)
@@ -416,31 +425,18 @@ got_introspection (GUPnPServiceInfo          *info,
         model = gtk_tree_view_get_model (GTK_TREE_VIEW (treeview));
         g_assert (model != NULL);
 
-        if (error) {
-                char *id;
-
-                id = gupnp_service_info_get_id (info);
-                g_warning ("Failed to create introspection for '%s': %s",
-                           id,
-                           error->message);
-
-                if (id)
-                        g_free (id);
-                g_slice_free (GtkTreeIter, service_iter);
-
-                return;
-        }
-
         append_introspection (GUPNP_SERVICE_PROXY (info),
                               introspection,
                               GTK_TREE_STORE (model),
                               service_iter);
 
         g_slice_free (GtkTreeIter, service_iter);
-        g_object_unref (introspection);
+        if (introspection != NULL) {
+                g_object_unref (introspection);
 
-        /* Services are subscribed to by default */
-        gupnp_service_proxy_set_subscribed (GUPNP_SERVICE_PROXY (info), TRUE);
+                /* Services are subscribed to by default */
+                gupnp_service_proxy_set_subscribed (GUPNP_SERVICE_PROXY (info), TRUE);
+        }
 }
 
 static void
