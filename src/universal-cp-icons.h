@@ -32,10 +32,10 @@ typedef enum
         ICON_SERVICE,
         ICON_VARIABLES,
         ICON_VARIABLE,
-        ICON_ACTION,
         ICON_ACTION_ARG,
         ICON_MISSING,
         ICON_NETWORK,
+        ICON_ACTION,
         ICON_LAST
 } IconID;
 

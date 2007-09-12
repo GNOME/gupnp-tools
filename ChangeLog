@@ -3,6 +3,14 @@
 	* src/universal-cp-icons.c:
 	* src/universal-cp-icons.h:
 
+	- Get the action icon from the gtk stock as well
+	- Clean-up the code for loading pixbuf from gtk stock icons.
+
+2007-09-12  Zeeshan Ali  <zeenix@gstreamer.net>
+
+	* src/universal-cp-icons.c:
+	* src/universal-cp-icons.h:
+
 	- Get the network icon from the gtk stock
 	- Put the code for loading pixbuf from stock into a separate function.
 
