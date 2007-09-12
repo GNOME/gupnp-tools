@@ -1,5 +1,13 @@
 2007-09-12  Zeeshan Ali  <zeenix@gstreamer.net>
 
+	* src/universal-cp-icons.c:
+	* src/universal-cp-icons.h:
+
+	- Get the network icon from the gtk stock
+	- Put the code for loading pixbuf from stock into a separate function.
+
+2007-09-12  Zeeshan Ali  <zeenix@gstreamer.net>
+
 	* src/pixmaps/upnp-device.png:
 
 	Icon update from Lapo Calamandrei.

@@ -196,14 +196,35 @@ get_icon_by_id (IconID icon_id)
         return icons[icon_id];
 }
 
-void
-init_icons (void)
+static GdkPixbuf *
+get_pixbuf_from_stock (const char *stock_id,
+                       const char *detail)
 {
         GtkWidget *image;
         GdkPixbuf *pixbuf;
-        int        i;
-        char      *file_names[ICON_LAST] = {
-                "pixmaps/upnp-network.png",         /* ICON_NETWORK    */
+
+        image = gtk_image_new ();
+        g_object_ref_sink (image);
+
+        pixbuf = gtk_widget_render_icon (image,
+                                         stock_id,
+                                         GTK_ICON_SIZE_DIALOG,
+                                         detail);
+        g_assert (pixbuf);
+        pixbuf = gdk_pixbuf_scale_simple (pixbuf,
+                                          PREFERED_WIDTH,
+                                          PREFERED_HEIGHT,
+                                          GDK_INTERP_HYPER);
+        g_object_unref (image);
+
+        return pixbuf;
+}
+
+void
+init_icons (void)
+{
+        int   i;
+        char *file_names[ICON_LAST] = {
                 "pixmaps/upnp-device.png",          /* ICON_DEVICE     */
                 "pixmaps/upnp-service.png",         /* ICON_SERVICE    */
                 "pixmaps/upnp-state-variables.png", /* ICON_VARIABLES  */
@@ -231,19 +252,17 @@ init_icons (void)
                 g_assert (icons[i] != NULL);
         }
 
-        image = gtk_image_new ();
-        g_object_ref_sink (image);
-        pixbuf = gtk_widget_render_icon (image,
-                                         GTK_STOCK_MISSING_IMAGE,
-                                         GTK_ICON_SIZE_DIALOG,
-                                         "gupnp-universal-cp");
-        g_assert (pixbuf);
-        icons[ICON_MISSING] = gdk_pixbuf_scale_simple (pixbuf,
-                                                       PREFERED_WIDTH,
-                                                       PREFERED_HEIGHT,
-                                                       GDK_INTERP_HYPER);
+        /* ICON_MISSING */
+        icons[ICON_MISSING] = get_pixbuf_from_stock
+                                        (GTK_STOCK_MISSING_IMAGE,
+                                         "gupnp-universal-cp-missing-icon");
         g_assert (icons[ICON_MISSING]);
-        g_object_unref (image);
+
+        /* ICON_NETWORK */
+        icons[ICON_NETWORK] = get_pixbuf_from_stock
+                                        (GTK_STOCK_NETWORK,
+                                         "gupnp-universal-cp-network-icon");
+        g_assert (icons[ICON_NETWORK]);
 
         session = soup_session_async_new ();
         g_assert (session != NULL);

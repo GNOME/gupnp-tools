@@ -28,7 +28,6 @@
 typedef enum
 {
         ICON_FIRST = -1,
-        ICON_NETWORK,
         ICON_DEVICE,
         ICON_SERVICE,
         ICON_VARIABLES,
@@ -36,6 +35,7 @@ typedef enum
         ICON_ACTION,
         ICON_ACTION_ARG,
         ICON_MISSING,
+        ICON_NETWORK,
         ICON_LAST
 } IconID;
 
