@@ -1,6 +1,4 @@
-pixmaps_DATA = upnp-action.png 		\
-	       upnp-network.png 	\
-	       upnp-device.png 		\
+pixmaps_DATA = upnp-device.png 		\
 	       upnp-service.png 	\
 	       upnp-state-variable.png  \
 	       upnp-state-variables.png \
