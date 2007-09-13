@@ -522,8 +522,6 @@ update_out_action_argument_widget (GtkWidget                 *arg_widget,
                                               active);
         } else {
                 GValue         str_value;
-                GtkWidget     *text_view;
-                GtkTextBuffer *text_buffer;
                 const gchar   *text;
 
                 memset (&str_value, 0, sizeof (GValue));
@@ -531,10 +529,15 @@ update_out_action_argument_widget (GtkWidget                 *arg_widget,
                 g_value_transform (value, &str_value);
 
                 text = g_value_get_string (&str_value);
-                text_view = gtk_bin_get_child (GTK_BIN (arg_widget));
-                text_buffer = gtk_text_view_get_buffer (
-                                GTK_TEXT_VIEW (text_view));
-                gtk_text_buffer_set_text (text_buffer, text, -1);
+                if (text != NULL) {
+                        GtkWidget     *text_view;
+                        GtkTextBuffer *text_buffer;
+
+                        text_view = gtk_bin_get_child (GTK_BIN (arg_widget));
+                        text_buffer = gtk_text_view_get_buffer
+                                                (GTK_TEXT_VIEW (text_view));
+                        gtk_text_buffer_set_text (text_buffer, text, -1);
+                }
 
                 g_value_unset (&str_value);
         }

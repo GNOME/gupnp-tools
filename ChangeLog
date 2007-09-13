@@ -1,3 +1,9 @@
+2007-09-13  Zeeshan Ali  <zeenix@gstreamer.net>
+
+	* src/universal-cp-actiondialog.c:
+
+	Only update an out argument textview if there is any text to put there.
+
 2007-09-12  Zeeshan Ali  <zeenix@gstreamer.net>
 
 	* src/pixmaps/Makefile.am:
