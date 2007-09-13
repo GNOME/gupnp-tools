@@ -1,5 +1,12 @@
 2007-09-13  Zeeshan Ali  <zeenix@gstreamer.net>
 
+	* src/pixmaps/upnp-service.png:
+	* src/pixmaps/upnp-state-variable.png:
+
+	Icons update from Lapo Calamandrei.
+
+2007-09-13  Zeeshan Ali  <zeenix@gstreamer.net>
+
 	* src/universal-cp-actiondialog.c:
 
 	Only update an out argument textview if there is any text to put there.
