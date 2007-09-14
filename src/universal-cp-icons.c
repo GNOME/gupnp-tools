@@ -226,15 +226,15 @@ init_icons (void)
         char *file_names[] = {
                 "pixmaps/upnp-device.png",          /* ICON_DEVICE     */
                 "pixmaps/upnp-service.png",         /* ICON_SERVICE    */
-                "pixmaps/upnp-state-variables.png", /* ICON_VARIABLES  */
                 "pixmaps/upnp-state-variable.png",  /* ICON_VARIABLE   */
                 "pixmaps/upnp-state-variable.png"   /* ICON_ACTION_ARG */
         };
 
         char *stock_ids[] = {
-                GTK_STOCK_MISSING_IMAGE,  /* ICON_MISSING */
-                GTK_STOCK_NETWORK,        /* ICON_NETWORK */
-                GTK_STOCK_EXECUTE         /* ICON_ACTION  */
+                GTK_STOCK_MISSING_IMAGE, /* ICON_MISSING   */
+                GTK_STOCK_NETWORK,       /* ICON_NETWORK   */
+                GTK_STOCK_EXECUTE,       /* ICON_ACTION    */
+                GTK_STOCK_DIRECTORY      /* ICON_VARIABLES */
         };
 
         for (i = 0; i < ICON_MISSING; i++) {

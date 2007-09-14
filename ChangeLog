@@ -1,5 +1,15 @@
 2007-09-14  Zeeshan Ali  <zeenix@gstreamer.net>
 
+	* src/pixmaps/Makefile.am:
+	* src/pixmaps/upnp-state-variables.png:
+	* src/universal-cp-icons.c:
+	* src/universal-cp-icons.h:
+
+	Use 'GTK_STOCK_DIRECTORY' for the the parent node of the
+	state-variables.
+
+2007-09-14  Zeeshan Ali  <zeenix@gstreamer.net>
+
 	* src/universal-cp-eventtreeview.c:
 
 	Strip newlines from value of the variable in events before displaying
