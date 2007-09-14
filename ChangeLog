@@ -1,5 +1,11 @@
 2007-09-13  Zeeshan Ali  <zeenix@gstreamer.net>
 
+	* src/universal-cp-eventtreeview.c:
+        
+	Don't let the event treeview scroll-down.
+
+2007-09-13  Zeeshan Ali  <zeenix@gstreamer.net>
+
 	* src/pixmaps/upnp-service.png:
 	* src/pixmaps/upnp-state-variable.png:
 

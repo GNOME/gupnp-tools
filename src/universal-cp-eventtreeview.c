@@ -190,8 +190,9 @@ display_event (const char *notified_at,
                const char *variable_name,
                const char *value)
 {
-        GtkTreeModel     *model;
-        GtkTreeIter       iter;
+        GtkTreeModel *model;
+        GtkTreeIter   iter;
+        GtkTreePath  *path;
 
         model = gtk_tree_view_get_model (GTK_TREE_VIEW (treeview));
 
@@ -204,6 +205,20 @@ display_event (const char *notified_at,
                             3, variable_name,
                             4, value,
                             -1);
+
+        path = gtk_tree_model_get_path (model, &iter);
+        if (G_UNLIKELY (path == NULL))
+                return;
+
+        /* Don't let it scroll-down */
+        gtk_tree_view_scroll_to_cell (GTK_TREE_VIEW (treeview),
+                                      path,
+                                      NULL,
+                                      FALSE,
+                                      0.0,
+                                      0.0);
+
+        gtk_tree_path_free (path);
 }
 
 static void
