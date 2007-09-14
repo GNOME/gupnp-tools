@@ -245,7 +245,8 @@ on_something_selected (GtkTreeSelection *selection,
 
                         gtk_tree_model_get (model, &iter, 4, &info, -1);
                         show_action_details (info);
-                } else if (icon_type == ICON_ACTION_ARG) {
+                } else if (icon_type == ICON_ACTION_ARG_IN ||
+                           icon_type == ICON_ACTION_ARG_OUT) {
                         GUPnPServiceActionArgInfo *info;
 
                         gtk_tree_model_get (model, &iter, 4, &info, -1);
@@ -289,16 +290,23 @@ append_action_arguments (GList        *arguments,
 
         for (iter = arguments; iter; iter = iter->next) {
                 GUPnPServiceActionArgInfo *info;
+                IconID                     icon_id;
 
                 info = iter->data;
+
+                if (info->direction == GUPNP_SERVICE_ACTION_ARG_DIRECTION_IN) {
+                        icon_id = ICON_ACTION_ARG_IN;
+                } else {
+                        icon_id = ICON_ACTION_ARG_OUT;
+                }
 
                 gtk_tree_store_insert_with_values
                                 (store,
                                  NULL, action_iter, -1,
-                                 0, get_icon_by_id (ICON_ACTION_ARG),
+                                 0, get_icon_by_id (icon_id),
                                  1, info->name,
                                  4, info,
-                                 5, ICON_ACTION_ARG,
+                                 5, icon_id,
                                  -1);
         }
 }

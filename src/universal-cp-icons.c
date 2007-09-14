@@ -224,10 +224,11 @@ init_icons (void)
 {
         int   i, j;
         char *file_names[] = {
-                "pixmaps/upnp-device.png",          /* ICON_DEVICE     */
-                "pixmaps/upnp-service.png",         /* ICON_SERVICE    */
-                "pixmaps/upnp-state-variable.png",  /* ICON_VARIABLE   */
-                "pixmaps/upnp-state-variable.png"   /* ICON_ACTION_ARG */
+                "pixmaps/upnp-device.png",          /* ICON_DEVICE         */
+                "pixmaps/upnp-service.png",         /* ICON_SERVICE        */
+                "pixmaps/upnp-state-variable.png",  /* ICON_VARIABLE       */
+                "pixmaps/upnp-action-arg-in.png",   /* ICON_ACTION_ARG_IN  */
+                "pixmaps/upnp-action-arg-out.png"   /* ICON_ACTION_ARG_OUT */
         };
 
         char *stock_ids[] = {

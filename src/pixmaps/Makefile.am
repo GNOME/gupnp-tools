@@ -1,6 +1,8 @@
 pixmaps_DATA = upnp-device.png 		\
 	       upnp-service.png 	\
 	       upnp-state-variable.png  \
+	       upnp-action-arg-in.png   \
+	       upnp-action-arg-out.png  \
 	       network-light-on.png 	\
 	       network-light-off.png 	\
 	       network-light.png

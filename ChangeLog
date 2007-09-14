@@ -1,6 +1,18 @@
 2007-09-14  Zeeshan Ali  <zeenix@gstreamer.net>
 
 	* src/pixmaps/Makefile.am:
+	* src/pixmaps/upnp-action-arg-in.png:
+	* src/pixmaps/upnp-action-arg-out.png:
+	* src/universal-cp-devicetreeview.c:
+	* src/universal-cp-icons.c:
+	* src/universal-cp-icons.h:
+
+	New separate icons for in & out action arguments from Lapo
+	Calamandrei.
+
+2007-09-14  Zeeshan Ali  <zeenix@gstreamer.net>
+
+	* src/pixmaps/Makefile.am:
 	* src/pixmaps/upnp-state-variables.png:
 	* src/universal-cp-icons.c:
 	* src/universal-cp-icons.h:
