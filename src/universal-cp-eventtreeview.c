@@ -25,6 +25,8 @@
 #include "universal-cp-eventtreeview.h"
 #include "universal-cp-gui.h"
 
+#define MAX_VALUE_SIZE 128
+
 static GtkWidget *treeview;
 static GtkWidget *popup;
 static GtkWidget *scrolled_window;
@@ -97,7 +99,7 @@ on_event_treeview_row_activate (GtkMenuItem *menuitem,
                                     1, &fields[1],
                                     2, &fields[2],
                                     3, &fields[3],
-                                    4, &fields[4], -1);
+                                    5, &fields[4], -1);
                 if (G_UNLIKELY (!fields[0] ||
                                 !fields[1] ||
                                 !fields[2] ||
@@ -151,7 +153,7 @@ on_copy_all_events_activate (GtkMenuItem *menuitem,
                                     1, &fields[1],
                                     2, &fields[2],
                                     3, &fields[3],
-                                    4, &fields[4], -1);
+                                    5, &fields[4], -1);
                 if (G_UNLIKELY (!fields[0] ||
                                 !fields[1] ||
                                 !fields[2] ||
@@ -183,6 +185,40 @@ on_copy_all_events_activate (GtkMenuItem *menuitem,
         g_free (copied);
 }
 
+static char *
+get_actual_value (const char *value)
+{
+        char         *actual_value;
+        guint         size;
+        guint         i;
+
+        size = strlen (value);
+        actual_value = g_malloc (size + 1);
+        /* Replace newlines with spaces in the actual value */
+        for (i = 0; i <= size; i++) {
+                if (value[i] == '\n')
+                        actual_value[i] = ' ';
+                else
+                        actual_value[i] = value[i];
+        }
+
+        return actual_value;
+}
+
+static char *
+get_display_value (const char *value)
+{
+        char         *display_value;
+        guint         size;
+
+        /* Don't let the value displayed in treeview, grow indefinitely */
+        size = CLAMP (strlen (value), 0, MAX_VALUE_SIZE);
+        display_value = g_memdup (value, size + 1);
+        display_value[size] = '\0';
+
+        return display_value;
+}
+
 void
 display_event (const char *notified_at,
                const char *friendly_name,
@@ -193,8 +229,13 @@ display_event (const char *notified_at,
         GtkTreeModel *model;
         GtkTreeIter   iter;
         GtkTreePath  *path;
+        char         *actual_value;
+        char         *display_value;
 
         model = gtk_tree_view_get_model (GTK_TREE_VIEW (treeview));
+
+        actual_value = get_actual_value (value);
+        display_value = get_display_value (actual_value);
 
         gtk_list_store_prepend (GTK_LIST_STORE (model), &iter);
         gtk_list_store_set (GTK_LIST_STORE (model),
@@ -203,8 +244,11 @@ display_event (const char *notified_at,
                             1, friendly_name,
                             2, service_id,
                             3, variable_name,
-                            4, value,
+                            4, display_value,
+                            5, actual_value,
                             -1);
+        g_free (display_value);
+        g_free (actual_value);
 
         path = gtk_tree_model_get_path (model, &iter);
         if (G_UNLIKELY (path == NULL))
@@ -247,12 +291,13 @@ create_event_treemodel (void)
 {
         GtkListStore *store;
 
-        store = gtk_list_store_new (5,
+        store = gtk_list_store_new (6,
                                     G_TYPE_STRING,  /* Time                  */
                                     G_TYPE_STRING,  /* Source Device         */
                                     G_TYPE_STRING,  /* Source Service        */
                                     G_TYPE_STRING,  /* State Variable (name) */
-                                    G_TYPE_STRING); /* Value                 */
+                                    G_TYPE_STRING,  /* Displayed Value       */
+                                    G_TYPE_STRING); /* Actual Value          */
 
         return GTK_TREE_MODEL (store);
 }

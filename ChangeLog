@@ -1,5 +1,13 @@
 2007-09-14  Zeeshan Ali  <zeenix@gstreamer.net>
 
+	* src/universal-cp-eventtreeview.c:
+
+	Strip newlines from value of the variable in events before displaying
+	them and don't display the complete value if it's too big. User can
+	get the complete value if she copy the event to the clipboard.
+
+2007-09-14  Zeeshan Ali  <zeenix@gstreamer.net>
+
 	* src/universal-cp-actiondialog.c:
 
 	Shrink the action dialog each time after removing the argument widgets.
