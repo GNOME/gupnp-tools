@@ -235,6 +235,9 @@ populate_action_arguments_table (GtkWidget                     *table,
                                         direction,
                                         arguments);
 
+        /* FIXME: Is there a better way to shrink the dialog? */
+        gtk_window_resize (GTK_WINDOW (dialog), 10, 10);
+
         row = 0;
         for (arg_node = arguments;
              arg_node;

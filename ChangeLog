@@ -1,3 +1,9 @@
+2007-09-14  Zeeshan Ali  <zeenix@gstreamer.net>
+
+	* src/universal-cp-actiondialog.c:
+
+	Shrink the action dialog each time after removing the argument widgets.
+
 2007-09-13  Zeeshan Ali  <zeenix@gstreamer.net>
 
 	* src/universal-cp-eventtreeview.c:
