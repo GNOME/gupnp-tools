@@ -1,3 +1,10 @@
+2007-09-15  Zeeshan Ali  <zeenix@gstreamer.net>
+	Lapo Calamandrei  <calamandrei@gmail.com>
+
+	* src/pixmaps/network-light.png:
+
+	Icon update for network-light.
+
 2007-09-14  Zeeshan Ali  <zeenix@gstreamer.net>
 
 	* src/network-light-gui.c:
