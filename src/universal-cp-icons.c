@@ -207,7 +207,7 @@ get_pixbuf_from_stock (const char *stock_id)
 
         pixbuf = gtk_widget_render_icon (image,
                                          stock_id,
-                                         GTK_ICON_SIZE_DIALOG,
+                                         GTK_ICON_SIZE_LARGE_TOOLBAR,
                                          "gupnp-universal-cp-icon");
         g_assert (pixbuf);
         pixbuf = gdk_pixbuf_scale_simple (pixbuf,
