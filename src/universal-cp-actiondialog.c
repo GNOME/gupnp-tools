@@ -35,6 +35,7 @@ static GtkWidget *service_label;
 static GtkWidget *action_label;
 static GtkWidget *in_args_label;
 static GtkWidget *out_args_label;
+static GtkSizeGroup *static_labels_group;
 static GtkSizeGroup *arguments_label_group;
 static GtkSizeGroup *arguments_widget_group;
 
@@ -745,6 +746,8 @@ init_action_dialog (GladeXML *glade_xml)
                 gtk_size_group_new (GTK_SIZE_GROUP_HORIZONTAL);
         arguments_widget_group =
                 gtk_size_group_new (GTK_SIZE_GROUP_HORIZONTAL);
+        static_labels_group =
+                gtk_size_group_new (GTK_SIZE_GROUP_HORIZONTAL);
 
         /* Dialog box and tables */
         dialog = glade_xml_get_widget (glade_xml, "action-invocation-dialog");
@@ -765,10 +768,13 @@ init_action_dialog (GladeXML *glade_xml)
         g_assert (out_args_label != NULL);
         device_label = glade_xml_get_widget (glade_xml, "device-label");
         g_assert (device_label != NULL);
+        gtk_size_group_add_widget (static_labels_group, device_label);
         service_label = glade_xml_get_widget (glade_xml, "service-label");
         g_assert (service_label != NULL);
+        gtk_size_group_add_widget (static_labels_group, service_label);
         action_label = glade_xml_get_widget (glade_xml, "action-label");
         g_assert (action_label != NULL);
+        gtk_size_group_add_widget (static_labels_group, action_label);
 
         /* the images */
         image = glade_xml_get_widget (glade_xml, "device-image");
