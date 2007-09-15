@@ -1,5 +1,11 @@
 2007-09-16  Zeeshan Ali  <zeenix@gstreamer.net>
 
+	* src/gupnp-universal-cp.glade:
+
+	Put a little more space between children of action-invocation-table.
+
+2007-09-16  Zeeshan Ali  <zeenix@gstreamer.net>
+
 	* src/universal-cp-actiondialog.c:
 
 	Put static labels of action dialog into a sizegroup.

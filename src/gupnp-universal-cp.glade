@@ -429,8 +429,8 @@ Inspired by Intel Tools for UPnP.</property>
 		  <property name="n_rows">3</property>
 		  <property name="n_columns">2</property>
 		  <property name="homogeneous">False</property>
-		  <property name="row_spacing">2</property>
-		  <property name="column_spacing">2</property>
+		  <property name="row_spacing">4</property>
+		  <property name="column_spacing">4</property>
 
 		  <child>
 		    <widget class="GtkLabel" id="action-label">
@@ -764,7 +764,7 @@ Inspired by Intel Tools for UPnP.</property>
 		  <property name="n_rows">1</property>
 		  <property name="n_columns">2</property>
 		  <property name="homogeneous">False</property>
-		  <property name="row_spacing">2</property>
+		  <property name="row_spacing">4</property>
 		  <property name="column_spacing">4</property>
 		</widget>
 	      </child>
