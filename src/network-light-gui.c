@@ -185,10 +185,7 @@ load_pixbuf_file (const char *file_name)
 	        /* Now try installed */
                 char *path;
 
-                path = g_strjoin ("/",
-                                  DATA_DIR,
-                                  file_name,
-                                  NULL);
+                path = g_build_filename (DATA_DIR, file_name, NULL);
 	        pixbuf = gdk_pixbuf_new_from_file (path, NULL);
                 if (pixbuf == NULL)
                         g_critical ("failed to get image %s\n", file_name);

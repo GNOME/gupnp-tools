@@ -245,10 +245,9 @@ init_icons (void)
                         char *pixmap_path;
 
                         /* Then Try to fetch it from the system path */
-                        pixmap_path = g_strjoin ("/",
-                                                 DATA_DIR,
-                                                 file_names[i],
-                                                 NULL);
+                        pixmap_path = g_build_filename (DATA_DIR,
+                                                        file_names[i],
+                                                        NULL);
 
                         icons[i] = gdk_pixbuf_new_from_file (pixmap_path, NULL);
                         g_free (pixmap_path);

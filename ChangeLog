@@ -1,4 +1,11 @@
 2007-09-14  Zeeshan Ali  <zeenix@gstreamer.net>
+
+	* src/network-light-gui.c:
+	* src/universal-cp-icons.c:
+
+	Use g_build_filename() instead of g_strjoin() for filenames.
+
+2007-09-14  Zeeshan Ali  <zeenix@gstreamer.net>
 	Lapo Calamandrei  <calamandrei@gmail.com>
 
 	* src/pixmaps/upnp-device.png:
