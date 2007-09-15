@@ -80,7 +80,7 @@ get_icon_from_message (SoupMessage    *msg,
                 pixbuf = gdk_pixbuf_scale_simple (pixbuf,
                                                   PREFERED_WIDTH,
                                                   height,
-                                                  GDK_INTERP_NEAREST);
+                                                  GDK_INTERP_HYPER);
         }
 
         gdk_pixbuf_loader_close (loader, NULL);

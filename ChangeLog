@@ -1,4 +1,10 @@
 2007-09-15  Zeeshan Ali  <zeenix@gstreamer.net>
+
+	* src/universal-cp-icons.c:
+
+	Use the best interpolation method available.
+
+2007-09-15  Zeeshan Ali  <zeenix@gstreamer.net>
 	Lapo Calamandrei  <calamandrei@gmail.com>
 
 	* src/pixmaps/network-light.png:
