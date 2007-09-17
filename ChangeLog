@@ -1,5 +1,11 @@
 2007-09-17  Zeeshan Ali  <zeenix@gstreamer.net>
 
+	* src/universal-cp-devicetreeview.c:
+
+	Fix some resource ref and GList leakage.
+
+2007-09-17  Zeeshan Ali  <zeenix@gstreamer.net>
+
 	* src/universal-cp-gui.c:
 	* src/universal-cp.c:
 	* src/universal-cp.h:

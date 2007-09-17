@@ -502,21 +502,23 @@ append_device_tree (GUPnPDeviceInfo *info,
                 schedule_icon_update (info);
 
                 /* Append the embedded devices */
-                for (child = gupnp_device_info_list_devices (info);
-                     child;
-                     child = g_list_next (child)) {
+                child = gupnp_device_info_list_devices (info);
+                while (child) {
                         append_device_tree (GUPNP_DEVICE_INFO (child->data),
                                             model,
                                             &device_iter);
+                        g_object_unref (child->data);
+                        child = g_list_delete_link (child, child);
                 }
 
                 /* Append the services */
-                for (child = gupnp_device_info_list_services (info);
-                     child;
-                     child = g_list_next (child)) {
+                child = gupnp_device_info_list_services (info);
+                while (child) {
                         append_service_tree (GUPNP_SERVICE_INFO (child->data),
                                              GTK_TREE_STORE (model),
                                              &device_iter);
+                        g_object_unref (child->data);
+                        child = g_list_delete_link (child, child);
                 }
         }
 }
