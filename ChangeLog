@@ -1,3 +1,9 @@
+2007-09-17  Zeeshan Ali  <zeenix@gstreamer.net>
+
+	* src/network-light-upnp.c:
+
+	Print more details on the console for each failed notification.
+
 2007-09-16  Zeeshan Ali  <zeenix@gstreamer.net>
 
 	* src/network-light-gui.c:

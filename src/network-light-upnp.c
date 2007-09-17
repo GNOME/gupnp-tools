@@ -196,7 +196,23 @@ on_notify_failed (GUPnPService *service,
                   const GError *reason,
                   gpointer      user_data)
 {
-        g_warning ("NOTIFY failed: %s\n", reason->message);
+        GList   *url_node;
+        GString *warning;
+
+        warning = g_string_new (NULL);
+        g_string_printf (warning,
+                         "NOTIFY failed for the following client URLs:\n");
+        for (url_node = (GList *) callback_urls;
+             url_node;
+             url_node = url_node->next) {
+                g_string_append_printf (warning,
+                                        "%s\n",
+                                        (char *) url_node->data);
+        }
+        g_string_append_printf (warning, "Reason: %s", reason->message);
+
+        g_warning ("%s", warning->str);
+        g_string_free (warning, TRUE);
 }
 
 static gboolean
