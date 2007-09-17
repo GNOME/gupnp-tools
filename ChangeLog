@@ -1,5 +1,12 @@
 2007-09-17  Zeeshan Ali  <zeenix@gstreamer.net>
 
+	* src/gupnp-universal-cp.glade:
+
+	Quit menuitem calls application_exit() instead of gtk_main_quit() on
+	activation.
+
+2007-09-17  Zeeshan Ali  <zeenix@gstreamer.net>
+
 	* src/universal-cp-detailstreeview.c:
 	* src/universal-cp-devicetreeview.c:
 	* src/universal-cp-eventtreeview.c:
