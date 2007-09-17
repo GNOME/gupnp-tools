@@ -13,6 +13,5 @@ test and debug one's UPnP devices and control points:
     and services, retrieve information about them, subscribe to events and
     invoke actions.
 
-  * Network Light (not implemented yet): a virtual light bulb that allows
-    control points to switch it on and off, change its dimming level and
-    query its current status.
+  * Network Light: a virtual light bulb that allows control points to switch
+    it on and off, change its dimming level and query its current status.

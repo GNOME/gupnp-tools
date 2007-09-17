@@ -1,3 +1,9 @@
+2007-09-18  Zeeshan Ali  <zeenix@gstreamer.net>
+
+	* README:
+	
+	Update the README.
+
 2007-09-17  Zeeshan Ali  <zeenix@gstreamer.net>
 
 	* src/gupnp-universal-cp.glade:
