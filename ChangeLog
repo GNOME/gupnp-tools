@@ -1,5 +1,17 @@
 2007-09-16  Zeeshan Ali  <zeenix@gstreamer.net>
 
+	* src/network-light-gui.c:
+	* src/pixmaps/Makefile.am:
+	* src/pixmaps/network-light-22x22.png:
+	* src/pixmaps/network-light-256x256.png:
+	* src/pixmaps/network-light.png:
+	* src/xml/network-light-desc.xml:
+
+	Keep the network light icon in two sizes, one small and one big so
+	control points have a bit more choice.
+
+2007-09-16  Zeeshan Ali  <zeenix@gstreamer.net>
+
 	* src/universal-cp-icons.c:
 
 	Use LARGE_TOOLBAR as icon size instead of DIALOG when rendering icons

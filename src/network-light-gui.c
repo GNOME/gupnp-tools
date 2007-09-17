@@ -27,7 +27,7 @@
 #include "network-light.h"
 
 #define GLADE_FILE "gupnp-network-light.glade"
-#define ICON_FILE  "pixmaps/network-light.png"
+#define ICON_FILE  "pixmaps/network-light-256x256.png"
 #define OFF_FILE   "pixmaps/network-light-off.png"
 #define ON_FILE    "pixmaps/network-light-on.png"
 
