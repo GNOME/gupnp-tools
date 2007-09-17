@@ -1,5 +1,11 @@
 2007-09-17  Zeeshan Ali  <zeenix@gstreamer.net>
 
+	* src/universal-cp.c:
+
+	Search for "upnp:rootdevice" rather than "ssdp:all".
+
+2007-09-17  Zeeshan Ali  <zeenix@gstreamer.net>
+
 	* src/universal-cp-devicetreeview.c:
 
 	Fix some resource ref and GList leakage.

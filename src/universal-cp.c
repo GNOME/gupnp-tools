@@ -328,7 +328,7 @@ init_upnp (void)
         }
 
         /* We're interested in everything */
-        cp = gupnp_control_point_new (context, "ssdp:all");
+        cp = gupnp_control_point_new (context, "upnp:rootdevice");
 
         g_signal_connect (cp,
                           "device-proxy-available",
