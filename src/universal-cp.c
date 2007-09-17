@@ -351,6 +351,15 @@ deinit_upnp (void)
         g_object_unref (context);
 }
 
+void
+application_exit (void)
+{
+        deinit_upnp ();
+        deinit_ui ();
+
+        gtk_main_quit ();
+}
+
 gint
 main (gint   argc,
       gchar *argv[])
@@ -364,9 +373,6 @@ main (gint   argc,
         }
 
         gtk_main ();
-
-        deinit_upnp ();
-        deinit_ui ();
 
         return 0;
 }

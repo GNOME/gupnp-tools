@@ -82,7 +82,8 @@ on_delete_event (GtkWidget *widget,
                  GdkEvent  *event,
                  gpointer   user_data)
 {
-        gtk_main_quit ();
+        application_exit ();
+
         return TRUE;
 }
 

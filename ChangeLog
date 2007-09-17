@@ -1,5 +1,15 @@
 2007-09-17  Zeeshan Ali  <zeenix@gstreamer.net>
 
+	* src/universal-cp-gui.c:
+	* src/universal-cp.c:
+	* src/universal-cp.h:
+
+	- The main module exits the mainloop
+	- GUI and UPnP objects are destroyed before exiting the mainloop. This
+	  is to allow the service proxies to unsubscribe themselves.
+
+2007-09-17  Zeeshan Ali  <zeenix@gstreamer.net>
+
 	* src/network-light-upnp.c:
 
 	Print more details on the console for each failed notification.

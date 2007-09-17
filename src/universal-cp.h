@@ -28,6 +28,8 @@ on_state_variable_changed   (GUPnPServiceProxy             *proxy,
                              const char                    *variable_name,
                              GValue                        *value,
                              gpointer                       user_data);
+void
+application_exit            (void);
 
 void
 show_action_arg_details     (GUPnPServiceActionArgInfo     *info);
