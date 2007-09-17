@@ -1,5 +1,15 @@
 2007-09-17  Zeeshan Ali  <zeenix@gstreamer.net>
 
+	* src/universal-cp-detailstreeview.c:
+	* src/universal-cp-devicetreeview.c:
+	* src/universal-cp-eventtreeview.c:
+	* src/universal-cp-gui.c:
+
+	- Explicitly destroy the main window.
+	- Don't leak the treemodels.
+
+2007-09-17  Zeeshan Ali  <zeenix@gstreamer.net>
+
 	* src/universal-cp.c:
 
 	Search for "upnp:rootdevice" rather than "ssdp:all".

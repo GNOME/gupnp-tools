@@ -328,6 +328,7 @@ setup_event_treeview (GladeXML *glade_xml)
         g_assert (model != NULL);
 
         setup_treeview (treeview, model, headers, 0);
+        g_object_unref (model);
 }
 
 void

@@ -32,6 +32,7 @@
 #define GLADE_FILE "gupnp-universal-cp.glade"
 
 GladeXML *glade_xml;
+static GtkWidget *main_window;
 
 void
 setup_treeview (GtkWidget    *treeview,
@@ -91,7 +92,6 @@ gboolean
 init_ui (gint   *argc,
          gchar **argv[])
 {
-        GtkWidget *main_window;
         GtkWidget *hpaned;
         GtkWidget *vpaned;
         gint       window_width, window_height;
@@ -161,5 +161,6 @@ deinit_ui (void)
 {
         deinit_icons ();
         g_object_unref (glade_xml);
+        gtk_widget_destroy (main_window);
 }
 

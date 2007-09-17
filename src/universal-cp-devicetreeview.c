@@ -631,6 +631,7 @@ setup_device_treeview (GladeXML *glade_xml)
         g_assert (model != NULL);
 
         setup_treeview (treeview, model, headers, 1);
+        g_object_unref (model);
 
         column = gtk_tree_view_get_column (GTK_TREE_VIEW (treeview), 0);
         renderer = gtk_cell_renderer_pixbuf_new ();
