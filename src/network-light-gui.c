@@ -32,6 +32,8 @@
 #define ON_FILE    "pixmaps/network-light-on.png"
 
 static GladeXML  *glade_xml;
+static GtkWidget *main_window;
+static GtkWidget *about_dialog;
 static GdkPixbuf *on_pixbuf;
 static GdkPixbuf *off_pixbuf;
 
@@ -200,8 +202,6 @@ gboolean
 init_ui (gint   *argc,
          gchar **argv[])
 {
-        GtkWidget *main_window;
-        GtkWidget *about_dialog;
         GdkPixbuf *icon_pixbuf;
         gchar     *glade_path = NULL;
 
@@ -273,5 +273,9 @@ void
 deinit_ui (void)
 {
         g_object_unref (glade_xml);
+        gtk_widget_destroy (main_window);
+        gtk_widget_destroy (about_dialog);
+        g_object_unref (on_pixbuf);
+        g_object_unref (off_pixbuf);
 }
 

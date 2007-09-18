@@ -32,4 +32,7 @@ run_action_dialog       (GUPnPServiceActionInfo         *action_info,
 void
 init_action_dialog      (GladeXML *glade_xml);
 
+void
+deinit_action_dialog    (void);
+
 #endif /* __GUPNP_UNIVERSAL_CP_ACTIONDIALOG_H__ */

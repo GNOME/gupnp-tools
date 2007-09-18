@@ -199,6 +199,10 @@ setup_details_treeview (GladeXML *glade_xml)
         popup = glade_xml_get_widget (glade_xml, "details-popup");
         g_assert (popup != NULL);
 
+        g_object_weak_ref (G_OBJECT (treeview),
+                           (GWeakNotify) gtk_widget_destroy,
+                           popup);
+
         model = create_details_treemodel ();
         g_assert (model != NULL);
 

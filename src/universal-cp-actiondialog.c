@@ -793,3 +793,9 @@ init_action_dialog (GladeXML *glade_xml)
                                    get_icon_by_id (ICON_ACTION));
 }
 
+void
+deinit_action_dialog (void)
+{
+        gtk_widget_destroy (dialog);
+}
+

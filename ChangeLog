@@ -1,6 +1,18 @@
 2007-09-18  Zeeshan Ali  <zeenix@gstreamer.net>
 
 	* src/network-light-gui.c:
+	* src/universal-cp-actiondialog.c:
+	* src/universal-cp-actiondialog.h:
+	* src/universal-cp-detailstreeview.c:
+	* src/universal-cp-devicetreeview.c:
+	* src/universal-cp-eventtreeview.c:
+	* src/universal-cp-gui.c:
+
+	Some more object ref leakage fixes.
+
+2007-09-18  Zeeshan Ali  <zeenix@gstreamer.net>
+
+	* src/network-light-gui.c:
 	* src/universal-cp-gui.c:
 
 	Set the version string on the about dialogs.

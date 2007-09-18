@@ -320,6 +320,11 @@ setup_event_treeview (GladeXML *glade_xml)
         g_assert (copy_event_menuitem != NULL);
         popup = glade_xml_get_widget (glade_xml, "event-popup");
         g_assert (popup != NULL);
+
+        g_object_weak_ref (G_OBJECT (treeview),
+                           (GWeakNotify) gtk_widget_destroy,
+                           popup);
+
         scrolled_window = glade_xml_get_widget (glade_xml,
                                                 "event-scrolledwindow");
         g_assert (scrolled_window != NULL);

@@ -619,6 +619,9 @@ setup_device_treeview (GladeXML *glade_xml)
         popup = glade_xml_get_widget (glade_xml, "device-popup");
         g_assert (popup != NULL);
 
+        g_object_weak_ref (G_OBJECT (treeview),
+                           (GWeakNotify) gtk_widget_destroy,
+                           popup);
         subscribe_menuitem = glade_xml_get_widget (glade_xml,
                                                    "subscribe-to-events");
         g_assert (subscribe_menuitem != NULL);

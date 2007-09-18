@@ -166,8 +166,9 @@ init_ui (gint   *argc,
 void
 deinit_ui (void)
 {
-        deinit_icons ();
         g_object_unref (glade_xml);
         gtk_widget_destroy (main_window);
+        deinit_action_dialog ();
+        deinit_icons ();
 }
 
