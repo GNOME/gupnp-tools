@@ -1,5 +1,11 @@
 2007-09-18  Zeeshan Ali  <zeenix@gstreamer.net>
 
+	* NEWS:
+
+	Update the NEWS file for 0.2 release.
+
+2007-09-18  Zeeshan Ali  <zeenix@gstreamer.net>
+
 	* src/network-light-gui.c:
 	* src/universal-cp-actiondialog.c:
 	* src/universal-cp-actiondialog.h:

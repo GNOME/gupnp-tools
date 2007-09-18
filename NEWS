@@ -1,3 +1,21 @@
+0.2
+===
+
+This release features Network Light, a UPnP-enabled software-based light bulb
+that provides Switch Power and Dimming services, as defined by UPnP forum as
+'DimmableLight v1.0". It is mainly intended to be a simple example of a UPnP
+device based on GUPnP and a demonstration of simplistic yet powerful API of
+GUPnP. It can also be used to debug generic and DimmableLight control points.
+
+Changes to Universal Control Point in this release:
+
+- Use of gtk stock icons wherever appropriate.
+- New cool icons from Lapo Calamandrei, licensed under GPL
+- Use icon from the Device, if available, to represent it.
+- Services are subscribed to, by default.
+- Ability to copy&paste details and events.
+- Lots of code cleanup and refactoring and misc fixes.
+
 0.1.2
 =====
 
