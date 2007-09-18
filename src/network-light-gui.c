@@ -254,6 +254,8 @@ init_ui (gint   *argc,
         gtk_window_set_icon (GTK_WINDOW (about_dialog), icon_pixbuf);
         gtk_about_dialog_set_logo (GTK_ABOUT_DIALOG (about_dialog),
                                    icon_pixbuf);
+        gtk_about_dialog_set_version (GTK_ABOUT_DIALOG (about_dialog),
+                                      VERSION);
 
         g_object_unref (icon_pixbuf);
 

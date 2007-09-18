@@ -1,5 +1,12 @@
 2007-09-18  Zeeshan Ali  <zeenix@gstreamer.net>
 
+	* src/network-light-gui.c:
+	* src/universal-cp-gui.c:
+
+	Set the version string on the about dialogs.
+
+2007-09-18  Zeeshan Ali  <zeenix@gstreamer.net>
+
 	* configure.ac:
 
 	Bump up the version to 0.2.

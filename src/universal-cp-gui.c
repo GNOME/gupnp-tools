@@ -92,6 +92,7 @@ gboolean
 init_ui (gint   *argc,
          gchar **argv[])
 {
+        GtkWidget *about_dialog;
         GtkWidget *hpaned;
         GtkWidget *vpaned;
         gint       window_width, window_height;
@@ -122,9 +123,12 @@ init_ui (gint   *argc,
                 return FALSE;
 
         main_window = glade_xml_get_widget (glade_xml, "main-window");
+        about_dialog = glade_xml_get_widget (glade_xml, "about-dialog");
         hpaned = glade_xml_get_widget (glade_xml, "main-window-hpaned");
         vpaned = glade_xml_get_widget (glade_xml, "main-window-vpaned");
+
         g_assert (main_window != NULL);
+        g_assert (about_dialog != NULL);
         g_assert (hpaned != NULL);
         g_assert (vpaned != NULL);
 
@@ -134,6 +138,9 @@ init_ui (gint   *argc,
         gtk_window_set_default_size (GTK_WINDOW (main_window),
                                      window_width,
                                      window_height);
+
+        gtk_about_dialog_set_version (GTK_ABOUT_DIALOG (about_dialog),
+                                      VERSION);
 
         glade_xml_signal_autoconnect (glade_xml);
 
