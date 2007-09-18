@@ -1,5 +1,11 @@
 2007-09-18  Zeeshan Ali  <zeenix@gstreamer.net>
 
+	* configure.ac:
+
+	Bump up the version to 0.2.
+
+2007-09-18  Zeeshan Ali  <zeenix@gstreamer.net>
+
 	* README:
 	
 	Update the README.
