@@ -1,3 +1,9 @@
+2007-09-20  Zeeshan Ali  <zeenix@gstreamer.net>
+
+	* src/universal-cp-devicetreeview.c:
+
+	Fix a device proxy ref leak.
+
 2007-09-18  Zeeshan Ali  <zeenix@gstreamer.net>
 
 	* NEWS:

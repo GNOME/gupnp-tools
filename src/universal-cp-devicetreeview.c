@@ -63,19 +63,22 @@ find_device (GtkTreeModel *model,
                                     2, &info,
                                     5, &icon_type, -1);
 
-                if (info && icon_type == ICON_DEVICE) {
-                        const char *device_udn;
+                if (info) {
+                        if (icon_type == ICON_DEVICE) {
+                                const char *device_udn;
 
-                        device_udn = gupnp_device_info_get_udn (info);
+                                device_udn = gupnp_device_info_get_udn (info);
 
-                        if (device_udn && strcmp (device_udn, udn) == 0) {
-                                found = TRUE;
-                                break;
+                                if (device_udn &&
+                                    strcmp (device_udn, udn) == 0)
+                                        found = TRUE;
                         }
+
+                        g_object_unref (info);
                 }
 
-                if (info)
-                        g_object_unref (info);
+                if (found)
+                        break;
 
                 /* recurse into embedded-devices */
                 found = find_device (model, udn, iter, &tmp);
