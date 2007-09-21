@@ -156,11 +156,11 @@ schedule_icon_update (GUPnPDeviceInfo *info)
 
         data->info = info;
 
+        pending_gets = g_list_prepend (pending_gets, data);
         soup_session_queue_message (session,
                                     data->message,
                                     (SoupMessageCallbackFn) got_icon_url,
                                     data);
-        pending_gets = g_list_prepend (pending_gets, data);
 
         g_free (icon_url);
 }
