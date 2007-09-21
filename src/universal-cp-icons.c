@@ -47,8 +47,6 @@ typedef struct {
 static void
 get_icon_url_data_free (GetIconURLData *data)
 {
-        pending_gets = g_list_remove (pending_gets, data);
-
         g_free (data->mime_type);
         g_slice_free (GetIconURLData, data);
 }
@@ -115,6 +113,7 @@ got_icon_url (SoupMessage    *msg,
                 }
         }
 
+        pending_gets = g_list_remove (pending_gets, data);
         get_icon_url_data_free (data);
 }
 
@@ -182,8 +181,7 @@ unschedule_icon_update (GUPnPDeviceInfo *info)
                                                  SOUP_STATUS_CANCELLED);
                         soup_session_cancel_message (session,
                                                      data->message);
-
-                        get_icon_url_data_free (data);
+                        break;
                 }
         }
 }
@@ -280,8 +278,6 @@ deinit_icons (void)
                 soup_message_set_status (data->message,
                                          SOUP_STATUS_CANCELLED);
                 soup_session_cancel_message (session, data->message);
-
-                get_icon_url_data_free (data);
         }
 
         g_object_unref (session);

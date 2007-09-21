@@ -2,6 +2,14 @@
 
 	* src/universal-cp-icons.c:
 
+	- Move removal of pending GET request to the GET callback.
+	- Free the GET request data only at the end of the GET callback.
+	- A small optimization.
+
+2007-09-21  Zeeshan Ali  <zeenix@gstreamer.net>
+
+	* src/universal-cp-icons.c:
+
 	Add pending GET requests to pending_gets before sending off the
 	message.
 
