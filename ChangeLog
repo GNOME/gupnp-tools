@@ -1,3 +1,9 @@
+2007-09-23  Zeeshan Ali  <zeenix@gstreamer.net>
+
+	* configure.ac:
+
+	Require gupnp 0.6.
+
 2007-09-21  Zeeshan Ali  <zeenix@gstreamer.net>
 
 	* src/universal-cp-icons.c:
