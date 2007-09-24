@@ -18,21 +18,20 @@
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  */
 
-#ifndef __GUPNP_AV_CP_GUI_H__
-#define __GUPNP_AV_CP_GUI_H__
+#ifndef __AV_CP_RENDERERCOMBO_H__
+#define __AV_CP_RENDERERCOMBO_H__
 
-#include <libgupnp/gupnp-control-point.h>
+#include <config.h>
 #include <gtk/gtk.h>
 #include <glade/glade.h>
 
-#include "av-cp-playlisttreeview.h"
-
-gboolean
-init_ui                         (gint             *argc,
-                                 gchar           **argv[]);
+void
+add_media_renderer              (GUPnPDeviceProxy *renderer);
 
 void
-deinit_ui                       (void);
+remove_media_renderer           (GUPnPDeviceProxy *renderer);
 
-#endif /* __GUPNP_AV_CP_GUI_H__ */
+void
+setup_renderer_combo            (GladeXML                   *glade_xml);
 
+#endif /* __AV_CP_RENDERERCOMBO_H__ */

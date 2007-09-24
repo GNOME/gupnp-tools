@@ -19,9 +19,11 @@
  */
 
 #include <libgupnp/gupnp-control-point.h>
-#include "av-cp-gui.h"
 #include <string.h>
 #include <stdlib.h>
+
+#include "av-cp-gui.h"
+#include "av-cp-renderercombo.h"
 
 #define MEDIA_RENDERER_V1 "urn:schemas-upnp-org:device:MediaRenderer:1"
 #define MEDIA_RENDERER_V2 "urn:schemas-upnp-org:device:MediaRenderer:2"
@@ -78,7 +80,7 @@ init_upnp (void)
         }
 
         /* We're interested in everything */
-        cp = gupnp_control_point_new (context, "upnp:all");
+        cp = gupnp_control_point_new (context, "ssdp:all");
 
         g_signal_connect (cp,
                           "device-proxy-available",

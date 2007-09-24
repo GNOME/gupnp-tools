@@ -50,6 +50,18 @@
 
 	Fix a device proxy ref leak.
 
+2007-09-20  Zeeshan Ali  <zeenix@gstreamer.net>
+
+	* src/Makefile.am:
+	* src/av-cp-gui.c:
+	* src/av-cp-gui.h:
+	* src/av-cp-renderercombo.c:
+	* src/av-cp-renderercombo.h:
+	* src/av-cp.c:
+	* src/gupnp-av-cp.glade:
+
+	Implement MediaRenderer choice as a combobox.
+
 2007-09-19  Zeeshan Ali  <zeenix@gstreamer.net>
 
 	* src/av-cp-gui.c:

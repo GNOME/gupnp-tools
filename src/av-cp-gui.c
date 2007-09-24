@@ -24,6 +24,7 @@
 
 #include "av-cp-gui.h"
 #include "av-cp-playlisttreeview.h"
+#include "av-cp-renderercombo.h"
 #include "av-cp.h"
 
 #define GLADE_FILE "gupnp-av-cp.glade"
@@ -31,29 +32,6 @@
 static GladeXML  *glade_xml;
 static GtkWidget *main_window;
 static GtkWidget *about_dialog;
-static GtkWidget *device_menu;
-static GtkWidget *device_menuitem;
-
-void
-add_media_renderer (GUPnPDeviceProxy *renderer)
-{
-}
-
-void
-remove_media_renderer (GUPnPDeviceProxy *renderer)
-{
-}
-
-static void
-setup_menus (GladeXML *glade_xml)
-{
-        device_menuitem = glade_xml_get_widget (glade_xml, "device-menuitem");
-        g_assert (device_menuitem != NULL);
-
-        device_menu = gtk_menu_new ();
-        gtk_menu_item_set_submenu (GTK_MENU_ITEM (device_menuitem),
-                                   device_menu);
-}
 
 gboolean
 on_delete_event (GtkWidget *widget,
@@ -69,6 +47,7 @@ gboolean
 init_ui (gint   *argc,
          gchar **argv[])
 {
+        GtkWidget *renderer_combo;
         gint       window_width, window_height;
         gchar     *glade_path = NULL;
 
@@ -99,6 +78,8 @@ init_ui (gint   *argc,
         g_assert (main_window != NULL);
         about_dialog = glade_xml_get_widget (glade_xml, "about-dialog");
         g_assert (about_dialog != NULL);
+        renderer_combo = glade_xml_get_widget (glade_xml, "renderer-combobox");
+        g_assert (renderer_combo != NULL);
 
         /* 40% of the screen but don't get bigger than 1000x800 */
         window_width = CLAMP ((gdk_screen_width () * 40 / 100), 10, 1000);
@@ -113,7 +94,7 @@ init_ui (gint   *argc,
         glade_xml_signal_autoconnect (glade_xml);
 
         setup_playlist_treeview (glade_xml);
-        setup_menus (glade_xml);
+        setup_renderer_combo (glade_xml);
 
         gtk_widget_show_all (main_window);
 
