@@ -106,10 +106,10 @@ deinit_upnp (void)
 void
 application_exit (void)
 {
+        gtk_main_quit ();
+
         deinit_upnp ();
         deinit_ui ();
-
-        gtk_main_quit ();
 }
 
 gint

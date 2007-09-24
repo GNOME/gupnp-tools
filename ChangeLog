@@ -52,6 +52,12 @@
 
 2007-09-20  Zeeshan Ali  <zeenix@gstreamer.net>
 
+	* src/av-cp.c:
+
+	Exit the mainloop before unrefing the objects.
+
+2007-09-20  Zeeshan Ali  <zeenix@gstreamer.net>
+
 	* src/gupnp-av-cp.glade:
 
 	'Renderer' label and combobox shouldn't be homogeneous.
