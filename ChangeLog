@@ -4,6 +4,15 @@
 
 	Require gupnp 0.6.
 
+2007-09-23  Zeeshan Ali  <zeenix@gstreamer.net>
+
+	* src/av-cp-gui.c:
+	* src/gupnp-av-cp.glade:
+	* src/icons.c:
+	* src/icons.h:
+
+	Icons for min and max volume around the volume vscale.
+
 2007-09-22  Zeeshan Ali  <zeenix@gstreamer.net>
 
 	* src/av-cp-renderercombo.c:

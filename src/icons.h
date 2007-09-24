@@ -37,6 +37,8 @@ typedef enum
         ICON_NETWORK,
         ICON_ACTION,
         ICON_VARIABLES,
+        ICON_MIN_VOLUME,
+        ICON_MAX_VOLUME,
         ICON_LAST
 } IconID;
 

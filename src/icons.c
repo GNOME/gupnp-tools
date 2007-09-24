@@ -217,6 +217,46 @@ get_pixbuf_from_stock (const char *stock_id)
         return pixbuf;
 }
 
+static GdkPixbuf *
+get_pixbuf_from_theme (const char *icon_name,
+                       const char *fallback_icon_name)
+{
+        GdkScreen    *screen;
+        GtkIconTheme *theme;
+        GdkPixbuf    *pixbuf;
+        GError       *error;
+
+        screen = gdk_screen_get_default ();
+        theme = gtk_icon_theme_get_for_screen (screen);
+
+        error = NULL;
+        pixbuf = gtk_icon_theme_load_icon (theme,
+                                           icon_name,
+                                           PREFERED_WIDTH,
+                                           PREFERED_HEIGHT,
+                                           &error);
+        if (pixbuf == NULL) {
+                g_warning ("Failed to load icon %s: %s",
+                           fallback_icon_name,
+                           error->message);
+                g_error_free (error);
+
+                pixbuf = gtk_icon_theme_load_icon (theme,
+                                                   fallback_icon_name,
+                                                   PREFERED_WIDTH,
+                                                   PREFERED_HEIGHT,
+                                                   &error);
+
+                if (pixbuf == NULL) {
+                        g_warning ("Failed to load icon %s: %s",
+                                   fallback_icon_name,
+                                   error->message);
+                }
+        }
+
+        return pixbuf;
+}
+
 void
 init_icons (void)
 {
@@ -234,6 +274,16 @@ init_icons (void)
                 GTK_STOCK_NETWORK,       /* ICON_NETWORK   */
                 GTK_STOCK_EXECUTE,       /* ICON_ACTION    */
                 GTK_STOCK_DIRECTORY      /* ICON_VARIABLES */
+        };
+
+        char *theme_names[] = {
+                "audio-volume-muted",          /* ICON_MIN_VOLUME */
+                "audio-volume-high",           /* ICON_MAX_VOLUME */
+        };
+
+        char *fallback_theme_names[] = {
+                "stock_volume-0",             /* ICON_MIN_VOLUME */
+                "stock_volume-max",           /* ICON_MAX_VOLUME */
         };
 
         for (i = 0; i < ICON_MISSING; i++) {
@@ -254,10 +304,17 @@ init_icons (void)
                 g_assert (icons[i] != NULL);
         }
 
-        for (j = 0; i < ICON_LAST; i++, j++) {
+        for (j = 0; i < ICON_MIN_VOLUME; i++, j++) {
                 icons[i] = get_pixbuf_from_stock (stock_ids[j]);
                 g_assert (icons[i] != NULL);
         }
+
+        for (j = 0; i < ICON_LAST; i++, j++) {
+                icons[i] = get_pixbuf_from_theme (theme_names[j],
+                                                  fallback_theme_names[j]);
+                g_assert (icons[i] != NULL);
+        }
+
 
         session = soup_session_async_new ();
         g_assert (session != NULL);

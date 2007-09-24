@@ -44,6 +44,25 @@ on_delete_event (GtkWidget *widget,
         return TRUE;
 }
 
+static void
+setup_icons (GladeXML *glade_xml)
+{
+        GtkWidget *volume_min;
+        GtkWidget *volume_max;
+
+        init_icons ();
+
+        volume_min = glade_xml_get_widget (glade_xml, "volume-min-image");
+        g_assert (volume_min != NULL);
+        volume_max = glade_xml_get_widget (glade_xml, "volume-max-image");
+        g_assert (volume_max != NULL);
+
+        gtk_image_set_from_pixbuf (GTK_IMAGE (volume_min),
+                                   get_icon_by_id (ICON_MIN_VOLUME));
+        gtk_image_set_from_pixbuf (GTK_IMAGE (volume_max),
+                                   get_icon_by_id (ICON_MAX_VOLUME));
+}
+
 gboolean
 init_ui (gint   *argc,
          gchar **argv[])
@@ -94,7 +113,7 @@ init_ui (gint   *argc,
 
         glade_xml_signal_autoconnect (glade_xml);
 
-        init_icons ();
+        setup_icons (glade_xml);
         setup_playlist_treeview (glade_xml);
         setup_renderer_combo (glade_xml);
 
