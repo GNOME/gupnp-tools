@@ -53,6 +53,13 @@
 2007-09-19  Zeeshan Ali  <zeenix@gstreamer.net>
 
 	* src/av-cp-gui.c:
+	* src/gupnp-av-cp.glade:
+
+	Add menu for MediaRenderer Devices.
+
+2007-09-19  Zeeshan Ali  <zeenix@gstreamer.net>
+
+	* src/av-cp-gui.c:
 
 	- Make about-dialog public static member of the gui module.
 	- Destroy the about-dialog while the gui module de-initializes.

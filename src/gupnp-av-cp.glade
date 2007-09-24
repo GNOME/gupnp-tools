@@ -30,13 +30,13 @@
 	  <property name="visible">True</property>
 
 	  <child>
-	    <widget class="GtkMenuItem" id="file_menuitem">
+	    <widget class="GtkMenuItem" id="file-menuitem">
 	      <property name="visible">True</property>
 	      <property name="label" translatable="yes">_File</property>
 	      <property name="use_underline">True</property>
 
 	      <child>
-		<widget class="GtkMenu" id="file_menuitem_menu">
+		<widget class="GtkMenu" id="file-menuitem_menu">
 
 		  <child>
 		    <widget class="GtkImageMenuItem" id="quit">
@@ -52,9 +52,9 @@
 	  </child>
 
 	  <child>
-	    <widget class="GtkMenuItem" id="devices_menuitem">
+	    <widget class="GtkMenuItem" id="device-menuitem">
 	      <property name="visible">True</property>
-	      <property name="label" translatable="yes">Devices</property>
+	      <property name="label" translatable="yes">Device</property>
 	      <property name="use_underline">True</property>
 	    </widget>
 	  </child>

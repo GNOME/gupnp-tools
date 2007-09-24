@@ -31,6 +31,8 @@
 static GladeXML  *glade_xml;
 static GtkWidget *main_window;
 static GtkWidget *about_dialog;
+static GtkWidget *device_menu;
+static GtkWidget *device_menuitem;
 
 void
 add_media_renderer (GUPnPDeviceProxy *renderer)
@@ -40,6 +42,17 @@ add_media_renderer (GUPnPDeviceProxy *renderer)
 void
 remove_media_renderer (GUPnPDeviceProxy *renderer)
 {
+}
+
+static void
+setup_menus (GladeXML *glade_xml)
+{
+        device_menuitem = glade_xml_get_widget (glade_xml, "device-menuitem");
+        g_assert (device_menuitem != NULL);
+
+        device_menu = gtk_menu_new ();
+        gtk_menu_item_set_submenu (GTK_MENU_ITEM (device_menuitem),
+                                   device_menu);
 }
 
 gboolean
@@ -100,6 +113,7 @@ init_ui (gint   *argc,
         glade_xml_signal_autoconnect (glade_xml);
 
         setup_playlist_treeview (glade_xml);
+        setup_menus (glade_xml);
 
         gtk_widget_show_all (main_window);
 
