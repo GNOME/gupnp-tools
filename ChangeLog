@@ -6,6 +6,13 @@
 
 2007-09-21  Zeeshan Ali  <zeenix@gstreamer.net>
 
+	* src/gupnp-av-cp.glade:
+
+	Remove the native labels of scales and keep an initially empty label
+	for displaying media position.
+
+2007-09-21  Zeeshan Ali  <zeenix@gstreamer.net>
+
 	* src/av-cp-renderercombo.c:
 
 	Fix the code to set the active renderer on addition.
