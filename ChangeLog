@@ -54,6 +54,12 @@
 
 	* src/gupnp-av-cp.glade:
 
+	'Renderer' label and combobox shouldn't be homogeneous.
+
+2007-09-20  Zeeshan Ali  <zeenix@gstreamer.net>
+
+	* src/gupnp-av-cp.glade:
+
 	Put all buttons into a button box.
 
 2007-09-20  Zeeshan Ali  <zeenix@gstreamer.net>
