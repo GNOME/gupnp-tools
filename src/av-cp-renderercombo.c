@@ -187,7 +187,10 @@ setup_renderer_combo_text_cell (GtkWidget *renderer_combo)
 
         renderer = gtk_cell_renderer_text_new ();
 
-        g_object_set (renderer, "xalign", 0.0, NULL);
+        g_object_set (renderer,
+                      "xalign", 0.0,
+                      "xpad", 6,
+                      NULL);
         gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (renderer_combo),
                                     renderer,
                                     TRUE);
