@@ -30,6 +30,7 @@
 
 static GladeXML  *glade_xml;
 static GtkWidget *main_window;
+static GtkWidget *about_dialog;
 
 void
 add_media_renderer (GUPnPDeviceProxy *renderer)
@@ -55,7 +56,6 @@ gboolean
 init_ui (gint   *argc,
          gchar **argv[])
 {
-        GtkWidget *about_dialog;
         gint       window_width, window_height;
         gchar     *glade_path = NULL;
 
@@ -83,9 +83,9 @@ init_ui (gint   *argc,
                 return FALSE;
 
         main_window = glade_xml_get_widget (glade_xml, "main-window");
-        about_dialog = glade_xml_get_widget (glade_xml, "about-dialog");
-
         g_assert (main_window != NULL);
+        about_dialog = glade_xml_get_widget (glade_xml, "about-dialog");
+        g_assert (about_dialog != NULL);
 
         /* 40% of the screen but don't get bigger than 1000x800 */
         window_width = CLAMP ((gdk_screen_width () * 40 / 100), 10, 1000);
@@ -111,5 +111,6 @@ deinit_ui (void)
 {
         g_object_unref (glade_xml);
         gtk_widget_destroy (main_window);
+        gtk_widget_destroy (about_dialog);
 }
 
