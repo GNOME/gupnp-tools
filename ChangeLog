@@ -6,6 +6,15 @@
 
 2007-09-22  Zeeshan Ali  <zeenix@gstreamer.net>
 
+	* src/Makefile.am:
+	* src/av-cp-gui.c:
+	* src/av-cp-renderercombo.c:
+	* src/av-cp-renderercombo.h:
+
+	Display icons of renderer devices in the renderer combo as well.
+
+2007-09-22  Zeeshan Ali  <zeenix@gstreamer.net>
+
 	* src/av-cp-renderercombo.c:
 
 	Implement removal of renderer from the combobox.

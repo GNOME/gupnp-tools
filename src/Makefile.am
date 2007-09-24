@@ -40,10 +40,12 @@ gupnp_av_cp_SOURCES = av-cp.c \
 		      av-cp-gui.c \
 		      av-cp-playlisttreeview.c \
 		      av-cp-renderercombo.c \
+		      icons.c \
 		      av-cp.h \
 		      av-cp-gui.h \
 		      av-cp-playlisttreeview.h \
-		      av-cp-renderercombo.h
+		      av-cp-renderercombo.h \
+		      icons.h
 
 gupnp_av_cp_LDADD = $(LIBGLADE_LIBS) $(LIBGUPNP_LIBS)
 gupnp_av_cp_LDFLAGS = -export-dynamic

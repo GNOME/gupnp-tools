@@ -26,6 +26,7 @@
 #include "av-cp-playlisttreeview.h"
 #include "av-cp-renderercombo.h"
 #include "av-cp.h"
+#include "icons.h"
 
 #define GLADE_FILE "gupnp-av-cp.glade"
 
@@ -93,6 +94,7 @@ init_ui (gint   *argc,
 
         glade_xml_signal_autoconnect (glade_xml);
 
+        init_icons ();
         setup_playlist_treeview (glade_xml);
         setup_renderer_combo (glade_xml);
 
@@ -107,5 +109,6 @@ deinit_ui (void)
         g_object_unref (glade_xml);
         gtk_widget_destroy (main_window);
         gtk_widget_destroy (about_dialog);
+        deinit_icons ();
 }
 

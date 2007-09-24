@@ -26,6 +26,9 @@
 #include <glade/glade.h>
 
 void
+update_device_icon              (GUPnPDeviceInfo *info,
+                                 GdkPixbuf       *icon);
+void
 add_media_renderer              (GUPnPDeviceProxy *renderer);
 
 void
