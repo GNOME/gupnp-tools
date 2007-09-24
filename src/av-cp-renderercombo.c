@@ -77,7 +77,6 @@ add_media_renderer (GUPnPDeviceProxy *renderer)
         GtkTreeIter      iter;
         const char      *udn;
         char            *name;
-        gboolean         was_empty;
 
         info = GUPNP_DEVICE_INFO (renderer);
         combo = GTK_COMBO_BOX (renderer_combo);
@@ -90,12 +89,16 @@ add_media_renderer (GUPnPDeviceProxy *renderer)
         if (name == NULL)
                 name = g_strdup (udn);
 
-        if (gtk_combo_box_get_active (combo) == -1)
-                was_empty = TRUE;
-
         model = gtk_combo_box_get_model (combo);
 
         if (!find_renderer (model, udn, &iter)) {
+                gboolean was_empty;
+
+                if (gtk_combo_box_get_active (combo) == -1)
+                        was_empty = TRUE;
+                else
+                        was_empty = FALSE;
+
                 memset (&iter, 0, sizeof (iter));
                 gtk_list_store_insert_with_values
                                 (GTK_LIST_STORE (model),

@@ -6,6 +6,12 @@
 
 2007-09-21  Zeeshan Ali  <zeenix@gstreamer.net>
 
+	* src/av-cp-renderercombo.c:
+
+	Fix the code to set the active renderer on addition.
+
+2007-09-21  Zeeshan Ali  <zeenix@gstreamer.net>
+
 	* src/av-cp.c:
 
 	Exit the mainloop 'after' unrefing the objects.
