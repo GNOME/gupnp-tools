@@ -21,6 +21,12 @@
 
 2007-09-20  Zeeshan Ali  <zeenix@gstreamer.net>
 
+	* src/gupnp-av-cp.glade:
+
+	show about-dialog when the relevent menuitem is activated.
+
+2007-09-20  Zeeshan Ali  <zeenix@gstreamer.net>
+
 	* src/network-light-gui.c:
 	* src/network-light-gui.h:
 	* src/network-light-upnp.c:
