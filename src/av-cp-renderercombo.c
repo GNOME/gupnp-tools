@@ -27,28 +27,87 @@
 
 static GtkWidget *renderer_combo;
 
+static gboolean
+find_renderer (GtkTreeModel *model,
+               const char   *udn,
+               GtkTreeIter  *iter)
+{
+        gboolean found = FALSE;
+        gboolean more = TRUE;
+
+        g_assert (udn != NULL);
+        g_assert (iter != NULL);
+
+        more = gtk_tree_model_get_iter_first (model, iter);
+
+        while (more) {
+                GUPnPDeviceInfo *info;
+
+                gtk_tree_model_get (model,
+                                    iter,
+                                    1, &info,
+                                    -1);
+
+                if (info) {
+                        const char *device_udn;
+
+                        device_udn = gupnp_device_info_get_udn (info);
+
+                        if (strcmp (device_udn, udn) == 0)
+                                found = TRUE;
+
+                        g_object_unref (info);
+                }
+
+                if (found)
+                        break;
+
+                more = gtk_tree_model_iter_next (model, iter);
+        }
+
+        return found;
+}
+
 void
 add_media_renderer (GUPnPDeviceProxy *renderer)
 {
         GUPnPDeviceInfo *info;
+        GtkComboBox     *combo;
         GtkTreeModel    *model;
+        GtkTreeIter      iter;
+        const char      *udn;
         char            *name;
+        gboolean         was_empty;
 
         info = GUPNP_DEVICE_INFO (renderer);
+        combo = GTK_COMBO_BOX (renderer_combo);
+
+        udn = gupnp_device_info_get_udn (info);
+        if (udn == NULL)
+                return;
 
         name = gupnp_device_info_get_friendly_name (info);
         if (name == NULL)
-                name = g_strdup (gupnp_device_info_get_udn (info));
-        if (name == NULL)
-                return;
+                name = g_strdup (udn);
 
-        model = gtk_combo_box_get_model (GTK_COMBO_BOX (renderer_combo));
-        gtk_list_store_insert_with_values (GTK_LIST_STORE (model),
-                                           NULL,
-                                           -1,
-                                           0, name,
-                                           1, renderer,
-                                           -1);
+        if (gtk_combo_box_get_active (combo) == -1)
+                was_empty = TRUE;
+
+        model = gtk_combo_box_get_model (combo);
+
+        if (!find_renderer (model, udn, &iter)) {
+                memset (&iter, 0, sizeof (iter));
+                gtk_list_store_insert_with_values
+                                (GTK_LIST_STORE (model),
+                                 &iter,
+                                 -1,
+                                 0, name,
+                                 1, renderer,
+                                 -1);
+                if (was_empty)
+                        gtk_combo_box_set_active_iter (combo, &iter);
+        }
+
         g_free (name);
 }
 
