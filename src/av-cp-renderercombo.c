@@ -83,7 +83,7 @@ update_device_icon (GUPnPDeviceInfo *info,
         udn = gupnp_device_info_get_udn (info);
 
         if (find_renderer (model, udn, &iter)) {
-                gtk_tree_store_set (GTK_TREE_STORE (model),
+                gtk_list_store_set (GTK_LIST_STORE (model),
                                     &iter,
                                     0, icon,
                                     -1);

@@ -6,6 +6,12 @@
 
 2007-09-22  Zeeshan Ali  <zeenix@gstreamer.net>
 
+	* src/av-cp-renderercombo.c:
+
+	Fix a copy&paste mistake.
+
+2007-09-22  Zeeshan Ali  <zeenix@gstreamer.net>
+
 	* src/Makefile.am:
 	* src/av-cp-gui.c:
 	* src/av-cp-renderercombo.c:
