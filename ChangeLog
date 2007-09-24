@@ -21,6 +21,12 @@
 
 2007-09-20  Zeeshan Ali  <zeenix@gstreamer.net>
 
+	* src/gupnp-av-cp.glade:
+
+	Some random UI fixes and re-arrangment.
+
+2007-09-20  Zeeshan Ali  <zeenix@gstreamer.net>
+
 	* src/av-cp-gui.c:
 	* src/av-cp-gui.h:
 	* src/av-cp-playlisttreeview.c:
