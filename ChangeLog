@@ -4,6 +4,12 @@
 
 	Require gupnp 0.6.
 
+2007-09-22  Zeeshan Ali  <zeenix@gstreamer.net>
+
+	* src/av-cp-renderercombo.c:
+
+	Implement removal of renderer from the combobox.
+
 2007-09-21  Zeeshan Ali  <zeenix@gstreamer.net>
 
 	* src/Makefile.am:

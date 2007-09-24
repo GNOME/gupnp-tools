@@ -117,6 +117,25 @@ add_media_renderer (GUPnPDeviceProxy *renderer)
 void
 remove_media_renderer (GUPnPDeviceProxy *renderer)
 {
+        GUPnPDeviceInfo *info;
+        GtkComboBox     *combo;
+        GtkTreeModel    *model;
+        GtkTreeIter      iter;
+        const char      *udn;
+
+        info = GUPNP_DEVICE_INFO (renderer);
+        combo = GTK_COMBO_BOX (renderer_combo);
+
+        udn = gupnp_device_info_get_udn (info);
+        if (udn == NULL)
+                return;
+
+        model = gtk_combo_box_get_model (combo);
+
+        if (find_renderer (model, udn, &iter)) {
+                gtk_list_store_remove (GTK_LIST_STORE (model), &iter);
+                gtk_combo_box_set_active (combo, 0);
+        }
 }
 
 static GtkTreeModel *
