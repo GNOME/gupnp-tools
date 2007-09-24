@@ -6,6 +6,12 @@
 
 2007-09-21  Zeeshan Ali  <zeenix@gstreamer.net>
 
+	* src/av-cp.c:
+
+	Exit the mainloop 'after' unrefing the objects.
+
+2007-09-21  Zeeshan Ali  <zeenix@gstreamer.net>
+
 	* src/universal-cp-icons.c:
 
 	- Move removal of pending GET request to the GET callback.
