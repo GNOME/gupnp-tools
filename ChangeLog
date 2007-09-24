@@ -52,6 +52,12 @@
 
 2007-09-20  Zeeshan Ali  <zeenix@gstreamer.net>
 
+	* src/gupnp-av-cp.glade:
+
+	Put all buttons into a button box.
+
+2007-09-20  Zeeshan Ali  <zeenix@gstreamer.net>
+
 	* src/Makefile.am:
 	* src/av-cp-gui.c:
 	* src/av-cp-gui.h:
