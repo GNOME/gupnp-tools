@@ -50,6 +50,19 @@
 
 	Fix a device proxy ref leak.
 
+2007-09-19  Zeeshan Ali  <zeenix@gstreamer.net>
+
+	* src/Makefile.am:
+	* src/av-cp-gui.c:
+	* src/av-cp-gui.h:
+	* src/av-cp-playlisttreeview.c:
+	* src/av-cp-playlisttreeview.h:
+	* src/av-cp.c:
+	* src/av-cp.h:
+	* src/gupnp-av-cp.glade:
+
+	Basic skeleton for AV Control Point.
+
 2007-09-18  Zeeshan Ali  <zeenix@gstreamer.net>
 
 	* NEWS:

@@ -2,12 +2,13 @@ SUBDIRS = pixmaps xml
 
 shareddir = $(datadir)/gupnp-tools
 dist_shared_DATA = $(srcdir)/gupnp-universal-cp.glade \
-		   $(srcdir)/gupnp-network-light.glade
+		   $(srcdir)/gupnp-network-light.glade \
+		   $(srcdir)/gupnp-av-cp.glade
 
 AM_CFLAGS = $(LIBGUPNP_CFLAGS) $(LIBGLADE_CFLAGS) -I$(top_srcdir) \
 	    -DDATA_DIR='"$(shareddir)"'
 
-bin_PROGRAMS = gupnp-universal-cp gupnp-network-light
+bin_PROGRAMS = gupnp-universal-cp gupnp-network-light gupnp-av-cp
 
 gupnp_universal_cp_SOURCES = universal-cp.c \
 			     universal-cp-gui.c \
@@ -34,5 +35,14 @@ gupnp_network_light_SOURCES = network-light.c \
 			      network-light-upnp.h
 gupnp_network_light_LDADD = $(LIBGLADE_LIBS) $(LIBGUPNP_LIBS)
 gupnp_network_light_LDFLAGS = -export-dynamic
+
+gupnp_av_cp_SOURCES = av-cp.c \
+		      av-cp-gui.c \
+		      av-cp-playlisttreeview.c \
+		      av-cp.h \
+		      av-cp-gui.h \
+		      av-cp-playlisttreeview.h
+gupnp_av_cp_LDADD = $(LIBGLADE_LIBS) $(LIBGUPNP_LIBS)
+gupnp_av_cp_LDFLAGS = -export-dynamic
 
 MAINTAINERCLEANFILES = Makefile.in
