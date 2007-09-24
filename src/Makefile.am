@@ -16,14 +16,14 @@ gupnp_universal_cp_SOURCES = universal-cp.c \
 			     universal-cp-detailstreeview.c \
 			     universal-cp-eventtreeview.c \
 			     universal-cp-actiondialog.c \
-			     universal-cp-icons.c \
+			     icons.c \
 			     universal-cp.h \
 			     universal-cp-gui.h \
 			     universal-cp-devicetreeview.h \
 			     universal-cp-detailstreeview.h \
 			     universal-cp-eventtreeview.h \
 			     universal-cp-actiondialog.h \
-			     universal-cp-icons.h
+			     icons.h
 gupnp_universal_cp_LDADD = $(LIBGLADE_LIBS) $(LIBGUPNP_LIBS)
 gupnp_universal_cp_LDFLAGS = -export-dynamic
 
@@ -44,6 +44,7 @@ gupnp_av_cp_SOURCES = av-cp.c \
 		      av-cp-gui.h \
 		      av-cp-playlisttreeview.h \
 		      av-cp-renderercombo.h
+
 gupnp_av_cp_LDADD = $(LIBGLADE_LIBS) $(LIBGUPNP_LIBS)
 gupnp_av_cp_LDFLAGS = -export-dynamic
 

@@ -23,7 +23,7 @@
 #include <config.h>
 
 #include "universal-cp-gui.h"
-#include "universal-cp-icons.h"
+#include "icons.h"
 #include "universal-cp-actiondialog.h"
 #include "universal-cp.h"
 

@@ -26,7 +26,7 @@
 #include "universal-cp-devicetreeview.h"
 #include "universal-cp-eventtreeview.h"
 #include "universal-cp-actiondialog.h"
-#include "universal-cp-icons.h"
+#include "icons.h"
 #include "universal-cp.h"
 
 #define GLADE_FILE "gupnp-universal-cp.glade"

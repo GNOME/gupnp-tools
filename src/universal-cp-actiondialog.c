@@ -24,7 +24,7 @@
 
 #include "universal-cp-gui.h"
 #include "universal-cp-devicetreeview.h"
-#include "universal-cp-icons.h"
+#include "icons.h"
 #include "universal-cp.h"
 
 static GtkWidget *dialog;

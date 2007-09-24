@@ -23,7 +23,7 @@
 #include <config.h>
 #include <libsoup/soup.h>
 
-#include "universal-cp-icons.h"
+#include "icons.h"
 #include "universal-cp-devicetreeview.h"
 
 #define PREFERED_DEPTH  32

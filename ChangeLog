@@ -6,6 +6,20 @@
 
 2007-09-21  Zeeshan Ali  <zeenix@gstreamer.net>
 
+	* src/Makefile.am:
+	* src/icons.c:
+	* src/icons.h:
+	* src/universal-cp-actiondialog.c:
+	* src/universal-cp-devicetreeview.c:
+	* src/universal-cp-gui.c:
+	* src/universal-cp-icons.c:
+	* src/universal-cp-icons.h:
+
+	Rename 'universal-cp-icons' module to 'icons' as other applications
+	will use it too.
+
+2007-09-21  Zeeshan Ali  <zeenix@gstreamer.net>
+
 	* src/gupnp-av-cp.glade:
 
 	Remove the native labels of scales and keep an initially empty label
