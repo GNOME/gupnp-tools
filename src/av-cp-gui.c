@@ -28,7 +28,7 @@
 #include "av-cp.h"
 #include "icons.h"
 
-#define GLADE_FILE "gupnp-av-cp.glade"
+#define GLADE_FILE DATA_DIR "/gupnp-av-cp.glade"
 
 static GladeXML  *glade_xml;
 static GtkWidget *main_window;
@@ -67,31 +67,17 @@ gboolean
 init_ui (gint   *argc,
          gchar **argv[])
 {
-        gchar *glade_path = NULL;
-        gint   window_width, window_height;
+        gint window_width, window_height;
 
         gtk_init (argc, argv);
         glade_init ();
         g_thread_init (NULL);
 
-        /* Try to fetch the glade file from the CWD first */
-        glade_path = GLADE_FILE;
-        if (!g_file_test (glade_path, G_FILE_TEST_EXISTS)) {
-                /* Then Try to fetch it from the system path */
-                glade_path = DATA_DIR "/" GLADE_FILE;
-
-                if (!g_file_test (glade_path, G_FILE_TEST_EXISTS))
-                        glade_path = NULL;
-        }
-
-        if (glade_path == NULL) {
+        glade_xml = glade_xml_new (GLADE_FILE, NULL, NULL);
+        if (glade_xml == NULL) {
                 g_critical ("Unable to load the GUI file %s", GLADE_FILE);
                 return FALSE;
         }
-
-        glade_xml = glade_xml_new (glade_path, NULL, NULL);
-        if (glade_xml == NULL)
-                return FALSE;
 
         main_window = glade_xml_get_widget (glade_xml, "main-window");
         g_assert (main_window != NULL);

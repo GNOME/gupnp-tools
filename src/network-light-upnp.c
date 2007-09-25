@@ -253,22 +253,14 @@ init_upnp (void)
 
         g_print ("Running on port %d\n", gupnp_context_get_port (context));
 
-	/* Parse device description file */
-	if (!g_file_test (DESCRIPTION_DOC, G_FILE_TEST_EXISTS)) {
-                /* Running installed */
-	        doc = xmlParseFile (DATA_DIR "/" DESCRIPTION_DOC);
-                gupnp_context_host_path (context, DATA_DIR, "");
-        } else {
-                /* Running uninstalled */
-	        doc = xmlParseFile (DESCRIPTION_DOC);
-                gupnp_context_host_path (context, ".", "");
-        }
-
+	doc = xmlParseFile (DATA_DIR "/" DESCRIPTION_DOC);
 	if (doc == NULL) {
 	        g_critical ("Unable to load the XML description file %s",
 			    DESCRIPTION_DOC);
                 return FALSE;
 	}
+
+        gupnp_context_host_path (context, DATA_DIR, "");
 
         /* Create root device */
         dev = gupnp_root_device_new (context,

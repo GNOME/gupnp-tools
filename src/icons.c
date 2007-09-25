@@ -287,19 +287,14 @@ init_icons (void)
         };
 
         for (i = 0; i < ICON_MISSING; i++) {
-                /* Try to fetch the pixmap from the CWD first */
-                icons[i] = gdk_pixbuf_new_from_file (file_names[i], NULL);
-                if (icons[i] == NULL) {
-                        char *pixmap_path;
+                char *pixmap_path;
 
-                        /* Then Try to fetch it from the system path */
-                        pixmap_path = g_build_filename (DATA_DIR,
-                                                        file_names[i],
-                                                        NULL);
+                pixmap_path = g_build_filename (DATA_DIR,
+                                                file_names[i],
+                                                NULL);
 
-                        icons[i] = gdk_pixbuf_new_from_file (pixmap_path, NULL);
-                        g_free (pixmap_path);
-                }
+                icons[i] = gdk_pixbuf_new_from_file (pixmap_path, NULL);
+                g_free (pixmap_path);
 
                 g_assert (icons[i] != NULL);
         }

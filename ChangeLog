@@ -1,5 +1,15 @@
 2007-09-25  Zeeshan Ali  <zeenix@gstreamer.net>
 
+	* src/av-cp-gui.c:
+	* src/icons.c:
+	* src/network-light-gui.c:
+	* src/network-light-upnp.c:
+	* src/universal-cp-gui.c:
+
+	Remove hacks to run uninstalled.
+
+2007-09-25  Zeeshan Ali  <zeenix@gstreamer.net>
+
 	* configure.ac:
 	* src/Makefile.am:
 

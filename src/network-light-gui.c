@@ -26,7 +26,7 @@
 #include "network-light-upnp.h"
 #include "network-light.h"
 
-#define GLADE_FILE "gupnp-network-light.glade"
+#define GLADE_FILE DATA_DIR "/gupnp-network-light.glade"
 #define ICON_FILE  "pixmaps/network-light-256x256.png"
 #define OFF_FILE   "pixmaps/network-light-off.png"
 #define ON_FILE    "pixmaps/network-light-on.png"
@@ -180,20 +180,14 @@ static GdkPixbuf *
 load_pixbuf_file (const char *file_name)
 {
         GdkPixbuf *pixbuf;
+        char *path;
 
-	/* First try uninstalled */
-        pixbuf = gdk_pixbuf_new_from_file (file_name, NULL);
-        if (pixbuf == NULL) {
-	        /* Now try installed */
-                char *path;
+        path = g_build_filename (DATA_DIR, file_name, NULL);
+        pixbuf = gdk_pixbuf_new_from_file (path, NULL);
+        if (pixbuf == NULL)
+                g_critical ("failed to get image %s\n", file_name);
 
-                path = g_build_filename (DATA_DIR, file_name, NULL);
-	        pixbuf = gdk_pixbuf_new_from_file (path, NULL);
-                if (pixbuf == NULL)
-                        g_critical ("failed to get image %s\n", file_name);
-
-                g_free (path);
-        }
+        g_free (path);
 
         return pixbuf;
 }
@@ -203,29 +197,15 @@ init_ui (gint   *argc,
          gchar **argv[])
 {
         GdkPixbuf *icon_pixbuf;
-        gchar     *glade_path = NULL;
 
         gtk_init (argc, argv);
         glade_init ();
 
-        /* Try to fetch the glade file from the CWD first */
-        glade_path = GLADE_FILE;
-        if (!g_file_test (glade_path, G_FILE_TEST_EXISTS)) {
-                /* Then Try to fetch it from the system path */
-                glade_path = DATA_DIR "/" GLADE_FILE;
-
-                if (!g_file_test (glade_path, G_FILE_TEST_EXISTS))
-                        glade_path = NULL;
-        }
-
-        if (glade_path == NULL) {
+        glade_xml = glade_xml_new (GLADE_FILE, NULL, NULL);
+        if (glade_xml == NULL) {
                 g_critical ("Unable to load the GUI file %s", GLADE_FILE);
                 return FALSE;
         }
-
-        glade_xml = glade_xml_new (glade_path, NULL, NULL);
-        if (glade_xml == NULL)
-                return FALSE;
 
         main_window = glade_xml_get_widget (glade_xml, "main-window");
         g_assert (main_window != NULL);
