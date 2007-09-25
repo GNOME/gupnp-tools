@@ -1,5 +1,13 @@
 2007-09-25  Zeeshan Ali  <zeenix@gstreamer.net>
 
+	* src/common/Makefile.am:
+	* src/network-light/Makefile.am:
+	* src/universal-cp/Makefile.am:
+
+	Commit the newly added (forgotten) 'Makefile.am's.
+
+2007-09-25  Zeeshan Ali  <zeenix@gstreamer.net>
+
 	* configure.ac:
 	* data/Makefile.am:
 	* data/gupnp-av-cp.glade:
