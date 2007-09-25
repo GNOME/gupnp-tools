@@ -1,5 +1,70 @@
 2007-09-25  Zeeshan Ali  <zeenix@gstreamer.net>
 
+	* configure.ac:
+	* src/Makefile.am:
+	* src/av-cp-gui.c:
+	* src/av-cp-gui.h:
+	* src/av-cp-playlisttreeview.c:
+	* src/av-cp-playlisttreeview.h:
+	* src/av-cp-renderercombo.c:
+	* src/av-cp-renderercombo.h:
+	* src/av-cp.c:
+	* src/av-cp.h:
+	* src/av-cp/Makefile.am:
+	* src/av-cp/av-cp-gui.c:
+	* src/av-cp/av-cp-gui.h:
+	* src/av-cp/av-cp-playlisttreeview.c:
+	* src/av-cp/av-cp-playlisttreeview.h:
+	* src/av-cp/av-cp-renderercombo.c:
+	* src/av-cp/av-cp-renderercombo.h:
+	* src/av-cp/av-cp.c:
+	* src/av-cp/av-cp.h:
+	* src/common/icons.c:
+	* src/common/icons.h:
+	* src/icons.c:
+	* src/icons.h:
+	* src/network-light-gui.c:
+	* src/network-light-gui.h:
+	* src/network-light-upnp.c:
+	* src/network-light-upnp.h:
+	* src/network-light.c:
+	* src/network-light.h:
+	* src/network-light/network-light-gui.c:
+	* src/network-light/network-light-gui.h:
+	* src/network-light/network-light-upnp.c:
+	* src/network-light/network-light-upnp.h:
+	* src/network-light/network-light.c:
+	* src/network-light/network-light.h:
+	* src/universal-cp-actiondialog.c:
+	* src/universal-cp-actiondialog.h:
+	* src/universal-cp-detailstreeview.c:
+	* src/universal-cp-detailstreeview.h:
+	* src/universal-cp-devicetreeview.c:
+	* src/universal-cp-devicetreeview.h:
+	* src/universal-cp-eventtreeview.c:
+	* src/universal-cp-eventtreeview.h:
+	* src/universal-cp-gui.c:
+	* src/universal-cp-gui.h:
+	* src/universal-cp.c:
+	* src/universal-cp.h:
+	* src/universal-cp/universal-cp-actiondialog.c:
+	* src/universal-cp/universal-cp-actiondialog.h:
+	* src/universal-cp/universal-cp-detailstreeview.c:
+	* src/universal-cp/universal-cp-detailstreeview.h:
+	* src/universal-cp/universal-cp-devicetreeview.c:
+	* src/universal-cp/universal-cp-devicetreeview.h:
+	* src/universal-cp/universal-cp-eventtreeview.c:
+	* src/universal-cp/universal-cp-eventtreeview.h:
+	* src/universal-cp/universal-cp-gui.c:
+	* src/universal-cp/universal-cp-gui.h:
+	* src/universal-cp/universal-cp.c:
+	* src/universal-cp/universal-cp.h:
+
+	Move code for each tool under it's own subdirectory. Common code goes
+	under common subdirectory.
+
+2007-09-25  Zeeshan Ali  <zeenix@gstreamer.net>
+
 	* src/av-cp-gui.c:
 	* src/icons.c:
 	* src/network-light-gui.c:

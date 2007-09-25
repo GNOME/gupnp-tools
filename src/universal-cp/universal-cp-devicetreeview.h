@@ -41,10 +41,6 @@ void
 append_device           (GUPnPDeviceInfo            *info);
 
 void
-update_device_icon      (GUPnPDeviceInfo            *info,
-                         GdkPixbuf                  *icon);
-
-void
 setup_device_treeview   (GladeXML                   *glade_xml);
 
 GUPnPServiceProxy *

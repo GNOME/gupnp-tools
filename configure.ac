@@ -1,7 +1,7 @@
 AC_PREREQ(2.53)
 AC_INIT(gupnp-tools, 0.2, http://www.gupnp.org/)
 AM_INIT_AUTOMAKE()
-AC_CONFIG_SRCDIR(src/universal-cp.h)
+AC_CONFIG_SRCDIR(src/common/icons.h)
 AM_CONFIG_HEADER(config.h)
 AM_MAINTAINER_MODE
 
@@ -52,6 +52,10 @@ AM_GLIB_DEFINE_LOCALEDIR([LOCALEDIR])
 AC_OUTPUT([
 Makefile
 src/Makefile
+src/av-cp/Makefile
+src/common/Makefile
+src/network-light/Makefile
+src/universal-cp/Makefile
 src/pixmaps/Makefile
 src/xml/Makefile
 ])

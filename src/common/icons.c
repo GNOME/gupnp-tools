@@ -24,11 +24,16 @@
 #include <libsoup/soup.h>
 
 #include "icons.h"
-#include "universal-cp-devicetreeview.h"
 
 #define PREFERED_DEPTH  32
 #define PREFERED_WIDTH  22
 #define PREFERED_HEIGHT 22
+
+/* provided by other modules */
+/* FIXME: this should be done through a callback */
+void
+update_device_icon (GUPnPDeviceInfo *info,
+                    GdkPixbuf       *icon);
 
 GdkPixbuf *icons[ICON_LAST];
 
