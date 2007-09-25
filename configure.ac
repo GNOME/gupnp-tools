@@ -29,6 +29,16 @@ if test "x$enable_debug" = "xyes"; then
         CFLAGS="$CFLAGS -g -Wall -Werror"
 fi
 
+# Run uninstalled
+AC_ARG_ENABLE(uninstalled,
+	[  --enable-uninstalled          run uninstalled],,
+        enable_uninstalled=no)
+if test "x$enable_uninstalled" = "xyes"; then
+        AC_MSG_WARN("You want to run the tools uninstalled only? Fine!")
+fi
+
+AM_CONDITIONAL([UNINSTALLED], [test "x$enable_uninstalled" = "xyes"])
+
 # Gettext
 GETTEXT_PACKAGE=gupnp-tools
 AC_SUBST(GETTEXT_PACKAGE)

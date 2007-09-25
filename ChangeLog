@@ -1,3 +1,10 @@
+2007-09-25  Zeeshan Ali  <zeenix@gstreamer.net>
+
+	* configure.ac:
+	* src/Makefile.am:
+
+	Add '--enable-uninstalled' option to configure script.
+
 2007-09-23  Zeeshan Ali  <zeenix@gstreamer.net>
 
 	* configure.ac:
