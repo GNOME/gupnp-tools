@@ -6,4 +6,6 @@ xmldir = $(datadir)/gupnp-tools/xml
 
 EXTRA_DIST = $(xml_DATA)
 
+MAINTAINERCLEANFILES = Makefile.in
+
 

@@ -12,3 +12,4 @@ pixmapsdir = $(datadir)/gupnp-tools/pixmaps
 
 EXTRA_DIST = $(pixmaps_DATA)
 
+MAINTAINERCLEANFILES = Makefile.in
