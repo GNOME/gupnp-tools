@@ -1,5 +1,5 @@
 if UNINSTALLED
-shareddir = $(abs_top_builddir)/src
+shareddir = $(abs_top_builddir)/data
 else
 shareddir = $(datadir)/gupnp-tools
 endif

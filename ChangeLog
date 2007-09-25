@@ -1,6 +1,49 @@
 2007-09-25  Zeeshan Ali  <zeenix@gstreamer.net>
 
 	* configure.ac:
+	* data/Makefile.am:
+	* data/gupnp-av-cp.glade:
+	* data/gupnp-network-light.glade:
+	* data/gupnp-universal-cp.glade:
+	* data/pixmaps/Makefile.am:
+	* data/pixmaps/network-light-22x22.png:
+	* data/pixmaps/network-light-256x256.png:
+	* data/pixmaps/network-light-off.png:
+	* data/pixmaps/network-light-on.png:
+	* data/pixmaps/upnp-action-arg-in.png:
+	* data/pixmaps/upnp-action-arg-out.png:
+	* data/pixmaps/upnp-device.png:
+	* data/pixmaps/upnp-service.png:
+	* data/pixmaps/upnp-state-variable.png:
+	* data/xml/Dimming-scpd.xml:
+	* data/xml/Makefile.am:
+	* data/xml/SwitchPower-scpd.xml:
+	* data/xml/network-light-desc.xml:
+	* src/Makefile.am:
+	* src/av-cp/Makefile.am:
+	* src/gupnp-av-cp.glade:
+	* src/gupnp-network-light.glade:
+	* src/gupnp-universal-cp.glade:
+	* src/pixmaps/Makefile.am:
+	* src/pixmaps/network-light-22x22.png:
+	* src/pixmaps/network-light-256x256.png:
+	* src/pixmaps/network-light-off.png:
+	* src/pixmaps/network-light-on.png:
+	* src/pixmaps/upnp-action-arg-in.png:
+	* src/pixmaps/upnp-action-arg-out.png:
+	* src/pixmaps/upnp-device.png:
+	* src/pixmaps/upnp-service.png:
+	* src/pixmaps/upnp-state-variable.png:
+	* src/xml/Dimming-scpd.xml:
+	* src/xml/Makefile.am:
+	* src/xml/SwitchPower-scpd.xml:
+	* src/xml/network-light-desc.xml:
+
+	Move all data (icon, xml and glade) files to 'data' subdirectory.
+
+2007-09-25  Zeeshan Ali  <zeenix@gstreamer.net>
+
+	* configure.ac:
 	* src/Makefile.am:
 	* src/av-cp-gui.c:
 	* src/av-cp-gui.h:

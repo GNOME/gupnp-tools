@@ -56,6 +56,7 @@ src/av-cp/Makefile
 src/common/Makefile
 src/network-light/Makefile
 src/universal-cp/Makefile
-src/pixmaps/Makefile
-src/xml/Makefile
+data/Makefile
+data/pixmaps/Makefile
+data/xml/Makefile
 ])
