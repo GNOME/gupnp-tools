@@ -1,5 +1,12 @@
 2007-09-25  Zeeshan Ali  <zeenix@gstreamer.net>
 
+	* data/gupnp-av-cp.glade:
+
+	- Remove the progress label.
+	- Add a status bar.
+
+2007-09-25  Zeeshan Ali  <zeenix@gstreamer.net>
+
 	* Makefile.am:
 
 	Recurse into newly added 'data' subdirectory.
