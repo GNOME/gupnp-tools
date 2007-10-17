@@ -1,3 +1,14 @@
+2007-10-05  Zeeshan Ali  <zeenix@gstreamer.net>
+
+	* src/av-cp/Makefile.am:
+	* src/av-cp/av-cp.c:
+	* src/av-cp/av-resource-factory.c:
+	* src/av-cp/av-resource-factory.h:
+
+	GUPnP API update: Register the proxy subclasses with the resource
+	factory of the control point rather than creating a subclass of the
+	resource factory.
+
 2007-10-03  Zeeshan Ali  <zeenix@gstreamer.net>
 
 	* src/av-cp/Makefile.am:

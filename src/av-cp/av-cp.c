@@ -25,7 +25,12 @@
 #include "av-cp-gui.h"
 #include "av-cp-renderercombo.h"
 #include "media-renderer-proxy.h"
-#include "av-resource-factory.h"
+#include "media-server-proxy.h"
+
+#define MEDIA_RENDERER_V1 "urn:schemas-upnp-org:device:MediaRenderer:1"
+#define MEDIA_RENDERER_V2 "urn:schemas-upnp-org:device:MediaRenderer:2"
+#define MEDIA_SERVER_V1 "urn:schemas-upnp-org:device:MediaServer:1"
+#define MEDIA_SERVER_V2 "urn:schemas-upnp-org:device:MediaServer:2"
 
 static GUPnPContext      *context;
 static GUPnPControlPoint *cp;
@@ -51,8 +56,8 @@ device_proxy_unavailable_cb (GUPnPControlPoint *cp,
 static gboolean
 init_upnp (void)
 {
-        AVResourceFactory *factory;
-        GError            *error;
+        GUPnPResourceFactory *factory;
+        GError               *error;
 
         g_type_init ();
 
@@ -65,13 +70,27 @@ init_upnp (void)
                 return FALSE;
         }
 
-        factory = av_resource_factory_new ();
-        g_assert (factory != NULL);
-
         /* We're interested in everything */
-        cp = gupnp_control_point_new_full (context,
-                                           GUPNP_RESOURCE_FACTORY (factory),
-                                           "ssdp:all");
+        cp = gupnp_control_point_new (context, "ssdp:all");
+
+        factory = gupnp_control_point_get_resource_factory (cp);
+        g_assert (factory != NULL);
+        gupnp_resource_factory_register_resource_proxy_type
+                                        (factory,
+                                         MEDIA_RENDERER_V1,
+                                         TYPE_MEDIA_RENDERER_PROXY);
+        gupnp_resource_factory_register_resource_proxy_type
+                                        (factory,
+                                         MEDIA_RENDERER_V2,
+                                         TYPE_MEDIA_RENDERER_PROXY);
+        gupnp_resource_factory_register_resource_proxy_type
+                                        (factory,
+                                         MEDIA_SERVER_V1,
+                                         TYPE_MEDIA_SERVER_PROXY);
+        gupnp_resource_factory_register_resource_proxy_type
+                                        (factory,
+                                         MEDIA_SERVER_V2,
+                                         TYPE_MEDIA_SERVER_PROXY);
 
         g_signal_connect (cp,
                           "device-proxy-available",
