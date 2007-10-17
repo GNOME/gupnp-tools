@@ -159,7 +159,7 @@ on_browse_failure (GUPnPServiceInfo *info,
         g_warning ("Failed to browse '%s': %s\n",
                    gupnp_service_info_get_location (info),
                    error->message);
-        g_free (error);
+        g_error_free (error);
 }
 
 void

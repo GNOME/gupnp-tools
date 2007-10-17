@@ -1,5 +1,11 @@
 2007-10-17  Zeeshan Ali  <zeenix@gstreamer.net>
 
+	* src/av-cp/media-server-proxy.c:
+
+	Use g_error_free instead of g_free on GError objects.
+
+2007-10-17  Zeeshan Ali  <zeenix@gstreamer.net>
+
 	* src/av-cp/didl-lite-object.c:
 	* src/av-cp/didl-lite-object.h:
 
