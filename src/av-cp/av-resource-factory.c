@@ -25,9 +25,12 @@
 
 #include "av-resource-factory.h"
 #include "media-renderer-proxy.h"
+#include "media-server-proxy.h"
 
 #define MEDIA_RENDERER_V1 "urn:schemas-upnp-org:device:MediaRenderer:1"
 #define MEDIA_RENDERER_V2 "urn:schemas-upnp-org:device:MediaRenderer:2"
+#define MEDIA_SERVER_V1 "urn:schemas-upnp-org:device:MediaServer:1"
+#define MEDIA_SERVER_V2 "urn:schemas-upnp-org:device:MediaServer:2"
 
 G_DEFINE_TYPE (AVResourceFactory,
                av_resource_factory,
@@ -60,10 +63,14 @@ create_device_proxy (GUPnPResourceFactory *factory,
 
         device_type = xml_util_get_child_element_content_glib (element,
                                                                "deviceType");
-        if (device_type &&
-            (strcmp (device_type, MEDIA_RENDERER_V1) == 0 ||
-            strcmp (device_type, MEDIA_RENDERER_V2) == 0)) {
-                proxy_type = TYPE_MEDIA_RENDERER_PROXY;
+        if (device_type) {
+                if (strcmp (device_type, MEDIA_RENDERER_V1) == 0 ||
+                    strcmp (device_type, MEDIA_RENDERER_V2) == 0) {
+                        proxy_type = TYPE_MEDIA_RENDERER_PROXY;
+                } else if (strcmp (device_type, MEDIA_SERVER_V1) == 0 ||
+                           strcmp (device_type, MEDIA_SERVER_V2) == 0) {
+                        proxy_type = TYPE_MEDIA_SERVER_PROXY;
+                }
         }
 
         proxy = g_object_new (proxy_type,

@@ -1,6 +1,15 @@
 2007-10-03  Zeeshan Ali  <zeenix@gstreamer.net>
 
 	* src/av-cp/Makefile.am:
+	* src/av-cp/av-resource-factory.c:
+	* src/av-cp/media-server-proxy.c:
+	* src/av-cp/media-server-proxy.h:
+
+	Add MediaServerProxy.
+
+2007-10-03  Zeeshan Ali  <zeenix@gstreamer.net>
+
+	* src/av-cp/Makefile.am:
 	* src/av-cp/av-cp-renderercombo.c:
 	* src/av-cp/av-cp-renderercombo.h:
 	* src/av-cp/av-cp.c:
