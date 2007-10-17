@@ -23,6 +23,7 @@
 #include <libgupnp/gupnp-service-proxy.h>
 
 #include "media-server-proxy.h"
+#include "didl-lite-parser.h"
 
 #define CONNECTION_MANAGER_V1 "urn:schemas-upnp-org:service:ConnectionManager:1"
 #define CONNECTION_MANAGER_V2 "urn:schemas-upnp-org:service:ConnectionManager:2"
@@ -39,50 +40,46 @@ struct _MediaServerProxyPrivate {
         GUPnPServiceProxy *connection_manager;
         GUPnPServiceProxy *content_dir;
         GUPnPServiceProxy *av_transport;
+
+        DIDLLiteParser *parser;
 };
+
+static void
+on_didl_object_available (DIDLLiteParser *parser,
+                          DIDLLiteObject *object,
+                          gpointer        user_data)
+{
+        MediaServerProxy       *proxy;
+        DIDLLiteObjectUPnPClass upnp_class;
+        char *                  id;
+
+        proxy = MEDIA_SERVER_PROXY (user_data);
+        upnp_class = didl_lite_object_get_upnp_class (object);
+
+        if (upnp_class != DIDL_LITE_OBJECT_UPNP_CLASS_CONTAINER)
+                return;
+
+        id = didl_lite_object_get_id (object);
+        g_return_if_fail (id != NULL);
+
+        /* Recurse into containers */
+        media_server_proxy_start_browsing (proxy, id);
+
+        g_free (id);
+}
 
 static void
 media_server_proxy_init (MediaServerProxy *proxy)
 {
-        /*GUPnPDeviceInfo *info;
-        GUPnPServiceInfo *service_info;
-
-        info = GUPNP_DEVICE_INFO (proxy);*/
-
         proxy->priv = G_TYPE_INSTANCE_GET_PRIVATE (proxy,
                                                    TYPE_MEDIA_SERVER_PROXY,
                                                    MediaServerProxyPrivate);
 
-        /* Connection Manager * /
-        service_info = gupnp_device_info_get_service (info,
-                                                      CONNECTION_MANAGER_V1);
-        if (service_info == NULL) {
-                        service_info = gupnp_device_info_get_service
-                                                      (info,
-                                                       CONNECTION_MANAGER_V2);
-        }
-        proxy->priv->connection_manager = GUPNP_SERVICE_PROXY (service_info);
-
-        / * Rendering Control * /
-        service_info = gupnp_device_info_get_service (info,
-                                                      CONTENT_DIR_V1);
-        if (service_info == NULL) {
-                        service_info = gupnp_device_info_get_service
-                                                      (info,
-                                                       CONTENT_DIR_V2);
-        }
-        proxy->priv->content_dir = GUPNP_SERVICE_PROXY (service_info);
-
-        / * AV Transport * /
-         service_info = gupnp_device_info_get_service (info, AV_TRANSPORT_V1);
-
-        if (service_info == NULL) {
-                        service_info = gupnp_device_info_get_service
-                                                      (info,
-                                                       AV_TRANSPORT_V2);
-        }
-
-        proxy->priv->av_transport = GUPNP_SERVICE_PROXY (service_info);*/
+        proxy->priv->parser = didl_lite_parser_new ();
+        g_signal_connect (proxy->priv->parser,
+                          "didl-object-available",
+                          G_CALLBACK (on_didl_object_available),
+                          proxy);
 }
 
 static void
@@ -108,6 +105,11 @@ media_server_proxy_dispose (GObject *object)
                 proxy->priv->av_transport = NULL;
         }
 
+        if (proxy->priv->parser) {
+                g_object_unref (proxy->priv->parser);
+                proxy->priv->parser = NULL;
+        }
+
         gobject_class = G_OBJECT_CLASS (media_server_proxy_parent_class);
         gobject_class->dispose (object);
 }
@@ -122,5 +124,122 @@ media_server_proxy_class_init (MediaServerProxyClass *klass)
         object_class->dispose = media_server_proxy_dispose;
 
         g_type_class_add_private (klass, sizeof (MediaServerProxyPrivate));
+
+}
+
+static GUPnPServiceProxy *
+get_content_dir (MediaServerProxy *proxy)
+{
+        GUPnPDeviceInfo  *info;
+        GUPnPServiceInfo *content_dir;
+
+        if (G_LIKELY (proxy->priv->content_dir))
+                return proxy->priv->content_dir;
+
+        info = GUPNP_DEVICE_INFO (proxy);
+
+        /* Content Directory */
+        content_dir = gupnp_device_info_get_service (info,
+                                                     CONTENT_DIR_V1);
+        if (content_dir == NULL) {
+                        content_dir = gupnp_device_info_get_service
+                                                      (info,
+                                                       CONTENT_DIR_V2);
+        }
+
+        proxy->priv->content_dir = GUPNP_SERVICE_PROXY (content_dir);
+
+        return proxy->priv->content_dir;
+}
+
+static inline void
+on_browse_failure (GUPnPServiceInfo *info,
+                   GError           *error)
+{
+        g_warning ("Failed to browse '%s': %s\n",
+                   gupnp_service_info_get_location (info),
+                   error->message);
+        g_free (error);
+}
+
+void
+browse_cb (GUPnPServiceProxy       *content_dir,
+           GUPnPServiceProxyAction *action,
+           gpointer                 user_data)
+{
+        MediaServerProxy *proxy;
+        xmlDoc           *didl;
+        char             *didl_xml;
+        GError           *error;
+
+        proxy = MEDIA_SERVER_PROXY (user_data);
+
+        error = NULL;
+        gupnp_service_proxy_end_action (content_dir,
+                                        action,
+                                        &error,
+                                        /* OUT args */
+                                        "Result",
+                                        G_TYPE_STRING,
+                                        &didl_xml,
+                                        NULL);
+        if (error) {
+                on_browse_failure (GUPNP_SERVICE_INFO (content_dir), error);
+                return;
+        }
+
+        didl = xmlParseMemory (didl_xml, strlen (didl_xml));
+	if (didl == NULL) {
+	        g_warning ("Parse error on XML DIDL-Light:\n'%s'", didl_xml);
+	} else {
+                didl_lite_parser_parse_didl (proxy->priv->parser, didl);
+                xmlFreeDoc (didl);
+        }
+
+        g_free (didl_xml);
+}
+
+void
+media_server_proxy_start_browsing (MediaServerProxy *proxy,
+                                   const char       *object_id)
+{
+        GUPnPServiceProxy *content_dir;
+        GError            *error;
+
+        g_return_if_fail (proxy != NULL);
+        g_return_if_fail (object_id != NULL);
+
+        content_dir = get_content_dir (proxy);
+        if (G_UNLIKELY (content_dir == NULL))
+                return;
+
+        error = NULL;
+        gupnp_service_proxy_begin_action
+                                (content_dir,
+                                 "Browse",
+                                 browse_cb,
+                                 proxy,
+                                 &error,
+                                 /* IN args */
+                                 "ObjectID",
+                                 G_TYPE_STRING,
+                                 object_id,
+                                 "BrowseFlag",
+                                 G_TYPE_STRING,
+                                 "BrowseDirectChildren",
+                                 "Filter",
+                                 G_TYPE_STRING,
+                                 "*",
+                                 "StartingIndex",
+                                 G_TYPE_UINT,
+                                 0,
+                                 "RequestedCount",
+                                 G_TYPE_UINT, 0,
+                                 "SortCriteria",
+                                 G_TYPE_STRING,
+                                 "",
+                                 NULL);
+        if (error)
+                on_browse_failure (GUPNP_SERVICE_INFO (content_dir), error);
 }
 

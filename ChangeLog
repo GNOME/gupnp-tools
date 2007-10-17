@@ -1,3 +1,37 @@
+2007-10-17  Zeeshan Ali  <zeenix@gstreamer.net>
+
+	* src/av-cp/didl-lite-object.c:
+	* src/av-cp/didl-lite-object.h:
+
+	Basic implementation of DIDL-Lite object representation.
+
+	* src/av-cp/didl-lite-parser.c:
+	* src/av-cp/didl-lite-parser.h:
+
+	Basic implementation of DIDL-Lite document parser.
+
+	* src/av-cp/media-server-proxy.c:
+	* src/av-cp/media-server-proxy.h:
+
+	- Implement browsing.
+	- Remove commented-out code.
+
+	* src/av-cp/xml-util.c:
+	* src/av-cp/xml-util.h:
+
+	Misc utilities for inspecting xmlNodes. Borrowed from gupnp package,
+	trimmed and modified accordingly.
+
+	* src/av-cp/Makefile.am:
+
+	Add newl-added modules to build.
+
+	* src/av-cp/av-cp-playlisttreeview.c:
+	* src/av-cp/av-cp-playlisttreeview.h:
+	* src/av-cp/av-cp.c:
+
+	Basic MediaServer related code.
+
 2007-10-05  Zeeshan Ali  <zeenix@gstreamer.net>
 
 	* src/av-cp/Makefile.am:

@@ -67,6 +67,10 @@ typedef struct {
         void (* _gupnp_reserved4) (void);
 } MediaServerProxyClass;
 
+void
+media_server_proxy_start_browsing       (MediaServerProxy      *proxy,
+                                         const char            *object_id);
+
 G_END_DECLS
 
 #endif /* __MEDIA_SERVER_PROXY_H__ */

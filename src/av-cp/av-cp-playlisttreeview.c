@@ -121,3 +121,15 @@ setup_playlist_treeview (GladeXML *glade_xml)
                           NULL);
 }
 
+void
+add_media_server (MediaServerProxy *server)
+{
+        g_object_ref (server);
+        media_server_proxy_start_browsing (server, "0");
+}
+
+void
+remove_media_server (MediaServerProxy *server)
+{
+}
+

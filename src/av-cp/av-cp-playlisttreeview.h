@@ -25,7 +25,16 @@
 #include <gtk/gtk.h>
 #include <glade/glade.h>
 
+#include "media-server-proxy.h"
+
 void
 setup_playlist_treeview   (GladeXML                   *glade_xml);
 
+void
+add_media_server          (MediaServerProxy           *server);
+
+void
+remove_media_server       (MediaServerProxy           *server);
+
 #endif /* __AV_CP_PLAYLISTTREEVIEW_H__ */
+

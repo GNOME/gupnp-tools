@@ -24,6 +24,7 @@
 
 #include "av-cp-gui.h"
 #include "av-cp-renderercombo.h"
+#include "av-cp-playlisttreeview.h"
 #include "media-renderer-proxy.h"
 #include "media-server-proxy.h"
 
@@ -41,6 +42,8 @@ device_proxy_available_cb (GUPnPControlPoint *cp,
 {
         if (G_OBJECT_TYPE (proxy) == TYPE_MEDIA_RENDERER_PROXY) {
                 add_media_renderer (MEDIA_RENDERER_PROXY (proxy));
+        } else if (G_OBJECT_TYPE (proxy) == TYPE_MEDIA_SERVER_PROXY) {
+                add_media_server (MEDIA_SERVER_PROXY (proxy));
         }
 }
 
@@ -50,6 +53,8 @@ device_proxy_unavailable_cb (GUPnPControlPoint *cp,
 {
         if (G_OBJECT_TYPE (proxy) == TYPE_MEDIA_RENDERER_PROXY) {
                 remove_media_renderer (MEDIA_RENDERER_PROXY (proxy));
+        } else if (G_OBJECT_TYPE (proxy) == TYPE_MEDIA_SERVER_PROXY) {
+                remove_media_server (MEDIA_SERVER_PROXY (proxy));
         }
 }
 
