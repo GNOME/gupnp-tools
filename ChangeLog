@@ -1,3 +1,17 @@
+2007-10-03  Zeeshan Ali  <zeenix@gstreamer.net>
+
+	* src/av-cp/Makefile.am:
+	* src/av-cp/av-cp-renderercombo.c:
+	* src/av-cp/av-cp-renderercombo.h:
+	* src/av-cp/av-cp.c:
+	* src/av-cp/av-resource-factory.c:
+	* src/av-cp/av-resource-factory.h:
+	* src/av-cp/media-renderer-proxy.c:
+	* src/av-cp/media-renderer-proxy.h:
+
+	- Add AV factory.
+	- Add MediaRendererProxy.
+
 2007-09-25  Zeeshan Ali  <zeenix@gstreamer.net>
 
 	* data/gupnp-av-cp.glade:

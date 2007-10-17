@@ -24,9 +24,8 @@
 
 #include "av-cp-gui.h"
 #include "av-cp-renderercombo.h"
-
-#define MEDIA_RENDERER_V1 "urn:schemas-upnp-org:device:MediaRenderer:1"
-#define MEDIA_RENDERER_V2 "urn:schemas-upnp-org:device:MediaRenderer:2"
+#include "media-renderer-proxy.h"
+#include "av-resource-factory.h"
 
 static GUPnPContext      *context;
 static GUPnPControlPoint *cp;
@@ -35,15 +34,8 @@ static void
 device_proxy_available_cb (GUPnPControlPoint *cp,
                            GUPnPDeviceProxy  *proxy)
 {
-        GUPnPDeviceInfo *info;
-        const gchar     *type;
-
-        info = GUPNP_DEVICE_INFO (proxy);
-        type = gupnp_device_info_get_device_type (info);
-
-        if (strcmp (MEDIA_RENDERER_V1, type) == 0 ||
-            strcmp (MEDIA_RENDERER_V2, type) == 0) {
-                add_media_renderer (proxy);
+        if (G_OBJECT_TYPE (proxy) == TYPE_MEDIA_RENDERER_PROXY) {
+                add_media_renderer (MEDIA_RENDERER_PROXY (proxy));
         }
 }
 
@@ -51,22 +43,16 @@ static void
 device_proxy_unavailable_cb (GUPnPControlPoint *cp,
                              GUPnPDeviceProxy  *proxy)
 {
-        GUPnPDeviceInfo *info;
-        const gchar     *type;
-
-        info = GUPNP_DEVICE_INFO (proxy);
-        type = gupnp_device_info_get_device_type (info);
-
-        if (strcmp (MEDIA_RENDERER_V1, type) == 0 ||
-            strcmp (MEDIA_RENDERER_V2, type) == 0) {
-                remove_media_renderer (proxy);
+        if (G_OBJECT_TYPE (proxy) == TYPE_MEDIA_RENDERER_PROXY) {
+                remove_media_renderer (MEDIA_RENDERER_PROXY (proxy));
         }
 }
 
 static gboolean
 init_upnp (void)
 {
-        GError *error;
+        AVResourceFactory *factory;
+        GError            *error;
 
         g_type_init ();
 
@@ -79,8 +65,13 @@ init_upnp (void)
                 return FALSE;
         }
 
+        factory = av_resource_factory_new ();
+        g_assert (factory != NULL);
+
         /* We're interested in everything */
-        cp = gupnp_control_point_new (context, "ssdp:all");
+        cp = gupnp_control_point_new_full (context,
+                                           GUPNP_RESOURCE_FACTORY (factory),
+                                           "ssdp:all");
 
         g_signal_connect (cp,
                           "device-proxy-available",

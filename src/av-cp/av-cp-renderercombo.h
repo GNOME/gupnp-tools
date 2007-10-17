@@ -25,14 +25,16 @@
 #include <gtk/gtk.h>
 #include <glade/glade.h>
 
+#include "media-renderer-proxy.h"
+
 void
 update_device_icon              (GUPnPDeviceInfo *info,
                                  GdkPixbuf       *icon);
 void
-add_media_renderer              (GUPnPDeviceProxy *renderer);
+add_media_renderer              (MediaRendererProxy *renderer);
 
 void
-remove_media_renderer           (GUPnPDeviceProxy *renderer);
+remove_media_renderer           (MediaRendererProxy *renderer);
 
 void
 setup_renderer_combo            (GladeXML                   *glade_xml);

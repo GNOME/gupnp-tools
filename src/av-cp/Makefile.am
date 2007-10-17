@@ -13,10 +13,14 @@ gupnp_av_cp_SOURCES = av-cp.c \
 		      av-cp-gui.c \
 		      av-cp-playlisttreeview.c \
 		      av-cp-renderercombo.c \
+		      media-renderer-proxy.c \
+		      av-resource-factory.c \
 		      av-cp.h \
 		      av-cp-gui.h \
 		      av-cp-playlisttreeview.h \
-		      av-cp-renderercombo.h
+		      av-cp-renderercombo.h \
+		      media-renderer-proxy.h \
+		      av-resource-factory.h
 
 gupnp_av_cp_LDADD = $(LIBGLADE_LIBS) $(LIBGUPNP_LIBS) \
 		    ../common/libicons.a

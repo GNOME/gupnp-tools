@@ -93,7 +93,7 @@ update_device_icon (GUPnPDeviceInfo *info,
 }
 
 void
-add_media_renderer (GUPnPDeviceProxy *renderer)
+add_media_renderer (MediaRendererProxy *renderer)
 {
         GUPnPDeviceInfo *info;
         GtkComboBox     *combo;
@@ -143,7 +143,7 @@ add_media_renderer (GUPnPDeviceProxy *renderer)
 }
 
 void
-remove_media_renderer (GUPnPDeviceProxy *renderer)
+remove_media_renderer (MediaRendererProxy *renderer)
 {
         GUPnPDeviceInfo *info;
         GtkComboBox     *combo;
