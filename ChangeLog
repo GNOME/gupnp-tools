@@ -1,5 +1,12 @@
 2007-10-18  Zeeshan Ali  <zeenix@gstreamer.net>
 
+	* src/av-cp/av-cp-playlisttreeview.c:
+
+	Implement media server proxy addition and search to/from the
+	treemodel.
+
+2007-10-18  Zeeshan Ali  <zeenix@gstreamer.net>
+
 	* data/gupnp-av-cp.glade:
 	* src/av-cp/av-cp-playlisttreeview.c:
 
