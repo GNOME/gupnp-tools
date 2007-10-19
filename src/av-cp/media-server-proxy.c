@@ -243,3 +243,10 @@ media_server_proxy_start_browsing (MediaServerProxy *proxy,
                 on_browse_failure (GUPNP_SERVICE_INFO (content_dir), error);
 }
 
+
+DIDLLiteParser *
+media_server_proxy_get_parser (MediaServerProxy *proxy)
+{
+        return proxy->priv->parser;
+}
+

@@ -1,5 +1,12 @@
 2007-10-18  Zeeshan Ali  <zeenix@gstreamer.net>
 
+	* src/av-cp/media-server-proxy.c:
+	* src/av-cp/media-server-proxy.h:
+
+	Add getter for DIDL-Lite parser to media server proxy.
+
+2007-10-18  Zeeshan Ali  <zeenix@gstreamer.net>
+
 	* src/av-cp/av-cp-playlisttreeview.c:
 
 	Implement media server proxy addition and search to/from the

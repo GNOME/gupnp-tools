@@ -22,6 +22,7 @@
 #define __MEDIA_SERVER_PROXY_H__
 
 #include <libgupnp/gupnp-device-proxy.h>
+#include "didl-lite-parser.h"
 
 G_BEGIN_DECLS
 
@@ -70,6 +71,9 @@ typedef struct {
 void
 media_server_proxy_start_browsing       (MediaServerProxy      *proxy,
                                          const char            *object_id);
+
+DIDLLiteParser *
+media_server_proxy_get_parser           (MediaServerProxy      *proxy);
 
 G_END_DECLS
 
