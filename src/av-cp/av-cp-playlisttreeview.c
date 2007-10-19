@@ -53,11 +53,12 @@ create_playlist_treemodel (void)
 {
         GtkTreeStore *store;
 
-        store = gtk_tree_store_new (4,
-                                    G_TYPE_STRING,   /* Title             */
-                                    G_TYPE_STRING,   /* Description       */
-                                    G_TYPE_OBJECT,   /* MediaServer proxy */
-                                    G_TYPE_OBJECT);  /* ContentDir proxy  */
+        store = gtk_tree_store_new
+                                (3,
+                                 GDK_TYPE_PIXBUF,    /* Icon                */
+                                 G_TYPE_STRING,      /* Title               */
+                                 G_TYPE_OBJECT,      /* Associated Object 1 */
+                                 G_TYPE_OBJECT);     /* Associated Object 2 */
 
         return GTK_TREE_MODEL (store);
 }
@@ -100,7 +101,7 @@ setup_playlist_treeview (GladeXML *glade_xml)
 {
         GtkTreeModel      *model;
         GtkTreeSelection  *selection;
-        char              *headers[] = { "Name", "Description", NULL};
+        char              *headers[] = { "Icon", "Title", NULL};
 
         treeview = glade_xml_get_widget (glade_xml, "playlist-treeview");
         g_assert (treeview != NULL);
