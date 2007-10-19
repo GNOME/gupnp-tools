@@ -177,17 +177,16 @@ find_row (GtkTreeModel  *model,
 
         more = gtk_tree_model_iter_children (model, iter, root_iter);
 
-        while (more && !found) {
+        while (more) {
                 GtkTreeIter tmp;
 
                 found = compare_func (model, iter, user_data);
 
                 if (!found && recursive) {
-                        /* recurse into embedded-devices */
                         found = find_row (model,
                                           iter,
                                           &tmp,
-                                          compare_media_server,
+                                          compare_func,
                                           user_data,
                                           recursive);
                         if (found) {
