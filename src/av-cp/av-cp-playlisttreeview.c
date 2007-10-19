@@ -39,7 +39,7 @@ on_playlist_treeview_button_release (GtkWidget      *widget,
                                      GdkEventButton *event,
                                      gpointer        user_data)
 {
-        return TRUE;
+        return FALSE;
 }
 
 void

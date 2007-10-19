@@ -1,5 +1,12 @@
 2007-10-19  Zeeshan Ali  <zeenix@gstreamer.net>
 
+	* src/av-cp/av-cp-playlisttreeview.c:
+
+	Return False from the button release callback so the treeview rows
+	could be expanded.
+
+2007-10-19  Zeeshan Ali  <zeenix@gstreamer.net>
+
 	* src/av-cp/didl-lite-object.c:
 
 	Implement _get_parent_id().
