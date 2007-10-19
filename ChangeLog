@@ -1,5 +1,12 @@
 2007-10-18  Zeeshan Ali  <zeenix@gstreamer.net>
 
+	* src/av-cp/av-cp-playlisttreeview.c:
+
+	Make the tree store search function very generic and add recursive
+	search option to it.
+
+2007-10-18  Zeeshan Ali  <zeenix@gstreamer.net>
+
 	* src/av-cp/media-server-proxy.c:
 	* src/av-cp/media-server-proxy.h:
 

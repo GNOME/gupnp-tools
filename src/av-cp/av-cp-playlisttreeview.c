@@ -27,6 +27,10 @@
 #include "av-cp-gui.h"
 #include "av-cp.h"
 
+typedef gboolean (* RowCompareFunc) (GtkTreeModel *model,
+                                     GtkTreeIter  *iter,
+                                     gpointer      user_data);
+
 static GtkWidget *treeview;
 static gboolean   expanded;
 
@@ -129,36 +133,67 @@ setup_playlist_treeview (GladeXML *glade_xml)
 }
 
 static gboolean
-find_media_server (GtkTreeModel *model,
-                   const char   *udn,
-                   GtkTreeIter  *iter)
+compare_media_server (GtkTreeModel *model,
+                      GtkTreeIter  *iter,
+                      gpointer      user_data)
 {
-        gboolean found = FALSE;
-        gboolean more = TRUE;
+        GUPnPDeviceInfo *info;
+        const char      *udn = (const char *) user_data;
+        gboolean         found = FALSE;
 
         if (udn == NULL)
                 return found;
 
-        more = gtk_tree_model_iter_children (model, iter, NULL);
+        gtk_tree_model_get (model, iter,
+                            2, &info, -1);
+
+        if (info) {
+                if (IS_MEDIA_SERVER_PROXY (info)) {
+                        const char *device_udn;
+
+                        device_udn = gupnp_device_info_get_udn (info);
+
+                        if (device_udn && strcmp (device_udn, udn) == 0) {
+                                found = TRUE;
+                        }
+                }
+
+                g_object_unref (info);
+        }
+
+        return found;
+}
+
+static gboolean
+find_row (GtkTreeModel  *model,
+          GtkTreeIter   *root_iter,
+          GtkTreeIter   *iter,
+          RowCompareFunc compare_func,
+          gpointer       user_data,
+          gboolean       recursive)
+{
+        gboolean found = FALSE;
+        gboolean more = TRUE;
+
+        more = gtk_tree_model_iter_children (model, iter, root_iter);
 
         while (more && !found) {
-                GUPnPDeviceInfo *info;
+                GtkTreeIter tmp;
 
-                gtk_tree_model_get (model, iter,
-                                    2, &info, -1);
+                found = compare_func (model, iter, user_data);
 
-                if (info) {
-                        if (IS_MEDIA_SERVER_PROXY (info)) {
-                                const char *device_udn;
-
-                                device_udn = gupnp_device_info_get_udn (info);
-
-                                if (device_udn &&
-                                    strcmp (device_udn, udn) == 0)
-                                        found = TRUE;
+                if (!found && recursive) {
+                        /* recurse into embedded-devices */
+                        found = find_row (model,
+                                          iter,
+                                          &tmp,
+                                          compare_media_server,
+                                          user_data,
+                                          recursive);
+                        if (found) {
+                                *iter = tmp;
+                                break;
                         }
-
-                        g_object_unref (info);
                 }
 
                 more = gtk_tree_model_iter_next (model, iter);
@@ -218,7 +253,13 @@ add_media_server (MediaServerProxy *server)
 
         udn = gupnp_device_info_get_udn (GUPNP_DEVICE_INFO (server));
 
-        if (!find_media_server (model, udn, &iter)) {
+        if (!find_row (model,
+                       NULL,
+                       &iter,
+                       compare_media_server,
+                       (gpointer) udn,
+                       FALSE)) {
+
                 append_media_server (server, model, NULL);
 
                 if (!expanded) {
