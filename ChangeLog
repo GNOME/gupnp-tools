@@ -1,3 +1,9 @@
+2007-10-19  Zeeshan Ali  <zeenix@gstreamer.net>
+
+	* src/av-cp/didl-lite-object.c:
+
+	Implement _get_parent_id().
+
 2007-10-18  Zeeshan Ali  <zeenix@gstreamer.net>
 
 	* src/av-cp/av-cp-playlisttreeview.c:

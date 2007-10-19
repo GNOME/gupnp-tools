@@ -160,6 +160,13 @@ didl_lite_object_get_id (DIDLLiteObject *object)
 }
 
 char *
+didl_lite_object_get_parent_id (DIDLLiteObject *object)
+{
+        return xml_util_get_attribute_contents (object->priv->element,
+                                                "parentID");
+}
+
+char *
 didl_lite_object_get_title (DIDLLiteObject *object)
 {
         return xml_util_get_child_element_content (object->priv->element,
