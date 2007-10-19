@@ -195,10 +195,139 @@ find_row (GtkTreeModel  *model,
                         }
                 }
 
+                if (found) {
+                        /* Do this before the iter changes */
+                        break;
+                }
+
                 more = gtk_tree_model_iter_next (model, iter);
         }
 
         return found;
+}
+
+static gboolean
+compare_container (GtkTreeModel *model,
+                   GtkTreeIter  *iter,
+                   gpointer      user_data)
+{
+        DIDLLiteObject *object;
+        const char     *id = (const char *) user_data;
+        gboolean        found = FALSE;
+
+        if (id == NULL)
+                return found;
+
+        gtk_tree_model_get (model, iter,
+                            2, &object, -1);
+
+        if (object) {
+                if (IS_DIDL_LITE_OBJECT (object)) {
+                        DIDLLiteObjectUPnPClass upnp_class;
+                        char                   *container_id;
+
+                        upnp_class = didl_lite_object_get_upnp_class (object);
+                        container_id = didl_lite_object_get_id (object);
+
+                        if (upnp_class ==
+                            DIDL_LITE_OBJECT_UPNP_CLASS_CONTAINER &&
+                            container_id &&
+                            strcmp (container_id, id) == 0) {
+                                found = TRUE;
+                        }
+
+                        g_free (container_id);
+                }
+
+                g_object_unref (object);
+        }
+
+        return found;
+}
+
+static void
+append_didle_object (DIDLLiteObject   *object,
+                     MediaServerProxy *server,
+                     GtkTreeModel     *model,
+                     GtkTreeIter      *server_iter)
+{
+        GtkTreeIter parent_iter;
+        char       *parent_id;
+        char       *title;
+        gboolean    found;
+
+        title = didl_lite_object_get_title (object);
+        if (title == NULL)
+                return;
+
+        parent_id = didl_lite_object_get_parent_id (object);
+        if (parent_id == NULL) {
+                g_free (title);
+                return;
+        }
+
+        if (strcmp (parent_id, "0") == 0) {
+                parent_iter = *server_iter;
+                found = TRUE;
+        } else {
+                found = find_row (model,
+                                  server_iter,
+                                  &parent_iter,
+                                  compare_container,
+                                  (gpointer) parent_id,
+                                  TRUE);
+        }
+
+        if (found) {
+                gtk_tree_store_insert_with_values
+                                        (GTK_TREE_STORE (model),
+                                         NULL, &parent_iter, -1,
+                                         1, title,
+                                         2, object,
+                                         3, server,
+                                         -1);
+        }
+
+        g_free (parent_id);
+        g_free (title);
+}
+
+static void
+on_didl_object_available (DIDLLiteParser *parser,
+                          DIDLLiteObject *object,
+                          gpointer        user_data)
+{
+        MediaServerProxy       *server;
+        DIDLLiteObjectUPnPClass upnp_class;
+        GtkTreeModel           *model;
+        GtkTreeIter             server_iter;
+        const char             *udn;
+
+        model = gtk_tree_view_get_model (GTK_TREE_VIEW (treeview));
+        g_assert (model != NULL);
+
+        server = MEDIA_SERVER_PROXY (user_data);
+        upnp_class = didl_lite_object_get_upnp_class (object);
+
+        if (upnp_class != DIDL_LITE_OBJECT_UPNP_CLASS_CONTAINER &&
+            upnp_class != DIDL_LITE_OBJECT_UPNP_CLASS_ITEM)
+                return;
+
+        udn = gupnp_device_info_get_udn (GUPNP_DEVICE_INFO (server));
+
+        if (find_row (model,
+                       NULL,
+                       &server_iter,
+                       compare_media_server,
+                       (gpointer) udn,
+                       FALSE)) {
+                append_didle_object (object,
+                                     server,
+                                     model,
+                                     &server_iter);
+        }
+
+        return;
 }
 
 static void
@@ -213,8 +342,9 @@ append_media_server (MediaServerProxy *server,
 
         friendly_name = gupnp_device_info_get_friendly_name (info);
         if (friendly_name) {
-                GtkTreeIter device_iter;
-                GList      *child;
+                DIDLLiteParser *parser;
+                GtkTreeIter     device_iter;
+                GList          *child;
 
                 gtk_tree_store_insert_with_values
                                 (GTK_TREE_STORE (model),
@@ -236,7 +366,14 @@ append_media_server (MediaServerProxy *server,
                 }
 
                 /*schedule_icon_update (info);*/
+
                 media_server_proxy_start_browsing (server, "0");
+
+                parser = media_server_proxy_get_parser (server);
+                g_signal_connect (parser,
+                                  "didl-object-available",
+                                  G_CALLBACK (on_didl_object_available),
+                                  server);
         }
 }
 
