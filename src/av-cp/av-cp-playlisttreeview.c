@@ -60,7 +60,7 @@ create_playlist_treemodel (void)
         GtkTreeStore *store;
 
         store = gtk_tree_store_new
-                                (3,
+                                (4,
                                  GDK_TYPE_PIXBUF,    /* Icon             */
                                  G_TYPE_STRING,      /* Title            */
                                  G_TYPE_OBJECT,      /* Primary object   */
