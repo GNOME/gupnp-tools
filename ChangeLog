@@ -8,6 +8,7 @@
 	- Correct the treeview row searching code.
 	- Implement addition of DIDL objects to treeview.
 	- pack the icon and text in the same cell.
+	- Try to list containers above items.
 
 2007-10-19  Zeeshan Ali  <zeenix@gstreamer.net>
 

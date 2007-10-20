@@ -246,10 +246,11 @@ compare_container (GtkTreeModel *model,
 }
 
 static void
-append_didle_object (DIDLLiteObject   *object,
-                     MediaServerProxy *server,
-                     GtkTreeModel     *model,
-                     GtkTreeIter      *server_iter)
+append_didle_object (DIDLLiteObject         *object,
+                     DIDLLiteObjectUPnPClass upnp_class,
+                     MediaServerProxy       *server,
+                     GtkTreeModel           *model,
+                     GtkTreeIter            *server_iter)
 {
         GtkTreeIter parent_iter;
         char       *parent_id;
@@ -279,9 +280,22 @@ append_didle_object (DIDLLiteObject   *object,
         }
 
         if (found) {
+                gint position;
+
+                /* FIXME: The following code assumes that container is always
+                 * added to treeview before the objects under it. Although this
+                 * is currently always true but things might change after we
+                 * start to support container updates.
+                 */
+                if (upnp_class == DIDL_LITE_OBJECT_UPNP_CLASS_CONTAINER) {
+                        position = 0;
+                } else {
+                        position = -1;
+                }
+
                 gtk_tree_store_insert_with_values
                                         (GTK_TREE_STORE (model),
-                                         NULL, &parent_iter, -1,
+                                         NULL, &parent_iter, position,
                                          1, title,
                                          2, object,
                                          3, server,
@@ -322,6 +336,7 @@ on_didl_object_available (DIDLLiteParser *parser,
                        (gpointer) udn,
                        FALSE)) {
                 append_didle_object (object,
+                                     upnp_class,
                                      server,
                                      model,
                                      &server_iter);
