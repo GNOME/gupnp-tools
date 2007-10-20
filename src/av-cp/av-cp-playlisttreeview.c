@@ -293,7 +293,7 @@ append_didle_object (DIDLLiteObject         *object,
                         icon = get_icon_by_id (ICON_CONTAINER);
                 } else {
                         position = -1;
-                        icon = get_icon_by_id (ICON_MISSING);
+                        icon = get_icon_by_id (ICON_FILE);
                 }
 
                 gtk_tree_store_insert_with_values

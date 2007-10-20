@@ -278,7 +278,8 @@ init_icons (void)
                 GTK_STOCK_MISSING_IMAGE, /* ICON_MISSING   */
                 GTK_STOCK_NETWORK,       /* ICON_NETWORK   */
                 GTK_STOCK_EXECUTE,       /* ICON_ACTION    */
-                GTK_STOCK_DIRECTORY      /* ICON_VARIABLES */
+                GTK_STOCK_DIRECTORY,     /* ICON_VARIABLES */
+                GTK_STOCK_FILE           /* ICON_FILE      */
         };
 
         char *theme_names[] = {

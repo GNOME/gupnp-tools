@@ -1,3 +1,14 @@
+2007-10-20  Zeeshan Ali  <zeenix@gstreamer.net>
+
+	* src/common/icons.c:
+	* src/common/icons.h:
+
+	Add icon for generic file.
+
+	* src/av-cp/av-cp-playlisttreeview.c:
+	
+	Use generic file icon to represent item objects.
+
 2007-10-19  Zeeshan Ali  <zeenix@gstreamer.net>
 
 	* src/av-cp/av-cp-playlisttreeview.c:
