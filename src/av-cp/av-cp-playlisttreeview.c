@@ -280,7 +280,8 @@ append_didle_object (DIDLLiteObject         *object,
         }
 
         if (found) {
-                gint position;
+                GdkPixbuf *icon;
+                gint       position;
 
                 /* FIXME: The following code assumes that container is always
                  * added to treeview before the objects under it. Although this
@@ -289,13 +290,16 @@ append_didle_object (DIDLLiteObject         *object,
                  */
                 if (upnp_class == DIDL_LITE_OBJECT_UPNP_CLASS_CONTAINER) {
                         position = 0;
+                        icon = get_icon_by_id (ICON_CONTAINER);
                 } else {
                         position = -1;
+                        icon = get_icon_by_id (ICON_MISSING);
                 }
 
                 gtk_tree_store_insert_with_values
                                         (GTK_TREE_STORE (model),
                                          NULL, &parent_iter, position,
+                                         0, icon,
                                          1, title,
                                          2, object,
                                          3, server,

@@ -1,5 +1,12 @@
 2007-10-19  Zeeshan Ali  <zeenix@gstreamer.net>
 
+	* src/av-cp/av-cp-playlisttreeview.c:
+
+	Display icons for containers and items (currently missing image icon
+	is being used) in the playlist treeview.
+
+2007-10-19  Zeeshan Ali  <zeenix@gstreamer.net>
+
 	* src/common/icons.c:
 	* src/common/icons.h:
 
