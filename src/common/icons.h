@@ -39,6 +39,7 @@ typedef enum
         ICON_VARIABLES,
         ICON_MIN_VOLUME,
         ICON_MAX_VOLUME,
+        ICON_CONTAINER,
         ICON_LAST
 } IconID;
 

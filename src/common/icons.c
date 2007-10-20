@@ -284,11 +284,13 @@ init_icons (void)
         char *theme_names[] = {
                 "audio-volume-muted",          /* ICON_MIN_VOLUME */
                 "audio-volume-high",           /* ICON_MAX_VOLUME */
+                "folder-remote",               /* ICON_CONTAINER  */
         };
 
         char *fallback_theme_names[] = {
                 "stock_volume-0",             /* ICON_MIN_VOLUME */
                 "stock_volume-max",           /* ICON_MAX_VOLUME */
+                "folder-remote",              /* ICON_CONTAINER  */
         };
 
         for (i = 0; i < ICON_MISSING; i++) {

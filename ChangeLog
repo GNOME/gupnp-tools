@@ -1,5 +1,12 @@
 2007-10-19  Zeeshan Ali  <zeenix@gstreamer.net>
 
+	* src/common/icons.c:
+	* src/common/icons.h:
+
+	Add icon for container DIDL-Lite objects.
+
+2007-10-19  Zeeshan Ali  <zeenix@gstreamer.net>
+
 	* src/av-cp/av-cp-playlisttreeview.c:
 
 	- Return False from the button release callback so the treeview rows
