@@ -7,6 +7,7 @@
 	- Pass the correct number of columns to gtk_tree_store_new().
 	- Correct the treeview row searching code.
 	- Implement addition of DIDL objects to treeview.
+	- pack the icon and text in the same cell.
 
 2007-10-19  Zeeshan Ali  <zeenix@gstreamer.net>
 

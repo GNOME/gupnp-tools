@@ -73,22 +73,22 @@ static void
 setup_treeview_columns (GtkWidget *treeview)
 
 {
-        GtkTreeSelection *selection;
-        GtkCellRenderer  *renderers[2];
-        char             *headers[] = { "Icon", "Title"};
-        char             *attribs[] = { "pixbuf", "text"};
-        int               i;
+        GtkTreeSelection  *selection;
+        GtkTreeViewColumn *column;
+        GtkCellRenderer   *renderers[2];
+        char              *headers[] = { "Icon", "Title"};
+        char              *attribs[] = { "pixbuf", "text"};
+        int                i;
 
         selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (treeview));
         g_assert (selection != NULL);
+
+        column = gtk_tree_view_column_new ();
 
         renderers[0] = gtk_cell_renderer_pixbuf_new ();
         renderers[1] = gtk_cell_renderer_text_new ();
 
         for (i = 0; i < 2; i++) {
-                GtkTreeViewColumn *column;
-
-                column = gtk_tree_view_column_new ();
                 gtk_tree_view_column_pack_start (column, renderers[i], FALSE);
                 gtk_tree_view_column_set_title (column, headers[i]);
                 gtk_tree_view_column_add_attribute (column,
@@ -96,11 +96,11 @@ setup_treeview_columns (GtkWidget *treeview)
                                                     attribs[i], i);
                 gtk_tree_view_column_set_sizing(column,
                                                 GTK_TREE_VIEW_COLUMN_AUTOSIZE);
-
-                gtk_tree_view_insert_column (GTK_TREE_VIEW (treeview),
-                                             column,
-                                             -1);
         }
+
+        gtk_tree_view_insert_column (GTK_TREE_VIEW (treeview),
+                                     column,
+                                     -1);
 
         gtk_tree_selection_set_mode (selection, GTK_SELECTION_SINGLE);
 }
