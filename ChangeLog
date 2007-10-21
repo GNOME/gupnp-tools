@@ -1,6 +1,12 @@
 2007-10-22  Zeeshan Ali  <zeenix@gstreamer.net>
 
 	* src/common/icons.c:
+
+	Only use a fallback icon if one is available.
+
+2007-10-22  Zeeshan Ali  <zeenix@gstreamer.net>
+
+	* src/common/icons.c:
 	* src/common/icons.h:
 
 	Add icons for audio, video, text and image items.

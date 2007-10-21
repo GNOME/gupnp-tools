@@ -246,16 +246,21 @@ get_pixbuf_from_theme (const char *icon_name,
                            error->message);
                 g_error_free (error);
 
-                pixbuf = gtk_icon_theme_load_icon (theme,
-                                                   fallback_icon_name,
-                                                   PREFERED_WIDTH,
-                                                   PREFERED_HEIGHT,
-                                                   &error);
+                if (fallback_icon_name != NULL) {
+                        error = NULL;
+                        pixbuf = gtk_icon_theme_load_icon
+                                                (theme,
+                                                 fallback_icon_name,
+                                                 PREFERED_WIDTH,
+                                                 PREFERED_HEIGHT,
+                                                 &error);
 
-                if (pixbuf == NULL) {
-                        g_warning ("Failed to load icon %s: %s",
-                                   fallback_icon_name,
-                                   error->message);
+                        if (pixbuf == NULL) {
+                                g_warning ("Failed to load icon %s: %s",
+                                           fallback_icon_name,
+                                           error->message);
+                                g_error_free (error);
+                        }
                 }
         }
 
@@ -295,11 +300,11 @@ init_icons (void)
         char *fallback_theme_names[] = {
                 "stock_volume-0",             /* ICON_MIN_VOLUME */
                 "stock_volume-max",           /* ICON_MAX_VOLUME */
-                "folder-remote",              /* ICON_CONTAINER  */
-                "audio-x-generic",            /* ICON_AUDIO_ITEM */
-                "video-x-generic",            /* ICON_VIDEO_ITEM */
-                "image-x-generic",            /* ICON_IMAGE_ITEM */
-                "text-x-generic",             /* ICON_TEXT_ITEM */
+                NULL,                         /* ICON_CONTAINER  */
+                NULL,                         /* ICON_AUDIO_ITEM */
+                NULL,                         /* ICON_VIDEO_ITEM */
+                NULL,                         /* ICON_IMAGE_ITEM */
+                NULL,                         /* ICON_TEXT_ITEM  */
         };
 
         for (i = 0; i < ICON_MISSING; i++) {
