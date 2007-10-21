@@ -5,6 +5,10 @@
 
 	Add icons for audio, video, text and image items.
 
+	* src/av-cp/av-cp-playlisttreeview.c:
+
+	Use newly-addded icons for audio, video, text and image items.
+
 2007-10-21  Zeeshan Ali  <zeenix@gstreamer.net>
 
 	* src/av-cp/didl-lite-object.c:

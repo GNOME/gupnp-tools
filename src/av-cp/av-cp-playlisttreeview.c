@@ -27,6 +27,11 @@
 #include "av-cp-gui.h"
 #include "av-cp.h"
 
+#define ITEM_CLASS_IMAGE "object.item.imageItem"
+#define ITEM_CLASS_AUDIO "object.item.audioItem"
+#define ITEM_CLASS_VIDEO "object.item.videoItem"
+#define ITEM_CLASS_TEXT  "object.item.textItem"
+
 typedef gboolean (* RowCompareFunc) (GtkTreeModel *model,
                                      GtkTreeIter  *iter,
                                      gpointer      user_data);
@@ -245,6 +250,42 @@ compare_container (GtkTreeModel *model,
         return found;
 }
 
+static GdkPixbuf *
+get_item_icon (DIDLLiteObject *object)
+{
+        GdkPixbuf *icon;
+        char      *class_name;
+
+        class_name = didl_lite_object_get_upnp_class_name (object);
+        if (G_UNLIKELY (class_name == NULL)) {
+                return get_icon_by_id (ICON_FILE);
+        }
+
+        if (0 == strncmp (class_name,
+                          ITEM_CLASS_IMAGE,
+                          strlen (ITEM_CLASS_IMAGE))) {
+                icon = get_icon_by_id (ICON_IMAGE_ITEM);
+        } else if (0 == strncmp (class_name,
+                                 ITEM_CLASS_AUDIO,
+                                 strlen (ITEM_CLASS_AUDIO))) {
+                icon = get_icon_by_id (ICON_AUDIO_ITEM);
+        } else if (0 == strncmp (class_name,
+                                 ITEM_CLASS_VIDEO,
+                                 strlen (ITEM_CLASS_VIDEO))) {
+                icon = get_icon_by_id (ICON_VIDEO_ITEM);
+        } else if (0 == strncmp (class_name,
+                                 ITEM_CLASS_TEXT,
+                                 strlen (ITEM_CLASS_TEXT))) {
+                icon = get_icon_by_id (ICON_TEXT_ITEM);
+        } else {
+                icon = get_icon_by_id (ICON_FILE);
+        }
+
+        g_free (class_name);
+
+        return icon;
+}
+
 static void
 append_didle_object (DIDLLiteObject         *object,
                      DIDLLiteObjectUPnPClass upnp_class,
@@ -293,7 +334,7 @@ append_didle_object (DIDLLiteObject         *object,
                         icon = get_icon_by_id (ICON_CONTAINER);
                 } else {
                         position = -1;
-                        icon = get_icon_by_id (ICON_FILE);
+                        icon = get_item_icon (object);
                 }
 
                 gtk_tree_store_insert_with_values
