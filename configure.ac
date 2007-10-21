@@ -13,9 +13,11 @@ AC_FUNC_MMAP
 
 GUPNP_REQUIRED=0.6
 LIBGLADE_REQUIRED=2.6.0
+ICON_THEME_REQUIRED=2.20
 
 PKG_CHECK_MODULES(LIBGUPNP, gupnp-1.0 >= $GUPNP_REQUIRED \
-                            libglade-2.0 >= $LIBGLADE_REQUIRED)
+                            libglade-2.0 >= $LIBGLADE_REQUIRED \
+                            gnome-icon-theme >= $ICON_THEME_REQUIRED)
 
 # glib-genmarshal
 GLIB_GENMARSHAL=`pkg-config --variable=glib_genmarshal glib-2.0`

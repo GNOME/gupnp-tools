@@ -6,6 +6,10 @@
 	- Get rid of the ugly stock icon loading code and load all icons from
 	  theme instead.
 
+	* configure.ac:
+
+	Require gnome-icon-theme (>= 2.20).
+
 2007-10-22  Zeeshan Ali  <zeenix@gstreamer.net>
 
 	* src/common/icons.c:
