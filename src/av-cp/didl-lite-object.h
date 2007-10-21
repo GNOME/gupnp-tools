@@ -31,8 +31,6 @@ typedef enum
   DIDL_LITE_OBJECT_UPNP_CLASS_UNKNOWN,
   DIDL_LITE_OBJECT_UPNP_CLASS_CONTAINER,
   DIDL_LITE_OBJECT_UPNP_CLASS_ITEM,
-  /* 'Desc' is not really a upnp:class */
-  DIDL_LITE_OBJECT_UPNP_CLASS_DESC
 } DIDLLiteObjectUPnPClass;
 
 GType
@@ -96,6 +94,15 @@ didl_lite_object_get_never_playable      (DIDLLiteObject        *object);
 char *
 didl_lite_object_get_title               (DIDLLiteObject        *object);
 
+char *
+didl_lite_object_get_desc_type           (DIDLLiteObject        *object);
+
+char *
+didl_lite_object_get_desc_name_space     (DIDLLiteObject        *object);
+
+char *
+didl_lite_object_get_desc_contents       (DIDLLiteObject        *object);
+
 /* DIDL-Lite container Object functions */
 gboolean
 didl_lite_object_is_container_searchable (DIDLLiteObject        *object);
@@ -109,16 +116,6 @@ didl_lite_object_get_item_protocol_info  (DIDLLiteObject        *object);
 
 char *
 didl_lite_object_get_item_duration       (DIDLLiteObject        *object);
-
-/* DIDL-Lite desc Object functions */
-char *
-didl_lite_object_get_desc_type           (DIDLLiteObject        *object);
-
-char *
-didl_lite_object_get_desc_name_space     (DIDLLiteObject        *object);
-
-char *
-didl_lite_object_get_desc_contents       (DIDLLiteObject        *object);
 
 G_END_DECLS
 

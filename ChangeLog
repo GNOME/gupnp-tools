@@ -1,3 +1,19 @@
+2007-10-21  Zeeshan Ali  <zeenix@gstreamer.net>
+
+	* src/av-cp/didl-lite-object.c:
+	* src/av-cp/didl-lite-object.h:
+
+	Assume that 'desc' is not a separate DIDL object but a part of other
+	DIDL objects. This will break the support for 'desc' elements outside
+	of container and item elements but with our current API, that is
+	hardly any useful since 'desc' element neither have 'parentID'
+	property nor 'refID' so the application wouldn't know what to do with
+	it.
+
+	* src/av-cp/av-cp-playlisttreeview.c:
+
+	Assume all DIDL-Lite objects are either containers or items.
+
 2007-10-20  Zeeshan Ali  <zeenix@gstreamer.net>
 
 	* src/common/icons.c:

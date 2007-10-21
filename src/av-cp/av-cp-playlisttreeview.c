@@ -327,10 +327,6 @@ on_didl_object_available (DIDLLiteParser *parser,
         server = MEDIA_SERVER_PROXY (user_data);
         upnp_class = didl_lite_object_get_upnp_class (object);
 
-        if (upnp_class != DIDL_LITE_OBJECT_UPNP_CLASS_CONTAINER &&
-            upnp_class != DIDL_LITE_OBJECT_UPNP_CLASS_ITEM)
-                return;
-
         udn = gupnp_device_info_get_udn (GUPNP_DEVICE_INFO (server));
 
         if (find_row (model,

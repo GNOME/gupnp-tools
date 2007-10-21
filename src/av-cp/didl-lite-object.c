@@ -144,8 +144,6 @@ didl_lite_object_get_upnp_class (DIDLLiteObject *object)
                 upnp_class = DIDL_LITE_OBJECT_UPNP_CLASS_CONTAINER;
         } else if (0 == strcmp ((char *) element->name, "item")) {
                 upnp_class = DIDL_LITE_OBJECT_UPNP_CLASS_ITEM;
-        } else if (0 == strcmp ((char *) element->name, "desc")) {
-                upnp_class = DIDL_LITE_OBJECT_UPNP_CLASS_DESC;
         } else {
                 upnp_class = DIDL_LITE_OBJECT_UPNP_CLASS_UNKNOWN;
         }
