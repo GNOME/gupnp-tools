@@ -1,3 +1,10 @@
+2007-10-22  Zeeshan Ali  <zeenix@gstreamer.net>
+
+	* src/common/icons.c:
+	* src/common/icons.h:
+
+	Add icons for audio, video, text and image items.
+
 2007-10-21  Zeeshan Ali  <zeenix@gstreamer.net>
 
 	* src/av-cp/didl-lite-object.c:

@@ -286,12 +286,20 @@ init_icons (void)
                 "audio-volume-muted",          /* ICON_MIN_VOLUME */
                 "audio-volume-high",           /* ICON_MAX_VOLUME */
                 "folder-remote",               /* ICON_CONTAINER  */
+                "audio-x-generic",             /* ICON_AUDIO_ITEM */
+                "video-x-generic",             /* ICON_VIDEO_ITEM */
+                "image-x-generic",             /* ICON_IMAGE_ITEM */
+                "text-x-generic",              /* ICON_TEXT_ITEM */
         };
 
         char *fallback_theme_names[] = {
                 "stock_volume-0",             /* ICON_MIN_VOLUME */
                 "stock_volume-max",           /* ICON_MAX_VOLUME */
                 "folder-remote",              /* ICON_CONTAINER  */
+                "audio-x-generic",            /* ICON_AUDIO_ITEM */
+                "video-x-generic",            /* ICON_VIDEO_ITEM */
+                "image-x-generic",            /* ICON_IMAGE_ITEM */
+                "text-x-generic",             /* ICON_TEXT_ITEM */
         };
 
         for (i = 0; i < ICON_MISSING; i++) {

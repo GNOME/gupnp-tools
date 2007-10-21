@@ -41,6 +41,10 @@ typedef enum
         ICON_MIN_VOLUME,
         ICON_MAX_VOLUME,
         ICON_CONTAINER,
+        ICON_AUDIO_ITEM,
+        ICON_VIDEO_ITEM,
+        ICON_IMAGE_ITEM,
+        ICON_TEXT_ITEM,
         ICON_LAST
 } IconID;
 
