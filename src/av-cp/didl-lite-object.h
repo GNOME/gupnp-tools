@@ -83,6 +83,9 @@ DIDLLiteObjectUPnPClass
 didl_lite_object_get_upnp_class          (DIDLLiteObject        *object);
 
 char *
+didl_lite_object_get_upnp_class_name     (DIDLLiteObject        *object);
+
+char *
 didl_lite_object_get_id                  (DIDLLiteObject        *object);
 
 char *

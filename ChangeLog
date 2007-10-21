@@ -3,6 +3,14 @@
 	* src/av-cp/didl-lite-object.c:
 	* src/av-cp/didl-lite-object.h:
 
+	Add a method to retreive the actual full string specifying the
+	upnp:class of the DIDL-Lite object.
+
+2007-10-21  Zeeshan Ali  <zeenix@gstreamer.net>
+
+	* src/av-cp/didl-lite-object.c:
+	* src/av-cp/didl-lite-object.h:
+
 	Assume that 'desc' is not a separate DIDL object but a part of other
 	DIDL objects. This will break the support for 'desc' elements outside
 	of container and item elements but with our current API, that is
