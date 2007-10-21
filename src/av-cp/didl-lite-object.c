@@ -22,6 +22,11 @@
 #include "xml-util.h"
 #include "didl-lite-object.h"
 
+#define CONTAINER_CLASS_NAME            "object.container"
+#define CONTAINER_CLASS_NAME_LEN        16
+#define ITEM_CLASS_NAME                 "object.item"
+#define ITEM_CLASS_NAME_LEN             11
+
 G_DEFINE_TYPE (DIDLLiteObject,
                didl_lite_object,
                G_TYPE_OBJECT);
@@ -135,18 +140,26 @@ didl_lite_object_new (xmlNode *element)
 DIDLLiteObjectUPnPClass
 didl_lite_object_get_upnp_class (DIDLLiteObject *object)
 {
-        xmlNode *element;
         DIDLLiteObjectUPnPClass upnp_class;
+        char *class_name;
 
-        element = object->priv->element;
+        class_name = didl_lite_object_get_upnp_class_name (object);
+        g_return_val_if_fail (class_name != NULL,
+                              DIDL_LITE_OBJECT_UPNP_CLASS_UNKNOWN);
 
-        if (0 == strcmp ((char *) element->name, "container")) {
+        if (0 == strncmp (class_name,
+                          CONTAINER_CLASS_NAME,
+                          CONTAINER_CLASS_NAME_LEN)) {
                 upnp_class = DIDL_LITE_OBJECT_UPNP_CLASS_CONTAINER;
-        } else if (0 == strcmp ((char *) element->name, "item")) {
+        } else if (0 == strncmp (class_name,
+                                 ITEM_CLASS_NAME,
+                                 ITEM_CLASS_NAME_LEN)) {
                 upnp_class = DIDL_LITE_OBJECT_UPNP_CLASS_ITEM;
         } else {
                 upnp_class = DIDL_LITE_OBJECT_UPNP_CLASS_UNKNOWN;
         }
+
+        g_free (class_name);
 
         return upnp_class;
 }

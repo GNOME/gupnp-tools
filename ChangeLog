@@ -1,6 +1,13 @@
 2007-10-21  Zeeshan Ali  <zeenix@gstreamer.net>
 
 	* src/av-cp/didl-lite-object.c:
+	
+	Use the upnp:class name of the DIDL-Lite object rather than the name
+	of the it's xml element to determine it's generic class.
+
+2007-10-21  Zeeshan Ali  <zeenix@gstreamer.net>
+
+	* src/av-cp/didl-lite-object.c:
 	* src/av-cp/didl-lite-object.h:
 
 	Add a method to retreive the actual full string specifying the
