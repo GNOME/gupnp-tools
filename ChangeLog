@@ -2,7 +2,9 @@
 
 	* src/common/icons.c:
 
-	Only use a fallback icon if one is available.
+	- Only use a fallback icon if one is available.
+	- Get rid of the ugly stock icon loading code and load all icons from
+	  theme instead.
 
 2007-10-22  Zeeshan Ali  <zeenix@gstreamer.net>
 

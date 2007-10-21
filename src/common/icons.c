@@ -200,29 +200,6 @@ get_icon_by_id (IconID icon_id)
 }
 
 static GdkPixbuf *
-get_pixbuf_from_stock (const char *stock_id)
-{
-        GtkWidget *image;
-        GdkPixbuf *pixbuf;
-
-        image = gtk_image_new ();
-        g_object_ref_sink (image);
-
-        pixbuf = gtk_widget_render_icon (image,
-                                         stock_id,
-                                         GTK_ICON_SIZE_LARGE_TOOLBAR,
-                                         "gupnp-universal-cp-icon");
-        g_assert (pixbuf);
-        pixbuf = gdk_pixbuf_scale_simple (pixbuf,
-                                          PREFERED_WIDTH,
-                                          PREFERED_HEIGHT,
-                                          GDK_INTERP_HYPER);
-        g_object_unref (image);
-
-        return pixbuf;
-}
-
-static GdkPixbuf *
 get_pixbuf_from_theme (const char *icon_name,
                        const char *fallback_icon_name)
 {
@@ -279,15 +256,12 @@ init_icons (void)
                 "pixmaps/upnp-action-arg-out.png"   /* ICON_ACTION_ARG_OUT */
         };
 
-        char *stock_ids[] = {
-                GTK_STOCK_MISSING_IMAGE, /* ICON_MISSING   */
-                GTK_STOCK_NETWORK,       /* ICON_NETWORK   */
-                GTK_STOCK_EXECUTE,       /* ICON_ACTION    */
-                GTK_STOCK_DIRECTORY,     /* ICON_VARIABLES */
-                GTK_STOCK_FILE           /* ICON_FILE      */
-        };
-
         char *theme_names[] = {
+                "image-missing",               /* ICON_MISSING    */
+                "network-workgroup",           /* ICON_NETWORK    */
+                "gtk-execute",                 /* ICON_ACTION     */
+                "folder",                      /* ICON_VARIABLES  */
+                "gtk-file",                    /* ICON_FILE       */
                 "audio-volume-muted",          /* ICON_MIN_VOLUME */
                 "audio-volume-high",           /* ICON_MAX_VOLUME */
                 "folder-remote",               /* ICON_CONTAINER  */
@@ -298,6 +272,11 @@ init_icons (void)
         };
 
         char *fallback_theme_names[] = {
+                "gtk-missing-image",          /* ICON_MISSING    */
+                "gtk-network",                /* ICON_NETWORK    */
+                NULL,                         /* ICON_ACTION     */
+                "gtk-directory",              /* ICON_VARIABLES  */
+                NULL,                         /* ICON_FILE       */
                 "stock_volume-0",             /* ICON_MIN_VOLUME */
                 "stock_volume-max",           /* ICON_MAX_VOLUME */
                 NULL,                         /* ICON_CONTAINER  */
@@ -317,11 +296,6 @@ init_icons (void)
                 icons[i] = gdk_pixbuf_new_from_file (pixmap_path, NULL);
                 g_free (pixmap_path);
 
-                g_assert (icons[i] != NULL);
-        }
-
-        for (j = 0; i < ICON_MIN_VOLUME; i++, j++) {
-                icons[i] = get_pixbuf_from_stock (stock_ids[j]);
                 g_assert (icons[i] != NULL);
         }
 
