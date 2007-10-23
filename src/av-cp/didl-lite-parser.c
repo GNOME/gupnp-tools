@@ -92,7 +92,10 @@ void
 didl_lite_parser_parse_didl (DIDLLiteParser *parser,
                              xmlDoc         *didl)
 {
-        xmlNode *element;
+        XmlDocWrapper *wrapper;
+        xmlNode       *element;
+
+        wrapper = xml_doc_wrapper_new (didl);
 
         /* Get a pointer to root element */
         element = xml_util_get_element ((xmlNode *) didl,
@@ -101,7 +104,7 @@ didl_lite_parser_parse_didl (DIDLLiteParser *parser,
         for (element = element->children; element; element = element->next) {
                 DIDLLiteObject *object;
 
-                object = didl_lite_object_new (element);
+                object = didl_lite_object_new (wrapper, element);
                 g_signal_emit (parser,
                                signals[DIDL_OBJECT_AVAILABLE],
                                0,
@@ -109,5 +112,8 @@ didl_lite_parser_parse_didl (DIDLLiteParser *parser,
                 /* signal handlers will get their own ref */
                 g_object_unref (object);
         }
+
+        g_object_ref_sink (wrapper);
+        g_object_unref (wrapper);
 }
 

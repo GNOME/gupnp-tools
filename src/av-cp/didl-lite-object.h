@@ -21,8 +21,9 @@
 #ifndef __DIDL_LITE_OBJECT_H__
 #define __DIDL_LITE_OBJECT_H__
 
-#include <libxml/tree.h>
 #include <glib-object.h>
+
+#include "xml-util.h"
 
 G_BEGIN_DECLS
 
@@ -76,7 +77,8 @@ typedef struct {
 } DIDLLiteObjectClass;
 
 DIDLLiteObject *
-didl_lite_object_new                     (xmlNode               *element);
+didl_lite_object_new                     (XmlDocWrapper         *wrapper,
+                                          xmlNode               *element);
 
 /* DIDL-Lite Generic Object related functions */
 DIDLLiteObjectUPnPClass

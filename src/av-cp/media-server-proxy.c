@@ -193,7 +193,6 @@ browse_cb (GUPnPServiceProxy       *content_dir,
 	        g_warning ("Parse error on XML DIDL-Light:\n'%s'", didl_xml);
 	} else {
                 didl_lite_parser_parse_didl (proxy->priv->parser, didl);
-                xmlFreeDoc (didl);
         }
 
         g_free (didl_xml);

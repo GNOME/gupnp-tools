@@ -32,12 +32,13 @@ G_DEFINE_TYPE (DIDLLiteObject,
                G_TYPE_OBJECT);
 
 struct _DIDLLiteObjectPrivate {
-        xmlDoc  *doc;
-        xmlNode *element;
+        XmlDocWrapper *doc;
+        xmlNode       *element;
 };
 
 enum {
         PROP_0,
+        PROP_DOCUMENT,
         PROP_ELEMENT
 };
 
@@ -61,18 +62,16 @@ didl_lite_object_set_property (GObject        *gobject,
         object = DIDL_LITE_OBJECT (gobject);
 
         switch (property_id) {
+        case PROP_DOCUMENT:
+                object->priv->doc = g_value_get_object (value);
+                if (object->priv->doc)
+                        g_object_ref_sink (object->priv->doc);
+
+                break;
         case PROP_ELEMENT:
-                {
-                        xmlNode *element;
+                object->priv->element = g_value_get_pointer (value);
 
-                        element = g_value_get_pointer (value);
-
-                        object->priv->doc = xmlNewDoc (element->doc->version);
-                        object->priv->element = xmlDocCopyNodeList
-                                                        (object->priv->doc,
-                                                         element);
-                        break;
-                }
+                break;
         default:
                 G_OBJECT_WARN_INVALID_PROPERTY_ID (gobject, property_id, pspec);
                 break;
@@ -88,7 +87,7 @@ didl_lite_object_dispose (GObject *gobject)
         object = DIDL_LITE_OBJECT (gobject);
 
         if (object->priv->doc) {
-                xmlFreeDoc (object->priv->doc);
+                g_object_unref (object->priv->doc);
                 object->priv->doc = NULL;
         }
 
@@ -107,6 +106,27 @@ didl_lite_object_class_init (DIDLLiteObjectClass *klass)
         gobject_class->set_property = didl_lite_object_set_property;
 
         g_type_class_add_private (klass, sizeof (DIDLLiteObjectPrivate));
+
+        /**
+         * DIDLLiteObject:document
+         *
+         * Private property.
+         *
+         * Stability: Private
+         **/
+        g_object_class_install_property
+                (gobject_class,
+                 PROP_DOCUMENT,
+                 g_param_spec_object ("document",
+                                      "Document",
+                                      "The DIDL-Lite document containing this "
+                                      "object",
+                                      TYPE_XML_DOC_WRAPPER,
+                                      G_PARAM_WRITABLE |
+                                      G_PARAM_CONSTRUCT_ONLY |
+                                      G_PARAM_STATIC_NAME |
+                                      G_PARAM_STATIC_NICK |
+                                      G_PARAM_STATIC_BLURB));
 
         /**
          * DIDLLiteObject:element
@@ -130,9 +150,14 @@ didl_lite_object_class_init (DIDLLiteObjectClass *klass)
 }
 
 DIDLLiteObject *
-didl_lite_object_new (xmlNode *element)
+didl_lite_object_new (XmlDocWrapper *wrapper,
+                      xmlNode       *element)
 {
+        g_return_val_if_fail (IS_XML_DOC_WRAPPER (wrapper), NULL);
+        g_return_val_if_fail (element != NULL, NULL);
+
         return g_object_new (TYPE_DIDL_LITE_OBJECT,
+                             "document", wrapper,
                              "element", element,
                              NULL);
 }
