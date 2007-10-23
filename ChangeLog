@@ -1,3 +1,12 @@
+2007-10-23  Zeeshan Ali  <zeenix@gstreamer.net>
+
+	* src/av-cp/av-cp-playlisttreeview.c:
+
+	Assume the parent of a DIDL object to be root if it's "parentID" is
+	not known to us already. This is to support the ContentDirectory
+	implemenations (e.g Coherence) that assigns an id other than "0" to
+	the root DIDL object.
+
 2007-10-22  Zeeshan Ali  <zeenix@gstreamer.net>
 
 	* src/common/icons.c:

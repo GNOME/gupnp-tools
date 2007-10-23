@@ -296,7 +296,8 @@ append_didle_object (DIDLLiteObject         *object,
         GtkTreeIter parent_iter;
         char       *parent_id;
         char       *title;
-        gboolean    found;
+        GdkPixbuf  *icon;
+        gint        position;
 
         title = didl_lite_object_get_title (object);
         if (title == NULL)
@@ -308,44 +309,37 @@ append_didle_object (DIDLLiteObject         *object,
                 return;
         }
 
-        if (strcmp (parent_id, "0") == 0) {
+        if (!find_row (model,
+                       server_iter,
+                       &parent_iter,
+                       compare_container,
+                       (gpointer) parent_id,
+                       TRUE)) {
+                /* Assume parent to be the root container if parentID is
+                 * unknown */
                 parent_iter = *server_iter;
-                found = TRUE;
+        }
+
+        /* FIXME: The following code assumes that container is always
+        * added to treeview before the objects under it. Although this
+        * is currently always true but things might change after we
+        * start to support container updates.
+        */
+        if (upnp_class == DIDL_LITE_OBJECT_UPNP_CLASS_CONTAINER) {
+                position = 0;
+                icon = get_icon_by_id (ICON_CONTAINER);
         } else {
-                found = find_row (model,
-                                  server_iter,
-                                  &parent_iter,
-                                  compare_container,
-                                  (gpointer) parent_id,
-                                  TRUE);
+                position = -1;
+                icon = get_item_icon (object);
         }
 
-        if (found) {
-                GdkPixbuf *icon;
-                gint       position;
-
-                /* FIXME: The following code assumes that container is always
-                 * added to treeview before the objects under it. Although this
-                 * is currently always true but things might change after we
-                 * start to support container updates.
-                 */
-                if (upnp_class == DIDL_LITE_OBJECT_UPNP_CLASS_CONTAINER) {
-                        position = 0;
-                        icon = get_icon_by_id (ICON_CONTAINER);
-                } else {
-                        position = -1;
-                        icon = get_item_icon (object);
-                }
-
-                gtk_tree_store_insert_with_values
-                                        (GTK_TREE_STORE (model),
-                                         NULL, &parent_iter, position,
-                                         0, icon,
-                                         1, title,
-                                         2, object,
-                                         3, server,
-                                         -1);
-        }
+        gtk_tree_store_insert_with_values (GTK_TREE_STORE (model),
+                                           NULL, &parent_iter, position,
+                                           0, icon,
+                                           1, title,
+                                           2, object,
+                                           3, server,
+                                           -1);
 
         g_free (parent_id);
         g_free (title);
