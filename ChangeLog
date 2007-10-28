@@ -13,13 +13,6 @@
 
 	Use the new didl_lite_object API.
 
-2007-10-24  Zeeshan Ali  <zeenix@gstreamer.net>
-
-	* src/av-cp/xml-util.c:
-	* src/av-cp/xml-util.h:
-
-	Import xmlDoc gobject wrapper from gupnp package.
-
 2007-10-23  Zeeshan Ali  <zeenix@gstreamer.net>
 
 	* src/av-cp/av-cp-playlisttreeview.c:
