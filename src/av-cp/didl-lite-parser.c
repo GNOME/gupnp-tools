@@ -63,10 +63,10 @@ didl_lite_parser_class_init (DIDLLiteParserClass *klass)
         /**
          * DIDLLiteParser::didl-object-available
          * @didl: The #GUPnPDIDLLiteParser that received the signal
-         * @object: The now available object
+         * @object_node: The now available object node
          *
          * The ::didl-object-available signal is emitted whenever a new
-         * DIDL-Lite object is available.
+         * DIDL-Lite object node is available.
          **/
         signals[DIDL_OBJECT_AVAILABLE] =
                 g_signal_new ("didl-object-available",
@@ -76,10 +76,10 @@ didl_lite_parser_class_init (DIDLLiteParserClass *klass)
                                                didl_object_available),
                               NULL,
                               NULL,
-                              g_cclosure_marshal_VOID__OBJECT,
+                              g_cclosure_marshal_VOID__POINTER,
                               G_TYPE_NONE,
                               1,
-                              TYPE_DIDL_LITE_OBJECT);
+                              G_TYPE_POINTER);
 }
 
 DIDLLiteParser *
@@ -102,15 +102,10 @@ didl_lite_parser_parse_didl (DIDLLiteParser *parser,
                                         "DIDL-Lite",
                                         NULL);
         for (element = element->children; element; element = element->next) {
-                DIDLLiteObject *object;
-
-                object = didl_lite_object_new (wrapper, element);
                 g_signal_emit (parser,
                                signals[DIDL_OBJECT_AVAILABLE],
                                0,
-                               object);
-                /* signal handlers will get their own ref */
-                g_object_unref (object);
+                               element);
         }
 
         g_object_ref_sink (wrapper);

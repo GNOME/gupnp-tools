@@ -24,6 +24,7 @@
 
 #include "media-server-proxy.h"
 #include "didl-lite-parser.h"
+#include "didl-lite-object.h"
 
 #define CONNECTION_MANAGER_V1 "urn:schemas-upnp-org:service:ConnectionManager:1"
 #define CONNECTION_MANAGER_V2 "urn:schemas-upnp-org:service:ConnectionManager:2"
@@ -46,20 +47,18 @@ struct _MediaServerProxyPrivate {
 
 static void
 on_didl_object_available (DIDLLiteParser *parser,
-                          DIDLLiteObject *object,
+                          xmlNode        *object_node,
                           gpointer        user_data)
 {
-        MediaServerProxy       *proxy;
-        DIDLLiteObjectUPnPClass upnp_class;
-        char *                  id;
+        MediaServerProxy *proxy;
+        char             *id;
 
         proxy = MEDIA_SERVER_PROXY (user_data);
-        upnp_class = didl_lite_object_get_upnp_class (object);
 
-        if (upnp_class != DIDL_LITE_OBJECT_UPNP_CLASS_CONTAINER)
+        if (!didl_lite_object_is_container (object_node))
                 return;
 
-        id = didl_lite_object_get_id (object);
+        id = didl_lite_object_get_id (object_node);
         g_return_if_fail (id != NULL);
 
         /* Recurse into containers */

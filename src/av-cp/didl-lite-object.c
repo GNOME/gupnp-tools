@@ -22,198 +22,77 @@
 #include "xml-util.h"
 #include "didl-lite-object.h"
 
-#define CONTAINER_CLASS_NAME            "object.container"
-#define CONTAINER_CLASS_NAME_LEN        16
-#define ITEM_CLASS_NAME                 "object.item"
-#define ITEM_CLASS_NAME_LEN             11
+#define CONTAINER_CLASS_NAME "object.container"
+#define ITEM_CLASS_NAME      "object.item"
 
-G_DEFINE_TYPE (DIDLLiteObject,
-               didl_lite_object,
-               G_TYPE_OBJECT);
-
-struct _DIDLLiteObjectPrivate {
-        XmlDocWrapper *doc;
-        xmlNode       *element;
-};
-
-enum {
-        PROP_0,
-        PROP_DOCUMENT,
-        PROP_ELEMENT
-};
-
-static void
-didl_lite_object_init (DIDLLiteObject *object)
+gboolean
+didl_lite_object_is_container (xmlNode *object_node)
 {
-        object->priv = G_TYPE_INSTANCE_GET_PRIVATE
-                                        (object,
-                                         TYPE_DIDL_LITE_OBJECT,
-                                         DIDLLiteObjectPrivate);
-}
+        char     *class_name;
+        gboolean is_container;
 
-static void
-didl_lite_object_set_property (GObject        *gobject,
-                                 guint         property_id,
-                                 const GValue *value,
-                                 GParamSpec   *pspec)
-{
-        DIDLLiteObject *object;
-
-        object = DIDL_LITE_OBJECT (gobject);
-
-        switch (property_id) {
-        case PROP_DOCUMENT:
-                object->priv->doc = g_value_get_object (value);
-                if (object->priv->doc)
-                        g_object_ref_sink (object->priv->doc);
-
-                break;
-        case PROP_ELEMENT:
-                object->priv->element = g_value_get_pointer (value);
-
-                break;
-        default:
-                G_OBJECT_WARN_INVALID_PROPERTY_ID (gobject, property_id, pspec);
-                break;
-        }
-}
-
-static void
-didl_lite_object_dispose (GObject *gobject)
-{
-        GObjectClass       *gobject_class;
-        DIDLLiteObject     *object;
-
-        object = DIDL_LITE_OBJECT (gobject);
-
-        if (object->priv->doc) {
-                g_object_unref (object->priv->doc);
-                object->priv->doc = NULL;
-        }
-
-        gobject_class = G_OBJECT_CLASS (didl_lite_object_parent_class);
-        gobject_class->dispose (gobject);
-}
-
-static void
-didl_lite_object_class_init (DIDLLiteObjectClass *klass)
-{
-        GObjectClass *gobject_class;
-
-        gobject_class = G_OBJECT_CLASS (klass);
-
-        gobject_class->dispose      = didl_lite_object_dispose;
-        gobject_class->set_property = didl_lite_object_set_property;
-
-        g_type_class_add_private (klass, sizeof (DIDLLiteObjectPrivate));
-
-        /**
-         * DIDLLiteObject:document
-         *
-         * Private property.
-         *
-         * Stability: Private
-         **/
-        g_object_class_install_property
-                (gobject_class,
-                 PROP_DOCUMENT,
-                 g_param_spec_object ("document",
-                                      "Document",
-                                      "The DIDL-Lite document containing this "
-                                      "object",
-                                      TYPE_XML_DOC_WRAPPER,
-                                      G_PARAM_WRITABLE |
-                                      G_PARAM_CONSTRUCT_ONLY |
-                                      G_PARAM_STATIC_NAME |
-                                      G_PARAM_STATIC_NICK |
-                                      G_PARAM_STATIC_BLURB));
-
-        /**
-         * DIDLLiteObject:element
-         *
-         * Private property.
-         *
-         * Stability: Private
-         **/
-        g_object_class_install_property
-                (gobject_class,
-                 PROP_ELEMENT,
-                 g_param_spec_pointer ("element",
-                                       "Element",
-                                       "The DIDL-Lite element related to this "
-                                       "object",
-                                       G_PARAM_WRITABLE |
-                                       G_PARAM_CONSTRUCT_ONLY |
-                                       G_PARAM_STATIC_NAME |
-                                       G_PARAM_STATIC_NICK |
-                                       G_PARAM_STATIC_BLURB));
-}
-
-DIDLLiteObject *
-didl_lite_object_new (XmlDocWrapper *wrapper,
-                      xmlNode       *element)
-{
-        g_return_val_if_fail (IS_XML_DOC_WRAPPER (wrapper), NULL);
-        g_return_val_if_fail (element != NULL, NULL);
-
-        return g_object_new (TYPE_DIDL_LITE_OBJECT,
-                             "document", wrapper,
-                             "element", element,
-                             NULL);
-}
-
-DIDLLiteObjectUPnPClass
-didl_lite_object_get_upnp_class (DIDLLiteObject *object)
-{
-        DIDLLiteObjectUPnPClass upnp_class;
-        char *class_name;
-
-        class_name = didl_lite_object_get_upnp_class_name (object);
-        g_return_val_if_fail (class_name != NULL,
-                              DIDL_LITE_OBJECT_UPNP_CLASS_UNKNOWN);
+        class_name = didl_lite_object_get_upnp_class (object_node);
+        g_return_val_if_fail (class_name != NULL, FALSE);
 
         if (0 == strncmp (class_name,
                           CONTAINER_CLASS_NAME,
-                          CONTAINER_CLASS_NAME_LEN)) {
-                upnp_class = DIDL_LITE_OBJECT_UPNP_CLASS_CONTAINER;
-        } else if (0 == strncmp (class_name,
-                                 ITEM_CLASS_NAME,
-                                 ITEM_CLASS_NAME_LEN)) {
-                upnp_class = DIDL_LITE_OBJECT_UPNP_CLASS_ITEM;
+                          strlen (CONTAINER_CLASS_NAME))) {
+                is_container = TRUE;
         } else {
-                upnp_class = DIDL_LITE_OBJECT_UPNP_CLASS_UNKNOWN;
+                is_container = FALSE;
         }
 
         g_free (class_name);
 
-        return upnp_class;
+        return is_container;
+}
+
+gboolean
+didl_lite_object_is_item (xmlNode *object_node)
+{
+        char     *class_name;
+        gboolean is_item;
+
+        class_name = didl_lite_object_get_upnp_class (object_node);
+        g_return_val_if_fail (class_name != NULL, FALSE);
+
+        if (0 == strncmp (class_name,
+                          ITEM_CLASS_NAME,
+                          strlen (ITEM_CLASS_NAME))) {
+                is_item = TRUE;
+        } else {
+                is_item = FALSE;
+        }
+
+        g_free (class_name);
+
+        return is_item;
 }
 
 char *
-didl_lite_object_get_upnp_class_name (DIDLLiteObject *object)
+didl_lite_object_get_upnp_class (xmlNode *object_node)
 {
-        return xml_util_get_child_element_content (object->priv->element,
+        return xml_util_get_child_element_content (object_node,
                                                    "class");
 }
 
 char *
-didl_lite_object_get_id (DIDLLiteObject *object)
+didl_lite_object_get_id (xmlNode *object_node)
 {
-        return xml_util_get_attribute_contents (object->priv->element, "id");
+        return xml_util_get_attribute_contents (object_node, "id");
 }
 
 char *
-didl_lite_object_get_parent_id (DIDLLiteObject *object)
+didl_lite_object_get_parent_id (xmlNode *object_node)
 {
-        return xml_util_get_attribute_contents (object->priv->element,
+        return xml_util_get_attribute_contents (object_node,
                                                 "parentID");
 }
 
 char *
-didl_lite_object_get_title (DIDLLiteObject *object)
+didl_lite_object_get_title (xmlNode *object_node)
 {
-        return xml_util_get_child_element_content (object->priv->element,
+        return xml_util_get_child_element_content (object_node,
                                                    "title");
 }
-
 

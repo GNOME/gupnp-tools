@@ -23,7 +23,6 @@
 
 #include <libxml/tree.h>
 #include <glib-object.h>
-#include "didl-lite-object.h"
 
 G_BEGIN_DECLS
 
@@ -62,7 +61,7 @@ typedef struct {
 
         /* signals */
         void (* didl_object_available)      (DIDLLiteParser *parser,
-                                             DIDLLiteObject *object);
+                                             xmlNode        *object_node);
 
         /* future padding */
         void (* _gupnp_reserved1) (void);

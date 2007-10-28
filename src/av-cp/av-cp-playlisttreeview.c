@@ -26,6 +26,7 @@
 #include "icons.h"
 #include "av-cp-gui.h"
 #include "av-cp.h"
+#include "didl-lite-object.h"
 
 #define ITEM_CLASS_IMAGE "object.item.imageItem"
 #define ITEM_CLASS_AUDIO "object.item.audioItem"
@@ -65,11 +66,12 @@ create_playlist_treemodel (void)
         GtkTreeStore *store;
 
         store = gtk_tree_store_new
-                                (4,
-                                 GDK_TYPE_PIXBUF,    /* Icon             */
-                                 G_TYPE_STRING,      /* Title            */
-                                 G_TYPE_OBJECT,      /* Primary object   */
-                                 G_TYPE_OBJECT);     /* Secondary object */
+                                (5,
+                                 GDK_TYPE_PIXBUF,         /* Icon          */
+                                 G_TYPE_STRING,           /* Title         */
+                                 TYPE_MEDIA_SERVER_PROXY, /* MediaServer   */
+                                 G_TYPE_STRING,           /* Id            */
+                                 G_TYPE_BOOLEAN);         /* Is container? */
 
         return GTK_TREE_MODEL (store);
 }
@@ -216,47 +218,40 @@ compare_container (GtkTreeModel *model,
                    GtkTreeIter  *iter,
                    gpointer      user_data)
 {
-        DIDLLiteObject *object;
         const char     *id = (const char *) user_data;
+        char           *container_id;
+        gboolean        is_container;
         gboolean        found = FALSE;
 
         if (id == NULL)
                 return found;
 
         gtk_tree_model_get (model, iter,
-                            2, &object, -1);
+                            3, &container_id,
+                            4, &is_container, -1);
 
-        if (object) {
-                if (IS_DIDL_LITE_OBJECT (object)) {
-                        DIDLLiteObjectUPnPClass upnp_class;
-                        char                   *container_id;
+        if (!is_container)
+                return found;
 
-                        upnp_class = didl_lite_object_get_upnp_class (object);
-                        container_id = didl_lite_object_get_id (object);
+        if (container_id == NULL)
+                return found;
 
-                        if (upnp_class ==
-                            DIDL_LITE_OBJECT_UPNP_CLASS_CONTAINER &&
-                            container_id &&
-                            strcmp (container_id, id) == 0) {
-                                found = TRUE;
-                        }
-
-                        g_free (container_id);
-                }
-
-                g_object_unref (object);
+        if (strcmp (container_id, id) == 0) {
+                found = TRUE;
         }
+
+        g_free (container_id);
 
         return found;
 }
 
 static GdkPixbuf *
-get_item_icon (DIDLLiteObject *object)
+get_item_icon (xmlNode *object_node)
 {
         GdkPixbuf *icon;
         char      *class_name;
 
-        class_name = didl_lite_object_get_upnp_class_name (object);
+        class_name = didl_lite_object_get_upnp_class (object_node);
         if (G_UNLIKELY (class_name == NULL)) {
                 return get_icon_by_id (ICON_FILE);
         }
@@ -287,27 +282,37 @@ get_item_icon (DIDLLiteObject *object)
 }
 
 static void
-append_didle_object (DIDLLiteObject         *object,
-                     DIDLLiteObjectUPnPClass upnp_class,
-                     MediaServerProxy       *server,
-                     GtkTreeModel           *model,
-                     GtkTreeIter            *server_iter)
+append_didle_object (xmlNode          *object_node,
+                     MediaServerProxy *server,
+                     GtkTreeModel     *model,
+                     GtkTreeIter      *server_iter)
 {
         GtkTreeIter parent_iter;
+        char       *id;
         char       *parent_id;
         char       *title;
+        gboolean    is_container;
         GdkPixbuf  *icon;
         gint        position;
 
-        title = didl_lite_object_get_title (object);
-        if (title == NULL)
+        id = didl_lite_object_get_id (object_node);
+        if (id == NULL)
                 return;
 
-        parent_id = didl_lite_object_get_parent_id (object);
+        title = didl_lite_object_get_title (object_node);
+        if (title == NULL) {
+                g_free (id);
+                return;
+        }
+
+        parent_id = didl_lite_object_get_parent_id (object_node);
         if (parent_id == NULL) {
+                g_free (id);
                 g_free (title);
                 return;
         }
+
+        is_container = didl_lite_object_is_container (object_node);
 
         if (!find_row (model,
                        server_iter,
@@ -325,33 +330,34 @@ append_didle_object (DIDLLiteObject         *object,
         * is currently always true but things might change after we
         * start to support container updates.
         */
-        if (upnp_class == DIDL_LITE_OBJECT_UPNP_CLASS_CONTAINER) {
+        if (is_container) {
                 position = 0;
                 icon = get_icon_by_id (ICON_CONTAINER);
         } else {
                 position = -1;
-                icon = get_item_icon (object);
+                icon = get_item_icon (object_node);
         }
 
         gtk_tree_store_insert_with_values (GTK_TREE_STORE (model),
                                            NULL, &parent_iter, position,
                                            0, icon,
                                            1, title,
-                                           2, object,
-                                           3, server,
+                                           2, server,
+                                           3, id,
+                                           4, is_container,
                                            -1);
 
         g_free (parent_id);
         g_free (title);
+        g_free (id);
 }
 
 static void
 on_didl_object_available (DIDLLiteParser *parser,
-                          DIDLLiteObject *object,
+                          xmlNode *object_node,
                           gpointer        user_data)
 {
         MediaServerProxy       *server;
-        DIDLLiteObjectUPnPClass upnp_class;
         GtkTreeModel           *model;
         GtkTreeIter             server_iter;
         const char             *udn;
@@ -360,7 +366,6 @@ on_didl_object_available (DIDLLiteParser *parser,
         g_assert (model != NULL);
 
         server = MEDIA_SERVER_PROXY (user_data);
-        upnp_class = didl_lite_object_get_upnp_class (object);
 
         udn = gupnp_device_info_get_udn (GUPNP_DEVICE_INFO (server));
 
@@ -370,8 +375,7 @@ on_didl_object_available (DIDLLiteParser *parser,
                        compare_media_server,
                        (gpointer) udn,
                        FALSE)) {
-                append_didle_object (object,
-                                     upnp_class,
+                append_didle_object (object_node,
                                      server,
                                      model,
                                      &server_iter);

@@ -1,3 +1,18 @@
+2007-10-28  Zeeshan Ali Khan Khattak  <zeenix@gstreamer.net>
+
+	* src/av-cp/didl-lite-object.c:
+	* src/av-cp/didl-lite-object.h:
+
+	Instead of a gobject, provide an API to deal with the DIDL-Lite xml
+	nodes. 
+
+	* src/av-cp/didl-lite-parser.c:
+	* src/av-cp/didl-lite-parser.h:
+	* src/av-cp/media-server-proxy.c:
+	* src/av-cp/av-cp-playlisttreeview.c:
+
+	Use the new didl_lite_object API.
+
 2007-10-24  Zeeshan Ali  <zeenix@gstreamer.net>
 
 	* src/av-cp/didl-lite-object.c:

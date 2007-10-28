@@ -21,106 +21,54 @@
 #ifndef __DIDL_LITE_OBJECT_H__
 #define __DIDL_LITE_OBJECT_H__
 
-#include <glib-object.h>
-
 #include "xml-util.h"
 
 G_BEGIN_DECLS
 
-typedef enum
-{
-  DIDL_LITE_OBJECT_UPNP_CLASS_UNKNOWN,
-  DIDL_LITE_OBJECT_UPNP_CLASS_CONTAINER,
-  DIDL_LITE_OBJECT_UPNP_CLASS_ITEM,
-} DIDLLiteObjectUPnPClass;
-
-GType
-didl_lite_object_get_type (void) G_GNUC_CONST;
-
-#define TYPE_DIDL_LITE_OBJECT \
-                (didl_lite_object_get_type ())
-#define DIDL_LITE_OBJECT(obj) \
-                (G_TYPE_CHECK_INSTANCE_CAST ((obj), \
-                 TYPE_DIDL_LITE_OBJECT, \
-                 DIDLLiteObject))
-#define DIDL_LITE_OBJECT_CLASS(obj) \
-                (G_TYPE_CHECK_CLASS_CAST ((obj), \
-                 TYPE_DIDL_LITE_OBJECT, \
-                 DIDLLiteObjectClass))
-#define IS_DIDL_LITE_OBJECT(obj) \
-                (G_TYPE_CHECK_INSTANCE_TYPE ((obj), \
-                 TYPE_DIDL_LITE_OBJECT))
-#define IS_DIDL_LITE_OBJECT_CLASS(obj) \
-                (G_TYPE_CHECK_CLASS_TYPE ((obj), \
-                 TYPE_DIDL_LITE_OBJECT))
-#define DIDL_LITE_OBJECT_GET_CLASS(obj) \
-                (G_TYPE_INSTANCE_GET_CLASS ((obj), \
-                 TYPE_DIDL_LITE_OBJECT, \
-                 DIDLLiteObjectClass))
-
-typedef struct _DIDLLiteObjectPrivate DIDLLiteObjectPrivate;
-
-typedef struct {
-        GObject parent;
-
-        DIDLLiteObjectPrivate *priv;
-} DIDLLiteObject;
-
-typedef struct {
-        GObjectClass parent_class;
-
-        /* future padding */
-        void (* _gupnp_reserved1) (void);
-        void (* _gupnp_reserved2) (void);
-        void (* _gupnp_reserved3) (void);
-        void (* _gupnp_reserved4) (void);
-} DIDLLiteObjectClass;
-
-DIDLLiteObject *
-didl_lite_object_new                     (XmlDocWrapper         *wrapper,
-                                          xmlNode               *element);
-
 /* DIDL-Lite Generic Object related functions */
-DIDLLiteObjectUPnPClass
-didl_lite_object_get_upnp_class          (DIDLLiteObject        *object);
+char *
+didl_lite_object_get_upnp_class          (xmlNode        *object_node);
 
 char *
-didl_lite_object_get_upnp_class_name     (DIDLLiteObject        *object);
+didl_lite_object_get_id                  (xmlNode        *object_node);
 
 char *
-didl_lite_object_get_id                  (DIDLLiteObject        *object);
-
-char *
-didl_lite_object_get_parent_id           (DIDLLiteObject        *object);
+didl_lite_object_get_parent_id           (xmlNode        *object_node);
 
 gboolean
-didl_lite_object_get_never_playable      (DIDLLiteObject        *object);
+didl_lite_object_get_never_playable      (xmlNode        *object_node);
 
 char *
-didl_lite_object_get_title               (DIDLLiteObject        *object);
+didl_lite_object_get_title               (xmlNode        *object_node);
 
 char *
-didl_lite_object_get_desc_type           (DIDLLiteObject        *object);
+didl_lite_object_get_desc_type           (xmlNode        *object_node);
 
 char *
-didl_lite_object_get_desc_name_space     (DIDLLiteObject        *object);
+didl_lite_object_get_desc_name_space     (xmlNode        *object_node);
 
 char *
-didl_lite_object_get_desc_contents       (DIDLLiteObject        *object);
+didl_lite_object_get_desc_contents       (xmlNode        *object_node);
+
+gboolean
+didl_lite_object_is_container            (xmlNode        *object_node);
+
+gboolean
+didl_lite_object_is_item                 (xmlNode        *object_node);
 
 /* DIDL-Lite container Object functions */
 gboolean
-didl_lite_object_is_container_searchable (DIDLLiteObject        *object);
+didl_lite_container_is_searchable        (xmlNode        *container_node);
 
 /* DIDL-Lite item Object functions */
 char *
-didl_lite_object_get_item_ref_id         (DIDLLiteObject        *object);
+didl_lite_item_get_ref_id                (xmlNode        *item_node);
 
 char *
-didl_lite_object_get_item_protocol_info  (DIDLLiteObject        *object);
+didl_lite_item_get_protocol_info         (xmlNode        *item_node);
 
 char *
-didl_lite_object_get_item_duration       (DIDLLiteObject        *object);
+didl_lite_item_get_duration              (xmlNode        *item_node);
 
 G_END_DECLS
 
