@@ -15,25 +15,6 @@
 
 2007-10-24  Zeeshan Ali  <zeenix@gstreamer.net>
 
-	* src/av-cp/didl-lite-object.c:
-	* src/av-cp/didl-lite-object.h:
-
-	- Instead of creating a new xmlDoc for the element, keep a reference
-	  to the container xml document.
-	- Add a constructor prop. and an argument to _new() for retreiving the
-	  container xml document.
-
-	* src/av-cp/didl-lite-parser.c:
-
-	Create a wrapper for the DIDL xml doc and pass that to
-	didl_lite_object_new().
-
-	* src/av-cp/media-server-proxy.c:
-
-	Don't free the DIDL doc after passing it to the parser.
-
-2007-10-24  Zeeshan Ali  <zeenix@gstreamer.net>
-
 	* src/av-cp/xml-util.c:
 	* src/av-cp/xml-util.h:
 

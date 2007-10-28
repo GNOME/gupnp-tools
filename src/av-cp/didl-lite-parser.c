@@ -92,10 +92,7 @@ void
 didl_lite_parser_parse_didl (DIDLLiteParser *parser,
                              xmlDoc         *didl)
 {
-        XmlDocWrapper *wrapper;
-        xmlNode       *element;
-
-        wrapper = xml_doc_wrapper_new (didl);
+        xmlNode *element;
 
         /* Get a pointer to root element */
         element = xml_util_get_element ((xmlNode *) didl,
@@ -107,8 +104,5 @@ didl_lite_parser_parse_didl (DIDLLiteParser *parser,
                                0,
                                element);
         }
-
-        g_object_ref_sink (wrapper);
-        g_object_unref (wrapper);
 }
 
