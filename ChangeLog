@@ -5,6 +5,11 @@
 
 	Add a few xml utility functions.
 
+	* src/av-cp/didl-lite-object.c:
+	* src/av-cp/didl-lite-object.h:
+
+	Implement the rest of the DIDL-Lite object API.
+
 2007-10-30  Zeeshan Ali Khan Khattak  <zeenix@gstreamer.net>
 
 	* src/av-cp/didl-lite-object.c:

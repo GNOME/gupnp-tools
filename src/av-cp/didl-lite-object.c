@@ -101,3 +101,129 @@ didl_lite_object_get_value (xmlNode    *object_node,
         return xml_util_get_child_element_content (object_node, value_id);
 }
 
+gboolean
+didl_lite_object_get_restricted (xmlNode *object_node)
+{
+        return xml_util_get_boolean_attribute (object_node, "restricted");
+}
+
+gboolean
+didl_lite_object_get_never_playable (xmlNode *object_node)
+{
+        return xml_util_get_boolean_attribute (object_node, "neverPlayable");
+}
+
+GList *
+didl_lite_object_get_descriptors (xmlNode *object_node)
+{
+        return xml_util_get_child_elements_by_name (object_node, "desc");
+}
+
+GList *
+didl_lite_object_get_resources (xmlNode *object_node)
+{
+        return xml_util_get_child_elements_by_name (object_node, "res");
+}
+
+gboolean
+didl_lite_container_is_searchable (xmlNode *container_node)
+{
+        return xml_util_get_boolean_attribute (container_node, "searchable");
+}
+
+guint
+didl_lite_container_get_child_count (xmlNode *container_node)
+{
+        return xml_util_get_uint_attribute (container_node, "childCount");
+}
+
+char *
+didl_lite_item_get_ref_id (xmlNode *item_node)
+{
+        return xml_util_get_attribute_contents (item_node, "refID");
+}
+
+char *
+didl_lite_descriptor_get_type (xmlNode *desc_node)
+{
+        return xml_util_get_attribute_contents (desc_node, "type");
+}
+
+char *
+didl_lite_descriptor_get_name_space (xmlNode *desc_node)
+{
+        return xml_util_get_attribute_contents (desc_node, "nameSpace");
+}
+
+char *
+didl_lite_resource_get_contents (xmlNode *res_node)
+{
+        return xml_util_get_element_content (res_node);
+}
+
+char *
+didl_lite_resource_get_import_uri (xmlNode *res_node)
+{
+        return xml_util_get_attribute_contents (res_node, "importUri");
+}
+
+char *
+didl_lite_resource_get_protocol_info (xmlNode *res_node)
+{
+        return xml_util_get_attribute_contents (res_node, "protocolInfo");
+}
+
+guint
+didl_lite_resource_get_size (xmlNode *res_node)
+{
+        return xml_util_get_uint_attribute (res_node, "size");
+}
+
+char *
+didl_lite_resource_get_duration (xmlNode *res_node)
+{
+        return xml_util_get_attribute_contents (res_node, "duration");
+}
+
+guint
+didl_lite_resource_get_bitrate (xmlNode *res_node)
+{
+        return xml_util_get_uint_attribute (res_node, "bitrate");
+}
+
+guint
+didl_lite_resource_get_sample_frequency (xmlNode *res_node)
+{
+        return xml_util_get_uint_attribute (res_node, "frequency");
+}
+
+guint
+didl_lite_resource_get_bits_per_sample (xmlNode *res_node)
+{
+        return xml_util_get_uint_attribute (res_node, "bitsPerSample");
+}
+
+guint
+didl_lite_resource_get_nr_audio_channels (xmlNode *res_node)
+{
+        return xml_util_get_uint_attribute (res_node, "nrAudioChannels");
+}
+
+char *
+didl_lite_resource_get_resolution (xmlNode *res_node)
+{
+        return xml_util_get_attribute_contents (res_node, "resolution");
+}
+
+guint
+didl_lite_resource_get_color_depth (xmlNode *res_node)
+{
+        return xml_util_get_uint_attribute (res_node, "colorDepth");
+}
+
+char *
+didl_lite_resource_get_protection (xmlNode *res_node)
+{
+        return xml_util_get_attribute_contents (res_node, "protection");
+}
+
