@@ -32,12 +32,27 @@ xmlNode *
 xml_util_get_element                    (xmlNode    *node,
                                          ...) G_GNUC_NULL_TERMINATED;
 
+GList *
+xml_util_get_child_elements_by_name     (xmlNode *node,
+                                         const char *name);
+
+char *
+xml_util_get_element_content            (xmlNode    *node);
+
 char *
 xml_util_get_child_element_content      (xmlNode    *node,
                                          const char *child_name);
 
 char *
 xml_util_get_attribute_contents         (xmlNode    *node,
+                                         const char *attribute_name);
+
+gboolean
+xml_util_get_boolean_attribute          (xmlNode    *node,
+                                         const char *attribute_name);
+
+guint
+xml_util_get_uint_attribute             (xmlNode    *node,
                                          const char *attribute_name);
 
 #endif /* __XML_UTIL_H__ */

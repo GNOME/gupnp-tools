@@ -52,6 +52,20 @@ xml_util_get_element (xmlNode *node,
         return node;
 }
 
+GList *
+xml_util_get_child_elements_by_name (xmlNode *node, const char *name)
+{
+       GList *children = NULL;
+
+       for (node = node->children; node; node = node->next) {
+               if (strcmp (name, (char *) node->name) == 0) {
+                       children = g_list_append (children, node);
+               }
+       }
+
+       return children;
+}
+
 static xmlChar *
 get_child_element_content (xmlNode    *node,
                            const char *child_name)
@@ -65,6 +79,23 @@ get_child_element_content (xmlNode    *node,
                 return NULL;
 
         return xmlNodeGetContent (child_node);
+}
+
+char *
+xml_util_get_element_content (xmlNode *node)
+{
+        xmlChar *content;
+        char    *copy;
+
+        content = xmlNodeGetContent (node);
+        if (!content)
+                return NULL;
+
+        copy = g_strdup ((char *) content);
+
+        xmlFree (content);
+
+        return copy;
 }
 
 char *
@@ -120,5 +151,54 @@ xml_util_get_attribute_content (xmlNode    *node,
         xmlFree (content);
 
         return copy;
+}
+
+gboolean
+xml_util_get_boolean_attribute (xmlNode    *node,
+                                const char *attribute_name)
+{
+        xmlChar *content;
+        gchar   *str;
+        gboolean ret;
+
+        content = get_attribute_content (node, attribute_name);
+        if (!content)
+                return FALSE;
+
+        str = (char *) content;
+        if (g_ascii_strcasecmp (str, "true") == 0 ||
+            g_ascii_strcasecmp (str, "yes") == 0)
+                ret = TRUE;
+        else if (g_ascii_strcasecmp (str, "false") == 0 ||
+                 g_ascii_strcasecmp (str, "no") == 0)
+                ret = FALSE;
+        else {
+                int i;
+
+                i = atoi (str);
+                ret = i ? TRUE : FALSE;
+        }
+
+        xmlFree (content);
+
+        return ret;
+}
+
+guint
+xml_util_get_uint_attribute (xmlNode    *node,
+                             const char *attribute_name)
+{
+        xmlChar *content;
+        guint    ret;
+
+        content = get_attribute_content (node, attribute_name);
+        if (!content)
+                return 0;
+
+        ret = (guint) atoll ((char *) content);
+
+        xmlFree (content);
+
+        return ret;
 }
 
