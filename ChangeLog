@@ -1,3 +1,10 @@
+2007-10-30  Zeeshan Ali Khan Khattak  <zeenix@gstreamer.net>
+
+	* src/av-cp/didl-lite-object.c:
+	* src/av-cp/didl-lite-object.h:
+
+	Add didl_lite_object_get_value() on popular demand. :)
+
 2007-10-28  Zeeshan Ali Khan Khattak  <zeenix@gstreamer.net>
 
 	* src/av-cp/didl-lite-object.c:

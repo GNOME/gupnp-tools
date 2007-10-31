@@ -72,8 +72,7 @@ didl_lite_object_is_item (xmlNode *object_node)
 char *
 didl_lite_object_get_upnp_class (xmlNode *object_node)
 {
-        return xml_util_get_child_element_content (object_node,
-                                                   "class");
+        return didl_lite_object_get_value (object_node, "class");
 }
 
 char *
@@ -92,7 +91,13 @@ didl_lite_object_get_parent_id (xmlNode *object_node)
 char *
 didl_lite_object_get_title (xmlNode *object_node)
 {
-        return xml_util_get_child_element_content (object_node,
-                                                   "title");
+        return didl_lite_object_get_value (object_node, "title");
+}
+
+char *
+didl_lite_object_get_value (xmlNode    *object_node,
+                            const char *value_id)
+{
+        return xml_util_get_child_element_content (object_node, value_id);
 }
 

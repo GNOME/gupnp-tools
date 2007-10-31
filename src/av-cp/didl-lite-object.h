@@ -27,6 +27,10 @@ G_BEGIN_DECLS
 
 /* DIDL-Lite Generic Object related functions */
 char *
+didl_lite_object_get_value               (xmlNode        *object_node,
+                                          const char     *value_id);
+
+char *
 didl_lite_object_get_upnp_class          (xmlNode        *object_node);
 
 char *
