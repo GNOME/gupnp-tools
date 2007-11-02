@@ -12,10 +12,12 @@ AC_PROG_LIBTOOL
 AC_FUNC_MMAP
 
 GUPNP_REQUIRED=0.6
+GUPNP_AV_REQUIRED=0.1
 LIBGLADE_REQUIRED=2.6.0
 ICON_THEME_REQUIRED=2.20
 
 PKG_CHECK_MODULES(LIBGUPNP, gupnp-1.0 >= $GUPNP_REQUIRED \
+                            gupnp-av-1.0 >= $GUPNP_AV_REQUIRED \
                             libglade-2.0 >= $LIBGLADE_REQUIRED \
                             gnome-icon-theme >= $ICON_THEME_REQUIRED)
 
