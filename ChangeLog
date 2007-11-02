@@ -1,5 +1,27 @@
 2007-11-02  Zeeshan Ali Khattak  <zeenix@gstreamer.net>
 
+	* src/av-cp/media-renderer-proxy.c:
+	* src/av-cp/media-renderer-proxy.h:
+	* src/av-cp/media-server-proxy.c:
+	* src/av-cp/media-server-proxy.h:
+	* src/av-cp/xml-util.c:
+	* src/av-cp/xml-util.h:
+	* src/av-cp/Makefile.am:
+	* src/av-cp/av-cp-playlisttreeview.c:
+	* src/av-cp/av-cp-playlisttreeview.h:
+	* src/av-cp/av-cp-renderercombo.c:
+	* src/av-cp/av-cp-renderercombo.h:
+	* src/av-cp/av-cp.c:
+	* src/av-cp/didl-lite-object.c:
+	* src/av-cp/didl-lite-object.h:
+	* src/av-cp/didl-lite-parser.c:
+	* src/av-cp/didl-lite-parser.h:
+
+	Remove and Update stuff according to the recent move of generic
+	AV components to gupnp-av.
+
+2007-11-02  Zeeshan Ali Khattak  <zeenix@gstreamer.net>
+
 	* configure.ac:
 
 	Require libgupnp-av.

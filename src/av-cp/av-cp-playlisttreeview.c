@@ -26,7 +26,6 @@
 #include "icons.h"
 #include "av-cp-gui.h"
 #include "av-cp.h"
-#include "didl-lite-object.h"
 
 #define ITEM_CLASS_IMAGE "object.item.imageItem"
 #define ITEM_CLASS_AUDIO "object.item.audioItem"
@@ -69,7 +68,8 @@ create_playlist_treemodel (void)
                                 (5,
                                  GDK_TYPE_PIXBUF,         /* Icon          */
                                  G_TYPE_STRING,           /* Title         */
-                                 TYPE_MEDIA_SERVER_PROXY, /* MediaServer   */
+                                 GUPNP_TYPE_MEDIA_SERVER_PROXY,
+                                                          /* MediaServer   */
                                  G_TYPE_STRING,           /* Id            */
                                  G_TYPE_BOOLEAN);         /* Is container? */
 
@@ -155,7 +155,7 @@ compare_media_server (GtkTreeModel *model,
                             2, &info, -1);
 
         if (info) {
-                if (IS_MEDIA_SERVER_PROXY (info)) {
+                if (GUPNP_IS_MEDIA_SERVER_PROXY (info)) {
                         const char *device_udn;
 
                         device_udn = gupnp_device_info_get_udn (info);
@@ -251,7 +251,7 @@ get_item_icon (xmlNode *object_node)
         GdkPixbuf *icon;
         char      *class_name;
 
-        class_name = didl_lite_object_get_upnp_class (object_node);
+        class_name = gupnp_didl_lite_object_get_upnp_class (object_node);
         if (G_UNLIKELY (class_name == NULL)) {
                 return get_icon_by_id (ICON_FILE);
         }
@@ -282,10 +282,10 @@ get_item_icon (xmlNode *object_node)
 }
 
 static void
-append_didle_object (xmlNode          *object_node,
-                     MediaServerProxy *server,
-                     GtkTreeModel     *model,
-                     GtkTreeIter      *server_iter)
+append_didle_object (xmlNode               *object_node,
+                     GUPnPMediaServerProxy *server,
+                     GtkTreeModel          *model,
+                     GtkTreeIter           *server_iter)
 {
         GtkTreeIter parent_iter;
         char       *id;
@@ -295,24 +295,24 @@ append_didle_object (xmlNode          *object_node,
         GdkPixbuf  *icon;
         gint        position;
 
-        id = didl_lite_object_get_id (object_node);
+        id = gupnp_didl_lite_object_get_id (object_node);
         if (id == NULL)
                 return;
 
-        title = didl_lite_object_get_title (object_node);
+        title = gupnp_didl_lite_object_get_title (object_node);
         if (title == NULL) {
                 g_free (id);
                 return;
         }
 
-        parent_id = didl_lite_object_get_parent_id (object_node);
+        parent_id = gupnp_didl_lite_object_get_parent_id (object_node);
         if (parent_id == NULL) {
                 g_free (id);
                 g_free (title);
                 return;
         }
 
-        is_container = didl_lite_object_is_container (object_node);
+        is_container = gupnp_didl_lite_object_is_container (object_node);
 
         if (!find_row (model,
                        server_iter,
@@ -353,19 +353,19 @@ append_didle_object (xmlNode          *object_node,
 }
 
 static void
-on_didl_object_available (DIDLLiteParser *parser,
-                          xmlNode *object_node,
-                          gpointer        user_data)
+on_didl_object_available (GUPnPDIDLLiteParser *parser,
+                          xmlNode             *object_node,
+                          gpointer             user_data)
 {
-        MediaServerProxy       *server;
-        GtkTreeModel           *model;
-        GtkTreeIter             server_iter;
-        const char             *udn;
+        GUPnPMediaServerProxy *server;
+        GtkTreeModel          *model;
+        GtkTreeIter            server_iter;
+        const char            *udn;
 
         model = gtk_tree_view_get_model (GTK_TREE_VIEW (treeview));
         g_assert (model != NULL);
 
-        server = MEDIA_SERVER_PROXY (user_data);
+        server = GUPNP_MEDIA_SERVER_PROXY (user_data);
 
         udn = gupnp_device_info_get_udn (GUPNP_DEVICE_INFO (server));
 
@@ -385,9 +385,9 @@ on_didl_object_available (DIDLLiteParser *parser,
 }
 
 static void
-append_media_server (MediaServerProxy *server,
-                     GtkTreeModel     *model,
-                     GtkTreeIter      *parent_iter)
+append_media_server (GUPnPMediaServerProxy *server,
+                     GtkTreeModel          *model,
+                     GtkTreeIter           *parent_iter)
 {
         GUPnPDeviceInfo *info;
         char            *friendly_name;
@@ -396,7 +396,7 @@ append_media_server (MediaServerProxy *server,
 
         friendly_name = gupnp_device_info_get_friendly_name (info);
         if (friendly_name) {
-                DIDLLiteParser *parser;
+                GUPnPDIDLLiteParser *parser;
                 GtkTreeIter     device_iter;
                 GList          *child;
 
@@ -412,7 +412,7 @@ append_media_server (MediaServerProxy *server,
                 /* Append the embedded devices */
                 child = gupnp_device_info_list_devices (info);
                 while (child) {
-                        append_media_server (MEDIA_SERVER_PROXY (child->data),
+                        append_media_server (GUPNP_MEDIA_SERVER_PROXY (child->data),
                                              model,
                                              &device_iter);
                         g_object_unref (child->data);
@@ -421,9 +421,9 @@ append_media_server (MediaServerProxy *server,
 
                 /*schedule_icon_update (info);*/
 
-                media_server_proxy_start_browsing (server, "0");
+                gupnp_media_server_proxy_start_browsing (server, "0");
 
-                parser = media_server_proxy_get_parser (server);
+                parser = gupnp_media_server_proxy_get_parser (server);
                 g_signal_connect (parser,
                                   "didl-object-available",
                                   G_CALLBACK (on_didl_object_available),
@@ -432,7 +432,7 @@ append_media_server (MediaServerProxy *server,
 }
 
 void
-add_media_server (MediaServerProxy *server)
+add_media_server (GUPnPMediaServerProxy *server)
 {
         GtkTreeModel *model;
         GtkTreeIter   iter;
@@ -460,7 +460,7 @@ add_media_server (MediaServerProxy *server)
 }
 
 void
-remove_media_server (MediaServerProxy *server)
+remove_media_server (GUPnPMediaServerProxy *server)
 {
 }
 

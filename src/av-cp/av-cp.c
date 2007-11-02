@@ -19,19 +19,13 @@
  */
 
 #include <libgupnp/gupnp-control-point.h>
+#include <libgupnp-av/gupnp-av.h>
 #include <string.h>
 #include <stdlib.h>
 
 #include "av-cp-gui.h"
 #include "av-cp-renderercombo.h"
 #include "av-cp-playlisttreeview.h"
-#include "media-renderer-proxy.h"
-#include "media-server-proxy.h"
-
-#define MEDIA_RENDERER_V1 "urn:schemas-upnp-org:device:MediaRenderer:1"
-#define MEDIA_RENDERER_V2 "urn:schemas-upnp-org:device:MediaRenderer:2"
-#define MEDIA_SERVER_V1 "urn:schemas-upnp-org:device:MediaServer:1"
-#define MEDIA_SERVER_V2 "urn:schemas-upnp-org:device:MediaServer:2"
 
 static GUPnPContext      *context;
 static GUPnPControlPoint *cp;
@@ -40,10 +34,10 @@ static void
 device_proxy_available_cb (GUPnPControlPoint *cp,
                            GUPnPDeviceProxy  *proxy)
 {
-        if (G_OBJECT_TYPE (proxy) == TYPE_MEDIA_RENDERER_PROXY) {
-                add_media_renderer (MEDIA_RENDERER_PROXY (proxy));
-        } else if (G_OBJECT_TYPE (proxy) == TYPE_MEDIA_SERVER_PROXY) {
-                add_media_server (MEDIA_SERVER_PROXY (proxy));
+        if (G_OBJECT_TYPE (proxy) == GUPNP_TYPE_MEDIA_RENDERER_PROXY) {
+                add_media_renderer (GUPNP_MEDIA_RENDERER_PROXY (proxy));
+        } else if (G_OBJECT_TYPE (proxy) == GUPNP_TYPE_MEDIA_SERVER_PROXY) {
+                add_media_server (GUPNP_MEDIA_SERVER_PROXY (proxy));
         }
 }
 
@@ -51,20 +45,19 @@ static void
 device_proxy_unavailable_cb (GUPnPControlPoint *cp,
                              GUPnPDeviceProxy  *proxy)
 {
-        if (G_OBJECT_TYPE (proxy) == TYPE_MEDIA_RENDERER_PROXY) {
-                remove_media_renderer (MEDIA_RENDERER_PROXY (proxy));
-        } else if (G_OBJECT_TYPE (proxy) == TYPE_MEDIA_SERVER_PROXY) {
-                remove_media_server (MEDIA_SERVER_PROXY (proxy));
+        if (G_OBJECT_TYPE (proxy) == GUPNP_TYPE_MEDIA_RENDERER_PROXY) {
+                remove_media_renderer (GUPNP_MEDIA_RENDERER_PROXY (proxy));
+        } else if (G_OBJECT_TYPE (proxy) == GUPNP_TYPE_MEDIA_SERVER_PROXY) {
+                remove_media_server (GUPNP_MEDIA_SERVER_PROXY (proxy));
         }
 }
 
 static gboolean
 init_upnp (void)
 {
-        GUPnPResourceFactory *factory;
-        GError               *error;
+        GError *error;
 
-        g_type_init ();
+        gupnp_av_init ();
 
         error = NULL;
         context = gupnp_context_new (NULL, NULL, 0, &error);
@@ -77,25 +70,6 @@ init_upnp (void)
 
         /* We're interested in everything */
         cp = gupnp_control_point_new (context, "ssdp:all");
-
-        factory = gupnp_control_point_get_resource_factory (cp);
-        g_assert (factory != NULL);
-        gupnp_resource_factory_register_resource_proxy_type
-                                        (factory,
-                                         MEDIA_RENDERER_V1,
-                                         TYPE_MEDIA_RENDERER_PROXY);
-        gupnp_resource_factory_register_resource_proxy_type
-                                        (factory,
-                                         MEDIA_RENDERER_V2,
-                                         TYPE_MEDIA_RENDERER_PROXY);
-        gupnp_resource_factory_register_resource_proxy_type
-                                        (factory,
-                                         MEDIA_SERVER_V1,
-                                         TYPE_MEDIA_SERVER_PROXY);
-        gupnp_resource_factory_register_resource_proxy_type
-                                        (factory,
-                                         MEDIA_SERVER_V2,
-                                         TYPE_MEDIA_SERVER_PROXY);
 
         g_signal_connect (cp,
                           "device-proxy-available",

@@ -21,22 +21,22 @@
 #ifndef __AV_CP_RENDERERCOMBO_H__
 #define __AV_CP_RENDERERCOMBO_H__
 
+#include <libgupnp/gupnp.h>
+#include <libgupnp-av/gupnp-av.h>
 #include <config.h>
 #include <gtk/gtk.h>
 #include <glade/glade.h>
-
-#include "media-renderer-proxy.h"
 
 void
 update_device_icon              (GUPnPDeviceInfo *info,
                                  GdkPixbuf       *icon);
 void
-add_media_renderer              (MediaRendererProxy *renderer);
+add_media_renderer              (GUPnPMediaRendererProxy *renderer);
 
 void
-remove_media_renderer           (MediaRendererProxy *renderer);
+remove_media_renderer           (GUPnPMediaRendererProxy *renderer);
 
 void
-setup_renderer_combo            (GladeXML                   *glade_xml);
+setup_renderer_combo            (GladeXML                *glade_xml);
 
 #endif /* __AV_CP_RENDERERCOMBO_H__ */

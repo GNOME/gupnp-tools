@@ -18,7 +18,6 @@
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  */
 
-#include <libgupnp/gupnp-control-point.h>
 #include <string.h>
 #include <stdlib.h>
 #include <config.h>
@@ -93,7 +92,7 @@ update_device_icon (GUPnPDeviceInfo *info,
 }
 
 void
-add_media_renderer (MediaRendererProxy *renderer)
+add_media_renderer (GUPnPMediaRendererProxy *renderer)
 {
         GUPnPDeviceInfo *info;
         GtkComboBox     *combo;
@@ -143,7 +142,7 @@ add_media_renderer (MediaRendererProxy *renderer)
 }
 
 void
-remove_media_renderer (MediaRendererProxy *renderer)
+remove_media_renderer (GUPnPMediaRendererProxy *renderer)
 {
         GUPnPDeviceInfo *info;
         GtkComboBox     *combo;
