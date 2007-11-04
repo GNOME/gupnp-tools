@@ -68,9 +68,9 @@ find_renderer (GtkTreeModel *model,
         return found;
 }
 
-void
-update_device_icon (GUPnPDeviceInfo *info,
-                    GdkPixbuf       *icon)
+static void
+on_device_icon_available (GUPnPDeviceInfo *info,
+                          GdkPixbuf       *icon)
 {
         GtkTreeModel *model;
         GtkTreeIter   iter;
@@ -132,7 +132,7 @@ add_media_renderer (GUPnPMediaRendererProxy *proxy)
                                  2, proxy,
                                  -1);
 
-                schedule_icon_update (info);
+                schedule_icon_update (info, on_device_icon_available);
 
                 if (was_empty)
                         gtk_combo_box_set_active_iter (combo, &iter);

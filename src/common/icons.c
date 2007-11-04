@@ -29,12 +29,6 @@
 #define PREFERED_WIDTH  22
 #define PREFERED_HEIGHT 22
 
-/* provided by other modules */
-/* FIXME: this should be done through a callback */
-void
-update_device_icon (GUPnPDeviceInfo *info,
-                    GdkPixbuf       *icon);
-
 GdkPixbuf *icons[ICON_LAST];
 
 /* For async downloads of icons */
@@ -43,6 +37,9 @@ static GList       *pending_gets;
 
 typedef struct {
         GUPnPDeviceInfo *info;
+
+        DeviceIconAvailableCallback callback;
+
         SoupMessage     *message;
         gchar           *mime_type;
         gint             width;
@@ -111,7 +108,7 @@ got_icon_url (SoupMessage    *msg,
                                    error->message);
                         g_error_free (error);
                 } else if (pixbuf) {
-                        update_device_icon (data->info, pixbuf);
+                        data->callback (data->info, pixbuf);
                 } else {
                         g_warning ("Failed to create icon for '%s'",
                                    gupnp_device_info_get_udn (data->info));
@@ -123,7 +120,8 @@ got_icon_url (SoupMessage    *msg,
 }
 
 void
-schedule_icon_update (GUPnPDeviceInfo *info)
+schedule_icon_update (GUPnPDeviceInfo            *info,
+                      DeviceIconAvailableCallback callback)
 {
         GetIconURLData *data;
         char           *icon_url;
@@ -159,6 +157,7 @@ schedule_icon_update (GUPnPDeviceInfo *info)
         }
 
         data->info = info;
+        data->callback = callback;
 
         pending_gets = g_list_prepend (pending_gets, data);
         soup_session_queue_message (session,

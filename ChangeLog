@@ -1,5 +1,14 @@
 2007-11-04  Zeeshan Ali Khattak  <zeenix@gstreamer.net>
 
+	* src/common/icons.c:
+	* src/common/icons.h:
+	* src/av-cp/renderer-combo.c:
+	* src/universal-cp/device-treeview.c:
+
+	Use a callback for icon availability notification.
+
+2007-11-04  Zeeshan Ali Khattak  <zeenix@gstreamer.net>
+
 	* src/av-cp/Makefile.am:
 	* src/av-cp/gui.c:
 	* src/av-cp/gui.h:

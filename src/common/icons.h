@@ -48,8 +48,12 @@ typedef enum
         ICON_LAST
 } IconID;
 
+typedef void (* DeviceIconAvailableCallback) (GUPnPDeviceInfo *info,
+                                              GdkPixbuf       *icon);
+
 void
-schedule_icon_update   (GUPnPDeviceInfo *info);
+schedule_icon_update   (GUPnPDeviceInfo            *info,
+                        DeviceIconAvailableCallback callback);
 
 void
 unschedule_icon_update (GUPnPDeviceInfo *info);

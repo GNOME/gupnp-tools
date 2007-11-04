@@ -285,6 +285,33 @@ remove_device (GUPnPDeviceInfo *info)
 }
 
 static void
+on_device_icon_available (GUPnPDeviceInfo *info,
+                          GdkPixbuf       *icon)
+{
+        GtkTreeModel *model;
+        GtkTreeIter   root_iter;
+        GtkTreeIter   device_iter;
+        const char   *udn;
+
+        model = gtk_tree_view_get_model (GTK_TREE_VIEW (treeview));
+        g_assert (model != NULL);
+
+        udn = gupnp_device_info_get_udn (info);
+
+        if (!gtk_tree_model_get_iter_first (model, &root_iter))
+                return;
+
+        if (find_device (model, udn, &root_iter, &device_iter)) {
+                gtk_tree_store_set (GTK_TREE_STORE (model),
+                                    &device_iter,
+                                    0, icon,
+                                    -1);
+        } else {
+                g_object_unref (icon);
+        }
+}
+
+static void
 append_action_arguments (GList        *arguments,
                          GtkTreeStore *store,
                          GtkTreeIter  *action_iter)
@@ -502,7 +529,7 @@ append_device_tree (GUPnPDeviceInfo *info,
                                  -1);
                 g_free (friendly_name);
 
-                schedule_icon_update (info);
+                schedule_icon_update (info, on_device_icon_available);
 
                 /* Append the embedded devices */
                 child = gupnp_device_info_list_devices (info);
@@ -557,33 +584,6 @@ append_device (GUPnPDeviceInfo *info)
                                         first_row,
                                         FALSE);
                 }
-        }
-}
-
-void
-update_device_icon (GUPnPDeviceInfo *info,
-                    GdkPixbuf       *icon)
-{
-        GtkTreeModel *model;
-        GtkTreeIter   root_iter;
-        GtkTreeIter   device_iter;
-        const char   *udn;
-
-        model = gtk_tree_view_get_model (GTK_TREE_VIEW (treeview));
-        g_assert (model != NULL);
-
-        udn = gupnp_device_info_get_udn (info);
-
-        if (!gtk_tree_model_get_iter_first (model, &root_iter))
-                return;
-
-        if (find_device (model, udn, &root_iter, &device_iter)) {
-                gtk_tree_store_set (GTK_TREE_STORE (model),
-                                    &device_iter,
-                                    0, icon,
-                                    -1);
-        } else {
-                g_object_unref (icon);
         }
 }
 
