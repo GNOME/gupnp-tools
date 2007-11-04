@@ -22,10 +22,10 @@
 #include <stdlib.h>
 #include <config.h>
 
-#include "universal-cp-gui.h"
-#include "universal-cp-devicetreeview.h"
+#include "gui.h"
+#include "devicetreeview.h"
 #include "icons.h"
-#include "universal-cp.h"
+#include "main.h"
 
 static GtkWidget *dialog;
 static GtkWidget *in_args_table;

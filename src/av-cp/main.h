@@ -18,25 +18,14 @@
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  */
 
-#ifndef __AV_CP_RENDERERCOMBO_H__
-#define __AV_CP_RENDERERCOMBO_H__
+#ifndef __MAIN_H__
+#define __MAIN_H__
 
-#include <libgupnp/gupnp.h>
-#include <libgupnp-av/gupnp-av.h>
-#include <config.h>
+#include <libgupnp/gupnp-control-point.h>
 #include <gtk/gtk.h>
 #include <glade/glade.h>
 
 void
-update_device_icon              (GUPnPDeviceInfo *info,
-                                 GdkPixbuf       *icon);
-void
-add_media_renderer              (GUPnPMediaRendererProxy *proxy);
+application_exit            (void);
 
-void
-remove_media_renderer           (GUPnPMediaRendererProxy *proxy);
-
-void
-setup_renderer_combo            (GladeXML                *glade_xml);
-
-#endif /* __AV_CP_RENDERERCOMBO_H__ */
+#endif /* __MAIN_H__ */

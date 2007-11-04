@@ -19,7 +19,7 @@
  */
 
 #include <libgupnp/gupnp-control-point.h>
-#include "universal-cp-gui.h"
+#include "gui.h"
 #include <string.h>
 #include <stdlib.h>
 

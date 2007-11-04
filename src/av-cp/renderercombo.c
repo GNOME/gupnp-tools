@@ -22,7 +22,7 @@
 #include <stdlib.h>
 #include <config.h>
 
-#include "av-cp-renderercombo.h"
+#include "renderercombo.h"
 #include "icons.h"
 
 static GtkWidget *renderer_combo;

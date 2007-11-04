@@ -22,12 +22,12 @@
 #include <stdlib.h>
 #include <config.h>
 
-#include "universal-cp-gui.h"
-#include "universal-cp-devicetreeview.h"
-#include "universal-cp-eventtreeview.h"
-#include "universal-cp-actiondialog.h"
+#include "gui.h"
+#include "devicetreeview.h"
+#include "eventtreeview.h"
+#include "actiondialog.h"
 #include "icons.h"
-#include "universal-cp.h"
+#include "main.h"
 
 #define GLADE_FILE DATA_DIR "/gupnp-universal-cp.glade"
 

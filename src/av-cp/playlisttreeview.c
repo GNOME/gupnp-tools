@@ -22,10 +22,10 @@
 #include <stdlib.h>
 #include <config.h>
 
-#include "av-cp-playlisttreeview.h"
+#include "playlisttreeview.h"
 #include "icons.h"
-#include "av-cp-gui.h"
-#include "av-cp.h"
+#include "gui.h"
+#include "main.h"
 
 #define ITEM_CLASS_IMAGE "object.item.imageItem"
 #define ITEM_CLASS_AUDIO "object.item.audioItem"

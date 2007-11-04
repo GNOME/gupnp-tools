@@ -22,8 +22,8 @@
 #include <stdlib.h>
 #include <config.h>
 
-#include "universal-cp-detailstreeview.h"
-#include "universal-cp-gui.h"
+#include "detailstreeview.h"
+#include "gui.h"
 
 static GtkWidget *treeview;
 static GtkWidget *copy_value_menuitem;

@@ -23,9 +23,9 @@
 #include <string.h>
 #include <stdlib.h>
 
-#include "av-cp-gui.h"
-#include "av-cp-renderercombo.h"
-#include "av-cp-playlisttreeview.h"
+#include "gui.h"
+#include "renderercombo.h"
+#include "playlisttreeview.h"
 
 static GUPnPContext      *context;
 static GUPnPControlPoint *cp;

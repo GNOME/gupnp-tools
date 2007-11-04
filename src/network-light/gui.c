@@ -22,9 +22,9 @@
 #include <stdlib.h>
 #include <config.h>
 
-#include "network-light-gui.h"
-#include "network-light-upnp.h"
-#include "network-light.h"
+#include "gui.h"
+#include "upnp.h"
+#include "main.h"
 
 #define GLADE_FILE DATA_DIR "/gupnp-network-light.glade"
 #define ICON_FILE  "pixmaps/network-light-256x256.png"

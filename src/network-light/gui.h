@@ -18,21 +18,20 @@
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  */
 
-#ifndef __GUPNP_AV_CP_GUI_H__
-#define __GUPNP_AV_CP_GUI_H__
+#ifndef __GUI_H__
+#define __GUI_H__
 
-#include <libgupnp/gupnp-control-point.h>
 #include <gtk/gtk.h>
 #include <glade/glade.h>
 
-#include "av-cp-playlisttreeview.h"
+void
+update_image       (void);
 
 gboolean
-init_ui                         (gint             *argc,
-                                 gchar           **argv[]);
+init_ui            (gint             *argc,
+                    gchar           **argv[]);
 
 void
-deinit_ui                       (void);
+deinit_ui          (void);
 
-#endif /* __GUPNP_AV_CP_GUI_H__ */
-
+#endif /* __GUI_H__ */

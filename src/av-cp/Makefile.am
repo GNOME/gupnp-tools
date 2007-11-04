@@ -9,14 +9,14 @@ AM_CFLAGS = $(LIBGUPNP_CFLAGS) $(LIBGLADE_CFLAGS) -I$(top_srcdir) \
 
 bin_PROGRAMS = gupnp-av-cp
 
-gupnp_av_cp_SOURCES = av-cp.c \
-		      av-cp-gui.c \
-		      av-cp-playlisttreeview.c \
-		      av-cp-renderercombo.c \
-		      av-cp.h \
-		      av-cp-gui.h \
-		      av-cp-playlisttreeview.h \
-		      av-cp-renderercombo.h
+gupnp_av_cp_SOURCES = main.c \
+		      gui.c \
+		      playlisttreeview.c \
+		      renderercombo.c \
+		      main.h \
+		      gui.h \
+		      playlisttreeview.h \
+		      renderercombo.h
 
 gupnp_av_cp_LDADD = $(LIBGLADE_LIBS) $(LIBGUPNP_LIBS) \
 		    ../common/libicons.a

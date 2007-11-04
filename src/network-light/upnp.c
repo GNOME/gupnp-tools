@@ -26,9 +26,9 @@
 #include <locale.h>
 #include <string.h>
 
-#include "network-light-gui.h"
-#include "network-light-upnp.h"
-#include "network-light.h"
+#include "gui.h"
+#include "upnp.h"
+#include "main.h"
 
 #define DESCRIPTION_DOC "xml/network-light-desc.xml"
 #define DIMMING_SERVICE "urn:schemas-upnp-org:service:Dimming:1"

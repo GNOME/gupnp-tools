@@ -22,10 +22,10 @@
 #include <stdlib.h>
 #include <config.h>
 
-#include "av-cp-gui.h"
-#include "av-cp-playlisttreeview.h"
-#include "av-cp-renderercombo.h"
-#include "av-cp.h"
+#include "gui.h"
+#include "playlisttreeview.h"
+#include "renderercombo.h"
+#include "main.h"
 #include "icons.h"
 
 #define GLADE_FILE DATA_DIR "/gupnp-av-cp.glade"

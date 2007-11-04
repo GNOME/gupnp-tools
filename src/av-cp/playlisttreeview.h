@@ -18,21 +18,22 @@
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  */
 
-#ifndef __GUPNP_NETWORK_LIGHT_H__
-#define __GUPNP_NETWORK_LIGHT_H__
+#ifndef __PLAYLISTTREEVIEW_H__
+#define __PLAYLISTTREEVIEW_H__
 
-#include <libgupnp/gupnp.h>
-
-void
-set_status         (gboolean status);
-
-gboolean
-get_status         (void);
+#include <config.h>
+#include <gtk/gtk.h>
+#include <glade/glade.h>
+#include <libgupnp-av/gupnp-av.h>
 
 void
-set_load_level     (gint load_level);
+setup_playlist_treeview         (GladeXML               *glade_xml);
 
-gint
-get_load_level     (void);
+void
+add_media_server                (GUPnPMediaServerProxy  *proxy);
 
-#endif /* __GUPNP_NETWORK_LIGHT_H__ */
+void
+remove_media_server             (GUPnPMediaServerProxy  *proxy);
+
+#endif /* __PLAYLISTTREEVIEW_H__ */
+

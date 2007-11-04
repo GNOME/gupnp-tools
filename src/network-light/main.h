@@ -18,20 +18,21 @@
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  */
 
-#ifndef __GUPNP_NETWORK_LIGHT_GUI_H__
-#define __GUPNP_NETWORK_LIGHT_GUI_H__
+#ifndef __MAIN_H__
+#define __MAIN_H__
 
-#include <gtk/gtk.h>
-#include <glade/glade.h>
+#include <libgupnp/gupnp.h>
 
 void
-update_image       (void);
+set_status         (gboolean status);
 
 gboolean
-init_ui            (gint             *argc,
-                    gchar           **argv[]);
+get_status         (void);
 
 void
-deinit_ui          (void);
+set_load_level     (gint load_level);
 
-#endif /* __GUPNP_NETWORK_LIGHT_GUI_H__ */
+gint
+get_load_level     (void);
+
+#endif /* __MAIN_H__ */

@@ -18,14 +18,21 @@
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  */
 
-#ifndef __GUPNP_AV_CP_H__
-#define __GUPNP_AV_CP_H__
+#ifndef __UPNP_H__
+#define __UPNP_H__
 
-#include <libgupnp/gupnp-control-point.h>
-#include <gtk/gtk.h>
-#include <glade/glade.h>
+#include <libgupnp/gupnp.h>
 
 void
-application_exit            (void);
+notify_status_change            (gboolean       status);
 
-#endif /* __GUPNP_AV_CP_H__ */
+void
+notify_load_level_change        (gint           load_level);
+
+gboolean
+init_upnp                       (void);
+
+void
+deinit_upnp                     (void);
+
+#endif /* __UPNP_H__ */

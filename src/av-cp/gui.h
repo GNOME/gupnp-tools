@@ -18,21 +18,21 @@
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  */
 
-#ifndef __GUPNP_NETWORK_LIGHT_UPNP_H__
-#define __GUPNP_NETWORK_LIGHT_UPNP_H__
+#ifndef __GUI_H__
+#define __GUI_H__
 
-#include <libgupnp/gupnp.h>
+#include <libgupnp/gupnp-control-point.h>
+#include <gtk/gtk.h>
+#include <glade/glade.h>
 
-void
-notify_status_change            (gboolean       status);
-
-void
-notify_load_level_change        (gint           load_level);
+#include "playlisttreeview.h"
 
 gboolean
-init_upnp                       (void);
+init_ui                         (gint             *argc,
+                                 gchar           **argv[]);
 
 void
-deinit_upnp                     (void);
+deinit_ui                       (void);
 
-#endif /* __GUPNP_NETWORK_LIGHT_UPNP_H__ */
+#endif /* __GUI_H__ */
+

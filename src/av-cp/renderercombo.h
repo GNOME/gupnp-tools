@@ -18,34 +18,25 @@
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  */
 
-#ifndef __GUPNP_UNIVERSAL_CP_GUI_H__
-#define __GUPNP_UNIVERSAL_CP_GUI_H__
+#ifndef __RENDERERCOMBO_H__
+#define __RENDERERCOMBO_H__
 
-#include <libgupnp/gupnp-control-point.h>
+#include <libgupnp/gupnp.h>
+#include <libgupnp-av/gupnp-av.h>
+#include <config.h>
 #include <gtk/gtk.h>
 #include <glade/glade.h>
 
-#include "universal-cp-devicetreeview.h"
-#include "universal-cp-detailstreeview.h"
+void
+update_device_icon              (GUPnPDeviceInfo *info,
+                                 GdkPixbuf       *icon);
+void
+add_media_renderer              (GUPnPMediaRendererProxy *proxy);
 
 void
-display_event      (const char       *notified_at,
-                    const char       *friendly_name,
-                    const char       *service_id,
-                    const char       *variable_name,
-                    const char       *value);
+remove_media_renderer           (GUPnPMediaRendererProxy *proxy);
 
 void
-setup_treeview     (GtkWidget    *treeview,
-                    GtkTreeModel *model,
-                    char         *headers[],
-                    int           render_index);
+setup_renderer_combo            (GladeXML                *glade_xml);
 
-gboolean
-init_ui            (gint             *argc,
-                    gchar           **argv[]);
-
-void
-deinit_ui          (void);
-
-#endif /* __GUPNP_UNIVERSAL_CP_GUI_H__ */
+#endif /* __RENDERERCOMBO_H__ */

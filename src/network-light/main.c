@@ -24,9 +24,9 @@
 #include <locale.h>
 #include <string.h>
 
-#include "network-light-gui.h"
-#include "network-light-upnp.h"
-#include "network-light.h"
+#include "gui.h"
+#include "upnp.h"
+#include "main.h"
 
 static gboolean light_status;
 static gint     light_load_level;

@@ -22,8 +22,8 @@
 #include <stdlib.h>
 #include <config.h>
 
-#include "universal-cp-eventtreeview.h"
-#include "universal-cp-gui.h"
+#include "eventtreeview.h"
+#include "gui.h"
 
 #define MAX_VALUE_SIZE 128
 

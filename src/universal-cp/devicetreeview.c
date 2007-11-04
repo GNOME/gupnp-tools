@@ -22,10 +22,10 @@
 #include <stdlib.h>
 #include <config.h>
 
-#include "universal-cp-gui.h"
+#include "gui.h"
 #include "icons.h"
-#include "universal-cp-actiondialog.h"
-#include "universal-cp.h"
+#include "actiondialog.h"
+#include "main.h"
 
 static const char *default_details[] = {
         "Software", "GUPnP Universal Control Point",

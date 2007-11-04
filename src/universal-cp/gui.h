@@ -18,22 +18,34 @@
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  */
 
-#ifndef __AV_CP_PLAYLISTTREEVIEW_H__
-#define __AV_CP_PLAYLISTTREEVIEW_H__
+#ifndef __GUPNP_UNIVERSAL_CP_GUI_H__
+#define __GUPNP_UNIVERSAL_CP_GUI_H__
 
-#include <config.h>
+#include <libgupnp/gupnp-control-point.h>
 #include <gtk/gtk.h>
 #include <glade/glade.h>
-#include <libgupnp-av/gupnp-av.h>
+
+#include "devicetreeview.h"
+#include "detailstreeview.h"
 
 void
-setup_playlist_treeview         (GladeXML               *glade_xml);
+display_event      (const char       *notified_at,
+                    const char       *friendly_name,
+                    const char       *service_id,
+                    const char       *variable_name,
+                    const char       *value);
 
 void
-add_media_server                (GUPnPMediaServerProxy  *proxy);
+setup_treeview     (GtkWidget    *treeview,
+                    GtkTreeModel *model,
+                    char         *headers[],
+                    int           render_index);
+
+gboolean
+init_ui            (gint             *argc,
+                    gchar           **argv[]);
 
 void
-remove_media_server             (GUPnPMediaServerProxy  *proxy);
+deinit_ui          (void);
 
-#endif /* __AV_CP_PLAYLISTTREEVIEW_H__ */
-
+#endif /* __GUPNP_UNIVERSAL_CP_GUI_H__ */
