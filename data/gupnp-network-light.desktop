@@ -1,0 +1,8 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=UPnP Network Light
+Categories=GTK;Development;
+Exec=gupnp-network-light
+Terminal=false
+Type=Application
+StartupNotify=true
