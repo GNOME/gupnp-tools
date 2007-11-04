@@ -1,5 +1,11 @@
 2007-11-04  Zeeshan Ali Khattak  <zeenix@gstreamer.net>
 
+	* src/av-cp/playlist-treeview.c:
+
+	Prefer to use the icon from the MediaServer to represent it.
+
+2007-11-04  Zeeshan Ali Khattak  <zeenix@gstreamer.net>
+
 	* src/common/icons.c:
 	* src/common/icons.h:
 	* src/av-cp/renderer-combo.c:

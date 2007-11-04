@@ -385,6 +385,34 @@ on_didl_object_available (GUPnPDIDLLiteParser *parser,
 }
 
 static void
+on_device_icon_available (GUPnPDeviceInfo *info,
+                          GdkPixbuf       *icon)
+{
+        GtkTreeModel *model;
+        GtkTreeIter   iter;
+        const char   *udn;
+
+        model = gtk_tree_view_get_model (GTK_TREE_VIEW (treeview));
+        g_assert (model != NULL);
+
+        udn = gupnp_device_info_get_udn (info);
+
+        if (find_row (model,
+                      NULL,
+                      &iter,
+                      compare_media_server,
+                      (gpointer) udn,
+                      FALSE)) {
+                gtk_tree_store_set (GTK_TREE_STORE (model),
+                                    &iter,
+                                    0, icon,
+                                    -1);
+        }
+
+        g_object_unref (icon);
+}
+
+static void
 append_media_server (GUPnPMediaServerProxy *proxy,
                      GtkTreeModel          *model,
                      GtkTreeIter           *parent_iter)
@@ -419,7 +447,7 @@ append_media_server (GUPnPMediaServerProxy *proxy,
                         child = g_list_delete_link (child, child);
                 }
 
-                /*schedule_icon_update (info);*/
+                schedule_icon_update (info, on_device_icon_available);
 
                 gupnp_media_server_proxy_start_browsing (proxy, "0");
 
