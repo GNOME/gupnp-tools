@@ -92,7 +92,7 @@ update_device_icon (GUPnPDeviceInfo *info,
 }
 
 void
-add_media_renderer (GUPnPMediaRendererProxy *renderer)
+add_media_renderer (GUPnPMediaRendererProxy *proxy)
 {
         GUPnPDeviceInfo *info;
         GtkComboBox     *combo;
@@ -101,7 +101,7 @@ add_media_renderer (GUPnPMediaRendererProxy *renderer)
         const char      *udn;
         char            *name;
 
-        info = GUPNP_DEVICE_INFO (renderer);
+        info = GUPNP_DEVICE_INFO (proxy);
         combo = GTK_COMBO_BOX (renderer_combo);
 
         udn = gupnp_device_info_get_udn (info);
@@ -129,7 +129,7 @@ add_media_renderer (GUPnPMediaRendererProxy *renderer)
                                  -1,
                                  0, get_icon_by_id (ICON_DEVICE),
                                  1, name,
-                                 2, renderer,
+                                 2, proxy,
                                  -1);
 
                 schedule_icon_update (info);
@@ -142,7 +142,7 @@ add_media_renderer (GUPnPMediaRendererProxy *renderer)
 }
 
 void
-remove_media_renderer (GUPnPMediaRendererProxy *renderer)
+remove_media_renderer (GUPnPMediaRendererProxy *proxy)
 {
         GUPnPDeviceInfo *info;
         GtkComboBox     *combo;
@@ -150,7 +150,7 @@ remove_media_renderer (GUPnPMediaRendererProxy *renderer)
         GtkTreeIter      iter;
         const char      *udn;
 
-        info = GUPNP_DEVICE_INFO (renderer);
+        info = GUPNP_DEVICE_INFO (proxy);
         combo = GTK_COMBO_BOX (renderer_combo);
 
         udn = gupnp_device_info_get_udn (info);

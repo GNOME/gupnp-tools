@@ -1,5 +1,15 @@
 2007-11-02  Zeeshan Ali Khattak  <zeenix@gstreamer.net>
 
+	* src/av-cp/av-cp-playlisttreeview.c:
+	* src/av-cp/av-cp-playlisttreeview.h:
+	* src/av-cp/av-cp-renderercombo.c:
+	* src/av-cp/av-cp-renderercombo.h:
+
+	Use 'proxy' as the variable name for media server/renderer proxy
+	objects rather than server/renderer.
+
+2007-11-02  Zeeshan Ali Khattak  <zeenix@gstreamer.net>
+
 	* src/av-cp/media-renderer-proxy.c:
 	* src/av-cp/media-renderer-proxy.h:
 	* src/av-cp/media-server-proxy.c:

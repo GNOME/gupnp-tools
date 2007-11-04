@@ -30,10 +30,10 @@ void
 setup_playlist_treeview         (GladeXML               *glade_xml);
 
 void
-add_media_server                (GUPnPMediaServerProxy  *server);
+add_media_server                (GUPnPMediaServerProxy  *proxy);
 
 void
-remove_media_server             (GUPnPMediaServerProxy  *server);
+remove_media_server             (GUPnPMediaServerProxy  *proxy);
 
 #endif /* __AV_CP_PLAYLISTTREEVIEW_H__ */
 

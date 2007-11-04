@@ -31,10 +31,10 @@ void
 update_device_icon              (GUPnPDeviceInfo *info,
                                  GdkPixbuf       *icon);
 void
-add_media_renderer              (GUPnPMediaRendererProxy *renderer);
+add_media_renderer              (GUPnPMediaRendererProxy *proxy);
 
 void
-remove_media_renderer           (GUPnPMediaRendererProxy *renderer);
+remove_media_renderer           (GUPnPMediaRendererProxy *proxy);
 
 void
 setup_renderer_combo            (GladeXML                *glade_xml);
