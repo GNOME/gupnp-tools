@@ -23,8 +23,8 @@
 #include <config.h>
 
 #include "gui.h"
-#include "playlisttreeview.h"
-#include "renderercombo.h"
+#include "playlist-treeview.h"
+#include "renderer-combo.h"
 #include "main.h"
 #include "icons.h"
 

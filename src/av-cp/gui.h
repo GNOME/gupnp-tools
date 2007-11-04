@@ -25,7 +25,7 @@
 #include <gtk/gtk.h>
 #include <glade/glade.h>
 
-#include "playlisttreeview.h"
+#include "playlist-treeview.h"
 
 gboolean
 init_ui                         (gint             *argc,

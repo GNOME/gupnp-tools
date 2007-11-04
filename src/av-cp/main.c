@@ -24,8 +24,8 @@
 #include <stdlib.h>
 
 #include "gui.h"
-#include "renderercombo.h"
-#include "playlisttreeview.h"
+#include "renderer-combo.h"
+#include "playlist-treeview.h"
 
 static GUPnPContext      *context;
 static GUPnPControlPoint *cp;

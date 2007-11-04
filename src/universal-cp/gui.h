@@ -25,8 +25,8 @@
 #include <gtk/gtk.h>
 #include <glade/glade.h>
 
-#include "devicetreeview.h"
-#include "detailstreeview.h"
+#include "device-treeview.h"
+#include "details-treeview.h"
 
 void
 display_event      (const char       *notified_at,

@@ -11,16 +11,16 @@ bin_PROGRAMS = gupnp-universal-cp
 
 gupnp_universal_cp_SOURCES = main.c \
 			     gui.c \
-			     devicetreeview.c \
-			     detailstreeview.c \
-			     eventtreeview.c \
-			     actiondialog.c \
+			     device-treeview.c \
+			     details-treeview.c \
+			     event-treeview.c \
+			     action-dialog.c \
 			     main.h \
 			     gui.h \
-			     devicetreeview.h \
-			     detailstreeview.h \
-			     eventtreeview.h \
-			     actiondialog.h
+			     device-treeview.h \
+			     details-treeview.h \
+			     event-treeview.h \
+			     action-dialog.h
 gupnp_universal_cp_LDADD = $(LIBGLADE_LIBS) $(LIBGUPNP_LIBS) \
 		    	   ../common/libicons.a
 gupnp_universal_cp_LDFLAGS = -export-dynamic

@@ -22,7 +22,7 @@
 #include <stdlib.h>
 #include <config.h>
 
-#include "eventtreeview.h"
+#include "event-treeview.h"
 #include "gui.h"
 
 #define MAX_VALUE_SIZE 128

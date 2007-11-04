@@ -23,9 +23,9 @@
 #include <config.h>
 
 #include "gui.h"
-#include "devicetreeview.h"
-#include "eventtreeview.h"
-#include "actiondialog.h"
+#include "device-treeview.h"
+#include "event-treeview.h"
+#include "action-dialog.h"
 #include "icons.h"
 #include "main.h"
 

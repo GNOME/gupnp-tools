@@ -1,3 +1,40 @@
+2007-11-04  Zeeshan Ali Khattak  <zeenix@gstreamer.net>
+
+	* src/av-cp/Makefile.am:
+	* src/av-cp/gui.c:
+	* src/av-cp/gui.h:
+	* src/av-cp/main.c:
+	* src/av-cp/playlist-treeview.c:
+	* src/av-cp/playlist-treeview.h:
+	* src/av-cp/playlisttreeview.c:
+	* src/av-cp/playlisttreeview.h:
+	* src/av-cp/renderer-combo.c:
+	* src/av-cp/renderer-combo.h:
+	* src/av-cp/renderercombo.c:
+	* src/av-cp/renderercombo.h:
+	* src/universal-cp/Makefile.am:
+	* src/universal-cp/action-dialog.c:
+	* src/universal-cp/action-dialog.h:
+	* src/universal-cp/actiondialog.c:
+	* src/universal-cp/actiondialog.h:
+	* src/universal-cp/details-treeview.c:
+	* src/universal-cp/details-treeview.h:
+	* src/universal-cp/detailstreeview.c:
+	* src/universal-cp/detailstreeview.h:
+	* src/universal-cp/device-treeview.c:
+	* src/universal-cp/device-treeview.h:
+	* src/universal-cp/devicetreeview.c:
+	* src/universal-cp/devicetreeview.h:
+	* src/universal-cp/event-treeview.c:
+	* src/universal-cp/event-treeview.h:
+	* src/universal-cp/eventtreeview.c:
+	* src/universal-cp/eventtreeview.h:
+	* src/universal-cp/gui.c:
+	* src/universal-cp/gui.h:
+
+	Separate parts of the names of modules with a '-' as par the naming
+	scheme of the project.
+
 2007-11-03  Zeeshan Ali Khattak  <zeenix@gstreamer.net>
 
 	* src/av-cp/Makefile.am:

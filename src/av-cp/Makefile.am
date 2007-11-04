@@ -11,12 +11,12 @@ bin_PROGRAMS = gupnp-av-cp
 
 gupnp_av_cp_SOURCES = main.c \
 		      gui.c \
-		      playlisttreeview.c \
-		      renderercombo.c \
+		      playlist-treeview.c \
+		      renderer-combo.c \
 		      main.h \
 		      gui.h \
-		      playlisttreeview.h \
-		      renderercombo.h
+		      playlist-treeview.h \
+		      renderer-combo.h
 
 gupnp_av_cp_LDADD = $(LIBGLADE_LIBS) $(LIBGUPNP_LIBS) \
 		    ../common/libicons.a

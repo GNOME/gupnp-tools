@@ -24,7 +24,7 @@
 
 #include "gui.h"
 #include "icons.h"
-#include "actiondialog.h"
+#include "action-dialog.h"
 #include "main.h"
 
 static const char *default_details[] = {

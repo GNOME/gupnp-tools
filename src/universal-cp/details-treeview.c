@@ -22,7 +22,7 @@
 #include <stdlib.h>
 #include <config.h>
 
-#include "detailstreeview.h"
+#include "details-treeview.h"
 #include "gui.h"
 
 static GtkWidget *treeview;

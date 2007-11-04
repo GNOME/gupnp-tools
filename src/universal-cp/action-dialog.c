@@ -23,7 +23,7 @@
 #include <config.h>
 
 #include "gui.h"
-#include "devicetreeview.h"
+#include "device-treeview.h"
 #include "icons.h"
 #include "main.h"
 

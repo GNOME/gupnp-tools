@@ -22,7 +22,7 @@
 #include <stdlib.h>
 #include <config.h>
 
-#include "playlisttreeview.h"
+#include "playlist-treeview.h"
 #include "icons.h"
 #include "gui.h"
 #include "main.h"
