@@ -25,6 +25,7 @@
 #include "gui.h"
 #include "icons.h"
 #include "action-dialog.h"
+#include "details-treeview.h"
 #include "main.h"
 
 static const char *default_details[] = {
@@ -282,6 +283,56 @@ remove_device (GUPnPDeviceInfo *info)
                 unschedule_icon_update (info);
                 gtk_tree_store_remove (GTK_TREE_STORE (model), &iter);
         }
+}
+
+static void
+on_state_variable_changed (GUPnPServiceProxy *proxy,
+                           const char        *variable_name,
+                           GValue            *value,
+                           gpointer           user_data)
+{
+        GUPnPServiceInfo *info = GUPNP_SERVICE_INFO (proxy);
+        GUPnPDeviceInfo  *device_info;
+        GValue            str_value;
+        char             *id;
+        char             *friendly_name;
+        char             *notified_at;
+        struct tm        *tm;
+        time_t            current_time;
+
+        /* Get the parent device */
+        device_info = get_service_device (info);
+        g_return_if_fail (device_info != NULL);
+
+        friendly_name = gupnp_device_info_get_friendly_name (device_info);
+        g_object_unref (device_info);
+        id = gupnp_service_info_get_id (info);
+        /* We neither keep devices without friendlyname
+         * nor services without an id
+         */
+        g_assert (friendly_name != NULL);
+        g_assert (id != NULL);
+
+        memset (&str_value, 0, sizeof (GValue));
+        g_value_init (&str_value, G_TYPE_STRING);
+        g_value_transform (value, &str_value);
+
+        current_time = time (NULL);
+        tm = localtime (&current_time);
+        notified_at = g_strdup_printf ("%02d:%02d",
+                                       tm->tm_hour,
+                                       tm->tm_min);
+
+        display_event (notified_at,
+                       friendly_name,
+                       id,
+                       variable_name,
+                       g_value_get_string (&str_value));
+
+        g_free (notified_at);
+        g_free (friendly_name);
+        g_free (id);
+        g_value_unset (&str_value);
 }
 
 static void

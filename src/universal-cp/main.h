@@ -24,26 +24,6 @@
 #include <libgupnp/gupnp-control-point.h>
 
 void
-on_state_variable_changed   (GUPnPServiceProxy             *proxy,
-                             const char                    *variable_name,
-                             GValue                        *value,
-                             gpointer                       user_data);
-void
 application_exit            (void);
-
-void
-show_action_arg_details     (GUPnPServiceActionArgInfo     *info);
-
-void
-show_action_details         (GUPnPServiceActionInfo        *info);
-
-void
-show_state_variable_details (GUPnPServiceStateVariableInfo *info);
-
-void
-show_service_details        (GUPnPServiceInfo              *info);
-
-void
-show_device_details         (GUPnPDeviceInfo               *info);
 
 #endif /* __GUPNP_UNIVERSAL_CP_H__ */

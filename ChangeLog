@@ -1,4 +1,14 @@
 2007-11-05  Zeeshan Ali Khattak  <zeenix@gstreamer.net>
+
+	* src/universal-cp/details-treeview.c:
+	* src/universal-cp/details-treeview.h:
+	* src/universal-cp/device-treeview.c:
+	* src/universal-cp/main.c:
+	* src/universal-cp/main.h:
+
+	Move some functions from main module to the appropriate modules.
+
+2007-11-05  Zeeshan Ali Khattak  <zeenix@gstreamer.net>
 	    Ross Burton <ross@openedhand.com>
 
 	* data/Makefile.am:

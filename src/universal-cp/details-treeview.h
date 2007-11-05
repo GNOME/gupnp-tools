@@ -23,11 +23,27 @@
 
 #include <gtk/gtk.h>
 #include <glade/glade.h>
+#include <libgupnp/gupnp-control-point.h>
 
 void
-update_details                  (const char      **tuples);
+update_details                  (const char                   **tuples);
 
 void
-setup_details_treeview          (GladeXML *glade_xml);
+show_action_arg_details         (GUPnPServiceActionArgInfo     *info);
+
+void
+show_action_details             (GUPnPServiceActionInfo        *info);
+
+void
+show_state_variable_details     (GUPnPServiceStateVariableInfo *info);
+
+void
+show_service_details            (GUPnPServiceInfo              *info);
+
+void
+show_device_details             (GUPnPDeviceInfo               *info);
+
+void
+setup_details_treeview          (GladeXML                      *glade_xml);
 
 #endif /* __GUPNP_UNIVERSAL_CP_DETAILS_TREEVIEW_H__ */
