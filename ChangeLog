@@ -1,6 +1,14 @@
 2007-11-05  Zeeshan Ali Khattak  <zeenix@gstreamer.net>
 
 	* configure.ac:
+	* src/Makefile.am:
+
+	- Provide an option to disable building of AV tools.
+	- Unavailability of gupnp-av only disables build of AV tools.
+
+2007-11-05  Zeeshan Ali Khattak  <zeenix@gstreamer.net>
+
+	* configure.ac:
 	* src/av-cp/Makefile.am:
 
 	Check for each requirement separately.
