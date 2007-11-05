@@ -1,5 +1,11 @@
 2007-11-05  Zeeshan Ali Khattak  <zeenix@gstreamer.net>
 
+	* configure.ac:
+
+	Explicitly require gtk+ >= 2.12.
+
+2007-11-05  Zeeshan Ali Khattak  <zeenix@gstreamer.net>
+
 	* src/universal-cp/event-treeview.c:
 
 	Show the full value in a tooltip when the mouse hovers on an event
