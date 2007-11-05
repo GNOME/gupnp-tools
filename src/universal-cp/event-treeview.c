@@ -33,6 +33,60 @@ static GtkWidget *scrolled_window;
 static GtkWidget *copy_event_menuitem;
 
 static gboolean
+on_query_tooltip (GtkWidget  *widget,
+                  gint        x,
+                  gint        y,
+                  gboolean    keyboard_mode,
+                  GtkTooltip *tooltip,
+                  gpointer    user_data)
+{
+        GtkTreeModel *model;
+        GtkTreeIter   iter;
+        GtkTreePath  *path;
+        gchar        *value;
+        gboolean      ret = FALSE;
+
+        gtk_tree_view_convert_widget_to_bin_window_coords
+                                (GTK_TREE_VIEW (treeview),
+                                 x,
+                                 y,
+                                 &x,
+                                 &y);
+
+        if (!gtk_tree_view_get_path_at_pos (GTK_TREE_VIEW (treeview),
+                                            x,
+                                            y,
+                                            &path,
+                                            NULL,
+                                            NULL,
+                                            NULL)) {
+                return ret;
+        }
+
+        model = gtk_tree_view_get_model (GTK_TREE_VIEW (treeview));
+        g_assert (model != NULL);
+
+        if (G_UNLIKELY (!gtk_tree_model_get_iter (model, &iter, path))) {
+                gtk_tree_path_free (path);
+
+                return ret;
+        }
+
+        gtk_tree_model_get (model, &iter,
+                            5, &value, -1);
+        if (value && strlen (value) != 0) {
+                ret = TRUE;
+                gtk_tooltip_set_text (tooltip, value);
+
+                g_free (value);
+        }
+
+        gtk_tree_path_free (path);
+
+        return ret;
+}
+
+static gboolean
 get_selected_row (GtkTreeIter *iter)
 {
         GtkTreeModel      *model;
@@ -334,6 +388,12 @@ setup_event_treeview (GladeXML *glade_xml)
 
         setup_treeview (treeview, model, headers, 0);
         g_object_unref (model);
+
+        g_object_set (treeview, "has-tooltip", TRUE, NULL);
+        g_signal_connect (treeview,
+                          "query-tooltip",
+                          G_CALLBACK (on_query_tooltip),
+                          NULL);
 }
 
 void
