@@ -1,6 +1,13 @@
 2007-11-05  Zeeshan Ali Khattak  <zeenix@gstreamer.net>
 
 	* configure.ac:
+	* src/av-cp/Makefile.am:
+
+	Check for each requirement separately.
+
+2007-11-05  Zeeshan Ali Khattak  <zeenix@gstreamer.net>
+
+	* configure.ac:
 
 	Explicitly require gtk+ >= 2.12.
 

@@ -17,11 +17,11 @@ GTK_REQUIRED=2.12
 LIBGLADE_REQUIRED=2.6.0
 ICON_THEME_REQUIRED=2.20
 
-PKG_CHECK_MODULES(LIBGUPNP, gupnp-1.0 >= $GUPNP_REQUIRED \
-                            gupnp-av-1.0 >= $GUPNP_AV_REQUIRED \
-                            libglade-2.0 >= $LIBGLADE_REQUIRED \
-                            gtk+-2.0 >= $GTK_REQUIRED \
-                            gnome-icon-theme >= $ICON_THEME_REQUIRED)
+PKG_CHECK_MODULES(LIBGUPNP, gupnp-1.0 >= $GUPNP_REQUIRED)
+PKG_CHECK_MODULES(LIBGUPNP_AV, gupnp-av-1.0 >= $GUPNP_AV_REQUIRED)
+PKG_CHECK_MODULES(GTK, gtk+-2.0 >= $GTK_REQUIRED)
+PKG_CHECK_MODULES(LIBGLADE, libglade-2.0 >= $LIBGLADE_REQUIRED)
+PKG_CHECK_MODULES(GNOME_ICON_THEME, gnome-icon-theme >= $ICON_THEME_REQUIRED)
 
 # glib-genmarshal
 GLIB_GENMARSHAL=`pkg-config --variable=glib_genmarshal glib-2.0`
