@@ -74,9 +74,11 @@ on_query_tooltip (GtkWidget  *widget,
 
         gtk_tree_model_get (model, &iter,
                             5, &value, -1);
-        if (value && strlen (value) != 0) {
-                ret = TRUE;
-                gtk_tooltip_set_text (tooltip, value);
+        if (value) {
+                if (strlen (value) != 0) {
+                        ret = TRUE;
+                        gtk_tooltip_set_text (tooltip, value);
+                }
 
                 g_free (value);
         }

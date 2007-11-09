@@ -1,5 +1,11 @@
 2007-11-05  Zeeshan Ali Khattak  <zeenix@gstreamer.net>
 
+	* src/universal-cp/event-treeview.c:
+
+	Fix a potential leak.
+
+2007-11-05  Zeeshan Ali Khattak  <zeenix@gstreamer.net>
+
 	* configure.ac:
 	* src/Makefile.am:
 
