@@ -252,7 +252,8 @@ init_icons (void)
                 "pixmaps/upnp-service.png",         /* ICON_SERVICE        */
                 "pixmaps/upnp-state-variable.png",  /* ICON_VARIABLE       */
                 "pixmaps/upnp-action-arg-in.png",   /* ICON_ACTION_ARG_IN  */
-                "pixmaps/upnp-action-arg-out.png"   /* ICON_ACTION_ARG_OUT */
+                "pixmaps/upnp-action-arg-out.png",  /* ICON_ACTION_ARG_OUT */
+                "pixmaps/media-renderer.png"        /* ICON_MEDIA_RENDERER */
         };
 
         char *theme_names[] = {

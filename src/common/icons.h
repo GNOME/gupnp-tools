@@ -33,6 +33,7 @@ typedef enum
         ICON_VARIABLE,
         ICON_ACTION_ARG_IN,
         ICON_ACTION_ARG_OUT,
+        ICON_MEDIA_RENDERER,
         ICON_MISSING,
         ICON_NETWORK,
         ICON_ACTION,

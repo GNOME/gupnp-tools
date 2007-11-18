@@ -6,7 +6,8 @@ pixmaps_DATA = upnp-device.png 		 \
 	       network-light-on.png 	 \
 	       network-light-off.png 	 \
 	       network-light-256x256.png \
-	       network-light-22x22.png
+	       network-light-22x22.png   \
+	       media-renderer.png
 
 pixmapsdir = $(datadir)/gupnp-tools/pixmaps
 

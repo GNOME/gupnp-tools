@@ -1,3 +1,13 @@
+2007-11-18  Zeeshan Ali Khattak  <zeenix@gstreamer.net>
+	Vinicius Depizzol <vdepizzol@gmail.com>
+
+	* data/pixmaps/Makefile.am:
+	* data/pixmaps/media-renderer.png:
+	* src/common/icons.c:
+	* src/common/icons.h:
+
+	Add cool new icon for MediaRenderer.
+
 2007-11-05  Zeeshan Ali Khattak  <zeenix@gstreamer.net>
 
 	* src/universal-cp/event-treeview.c:
