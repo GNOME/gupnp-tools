@@ -127,7 +127,7 @@ add_media_renderer (GUPnPMediaRendererProxy *proxy)
                                 (GTK_LIST_STORE (model),
                                  &iter,
                                  -1,
-                                 0, get_icon_by_id (ICON_DEVICE),
+                                 0, get_icon_by_id (ICON_MEDIA_RENDERER),
                                  1, name,
                                  2, proxy,
                                  -1);

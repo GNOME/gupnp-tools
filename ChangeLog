@@ -8,6 +8,11 @@
 
 	Add cool new icon for MediaRenderer.
 
+	* src/av-cp/renderer-combo.c:
+
+	Use newly added MediaRenderer icon to represent MediaRenderers which
+	don't provide an icon.
+
 2007-11-05  Zeeshan Ali Khattak  <zeenix@gstreamer.net>
 
 	* src/universal-cp/event-treeview.c:
