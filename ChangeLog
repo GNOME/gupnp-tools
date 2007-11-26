@@ -12,6 +12,12 @@
 
 	Use newly added MediaRenderer icon to represent MediaRenderers which
 	don't provide an icon.
+	
+2007-11-09  Zeeshan Ali Khattak  <zeenix@gstreamer.net>
+
+	* src/av-cp/renderer-combo.c:
+
+	Split add_media_renderer().
 
 2007-11-05  Zeeshan Ali Khattak  <zeenix@gstreamer.net>
 

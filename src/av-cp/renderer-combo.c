@@ -92,21 +92,18 @@ on_device_icon_available (GUPnPDeviceInfo *info,
 }
 
 void
-add_media_renderer (GUPnPMediaRendererProxy *proxy)
+append_media_renderer_to_tree (GUPnPMediaRendererProxy *proxy,
+                               const char              *udn)
 {
         GUPnPDeviceInfo *info;
         GtkComboBox     *combo;
         GtkTreeModel    *model;
         GtkTreeIter      iter;
-        const char      *udn;
         char            *name;
+        gboolean         was_empty;
 
         info = GUPNP_DEVICE_INFO (proxy);
         combo = GTK_COMBO_BOX (renderer_combo);
-
-        udn = gupnp_device_info_get_udn (info);
-        if (udn == NULL)
-                return;
 
         name = gupnp_device_info_get_friendly_name (info);
         if (name == NULL)
@@ -114,31 +111,45 @@ add_media_renderer (GUPnPMediaRendererProxy *proxy)
 
         model = gtk_combo_box_get_model (combo);
 
-        if (!find_renderer (model, udn, &iter)) {
-                gboolean was_empty;
+        if (gtk_combo_box_get_active (combo) == -1)
+                was_empty = TRUE;
+        else
+                was_empty = FALSE;
 
-                if (gtk_combo_box_get_active (combo) == -1)
-                        was_empty = TRUE;
-                else
-                        was_empty = FALSE;
+        memset (&iter, 0, sizeof (iter));
+        gtk_list_store_insert_with_values
+                (GTK_LIST_STORE (model),
+                 &iter,
+                 -1,
+                 0, get_icon_by_id (ICON_MEDIA_RENDERER),
+                 1, name,
+                 2, proxy,
+                 -1);
 
-                memset (&iter, 0, sizeof (iter));
-                gtk_list_store_insert_with_values
-                                (GTK_LIST_STORE (model),
-                                 &iter,
-                                 -1,
-                                 0, get_icon_by_id (ICON_MEDIA_RENDERER),
-                                 1, name,
-                                 2, proxy,
-                                 -1);
+        schedule_icon_update (info, on_device_icon_available);
 
-                schedule_icon_update (info, on_device_icon_available);
-
-                if (was_empty)
-                        gtk_combo_box_set_active_iter (combo, &iter);
-        }
+        if (was_empty)
+                gtk_combo_box_set_active_iter (combo, &iter);
 
         g_free (name);
+}
+
+void
+add_media_renderer (GUPnPMediaRendererProxy *proxy)
+{
+        GtkTreeModel *model;
+        GtkTreeIter   iter;
+        const char   *udn;
+
+        udn = gupnp_device_info_get_udn (GUPNP_DEVICE_INFO (proxy));
+        if (udn == NULL)
+                return;
+
+        model = gtk_combo_box_get_model (GTK_COMBO_BOX (renderer_combo));
+
+        if (!find_renderer (model, udn, &iter)) {
+                append_media_renderer_to_tree (proxy, udn);
+        }
 }
 
 void
