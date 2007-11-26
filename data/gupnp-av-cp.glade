@@ -703,7 +703,8 @@ Inspired by Intel Tools for UPnP.</property>
   <property name="website">http://www.gupnp.org</property>
   <property name="website_label" translatable="yes">GUPnP homepage</property>
   <property name="authors">Zeeshan Ali &lt;zeenix@gstreamer.net&gt;</property>
-  <property name="artists"></property>
+  <property name="artists">Lapo Calamandrei &lt;calamandrei@gmail.com&gt;
+Vinicius Depizzol &lt;vdepizzol@gmail.com&gt;</property>
   <property name="translator_credits" translatable="yes" comments="TRANSLATORS: Replace this string with your names, one name per line.">translator-credits</property>
   <signal name="delete_event" handler="gtk_widget_hide" object="about-dialog"/>
   <signal name="response" handler="gtk_widget_hide" object="about-dialog"/>
