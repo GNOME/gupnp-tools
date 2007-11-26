@@ -25,7 +25,25 @@
 #include "renderer-combo.h"
 #include "icons.h"
 
+#define CONNECTION_MANAGER_V1 \
+                        "urn:schemas-upnp-org:service:ConnectionManager:1"
+#define CONNECTION_MANAGER_V2 \
+                        "urn:schemas-upnp-org:service:ConnectionManager:2"
+
+typedef struct {
+        GUPnPMediaRendererProxy *proxy;
+        const char              *udn;
+} GetProtocolInfoData;
+
 static GtkWidget *renderer_combo;
+
+static void
+get_protocol_info_data_free (GetProtocolInfoData *data)
+{
+        g_object_unref (data->proxy);
+
+        g_slice_free (GetProtocolInfoData, data);
+}
 
 static gboolean
 find_renderer (GtkTreeModel *model,
@@ -134,21 +152,120 @@ append_media_renderer_to_tree (GUPnPMediaRendererProxy *proxy,
         g_free (name);
 }
 
+static GUPnPServiceProxy *
+get_connection_manager (GUPnPMediaRendererProxy *proxy)
+{
+        GUPnPServiceInfo *cm;
+
+        cm = gupnp_device_info_get_service (GUPNP_DEVICE_INFO (proxy),
+                                            CONNECTION_MANAGER_V1);
+        if (cm == NULL) {
+                cm = gupnp_device_info_get_service (GUPNP_DEVICE_INFO (proxy),
+                                                    CONNECTION_MANAGER_V2);
+        }
+
+        return GUPNP_SERVICE_PROXY (cm);
+}
+
+static void
+get_protocol_info_cb (GUPnPServiceProxy       *cm,
+                      GUPnPServiceProxyAction *action,
+                      gpointer                 user_data)
+{
+        GetProtocolInfoData *data;
+        gchar               *sink_protocols;
+        gchar              **protocols;
+        GError              *error;
+
+        data = (GetProtocolInfoData *) user_data;
+
+        error = NULL;
+        if (!gupnp_service_proxy_end_action (cm,
+                                             action,
+                                             &error,
+                                             "Sink",
+                                             G_TYPE_STRING,
+                                             &sink_protocols,
+                                             NULL)) {
+                g_warning ("Failed to get sink protocol info from "
+                           "media renderer '%s':%s\n",
+                           data->udn,
+                           error->message);
+                g_error_free (error);
+
+                goto return_point;
+        }
+
+        protocols = g_strsplit (sink_protocols,
+                                ",",
+                                0);
+
+        if (protocols) {
+                GtkTreeModel *model;
+                GtkTreeIter   iter;
+
+                model = gtk_combo_box_get_model
+                                        (GTK_COMBO_BOX (renderer_combo));
+                g_assert (model != NULL);
+
+                if (find_renderer (model, data->udn, &iter)) {
+                        gtk_list_store_set (GTK_LIST_STORE (model),
+                                            &iter,
+                                            3, protocols,
+                                            -1);
+                }
+
+                g_strfreev (protocols);
+        }
+
+return_point:
+        g_object_unref (cm);
+        get_protocol_info_data_free (data);
+}
+
 void
 add_media_renderer (GUPnPMediaRendererProxy *proxy)
 {
-        GtkTreeModel *model;
-        GtkTreeIter   iter;
-        const char   *udn;
+        GtkTreeModel        *model;
+        GtkTreeIter          iter;
+        const char          *udn;
+        GUPnPServiceProxy   *cm;
+        GetProtocolInfoData *data;
+        GError              *error;
 
         udn = gupnp_device_info_get_udn (GUPNP_DEVICE_INFO (proxy));
         if (udn == NULL)
                 return;
 
+        cm = get_connection_manager (proxy);
+        if (G_UNLIKELY (cm == NULL))
+                return;
+
         model = gtk_combo_box_get_model (GTK_COMBO_BOX (renderer_combo));
 
-        if (!find_renderer (model, udn, &iter)) {
+        if (!find_renderer (model, udn, &iter))
                 append_media_renderer_to_tree (proxy, udn);
+
+        data = g_slice_new (GetProtocolInfoData);
+
+        data->proxy = g_object_ref (proxy);
+        data->udn = udn;
+
+        error = NULL;
+        gupnp_service_proxy_begin_action (cm,
+                                          "GetProtocolInfo",
+                                          get_protocol_info_cb,
+                                          data,
+                                          &error,
+                                          NULL);
+        if (error) {
+                g_warning ("Failed to get sink protocol info from "
+                           "media renderer '%s':%s\n",
+                           data->udn,
+                           error->message);
+
+                g_error_free (error);
+                get_protocol_info_data_free (data);
         }
 }
 
@@ -182,10 +299,11 @@ create_renderer_treemodel (void)
 {
         GtkListStore *store;
 
-        store = gtk_list_store_new (3,
+        store = gtk_list_store_new (4,
                                     GDK_TYPE_PIXBUF, /* Icon           */
                                     G_TYPE_STRING,   /* Name           */
-                                    G_TYPE_OBJECT);  /* renderer proxy */
+                                    G_TYPE_OBJECT,   /* renderer proxy */
+                                    G_TYPE_STRV);    /* ProtocolInfo   */
 
         return GTK_TREE_MODEL (store);
 }

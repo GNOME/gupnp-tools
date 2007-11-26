@@ -17,7 +17,8 @@
 
 	* src/av-cp/renderer-combo.c:
 
-	Split add_media_renderer().
+	- Split add_media_renderer().
+	- Keep the renderer protocol info in the combo treemodel.
 
 2007-11-05  Zeeshan Ali Khattak  <zeenix@gstreamer.net>
 
