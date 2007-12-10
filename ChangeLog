@@ -1,3 +1,11 @@
+2007-12-05  Zeeshan Ali Khattak  <zeenix@gstreamer.net>
+
+	* data/gupnp-av-cp.glade:
+	* src/av-cp/Makefile.am:
+	* src/av-cp/renderer-controls.c:
+
+	Basic skeleton for renderer controls.
+
 2007-11-26  Zeeshan Ali Khattak  <zeenix@gstreamer.net>
 
 	* src/av-cp/playlist-treeview.c:

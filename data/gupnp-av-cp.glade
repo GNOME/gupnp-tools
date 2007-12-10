@@ -167,6 +167,7 @@
 			  <property name="update_policy">GTK_UPDATE_CONTINUOUS</property>
 			  <property name="inverted">True</property>
 			  <property name="adjustment">0 0 100 1 0 0</property>
+			  <signal name="change_value" handler="on_volume_vscale_change_value" last_modification_time="Wed, 05 Dec 2007 09:18:21 GMT"/>
 			</widget>
 			<packing>
 			  <property name="padding">0</property>
@@ -222,6 +223,7 @@
 		  <property name="update_policy">GTK_UPDATE_CONTINUOUS</property>
 		  <property name="inverted">False</property>
 		  <property name="adjustment">0 0 100 1 0 0</property>
+		  <signal name="change_value" handler="on_position_hscale_change_value" last_modification_time="Wed, 05 Dec 2007 08:53:54 GMT"/>
 		</widget>
 		<packing>
 		  <property name="padding">0</property>
@@ -301,6 +303,7 @@
 		  <property name="can_focus">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">True</property>
+		  <signal name="clicked" handler="on_play_button_clicked" last_modification_time="Wed, 05 Dec 2007 08:36:48 GMT"/>
 
 		  <child>
 		    <widget class="GtkAlignment" id="alignment9">
@@ -375,6 +378,7 @@
 		  <property name="can_focus">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">True</property>
+		  <signal name="clicked" handler="on_pause_button_clicked" last_modification_time="Wed, 05 Dec 2007 08:49:26 GMT"/>
 
 		  <child>
 		    <widget class="GtkAlignment" id="alignment10">
@@ -449,6 +453,7 @@
 		  <property name="can_focus">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">True</property>
+		  <signal name="clicked" handler="on_stop_button_clicked" last_modification_time="Wed, 05 Dec 2007 08:49:40 GMT"/>
 
 		  <child>
 		    <widget class="GtkAlignment" id="alignment11">
@@ -523,6 +528,7 @@
 		  <property name="can_focus">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">True</property>
+		  <signal name="clicked" handler="on_previous_button_clicked" last_modification_time="Wed, 05 Dec 2007 08:49:53 GMT"/>
 
 		  <child>
 		    <widget class="GtkAlignment" id="alignment12">
@@ -597,6 +603,7 @@
 		  <property name="can_focus">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">True</property>
+		  <signal name="clicked" handler="on_next_button_clicked" last_modification_time="Wed, 05 Dec 2007 08:50:03 GMT"/>
 
 		  <child>
 		    <widget class="GtkAlignment" id="alignment13">
