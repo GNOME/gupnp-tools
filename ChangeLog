@@ -14,6 +14,11 @@
 	- Add stub for querying the state of the AVTransport of the currently
 	  selected renderer.
 
+	* src/av-cp/renderer-controls.c:
+
+	Implement basic rendering controls: Setting the URI, Play, Pause and
+	Stop.
+
 2007-12-05  Zeeshan Ali Khattak  <zeenix@gstreamer.net>
 
 	* data/gupnp-av-cp.glade:
