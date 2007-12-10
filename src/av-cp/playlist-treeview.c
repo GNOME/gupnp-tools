@@ -577,3 +577,40 @@ remove_media_server (GUPnPMediaServerProxy *proxy)
         }
 }
 
+char *
+get_selected_item (GHashTable **resource_hash)
+{
+        GtkTreeSelection *selection;
+        GtkTreeModel     *model;
+        GtkTreeIter       iter;
+        gboolean          is_container;
+        char             *id;
+
+        selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (treeview));
+        g_assert (selection != NULL);
+
+        if (!gtk_tree_selection_get_selected (selection, &model, &iter)) {
+                return NULL;
+        }
+
+        gtk_tree_model_get (model,
+                            &iter,
+                            3, &id,
+                            4, &is_container,
+                            5, resource_hash,
+                            -1);
+
+        if (is_container) {
+                if (id) {
+                        g_free (id);
+                }
+                if (*resource_hash) {
+                        g_hash_table_unref (*resource_hash);
+                }
+
+                return NULL;
+        }
+
+        return id;
+}
+

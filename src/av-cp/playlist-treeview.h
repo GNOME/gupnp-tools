@@ -35,5 +35,8 @@ add_media_server                (GUPnPMediaServerProxy  *proxy);
 void
 remove_media_server             (GUPnPMediaServerProxy  *proxy);
 
+char *
+get_selected_item               (GHashTable            **resource_hash);
+
 #endif /* __PLAYLISTTREEVIEW_H__ */
 

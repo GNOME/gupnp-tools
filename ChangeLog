@@ -1,3 +1,10 @@
+2007-12-10  Zeeshan Ali Khattak  <zeenix@gstreamer.net>
+
+	* src/av-cp/playlist-treeview.c:
+	* src/av-cp/playlist-treeview.h:
+
+	Add function to get the details about the currently selected item.
+
 2007-12-05  Zeeshan Ali Khattak  <zeenix@gstreamer.net>
 
 	* data/gupnp-av-cp.glade:
