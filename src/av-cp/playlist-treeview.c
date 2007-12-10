@@ -64,14 +64,17 @@ create_playlist_treemodel (void)
 {
         GtkTreeStore *store;
 
-        store = gtk_tree_store_new
-                                (5,
-                                 GDK_TYPE_PIXBUF,         /* Icon          */
-                                 G_TYPE_STRING,           /* Title         */
-                                 GUPNP_TYPE_MEDIA_SERVER_PROXY,
-                                                          /* MediaServer   */
-                                 G_TYPE_STRING,           /* Id            */
-                                 G_TYPE_BOOLEAN);         /* Is container? */
+        store = gtk_tree_store_new (5,
+                                    /* Icon */
+                                    GDK_TYPE_PIXBUF,
+                                    /* Title */
+                                    G_TYPE_STRING,
+                                    /* MediaServer */
+                                    GUPNP_TYPE_MEDIA_SERVER_PROXY,
+                                    /* Id */
+                                    G_TYPE_STRING,
+                                    /* Is container? */
+                                    G_TYPE_BOOLEAN);
 
         return GTK_TREE_MODEL (store);
 }
