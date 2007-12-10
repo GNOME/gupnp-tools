@@ -2,7 +2,8 @@
 
 	* src/av-cp/playlist-treeview.c:
 
-	Minor indentation changes.
+	- Minor indentation changes.
+	- Keep the resource ProtcolInfo/URI pairs of each item in treemodel.
 
 2007-11-19  Zeeshan Ali Khattak  <zeenix@gstreamer.net>
 
