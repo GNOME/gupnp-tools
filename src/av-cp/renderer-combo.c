@@ -29,6 +29,8 @@
                         "urn:schemas-upnp-org:service:ConnectionManager:1"
 #define CONNECTION_MANAGER_V2 \
                         "urn:schemas-upnp-org:service:ConnectionManager:2"
+#define AV_TRANSPORT_V1 "urn:schemas-upnp-org:service:AVTransport:1"
+#define AV_TRANSPORT_V2 "urn:schemas-upnp-org:service:AVTransport:2"
 
 typedef struct {
         GUPnPMediaRendererProxy *proxy;
@@ -43,6 +45,71 @@ get_protocol_info_data_free (GetProtocolInfoData *data)
         g_object_unref (data->proxy);
 
         g_slice_free (GetProtocolInfoData, data);
+}
+
+static GUPnPServiceInfo *
+get_av_transport (GUPnPDeviceInfo *renderer)
+{
+        GUPnPServiceInfo *av_transport;
+
+        av_transport = gupnp_device_info_get_service (renderer,
+                                                      AV_TRANSPORT_V1);
+        if (av_transport == NULL) {
+                av_transport = gupnp_device_info_get_service (renderer,
+                                                              AV_TRANSPORT_V2);
+        }
+
+        return av_transport;
+}
+
+/* FIXME:
+ * 1. replace this function with get_selected_av_transport()?
+ * 2. keep the av_transport proxy in the treemodel
+ */
+GUPnPMediaRendererProxy *
+get_selected_renderer (GUPnPServiceProxy **av_transport,
+                       gchar            ***protocols)
+{
+        GUPnPMediaRendererProxy *renderer;
+
+        GtkComboBox  *combo;
+        GtkTreeModel *model;
+        GtkTreeIter   iter;
+
+        combo = GTK_COMBO_BOX (renderer_combo);
+        model = gtk_combo_box_get_model (combo);
+        g_assert (model != NULL);
+
+        if (!gtk_combo_box_get_active_iter (combo, &iter)) {
+                return NULL;
+        }
+
+        if (protocols != NULL) {
+                gtk_tree_model_get (model,
+                                    &iter,
+                                    4, protocols,
+                                    -1);
+
+                if (*protocols == NULL) {
+                        return NULL;
+                }
+        }
+
+        gtk_tree_model_get (model,
+                            &iter,
+                            2, &renderer,
+                            3, av_transport,
+                            -1);
+
+        return renderer;
+}
+
+/* FIXME: implement this function
+ */
+PlaybackState
+get_selected_renderer_state (void)
+{
+        return PLAYBACK_STATE_UNKNOWN;
 }
 
 static gboolean
@@ -113,15 +180,21 @@ void
 append_media_renderer_to_tree (GUPnPMediaRendererProxy *proxy,
                                const char              *udn)
 {
-        GUPnPDeviceInfo *info;
-        GtkComboBox     *combo;
-        GtkTreeModel    *model;
-        GtkTreeIter      iter;
-        char            *name;
-        gboolean         was_empty;
+        GUPnPDeviceInfo  *info;
+        GUPnPServiceInfo *av_transport;
+        GtkComboBox      *combo;
+        GtkTreeModel     *model;
+        GtkTreeIter       iter;
+        char             *name;
+        gboolean          was_empty;
 
         info = GUPNP_DEVICE_INFO (proxy);
         combo = GTK_COMBO_BOX (renderer_combo);
+
+        av_transport = get_av_transport (info);
+        if (av_transport == NULL) {
+                return;
+        }
 
         name = gupnp_device_info_get_friendly_name (info);
         if (name == NULL)
@@ -142,6 +215,7 @@ append_media_renderer_to_tree (GUPnPMediaRendererProxy *proxy,
                  0, get_icon_by_id (ICON_MEDIA_RENDERER),
                  1, name,
                  2, proxy,
+                 3, av_transport,
                  -1);
 
         schedule_icon_update (info, on_device_icon_available);
@@ -211,7 +285,7 @@ get_protocol_info_cb (GUPnPServiceProxy       *cm,
                 if (find_renderer (model, data->udn, &iter)) {
                         gtk_list_store_set (GTK_LIST_STORE (model),
                                             &iter,
-                                            3, protocols,
+                                            4, protocols,
                                             -1);
                 }
 
@@ -299,11 +373,12 @@ create_renderer_treemodel (void)
 {
         GtkListStore *store;
 
-        store = gtk_list_store_new (4,
-                                    GDK_TYPE_PIXBUF, /* Icon           */
-                                    G_TYPE_STRING,   /* Name           */
-                                    G_TYPE_OBJECT,   /* renderer proxy */
-                                    G_TYPE_STRV);    /* ProtocolInfo   */
+        store = gtk_list_store_new (5,
+                                    GDK_TYPE_PIXBUF, /* Icon             */
+                                    G_TYPE_STRING,   /* Name             */
+                                    G_TYPE_OBJECT,   /* renderer proxy   */
+                                    G_TYPE_OBJECT,   /* AVTranport proxy */
+                                    G_TYPE_STRV);    /* ProtocolInfo     */
 
         return GTK_TREE_MODEL (store);
 }

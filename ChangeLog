@@ -5,6 +5,15 @@
 
 	Add function to get the details about the currently selected item.
 
+	* src/av-cp/renderer-combo.c:
+	* src/av-cp/renderer-combo.h:
+
+	- Keep the proxy for AVTransport service in the renderer combo.
+	- Add function to retreive the currently selected renderer and it's
+	  AVTransport service and protocolinfo.
+	- Add stub for querying the state of the AVTransport of the currently
+	  selected renderer.
+
 2007-12-05  Zeeshan Ali Khattak  <zeenix@gstreamer.net>
 
 	* data/gupnp-av-cp.glade:

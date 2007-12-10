@@ -27,9 +27,22 @@
 #include <gtk/gtk.h>
 #include <glade/glade.h>
 
-void
-update_device_icon              (GUPnPDeviceInfo *info,
-                                 GdkPixbuf       *icon);
+typedef enum
+{
+  PLAYBACK_STATE_UNKNOWN,
+  PLAYBACK_STATE_TRANSITIONING,
+  PLAYBACK_STATE_STOPPED,
+  PLAYBACK_STATE_PAUSED,
+  PLAYBACK_STATE_PLAYING
+} PlaybackState;
+
+GUPnPMediaRendererProxy *
+get_selected_renderer           (GUPnPServiceProxy      **av_transport,
+                                 gchar                 ***protocols);
+
+PlaybackState
+get_selected_renderer_state     (void);
+
 void
 add_media_renderer              (GUPnPMediaRendererProxy *proxy);
 
