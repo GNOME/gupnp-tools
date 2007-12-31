@@ -153,6 +153,47 @@ find_renderer (GtkTreeModel *model,
         return found;
 }
 
+static PlaybackState
+state_name_to_state (const char *state_name)
+{
+        PlaybackState state;
+
+        if (strcmp ("STOPPED", state_name) == 0) {
+                state = PLAYBACK_STATE_STOPPED;
+        } else if (strcmp ("PLAYING", state_name) == 0) {
+                state = PLAYBACK_STATE_PLAYING;
+        } else if (strcmp ("PAUSED_PLAYBACK", state_name) == 0) {
+                state = PLAYBACK_STATE_PAUSED;
+        } else {
+                state = PLAYBACK_STATE_UNKNOWN;
+        }
+
+        return state;
+}
+
+static void
+set_state_by_name (const gchar *udn,
+                   const gchar *state_name)
+{
+        GtkTreeModel *model;
+        GtkTreeIter   iter;
+
+        model = gtk_combo_box_get_model
+                (GTK_COMBO_BOX (renderer_combo));
+        g_assert (model != NULL);
+
+        if (find_renderer (model, udn, &iter)) {
+                PlaybackState state;
+
+                state = state_name_to_state (state_name),
+
+                      gtk_list_store_set (GTK_LIST_STORE (model),
+                                      &iter,
+                                      5, state,
+                                      -1);
+        }
+}
+
 static void
 on_device_icon_available (GUPnPDeviceInfo *info,
                           GdkPixbuf       *icon)
@@ -291,47 +332,6 @@ get_protocol_info_cb (GUPnPServiceProxy       *cm,
 return_point:
         g_object_unref (cm);
         g_free (udn);
-}
-
-static PlaybackState
-state_name_to_state (const char *state_name)
-{
-        PlaybackState state;
-
-        if (strcmp ("STOPPED", state_name) == 0) {
-                state = PLAYBACK_STATE_STOPPED;
-        } else if (strcmp ("PLAYING", state_name) == 0) {
-                state = PLAYBACK_STATE_PLAYING;
-        } else if (strcmp ("PAUSED_PLAYBACK", state_name) == 0) {
-                state = PLAYBACK_STATE_PAUSED;
-        } else {
-                state = PLAYBACK_STATE_UNKNOWN;
-        }
-
-        return state;
-}
-
-static void
-set_state_by_name (const gchar *udn,
-                   const gchar *state_name)
-{
-        GtkTreeModel *model;
-        GtkTreeIter   iter;
-
-        model = gtk_combo_box_get_model
-                (GTK_COMBO_BOX (renderer_combo));
-        g_assert (model != NULL);
-
-        if (find_renderer (model, udn, &iter)) {
-                PlaybackState state;
-
-                state = state_name_to_state (state_name),
-
-                      gtk_list_store_set (GTK_LIST_STORE (model),
-                                      &iter,
-                                      5, state,
-                                      -1);
-        }
 }
 
 static void
