@@ -315,6 +315,7 @@ add_media_renderer (GUPnPMediaRendererProxy *proxy)
                            error->message);
 
                 g_error_free (error);
+                g_object_unref (cm);
                 g_free (udn);
         }
 }

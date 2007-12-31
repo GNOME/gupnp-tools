@@ -2,8 +2,9 @@
 
 	* src/av-cp/renderer-combo.c:
 
-	Replace the GetProtocolInfoData with a duplicate of udn since that is
-	all that is needed in the get_protocol_info_cb().
+	- Replace the GetProtocolInfoData with a duplicate of udn since that
+	  is all that is needed in the get_protocol_info_cb().
+	- Fix a potential leak.
 
 2007-12-17  Zeeshan Ali Khattak  <zeenix@gstreamer.net>
 
