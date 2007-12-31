@@ -91,7 +91,25 @@ get_selected_av_transport (gchar ***protocols)
 PlaybackState
 get_selected_renderer_state (void)
 {
-        return PLAYBACK_STATE_UNKNOWN;
+        PlaybackState state;
+        GtkComboBox  *combo;
+        GtkTreeModel *model;
+        GtkTreeIter   iter;
+
+        combo = GTK_COMBO_BOX (renderer_combo);
+        model = gtk_combo_box_get_model (combo);
+        g_assert (model != NULL);
+
+        if (!gtk_combo_box_get_active_iter (combo, &iter)) {
+                return PLAYBACK_STATE_UNKNOWN;
+        }
+
+        gtk_tree_model_get (model,
+                            &iter,
+                            5, &state,
+                            -1);
+
+        return state;
 }
 
 static gboolean

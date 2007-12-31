@@ -8,6 +8,7 @@
 	- Keep the av_transport's playback state in the treemodel.
 	- Use 'AVTransport::GetTransportInfo' to retreive the state in the
 	  beginning.
+	- Implement get_selected_renderer_state().
 
 2007-12-19  Zeeshan Ali Khattak  <zeenix@gmail.com>
 
