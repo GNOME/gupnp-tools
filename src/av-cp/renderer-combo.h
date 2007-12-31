@@ -36,9 +36,8 @@ typedef enum
   PLAYBACK_STATE_PLAYING
 } PlaybackState;
 
-GUPnPMediaRendererProxy *
-get_selected_renderer           (GUPnPServiceProxy      **av_transport,
-                                 gchar                 ***protocols);
+GUPnPServiceProxy *
+get_selected_av_transport       (gchar                 ***protocols);
 
 PlaybackState
 get_selected_renderer_state     (void);

@@ -62,19 +62,13 @@ get_av_transport (GUPnPDeviceInfo *renderer)
         return av_transport;
 }
 
-/* FIXME:
- * 1. replace this function with get_selected_av_transport()?
- * 2. keep the av_transport proxy in the treemodel
- */
-GUPnPMediaRendererProxy *
-get_selected_renderer (GUPnPServiceProxy **av_transport,
-                       gchar            ***protocols)
+GUPnPServiceProxy *
+get_selected_av_transport (gchar ***protocols)
 {
-        GUPnPMediaRendererProxy *renderer;
-
-        GtkComboBox  *combo;
-        GtkTreeModel *model;
-        GtkTreeIter   iter;
+        GUPnPServiceProxy *av_transport;
+        GtkComboBox       *combo;
+        GtkTreeModel      *model;
+        GtkTreeIter        iter;
 
         combo = GTK_COMBO_BOX (renderer_combo);
         model = gtk_combo_box_get_model (combo);
@@ -97,11 +91,10 @@ get_selected_renderer (GUPnPServiceProxy **av_transport,
 
         gtk_tree_model_get (model,
                             &iter,
-                            2, &renderer,
-                            3, av_transport,
+                            3, &av_transport,
                             -1);
 
-        return renderer;
+        return av_transport;
 }
 
 /* FIXME: implement this function

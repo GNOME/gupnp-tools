@@ -131,17 +131,14 @@ static void
 av_transport_send_action (char *action,
                           char *additional_args[])
 {
-        GUPnPMediaRendererProxy *renderer;
-        GUPnPServiceProxy       *av_transport;
-        GHashTable              *args;
-        GError                  *error;
+        GUPnPServiceProxy *av_transport;
+        GHashTable        *args;
+        GError            *error;
 
-        renderer = get_selected_renderer (&av_transport, NULL);
-        if (renderer == NULL) {
+        av_transport = get_selected_av_transport (NULL);
+        if (av_transport == NULL) {
                 g_warning ("No renderer selected");
                 return;
-        } else {
-                g_object_unref (renderer);
         }
 
         args = create_av_transport_args_hash (additional_args);
@@ -217,19 +214,15 @@ static void
 play_item (char       *id,
            GHashTable *resource_hash)
 {
-        char                   **protocols;
-        char                    *uri;
-        GUPnPMediaRendererProxy *renderer;
-        GUPnPServiceProxy       *av_transport;
-        GError                  *error;
+        GUPnPServiceProxy *av_transport;
+        char             **protocols;
+        char              *uri;
+        GError            *error;
 
-        renderer = get_selected_renderer (&av_transport,
-                                          &protocols);
-        if (renderer == NULL) {
-                g_warning ("No renderer selected.");
+        av_transport = get_selected_av_transport (&protocols);
+        if (av_transport == NULL) {
+                g_warning ("No renderer selected");
                 return;
-        } else {
-                g_object_unref (renderer);
         }
 
         uri = find_compatible_uri (protocols, resource_hash);

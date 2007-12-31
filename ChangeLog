@@ -1,3 +1,11 @@
+2007-12-17  Zeeshan Ali Khattak  <zeenix@gstreamer.net>
+
+	* src/av-cp/renderer-combo.c:
+	* src/av-cp/renderer-combo.h:
+	* src/av-cp/renderer-controls.c:
+
+	Replace get_selected_renderer() with get_selected_av_transport().
+
 2007-12-13  Zeeshan Ali Khattak  <zeenix@gstreamer.net>
 
 	* src/av-cp/renderer-controls.c:
