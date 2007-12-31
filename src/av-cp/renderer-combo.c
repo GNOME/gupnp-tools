@@ -312,6 +312,29 @@ state_name_to_state (const char *state_name)
 }
 
 static void
+set_state_by_name (const gchar *udn,
+                   const gchar *state_name)
+{
+        GtkTreeModel *model;
+        GtkTreeIter   iter;
+
+        model = gtk_combo_box_get_model
+                (GTK_COMBO_BOX (renderer_combo));
+        g_assert (model != NULL);
+
+        if (find_renderer (model, udn, &iter)) {
+                PlaybackState state;
+
+                state = state_name_to_state (state_name),
+
+                      gtk_list_store_set (GTK_LIST_STORE (model),
+                                      &iter,
+                                      5, state,
+                                      -1);
+        }
+}
+
+static void
 get_transport_info_cb (GUPnPServiceProxy       *av_transport,
                       GUPnPServiceProxyAction *action,
                       gpointer                 user_data)
@@ -340,23 +363,7 @@ get_transport_info_cb (GUPnPServiceProxy       *av_transport,
         }
 
         if (state_name) {
-                GtkTreeModel *model;
-                GtkTreeIter   iter;
-
-                model = gtk_combo_box_get_model
-                                        (GTK_COMBO_BOX (renderer_combo));
-                g_assert (model != NULL);
-
-                if (find_renderer (model, udn, &iter)) {
-                        PlaybackState state;
-
-                        state = state_name_to_state (state_name),
-
-                        gtk_list_store_set (GTK_LIST_STORE (model),
-                                            &iter,
-                                            5, state,
-                                            -1);
-                }
+                set_state_by_name (udn, state_name);
 
                 g_free (state_name);
         }

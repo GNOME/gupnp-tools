@@ -1,3 +1,10 @@
+2007-12-27  Zeeshan Ali Khattak  <zeenix@gmail.com>
+
+	* src/av-cp/renderer-combo.c:
+
+	Refactor: Put all the code that sets the state in the treemodel into
+	a separate function.
+
 2007-12-20  Zeeshan Ali Khattak  <zeenix@gmail.com>
 
 	* src/av-cp/renderer-combo.c:
