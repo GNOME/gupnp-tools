@@ -34,19 +34,21 @@
 
 static GtkWidget *renderer_combo;
 
-static GUPnPServiceInfo *
-get_av_transport (GUPnPDeviceInfo *renderer)
+static GUPnPServiceProxy *
+get_av_transport (GUPnPMediaRendererProxy *renderer)
 {
         GUPnPServiceInfo *av_transport;
 
-        av_transport = gupnp_device_info_get_service (renderer,
-                                                      AV_TRANSPORT_V1);
+        av_transport = gupnp_device_info_get_service
+                                        (GUPNP_DEVICE_INFO (renderer),
+                                         AV_TRANSPORT_V1);
         if (av_transport == NULL) {
-                av_transport = gupnp_device_info_get_service (renderer,
-                                                              AV_TRANSPORT_V2);
+                av_transport = gupnp_device_info_get_service
+                                                (GUPNP_DEVICE_INFO (renderer),
+                                                 AV_TRANSPORT_V2);
         }
 
-        return av_transport;
+        return GUPNP_SERVICE_PROXY (av_transport);
 }
 
 GUPnPServiceProxy *

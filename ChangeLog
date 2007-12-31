@@ -1,3 +1,10 @@
+2007-12-20  Zeeshan Ali Khattak  <zeenix@gmail.com>
+
+	* src/av-cp/renderer-combo.c:
+
+	get_av_transport() takes and returns a proxy rather than an info
+	object.
+
 2007-12-19  Zeeshan Ali Khattak  <zeenix@gmail.com>
 
 	* src/av-cp/renderer-combo.c:
