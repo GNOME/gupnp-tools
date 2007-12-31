@@ -2,8 +2,9 @@
 
 	* src/av-cp/renderer-combo.c:
 
-	get_av_transport() takes and returns a proxy rather than an info
-	object.
+	- get_av_transport() takes and returns a proxy rather than an info
+	  object.
+	- Get/Create the av_transport proxy in the add_media_renderer().
 
 2007-12-19  Zeeshan Ali Khattak  <zeenix@gmail.com>
 

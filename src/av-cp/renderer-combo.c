@@ -160,10 +160,10 @@ on_device_icon_available (GUPnPDeviceInfo *info,
 
 void
 append_media_renderer_to_tree (GUPnPMediaRendererProxy *proxy,
+                               GUPnPServiceProxy       *av_transport,
                                const char              *udn)
 {
         GUPnPDeviceInfo  *info;
-        GUPnPServiceInfo *av_transport;
         GtkComboBox      *combo;
         GtkTreeModel     *model;
         GtkTreeIter       iter;
@@ -172,11 +172,6 @@ append_media_renderer_to_tree (GUPnPMediaRendererProxy *proxy,
 
         info = GUPNP_DEVICE_INFO (proxy);
         combo = GTK_COMBO_BOX (renderer_combo);
-
-        av_transport = get_av_transport (info);
-        if (av_transport == NULL) {
-                return;
-        }
 
         name = gupnp_device_info_get_friendly_name (info);
         if (name == NULL)
@@ -286,6 +281,7 @@ add_media_renderer (GUPnPMediaRendererProxy *proxy)
         GtkTreeIter        iter;
         char              *udn;
         GUPnPServiceProxy *cm;
+        GUPnPServiceProxy *av_transport;
         GError            *error;
 
         udn = (char *) gupnp_device_info_get_udn (GUPNP_DEVICE_INFO (proxy));
@@ -296,10 +292,17 @@ add_media_renderer (GUPnPMediaRendererProxy *proxy)
         if (G_UNLIKELY (cm == NULL))
                 return;
 
+        av_transport = get_av_transport (proxy);
+        if (av_transport == NULL) {
+                g_object_unref (cm);
+
+                return;
+        }
+
         model = gtk_combo_box_get_model (GTK_COMBO_BOX (renderer_combo));
 
         if (!find_renderer (model, udn, &iter))
-                append_media_renderer_to_tree (proxy, udn);
+                append_media_renderer_to_tree (proxy, av_transport, udn);
 
         udn = g_strdup (udn);
 
