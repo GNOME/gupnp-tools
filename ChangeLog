@@ -6,6 +6,8 @@
 	  object.
 	- Get/Create the av_transport proxy in the add_media_renderer().
 	- Keep the av_transport's playback state in the treemodel.
+	- Use 'AVTransport::GetTransportInfo' to retreive the state in the
+	  beginning.
 
 2007-12-19  Zeeshan Ali Khattak  <zeenix@gmail.com>
 

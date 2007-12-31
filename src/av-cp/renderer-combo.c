@@ -275,6 +275,79 @@ return_point:
         g_free (udn);
 }
 
+static PlaybackState
+state_name_to_state (const char *state_name)
+{
+        PlaybackState state;
+
+        if (strcmp ("STOPPED", state_name) == 0) {
+                state = PLAYBACK_STATE_STOPPED;
+        } else if (strcmp ("PLAYING", state_name) == 0) {
+                state = PLAYBACK_STATE_PLAYING;
+        } else if (strcmp ("PAUSED_PLAYBACK", state_name) == 0) {
+                state = PLAYBACK_STATE_PAUSED;
+        } else {
+                state = PLAYBACK_STATE_UNKNOWN;
+        }
+
+        return state;
+}
+
+static void
+get_transport_info_cb (GUPnPServiceProxy       *av_transport,
+                      GUPnPServiceProxyAction *action,
+                      gpointer                 user_data)
+{
+        gchar  *state_name;
+        gchar  *udn;
+        GError *error;
+
+        udn = (gchar *) user_data;
+
+        error = NULL;
+        if (!gupnp_service_proxy_end_action (av_transport,
+                                             action,
+                                             &error,
+                                             "CurrentTransportState",
+                                             G_TYPE_STRING,
+                                             &state_name,
+                                             NULL)) {
+                g_warning ("Failed to get transport info from media renderer"
+                           " '%s':%s\n",
+                           udn,
+                           error->message);
+                g_error_free (error);
+
+                goto return_point;
+        }
+
+        if (state_name) {
+                GtkTreeModel *model;
+                GtkTreeIter   iter;
+
+                model = gtk_combo_box_get_model
+                                        (GTK_COMBO_BOX (renderer_combo));
+                g_assert (model != NULL);
+
+                if (find_renderer (model, udn, &iter)) {
+                        PlaybackState state;
+
+                        state = state_name_to_state (state_name),
+
+                        gtk_list_store_set (GTK_LIST_STORE (model),
+                                            &iter,
+                                            5, state,
+                                            -1);
+                }
+
+                g_free (state_name);
+        }
+
+return_point:
+        g_object_unref (av_transport);
+        g_free (udn);
+}
+
 void
 add_media_renderer (GUPnPMediaRendererProxy *proxy)
 {
@@ -322,6 +395,27 @@ add_media_renderer (GUPnPMediaRendererProxy *proxy)
 
                 g_error_free (error);
                 g_object_unref (cm);
+                g_free (udn);
+        }
+
+        udn = g_strdup (udn);
+
+        error = NULL;
+        gupnp_service_proxy_begin_action (av_transport,
+                                          "GetTransportInfo",
+                                          get_transport_info_cb,
+                                          udn,
+                                          &error,
+                                          "InstanceID", G_TYPE_UINT, 0,
+                                          NULL);
+        if (error) {
+                g_warning ("Failed to get transport info from media renderer"
+                           " '%s':%s\n",
+                           udn,
+                           error->message);
+
+                g_error_free (error);
+                g_object_unref (av_transport);
                 g_free (udn);
         }
 }
