@@ -32,20 +32,7 @@
 #define AV_TRANSPORT_V1 "urn:schemas-upnp-org:service:AVTransport:1"
 #define AV_TRANSPORT_V2 "urn:schemas-upnp-org:service:AVTransport:2"
 
-typedef struct {
-        GUPnPMediaRendererProxy *proxy;
-        const char              *udn;
-} GetProtocolInfoData;
-
 static GtkWidget *renderer_combo;
-
-static void
-get_protocol_info_data_free (GetProtocolInfoData *data)
-{
-        g_object_unref (data->proxy);
-
-        g_slice_free (GetProtocolInfoData, data);
-}
 
 static GUPnPServiceInfo *
 get_av_transport (GUPnPDeviceInfo *renderer)
@@ -239,12 +226,12 @@ get_protocol_info_cb (GUPnPServiceProxy       *cm,
                       GUPnPServiceProxyAction *action,
                       gpointer                 user_data)
 {
-        GetProtocolInfoData *data;
-        gchar               *sink_protocols;
-        gchar              **protocols;
-        GError              *error;
+        gchar  *sink_protocols;
+        gchar **protocols;
+        gchar  *udn;
+        GError *error;
 
-        data = (GetProtocolInfoData *) user_data;
+        udn = (gchar *) user_data;
 
         error = NULL;
         if (!gupnp_service_proxy_end_action (cm,
@@ -256,7 +243,7 @@ get_protocol_info_cb (GUPnPServiceProxy       *cm,
                                              NULL)) {
                 g_warning ("Failed to get sink protocol info from "
                            "media renderer '%s':%s\n",
-                           data->udn,
+                           udn,
                            error->message);
                 g_error_free (error);
 
@@ -275,7 +262,7 @@ get_protocol_info_cb (GUPnPServiceProxy       *cm,
                                         (GTK_COMBO_BOX (renderer_combo));
                 g_assert (model != NULL);
 
-                if (find_renderer (model, data->udn, &iter)) {
+                if (find_renderer (model, udn, &iter)) {
                         gtk_list_store_set (GTK_LIST_STORE (model),
                                             &iter,
                                             4, protocols,
@@ -287,20 +274,19 @@ get_protocol_info_cb (GUPnPServiceProxy       *cm,
 
 return_point:
         g_object_unref (cm);
-        get_protocol_info_data_free (data);
+        g_free (udn);
 }
 
 void
 add_media_renderer (GUPnPMediaRendererProxy *proxy)
 {
-        GtkTreeModel        *model;
-        GtkTreeIter          iter;
-        const char          *udn;
-        GUPnPServiceProxy   *cm;
-        GetProtocolInfoData *data;
-        GError              *error;
+        GtkTreeModel      *model;
+        GtkTreeIter        iter;
+        char              *udn;
+        GUPnPServiceProxy *cm;
+        GError            *error;
 
-        udn = gupnp_device_info_get_udn (GUPNP_DEVICE_INFO (proxy));
+        udn = (char *) gupnp_device_info_get_udn (GUPNP_DEVICE_INFO (proxy));
         if (udn == NULL)
                 return;
 
@@ -313,26 +299,23 @@ add_media_renderer (GUPnPMediaRendererProxy *proxy)
         if (!find_renderer (model, udn, &iter))
                 append_media_renderer_to_tree (proxy, udn);
 
-        data = g_slice_new (GetProtocolInfoData);
-
-        data->proxy = g_object_ref (proxy);
-        data->udn = udn;
+        udn = g_strdup (udn);
 
         error = NULL;
         gupnp_service_proxy_begin_action (cm,
                                           "GetProtocolInfo",
                                           get_protocol_info_cb,
-                                          data,
+                                          udn,
                                           &error,
                                           NULL);
         if (error) {
                 g_warning ("Failed to get sink protocol info from "
                            "media renderer '%s':%s\n",
-                           data->udn,
+                           udn,
                            error->message);
 
                 g_error_free (error);
-                get_protocol_info_data_free (data);
+                g_free (udn);
         }
 }
 
