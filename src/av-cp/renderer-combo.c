@@ -193,6 +193,7 @@ append_media_renderer_to_tree (GUPnPMediaRendererProxy *proxy,
                  1, name,
                  2, proxy,
                  3, av_transport,
+                 5, PLAYBACK_STATE_UNKNOWN,
                  -1);
 
         schedule_icon_update (info, on_device_icon_available);
@@ -355,12 +356,13 @@ create_renderer_treemodel (void)
 {
         GtkListStore *store;
 
-        store = gtk_list_store_new (5,
+        store = gtk_list_store_new (6,
                                     GDK_TYPE_PIXBUF, /* Icon             */
                                     G_TYPE_STRING,   /* Name             */
                                     G_TYPE_OBJECT,   /* renderer proxy   */
                                     G_TYPE_OBJECT,   /* AVTranport proxy */
-                                    G_TYPE_STRV);    /* ProtocolInfo     */
+                                    G_TYPE_STRV,     /* ProtocolInfo     */
+                                    G_TYPE_UINT);    /* AVTranport state */
 
         return GTK_TREE_MODEL (store);
 }
