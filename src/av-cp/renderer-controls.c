@@ -57,14 +57,14 @@ find_compatible_uri (gchar     **protocols,
 }
 
 static void
-set_state_cb (GUPnPServiceProxy       *av_transport,
-              GUPnPServiceProxyAction *action,
-              gpointer                 user_data)
+av_transport_action_cb (GUPnPServiceProxy       *av_transport,
+                        GUPnPServiceProxyAction *action,
+                        gpointer                 user_data)
 {
-        const char *state_name;
+        const char *action_name;
         GError *error;
 
-        state_name = (const char *) user_data;
+        action_name = (const char *) user_data;
 
         error = NULL;
         if (!gupnp_service_proxy_end_action (av_transport,
@@ -76,9 +76,9 @@ set_state_cb (GUPnPServiceProxy       *av_transport,
                 udn = gupnp_service_info_get_udn
                                         (GUPNP_SERVICE_INFO (av_transport));
 
-                g_warning ("Failed to set state of '%s' to %s: %s",
+                g_warning ("Failed to send action '%s' to '%s': %s",
+                           action_name,
                            udn,
-                           state_name,
                            error->message);
 
                 g_error_free (error);
@@ -88,10 +88,52 @@ set_state_cb (GUPnPServiceProxy       *av_transport,
 }
 
 static void
-play (void)
+g_value_free (gpointer data)
+{
+       g_value_unset ((GValue *) data);
+       g_slice_free (GValue, data);
+}
+
+static GHashTable *
+create_av_transport_args_hash (char **additional_args)
+{
+        GHashTable *args;
+        GValue     *instance_id;
+        gint        i;
+
+        args = g_hash_table_new_full (g_str_hash,
+                                      g_str_equal,
+                                      NULL,
+                                      g_value_free);
+
+        instance_id = g_slice_alloc0 (sizeof (GValue));
+        g_value_init (instance_id, G_TYPE_UINT);
+        g_value_set_uint (instance_id, 0);
+
+        g_hash_table_insert (args, "InstanceID", instance_id);
+
+        if (additional_args != NULL) {
+                for (i = 0; additional_args[i]; i += 2) {
+                        GValue *value;
+
+                        value = g_slice_alloc0 (sizeof (GValue));
+                        g_value_init (value, G_TYPE_STRING);
+                        g_value_set_string (value, additional_args[i + 1]);
+
+                        g_hash_table_insert (args, additional_args[i], value);
+                }
+        }
+
+        return args;
+}
+
+static void
+av_transport_send_action (char *action,
+                          char *additional_args[])
 {
         GUPnPMediaRendererProxy *renderer;
         GUPnPServiceProxy       *av_transport;
+        GHashTable              *args;
         GError                  *error;
 
         renderer = get_selected_renderer (&av_transport, NULL);
@@ -102,28 +144,39 @@ play (void)
                 g_object_unref (renderer);
         }
 
+        args = create_av_transport_args_hash (additional_args);
+
         error = NULL;
-        gupnp_service_proxy_begin_action (av_transport,
-                                          "Play",
-                                          set_state_cb,
-                                          "Playing",
-                                          &error,
-                                          "InstanceID", G_TYPE_UINT, 0,
-                                          "Speed", G_TYPE_STRING, "1",
-                                          NULL);
+        gupnp_service_proxy_begin_action_hash (av_transport,
+                                               action,
+                                               av_transport_action_cb,
+                                               (char *) action,
+                                               &error,
+                                               args);
         if (error) {
                 const char *udn;
 
                 udn = gupnp_service_info_get_udn
                                         (GUPNP_SERVICE_INFO (av_transport));
 
-                g_warning ("Failed to Play '%s': %s",
+                g_warning ("Failed to send action '%s' to '%s': %s",
+                           action,
                            udn,
                            error->message);
 
                 g_error_free (error);
                 g_object_unref (av_transport);
         }
+
+        g_hash_table_unref (args);
+}
+
+static void
+play (void)
+{
+        char *args[] = { "Speed", "1", NULL };
+
+        av_transport_send_action ("Play", args);
 }
 
 static void
@@ -250,78 +303,14 @@ void
 on_pause_button_clicked (GtkButton *button,
                          gpointer   user_data)
 {
-        GUPnPMediaRendererProxy *renderer;
-        GUPnPServiceProxy       *av_transport;
-        GError                  *error;
-
-        renderer = get_selected_renderer (&av_transport, NULL);
-        if (renderer == NULL) {
-                g_warning ("No renderer selected.");
-                return;
-        } else {
-                g_object_unref (renderer);
-        }
-
-        error = NULL;
-        gupnp_service_proxy_begin_action (av_transport,
-                                          "Pause",
-                                          set_state_cb,
-                                          "Paused",
-                                          &error,
-                                          "InstanceID", G_TYPE_UINT, 0,
-                                          NULL);
-        if (error) {
-                const char *udn;
-
-                udn = gupnp_service_info_get_udn
-                                        (GUPNP_SERVICE_INFO (av_transport));
-
-                g_warning ("Failed to Pause '%s': %s",
-                           udn,
-                           error->message);
-
-                g_error_free (error);
-                g_object_unref (av_transport);
-        }
+        av_transport_send_action ("Pause", NULL);
 }
 
 void
 on_stop_button_clicked (GtkButton *button,
                         gpointer   user_data)
 {
-        GUPnPMediaRendererProxy *renderer;
-        GUPnPServiceProxy       *av_transport;
-        GError                  *error;
-
-        renderer = get_selected_renderer (&av_transport, NULL);
-        if (renderer == NULL) {
-                g_warning ("No renderer selected.");
-                return;
-        } else {
-                g_object_unref (renderer);
-        }
-
-        error = NULL;
-        gupnp_service_proxy_begin_action (av_transport,
-                                          "Stop",
-                                          set_state_cb,
-                                          "Stopped",
-                                          &error,
-                                          "InstanceID", G_TYPE_UINT, 0,
-                                          NULL);
-        if (error) {
-                const char *udn;
-
-                udn = gupnp_service_info_get_udn
-                                        (GUPNP_SERVICE_INFO (av_transport));
-
-                g_warning ("Failed to Pause '%s': %s",
-                           udn,
-                           error->message);
-
-                g_error_free (error);
-                g_object_unref (av_transport);
-        }
+        av_transport_send_action ("Stop", NULL);
 }
 
 void

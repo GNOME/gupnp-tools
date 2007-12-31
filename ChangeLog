@@ -1,3 +1,10 @@
+2007-12-13  Zeeshan Ali Khattak  <zeenix@gstreamer.net>
+
+	* src/av-cp/renderer-controls.c:
+
+	Refactor: Put all the code related to sending the action to
+	AVTransport into one function.
+
 2007-12-10  Zeeshan Ali Khattak  <zeenix@gstreamer.net>
 
 	* src/av-cp/playlist-treeview.c:
