@@ -217,6 +217,42 @@ on_device_icon_available (GUPnPDeviceInfo *info,
         g_object_unref (icon);
 }
 
+static void
+on_last_change (GUPnPServiceProxy *av_transport,
+                const char        *variable_name,
+                GValue            *value,
+                gpointer           user_data)
+{
+       const char *last_change_xml;
+       char       *state_name;
+       GError     *error;
+
+       last_change_xml = g_value_get_string (value);
+       error = NULL;
+       state_name = NULL;
+
+       if (gupnp_av_util_parse_last_change (last_change_xml,
+                                            0,
+                                            &error,
+                                            "TransportState",
+                                            G_TYPE_STRING,
+                                            &state_name,
+                                            NULL)) {
+               if (state_name != NULL) {
+                       const char *udn;
+
+                       udn = gupnp_service_info_get_udn
+                                        (GUPNP_SERVICE_INFO (av_transport));
+                       set_state_by_name (udn, state_name);
+                       g_free (state_name);
+               }
+       } else if (error) {
+               g_warning ("%s\n", error->message);
+
+               g_error_free (error);
+       }
+}
+
 void
 append_media_renderer_to_tree (GUPnPMediaRendererProxy *proxy,
                                GUPnPServiceProxy       *av_transport,
@@ -254,6 +290,13 @@ append_media_renderer_to_tree (GUPnPMediaRendererProxy *proxy,
                  3, av_transport,
                  5, PLAYBACK_STATE_UNKNOWN,
                  -1);
+
+        gupnp_service_proxy_add_notify (g_object_ref (av_transport),
+                                        "LastChange",
+                                        G_TYPE_STRING,
+                                        on_last_change,
+                                        NULL);
+        gupnp_service_proxy_set_subscribed (av_transport, TRUE);
 
         schedule_icon_update (info, on_device_icon_available);
 

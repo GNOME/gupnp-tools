@@ -2,7 +2,8 @@
 
 	* src/av-cp/renderer-combo.c:
 
-	Move some static functions to the top of the file.
+	- Move some static functions to the top of the file.
+	- Subscribe to LastChange event to be notified of the state changes.
 
 2007-12-27  Zeeshan Ali Khattak  <zeenix@gmail.com>
 
