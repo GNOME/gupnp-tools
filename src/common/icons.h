@@ -62,6 +62,9 @@ unschedule_icon_update (GUPnPDeviceInfo *info);
 GdkPixbuf *
 get_icon_by_id         (IconID icon_id);
 
+GdkPixbuf *
+load_pixbuf_file       (const char *file_name);
+
 void
 init_icons             (void);
 

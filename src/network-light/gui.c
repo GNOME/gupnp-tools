@@ -23,6 +23,7 @@
 #include <config.h>
 
 #include "gui.h"
+#include "icons.h"
 #include "upnp.h"
 #include "main.h"
 
@@ -174,22 +175,6 @@ on_delete_event (GtkWidget *widget,
 {
         gtk_main_quit ();
         return TRUE;
-}
-
-static GdkPixbuf *
-load_pixbuf_file (const char *file_name)
-{
-        GdkPixbuf *pixbuf;
-        char *path;
-
-        path = g_build_filename (DATA_DIR, file_name, NULL);
-        pixbuf = gdk_pixbuf_new_from_file (path, NULL);
-        if (pixbuf == NULL)
-                g_critical ("failed to get image %s\n", file_name);
-
-        g_free (path);
-
-        return pixbuf;
 }
 
 gboolean

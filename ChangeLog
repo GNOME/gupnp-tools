@@ -1,4 +1,16 @@
 2008-01-13  Zeeshan Ali Khattak  <zeenix@gmail.com>
+
+	* src/av-cp/gui.c:
+	* src/common/icons.c:
+	* src/common/icons.h:
+	* src/network-light/Makefile.am:
+	* src/network-light/gui.c:
+	* src/universal-cp/gui.c:
+
+	Refactor: Move the load_pixbuf_file() into common icon module and use
+	that function in that module as well.
+
+2008-01-13  Zeeshan Ali Khattak  <zeenix@gmail.com>
 	Vinicius Depizzol <vdepizzol@gmail.com>
 
 	* data/pixmaps/Makefile.am:

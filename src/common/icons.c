@@ -243,6 +243,22 @@ get_pixbuf_from_theme (const char *icon_name,
         return pixbuf;
 }
 
+GdkPixbuf *
+load_pixbuf_file (const char *file_name)
+{
+        GdkPixbuf *pixbuf;
+        char *path;
+
+        path = g_build_filename (DATA_DIR, file_name, NULL);
+        pixbuf = gdk_pixbuf_new_from_file (path, NULL);
+        if (pixbuf == NULL)
+                g_critical ("failed to get image %s\n", file_name);
+
+        g_free (path);
+
+        return pixbuf;
+}
+
 void
 init_icons (void)
 {
@@ -287,15 +303,7 @@ init_icons (void)
         };
 
         for (i = 0; i < ICON_MISSING; i++) {
-                char *pixmap_path;
-
-                pixmap_path = g_build_filename (DATA_DIR,
-                                                file_names[i],
-                                                NULL);
-
-                icons[i] = gdk_pixbuf_new_from_file (pixmap_path, NULL);
-                g_free (pixmap_path);
-
+                icons[i] = load_pixbuf_file (file_names[i]);
                 g_assert (icons[i] != NULL);
         }
 
