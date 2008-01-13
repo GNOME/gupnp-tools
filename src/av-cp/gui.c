@@ -29,10 +29,27 @@
 #include "icons.h"
 
 #define GLADE_FILE DATA_DIR "/gupnp-av-cp.glade"
+#define ICON_FILE  "pixmaps/av-cp.png"
 
 static GladeXML  *glade_xml;
 static GtkWidget *main_window;
 static GtkWidget *about_dialog;
+
+static GdkPixbuf *
+load_pixbuf_file (const char *file_name)
+{
+        GdkPixbuf *pixbuf;
+        char *path;
+
+        path = g_build_filename (DATA_DIR, file_name, NULL);
+        pixbuf = gdk_pixbuf_new_from_file (path, NULL);
+        if (pixbuf == NULL)
+                g_critical ("failed to get image %s\n", file_name);
+
+        g_free (path);
+
+        return pixbuf;
+}
 
 gboolean
 on_delete_event (GtkWidget *widget,
@@ -47,10 +64,20 @@ on_delete_event (GtkWidget *widget,
 static void
 setup_icons (GladeXML *glade_xml)
 {
+        GdkPixbuf *icon_pixbuf;
         GtkWidget *volume_min;
         GtkWidget *volume_max;
 
         init_icons ();
+
+        icon_pixbuf = load_pixbuf_file (ICON_FILE);
+        g_assert (icon_pixbuf != NULL);
+
+        gtk_window_set_icon (GTK_WINDOW (main_window), icon_pixbuf);
+        gtk_window_set_icon (GTK_WINDOW (about_dialog), icon_pixbuf);
+        gtk_about_dialog_set_logo (GTK_ABOUT_DIALOG (about_dialog),
+                                   icon_pixbuf);
+        g_object_unref (icon_pixbuf);
 
         volume_min = glade_xml_get_widget (glade_xml, "volume-min-image");
         g_assert (volume_min != NULL);

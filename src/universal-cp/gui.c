@@ -30,6 +30,7 @@
 #include "main.h"
 
 #define GLADE_FILE DATA_DIR "/gupnp-universal-cp.glade"
+#define ICON_FILE  "pixmaps/universal-cp.png"
 
 GladeXML *glade_xml;
 static GtkWidget *main_window;
@@ -78,6 +79,22 @@ setup_treeviews (void)
         setup_device_treeview (glade_xml);
 }
 
+static GdkPixbuf *
+load_pixbuf_file (const char *file_name)
+{
+        GdkPixbuf *pixbuf;
+        char *path;
+
+        path = g_build_filename (DATA_DIR, file_name, NULL);
+        pixbuf = gdk_pixbuf_new_from_file (path, NULL);
+        if (pixbuf == NULL)
+                g_critical ("failed to get image %s\n", file_name);
+
+        g_free (path);
+
+        return pixbuf;
+}
+
 gboolean
 on_delete_event (GtkWidget *widget,
                  GdkEvent  *event,
@@ -93,6 +110,7 @@ init_ui (gint   *argc,
          gchar **argv[])
 {
         GtkWidget *about_dialog;
+        GdkPixbuf *icon_pixbuf;
         GtkWidget *hpaned;
         GtkWidget *vpaned;
         gint       window_width, window_height;
@@ -125,8 +143,19 @@ init_ui (gint   *argc,
                                      window_width,
                                      window_height);
 
+        icon_pixbuf = load_pixbuf_file (ICON_FILE);
+        if (icon_pixbuf == NULL) {
+                return FALSE;
+        }
+
+        gtk_window_set_icon (GTK_WINDOW (main_window), icon_pixbuf);
+        gtk_window_set_icon (GTK_WINDOW (about_dialog), icon_pixbuf);
+        gtk_about_dialog_set_logo (GTK_ABOUT_DIALOG (about_dialog),
+                                   icon_pixbuf);
         gtk_about_dialog_set_version (GTK_ABOUT_DIALOG (about_dialog),
                                       VERSION);
+
+        g_object_unref (icon_pixbuf);
 
         glade_xml_signal_autoconnect (glade_xml);
 

@@ -1,3 +1,14 @@
+2008-01-13  Zeeshan Ali Khattak  <zeenix@gmail.com>
+	Vinicius Depizzol <vdepizzol@gmail.com>
+
+	* data/pixmaps/Makefile.am:
+	* data/pixmaps/av-cp.png:
+	* data/pixmaps/universal-cp.png:
+	* src/av-cp/gui.c:
+	* src/universal-cp/gui.c:
+
+	Add icons for universal-cp and av-cp.
+
 2007-12-31  Zeeshan Ali Khattak  <zeenix@gmail.com>
 
 	* src/av-cp/renderer-combo.c:
