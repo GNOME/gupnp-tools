@@ -13,7 +13,7 @@ gupnp_av_cp_SOURCES = main.c \
 		      gui.c \
 		      playlist-treeview.c \
 		      renderer-combo.c \
-		      renderer-controls.c
+		      renderer-controls.c \
 		      main.h \
 		      gui.h \
 		      playlist-treeview.h \

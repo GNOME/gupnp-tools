@@ -21,6 +21,12 @@
 
 	Add icons for universal-cp and av-cp.
 
+2008-01-02  Zeeshan Ali Khattak  <zeenix@gmail.com>
+
+	* src/av-cp/Makefile.am:
+
+	Fix a small typo.
+
 2007-12-31  Zeeshan Ali Khattak  <zeenix@gmail.com>
 
 	* src/av-cp/renderer-combo.c:
