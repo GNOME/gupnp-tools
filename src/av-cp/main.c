@@ -27,6 +27,9 @@
 #include "renderer-combo.h"
 #include "playlist-treeview.h"
 
+#define MEDIA_RENDERER "urn:schemas-upnp-org:device:MediaRenderer:*"
+#define MEDIA_SERVER "urn:schemas-upnp-org:device:MediaServer:*"
+
 static GUPnPContext      *context;
 static GUPnPControlPoint *cp;
 
@@ -34,10 +37,14 @@ static void
 device_proxy_available_cb (GUPnPControlPoint *cp,
                            GUPnPDeviceProxy  *proxy)
 {
-        if (G_OBJECT_TYPE (proxy) == GUPNP_TYPE_MEDIA_RENDERER_PROXY) {
-                add_media_renderer (GUPNP_MEDIA_RENDERER_PROXY (proxy));
-        } else if (G_OBJECT_TYPE (proxy) == GUPNP_TYPE_MEDIA_SERVER_PROXY) {
-                add_media_server (GUPNP_MEDIA_SERVER_PROXY (proxy));
+        const char *type;
+
+        type = gupnp_device_info_get_device_type (GUPNP_DEVICE_INFO (proxy));
+
+        if (g_pattern_match_simple (MEDIA_RENDERER, type)) {
+                add_media_renderer (proxy);
+        } else if (g_pattern_match_simple (MEDIA_SERVER, type)) {
+                add_media_server (proxy);
         }
 }
 
@@ -45,10 +52,14 @@ static void
 device_proxy_unavailable_cb (GUPnPControlPoint *cp,
                              GUPnPDeviceProxy  *proxy)
 {
-        if (G_OBJECT_TYPE (proxy) == GUPNP_TYPE_MEDIA_RENDERER_PROXY) {
-                remove_media_renderer (GUPNP_MEDIA_RENDERER_PROXY (proxy));
-        } else if (G_OBJECT_TYPE (proxy) == GUPNP_TYPE_MEDIA_SERVER_PROXY) {
-                remove_media_server (GUPNP_MEDIA_SERVER_PROXY (proxy));
+        const char *type;
+
+        type = gupnp_device_info_get_device_type (GUPNP_DEVICE_INFO (proxy));
+
+        if (g_pattern_match_simple (MEDIA_RENDERER, type)) {
+                remove_media_renderer (proxy);
+        } else if (g_pattern_match_simple (MEDIA_SERVER, type)) {
+                remove_media_server (proxy);
         }
 }
 

@@ -43,10 +43,10 @@ PlaybackState
 get_selected_renderer_state     (void);
 
 void
-add_media_renderer              (GUPnPMediaRendererProxy *proxy);
+add_media_renderer              (GUPnPDeviceProxy *proxy);
 
 void
-remove_media_renderer           (GUPnPMediaRendererProxy *proxy);
+remove_media_renderer           (GUPnPDeviceProxy *proxy);
 
 void
 setup_renderer_combo            (GladeXML                *glade_xml);

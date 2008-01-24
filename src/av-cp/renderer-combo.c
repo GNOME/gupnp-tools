@@ -35,7 +35,7 @@
 static GtkWidget *renderer_combo;
 
 static GUPnPServiceProxy *
-get_av_transport (GUPnPMediaRendererProxy *renderer)
+get_av_transport (GUPnPDeviceProxy *renderer)
 {
         GUPnPServiceInfo *av_transport;
 
@@ -254,7 +254,7 @@ on_last_change (GUPnPServiceProxy *av_transport,
 }
 
 void
-append_media_renderer_to_tree (GUPnPMediaRendererProxy *proxy,
+append_media_renderer_to_tree (GUPnPDeviceProxy *proxy,
                                GUPnPServiceProxy       *av_transport,
                                const char              *udn)
 {
@@ -307,7 +307,7 @@ append_media_renderer_to_tree (GUPnPMediaRendererProxy *proxy,
 }
 
 static GUPnPServiceProxy *
-get_connection_manager (GUPnPMediaRendererProxy *proxy)
+get_connection_manager (GUPnPDeviceProxy *proxy)
 {
         GUPnPServiceInfo *cm;
 
@@ -417,7 +417,7 @@ return_point:
 }
 
 void
-add_media_renderer (GUPnPMediaRendererProxy *proxy)
+add_media_renderer (GUPnPDeviceProxy *proxy)
 {
         GtkTreeModel      *model;
         GtkTreeIter        iter;
@@ -489,7 +489,7 @@ add_media_renderer (GUPnPMediaRendererProxy *proxy)
 }
 
 void
-remove_media_renderer (GUPnPMediaRendererProxy *proxy)
+remove_media_renderer (GUPnPDeviceProxy *proxy)
 {
         GUPnPDeviceInfo *info;
         GtkComboBox     *combo;

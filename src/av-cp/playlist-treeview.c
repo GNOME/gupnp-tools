@@ -27,6 +27,9 @@
 #include "gui.h"
 #include "main.h"
 
+#define CONTENT_DIR_V1 "urn:schemas-upnp-org:service:ContentDirectory:1"
+#define CONTENT_DIR_V2 "urn:schemas-upnp-org:service:ContentDirectory:2"
+
 #define ITEM_CLASS_IMAGE "object.item.imageItem"
 #define ITEM_CLASS_AUDIO "object.item.audioItem"
 #define ITEM_CLASS_VIDEO "object.item.videoItem"
@@ -38,6 +41,11 @@ typedef gboolean (* RowCompareFunc) (GtkTreeModel *model,
 
 static GtkWidget *treeview;
 static gboolean   expanded;
+
+static GUPnPDIDLLiteParser *didl_parser;
+
+static void
+browse (GUPnPServiceProxy *content_dir, const char *container_id);
 
 gboolean
 on_playlist_treeview_button_release (GtkWidget      *widget,
@@ -64,13 +72,15 @@ create_playlist_treemodel (void)
 {
         GtkTreeStore *store;
 
-        store = gtk_tree_store_new (6,
+        store = gtk_tree_store_new (7,
                                     /* Icon */
                                     GDK_TYPE_PIXBUF,
                                     /* Title */
                                     G_TYPE_STRING,
                                     /* MediaServer */
-                                    GUPNP_TYPE_MEDIA_SERVER_PROXY,
+                                    GUPNP_TYPE_DEVICE_PROXY,
+                                    /* Content Directory */
+                                    GUPNP_TYPE_SERVICE_PROXY,
                                     /* Id */
                                     G_TYPE_STRING,
                                     /* Is container? */
@@ -145,6 +155,9 @@ setup_playlist_treeview (GladeXML *glade_xml)
                           NULL);
 
         expanded = FALSE;
+
+        didl_parser = gupnp_didl_lite_parser_new ();
+        g_assert (didl_parser != NULL);
 }
 
 static gboolean
@@ -163,7 +176,7 @@ compare_media_server (GtkTreeModel *model,
                             2, &info, -1);
 
         if (info) {
-                if (GUPNP_IS_MEDIA_SERVER_PROXY (info)) {
+                if (GUPNP_IS_DEVICE_PROXY (info)) {
                         const char *device_udn;
 
                         device_udn = gupnp_device_info_get_udn (info);
@@ -235,8 +248,8 @@ compare_container (GtkTreeModel *model,
                 return found;
 
         gtk_tree_model_get (model, iter,
-                            3, &container_id,
-                            4, &is_container, -1);
+                            4, &container_id,
+                            5, &is_container, -1);
 
         if (!is_container)
                 return found;
@@ -335,10 +348,10 @@ get_resource_hash (xmlNode *object_node)
 }
 
 static void
-append_didle_object (xmlNode               *object_node,
-                     GUPnPMediaServerProxy *proxy,
-                     GtkTreeModel          *model,
-                     GtkTreeIter           *server_iter)
+append_didle_object (xmlNode           *object_node,
+                     GUPnPServiceProxy *content_dir,
+                     GtkTreeModel      *model,
+                     GtkTreeIter       *server_iter)
 {
         GtkTreeIter parent_iter;
         char       *id;
@@ -377,6 +390,9 @@ append_didle_object (xmlNode               *object_node,
                 position = 0;
                 resource_hash = NULL;
                 icon = get_icon_by_id (ICON_CONTAINER);
+
+                /* Recurse */
+                browse (content_dir, id);
         } else {
                 position = -1;
                 resource_hash = get_resource_hash (object_node);
@@ -405,47 +421,15 @@ append_didle_object (xmlNode               *object_node,
                                            NULL, &parent_iter, position,
                                            0, icon,
                                            1, title,
-                                           2, proxy,
-                                           3, id,
-                                           4, is_container,
-                                           5, resource_hash,
+                                           3, content_dir,
+                                           4, id,
+                                           5, is_container,
+                                           6, resource_hash,
                                            -1);
 
         g_free (parent_id);
         g_free (title);
         g_free (id);
-}
-
-static void
-on_didl_object_available (GUPnPDIDLLiteParser *parser,
-                          xmlNode             *object_node,
-                          gpointer             user_data)
-{
-        GUPnPMediaServerProxy *proxy;
-        GtkTreeModel          *model;
-        GtkTreeIter            server_iter;
-        const char            *udn;
-
-        model = gtk_tree_view_get_model (GTK_TREE_VIEW (treeview));
-        g_assert (model != NULL);
-
-        proxy = GUPNP_MEDIA_SERVER_PROXY (user_data);
-
-        udn = gupnp_device_info_get_udn (GUPNP_DEVICE_INFO (proxy));
-
-        if (find_row (model,
-                       NULL,
-                       &server_iter,
-                       compare_media_server,
-                       (gpointer) udn,
-                       FALSE)) {
-                append_didle_object (object_node,
-                                     proxy,
-                                     model,
-                                     &server_iter);
-        }
-
-        return;
 }
 
 static void
@@ -476,21 +460,150 @@ on_device_icon_available (GUPnPDeviceInfo *info,
         g_object_unref (icon);
 }
 
-static void
-append_media_server (GUPnPMediaServerProxy *proxy,
-                     GtkTreeModel          *model,
-                     GtkTreeIter           *parent_iter)
+static GUPnPServiceProxy *
+get_content_dir (GUPnPDeviceProxy *proxy)
 {
-        GUPnPDeviceInfo *info;
-        char            *friendly_name;
+        GUPnPDeviceInfo  *info;
+        GUPnPServiceInfo *content_dir;
 
         info = GUPNP_DEVICE_INFO (proxy);
 
+        /* Content Directory */
+        content_dir = gupnp_device_info_get_service (info,
+                                                     CONTENT_DIR_V1);
+        if (content_dir == NULL) {
+                        content_dir = gupnp_device_info_get_service
+                                                      (info,
+                                                       CONTENT_DIR_V2);
+        }
+
+        return GUPNP_SERVICE_PROXY (content_dir);
+}
+
+static void
+on_didl_object_available (GUPnPDIDLLiteParser *didl_parser,
+                          xmlNode             *object_node,
+                          gpointer             user_data)
+{
+        GUPnPServiceInfo *content_dir;
+        GtkTreeModel     *model;
+        GtkTreeIter       server_iter;
+        const char       *udn;
+
+        model = gtk_tree_view_get_model (GTK_TREE_VIEW (treeview));
+        g_assert (model != NULL);
+
+        content_dir = GUPNP_SERVICE_INFO (user_data);
+
+        udn = gupnp_service_info_get_udn (content_dir);
+
+        if (find_row (model,
+                       NULL,
+                       &server_iter,
+                       compare_media_server,
+                       (gpointer) udn,
+                       FALSE)) {
+                append_didle_object (object_node,
+                                     GUPNP_SERVICE_PROXY (content_dir),
+                                     model,
+                                     &server_iter);
+        }
+
+        return;
+}
+
+static inline void
+on_browse_failure (GUPnPServiceInfo *info,
+                   GError           *error)
+{
+        g_warning ("Failed to browse '%s': %s\n",
+                   gupnp_service_info_get_location (info),
+                   error->message);
+        g_error_free (error);
+}
+
+static void
+browse_cb (GUPnPServiceProxy       *content_dir,
+           GUPnPServiceProxyAction *action,
+           gpointer                 user_data)
+{
+        char   *didl_xml;
+        GError *error;
+
+        error = NULL;
+        gupnp_service_proxy_end_action (content_dir,
+                                        action,
+                                        &error,
+                                        /* OUT args */
+                                        "Result",
+                                        G_TYPE_STRING,
+                                        &didl_xml,
+                                        NULL);
+        if (error) {
+                on_browse_failure (GUPNP_SERVICE_INFO (content_dir), error);
+                return;
+        }
+
+        gupnp_didl_lite_parser_parse_didl (didl_parser,
+                                           didl_xml,
+                                           on_didl_object_available,
+                                           content_dir);
+
+        g_free (didl_xml);
+}
+
+static void
+browse (GUPnPServiceProxy *content_dir, const char *container_id)
+{
+        GError *error;
+
+        error = NULL;
+        gupnp_service_proxy_begin_action
+                                (content_dir,
+                                 "Browse",
+                                 browse_cb,
+                                 NULL,
+                                 &error,
+                                 /* IN args */
+                                 "ObjectID",
+                                 G_TYPE_STRING,
+                                 container_id,
+                                 "BrowseFlag",
+                                 G_TYPE_STRING,
+                                 "BrowseDirectChildren",
+                                 "Filter",
+                                 G_TYPE_STRING,
+                                 "*",
+                                 "StartingIndex",
+                                 G_TYPE_UINT,
+                                 0,
+                                 "RequestedCount",
+                                 G_TYPE_UINT, 0,
+                                 "SortCriteria",
+                                 G_TYPE_STRING,
+                                 "",
+                                 NULL);
+        if (error)
+                on_browse_failure (GUPNP_SERVICE_INFO (content_dir), error);
+}
+
+static void
+append_media_server (GUPnPDeviceProxy *proxy,
+                     GtkTreeModel          *model,
+                     GtkTreeIter           *parent_iter)
+{
+        GUPnPDeviceInfo   *info;
+        GUPnPServiceProxy *content_dir;
+        char              *friendly_name;
+
+        info = GUPNP_DEVICE_INFO (proxy);
+
+        content_dir = get_content_dir (proxy);
         friendly_name = gupnp_device_info_get_friendly_name (info);
-        if (friendly_name) {
-                GUPnPDIDLLiteParser *parser;
-                GtkTreeIter     device_iter;
-                GList          *child;
+
+        if (G_LIKELY (friendly_name && content_dir != NULL)) {
+                GtkTreeIter device_iter;
+                GList      *child;
 
                 gtk_tree_store_insert_with_values
                                 (GTK_TREE_STORE (model),
@@ -498,13 +611,14 @@ append_media_server (GUPnPMediaServerProxy *proxy,
                                  0, get_icon_by_id (ICON_DEVICE),
                                  1, friendly_name,
                                  2, info,
+                                 3, content_dir,
                                  -1);
                 g_free (friendly_name);
 
                 /* Append the embedded devices */
                 child = gupnp_device_info_list_devices (info);
                 while (child) {
-                        append_media_server (GUPNP_MEDIA_SERVER_PROXY (child->data),
+                        append_media_server (GUPNP_DEVICE_PROXY (child->data),
                                              model,
                                              &device_iter);
                         g_object_unref (child->data);
@@ -513,18 +627,13 @@ append_media_server (GUPnPMediaServerProxy *proxy,
 
                 schedule_icon_update (info, on_device_icon_available);
 
-                gupnp_media_server_proxy_start_browsing (proxy, "0");
-
-                parser = gupnp_media_server_proxy_get_parser (proxy);
-                g_signal_connect (parser,
-                                  "didl-object-available",
-                                  G_CALLBACK (on_didl_object_available),
-                                  proxy);
+                browse (content_dir, "0");
+                g_object_unref (content_dir);
         }
 }
 
 void
-add_media_server (GUPnPMediaServerProxy *proxy)
+add_media_server (GUPnPDeviceProxy *proxy)
 {
         GtkTreeModel *model;
         GtkTreeIter   iter;
@@ -552,7 +661,7 @@ add_media_server (GUPnPMediaServerProxy *proxy)
 }
 
 void
-remove_media_server (GUPnPMediaServerProxy *proxy)
+remove_media_server (GUPnPDeviceProxy *proxy)
 {
         GUPnPDeviceInfo *info;
         GtkTreeModel    *model;
@@ -595,9 +704,9 @@ get_selected_item (GHashTable **resource_hash)
 
         gtk_tree_model_get (model,
                             &iter,
-                            3, &id,
-                            4, &is_container,
-                            5, resource_hash,
+                            4, &id,
+                            5, &is_container,
+                            6, resource_hash,
                             -1);
 
         if (is_container) {

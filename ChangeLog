@@ -1,3 +1,20 @@
+2008-01-24  Zeeshan Ali Khattak  <zeenix@gmail.com>
+
+	* src/av-cp/main.c:
+
+	Use UPnP types to differentiate the devices rather than GTypes.
+
+	* src/av-cp/playlist-treeview.c:
+	* src/av-cp/playlist-treeview.h:
+
+	- Use GUPnPDeviceProxy rather than now removed GUPnPMediaServerProxy.
+	- Move and adapt code from GUPnPMediaServerProxy for 'browse'.
+
+	* src/av-cp/renderer-combo.c:
+	* src/av-cp/renderer-combo.h:
+
+	Use GUPnPDeviceProxy rather than now removed GUPnPMediaRendererProxy.
+
 2008-01-13  Zeeshan Ali Khattak  <zeenix@gmail.com>
 
 	* src/av-cp/gui.c:

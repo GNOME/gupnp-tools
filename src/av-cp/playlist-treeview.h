@@ -30,10 +30,10 @@ void
 setup_playlist_treeview         (GladeXML               *glade_xml);
 
 void
-add_media_server                (GUPnPMediaServerProxy  *proxy);
+add_media_server                (GUPnPDeviceProxy  *proxy);
 
 void
-remove_media_server             (GUPnPMediaServerProxy  *proxy);
+remove_media_server             (GUPnPDeviceProxy  *proxy);
 
 char *
 get_selected_item               (GHashTable            **resource_hash);
