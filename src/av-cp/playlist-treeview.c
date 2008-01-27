@@ -792,7 +792,9 @@ abnormal_return:
         }
 
 normal_return:
-        g_hash_table_unref (resource_hash);
+        if (resource_hash) {
+                g_hash_table_unref (resource_hash);
+        }
 
         return id;
 }

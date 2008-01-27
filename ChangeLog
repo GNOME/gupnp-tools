@@ -2,8 +2,9 @@
 
 	* src/av-cp/playlist-treeview.c:
 
-	Item selection sets the URI on the renderer if it's in PLAYING/PAUSED
-	state.
+	- Item selection sets the URI on the renderer if it's in
+	  PLAYING/PAUSE state.
+	- Check if we have a hashtable before unref'ing it.
 
 2008-01-26  Zeeshan Ali Khattak  <zeenix@gmail.com>
 
