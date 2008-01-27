@@ -31,6 +31,8 @@
                         "urn:schemas-upnp-org:service:ConnectionManager:2"
 #define AV_TRANSPORT_V1 "urn:schemas-upnp-org:service:AVTransport:1"
 #define AV_TRANSPORT_V2 "urn:schemas-upnp-org:service:AVTransport:2"
+#define RENDERING_CONTROL_V1 "urn:schemas-upnp-org:service:RenderingControl:1"
+#define RENDERING_CONTROL_V2 "urn:schemas-upnp-org:service:RenderingControl:2"
 
 static GtkWidget *renderer_combo;
 
@@ -70,7 +72,7 @@ get_selected_av_transport (gchar ***protocols)
         if (protocols != NULL) {
                 gtk_tree_model_get (model,
                                     &iter,
-                                    4, protocols,
+                                    5, protocols,
                                     -1);
 
                 if (*protocols == NULL) {
@@ -106,7 +108,7 @@ get_selected_renderer_state (void)
 
         gtk_tree_model_get (model,
                             &iter,
-                            5, &state,
+                            6, &state,
                             -1);
 
         return state;
@@ -189,7 +191,7 @@ set_state_by_name (const gchar *udn,
 
                       gtk_list_store_set (GTK_LIST_STORE (model),
                                       &iter,
-                                      5, state,
+                                      6, state,
                                       -1);
         }
 }
@@ -254,9 +256,10 @@ on_last_change (GUPnPServiceProxy *av_transport,
 }
 
 void
-append_media_renderer_to_tree (GUPnPDeviceProxy *proxy,
-                               GUPnPServiceProxy       *av_transport,
-                               const char              *udn)
+append_media_renderer_to_tree (GUPnPDeviceProxy  *proxy,
+                               GUPnPServiceProxy *av_transport,
+                               GUPnPServiceProxy *rendering_control,
+                               const char        *udn)
 {
         GUPnPDeviceInfo  *info;
         GtkComboBox      *combo;
@@ -288,7 +291,8 @@ append_media_renderer_to_tree (GUPnPDeviceProxy *proxy,
                  1, name,
                  2, proxy,
                  3, av_transport,
-                 5, PLAYBACK_STATE_UNKNOWN,
+                 4, rendering_control,
+                 6, PLAYBACK_STATE_UNKNOWN,
                  -1);
 
         gupnp_service_proxy_add_notify (g_object_ref (av_transport),
@@ -319,6 +323,23 @@ get_connection_manager (GUPnPDeviceProxy *proxy)
         }
 
         return GUPNP_SERVICE_PROXY (cm);
+}
+
+static GUPnPServiceProxy *
+get_rendering_control (GUPnPDeviceProxy *proxy)
+{
+        GUPnPServiceInfo *rendering_control;
+
+        rendering_control =
+                gupnp_device_info_get_service (GUPNP_DEVICE_INFO (proxy),
+                                               RENDERING_CONTROL_V1);
+        if (rendering_control == NULL) {
+                rendering_control = gupnp_device_info_get_service
+                                                (GUPNP_DEVICE_INFO (proxy),
+                                                 RENDERING_CONTROL_V2);
+        }
+
+        return GUPNP_SERVICE_PROXY (rendering_control);
 }
 
 static void
@@ -365,7 +386,7 @@ get_protocol_info_cb (GUPnPServiceProxy       *cm,
                 if (find_renderer (model, udn, &iter)) {
                         gtk_list_store_set (GTK_LIST_STORE (model),
                                             &iter,
-                                            4, protocols,
+                                            5, protocols,
                                             -1);
                 }
 
@@ -424,6 +445,7 @@ add_media_renderer (GUPnPDeviceProxy *proxy)
         char              *udn;
         GUPnPServiceProxy *cm;
         GUPnPServiceProxy *av_transport;
+        GUPnPServiceProxy *rendering_control;
         GError            *error;
 
         udn = (char *) gupnp_device_info_get_udn (GUPNP_DEVICE_INFO (proxy));
@@ -441,10 +463,21 @@ add_media_renderer (GUPnPDeviceProxy *proxy)
                 return;
         }
 
+        rendering_control = get_rendering_control (proxy);
+        if (rendering_control == NULL) {
+                g_object_unref (cm);
+                g_object_unref (av_transport);
+
+                return;
+        }
+
         model = gtk_combo_box_get_model (GTK_COMBO_BOX (renderer_combo));
 
         if (!find_renderer (model, udn, &iter))
-                append_media_renderer_to_tree (proxy, av_transport, udn);
+                append_media_renderer_to_tree (proxy,
+                                               av_transport,
+                                               rendering_control,
+                                               udn);
 
         udn = g_strdup (udn);
 
@@ -518,13 +551,15 @@ create_renderer_treemodel (void)
 {
         GtkListStore *store;
 
-        store = gtk_list_store_new (6,
-                                    GDK_TYPE_PIXBUF, /* Icon             */
-                                    G_TYPE_STRING,   /* Name             */
-                                    G_TYPE_OBJECT,   /* renderer proxy   */
-                                    G_TYPE_OBJECT,   /* AVTranport proxy */
-                                    G_TYPE_STRV,     /* ProtocolInfo     */
-                                    G_TYPE_UINT);    /* AVTranport state */
+        store = gtk_list_store_new (7,
+                                    GDK_TYPE_PIXBUF, /* Icon              */
+                                    G_TYPE_STRING,   /* Name              */
+                                    G_TYPE_OBJECT,   /* renderer proxy    */
+                                    G_TYPE_OBJECT,   /* AVTranport proxy  */
+                                    G_TYPE_OBJECT,   /* Rendering Control */
+                                                     /* proxy             */
+                                    G_TYPE_STRV,     /* ProtocolInfo      */
+                                    G_TYPE_UINT);    /* AVTranport state  */
 
         return GTK_TREE_MODEL (store);
 }
