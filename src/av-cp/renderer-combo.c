@@ -755,6 +755,30 @@ setup_renderer_combo_pixbuf_cell (GtkWidget *renderer_combo)
                                        "pixbuf", 0);
 }
 
+static void
+on_renderer_combo_changed (GtkComboBox *widget,
+                           gpointer     user_data)
+{
+        GtkComboBox  *combo;
+        GtkTreeModel *model;
+        GtkTreeIter   iter;
+        guint         volume;
+
+        combo = GTK_COMBO_BOX (renderer_combo);
+        model = gtk_combo_box_get_model (combo);
+        g_assert (model != NULL);
+
+        if (!gtk_combo_box_get_active_iter (combo, &iter)) {
+                return;
+        }
+
+        gtk_tree_model_get (model,
+                            &iter,
+                            7, &volume,
+                            -1);
+        set_volume_hscale (volume);
+}
+
 void
 setup_renderer_combo (GladeXML *glade_xml)
 {
@@ -771,5 +795,10 @@ setup_renderer_combo (GladeXML *glade_xml)
 
         setup_renderer_combo_pixbuf_cell (renderer_combo);
         setup_renderer_combo_text_cell (renderer_combo);
+
+        g_signal_connect (renderer_combo,
+                          "changed",
+                          G_CALLBACK (on_renderer_combo_changed),
+                          NULL);
 }
 
