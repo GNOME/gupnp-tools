@@ -197,6 +197,25 @@ set_state_by_name (const gchar *udn,
 }
 
 static void
+set_volume (const gchar *udn,
+            guint        volume)
+{
+        GtkTreeModel *model;
+        GtkTreeIter   iter;
+
+        model = gtk_combo_box_get_model
+                (GTK_COMBO_BOX (renderer_combo));
+        g_assert (model != NULL);
+
+        if (find_renderer (model, udn, &iter)) {
+                gtk_list_store_set (GTK_LIST_STORE (model),
+                                    &iter,
+                                    7, volume,
+                                    -1);
+        }
+}
+
+static void
 on_device_icon_available (GUPnPDeviceInfo *info,
                           GdkPixbuf       *icon)
 {
@@ -255,6 +274,39 @@ on_last_change (GUPnPServiceProxy *av_transport,
        }
 }
 
+static void
+on_rendering_control_last_change (GUPnPServiceProxy *rendering_control,
+                                  const char        *variable_name,
+                                  GValue            *value,
+                                  gpointer           user_data)
+{
+       const char *last_change_xml;
+       guint       volume;
+       GError     *error;
+
+       last_change_xml = g_value_get_string (value);
+       error = NULL;
+
+       if (gupnp_av_util_parse_last_change (last_change_xml,
+                                            0,
+                                            &error,
+                                            "Volume",
+                                            G_TYPE_UINT,
+                                            &volume,
+                                            NULL)) {
+                       const char *udn;
+
+                       udn = gupnp_service_info_get_udn
+                                        (GUPNP_SERVICE_INFO
+                                                (rendering_control));
+                       set_volume (udn, volume);
+       } else if (error) {
+               g_warning ("%s\n", error->message);
+
+               g_error_free (error);
+       }
+}
+
 void
 append_media_renderer_to_tree (GUPnPDeviceProxy  *proxy,
                                GUPnPServiceProxy *av_transport,
@@ -293,6 +345,7 @@ append_media_renderer_to_tree (GUPnPDeviceProxy  *proxy,
                  3, av_transport,
                  4, rendering_control,
                  6, PLAYBACK_STATE_UNKNOWN,
+                 7, 0,
                  -1);
 
         gupnp_service_proxy_add_notify (g_object_ref (av_transport),
@@ -300,7 +353,13 @@ append_media_renderer_to_tree (GUPnPDeviceProxy  *proxy,
                                         G_TYPE_STRING,
                                         on_last_change,
                                         NULL);
+        gupnp_service_proxy_add_notify (g_object_ref (rendering_control),
+                                        "LastChange",
+                                        G_TYPE_STRING,
+                                        on_rendering_control_last_change,
+                                        NULL);
         gupnp_service_proxy_set_subscribed (av_transport, TRUE);
+        gupnp_service_proxy_set_subscribed (rendering_control, TRUE);
 
         schedule_icon_update (info, on_device_icon_available);
 
@@ -437,6 +496,41 @@ return_point:
         g_free (udn);
 }
 
+static void
+get_volume_cb (GUPnPServiceProxy       *rendering_control,
+               GUPnPServiceProxyAction *action,
+               gpointer                 user_data)
+{
+        guint   volume;
+        gchar  *udn;
+        GError *error;
+
+        udn = (gchar *) user_data;
+
+        error = NULL;
+        if (!gupnp_service_proxy_end_action (rendering_control,
+                                             action,
+                                             &error,
+                                             "CurrentVolume",
+                                             G_TYPE_UINT,
+                                             &volume,
+                                             NULL)) {
+                g_warning ("Failed to get volume from media renderer"
+                           " '%s':%s\n",
+                           udn,
+                           error->message);
+                g_error_free (error);
+
+                goto return_point;
+        }
+
+        set_volume (udn, volume);
+
+return_point:
+        g_object_unref (rendering_control);
+        g_free (udn);
+}
+
 void
 add_media_renderer (GUPnPDeviceProxy *proxy)
 {
@@ -519,6 +613,28 @@ add_media_renderer (GUPnPDeviceProxy *proxy)
                 g_object_unref (av_transport);
                 g_free (udn);
         }
+
+        udn = g_strdup (udn);
+
+        error = NULL;
+        gupnp_service_proxy_begin_action (rendering_control,
+                                          "GetVolume",
+                                          get_volume_cb,
+                                          udn,
+                                          &error,
+                                          "InstanceID", G_TYPE_UINT, 0,
+                                          "Channel", G_TYPE_STRING, "Master",
+                                          NULL);
+        if (error) {
+                g_warning ("Failed to get volume from media renderer"
+                           " '%s':%s\n",
+                           udn,
+                           error->message);
+
+                g_error_free (error);
+                g_object_unref (rendering_control);
+                g_free (udn);
+        }
 }
 
 void
@@ -551,7 +667,7 @@ create_renderer_treemodel (void)
 {
         GtkListStore *store;
 
-        store = gtk_list_store_new (7,
+        store = gtk_list_store_new (8,
                                     GDK_TYPE_PIXBUF, /* Icon              */
                                     G_TYPE_STRING,   /* Name              */
                                     G_TYPE_OBJECT,   /* renderer proxy    */
@@ -559,7 +675,8 @@ create_renderer_treemodel (void)
                                     G_TYPE_OBJECT,   /* Rendering Control */
                                                      /* proxy             */
                                     G_TYPE_STRV,     /* ProtocolInfo      */
-                                    G_TYPE_UINT);    /* AVTranport state  */
+                                    G_TYPE_UINT,     /* AVTranport state  */
+                                    G_TYPE_UINT);    /* Volume            */
 
         return GTK_TREE_MODEL (store);
 }
