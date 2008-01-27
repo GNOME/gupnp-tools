@@ -24,6 +24,7 @@
 
 #include "playlist-treeview.h"
 #include "renderer-combo.h"
+#include "renderer-controls.h"
 #include "icons.h"
 #include "gui.h"
 #include "main.h"
@@ -66,6 +67,24 @@ static void
 on_item_selected (GtkTreeSelection *selection,
                   gpointer          user_data)
 {
+        PlaybackState state;
+
+        state = get_selected_renderer_state ();
+
+        if (state == PLAYBACK_STATE_PLAYING ||
+            state == PLAYBACK_STATE_PAUSED) {
+                char *id;
+                char *uri;
+
+                id = get_selected_item (&uri);
+
+                if (id != NULL) {
+                        set_av_transport_uri (id, uri, NULL);
+
+                        g_free (uri);
+                        g_free (id);
+                }
+       }
 }
 
 static GtkTreeModel *
