@@ -1,5 +1,11 @@
 2008-01-27  Zeeshan Ali Khattak  <zeenix@gmail.com>
 
+	* src/av-cp/renderer-controls.h:
+
+	Remove some functions that got copied by mistake.
+
+2008-01-27  Zeeshan Ali Khattak  <zeenix@gmail.com>
+
 	* src/av-cp/renderer-combo.c:
 
 	Keep track of the Master volume of each MediaRenderer.

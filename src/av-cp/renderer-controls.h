@@ -28,15 +28,6 @@
 #include <glade/glade.h>
 
 void
-add_media_renderer              (GUPnPDeviceProxy *proxy);
-
-void
-remove_media_renderer           (GUPnPDeviceProxy *proxy);
-
-void
-setup_renderer_combo            (GladeXML         *glade_xml);
-
-void
 set_av_transport_uri            (const char       *id,
                                  const char       *uri,
                                  GCallback         callback);
