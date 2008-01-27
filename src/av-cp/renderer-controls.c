@@ -303,12 +303,14 @@ void
 on_next_button_clicked (GtkButton *button,
                         gpointer   user_data)
 {
+        select_next_object ();
 }
 
 void
 on_previous_button_clicked (GtkButton *button,
                             gpointer   user_data)
 {
+        select_prev_object ();
 }
 
 gboolean

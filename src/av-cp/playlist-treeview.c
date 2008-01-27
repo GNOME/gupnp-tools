@@ -799,3 +799,49 @@ normal_return:
         return id;
 }
 
+void
+select_next_object (void)
+{
+        GtkTreeSelection *selection;
+        GtkTreeModel     *model;
+        GtkTreeIter       iter;
+
+        selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (treeview));
+        g_assert (selection != NULL);
+
+        if (!gtk_tree_selection_get_selected (selection, &model, &iter)) {
+                return;
+        }
+
+        if (gtk_tree_model_iter_next (model, &iter)) {
+                gtk_tree_selection_select_iter (selection, &iter);
+        }
+}
+
+void
+select_prev_object (void)
+{
+        GtkTreeSelection *selection;
+        GtkTreeModel     *model;
+        GtkTreePath      *path;
+        GtkTreeIter       iter;
+
+        selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (treeview));
+        g_assert (selection != NULL);
+
+        if (!gtk_tree_selection_get_selected (selection, &model, &iter)) {
+                return;
+        }
+
+        path = gtk_tree_model_get_path (model, &iter);
+        if (path == NULL) {
+                return;
+        }
+
+        if (gtk_tree_path_prev (path)) {
+                gtk_tree_selection_select_path (selection, path);
+        }
+
+        gtk_tree_path_free (path);
+}
+

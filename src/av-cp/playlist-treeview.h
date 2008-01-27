@@ -38,5 +38,11 @@ remove_media_server             (GUPnPDeviceProxy  *proxy);
 char *
 get_selected_item               (char **uri);
 
+void
+select_next_object              (void);
+
+void
+select_prev_object              (void);
+
 #endif /* __PLAYLISTTREEVIEW_H__ */
 
