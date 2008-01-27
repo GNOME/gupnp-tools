@@ -17,7 +17,8 @@ gupnp_av_cp_SOURCES = main.c \
 		      main.h \
 		      gui.h \
 		      playlist-treeview.h \
-		      renderer-combo.h
+		      renderer-combo.h \
+		      renderer-controls.h
 
 gupnp_av_cp_LDADD = $(LIBGLADE_LIBS) \
 		    $(LIBGUPNP_LIBS) \

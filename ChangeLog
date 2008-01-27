@@ -6,6 +6,11 @@
 	- generic (Takes Callback to call after URI is set)
 	- public.
 
+	* src/av-cp/renderer-controls.h:
+	* src/av-cp/Makefile.am:
+
+	Add the forgotten renderer-controls.h file to build and VCS.
+
 2008-01-25  Zeeshan Ali Khattak  <zeenix@gmail.com>
 
 	* src/av-cp/playlist-treeview.c:
