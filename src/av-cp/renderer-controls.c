@@ -28,6 +28,31 @@
 
 /* FIXME: display a dialog to report problems? */
 
+typedef struct
+{
+  GCallback callback;
+  gchar    *uri;
+} SetAVTransportURIData;
+
+static SetAVTransportURIData *
+set_av_transport_uri_data_new (GCallback callback, const char *uri)
+{
+        SetAVTransportURIData *data;
+
+        data = g_slice_new (SetAVTransportURIData);
+        data->callback = callback;
+        data->uri = g_strdup (uri);
+
+        return data;
+}
+
+static void
+set_av_transport_uri_data_free (SetAVTransportURIData *data)
+{
+        g_free (data->uri);
+        g_slice_free (SetAVTransportURIData, data);
+}
+
 static void
 av_transport_action_cb (GUPnPServiceProxy       *av_transport,
                         GUPnPServiceProxyAction *action,
@@ -153,17 +178,19 @@ set_av_transport_uri_cb (GUPnPServiceProxy       *av_transport,
                          GUPnPServiceProxyAction *action,
                          gpointer                 user_data)
 {
-        char   *uri;
-        GError *error;
+        SetAVTransportURIData *data;
+        GError                *error;
 
-        uri = (char *) user_data;
+        data = (SetAVTransportURIData *) user_data;
 
         error = NULL;
         if (gupnp_service_proxy_end_action (av_transport,
                                             action,
                                             &error,
                                             NULL)) {
-                play ();
+                if (data->callback) {
+                        data->callback ();
+                }
         } else {
                 const char *udn;
 
@@ -171,22 +198,25 @@ set_av_transport_uri_cb (GUPnPServiceProxy       *av_transport,
                                         (GUPNP_SERVICE_INFO (av_transport));
 
                 g_warning ("Failed to set URI '%s' on %s: %s",
-                           uri,
+                           data->uri,
                            udn,
                            error->message);
 
                 g_error_free (error);
         }
 
-        g_free (uri);
+        set_av_transport_uri_data_free (data);
         g_object_unref (av_transport);
 }
 
-static void
-play_item (char *id, char *uri)
+void
+set_av_transport_uri (const char *id,
+                      const char *uri,
+                      GCallback   callback)
 {
-        GUPnPServiceProxy *av_transport;
-        GError            *error;
+        GUPnPServiceProxy     *av_transport;
+        SetAVTransportURIData *data;
+        GError                *error;
 
         av_transport = get_selected_av_transport (NULL);
         if (av_transport == NULL) {
@@ -194,18 +224,20 @@ play_item (char *id, char *uri)
                 return;
         }
 
+        data = set_av_transport_uri_data_new (callback, uri);
+
         error = NULL;
         gupnp_service_proxy_begin_action (av_transport,
                                           "SetAVTransportURI",
                                           set_av_transport_uri_cb,
-                                          uri,
+                                          data,
                                           &error,
                                           "InstanceID",
                                           G_TYPE_UINT,
                                           0,
                                           "CurrentURI",
                                           G_TYPE_STRING,
-                                          uri,
+                                          data->uri,
                                           "CurrentURIMetaData",
                                           G_TYPE_STRING,
                                           "",
@@ -222,7 +254,7 @@ play_item (char *id, char *uri)
                            error->message);
 
                 g_error_free (error);
-                g_free (uri);
+                set_av_transport_uri_data_free (data);
                 g_object_unref (av_transport);
         }
 }
@@ -243,8 +275,9 @@ on_play_button_clicked (GtkButton *button,
                 id = get_selected_item (&uri);
 
                 if (id != NULL) {
-                        play_item (id, uri);
+                        set_av_transport_uri (id, uri, play);
 
+                        g_free (uri);
                         g_free (id);
                 }
         } else {

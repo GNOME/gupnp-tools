@@ -1,3 +1,11 @@
+2008-01-26  Zeeshan Ali Khattak  <zeenix@gmail.com>
+
+	* src/av-cp/renderer-controls.c:
+
+	Make the AV URI setting function more:
+	- generic (Takes Callback to call after URI is set)
+	- public.
+
 2008-01-25  Zeeshan Ali Khattak  <zeenix@gmail.com>
 
 	* src/av-cp/playlist-treeview.c:
