@@ -33,6 +33,9 @@ set_av_transport_uri            (const char       *id,
                                  GCallback         callback);
 
 void
+set_volume_hscale               (guint volume);
+
+void
 setup_renderer_controls         (GladeXML *glade_xml);
 
 #endif /* __RENDERER_CONTROL_H__ */

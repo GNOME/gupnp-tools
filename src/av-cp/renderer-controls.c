@@ -218,6 +218,12 @@ set_av_transport_uri_cb (GUPnPServiceProxy       *av_transport,
 }
 
 void
+set_volume_hscale (guint volume)
+{
+        gtk_range_set_value (GTK_RANGE (volume_vscale), volume);
+}
+
+void
 set_av_transport_uri (const char *id,
                       const char *uri,
                       GCallback   callback)

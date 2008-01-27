@@ -23,6 +23,7 @@
 #include <config.h>
 
 #include "renderer-combo.h"
+#include "renderer-controls.h"
 #include "icons.h"
 
 #define CONNECTION_MANAGER_V1 \
@@ -196,6 +197,40 @@ set_state_by_name (const gchar *udn,
         }
 }
 
+/* FIXME: is there a better implementation possible? */
+static gboolean
+is_iter_active (GtkComboBox *combo,
+                GtkTreeIter *iter)
+{
+        GtkTreeModel *model;
+        GtkTreeIter   active_iter;
+        GtkTreePath  *active_path;
+        GtkTreePath  *path;
+        gboolean      ret;
+
+        model = gtk_combo_box_get_model (combo);
+        g_assert (model != NULL);
+
+        path = gtk_tree_model_get_path (model, iter);
+        g_assert (path != NULL);
+
+        if (!gtk_combo_box_get_active_iter (combo, &active_iter)) {
+                gtk_tree_path_free (path);
+
+                return FALSE;
+        }
+
+        active_path = gtk_tree_model_get_path (model, &active_iter);
+        g_assert (active_path != NULL);
+
+        ret = (gtk_tree_path_compare (path, active_path) == 0);
+
+        gtk_tree_path_free (path);
+        gtk_tree_path_free (active_path);
+
+        return ret;
+}
+
 static void
 set_volume (const gchar *udn,
             guint        volume)
@@ -212,6 +247,10 @@ set_volume (const gchar *udn,
                                     &iter,
                                     7, volume,
                                     -1);
+
+                if (is_iter_active (GTK_COMBO_BOX (renderer_combo), &iter)) {
+                        set_volume_hscale (volume);
+                }
         }
 }
 

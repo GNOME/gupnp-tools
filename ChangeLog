@@ -1,3 +1,11 @@
+2008-01-28  Zeeshan Ali Khattak  <zeenix@gmail.com>
+
+	* src/av-cp/renderer-combo.c:
+	* src/av-cp/renderer-controls.c:
+
+	Set the volume-vscale accordingly whenever the volume of the currently
+	selected renderer, changes.
+
 2008-01-27  Zeeshan Ali Khattak  <zeenix@gmail.com>
 
 	* src/av-cp/gui.c:
