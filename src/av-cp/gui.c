@@ -25,6 +25,7 @@
 #include "gui.h"
 #include "playlist-treeview.h"
 #include "renderer-combo.h"
+#include "renderer-controls.h"
 #include "main.h"
 #include "icons.h"
 
@@ -109,6 +110,7 @@ init_ui (gint   *argc,
 
         setup_icons (glade_xml);
         setup_playlist_treeview (glade_xml);
+        setup_renderer_controls (glade_xml);
         setup_renderer_combo (glade_xml);
 
         gtk_widget_show_all (main_window);

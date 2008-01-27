@@ -1,8 +1,11 @@
 2008-01-27  Zeeshan Ali Khattak  <zeenix@gmail.com>
 
+	* src/av-cp/gui.c:
+	* src/av-cp/renderer-controls.c:
 	* src/av-cp/renderer-controls.h:
 
-	Remove some functions that got copied by mistake.
+	- Remove some functions that got copied by mistake.
+	- Keep a reference to all renderer control widgets.
 
 2008-01-27  Zeeshan Ali Khattak  <zeenix@gmail.com>
 

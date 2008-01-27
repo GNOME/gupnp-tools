@@ -32,4 +32,7 @@ set_av_transport_uri            (const char       *id,
                                  const char       *uri,
                                  GCallback         callback);
 
+void
+setup_renderer_controls         (GladeXML *glade_xml);
+
 #endif /* __RENDERER_CONTROL_H__ */

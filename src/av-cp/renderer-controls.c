@@ -26,6 +26,14 @@
 #include "playlist-treeview.h"
 #include "renderer-combo.h"
 
+GtkWidget *volume_vscale;
+GtkWidget *position_hscale;
+GtkWidget *play_button;
+GtkWidget *pause_button;
+GtkWidget *stop_button;
+GtkWidget *next_button;
+GtkWidget *prev_button;
+
 /* FIXME: display a dialog to report problems? */
 
 typedef struct
@@ -330,3 +338,29 @@ on_volume_vscale_change_value (GtkRange *range,
 {
         return TRUE;
 }
+
+void
+setup_renderer_controls (GladeXML *glade_xml)
+{
+        volume_vscale = glade_xml_get_widget (glade_xml, "volume-vscale");
+        g_assert (volume_vscale != NULL);
+
+        position_hscale = glade_xml_get_widget (glade_xml, "position-hscale");
+        g_assert (position_hscale != NULL);
+
+        play_button = glade_xml_get_widget (glade_xml, "play-button");
+        g_assert (play_button != NULL);
+
+        pause_button = glade_xml_get_widget (glade_xml, "pause-button");
+        g_assert (pause_button != NULL);
+
+        stop_button = glade_xml_get_widget (glade_xml, "stop-button");
+        g_assert (stop_button != NULL);
+
+        next_button = glade_xml_get_widget (glade_xml, "next-button");
+        g_assert (next_button != NULL);
+
+        prev_button = glade_xml_get_widget (glade_xml, "previous-button");
+        g_assert (prev_button != NULL);
+}
+
