@@ -1,3 +1,11 @@
+2008-01-25  Zeeshan Ali Khattak  <zeenix@gmail.com>
+
+	* src/av-cp/playlist-treeview.c:
+	* src/av-cp/playlist-treeview.h:
+	* src/av-cp/renderer-controls.c:
+
+	get_selected_item() returns the URI instead of resource_hash.
+
 2008-01-24  Zeeshan Ali Khattak  <zeenix@gmail.com>
 
 	* src/av-cp/main.c:

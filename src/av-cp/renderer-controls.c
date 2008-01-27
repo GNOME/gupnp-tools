@@ -28,34 +28,6 @@
 
 /* FIXME: display a dialog to report problems? */
 
-static gboolean
-protocol_equal_func (const gchar *protocol,
-                     const gchar *uri,
-                     const gchar *pattern)
-{
-        return g_pattern_match_simple (pattern, protocol);
-}
-
-char *
-find_compatible_uri (gchar     **protocols,
-                     GHashTable *resource_hash)
-{
-        guint i;
-        char *uri = NULL;
-
-        for (i = 0; protocols[i] && uri == NULL; i++) {
-                uri = g_hash_table_find (resource_hash,
-                                         (GHRFunc) protocol_equal_func,
-                                         protocols[i]);
-        }
-
-        if (uri) {
-                uri = g_strdup (uri);
-        }
-
-        return uri;
-}
-
 static void
 av_transport_action_cb (GUPnPServiceProxy       *av_transport,
                         GUPnPServiceProxyAction *action,
@@ -211,25 +183,14 @@ set_av_transport_uri_cb (GUPnPServiceProxy       *av_transport,
 }
 
 static void
-play_item (char       *id,
-           GHashTable *resource_hash)
+play_item (char *id, char *uri)
 {
         GUPnPServiceProxy *av_transport;
-        char             **protocols;
-        char              *uri;
         GError            *error;
 
-        av_transport = get_selected_av_transport (&protocols);
+        av_transport = get_selected_av_transport (NULL);
         if (av_transport == NULL) {
                 g_warning ("No renderer selected");
-                return;
-        }
-
-        uri = find_compatible_uri (protocols, resource_hash);
-        g_strfreev (protocols);
-        if (uri == NULL) {
-                g_warning ("no compatible URI found.");
-                g_object_unref (av_transport);
                 return;
         }
 
@@ -276,17 +237,16 @@ on_play_button_clicked (GtkButton *button,
 
         if (state == PLAYBACK_STATE_STOPPED ||
             state == PLAYBACK_STATE_UNKNOWN) {
-                char       *id;
-                GHashTable *resource_hash;
+                char *id;
+                char *uri;
 
-                id = get_selected_item (&resource_hash);
+                id = get_selected_item (&uri);
 
                 if (id != NULL) {
-                        play_item (id, resource_hash);
+                        play_item (id, uri);
+
                         g_free (id);
                 }
-
-                g_hash_table_unref (resource_hash);
         } else {
                 play ();
         }

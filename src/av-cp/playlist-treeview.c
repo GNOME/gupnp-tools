@@ -23,6 +23,7 @@
 #include <config.h>
 
 #include "playlist-treeview.h"
+#include "renderer-combo.h"
 #include "icons.h"
 #include "gui.h"
 #include "main.h"
@@ -686,14 +687,57 @@ remove_media_server (GUPnPDeviceProxy *proxy)
         }
 }
 
-char *
-get_selected_item (GHashTable **resource_hash)
+static gboolean
+protocol_equal_func (const gchar *protocol,
+                     const gchar *uri,
+                     const gchar *pattern)
 {
-        GtkTreeSelection *selection;
-        GtkTreeModel     *model;
-        GtkTreeIter       iter;
-        gboolean          is_container;
-        char             *id;
+        return g_pattern_match_simple (pattern, protocol);
+}
+
+static char *
+find_compatible_uri (GHashTable *resource_hash)
+{
+        GUPnPServiceProxy *av_transport;
+        char             **protocols;
+        char              *uri = NULL;
+        guint              i;
+
+        av_transport = get_selected_av_transport (&protocols);
+        if (av_transport == NULL) {
+                g_warning ("No renderer selected");
+
+                return NULL;
+        }
+
+        for (i = 0; protocols[i] && uri == NULL; i++) {
+                uri = g_hash_table_find (resource_hash,
+                                         (GHRFunc) protocol_equal_func,
+                                         protocols[i]);
+        }
+
+        if (uri) {
+                uri = g_strdup (uri);
+        }
+
+        if (protocols) {
+                g_strfreev (protocols);
+        }
+
+        g_object_unref (av_transport);
+
+        return uri;
+}
+
+char *
+get_selected_item (char **uri)
+{
+        GtkTreeSelection*selection;
+        GtkTreeModel    *model;
+        GtkTreeIter      iter;
+        GHashTable      *resource_hash;
+        gboolean         is_container;
+        char            *id;
 
         selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (treeview));
         g_assert (selection != NULL);
@@ -706,19 +750,30 @@ get_selected_item (GHashTable **resource_hash)
                             &iter,
                             4, &id,
                             5, &is_container,
-                            6, resource_hash,
+                            6, &resource_hash,
                             -1);
 
         if (is_container) {
-                if (id) {
-                        g_free (id);
-                }
-                if (*resource_hash) {
-                        g_hash_table_unref (*resource_hash);
-                }
-
-                return NULL;
+                goto abnormal_return;
         }
+
+        *uri = find_compatible_uri (resource_hash);
+        if (*uri == NULL) {
+                g_warning ("no compatible URI found.");
+
+                goto abnormal_return;
+        }
+
+        goto normal_return;
+
+abnormal_return:
+        if (id) {
+                g_free (id);
+                id = NULL;
+        }
+
+normal_return:
+        g_hash_table_unref (resource_hash);
 
         return id;
 }

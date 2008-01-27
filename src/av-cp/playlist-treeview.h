@@ -36,7 +36,7 @@ void
 remove_media_server             (GUPnPDeviceProxy  *proxy);
 
 char *
-get_selected_item               (GHashTable            **resource_hash);
+get_selected_item               (char **uri);
 
 #endif /* __PLAYLISTTREEVIEW_H__ */
 
