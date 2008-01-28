@@ -1,6 +1,13 @@
 2008-01-28  Zeeshan Ali Khattak  <zeenix@gmail.com>
 
 	* src/av-cp/playlist-treeview.c:
+	* src/av-cp/renderer-combo.c:
+
+	Work around for version-agnostic service proxy retreival/creation.
+
+2008-01-28  Zeeshan Ali Khattak  <zeenix@gmail.com>
+
+	* src/av-cp/playlist-treeview.c:
 
 	Compare individual parts of the res and protocol info rather than
 	using glob pattern matching.

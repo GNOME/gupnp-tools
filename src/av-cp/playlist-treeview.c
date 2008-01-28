@@ -29,8 +29,7 @@
 #include "gui.h"
 #include "main.h"
 
-#define CONTENT_DIR_V1 "urn:schemas-upnp-org:service:ContentDirectory:1"
-#define CONTENT_DIR_V2 "urn:schemas-upnp-org:service:ContentDirectory:2"
+#define CONTENT_DIR "urn:schemas-upnp-org:service:ContentDirectory:*"
 
 #define ITEM_CLASS_IMAGE "object.item.imageItem"
 #define ITEM_CLASS_AUDIO "object.item.audioItem"
@@ -484,17 +483,28 @@ static GUPnPServiceProxy *
 get_content_dir (GUPnPDeviceProxy *proxy)
 {
         GUPnPDeviceInfo  *info;
-        GUPnPServiceInfo *content_dir;
+        GList            *types;
+        GList            *type;
+        GUPnPServiceInfo *content_dir = NULL;
 
         info = GUPNP_DEVICE_INFO (proxy);
 
-        /* Content Directory */
-        content_dir = gupnp_device_info_get_service (info,
-                                                     CONTENT_DIR_V1);
-        if (content_dir == NULL) {
+        types = gupnp_device_info_list_service_types (info);
+        for (type = types;
+             type;
+             type = type->next) {
+                if (g_pattern_match_simple (CONTENT_DIR,
+                                            (char *) type->data)) {
                         content_dir = gupnp_device_info_get_service
                                                       (info,
-                                                       CONTENT_DIR_V2);
+                                                       (char *) type->data);
+                }
+
+                g_free (type->data);
+        }
+
+        if (types) {
+                g_list_free (types);
         }
 
         return GUPNP_SERVICE_PROXY (content_dir);
