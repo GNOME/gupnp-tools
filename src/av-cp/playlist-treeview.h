@@ -26,17 +26,22 @@
 #include <glade/glade.h>
 #include <libgupnp-av/gupnp-av.h>
 
+typedef void (* GetSelectedItemCallback) (const char *uri,
+                                          const char *metadata,
+                                          gpointer    user_data);
+
 void
 setup_playlist_treeview         (GladeXML               *glade_xml);
 
 void
-add_media_server                (GUPnPDeviceProxy  *proxy);
+add_media_server                (GUPnPDeviceProxy       *proxy);
 
 void
-remove_media_server             (GUPnPDeviceProxy  *proxy);
+remove_media_server             (GUPnPDeviceProxy       *proxy);
 
-char *
-get_selected_item               (char **uri);
+void
+get_selected_item               (GetSelectedItemCallback callback,
+                                 gpointer                user_data);
 
 void
 select_next_object              (void);

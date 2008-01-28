@@ -45,6 +45,41 @@ static gboolean   expanded;
 
 static GUPnPDIDLLiteParser *didl_parser;
 
+typedef struct
+{
+  GetSelectedItemCallback callback;
+
+  gchar *uri;
+  gchar *id;
+
+  gpointer user_data;
+} BrowseMetadataData;
+
+static BrowseMetadataData *
+browse_metadata_data_new (GetSelectedItemCallback callback,
+                          const char             *id,
+                          const char             *uri,
+                          gpointer                user_data)
+{
+        BrowseMetadataData *data;
+
+        data = g_slice_new (BrowseMetadataData);
+        data->callback = callback;
+        data->id = g_strdup (id);
+        data->uri = g_strdup (uri);
+        data->user_data = user_data;
+
+        return data;
+}
+
+static void
+browse_metadata_data_free (BrowseMetadataData *data)
+{
+        g_free (data->id);
+        g_free (data->uri);
+        g_slice_free (BrowseMetadataData, data);
+}
+
 static void
 browse (GUPnPServiceProxy *content_dir, const char *container_id);
 
@@ -72,17 +107,9 @@ on_item_selected (GtkTreeSelection *selection,
 
         if (state == PLAYBACK_STATE_PLAYING ||
             state == PLAYBACK_STATE_PAUSED) {
-                char *id;
-                char *uri;
-
-                id = get_selected_item (&uri);
-
-                if (id != NULL) {
-                        set_av_transport_uri (id, uri, NULL);
-
-                        g_free (uri);
-                        g_free (id);
-                }
+                get_selected_item ((GetSelectedItemCallback)
+                                   set_av_transport_uri,
+                                   NULL);
        }
 }
 
@@ -552,6 +579,17 @@ on_browse_failure (GUPnPServiceInfo *info,
         g_error_free (error);
 }
 
+static inline void
+on_browse_metadata_failure (BrowseMetadataData *data,
+                            GError             *error)
+{
+        g_warning ("Failed to get metadata for '%s': %s\n",
+                   data->uri,
+                   error->message);
+        g_error_free (error);
+        browse_metadata_data_free (data);
+}
+
 static void
 browse_cb (GUPnPServiceProxy       *content_dir,
            GUPnPServiceProxyAction *action,
@@ -829,55 +867,118 @@ find_compatible_uri (GHashTable *resource_hash)
         return uri;
 }
 
-char *
-get_selected_item (char **uri)
+void
+browse_metadata_cb (GUPnPServiceProxy       *content_dir,
+                    GUPnPServiceProxyAction *action,
+                    gpointer                 user_data)
 {
-        GtkTreeSelection*selection;
-        GtkTreeModel    *model;
-        GtkTreeIter      iter;
-        GHashTable      *resource_hash;
-        gboolean         is_container;
-        char            *id;
+        BrowseMetadataData *data;
+        char               *metadata;
+        GError             *error;
+
+        data = (BrowseMetadataData *) user_data;
+
+        error = NULL;
+        gupnp_service_proxy_end_action (content_dir,
+                                        action,
+                                        &error,
+                                        /* OUT args */
+                                        "Result",
+                                        G_TYPE_STRING,
+                                        &metadata,
+                                        NULL);
+        if (error) {
+                on_browse_metadata_failure (data, error);
+        } else {
+                data->callback (data->uri, metadata, data->user_data);
+
+                browse_metadata_data_free (data);
+        }
+
+        g_free (metadata);
+}
+
+void
+get_selected_item (GetSelectedItemCallback callback,
+                   gpointer                user_data)
+{
+        GUPnPServiceProxy  *content_dir;
+        GtkTreeSelection   *selection;
+        GtkTreeModel       *model;
+        GtkTreeIter         iter;
+        GHashTable         *resource_hash;
+        gboolean            is_container;
+        BrowseMetadataData *data;
+        char               *id = NULL;
+        char               *uri = NULL;
+        GError             *error;
 
         selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (treeview));
         g_assert (selection != NULL);
 
         if (!gtk_tree_selection_get_selected (selection, &model, &iter)) {
-                return NULL;
+                return;
         }
 
         gtk_tree_model_get (model,
                             &iter,
+                            3, &content_dir,
                             4, &id,
                             5, &is_container,
                             6, &resource_hash,
                             -1);
 
         if (is_container) {
-                goto abnormal_return;
+                goto return_point;
         }
 
-        *uri = find_compatible_uri (resource_hash);
-        if (*uri == NULL) {
+        uri = find_compatible_uri (resource_hash);
+        if (uri == NULL) {
                 g_warning ("no compatible URI found.");
 
-                goto abnormal_return;
+                goto return_point;
         }
 
-        goto normal_return;
+        data = browse_metadata_data_new (callback, id, uri, user_data);
 
-abnormal_return:
+        error = NULL;
+        gupnp_service_proxy_begin_action
+                                (content_dir,
+                                 "Browse",
+                                 browse_metadata_cb,
+                                 data,
+                                 &error,
+                                 /* IN args */
+                                 "ObjectID",
+                                 G_TYPE_STRING,
+                                 data->id,
+                                 "BrowseFlag",
+                                 G_TYPE_STRING,
+                                 "BrowseMetadata",
+                                 "Filter",
+                                 G_TYPE_STRING,
+                                 "*",
+                                 "StartingIndex",
+                                 G_TYPE_UINT,
+                                 0,
+                                 "RequestedCount",
+                                 G_TYPE_UINT, 0,
+                                 "SortCriteria",
+                                 G_TYPE_STRING,
+                                 "",
+                                 NULL);
+        if (error) {
+                on_browse_metadata_failure (data, error);
+        }
+
+return_point:
         if (id) {
                 g_free (id);
-                id = NULL;
         }
 
-normal_return:
         if (resource_hash) {
                 g_hash_table_unref (resource_hash);
         }
-
-        return id;
 }
 
 void

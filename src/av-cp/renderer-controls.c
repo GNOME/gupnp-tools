@@ -224,8 +224,8 @@ set_volume_hscale (guint volume)
 }
 
 void
-set_av_transport_uri (const char *id,
-                      const char *uri,
+set_av_transport_uri (const char *uri,
+                      const char *metadata,
                       GCallback   callback)
 {
         GUPnPServiceProxy     *av_transport;
@@ -254,7 +254,7 @@ set_av_transport_uri (const char *id,
                                           data->uri,
                                           "CurrentURIMetaData",
                                           G_TYPE_STRING,
-                                          "",
+                                          metadata,
                                           NULL);
         if (error) {
                 const char *udn;
@@ -283,17 +283,9 @@ on_play_button_clicked (GtkButton *button,
 
         if (state == PLAYBACK_STATE_STOPPED ||
             state == PLAYBACK_STATE_UNKNOWN) {
-                char *id;
-                char *uri;
-
-                id = get_selected_item (&uri);
-
-                if (id != NULL) {
-                        set_av_transport_uri (id, uri, play);
-
-                        g_free (uri);
-                        g_free (id);
-                }
+                get_selected_item ((GetSelectedItemCallback)
+                                   set_av_transport_uri,
+                                   play);
         } else {
                 play ();
         }

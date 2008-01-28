@@ -28,9 +28,9 @@
 #include <glade/glade.h>
 
 void
-set_av_transport_uri            (const char       *id,
-                                 const char       *uri,
-                                 GCallback         callback);
+set_av_transport_uri            (const char *uri,
+                                 const char *metadata,
+                                 GCallback   callback);
 
 void
 set_volume_hscale               (guint volume);
