@@ -1,5 +1,12 @@
 2008-01-28  Zeeshan Ali Khattak  <zeenix@gmail.com>
 
+	* src/av-cp/playlist-treeview.c:
+
+	Compare individual parts of the res and protocol info rather than
+	using glob pattern matching.
+
+2008-01-28  Zeeshan Ali Khattak  <zeenix@gmail.com>
+
 	* src/av-cp/renderer-combo.c:
 	* src/av-cp/renderer-controls.c:
 

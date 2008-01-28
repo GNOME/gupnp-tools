@@ -707,11 +707,82 @@ remove_media_server (GUPnPDeviceProxy *proxy)
 }
 
 static gboolean
-protocol_equal_func (const gchar *protocol,
-                     const gchar *uri,
-                     const gchar *pattern)
+is_transport_compat (const gchar *renderer_protocol,
+                     const gchar *renderer_host,
+                     const gchar *item_protocol,
+                     const gchar *item_host)
 {
-        return g_pattern_match_simple (pattern, protocol);
+        if (g_ascii_strcasecmp (renderer_protocol, item_protocol) != 0) {
+                return FALSE;
+        } else if (g_ascii_strcasecmp ("INTERNAL", renderer_protocol) == 0 &&
+                   g_ascii_strcasecmp (renderer_host, item_host) != 0) {
+                   /* Host must be the same in case of INTERNAL protocol */
+                        return FALSE;
+        } else {
+                return TRUE;
+        }
+}
+
+static gboolean
+is_mime_compat (const gchar *renderer_mime,
+                const gchar *item_mime)
+{
+        if (g_ascii_strcasecmp (renderer_mime, item_mime) != 0) {
+                return FALSE;
+        } else {
+                return TRUE;
+        }
+}
+
+static gboolean
+is_extra_compat (const gchar *renderer_extra,
+                 const gchar *item_last_extra)
+{
+        /* FIXME: implement this */
+        return TRUE;
+}
+
+
+static gboolean
+protocol_equal_func (const gchar *item_protocol,
+                     const gchar *item_uri,
+                     const gchar *renderer_protocol)
+{
+        gchar **item_proto_tokens;
+        gchar **renderer_proto_tokens;
+        gboolean ret = FALSE;
+
+        item_proto_tokens = g_strsplit (item_protocol,
+                                        ":",
+                                        4);
+        renderer_proto_tokens = g_strsplit (renderer_protocol,
+                                            ":",
+                                            4);
+        if (item_proto_tokens[0] == NULL ||
+            item_proto_tokens[1] == NULL ||
+            item_proto_tokens[2] == NULL ||
+            item_proto_tokens[3] == NULL ||
+            renderer_proto_tokens[0] == NULL ||
+            renderer_proto_tokens[1] == NULL ||
+            renderer_proto_tokens[2] == NULL ||
+            renderer_proto_tokens[3] == NULL) {
+                goto return_point;
+        }
+
+        if (is_transport_compat (item_proto_tokens[0],
+                                 item_proto_tokens[1],
+                                 renderer_proto_tokens[0],
+                                 renderer_proto_tokens[2]) &&
+            is_mime_compat (item_proto_tokens[2], renderer_proto_tokens[2]) &&
+            is_extra_compat (item_proto_tokens[3], renderer_proto_tokens[3])) {
+                ret = TRUE;
+        }
+
+return_point:
+        g_strfreev (renderer_proto_tokens);
+        g_strfreev (item_proto_tokens);
+
+        return ret;
 }
 
 static char *
