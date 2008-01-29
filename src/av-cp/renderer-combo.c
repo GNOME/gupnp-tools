@@ -99,6 +99,54 @@ get_selected_av_transport (gchar ***protocols)
         return av_transport;
 }
 
+GUPnPServiceProxy *
+get_selected_rendering_control (void)
+{
+        GUPnPServiceProxy *rendering_control;
+        GtkComboBox       *combo;
+        GtkTreeModel      *model;
+        GtkTreeIter        iter;
+
+        combo = GTK_COMBO_BOX (renderer_combo);
+        model = gtk_combo_box_get_model (combo);
+        g_assert (model != NULL);
+
+        if (!gtk_combo_box_get_active_iter (combo, &iter)) {
+                return NULL;
+        }
+
+        gtk_tree_model_get (model,
+                            &iter,
+                            4, &rendering_control,
+                            -1);
+
+        return rendering_control;
+}
+
+guint
+get_selected_renderer_volume (void)
+{
+        GtkComboBox  *combo;
+        GtkTreeModel *model;
+        GtkTreeIter   iter;
+        guint         volume;
+
+        combo = GTK_COMBO_BOX (renderer_combo);
+        model = gtk_combo_box_get_model (combo);
+        g_assert (model != NULL);
+
+        if (!gtk_combo_box_get_active_iter (combo, &iter)) {
+                return 0;
+        }
+
+        gtk_tree_model_get (model,
+                            &iter,
+                            7, &volume,
+                            -1);
+
+        return volume;
+}
+
 /* FIXME: implement this function
  */
 PlaybackState

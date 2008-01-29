@@ -39,6 +39,12 @@ typedef enum
 GUPnPServiceProxy *
 get_selected_av_transport       (gchar                 ***protocols);
 
+GUPnPServiceProxy *
+get_selected_rendering_control  (void);
+
+guint
+get_selected_renderer_volume    (void);
+
 PlaybackState
 get_selected_renderer_state     (void);
 

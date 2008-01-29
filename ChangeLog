@@ -1,5 +1,13 @@
 2008-01-29  Zeeshan Ali Khattak  <zeenix@gmail.com>
 
+	* src/av-cp/renderer-combo.c:
+	* src/av-cp/renderer-combo.h:
+
+	Add functions to get currently selected Renderer's RenderingControl and
+	volume.
+
+2008-01-29  Zeeshan Ali Khattak  <zeenix@gmail.com>
+
 	* data/gupnp-av-cp.glade:
 	* src/av-cp/renderer-controls.c:
 
