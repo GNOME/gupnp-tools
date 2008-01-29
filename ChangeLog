@@ -6,6 +6,10 @@
 	Add functions to get currently selected Renderer's RenderingControl and
 	volume.
 
+	* src/av-cp/renderer-controls.c:
+
+	Implement volume control.
+
 2008-01-29  Zeeshan Ali Khattak  <zeenix@gmail.com>
 
 	* data/gupnp-av-cp.glade:

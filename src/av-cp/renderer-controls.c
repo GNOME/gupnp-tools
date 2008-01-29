@@ -328,12 +328,82 @@ on_position_hscale_value_changed (GtkRange *range,
         return TRUE;
 }
 
+static void
+set_volume_cb (GUPnPServiceProxy       *rendering_control,
+               GUPnPServiceProxyAction *action,
+               gpointer                 user_data)
+{
+        GError *error;
+
+        error = NULL;
+        if (!gupnp_service_proxy_end_action (rendering_control,
+                                             action,
+                                             &error,
+                                             NULL)) {
+                const char *udn;
+
+                udn = gupnp_service_info_get_udn
+                        (GUPNP_SERVICE_INFO (rendering_control));
+
+                g_warning ("Failed to set volume of %s: %s",
+                           udn,
+                           error->message);
+
+                g_error_free (error);
+
+                /* Update the range according to the current volume */
+                set_volume_hscale (get_selected_renderer_volume ());
+        }
+
+        g_object_unref (rendering_control);
+}
+
 gboolean
 on_volume_vscale_value_changed (GtkRange *range,
-                                GtkScrollType scroll,
-                                gdouble       value,
-                                gpointer      user_data)
+                                gpointer  user_data)
 {
+        GUPnPServiceProxy *rendering_control;
+        GError            *error;
+        guint              desired_volume;
+
+        rendering_control = get_selected_rendering_control ();
+        if (rendering_control == NULL) {
+                g_warning ("No renderer selected");
+                return FALSE;
+        }
+
+        desired_volume = (guint) gtk_range_get_value (range);
+
+        error = NULL;
+        gupnp_service_proxy_begin_action (rendering_control,
+                                          "SetVolume",
+                                          set_volume_cb,
+                                          NULL,
+                                          &error,
+                                          "InstanceID",
+                                          G_TYPE_UINT,
+                                          0,
+                                          "Channel",
+                                          G_TYPE_STRING,
+                                          "Master",
+                                          "DesiredVolume",
+                                          G_TYPE_UINT,
+                                          desired_volume,
+                                          NULL);
+        if (error) {
+                const char *udn;
+
+                udn = gupnp_service_info_get_udn
+                        (GUPNP_SERVICE_INFO (rendering_control));
+
+                g_warning ("Failed to set volume of %s: %s",
+                           udn,
+                           error->message);
+
+                g_error_free (error);
+                g_object_unref (rendering_control);
+        }
+
         return TRUE;
 }
 
