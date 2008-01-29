@@ -682,17 +682,15 @@ browse_cb (GUPnPServiceProxy       *content_dir,
                                         NULL);
         if (error) {
                 on_browse_failure (GUPNP_SERVICE_INFO (content_dir), error);
+        } else {
+                gupnp_didl_lite_parser_parse_didl (didl_parser,
+                                                   didl_xml,
+                                                   on_didl_object_available,
+                                                   content_dir);
 
-                goto failure;
+                g_free (didl_xml);
         }
 
-        gupnp_didl_lite_parser_parse_didl (didl_parser,
-                                           didl_xml,
-                                           on_didl_object_available,
-                                           content_dir);
-
-        g_free (didl_xml);
-failure:
         g_object_unref (content_dir);
 }
 
@@ -973,9 +971,9 @@ browse_metadata_cb (GUPnPServiceProxy       *content_dir,
                 data->callback (data->uri, metadata, data->user_data);
 
                 browse_metadata_data_free (data);
+                g_free (metadata);
         }
 
-        g_free (metadata);
         g_object_unref (content_dir);
 }
 

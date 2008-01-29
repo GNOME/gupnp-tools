@@ -1,3 +1,10 @@
+2008-01-30  Zeeshan Ali Khattak  <zeenix@gmail.com>
+
+	* src/av-cp/playlist-treeview.c:
+
+	- Only free the metadata if we actually get it.
+	- Unify come coding style.
+
 2008-01-29  Zeeshan Ali Khattak  <zeenix@gmail.com>
 
 	* src/av-cp/playlist-treeview.c:
