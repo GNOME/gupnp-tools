@@ -1,6 +1,13 @@
 2008-01-29  Zeeshan Ali Khattak  <zeenix@gmail.com>
 
 	* data/gupnp-av-cp.glade:
+	* src/av-cp/renderer-controls.c:
+
+	Listen to 'value-changed' signal rather than 'change-value'.
+
+2008-01-29  Zeeshan Ali Khattak  <zeenix@gmail.com>
+
+	* data/gupnp-av-cp.glade:
 
 	The update policy of GtkScale widgets should be 'discontinuous'
 

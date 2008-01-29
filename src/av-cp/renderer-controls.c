@@ -320,19 +320,19 @@ on_previous_button_clicked (GtkButton *button,
 }
 
 gboolean
-on_position_hscale_change_value (GtkRange *range,
-                                 GtkScrollType scroll,
-                                 gdouble       value,
-                                 gpointer      user_data)
+on_position_hscale_value_changed (GtkRange *range,
+                                  GtkScrollType scroll,
+                                  gdouble       value,
+                                  gpointer      user_data)
 {
         return TRUE;
 }
 
 gboolean
-on_volume_vscale_change_value (GtkRange *range,
-                               GtkScrollType scroll,
-                               gdouble       value,
-                               gpointer      user_data)
+on_volume_vscale_value_changed (GtkRange *range,
+                                GtkScrollType scroll,
+                                gdouble       value,
+                                gpointer      user_data)
 {
         return TRUE;
 }

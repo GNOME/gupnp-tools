@@ -167,7 +167,7 @@
 			  <property name="update_policy">GTK_UPDATE_DISCONTINUOUS</property>
 			  <property name="inverted">True</property>
 			  <property name="adjustment">0 0 100 1 0 0</property>
-			  <signal name="change_value" handler="on_volume_vscale_change_value" last_modification_time="Wed, 05 Dec 2007 09:18:21 GMT"/>
+			  <signal name="value_changed" handler="on_volume_vscale_value_changed" last_modification_time="Tue, 29 Jan 2008 14:05:50 GMT"/>
 			</widget>
 			<packing>
 			  <property name="padding">0</property>
@@ -223,7 +223,7 @@
 		  <property name="update_policy">GTK_UPDATE_DISCONTINUOUS</property>
 		  <property name="inverted">False</property>
 		  <property name="adjustment">0 0 100 1 0 0</property>
-		  <signal name="change_value" handler="on_position_hscale_change_value" last_modification_time="Wed, 05 Dec 2007 08:53:54 GMT"/>
+		  <signal name="value_changed" handler="on_position_hscale_value_changed" last_modification_time="Tue, 29 Jan 2008 14:09:18 GMT"/>
 		</widget>
 		<packing>
 		  <property name="padding">0</property>
