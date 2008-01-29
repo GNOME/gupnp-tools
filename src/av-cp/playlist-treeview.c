@@ -682,7 +682,8 @@ browse_cb (GUPnPServiceProxy       *content_dir,
                                         NULL);
         if (error) {
                 on_browse_failure (GUPNP_SERVICE_INFO (content_dir), error);
-                return;
+
+                goto failure;
         }
 
         gupnp_didl_lite_parser_parse_didl (didl_parser,
@@ -691,12 +692,16 @@ browse_cb (GUPnPServiceProxy       *content_dir,
                                            content_dir);
 
         g_free (didl_xml);
+failure:
+        g_object_unref (content_dir);
 }
 
 static void
 browse (GUPnPServiceProxy *content_dir, const char *container_id)
 {
         GError *error;
+
+        g_object_ref (content_dir);
 
         error = NULL;
         gupnp_service_proxy_begin_action
@@ -724,8 +729,10 @@ browse (GUPnPServiceProxy *content_dir, const char *container_id)
                                  G_TYPE_STRING,
                                  "",
                                  NULL);
-        if (error)
+        if (error) {
                 on_browse_failure (GUPNP_SERVICE_INFO (content_dir), error);
+                g_object_unref (content_dir);
+        }
 }
 
 static void
@@ -969,6 +976,7 @@ browse_metadata_cb (GUPnPServiceProxy       *content_dir,
         }
 
         g_free (metadata);
+        g_object_unref (content_dir);
 }
 
 void
@@ -1016,7 +1024,7 @@ get_selected_item (GetSelectedItemCallback callback,
 
         error = NULL;
         gupnp_service_proxy_begin_action
-                                (content_dir,
+                                (g_object_ref (content_dir),
                                  "Browse",
                                  browse_metadata_cb,
                                  data,
@@ -1042,6 +1050,7 @@ get_selected_item (GetSelectedItemCallback callback,
                                  NULL);
         if (error) {
                 on_browse_metadata_failure (data, error);
+                g_object_unref (content_dir);
         }
 
 return_point:
@@ -1052,6 +1061,8 @@ return_point:
         if (resource_hash) {
                 g_hash_table_unref (resource_hash);
         }
+
+        g_object_unref (content_dir);
 }
 
 void

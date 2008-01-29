@@ -2,9 +2,11 @@
 
 	* src/av-cp/playlist-treeview.c:
 
-	Containers should only be browsed if they are visible. This should
-	eliminate the problem of initial browsing taking down the whole
-	system.
+	- Containers should only be browsed if they are visible. This should
+	  eliminate the problem of initial browsing taking down the whole
+	  system.
+
+	- Ref the service proxy before _begin_action() and unref it in callback.
 
 2008-01-29  Zeeshan Ali Khattak  <zeenix@gmail.com>
 
