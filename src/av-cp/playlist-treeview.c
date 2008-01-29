@@ -176,6 +176,72 @@ setup_treeview_columns (GtkWidget *treeview)
         gtk_tree_selection_set_mode (selection, GTK_SELECTION_SINGLE);
 }
 
+static void
+on_playlist_row_expanded (GtkTreeView *tree_view,
+                          GtkTreeIter *iter,
+                          GtkTreePath *path,
+                          gpointer     user_data)
+{
+        GtkTreeModel *model;
+        GtkTreeIter   child_iter;
+
+        model = gtk_tree_view_get_model (GTK_TREE_VIEW (treeview));
+        g_assert (model != NULL);
+
+        if (!gtk_tree_model_iter_children (model, &child_iter, iter)) {
+                return;
+        }
+
+        do {
+                GUPnPServiceProxy *content_dir;
+                gchar             *id;
+                gboolean           is_container;
+
+                gtk_tree_model_get (model, &child_iter,
+                                    3, &content_dir,
+                                    4, &id,
+                                    5, &is_container,
+                                    -1);
+
+                if (is_container) {
+                        browse (content_dir, id);
+                }
+
+                g_object_unref (content_dir);
+                g_free (id);
+        } while (gtk_tree_model_iter_next (model, &child_iter));
+}
+
+static void
+on_playlist_row_collapsed (GtkTreeView *tree_view,
+                           GtkTreeIter *iter,
+                           GtkTreePath *path,
+                           gpointer     user_data)
+{
+        GtkTreeModel *model;
+        GtkTreeIter   child_iter;
+
+        model = gtk_tree_view_get_model (GTK_TREE_VIEW (treeview));
+        g_assert (model != NULL);
+
+        if (!gtk_tree_model_iter_children (model, &child_iter, iter)) {
+                return;
+        }
+
+        do {
+                GtkTreeIter grand_child_iter;
+
+                if (!gtk_tree_model_iter_children (model,
+                                                   &grand_child_iter,
+                                                   &child_iter)) {
+                        break;
+                }
+
+                while (gtk_tree_store_remove(GTK_TREE_STORE (model),
+                                             &grand_child_iter));
+        } while (gtk_tree_model_iter_next (model, &child_iter));
+}
+
 void
 setup_playlist_treeview (GladeXML *glade_xml)
 {
@@ -192,6 +258,16 @@ setup_playlist_treeview (GladeXML *glade_xml)
         g_object_unref (model);
 
         setup_treeview_columns (treeview);
+
+        g_signal_connect (treeview,
+                          "row-expanded",
+                          G_CALLBACK (on_playlist_row_expanded),
+                          NULL);
+
+        g_signal_connect (treeview,
+                          "row-collapsed",
+                          G_CALLBACK (on_playlist_row_collapsed),
+                          NULL);
 
         selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (treeview));
         g_assert (selection != NULL);
@@ -436,9 +512,6 @@ append_didle_object (xmlNode           *object_node,
                 position = 0;
                 resource_hash = NULL;
                 icon = get_icon_by_id (ICON_CONTAINER);
-
-                /* Recurse */
-                browse (content_dir, id);
         } else {
                 position = -1;
                 resource_hash = get_resource_hash (object_node);

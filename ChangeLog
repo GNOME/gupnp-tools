@@ -1,5 +1,13 @@
 2008-01-29  Zeeshan Ali Khattak  <zeenix@gmail.com>
 
+	* src/av-cp/playlist-treeview.c:
+
+	Containers should only be browsed if they are visible. This should
+	eliminate the problem of initial browsing taking down the whole
+	system.
+
+2008-01-29  Zeeshan Ali Khattak  <zeenix@gmail.com>
+
 	* src/av-cp/renderer-combo.c:
 	* src/av-cp/renderer-combo.h:
 
