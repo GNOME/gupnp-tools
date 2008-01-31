@@ -2,6 +2,7 @@
 
 	* src/av-cp/playlist-treeview.c:
 
+	- Listen to and act on Container updates.
 	- Refactor: Put the code to unpopulate a container node, into a
 	  separate function.
 	- Remove a FIXME comment that is not valid anymore.

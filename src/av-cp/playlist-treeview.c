@@ -476,6 +476,79 @@ get_resource_hash (xmlNode *object_node)
    return resource_hash;
 }
 
+static gboolean
+find_container (GUPnPServiceProxy *content_dir,
+                GtkTreeModel      *model,
+                GtkTreeIter       *container_iter,
+                const char        *container_id)
+{
+        GtkTreeIter server_iter;
+        const char *udn;
+
+        udn = gupnp_service_info_get_udn (GUPNP_SERVICE_INFO (content_dir));
+
+        if (!find_row (model,
+                       NULL,
+                       &server_iter,
+                       compare_media_server,
+                       (gpointer) udn,
+                       FALSE)) {
+                return FALSE;
+        } else if (!find_row (model,
+                              &server_iter,
+                              container_iter,
+                              compare_container,
+                              (gpointer) container_id,
+                              TRUE)) {
+                return FALSE;
+        } else {
+                return TRUE;
+        }
+
+}
+
+static void
+update_container (GUPnPServiceProxy *content_dir,
+                  const char        *container_id)
+{
+        GtkTreeModel *model;
+        GtkTreeIter   container_iter;
+
+        model = gtk_tree_view_get_model (GTK_TREE_VIEW (treeview));
+        g_assert (model != NULL);
+
+        if (!find_container (content_dir,
+                             model,
+                             &container_iter,
+                             container_id)) {
+                return;
+        } else if (gtk_tree_model_iter_has_child (model, &container_iter)) {
+                /* Remove everyting under the container */
+                unpopulate_container (model, &container_iter);
+                /* Browse it again */
+                browse (content_dir, container_id);
+        }
+}
+
+static void
+on_container_update_ids (GUPnPServiceProxy *content_dir,
+                         const char        *variable,
+                         GValue            *value,
+                         gpointer           user_data)
+{
+        char **tokens;
+        guint  i;
+
+        tokens = g_strsplit (g_value_get_string (value), ",", 0);
+        for (i = 0;
+             tokens[i] != NULL && tokens[i+1] != NULL;
+             i += 2) {
+                update_container (content_dir, tokens[i]);
+        }
+
+        g_strfreev (tokens);
+}
+
 static void
 append_didle_object (xmlNode           *object_node,
                      GUPnPServiceProxy *content_dir,
@@ -776,6 +849,13 @@ append_media_server (GUPnPDeviceProxy *proxy,
                 schedule_icon_update (info, on_device_icon_available);
 
                 browse (content_dir, "0");
+                gupnp_service_proxy_add_notify (content_dir,
+                                                "ContainerUpdateIDs",
+                                                G_TYPE_STRING,
+                                                on_container_update_ids,
+                                                NULL);
+                gupnp_service_proxy_set_subscribed (content_dir, TRUE);
+
                 g_object_unref (content_dir);
         }
 }
