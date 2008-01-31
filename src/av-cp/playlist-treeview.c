@@ -213,6 +213,22 @@ on_playlist_row_expanded (GtkTreeView *tree_view,
 }
 
 static void
+unpopulate_container (GtkTreeModel *model,
+                      GtkTreeIter  *container_iter)
+{
+        GtkTreeIter child_iter;
+
+        if (!gtk_tree_model_iter_children (model,
+                                           &child_iter,
+                                           container_iter)) {
+                return;
+        }
+
+        while (gtk_tree_store_remove(GTK_TREE_STORE (model),
+                                     &child_iter));
+}
+
+static void
 on_playlist_row_collapsed (GtkTreeView *tree_view,
                            GtkTreeIter *iter,
                            GtkTreePath *path,
@@ -229,16 +245,7 @@ on_playlist_row_collapsed (GtkTreeView *tree_view,
         }
 
         do {
-                GtkTreeIter grand_child_iter;
-
-                if (!gtk_tree_model_iter_children (model,
-                                                   &grand_child_iter,
-                                                   &child_iter)) {
-                        break;
-                }
-
-                while (gtk_tree_store_remove(GTK_TREE_STORE (model),
-                                             &grand_child_iter));
+                unpopulate_container (model, &child_iter);
         } while (gtk_tree_model_iter_next (model, &child_iter));
 }
 
