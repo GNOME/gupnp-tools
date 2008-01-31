@@ -510,11 +510,6 @@ append_didle_object (xmlNode           *object_node,
 
         is_container = gupnp_didl_lite_object_is_container (object_node);
 
-        /* FIXME: The following code assumes that container is always
-        * added to treeview before the objects under it. Although this
-        * is currently always true but things might change after we
-        * start to support container updates.
-        */
         if (is_container) {
                 position = 0;
                 resource_hash = NULL;
