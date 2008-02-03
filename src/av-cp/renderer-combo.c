@@ -252,6 +252,13 @@ set_state_by_name (const gchar *udn,
                                     &iter,
                                     6, state,
                                     -1);
+
+                if (state == PLAYBACK_STATE_PLAYING ||
+                    state == PLAYBACK_STATE_PAUSED) {
+                        gtk_widget_set_sensitive (renderer_combo, FALSE);
+                } else {
+                        gtk_widget_set_sensitive (renderer_combo, TRUE);
+                }
         }
 }
 

@@ -2,7 +2,9 @@
 
 	* src/av-cp/renderer-combo.c:
 
-	A small cosmetic change.
+	- Set the renderer combo insensitive when state is PLAYING or PAUSED
+	  and viceversa.
+	- A small cosmetic change.
 
 2008-02-03  Zeeshan Ali Khattak  <zeenix@gmail.com>
 
