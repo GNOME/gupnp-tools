@@ -91,12 +91,6 @@ on_playlist_treeview_button_release (GtkWidget      *widget,
         return FALSE;
 }
 
-void
-on_playlist_treeview_row_activate (GtkMenuItem *menuitem,
-                                   gpointer     user_data)
-{
-}
-
 static void
 on_item_selected (GtkTreeSelection *selection,
                   gpointer          user_data)

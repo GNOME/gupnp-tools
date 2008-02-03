@@ -1,5 +1,12 @@
 2008-02-03  Zeeshan Ali Khattak  <zeenix@gmail.com>
 
+	* data/gupnp-av-cp.glade:
+	* src/av-cp/playlist-treeview.c
+
+	Play selected item on playlist row activation.
+
+2008-02-03  Zeeshan Ali Khattak  <zeenix@gmail.com>
+
 	* src/av-cp/playlist-treeview.c:
 	* src/av-cp/playlist-treeview.h:
 
