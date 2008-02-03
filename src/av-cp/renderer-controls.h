@@ -36,6 +36,10 @@ void
 set_volume_hscale               (guint volume);
 
 void
+update_playback_controls_sensitivity
+                                (PlaybackState state);
+
+void
 av_transport_send_action        (char *action,
                                  char *additional_args[]);
 

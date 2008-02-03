@@ -232,36 +232,6 @@ state_name_to_state (const char *state_name)
         return state;
 }
 
-static void
-set_state_by_name (const gchar *udn,
-                   const gchar *state_name)
-{
-        GtkTreeModel *model;
-        GtkTreeIter   iter;
-
-        model = gtk_combo_box_get_model
-                (GTK_COMBO_BOX (renderer_combo));
-        g_assert (model != NULL);
-
-        if (find_renderer (model, udn, &iter)) {
-                PlaybackState state;
-
-                state = state_name_to_state (state_name),
-
-                gtk_list_store_set (GTK_LIST_STORE (model),
-                                    &iter,
-                                    6, state,
-                                    -1);
-
-                if (state == PLAYBACK_STATE_PLAYING ||
-                    state == PLAYBACK_STATE_PAUSED) {
-                        gtk_widget_set_sensitive (renderer_combo, FALSE);
-                } else {
-                        gtk_widget_set_sensitive (renderer_combo, TRUE);
-                }
-        }
-}
-
 /* FIXME: is there a better implementation possible? */
 static gboolean
 is_iter_active (GtkComboBox *combo,
@@ -294,6 +264,40 @@ is_iter_active (GtkComboBox *combo,
         gtk_tree_path_free (active_path);
 
         return ret;
+}
+
+static void
+set_state_by_name (const gchar *udn,
+                   const gchar *state_name)
+{
+        GtkTreeModel *model;
+        GtkTreeIter   iter;
+
+        model = gtk_combo_box_get_model
+                (GTK_COMBO_BOX (renderer_combo));
+        g_assert (model != NULL);
+
+        if (find_renderer (model, udn, &iter)) {
+                PlaybackState state;
+
+                state = state_name_to_state (state_name),
+
+                gtk_list_store_set (GTK_LIST_STORE (model),
+                                    &iter,
+                                    6, state,
+                                    -1);
+
+                if (state == PLAYBACK_STATE_PLAYING ||
+                    state == PLAYBACK_STATE_PAUSED) {
+                        gtk_widget_set_sensitive (renderer_combo, FALSE);
+                } else {
+                        gtk_widget_set_sensitive (renderer_combo, TRUE);
+                }
+
+                if (is_iter_active (GTK_COMBO_BOX (renderer_combo), &iter)) {
+                        update_playback_controls_sensitivity (state);
+                }
+        }
 }
 
 static void

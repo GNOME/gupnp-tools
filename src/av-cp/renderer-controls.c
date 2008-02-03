@@ -328,6 +328,48 @@ on_position_hscale_value_changed (GtkRange *range,
         return TRUE;
 }
 
+void
+update_playback_controls_sensitivity (PlaybackState state)
+{
+        gboolean play_possible;
+        gboolean pause_possible;
+        gboolean stop_possible;
+
+        switch (state) {
+        case PLAYBACK_STATE_STOPPED:
+                play_possible = TRUE;
+                pause_possible = TRUE;
+                stop_possible = FALSE;
+
+                break;
+
+        case PLAYBACK_STATE_PAUSED:
+                play_possible = TRUE;
+                pause_possible = FALSE;
+                stop_possible = TRUE;
+
+                break;
+
+        case PLAYBACK_STATE_PLAYING:
+                play_possible = FALSE;
+                pause_possible = TRUE;
+                stop_possible = TRUE;
+
+                break;
+
+       default:
+                play_possible = TRUE;
+                pause_possible = TRUE;
+                stop_possible = TRUE;
+
+                break;
+        }
+
+        gtk_widget_set_sensitive (play_button, play_possible);
+        gtk_widget_set_sensitive (pause_button, pause_possible);
+        gtk_widget_set_sensitive (stop_button, stop_possible);
+}
+
 static void
 set_volume_cb (GUPnPServiceProxy       *rendering_control,
                GUPnPServiceProxyAction *action,

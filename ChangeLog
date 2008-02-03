@@ -1,3 +1,12 @@
+2008-02-04  Zeeshan Ali Khattak  <zeenix@gmail.com>
+
+	* src/av-cp/renderer-combo.c:
+	* src/av-cp/renderer-controls.c:
+	* src/av-cp/renderer-controls.h:
+
+	Update the sensitivity of playback controls based on state of
+	currently selected renderer.
+
 2008-02-03  Zeeshan Ali Khattak  <zeenix@gmail.com>
 
 	* src/av-cp/renderer-combo.c:
