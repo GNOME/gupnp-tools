@@ -107,9 +107,11 @@ on_item_selected (GtkTreeSelection *selection,
 
         if (state == PLAYBACK_STATE_PLAYING ||
             state == PLAYBACK_STATE_PAUSED) {
-                get_selected_item ((GetSelectedItemCallback)
-                                   set_av_transport_uri,
-                                   NULL);
+                if (!get_selected_item ((GetSelectedItemCallback)
+                                         set_av_transport_uri,
+                                        NULL)) {
+                        av_transport_send_action ("Stop", NULL);
+                }
        }
 }
 
