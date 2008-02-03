@@ -251,6 +251,33 @@ on_playlist_row_collapsed (GtkTreeView *tree_view,
         } while (gtk_tree_model_iter_next (model, &child_iter));
 }
 
+static gboolean
+tree_selection_func (GtkTreeSelection *selection,
+                     GtkTreeModel     *model,
+                     GtkTreePath      *path,
+                     gboolean          path_currently_selected,
+                     gpointer          data)
+{
+        GtkTreeIter iter;
+        gboolean    is_container;
+
+        if (path_currently_selected) {
+                return TRUE;
+        }
+
+        if (!gtk_tree_model_get_iter (model, &iter, path)) {
+                return FALSE;
+        }
+
+        gtk_tree_model_get (model,
+                            &iter,
+                            5, &is_container,
+                            -1);
+
+        /* Let it be selected if it's an item */
+        return !is_container;
+}
+
 void
 setup_playlist_treeview (GladeXML *glade_xml)
 {
@@ -284,6 +311,10 @@ setup_playlist_treeview (GladeXML *glade_xml)
                           "changed",
                           G_CALLBACK (on_item_selected),
                           NULL);
+        gtk_tree_selection_set_select_function (selection,
+                                                tree_selection_func,
+                                                NULL,
+                                                NULL);
 
         expanded = FALSE;
 

@@ -7,6 +7,7 @@
 	- Set the renderer's state to STOPPED if a non-item is selected while
 	  the renderer's state is set to PLAYING/PAUSED.
 	- Mark MediaServer as container.
+	- Do not allow selection of containers.
 
 	* src/av-cp/renderer-controls.c:
 	* src/av-cp/renderer-controls.h:
