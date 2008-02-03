@@ -36,6 +36,10 @@ void
 set_volume_hscale               (guint volume);
 
 void
+av_transport_send_action        (char *action,
+                                 char *additional_args[]);
+
+void
 setup_renderer_controls         (GladeXML *glade_xml);
 
 #endif /* __RENDERER_CONTROL_H__ */

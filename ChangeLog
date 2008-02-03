@@ -5,6 +5,11 @@
 
 	get_selected_item() returns a boolean indicating success.
 
+	* src/av-cp/renderer-controls.c:
+	* src/av-cp/renderer-controls.h:
+
+	Make av_transport_send_action() public.
+
 2008-02-01  Zeeshan Ali Khattak  <zeenix@gmail.com>
 
 	* src/av-cp/playlist-treeview.c:

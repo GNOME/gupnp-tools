@@ -132,7 +132,7 @@ create_av_transport_args_hash (char **additional_args)
         return args;
 }
 
-static void
+void
 av_transport_send_action (char *action,
                           char *additional_args[])
 {
