@@ -1,3 +1,10 @@
+2008-02-03  Zeeshan Ali Khattak  <zeenix@gmail.com>
+
+	* src/av-cp/playlist-treeview.c:
+	* src/av-cp/playlist-treeview.h:
+
+	get_selected_item() returns a boolean indicating success.
+
 2008-02-01  Zeeshan Ali Khattak  <zeenix@gmail.com>
 
 	* src/av-cp/playlist-treeview.c:

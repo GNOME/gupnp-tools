@@ -1059,7 +1059,7 @@ browse_metadata_cb (GUPnPServiceProxy       *content_dir,
         g_object_unref (content_dir);
 }
 
-void
+gboolean
 get_selected_item (GetSelectedItemCallback callback,
                    gpointer                user_data)
 {
@@ -1073,12 +1073,13 @@ get_selected_item (GetSelectedItemCallback callback,
         char               *id = NULL;
         char               *uri = NULL;
         GError             *error;
+        gboolean            ret = FALSE;
 
         selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (treeview));
         g_assert (selection != NULL);
 
         if (!gtk_tree_selection_get_selected (selection, &model, &iter)) {
-                return;
+                goto return_point;
         }
 
         gtk_tree_model_get (model,
@@ -1090,14 +1091,14 @@ get_selected_item (GetSelectedItemCallback callback,
                             -1);
 
         if (is_container) {
-                goto return_point;
+                goto free_and_return;
         }
 
         uri = find_compatible_uri (resource_hash);
         if (uri == NULL) {
                 g_warning ("no compatible URI found.");
 
-                goto return_point;
+                goto free_and_return;
         }
 
         data = browse_metadata_data_new (callback, id, uri, user_data);
@@ -1131,9 +1132,11 @@ get_selected_item (GetSelectedItemCallback callback,
         if (error) {
                 on_browse_metadata_failure (data, error);
                 g_object_unref (content_dir);
+        } else {
+                ret = TRUE;
         }
 
-return_point:
+free_and_return:
         if (id) {
                 g_free (id);
         }
@@ -1143,6 +1146,9 @@ return_point:
         }
 
         g_object_unref (content_dir);
+
+return_point:
+        return ret;
 }
 
 void

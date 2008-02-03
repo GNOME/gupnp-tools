@@ -39,7 +39,7 @@ add_media_server                (GUPnPDeviceProxy       *proxy);
 void
 remove_media_server             (GUPnPDeviceProxy       *proxy);
 
-void
+gboolean
 get_selected_item               (GetSelectedItemCallback callback,
                                  gpointer                user_data);
 
