@@ -126,6 +126,8 @@
 			  <property name="hover_expand">False</property>
 			  <signal name="row_activated" handler="on_play_button_clicked" last_modification_time="Sun, 03 Feb 2008 21:30:52 GMT"/>
 			  <signal name="button_release_event" handler="on_playlist_treeview_button_release" last_modification_time="Tue, 18 Sep 2007 20:52:39 GMT"/>
+			  <signal name="row_collapsed" handler="on_playlist_row_collapsed" last_modification_time="Sun, 03 Feb 2008 21:37:41 GMT"/>
+			  <signal name="row_expanded" handler="on_playlist_row_expanded" last_modification_time="Sun, 03 Feb 2008 21:37:58 GMT"/>
 			</widget>
 		      </child>
 		    </widget>

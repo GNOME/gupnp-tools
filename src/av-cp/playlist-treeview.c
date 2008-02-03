@@ -172,7 +172,7 @@ setup_treeview_columns (GtkWidget *treeview)
         gtk_tree_selection_set_mode (selection, GTK_SELECTION_SINGLE);
 }
 
-static void
+void
 on_playlist_row_expanded (GtkTreeView *tree_view,
                           GtkTreeIter *iter,
                           GtkTreePath *path,
@@ -224,7 +224,7 @@ unpopulate_container (GtkTreeModel *model,
                                      &child_iter));
 }
 
-static void
+void
 on_playlist_row_collapsed (GtkTreeView *tree_view,
                            GtkTreeIter *iter,
                            GtkTreePath *path,
@@ -288,16 +288,6 @@ setup_playlist_treeview (GladeXML *glade_xml)
         g_object_unref (model);
 
         setup_treeview_columns (treeview);
-
-        g_signal_connect (treeview,
-                          "row-expanded",
-                          G_CALLBACK (on_playlist_row_expanded),
-                          NULL);
-
-        g_signal_connect (treeview,
-                          "row-collapsed",
-                          G_CALLBACK (on_playlist_row_collapsed),
-                          NULL);
 
         selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (treeview));
         g_assert (selection != NULL);
