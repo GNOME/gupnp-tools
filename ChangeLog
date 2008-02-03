@@ -6,6 +6,7 @@
 	- get_selected_item() returns a boolean indicating success.
 	- Set the renderer's state to STOPPED if a non-item is selected while
 	  the renderer's state is set to PLAYING/PAUSED.
+	- Mark MediaServer as container.
 
 	* src/av-cp/renderer-controls.c:
 	* src/av-cp/renderer-controls.h:

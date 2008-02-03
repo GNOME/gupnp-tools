@@ -835,6 +835,7 @@ append_media_server (GUPnPDeviceProxy *proxy,
                                  1, friendly_name,
                                  2, info,
                                  3, content_dir,
+                                 5, TRUE,
                                  -1);
                 g_free (friendly_name);
 
