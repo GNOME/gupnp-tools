@@ -248,10 +248,10 @@ set_state_by_name (const gchar *udn,
 
                 state = state_name_to_state (state_name),
 
-                      gtk_list_store_set (GTK_LIST_STORE (model),
-                                      &iter,
-                                      6, state,
-                                      -1);
+                gtk_list_store_set (GTK_LIST_STORE (model),
+                                    &iter,
+                                    6, state,
+                                    -1);
         }
 }
 

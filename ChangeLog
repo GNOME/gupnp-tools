@@ -1,5 +1,11 @@
 2008-02-03  Zeeshan Ali Khattak  <zeenix@gmail.com>
 
+	* src/av-cp/renderer-combo.c:
+
+	A small cosmetic change.
+
+2008-02-03  Zeeshan Ali Khattak  <zeenix@gmail.com>
+
 	* data/gupnp-av-cp.glade:
 	* src/av-cp/playlist-treeview.c
 
