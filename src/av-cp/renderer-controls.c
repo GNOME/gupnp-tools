@@ -372,6 +372,17 @@ set_position_hscale_duration (const char *duration_str)
 }
 
 void
+set_position_hscale_position (const char *position_str)
+{
+        gdouble position;
+
+        position = seconds_from_time (position_str);
+        if (position >= 0.0) {
+                gtk_range_set_value (GTK_RANGE (position_hscale), position);
+        }
+}
+
+void
 update_playback_controls_sensitivity (PlaybackState state)
 {
         gboolean play_possible;

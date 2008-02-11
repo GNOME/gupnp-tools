@@ -39,6 +39,9 @@ void
 set_position_hscale_duration    (const char *duration_str);
 
 void
+set_position_hscale_position    (const char *position_str);
+
+void
 update_playback_controls_sensitivity
                                 (PlaybackState state);
 

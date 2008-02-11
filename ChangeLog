@@ -1,5 +1,12 @@
 2008-02-09  Zeeshan Ali Khattak  <zeenix@gmail.com>
 
+	* src/av-cp/renderer-controls.c:
+	* src/av-cp/renderer-controls.h:
+
+	Add function to set the position of position hscale.
+
+2008-02-09  Zeeshan Ali Khattak  <zeenix@gmail.com>
+
 	* src/av-cp/renderer-combo.c:
 
 	Track media duration instead of track duration.
