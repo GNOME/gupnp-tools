@@ -577,12 +577,12 @@ get_protocol_info_cb (GUPnPServiceProxy       *cm,
                       GUPnPServiceProxyAction *action,
                       gpointer                 user_data)
 {
-        gchar  *sink_protocols;
-        gchar **protocols;
-        gchar  *udn;
-        GError *error;
+        gchar       *sink_protocols;
+        gchar      **protocols;
+        const gchar *udn;
+        GError      *error;
 
-        udn = (gchar *) user_data;
+        udn = gupnp_service_info_get_udn (GUPNP_SERVICE_INFO (cm));
 
         error = NULL;
         if (!gupnp_service_proxy_end_action (cm,
@@ -625,7 +625,6 @@ get_protocol_info_cb (GUPnPServiceProxy       *cm,
 
 return_point:
         g_object_unref (cm);
-        g_free (udn);
 }
 
 static void
@@ -633,11 +632,11 @@ get_transport_info_cb (GUPnPServiceProxy       *av_transport,
                       GUPnPServiceProxyAction *action,
                       gpointer                 user_data)
 {
-        gchar  *state_name;
-        gchar  *udn;
-        GError *error;
+        gchar       *state_name;
+        const gchar *udn;
+        GError      *error;
 
-        udn = (gchar *) user_data;
+        udn = gupnp_service_info_get_udn (GUPNP_SERVICE_INFO (av_transport));
 
         error = NULL;
         if (!gupnp_service_proxy_end_action (av_transport,
@@ -664,7 +663,6 @@ get_transport_info_cb (GUPnPServiceProxy       *av_transport,
 
 return_point:
         g_object_unref (av_transport);
-        g_free (udn);
 }
 
 static void
@@ -672,11 +670,12 @@ get_volume_cb (GUPnPServiceProxy       *rendering_control,
                GUPnPServiceProxyAction *action,
                gpointer                 user_data)
 {
-        guint   volume;
-        gchar  *udn;
-        GError *error;
+        guint        volume;
+        const gchar *udn;
+        GError      *error;
 
-        udn = (gchar *) user_data;
+        udn = gupnp_service_info_get_udn
+                                (GUPNP_SERVICE_INFO (rendering_control));
 
         error = NULL;
         if (!gupnp_service_proxy_end_action (rendering_control,
@@ -699,7 +698,6 @@ get_volume_cb (GUPnPServiceProxy       *rendering_control,
 
 return_point:
         g_object_unref (rendering_control);
-        g_free (udn);
 }
 
 static void
@@ -707,11 +705,11 @@ get_media_info_cb (GUPnPServiceProxy       *av_transport,
                    GUPnPServiceProxyAction *action,
                    gpointer                 user_data)
 {
-        gchar  *duration;
-        gchar  *udn;
-        GError *error;
+        gchar       *duration;
+        const gchar *udn;
+        GError      *error;
 
-        udn = (gchar *) user_data;
+        udn = gupnp_service_info_get_udn (GUPNP_SERVICE_INFO (av_transport));
 
         error = NULL;
         if (!gupnp_service_proxy_end_action (av_transport,
@@ -734,7 +732,6 @@ get_media_info_cb (GUPnPServiceProxy       *av_transport,
 
 return_point:
         g_object_unref (av_transport);
-        g_free (udn);
 }
 
 void
@@ -742,13 +739,13 @@ add_media_renderer (GUPnPDeviceProxy *proxy)
 {
         GtkTreeModel      *model;
         GtkTreeIter        iter;
-        char              *udn;
+        const char        *udn;
         GUPnPServiceProxy *cm;
         GUPnPServiceProxy *av_transport;
         GUPnPServiceProxy *rendering_control;
         GError            *error;
 
-        udn = (char *) gupnp_device_info_get_udn (GUPNP_DEVICE_INFO (proxy));
+        udn = gupnp_device_info_get_udn (GUPNP_DEVICE_INFO (proxy));
         if (udn == NULL)
                 return;
 
@@ -757,19 +754,12 @@ add_media_renderer (GUPnPDeviceProxy *proxy)
                 return;
 
         av_transport = get_av_transport (proxy);
-        if (av_transport == NULL) {
-                g_object_unref (cm);
-
-                return;
-        }
+        if (av_transport == NULL)
+                goto no_av_transport;
 
         rendering_control = get_rendering_control (proxy);
-        if (rendering_control == NULL) {
-                g_object_unref (cm);
-                g_object_unref (av_transport);
-
-                return;
-        }
+        if (rendering_control == NULL)
+                goto no_rendering_control;
 
         model = gtk_combo_box_get_model (GTK_COMBO_BOX (renderer_combo));
 
@@ -779,13 +769,11 @@ add_media_renderer (GUPnPDeviceProxy *proxy)
                                                rendering_control,
                                                udn);
 
-        udn = g_strdup (udn);
-
         error = NULL;
-        gupnp_service_proxy_begin_action (cm,
+        gupnp_service_proxy_begin_action (g_object_ref (cm),
                                           "GetProtocolInfo",
                                           get_protocol_info_cb,
-                                          udn,
+                                          NULL,
                                           &error,
                                           NULL);
         if (error) {
@@ -796,16 +784,13 @@ add_media_renderer (GUPnPDeviceProxy *proxy)
 
                 g_error_free (error);
                 g_object_unref (cm);
-                g_free (udn);
         }
 
-        udn = g_strdup (udn);
-
         error = NULL;
-        gupnp_service_proxy_begin_action (av_transport,
+        gupnp_service_proxy_begin_action (g_object_ref (av_transport),
                                           "GetTransportInfo",
                                           get_transport_info_cb,
-                                          udn,
+                                          NULL,
                                           &error,
                                           "InstanceID", G_TYPE_UINT, 0,
                                           NULL);
@@ -817,16 +802,13 @@ add_media_renderer (GUPnPDeviceProxy *proxy)
 
                 g_error_free (error);
                 g_object_unref (av_transport);
-                g_free (udn);
         }
 
-        udn = g_strdup (udn);
-
         error = NULL;
-        gupnp_service_proxy_begin_action (av_transport,
+        gupnp_service_proxy_begin_action (g_object_ref (av_transport),
                                           "GetMediaInfo",
                                           get_media_info_cb,
-                                          udn,
+                                          NULL,
                                           &error,
                                           "InstanceID", G_TYPE_UINT, 0,
                                           NULL);
@@ -838,16 +820,13 @@ add_media_renderer (GUPnPDeviceProxy *proxy)
 
                 g_error_free (error);
                 g_object_unref (av_transport);
-                g_free (udn);
         }
 
-        udn = g_strdup (udn);
-
         error = NULL;
-        gupnp_service_proxy_begin_action (rendering_control,
+        gupnp_service_proxy_begin_action (g_object_ref (rendering_control),
                                           "GetVolume",
                                           get_volume_cb,
-                                          udn,
+                                          NULL,
                                           &error,
                                           "InstanceID", G_TYPE_UINT, 0,
                                           "Channel", G_TYPE_STRING, "Master",
@@ -860,8 +839,13 @@ add_media_renderer (GUPnPDeviceProxy *proxy)
 
                 g_error_free (error);
                 g_object_unref (rendering_control);
-                g_free (udn);
         }
+
+        g_object_unref (rendering_control);
+no_rendering_control:
+        g_object_unref (av_transport);
+no_av_transport:
+        g_object_unref (cm);
 }
 
 void

@@ -1,5 +1,13 @@
 2008-02-09  Zeeshan Ali Khattak  <zeenix@gmail.com>
 
+	* src/av-cp/renderer-combo.c:
+
+	- No need to strdup() udn for each callback as the callback can get
+	  a const reference to udn from the service proxy, itself.
+	- Fix the proxy (un)ref'ing.
+
+2008-02-09  Zeeshan Ali Khattak  <zeenix@gmail.com>
+
 	* src/av-cp/renderer-controls.c:
 	* src/av-cp/renderer-controls.h:
 
