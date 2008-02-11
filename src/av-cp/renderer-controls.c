@@ -330,6 +330,27 @@ on_position_hscale_value_changed (GtkRange *range,
                                   gdouble       value,
                                   gpointer      user_data)
 {
+        char *args[] = { "Unit", "TIME", "Target", NULL, NULL };
+        guint total_secs;
+        guint hours;
+        guint minutes;
+        guint seconds;
+
+        total_secs = (guint) gtk_range_get_value (range);
+        hours = total_secs / 3600;
+        minutes = (total_secs / 60) - (hours * 60);
+        seconds = total_secs - (hours * 3600) - (minutes * 60);
+
+        args[3] = g_strdup_printf ("time: %u:%02u:%02u\n",
+                                   hours,
+                                   minutes,
+                                   seconds);
+
+        if (args[3]) {
+                av_transport_send_action ("Seek", args);
+                g_free (args[3]);
+        }
+
         return TRUE;
 }
 
