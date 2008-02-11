@@ -1,3 +1,9 @@
+2008-02-09  Zeeshan Ali Khattak  <zeenix@gmail.com>
+
+	* src/av-cp/renderer-combo.c:
+
+	Track media duration instead of track duration.
+
 2008-02-08  Zeeshan Ali Khattak  <zeenix@gmail.com>
 
 	* src/av-cp/renderer-combo.c:

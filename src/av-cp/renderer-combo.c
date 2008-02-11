@@ -391,7 +391,7 @@ on_last_change (GUPnPServiceProxy *av_transport,
                                             "TransportState",
                                             G_TYPE_STRING,
                                             &state_name,
-                                            "CurrentTrackDuration",
+                                            "CurrentMediaDuration",
                                             G_TYPE_STRING,
                                             &duration,
                                             NULL)) {
@@ -703,9 +703,9 @@ return_point:
 }
 
 static void
-get_position_info_cb (GUPnPServiceProxy       *av_transport,
-                      GUPnPServiceProxyAction *action,
-                      gpointer                 user_data)
+get_media_info_cb (GUPnPServiceProxy       *av_transport,
+                   GUPnPServiceProxyAction *action,
+                   gpointer                 user_data)
 {
         gchar  *duration;
         gchar  *udn;
@@ -717,11 +717,11 @@ get_position_info_cb (GUPnPServiceProxy       *av_transport,
         if (!gupnp_service_proxy_end_action (av_transport,
                                              action,
                                              &error,
-                                             "TrackDuration",
+                                             "MediaDuration",
                                              G_TYPE_STRING,
                                              &duration,
                                              NULL)) {
-                g_warning ("Failed to get current track duration"
+                g_warning ("Failed to get current media duration"
                            "from media renderer '%s':%s\n",
                            udn,
                            error->message);
@@ -824,14 +824,14 @@ add_media_renderer (GUPnPDeviceProxy *proxy)
 
         error = NULL;
         gupnp_service_proxy_begin_action (av_transport,
-                                          "GetPositionInfo",
-                                          get_position_info_cb,
+                                          "GetMediaInfo",
+                                          get_media_info_cb,
                                           udn,
                                           &error,
                                           "InstanceID", G_TYPE_UINT, 0,
                                           NULL);
         if (error) {
-                g_warning ("Failed to get current track duration"
+                g_warning ("Failed to get current media duration"
                            "from media renderer '%s':%s\n",
                            udn,
                            error->message);
