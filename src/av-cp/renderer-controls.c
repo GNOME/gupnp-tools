@@ -222,10 +222,22 @@ set_av_transport_uri_cb (GUPnPServiceProxy       *av_transport,
         g_object_unref (av_transport);
 }
 
+gboolean
+on_volume_vscale_value_changed (GtkRange *range,
+                                gpointer  user_data);
+
 void
 set_volume_hscale (guint volume)
 {
+        g_signal_handlers_block_by_func (volume_vscale,
+                                         on_volume_vscale_value_changed,
+                                         NULL);
+
         gtk_range_set_value (GTK_RANGE (volume_vscale), volume);
+
+        g_signal_handlers_unblock_by_func (volume_vscale,
+                                           on_volume_vscale_value_changed,
+                                           NULL);
 }
 
 void
@@ -401,7 +413,17 @@ set_position_hscale_position (const char *position_str)
 
         position = seconds_from_time (position_str);
         if (position >= 0.0) {
+                g_signal_handlers_block_by_func
+                                        (position_hscale,
+                                         on_position_hscale_value_changed,
+                                         NULL);
+
                 gtk_range_set_value (GTK_RANGE (position_hscale), position);
+
+                g_signal_handlers_unblock_by_func
+                                        (position_hscale,
+                                         on_position_hscale_value_changed,
+                                         NULL);
         }
 }
 
@@ -540,7 +562,17 @@ prepare_controls_for_state (PlaybackState state)
         /* Disable the seekbar when the state is stopped */
         gtk_widget_set_sensitive (position_hscale, stop_possible);
         if (!stop_possible) {
+                g_signal_handlers_block_by_func
+                                        (position_hscale,
+                                         on_position_hscale_value_changed,
+                                         NULL);
+
                 gtk_range_set_value (GTK_RANGE (position_hscale), 0.0);
+
+                g_signal_handlers_unblock_by_func
+                                        (position_hscale,
+                                         on_position_hscale_value_changed,
+                                         NULL);
         }
 
         gtk_widget_set_sensitive (play_button, play_possible);
