@@ -338,9 +338,7 @@ on_previous_button_clicked (GtkButton *button,
 
 gboolean
 on_position_hscale_value_changed (GtkRange *range,
-                                  GtkScrollType scroll,
-                                  gdouble       value,
-                                  gpointer      user_data)
+                                  gpointer  user_data)
 {
         char *args[] = { "Unit", "TIME", "Target", NULL, NULL };
         guint total_secs;
