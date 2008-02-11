@@ -340,7 +340,7 @@ gboolean
 on_position_hscale_value_changed (GtkRange *range,
                                   gpointer  user_data)
 {
-        char *args[] = { "Unit", "TIME", "Target", NULL, NULL };
+        char *args[] = { "Unit", "ABS_TIME", "Target", NULL, NULL };
         guint total_secs;
         guint hours;
         guint minutes;
