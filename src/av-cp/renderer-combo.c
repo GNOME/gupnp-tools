@@ -935,6 +935,7 @@ on_renderer_combo_changed (GtkComboBox *widget,
         GtkComboBox  *combo;
         GtkTreeModel *model;
         GtkTreeIter   iter;
+        PlaybackState state;
         guint         volume;
 
         combo = GTK_COMBO_BOX (renderer_combo);
@@ -947,9 +948,11 @@ on_renderer_combo_changed (GtkComboBox *widget,
 
         gtk_tree_model_get (model,
                             &iter,
+                            6, &state,
                             7, &volume,
                             -1);
         set_volume_hscale (volume);
+        prepare_controls_for_state (state);
 }
 
 void
