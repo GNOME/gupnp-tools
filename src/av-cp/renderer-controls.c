@@ -465,7 +465,7 @@ remove_timeout (void)
 }
 
 void
-update_playback_controls_sensitivity (PlaybackState state)
+prepare_controls_for_state (PlaybackState state)
 {
         gboolean play_possible;
         gboolean pause_possible;

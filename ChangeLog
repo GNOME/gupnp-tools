@@ -1,5 +1,14 @@
 2008-02-10  Zeeshan Ali Khattak  <zeenix@gmail.com>
 
+	* src/av-cp/renderer-combo.c:
+	* src/av-cp/renderer-controls.c:
+	* src/av-cp/renderer-controls.h:
+
+	Rename update_playback_controls_sensitivity() to
+	prepare_controls_for_state().
+
+2008-02-10  Zeeshan Ali Khattak  <zeenix@gmail.com>
+
 	* src/av-cp/renderer-controls.c:
 
 	Track media position of currently selected renderer.

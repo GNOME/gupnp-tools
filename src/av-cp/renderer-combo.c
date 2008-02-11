@@ -295,7 +295,7 @@ set_state_by_name (const gchar *udn,
                 }
 
                 if (is_iter_active (GTK_COMBO_BOX (renderer_combo), &iter)) {
-                        update_playback_controls_sensitivity (state);
+                        prepare_controls_for_state (state);
                 }
         }
 }

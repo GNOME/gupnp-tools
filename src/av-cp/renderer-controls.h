@@ -42,8 +42,7 @@ void
 set_position_hscale_position    (const char *position_str);
 
 void
-update_playback_controls_sensitivity
-                                (PlaybackState state);
+prepare_controls_for_state      (PlaybackState state);
 
 void
 av_transport_send_action        (char *action,
