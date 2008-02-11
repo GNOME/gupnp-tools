@@ -37,6 +37,8 @@ GtkWidget *stop_button;
 GtkWidget *next_button;
 GtkWidget *prev_button;
 
+static guint timeout_id;
+
 /* FIXME: display a dialog to report problems? */
 
 typedef struct
@@ -382,6 +384,86 @@ set_position_hscale_position (const char *position_str)
         }
 }
 
+static void
+get_position_info_cb (GUPnPServiceProxy       *av_transport,
+                      GUPnPServiceProxyAction *action,
+                      gpointer                 user_data)
+{
+        gchar       *position;
+        const gchar *udn;
+        GError      *error;
+
+        udn = gupnp_service_info_get_udn (GUPNP_SERVICE_INFO (av_transport));
+
+        error = NULL;
+        if (!gupnp_service_proxy_end_action (av_transport,
+                                             action,
+                                             &error,
+                                             "AbsTime",
+                                             G_TYPE_STRING,
+                                             &position,
+                                             NULL)) {
+                g_warning ("Failed to get current media position"
+                           "from media renderer '%s':%s\n",
+                           udn,
+                           error->message);
+                g_error_free (error);
+
+                goto return_point;
+        }
+
+        set_position_hscale_position (position);
+
+return_point:
+        g_object_unref (av_transport);
+}
+
+static gboolean
+update_position (gpointer data)
+{
+        GUPnPServiceProxy *av_transport;
+        const gchar       *udn;
+        GError            *error;
+
+        av_transport = get_selected_av_transport (NULL);
+        if (av_transport == NULL) {
+                return FALSE;
+        }
+
+        udn = gupnp_service_info_get_udn (GUPNP_SERVICE_INFO (av_transport));
+
+        error = NULL;
+        gupnp_service_proxy_begin_action (av_transport,
+                                          "GetPositionInfo",
+                                          get_position_info_cb,
+                                          NULL,
+                                          &error,
+                                          "InstanceID", G_TYPE_UINT, 0,
+                                          NULL);
+        if (error) {
+                g_warning ("Failed to get current media position"
+                           "from media renderer '%s':%s\n",
+                           udn,
+                           error->message);
+
+                g_error_free (error);
+                g_object_unref (av_transport);
+
+                return FALSE;
+        }
+
+        return TRUE;
+}
+
+static void
+remove_timeout (void)
+{
+        if (timeout_id != 0) {
+                g_source_remove (timeout_id);
+                timeout_id = 0;
+        }
+}
+
 void
 update_playback_controls_sensitivity (PlaybackState state)
 {
@@ -395,12 +477,18 @@ update_playback_controls_sensitivity (PlaybackState state)
                 pause_possible = TRUE;
                 stop_possible = FALSE;
 
+                remove_timeout ();
+
                 break;
 
         case PLAYBACK_STATE_PAUSED:
                 play_possible = TRUE;
                 pause_possible = FALSE;
                 stop_possible = TRUE;
+
+                remove_timeout ();
+
+                update_position (NULL);
 
                 break;
 
@@ -409,12 +497,21 @@ update_playback_controls_sensitivity (PlaybackState state)
                 pause_possible = TRUE;
                 stop_possible = TRUE;
 
+                /* Start tracking media position in playing state */
+                if (timeout_id == 0) {
+                        timeout_id = g_timeout_add (1000,
+                                                    update_position,
+                                                    NULL);
+                }
+
                 break;
 
        default:
                 play_possible = TRUE;
                 pause_possible = TRUE;
                 stop_possible = TRUE;
+
+                remove_timeout ();
 
                 break;
         }
@@ -532,5 +629,12 @@ setup_renderer_controls (GladeXML *glade_xml)
 
         prev_button = glade_xml_get_widget (glade_xml, "previous-button");
         g_assert (prev_button != NULL);
+
+        timeout_id = 0;
+
+        g_object_weak_ref (G_OBJECT (position_hscale),
+                           (GWeakNotify) remove_timeout,
+                           NULL);
 }
+
 
