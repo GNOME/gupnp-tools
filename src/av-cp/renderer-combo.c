@@ -324,6 +324,29 @@ set_volume (const gchar *udn,
 }
 
 static void
+set_duration (const gchar *udn,
+              const gchar *duration)
+{
+        GtkTreeModel *model;
+        GtkTreeIter   iter;
+
+        model = gtk_combo_box_get_model
+                (GTK_COMBO_BOX (renderer_combo));
+        g_assert (model != NULL);
+
+        if (find_renderer (model, udn, &iter)) {
+                gtk_list_store_set (GTK_LIST_STORE (model),
+                                    &iter,
+                                    8, duration,
+                                    -1);
+
+                if (is_iter_active (GTK_COMBO_BOX (renderer_combo), &iter)) {
+                        set_position_hscale_duration (duration);
+                }
+        }
+}
+
+static void
 on_device_icon_available (GUPnPDeviceInfo *info,
                           GdkPixbuf       *icon)
 {
@@ -354,11 +377,13 @@ on_last_change (GUPnPServiceProxy *av_transport,
 {
        const char *last_change_xml;
        char       *state_name;
+       char       *duration;
        GError     *error;
 
        last_change_xml = g_value_get_string (value);
        error = NULL;
        state_name = NULL;
+       duration = NULL;
 
        if (gupnp_av_util_parse_last_change (last_change_xml,
                                             0,
@@ -366,14 +391,22 @@ on_last_change (GUPnPServiceProxy *av_transport,
                                             "TransportState",
                                             G_TYPE_STRING,
                                             &state_name,
+                                            "CurrentTrackDuration",
+                                            G_TYPE_STRING,
+                                            &duration,
                                             NULL)) {
-               if (state_name != NULL) {
-                       const char *udn;
+               const char *udn;
 
-                       udn = gupnp_service_info_get_udn
+               udn = gupnp_service_info_get_udn
                                         (GUPNP_SERVICE_INFO (av_transport));
+               if (state_name != NULL) {
                        set_state_by_name (udn, state_name);
                        g_free (state_name);
+               }
+
+               if (duration != NULL) {
+                       set_duration (udn, duration);
+                       g_free (duration);
                }
        } else if (error) {
                g_warning ("%s\n", error->message);
@@ -669,6 +702,41 @@ return_point:
         g_free (udn);
 }
 
+static void
+get_position_info_cb (GUPnPServiceProxy       *av_transport,
+                      GUPnPServiceProxyAction *action,
+                      gpointer                 user_data)
+{
+        gchar  *duration;
+        gchar  *udn;
+        GError *error;
+
+        udn = (gchar *) user_data;
+
+        error = NULL;
+        if (!gupnp_service_proxy_end_action (av_transport,
+                                             action,
+                                             &error,
+                                             "TrackDuration",
+                                             G_TYPE_STRING,
+                                             &duration,
+                                             NULL)) {
+                g_warning ("Failed to get current track duration"
+                           "from media renderer '%s':%s\n",
+                           udn,
+                           error->message);
+                g_error_free (error);
+
+                goto return_point;
+        }
+
+        set_duration (udn, duration);
+
+return_point:
+        g_object_unref (av_transport);
+        g_free (udn);
+}
+
 void
 add_media_renderer (GUPnPDeviceProxy *proxy)
 {
@@ -755,6 +823,27 @@ add_media_renderer (GUPnPDeviceProxy *proxy)
         udn = g_strdup (udn);
 
         error = NULL;
+        gupnp_service_proxy_begin_action (av_transport,
+                                          "GetPositionInfo",
+                                          get_position_info_cb,
+                                          udn,
+                                          &error,
+                                          "InstanceID", G_TYPE_UINT, 0,
+                                          NULL);
+        if (error) {
+                g_warning ("Failed to get current track duration"
+                           "from media renderer '%s':%s\n",
+                           udn,
+                           error->message);
+
+                g_error_free (error);
+                g_object_unref (av_transport);
+                g_free (udn);
+        }
+
+        udn = g_strdup (udn);
+
+        error = NULL;
         gupnp_service_proxy_begin_action (rendering_control,
                                           "GetVolume",
                                           get_volume_cb,
@@ -805,7 +894,7 @@ create_renderer_treemodel (void)
 {
         GtkListStore *store;
 
-        store = gtk_list_store_new (8,
+        store = gtk_list_store_new (9,
                                     GDK_TYPE_PIXBUF, /* Icon              */
                                     G_TYPE_STRING,   /* Name              */
                                     G_TYPE_OBJECT,   /* renderer proxy    */
@@ -814,7 +903,8 @@ create_renderer_treemodel (void)
                                                      /* proxy             */
                                     G_TYPE_STRV,     /* ProtocolInfo      */
                                     G_TYPE_UINT,     /* AVTranport state  */
-                                    G_TYPE_UINT);    /* Volume            */
+                                    G_TYPE_UINT,     /* Volume            */
+                                    G_TYPE_UINT);    /* Duration          */
 
         return GTK_TREE_MODEL (store);
 }

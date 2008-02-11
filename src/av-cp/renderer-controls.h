@@ -36,6 +36,9 @@ void
 set_volume_hscale               (guint volume);
 
 void
+set_position_hscale_duration    (const char *duration_str);
+
+void
 update_playback_controls_sensitivity
                                 (PlaybackState state);
 

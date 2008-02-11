@@ -26,6 +26,9 @@
 #include "playlist-treeview.h"
 #include "renderer-combo.h"
 
+#define SEC_PER_MIN 60
+#define SEC_PER_HOUR 3600
+
 GtkWidget *volume_vscale;
 GtkWidget *position_hscale;
 GtkWidget *play_button;
@@ -328,6 +331,46 @@ on_position_hscale_value_changed (GtkRange *range,
         return TRUE;
 }
 
+static gdouble
+seconds_from_time (const char *time_str)
+{
+        char **tokens;
+        gdouble seconds = -1.0;
+
+        tokens = g_strsplit (time_str, ":", -1);
+        if (tokens == NULL) {
+                return -1.0;
+        }
+
+        if (tokens[0] == NULL ||
+            tokens[1] == NULL ||
+            tokens[2] == NULL) {
+                goto return_point;
+        }
+
+        seconds = g_strtod (tokens[2], NULL);
+        seconds += g_strtod (tokens[1], NULL) * SEC_PER_MIN;
+        seconds += g_strtod (tokens[0], NULL) * SEC_PER_HOUR;
+
+return_point:
+        g_strfreev (tokens);
+
+        return seconds;
+}
+
+void
+set_position_hscale_duration (const char *duration_str)
+{
+        gdouble duration;
+
+        duration = seconds_from_time (duration_str);
+        if (duration > 0.0) {
+                gtk_range_set_range (GTK_RANGE (position_hscale),
+                                     0.0,
+                                     duration);
+        }
+}
+
 void
 update_playback_controls_sensitivity (PlaybackState state)
 {
@@ -363,6 +406,12 @@ update_playback_controls_sensitivity (PlaybackState state)
                 stop_possible = TRUE;
 
                 break;
+        }
+
+        /* Disable the seekbar when the state is stopped */
+        gtk_widget_set_sensitive (position_hscale, stop_possible);
+        if (!stop_possible) {
+                gtk_range_set_value (GTK_RANGE (position_hscale), 0.0);
         }
 
         gtk_widget_set_sensitive (play_button, play_possible);
