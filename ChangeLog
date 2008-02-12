@@ -6,6 +6,7 @@
 	  value is changed by the application rather than user.
 	- Correct the signature of "value-changed" signal handler.
 	- Unit for 'Seek' is "ABS_TIME" rather than "TIME".
+	- Refactor: Put the timeout adding code into a separare function.
 
 2008-02-11  Zeeshan Ali Khattak  <zeenix@gmail.com>
 

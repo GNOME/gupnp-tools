@@ -497,6 +497,16 @@ update_position (gpointer data)
 }
 
 static void
+add_timeout (void)
+{
+        if (timeout_id == 0) {
+                timeout_id = g_timeout_add (1000,
+                                            update_position,
+                                            NULL);
+        }
+}
+
+static void
 remove_timeout (void)
 {
         if (timeout_id != 0) {
@@ -539,11 +549,7 @@ prepare_controls_for_state (PlaybackState state)
                 stop_possible = TRUE;
 
                 /* Start tracking media position in playing state */
-                if (timeout_id == 0) {
-                        timeout_id = g_timeout_add (1000,
-                                                    update_position,
-                                                    NULL);
-                }
+                add_timeout ();
 
                 break;
 
