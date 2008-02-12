@@ -1,5 +1,11 @@
 2008-02-11  Zeeshan Ali Khattak  <zeenix@gmail.com>
 
+	* src/av-cp/playlist-treeview.c:
+
+	Fix a typo.
+
+2008-02-11  Zeeshan Ali Khattak  <zeenix@gmail.com>
+
 	* src/av-cp/renderer-controls.c:
 
 	- Block the 'value-changed' signal handlers on the scales when the

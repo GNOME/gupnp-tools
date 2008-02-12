@@ -962,7 +962,7 @@ is_mime_compat (const gchar *renderer_mime,
 
 static gboolean
 is_extra_compat (const gchar *renderer_extra,
-                 const gchar *item_last_extra)
+                 const gchar *item_extra)
 {
         /* FIXME: implement this */
         return TRUE;
