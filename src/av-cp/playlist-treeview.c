@@ -938,7 +938,8 @@ is_transport_compat (const gchar *renderer_protocol,
                      const gchar *item_protocol,
                      const gchar *item_host)
 {
-        if (g_ascii_strcasecmp (renderer_protocol, item_protocol) != 0) {
+        if (g_ascii_strcasecmp (renderer_protocol, item_protocol) != 0 &&
+            g_ascii_strcasecmp (renderer_protocol, "*") != 0) {
                 return FALSE;
         } else if (g_ascii_strcasecmp ("INTERNAL", renderer_protocol) == 0 &&
                    g_ascii_strcasecmp (renderer_host, item_host) != 0) {
@@ -953,7 +954,8 @@ static gboolean
 is_content_format_compat (const gchar *renderer_content_format,
                           const gchar *item_content_format)
 {
-        if (g_ascii_strcasecmp (renderer_content_format,
+        if (g_ascii_strcasecmp (renderer_content_format, "*") != 0 &&
+            g_ascii_strcasecmp (renderer_content_format,
                                 item_content_format) != 0) {
                 return FALSE;
         } else {

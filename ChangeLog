@@ -6,6 +6,8 @@
 	- Pass arguments in correct order to ProtocolInfo comparison functions.
 	- Implement comparison of extra field of ProtocolInfo.
 	- Refer to the ProtocolInfo fields by terms used by UPnP AV specs.
+	- Take wildcard into account when matching transport and content
+	  format of ProtocolInfo.
 
 2008-02-11  Zeeshan Ali Khattak  <zeenix@gmail.com>
 
