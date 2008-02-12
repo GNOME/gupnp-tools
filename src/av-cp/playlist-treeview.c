@@ -960,12 +960,66 @@ is_mime_compat (const gchar *renderer_mime,
         }
 }
 
+static gchar *
+get_dlna_pn (gchar **extra_fields)
+{
+        gchar *pn = NULL;
+        gint   i;
+
+        for (i = 0; extra_fields[i]; i++) {
+                pn = g_strstr_len (extra_fields[i],
+                                   strlen (extra_fields[i]),
+                                   "DLNA.ORG_PN=");
+                if (pn != NULL) {
+                        pn += 12; /* end of "DLNA.ORG_PN=" */
+
+                        break;
+                }
+        }
+
+        return pn;
+}
+
 static gboolean
 is_extra_compat (const gchar *renderer_extra,
                  const gchar *item_extra)
 {
-        /* FIXME: implement this */
-        return TRUE;
+        gchar  **renderer_tokens;
+        gchar  **item_tokens;
+        gchar   *renderer_pn;
+        gchar   *item_pn;
+        gboolean ret = FALSE;
+
+        if (g_ascii_strcasecmp (renderer_extra, "*") == 0) {
+                return TRUE;
+        }
+
+        renderer_tokens = g_strsplit (renderer_extra, ";", -1);
+        if (renderer_tokens == NULL) {
+                return FALSE;
+        }
+
+        item_tokens = g_strsplit (item_extra, ";", -1);
+        if (item_tokens == NULL) {
+                goto no_item_tokens;
+        }
+
+        renderer_pn = get_dlna_pn (renderer_tokens);
+        item_pn = get_dlna_pn (item_tokens);
+        if (renderer_pn == NULL || item_pn == NULL) {
+                goto no_renderer_pn;
+        }
+
+        if (g_ascii_strcasecmp (renderer_pn, item_pn) == 0) {
+                ret = TRUE;
+        }
+
+no_renderer_pn:
+        g_strfreev (item_tokens);
+no_item_tokens:
+        g_strfreev (renderer_tokens);
+
+        return ret;
 }
 
 
