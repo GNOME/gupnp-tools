@@ -995,12 +995,12 @@ protocol_equal_func (const gchar *item_protocol,
                 goto return_point;
         }
 
-        if (is_transport_compat (item_proto_tokens[0],
-                                 item_proto_tokens[1],
-                                 renderer_proto_tokens[0],
-                                 renderer_proto_tokens[2]) &&
-            is_mime_compat (item_proto_tokens[2], renderer_proto_tokens[2]) &&
-            is_extra_compat (item_proto_tokens[3], renderer_proto_tokens[3])) {
+        if (is_transport_compat (renderer_proto_tokens[0],
+                                 renderer_proto_tokens[2],
+                                 item_proto_tokens[0],
+                                 item_proto_tokens[1]) &&
+            is_mime_compat (renderer_proto_tokens[2], item_proto_tokens[2]) &&
+            is_extra_compat (renderer_proto_tokens[3], item_proto_tokens[3])) {
                 ret = TRUE;
         }
 

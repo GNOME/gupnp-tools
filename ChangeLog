@@ -2,7 +2,8 @@
 
 	* src/av-cp/playlist-treeview.c:
 
-	Fix a typo.
+	- Fix a typo.
+	- Pass arguments in correct order to ProtocolInfo comparison functions.
 
 2008-02-11  Zeeshan Ali Khattak  <zeenix@gmail.com>
 
