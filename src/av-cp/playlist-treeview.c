@@ -950,10 +950,11 @@ is_transport_compat (const gchar *renderer_protocol,
 }
 
 static gboolean
-is_mime_compat (const gchar *renderer_mime,
-                const gchar *item_mime)
+is_content_format_compat (const gchar *renderer_content_format,
+                          const gchar *item_content_format)
 {
-        if (g_ascii_strcasecmp (renderer_mime, item_mime) != 0) {
+        if (g_ascii_strcasecmp (renderer_content_format,
+                                item_content_format) != 0) {
                 return FALSE;
         } else {
                 return TRUE;
@@ -961,14 +962,14 @@ is_mime_compat (const gchar *renderer_mime,
 }
 
 static gchar *
-get_dlna_pn (gchar **extra_fields)
+get_dlna_pn (gchar **additional_info_fields)
 {
         gchar *pn = NULL;
         gint   i;
 
-        for (i = 0; extra_fields[i]; i++) {
-                pn = g_strstr_len (extra_fields[i],
-                                   strlen (extra_fields[i]),
+        for (i = 0; additional_info_fields[i]; i++) {
+                pn = g_strstr_len (additional_info_fields[i],
+                                   strlen (additional_info_fields[i]),
                                    "DLNA.ORG_PN=");
                 if (pn != NULL) {
                         pn += 12; /* end of "DLNA.ORG_PN=" */
@@ -981,8 +982,8 @@ get_dlna_pn (gchar **extra_fields)
 }
 
 static gboolean
-is_extra_compat (const gchar *renderer_extra,
-                 const gchar *item_extra)
+is_additional_info_compat (const gchar *renderer_additional_info,
+                           const gchar *item_additional_info)
 {
         gchar  **renderer_tokens;
         gchar  **item_tokens;
@@ -990,16 +991,16 @@ is_extra_compat (const gchar *renderer_extra,
         gchar   *item_pn;
         gboolean ret = FALSE;
 
-        if (g_ascii_strcasecmp (renderer_extra, "*") == 0) {
+        if (g_ascii_strcasecmp (renderer_additional_info, "*") == 0) {
                 return TRUE;
         }
 
-        renderer_tokens = g_strsplit (renderer_extra, ";", -1);
+        renderer_tokens = g_strsplit (renderer_additional_info, ";", -1);
         if (renderer_tokens == NULL) {
                 return FALSE;
         }
 
-        item_tokens = g_strsplit (item_extra, ";", -1);
+        item_tokens = g_strsplit (item_additional_info, ";", -1);
         if (item_tokens == NULL) {
                 goto no_item_tokens;
         }
@@ -1053,8 +1054,10 @@ protocol_equal_func (const gchar *item_protocol,
                                  renderer_proto_tokens[2],
                                  item_proto_tokens[0],
                                  item_proto_tokens[1]) &&
-            is_mime_compat (renderer_proto_tokens[2], item_proto_tokens[2]) &&
-            is_extra_compat (renderer_proto_tokens[3], item_proto_tokens[3])) {
+            is_content_format_compat (renderer_proto_tokens[2],
+                                      item_proto_tokens[2]) &&
+            is_additional_info_compat (renderer_proto_tokens[3],
+                                       item_proto_tokens[3])) {
                 ret = TRUE;
         }
 
