@@ -653,7 +653,7 @@ on_position_hscale_value_changed (GtkRange *range,
         minutes = (total_secs / 60) - (hours * 60);
         seconds = total_secs - (hours * 3600) - (minutes * 60);
 
-        args[3] = g_strdup_printf ("time: %u:%02u:%02u\n",
+        args[3] = g_strdup_printf ("%u:%02u:%02u",
                                    hours,
                                    minutes,
                                    seconds);

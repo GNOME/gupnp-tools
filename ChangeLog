@@ -1,6 +1,12 @@
 2008-02-14  Zeeshan Ali Khattak  <zeenix@gmail.com>
 
 	* src/av-cp/renderer-controls.c:
+
+	Correct a typo in Seek implementation.
+
+2008-02-14  Zeeshan Ali Khattak  <zeenix@gmail.com>
+
+	* src/av-cp/renderer-controls.c:
 	* src/av-cp/renderer-controls.h:
 
 	Try to get the duration from item metadata. This is to deal with
