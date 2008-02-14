@@ -336,6 +336,13 @@ on_previous_button_clicked (GtkButton *button,
         select_prev_object ();
 }
 
+void
+on_clear_state_button_clicked (GtkButton *button,
+                               gpointer   user_data)
+{
+        clear_selected_renderer_state ();
+}
+
 gboolean
 on_position_hscale_value_changed (GtkRange *range,
                                   gpointer  user_data)

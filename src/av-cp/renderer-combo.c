@@ -457,6 +457,22 @@ on_rendering_control_last_change (GUPnPServiceProxy *rendering_control,
 }
 
 void
+clear_selected_renderer_state (void)
+{
+        GtkComboBox  *combo;
+        GtkTreeModel *model;
+        GtkTreeIter   iter;
+
+        combo = GTK_COMBO_BOX (renderer_combo);
+        model = gtk_combo_box_get_model (combo);
+        g_assert (model != NULL);
+
+        if (gtk_combo_box_get_active_iter (combo, &iter)) {
+                set_state (model, &iter, PLAYBACK_STATE_UNKNOWN);
+        }
+}
+
+void
 append_media_renderer_to_tree (GUPnPDeviceProxy  *proxy,
                                GUPnPServiceProxy *av_transport,
                                GUPnPServiceProxy *rendering_control,

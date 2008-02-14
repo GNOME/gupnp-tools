@@ -49,6 +49,9 @@ PlaybackState
 get_selected_renderer_state     (void);
 
 void
+clear_selected_renderer_state   (void);
+
+void
 add_media_renderer              (GUPnPDeviceProxy *proxy);
 
 void
