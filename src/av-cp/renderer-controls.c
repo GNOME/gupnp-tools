@@ -29,6 +29,8 @@
 #define SEC_PER_MIN 60
 #define SEC_PER_HOUR 3600
 
+static GUPnPDIDLLiteParser *didl_parser;
+
 GtkWidget *volume_vscale;
 GtkWidget *position_hscale;
 GtkWidget *play_button;
@@ -240,13 +242,216 @@ set_volume_hscale (guint volume)
                                            NULL);
 }
 
+static gboolean
+is_transport_compat (const gchar *renderer_protocol,
+                     const gchar *renderer_host,
+                     const gchar *item_protocol,
+                     const gchar *item_host)
+{
+        if (g_ascii_strcasecmp (renderer_protocol, item_protocol) != 0 &&
+            g_ascii_strcasecmp (renderer_protocol, "*") != 0) {
+                return FALSE;
+        } else if (g_ascii_strcasecmp ("INTERNAL", renderer_protocol) == 0 &&
+                   g_ascii_strcasecmp (renderer_host, item_host) != 0) {
+                   /* Host must be the same in case of INTERNAL protocol */
+                        return FALSE;
+        } else {
+                return TRUE;
+        }
+}
+
+static gboolean
+is_content_format_compat (const gchar *renderer_content_format,
+                          const gchar *item_content_format)
+{
+        if (g_ascii_strcasecmp (renderer_content_format, "*") != 0 &&
+            g_ascii_strcasecmp (renderer_content_format,
+                                item_content_format) != 0) {
+                return FALSE;
+        } else {
+                return TRUE;
+        }
+}
+
+static gchar *
+get_dlna_pn (gchar **additional_info_fields)
+{
+        gchar *pn = NULL;
+        gint   i;
+
+        for (i = 0; additional_info_fields[i]; i++) {
+                pn = g_strstr_len (additional_info_fields[i],
+                                   strlen (additional_info_fields[i]),
+                                   "DLNA.ORG_PN=");
+                if (pn != NULL) {
+                        pn += 12; /* end of "DLNA.ORG_PN=" */
+
+                        break;
+                }
+        }
+
+        return pn;
+}
+
+static gboolean
+is_additional_info_compat (const gchar *renderer_additional_info,
+                           const gchar *item_additional_info)
+{
+        gchar  **renderer_tokens;
+        gchar  **item_tokens;
+        gchar   *renderer_pn;
+        gchar   *item_pn;
+        gboolean ret = FALSE;
+
+        if (g_ascii_strcasecmp (renderer_additional_info, "*") == 0) {
+                return TRUE;
+        }
+
+        renderer_tokens = g_strsplit (renderer_additional_info, ";", -1);
+        if (renderer_tokens == NULL) {
+                return FALSE;
+        }
+
+        item_tokens = g_strsplit (item_additional_info, ";", -1);
+        if (item_tokens == NULL) {
+                goto no_item_tokens;
+        }
+
+        renderer_pn = get_dlna_pn (renderer_tokens);
+        item_pn = get_dlna_pn (item_tokens);
+        if (renderer_pn == NULL || item_pn == NULL) {
+                goto no_renderer_pn;
+        }
+
+        if (g_ascii_strcasecmp (renderer_pn, item_pn) == 0) {
+                ret = TRUE;
+        }
+
+no_renderer_pn:
+        g_strfreev (item_tokens);
+no_item_tokens:
+        g_strfreev (renderer_tokens);
+
+        return ret;
+}
+
+
+static gboolean
+protocol_equal_func (const gchar *item_protocol,
+                     const gchar *item_uri,
+                     const gchar *renderer_protocol)
+{
+        gchar **item_proto_tokens;
+        gchar **renderer_proto_tokens;
+        gboolean ret = FALSE;
+
+        item_proto_tokens = g_strsplit (item_protocol,
+                                        ":",
+                                        4);
+        renderer_proto_tokens = g_strsplit (renderer_protocol,
+                                            ":",
+                                            4);
+        if (item_proto_tokens[0] == NULL ||
+            item_proto_tokens[1] == NULL ||
+            item_proto_tokens[2] == NULL ||
+            item_proto_tokens[3] == NULL ||
+            renderer_proto_tokens[0] == NULL ||
+            renderer_proto_tokens[1] == NULL ||
+            renderer_proto_tokens[2] == NULL ||
+            renderer_proto_tokens[3] == NULL) {
+                goto return_point;
+        }
+
+        if (is_transport_compat (renderer_proto_tokens[0],
+                                 renderer_proto_tokens[2],
+                                 item_proto_tokens[0],
+                                 item_proto_tokens[1]) &&
+            is_content_format_compat (renderer_proto_tokens[2],
+                                      item_proto_tokens[2]) &&
+            is_additional_info_compat (renderer_proto_tokens[3],
+                                       item_proto_tokens[3])) {
+                ret = TRUE;
+        }
+
+return_point:
+        g_strfreev (renderer_proto_tokens);
+        g_strfreev (item_proto_tokens);
+
+        return ret;
+}
+
+static char *
+find_compat_uri_from_res (GHashTable *resource_hash)
+{
+        GUPnPServiceProxy *av_transport;
+        char             **protocols;
+        char              *uri = NULL;
+        guint              i;
+
+        av_transport = get_selected_av_transport (&protocols);
+        if (av_transport == NULL) {
+                g_warning ("No renderer selected");
+
+                return NULL;
+        }
+
+        for (i = 0; protocols[i] && uri == NULL; i++) {
+                uri = g_hash_table_find (resource_hash,
+                                         (GHRFunc) protocol_equal_func,
+                                         protocols[i]);
+        }
+
+        if (uri) {
+                uri = g_strdup (uri);
+        }
+
+        if (protocols) {
+                g_strfreev (protocols);
+        }
+
+        g_object_unref (av_transport);
+
+        return uri;
+}
+
+static void
+on_didl_item_available (GUPnPDIDLLiteParser *didl_parser,
+                        xmlNode             *item_node,
+                        gpointer             user_data)
+{
+        GHashTable **resource_hash;
+
+        resource_hash = (GHashTable **) user_data;
+
+        *resource_hash = gupnp_didl_lite_object_get_resource_hash (item_node);
+}
+
+static char *
+find_compat_uri_from_metadata (const char *metadata)
+{
+        GHashTable *resource_hash;
+        char       *uri = NULL;
+
+        /* Assumption: metadata only contains a single didl object */
+        gupnp_didl_lite_parser_parse_didl (didl_parser,
+                                           metadata,
+                                           on_didl_item_available,
+                                           &resource_hash);
+        if (resource_hash != NULL) {
+                uri = find_compat_uri_from_res (resource_hash);
+                g_hash_table_unref (resource_hash);
+        }
+
+        return uri;
+}
+
 void
-set_av_transport_uri (const char *uri,
-                      const char *metadata,
+set_av_transport_uri (const char *metadata,
                       GCallback   callback)
 {
         GUPnPServiceProxy     *av_transport;
         SetAVTransportURIData *data;
+        char                  *uri;
         GError                *error;
 
         av_transport = get_selected_av_transport (NULL);
@@ -255,7 +460,17 @@ set_av_transport_uri (const char *uri,
                 return;
         }
 
+        uri = find_compat_uri_from_metadata (metadata);
+        if (uri == NULL) {
+                g_warning ("no compatible URI found.");
+
+                g_object_unref (av_transport);
+
+                return;
+        }
+
         data = set_av_transport_uri_data_new (callback, uri);
+        g_free (uri);
 
         error = NULL;
         gupnp_service_proxy_begin_action (av_transport,
@@ -280,7 +495,7 @@ set_av_transport_uri (const char *uri,
                                         (GUPNP_SERVICE_INFO (av_transport));
 
                 g_warning ("Failed to set URI '%s' on %s: %s",
-                           uri,
+                           data->uri,
                            udn,
                            error->message);
 
@@ -694,11 +909,12 @@ setup_renderer_controls (GladeXML *glade_xml)
         prev_button = glade_xml_get_widget (glade_xml, "previous-button");
         g_assert (prev_button != NULL);
 
+        didl_parser = gupnp_didl_lite_parser_new ();
+        g_assert (didl_parser != NULL);
         timeout_id = 0;
 
         g_object_weak_ref (G_OBJECT (position_hscale),
                            (GWeakNotify) remove_timeout,
                            NULL);
 }
-
 

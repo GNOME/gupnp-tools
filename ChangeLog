@@ -1,6 +1,16 @@
 2008-02-13  Zeeshan Ali Khattak  <zeenix@gmail.com>
 
 	* src/av-cp/playlist-treeview.c:
+	* src/av-cp/playlist-treeview.h:
+	* src/av-cp/renderer-controls.c:
+	* src/av-cp/renderer-controls.h:
+
+	Don't keep the resource hashtable in the playlist treemodel but rather
+	create it from metadata before setting the URI on the renderer.
+
+2008-02-13  Zeeshan Ali Khattak  <zeenix@gmail.com>
+
+	* src/av-cp/playlist-treeview.c:
 
 	Move get_resource_hash() to gupnp-av and rename accordingly.
 

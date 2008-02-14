@@ -26,8 +26,7 @@
 #include <glade/glade.h>
 #include <libgupnp-av/gupnp-av.h>
 
-typedef void (* GetSelectedItemCallback) (const char *uri,
-                                          const char *metadata,
+typedef void (* GetSelectedItemCallback) (const char *metadata,
                                           gpointer    user_data);
 
 void

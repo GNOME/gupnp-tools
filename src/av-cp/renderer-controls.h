@@ -28,8 +28,7 @@
 #include <glade/glade.h>
 
 void
-set_av_transport_uri            (const char *uri,
-                                 const char *metadata,
+set_av_transport_uri            (const char *metadata,
                                  GCallback   callback);
 
 void

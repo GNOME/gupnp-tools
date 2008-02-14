@@ -49,7 +49,6 @@ typedef struct
 {
   GetSelectedItemCallback callback;
 
-  gchar *uri;
   gchar *id;
 
   gpointer user_data;
@@ -58,7 +57,6 @@ typedef struct
 static BrowseMetadataData *
 browse_metadata_data_new (GetSelectedItemCallback callback,
                           const char             *id,
-                          const char             *uri,
                           gpointer                user_data)
 {
         BrowseMetadataData *data;
@@ -66,7 +64,6 @@ browse_metadata_data_new (GetSelectedItemCallback callback,
         data = g_slice_new (BrowseMetadataData);
         data->callback = callback;
         data->id = g_strdup (id);
-        data->uri = g_strdup (uri);
         data->user_data = user_data;
 
         return data;
@@ -76,7 +73,6 @@ static void
 browse_metadata_data_free (BrowseMetadataData *data)
 {
         g_free (data->id);
-        g_free (data->uri);
         g_slice_free (BrowseMetadataData, data);
 }
 
@@ -114,7 +110,7 @@ create_playlist_treemodel (void)
 {
         GtkTreeStore *store;
 
-        store = gtk_tree_store_new (7,
+        store = gtk_tree_store_new (6,
                                     /* Icon */
                                     GDK_TYPE_PIXBUF,
                                     /* Title */
@@ -126,12 +122,7 @@ create_playlist_treemodel (void)
                                     /* Id */
                                     G_TYPE_STRING,
                                     /* Is container? */
-                                    G_TYPE_BOOLEAN,
-                                    /* Resource Hashtable
-                                     * key = Protocol Info
-                                     * value = URI
-                                     */
-                                    G_TYPE_HASH_TABLE);
+                                    G_TYPE_BOOLEAN);
 
         return GTK_TREE_MODEL (store);
 }
@@ -533,7 +524,6 @@ append_didle_object (xmlNode           *object_node,
         char       *title;
         gboolean    is_container;
         GdkPixbuf  *icon;
-        GHashTable *resource_hash;
         gint        position;
 
         id = gupnp_didl_lite_object_get_id (object_node);
@@ -557,18 +547,9 @@ append_didle_object (xmlNode           *object_node,
 
         if (is_container) {
                 position = 0;
-                resource_hash = NULL;
                 icon = get_icon_by_id (ICON_CONTAINER);
         } else {
                 position = -1;
-                resource_hash =
-                        gupnp_didl_lite_object_get_resource_hash (object_node);
-                if (resource_hash == NULL) {
-                        g_free (id);
-                        g_free (title);
-                        g_free (parent_id);
-                        return;
-                }
 
                 icon = get_item_icon (object_node);
         }
@@ -591,7 +572,6 @@ append_didle_object (xmlNode           *object_node,
                                            3, content_dir,
                                            4, id,
                                            5, is_container,
-                                           6, resource_hash,
                                            -1);
 
         g_free (parent_id);
@@ -705,7 +685,7 @@ on_browse_metadata_failure (BrowseMetadataData *data,
                             GError             *error)
 {
         g_warning ("Failed to get metadata for '%s': %s\n",
-                   data->uri,
+                   data->id,
                    error->message);
         g_error_free (error);
         browse_metadata_data_free (data);
@@ -888,178 +868,6 @@ remove_media_server (GUPnPDeviceProxy *proxy)
         }
 }
 
-static gboolean
-is_transport_compat (const gchar *renderer_protocol,
-                     const gchar *renderer_host,
-                     const gchar *item_protocol,
-                     const gchar *item_host)
-{
-        if (g_ascii_strcasecmp (renderer_protocol, item_protocol) != 0 &&
-            g_ascii_strcasecmp (renderer_protocol, "*") != 0) {
-                return FALSE;
-        } else if (g_ascii_strcasecmp ("INTERNAL", renderer_protocol) == 0 &&
-                   g_ascii_strcasecmp (renderer_host, item_host) != 0) {
-                   /* Host must be the same in case of INTERNAL protocol */
-                        return FALSE;
-        } else {
-                return TRUE;
-        }
-}
-
-static gboolean
-is_content_format_compat (const gchar *renderer_content_format,
-                          const gchar *item_content_format)
-{
-        if (g_ascii_strcasecmp (renderer_content_format, "*") != 0 &&
-            g_ascii_strcasecmp (renderer_content_format,
-                                item_content_format) != 0) {
-                return FALSE;
-        } else {
-                return TRUE;
-        }
-}
-
-static gchar *
-get_dlna_pn (gchar **additional_info_fields)
-{
-        gchar *pn = NULL;
-        gint   i;
-
-        for (i = 0; additional_info_fields[i]; i++) {
-                pn = g_strstr_len (additional_info_fields[i],
-                                   strlen (additional_info_fields[i]),
-                                   "DLNA.ORG_PN=");
-                if (pn != NULL) {
-                        pn += 12; /* end of "DLNA.ORG_PN=" */
-
-                        break;
-                }
-        }
-
-        return pn;
-}
-
-static gboolean
-is_additional_info_compat (const gchar *renderer_additional_info,
-                           const gchar *item_additional_info)
-{
-        gchar  **renderer_tokens;
-        gchar  **item_tokens;
-        gchar   *renderer_pn;
-        gchar   *item_pn;
-        gboolean ret = FALSE;
-
-        if (g_ascii_strcasecmp (renderer_additional_info, "*") == 0) {
-                return TRUE;
-        }
-
-        renderer_tokens = g_strsplit (renderer_additional_info, ";", -1);
-        if (renderer_tokens == NULL) {
-                return FALSE;
-        }
-
-        item_tokens = g_strsplit (item_additional_info, ";", -1);
-        if (item_tokens == NULL) {
-                goto no_item_tokens;
-        }
-
-        renderer_pn = get_dlna_pn (renderer_tokens);
-        item_pn = get_dlna_pn (item_tokens);
-        if (renderer_pn == NULL || item_pn == NULL) {
-                goto no_renderer_pn;
-        }
-
-        if (g_ascii_strcasecmp (renderer_pn, item_pn) == 0) {
-                ret = TRUE;
-        }
-
-no_renderer_pn:
-        g_strfreev (item_tokens);
-no_item_tokens:
-        g_strfreev (renderer_tokens);
-
-        return ret;
-}
-
-
-static gboolean
-protocol_equal_func (const gchar *item_protocol,
-                     const gchar *item_uri,
-                     const gchar *renderer_protocol)
-{
-        gchar **item_proto_tokens;
-        gchar **renderer_proto_tokens;
-        gboolean ret = FALSE;
-
-        item_proto_tokens = g_strsplit (item_protocol,
-                                        ":",
-                                        4);
-        renderer_proto_tokens = g_strsplit (renderer_protocol,
-                                            ":",
-                                            4);
-        if (item_proto_tokens[0] == NULL ||
-            item_proto_tokens[1] == NULL ||
-            item_proto_tokens[2] == NULL ||
-            item_proto_tokens[3] == NULL ||
-            renderer_proto_tokens[0] == NULL ||
-            renderer_proto_tokens[1] == NULL ||
-            renderer_proto_tokens[2] == NULL ||
-            renderer_proto_tokens[3] == NULL) {
-                goto return_point;
-        }
-
-        if (is_transport_compat (renderer_proto_tokens[0],
-                                 renderer_proto_tokens[2],
-                                 item_proto_tokens[0],
-                                 item_proto_tokens[1]) &&
-            is_content_format_compat (renderer_proto_tokens[2],
-                                      item_proto_tokens[2]) &&
-            is_additional_info_compat (renderer_proto_tokens[3],
-                                       item_proto_tokens[3])) {
-                ret = TRUE;
-        }
-
-return_point:
-        g_strfreev (renderer_proto_tokens);
-        g_strfreev (item_proto_tokens);
-
-        return ret;
-}
-
-static char *
-find_compatible_uri (GHashTable *resource_hash)
-{
-        GUPnPServiceProxy *av_transport;
-        char             **protocols;
-        char              *uri = NULL;
-        guint              i;
-
-        av_transport = get_selected_av_transport (&protocols);
-        if (av_transport == NULL) {
-                g_warning ("No renderer selected");
-
-                return NULL;
-        }
-
-        for (i = 0; protocols[i] && uri == NULL; i++) {
-                uri = g_hash_table_find (resource_hash,
-                                         (GHRFunc) protocol_equal_func,
-                                         protocols[i]);
-        }
-
-        if (uri) {
-                uri = g_strdup (uri);
-        }
-
-        if (protocols) {
-                g_strfreev (protocols);
-        }
-
-        g_object_unref (av_transport);
-
-        return uri;
-}
-
 void
 browse_metadata_cb (GUPnPServiceProxy       *content_dir,
                     GUPnPServiceProxyAction *action,
@@ -1083,7 +891,7 @@ browse_metadata_cb (GUPnPServiceProxy       *content_dir,
         if (error) {
                 on_browse_metadata_failure (data, error);
         } else {
-                data->callback (data->uri, metadata, data->user_data);
+                data->callback (metadata, data->user_data);
 
                 browse_metadata_data_free (data);
                 g_free (metadata);
@@ -1100,11 +908,9 @@ get_selected_item (GetSelectedItemCallback callback,
         GtkTreeSelection   *selection;
         GtkTreeModel       *model;
         GtkTreeIter         iter;
-        GHashTable         *resource_hash;
         gboolean            is_container;
         BrowseMetadataData *data;
         char               *id = NULL;
-        char               *uri = NULL;
         GError             *error;
         gboolean            ret = FALSE;
 
@@ -1120,21 +926,13 @@ get_selected_item (GetSelectedItemCallback callback,
                             3, &content_dir,
                             4, &id,
                             5, &is_container,
-                            6, &resource_hash,
                             -1);
 
         if (is_container) {
                 goto free_and_return;
         }
 
-        uri = find_compatible_uri (resource_hash);
-        if (uri == NULL) {
-                g_warning ("no compatible URI found.");
-
-                goto free_and_return;
-        }
-
-        data = browse_metadata_data_new (callback, id, uri, user_data);
+        data = browse_metadata_data_new (callback, id, user_data);
 
         error = NULL;
         gupnp_service_proxy_begin_action
@@ -1172,10 +970,6 @@ get_selected_item (GetSelectedItemCallback callback,
 free_and_return:
         if (id) {
                 g_free (id);
-        }
-
-        if (resource_hash) {
-                g_hash_table_unref (resource_hash);
         }
 
         g_object_unref (content_dir);
