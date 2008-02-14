@@ -24,6 +24,7 @@
 #include <gtk/gtk.h>
 
 #include "playlist-treeview.h"
+#include "renderer-controls.h"
 #include "renderer-combo.h"
 
 #define SEC_PER_MIN 60
@@ -47,16 +48,26 @@ typedef struct
 {
   GCallback callback;
   gchar    *uri;
+  gchar    *duration;
 } SetAVTransportURIData;
 
+typedef struct
+{
+  gchar *uri;
+  gchar *duration;
+} OnDIDLItemAvailableData;
+
 static SetAVTransportURIData *
-set_av_transport_uri_data_new (GCallback callback, const char *uri)
+set_av_transport_uri_data_new (GCallback callback,
+                               const char *uri,
+                               const char *duration)
 {
         SetAVTransportURIData *data;
 
         data = g_slice_new (SetAVTransportURIData);
         data->callback = callback;
         data->uri = g_strdup (uri);
+        data->duration = g_strdup (duration);
 
         return data;
 }
@@ -65,7 +76,32 @@ static void
 set_av_transport_uri_data_free (SetAVTransportURIData *data)
 {
         g_free (data->uri);
+        if (data->duration) {
+                g_free (data->duration);
+        }
         g_slice_free (SetAVTransportURIData, data);
+}
+
+static OnDIDLItemAvailableData *
+on_didl_item_available_data_new (const char *uri, const char *duration)
+{
+        OnDIDLItemAvailableData *data;
+
+        data = g_slice_new (OnDIDLItemAvailableData);
+        data->uri = g_strdup (uri);
+        data->duration = g_strdup (duration);
+
+        return data;
+}
+
+static void
+on_didl_item_available_data_free (OnDIDLItemAvailableData *data)
+{
+        g_free (data->uri);
+        if (data->duration) {
+                g_free (data->duration);
+        }
+        g_slice_free (OnDIDLItemAvailableData, data);
 }
 
 static void
@@ -205,6 +241,10 @@ set_av_transport_uri_cb (GUPnPServiceProxy       *av_transport,
                                             NULL)) {
                 if (data->callback) {
                         data->callback ();
+                }
+
+                if (data->duration) {
+                        set_position_hscale_duration (data->duration);
                 }
         } else {
                 const char *udn;
@@ -387,7 +427,7 @@ return_point:
 }
 
 static char *
-find_compat_uri_from_res (GList *resources)
+find_compat_uri_from_res (GList *resources, char **duration)
 {
         GUPnPServiceProxy *av_transport;
         char             **protocols;
@@ -414,6 +454,7 @@ find_compat_uri_from_res (GList *resources)
 
                 res_node = (xmlNode *) res->data;
                 uri = gupnp_didl_lite_resource_get_contents (res_node);
+                *duration = gupnp_didl_lite_resource_get_duration (res_node);
         }
 
         if (protocols) {
@@ -430,31 +471,54 @@ on_didl_item_available (GUPnPDIDLLiteParser *didl_parser,
                         xmlNode             *item_node,
                         gpointer             user_data)
 {
-        GList *resources;
-        char **uri;
+        GList                    *resources;
+        OnDIDLItemAvailableData **data;
+        char                     *uri;
+        char                     *duration;
 
         resources = gupnp_didl_lite_object_get_resources (item_node);
         if (resources == NULL) {
                 return;
         }
 
-        uri = (char **) user_data;
-
-        *uri = find_compat_uri_from_res (resources);
-
+        duration = NULL;
+        uri = find_compat_uri_from_res (resources, &duration);
         g_list_free (resources);
+
+        if (uri == NULL) {
+                return;
+        }
+
+        data = (OnDIDLItemAvailableData **) user_data;
+
+        *data = on_didl_item_available_data_new (uri, duration);
+
+        g_free (uri);
+        if (duration) {
+                g_free (duration);
+        }
 }
 
 static char *
-find_compat_uri_from_metadata (const char *metadata)
+find_compat_uri_from_metadata (const char *metadata, char **duration)
 {
-        char *uri = NULL;
+        OnDIDLItemAvailableData *data;
+        char                    *uri;
+
+        data = NULL;
+        uri = NULL;
 
         /* Assumption: metadata only contains a single didl object */
         gupnp_didl_lite_parser_parse_didl (didl_parser,
                                            metadata,
                                            on_didl_item_available,
-                                           &uri);
+                                           &data);
+        if (data != NULL) {
+                uri = g_strdup (data->uri);
+                *duration = g_strdup (data->duration);
+
+                on_didl_item_available_data_free (data);
+        }
 
         return uri;
 }
@@ -466,6 +530,7 @@ set_av_transport_uri (const char *metadata,
         GUPnPServiceProxy     *av_transport;
         SetAVTransportURIData *data;
         char                  *uri;
+        char                  *duration;
         GError                *error;
 
         av_transport = get_selected_av_transport (NULL);
@@ -474,7 +539,7 @@ set_av_transport_uri (const char *metadata,
                 return;
         }
 
-        uri = find_compat_uri_from_metadata (metadata);
+        uri = find_compat_uri_from_metadata (metadata, &duration);
         if (uri == NULL) {
                 g_warning ("no compatible URI found.");
 
@@ -483,8 +548,9 @@ set_av_transport_uri (const char *metadata,
                 return;
         }
 
-        data = set_av_transport_uri_data_new (callback, uri);
+        data = set_av_transport_uri_data_new (callback, uri, duration);
         g_free (uri);
+        g_free (duration);
 
         error = NULL;
         gupnp_service_proxy_begin_action (av_transport,

@@ -27,6 +27,8 @@
 #include <gtk/gtk.h>
 #include <glade/glade.h>
 
+#include "renderer-combo.h"
+
 void
 set_av_transport_uri            (const char *metadata,
                                  GCallback   callback);
