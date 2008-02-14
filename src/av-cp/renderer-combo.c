@@ -267,6 +267,28 @@ is_iter_active (GtkComboBox *combo,
 }
 
 static void
+set_state (GtkTreeModel *model,
+           GtkTreeIter  *iter,
+           PlaybackState state)
+{
+        gtk_list_store_set (GTK_LIST_STORE (model),
+                            iter,
+                            6, state,
+                            -1);
+
+        if (state == PLAYBACK_STATE_PLAYING ||
+            state == PLAYBACK_STATE_PAUSED) {
+                gtk_widget_set_sensitive (renderer_combo, FALSE);
+        } else {
+                gtk_widget_set_sensitive (renderer_combo, TRUE);
+        }
+
+        if (is_iter_active (GTK_COMBO_BOX (renderer_combo), iter)) {
+                prepare_controls_for_state (state);
+        }
+}
+
+static void
 set_state_by_name (const gchar *udn,
                    const gchar *state_name)
 {
@@ -282,21 +304,7 @@ set_state_by_name (const gchar *udn,
 
                 state = state_name_to_state (state_name),
 
-                gtk_list_store_set (GTK_LIST_STORE (model),
-                                    &iter,
-                                    6, state,
-                                    -1);
-
-                if (state == PLAYBACK_STATE_PLAYING ||
-                    state == PLAYBACK_STATE_PAUSED) {
-                        gtk_widget_set_sensitive (renderer_combo, FALSE);
-                } else {
-                        gtk_widget_set_sensitive (renderer_combo, TRUE);
-                }
-
-                if (is_iter_active (GTK_COMBO_BOX (renderer_combo), &iter)) {
-                        prepare_controls_for_state (state);
-                }
+                set_state (model, &iter, state);
         }
 }
 

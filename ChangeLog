@@ -1,5 +1,11 @@
 2008-02-12  Zeeshan Ali Khattak  <zeenix@gmail.com>
 
+	* src/av-cp/renderer-combo.c:
+
+	Refactor: put the state setting into a separate function.
+
+2008-02-12  Zeeshan Ali Khattak  <zeenix@gmail.com>
+
 	* data/gupnp-av-cp.glade:
 
 	About dialog should have a '12' pixels wide border.
