@@ -1,3 +1,9 @@
+2008-02-12  Zeeshan Ali Khattak  <zeenix@gmail.com>
+
+	* data/gupnp-av-cp.glade:
+
+	About dialog should have a '12' pixels wide border.
+
 2008-02-11  Zeeshan Ali Khattak  <zeenix@gmail.com>
 
 	* src/av-cp/playlist-treeview.c:

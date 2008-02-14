@@ -703,6 +703,7 @@
 </widget>
 
 <widget class="GtkAboutDialog" id="about-dialog">
+  <property name="border_width">12</property>
   <property name="destroy_with_parent">False</property>
   <property name="name">GUPnP AV Control Point</property>
   <property name="copyright" translatable="yes">Copyright (C) 2007 Zeeshan Ali</property>
