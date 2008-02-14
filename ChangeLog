@@ -1,3 +1,9 @@
+2008-02-14  Zeeshan Ali Khattak  <zeenix@gmail.com>
+
+	* src/av-cp/renderer-controls.c:
+
+	No need to create the resource hashtable, just use the resources GList.
+
 2008-02-13  Zeeshan Ali Khattak  <zeenix@gmail.com>
 
 	* src/av-cp/playlist-treeview.c:

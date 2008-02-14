@@ -336,14 +336,19 @@ no_item_tokens:
 }
 
 
-static gboolean
-protocol_equal_func (const gchar *item_protocol,
-                     const gchar *item_uri,
+static gint
+protocol_equal_func (xmlNode     *res_node,
                      const gchar *renderer_protocol)
 {
+        gchar *item_protocol;
         gchar **item_proto_tokens;
         gchar **renderer_proto_tokens;
-        gboolean ret = FALSE;
+        gint ret = -1;
+
+        item_protocol = gupnp_didl_lite_resource_get_protocol_info (res_node);
+        if (item_protocol == NULL) {
+                return -1;
+        }
 
         item_proto_tokens = g_strsplit (item_protocol,
                                         ":",
@@ -370,10 +375,11 @@ protocol_equal_func (const gchar *item_protocol,
                                       item_proto_tokens[2]) &&
             is_additional_info_compat (renderer_proto_tokens[3],
                                        item_proto_tokens[3])) {
-                ret = TRUE;
+                ret = 0;
         }
 
 return_point:
+        g_free (item_protocol);
         g_strfreev (renderer_proto_tokens);
         g_strfreev (item_proto_tokens);
 
@@ -381,7 +387,7 @@ return_point:
 }
 
 static char *
-find_compat_uri_from_res (GHashTable *resource_hash)
+find_compat_uri_from_res (GList *resources)
 {
         GUPnPServiceProxy *av_transport;
         char             **protocols;
@@ -396,13 +402,18 @@ find_compat_uri_from_res (GHashTable *resource_hash)
         }
 
         for (i = 0; protocols[i] && uri == NULL; i++) {
-                uri = g_hash_table_find (resource_hash,
-                                         (GHRFunc) protocol_equal_func,
-                                         protocols[i]);
-        }
+                GList   *res;
+                xmlNode *res_node;
 
-        if (uri) {
-                uri = g_strdup (uri);
+                res = g_list_find_custom (resources,
+                                          protocols[i],
+                                          (GCompareFunc) protocol_equal_func);
+                if (res == NULL) {
+                        continue;
+                }
+
+                res_node = (xmlNode *) res->data;
+                uri = gupnp_didl_lite_resource_get_contents (res_node);
         }
 
         if (protocols) {
@@ -419,28 +430,31 @@ on_didl_item_available (GUPnPDIDLLiteParser *didl_parser,
                         xmlNode             *item_node,
                         gpointer             user_data)
 {
-        GHashTable **resource_hash;
+        GList *resources;
+        char **uri;
 
-        resource_hash = (GHashTable **) user_data;
+        resources = gupnp_didl_lite_object_get_resources (item_node);
+        if (resources == NULL) {
+                return;
+        }
 
-        *resource_hash = gupnp_didl_lite_object_get_resource_hash (item_node);
+        uri = (char **) user_data;
+
+        *uri = find_compat_uri_from_res (resources);
+
+        g_list_free (resources);
 }
 
 static char *
 find_compat_uri_from_metadata (const char *metadata)
 {
-        GHashTable *resource_hash;
-        char       *uri = NULL;
+        char *uri = NULL;
 
         /* Assumption: metadata only contains a single didl object */
         gupnp_didl_lite_parser_parse_didl (didl_parser,
                                            metadata,
                                            on_didl_item_available,
-                                           &resource_hash);
-        if (resource_hash != NULL) {
-                uri = find_compat_uri_from_res (resource_hash);
-                g_hash_table_unref (resource_hash);
-        }
+                                           &uri);
 
         return uri;
 }
