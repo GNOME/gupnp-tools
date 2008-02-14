@@ -1,3 +1,9 @@
+2008-02-13  Zeeshan Ali Khattak  <zeenix@gmail.com>
+
+	* src/av-cp/playlist-treeview.c:
+
+	Move get_resource_hash() to gupnp-av and rename accordingly.
+
 2008-02-12  Zeeshan Ali Khattak  <zeenix@gmail.com>
 
 	* data/gupnp-av-cp.glade:

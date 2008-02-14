@@ -448,51 +448,6 @@ get_item_icon (xmlNode *object_node)
         return icon;
 }
 
-static GHashTable *
-get_resource_hash (xmlNode *object_node)
-{
-   GHashTable *resource_hash;
-   GList *resources;
-   GList *iter;
-
-   resources = gupnp_didl_lite_object_get_resources (object_node);
-
-   if (resources == NULL)
-           return NULL;
-
-   resource_hash = g_hash_table_new_full (g_str_hash,
-                                          g_str_equal,
-                                          g_free,
-                                          g_free);
-
-   for (iter = resources; iter; iter = iter->next) {
-           xmlNode *res_node;
-           char *uri;
-           char *proto_info;
-
-           res_node = (xmlNode *) iter->data;
-           proto_info = gupnp_didl_lite_resource_get_protocol_info (res_node);
-           if (proto_info == NULL)
-                   continue;
-
-           uri = gupnp_didl_lite_resource_get_contents (res_node);
-           if (uri == NULL) {
-                   g_free (proto_info);
-                   continue;
-           }
-
-           g_hash_table_insert (resource_hash, proto_info, uri);
-   }
-
-   if (g_hash_table_size (resource_hash) == 0) {
-           /* No point in keeping empty hash tables here */
-           g_hash_table_destroy (resource_hash);
-           resource_hash = NULL;
-   }
-
-   return resource_hash;
-}
-
 static gboolean
 find_container (GUPnPServiceProxy *content_dir,
                 GtkTreeModel      *model,
@@ -606,7 +561,8 @@ append_didle_object (xmlNode           *object_node,
                 icon = get_icon_by_id (ICON_CONTAINER);
         } else {
                 position = -1;
-                resource_hash = get_resource_hash (object_node);
+                resource_hash =
+                        gupnp_didl_lite_object_get_resource_hash (object_node);
                 if (resource_hash == NULL) {
                         g_free (id);
                         g_free (title);
