@@ -225,6 +225,8 @@ state_name_to_state (const char *state_name)
                 state = PLAYBACK_STATE_PLAYING;
         } else if (strcmp ("PAUSED_PLAYBACK", state_name) == 0) {
                 state = PLAYBACK_STATE_PAUSED;
+        } else if (strcmp ("TRANSITIONING", state_name) == 0) {
+                state = PLAYBACK_STATE_TRANSITIONING;
         } else {
                 state = PLAYBACK_STATE_UNKNOWN;
         }
@@ -277,7 +279,8 @@ set_state (GtkTreeModel *model,
                             -1);
 
         if (state == PLAYBACK_STATE_PLAYING ||
-            state == PLAYBACK_STATE_PAUSED) {
+            state == PLAYBACK_STATE_PAUSED ||
+            state == PLAYBACK_STATE_TRANSITIONING) {
                 gtk_widget_set_sensitive (renderer_combo, FALSE);
         } else {
                 gtk_widget_set_sensitive (renderer_combo, TRUE);

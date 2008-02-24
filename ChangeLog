@@ -1,5 +1,12 @@
 2008-02-23  Zeeshan Ali Khattak  <zeenix@gmail.com>
 
+	* src/av-cp/renderer-combo.c:
+	* src/av-cp/renderer-controls.c:
+
+	Handle 'TRANSITIONING' state.
+
+2008-02-23  Zeeshan Ali Khattak  <zeenix@gmail.com>
+
 	* data/gupnp-av-cp.glade:
 
 	Add tooltip to 'clear state' button.

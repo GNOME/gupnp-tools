@@ -855,6 +855,15 @@ prepare_controls_for_state (PlaybackState state)
 
                 break;
 
+        case PLAYBACK_STATE_TRANSITIONING:
+                play_possible = FALSE;
+                pause_possible = FALSE;
+                stop_possible = FALSE;
+
+                remove_timeout ();
+
+                break;
+
        default:
                 play_possible = TRUE;
                 pause_possible = TRUE;
