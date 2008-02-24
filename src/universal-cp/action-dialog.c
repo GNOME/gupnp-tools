@@ -704,7 +704,6 @@ on_action_invocation (GtkButton *button,
         GUPnPServiceIntrospection *introspection;
         GUPnPServiceActionInfo    *action_info;
         GHashTable                *in_args;
-        GError                    *error = NULL;
 
         action_info = get_selected_action (&proxy, &introspection);
         if (action_info == NULL)
@@ -717,20 +716,7 @@ on_action_invocation (GtkButton *button,
                                               action_info->name,
                                               on_action_complete,
                                               NULL,
-                                              &error,
                                               in_args);
-        if (error) {
-                gchar *id;
-
-                id = gupnp_service_info_get_id (GUPNP_SERVICE_INFO (proxy));
-                g_warning ("Failed to send action '%s' to service '%s': %s\n",
-                           action_info->name,
-                           id,
-                           error->message);
-
-                g_free (id);
-                g_error_free (error);
-        }
 
         g_hash_table_destroy (in_args);
         g_object_unref (proxy);

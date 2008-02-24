@@ -181,7 +181,6 @@ av_transport_send_action (char *action,
 {
         GUPnPServiceProxy *av_transport;
         GHashTable        *args;
-        GError            *error;
 
         av_transport = get_selected_av_transport (NULL);
         if (av_transport == NULL) {
@@ -191,28 +190,11 @@ av_transport_send_action (char *action,
 
         args = create_av_transport_args_hash (additional_args);
 
-        error = NULL;
         gupnp_service_proxy_begin_action_hash (av_transport,
                                                action,
                                                av_transport_action_cb,
                                                (char *) action,
-                                               &error,
                                                args);
-        if (error) {
-                const char *udn;
-
-                udn = gupnp_service_info_get_udn
-                                        (GUPNP_SERVICE_INFO (av_transport));
-
-                g_warning ("Failed to send action '%s' to '%s': %s",
-                           action,
-                           udn,
-                           error->message);
-
-                g_error_free (error);
-                g_object_unref (av_transport);
-        }
-
         g_hash_table_unref (args);
 }
 
@@ -531,7 +513,6 @@ set_av_transport_uri (const char *metadata,
         SetAVTransportURIData *data;
         char                  *uri;
         char                  *duration;
-        GError                *error;
 
         av_transport = get_selected_av_transport (NULL);
         if (av_transport == NULL) {
@@ -552,12 +533,10 @@ set_av_transport_uri (const char *metadata,
         g_free (uri);
         g_free (duration);
 
-        error = NULL;
         gupnp_service_proxy_begin_action (av_transport,
                                           "SetAVTransportURI",
                                           set_av_transport_uri_cb,
                                           data,
-                                          &error,
                                           "InstanceID",
                                           G_TYPE_UINT,
                                           0,
@@ -568,21 +547,6 @@ set_av_transport_uri (const char *metadata,
                                           G_TYPE_STRING,
                                           metadata,
                                           NULL);
-        if (error) {
-                const char *udn;
-
-                udn = gupnp_service_info_get_udn
-                                        (GUPNP_SERVICE_INFO (av_transport));
-
-                g_warning ("Failed to set URI '%s' on %s: %s",
-                           data->uri,
-                           udn,
-                           error->message);
-
-                g_error_free (error);
-                set_av_transport_uri_data_free (data);
-                g_object_unref (av_transport);
-        }
 }
 
 void
@@ -766,7 +730,6 @@ update_position (gpointer data)
 {
         GUPnPServiceProxy *av_transport;
         const gchar       *udn;
-        GError            *error;
 
         av_transport = get_selected_av_transport (NULL);
         if (av_transport == NULL) {
@@ -775,26 +738,12 @@ update_position (gpointer data)
 
         udn = gupnp_service_info_get_udn (GUPNP_SERVICE_INFO (av_transport));
 
-        error = NULL;
         gupnp_service_proxy_begin_action (av_transport,
                                           "GetPositionInfo",
                                           get_position_info_cb,
                                           NULL,
-                                          &error,
                                           "InstanceID", G_TYPE_UINT, 0,
                                           NULL);
-        if (error) {
-                g_warning ("Failed to get current media position"
-                           "from media renderer '%s':%s\n",
-                           udn,
-                           error->message);
-
-                g_error_free (error);
-                g_object_unref (av_transport);
-
-                return FALSE;
-        }
-
         return TRUE;
 }
 
@@ -930,7 +879,6 @@ on_volume_vscale_value_changed (GtkRange *range,
                                 gpointer  user_data)
 {
         GUPnPServiceProxy *rendering_control;
-        GError            *error;
         guint              desired_volume;
 
         rendering_control = get_selected_rendering_control ();
@@ -941,12 +889,10 @@ on_volume_vscale_value_changed (GtkRange *range,
 
         desired_volume = (guint) gtk_range_get_value (range);
 
-        error = NULL;
         gupnp_service_proxy_begin_action (rendering_control,
                                           "SetVolume",
                                           set_volume_cb,
                                           NULL,
-                                          &error,
                                           "InstanceID",
                                           G_TYPE_UINT,
                                           0,
@@ -957,19 +903,6 @@ on_volume_vscale_value_changed (GtkRange *range,
                                           G_TYPE_UINT,
                                           desired_volume,
                                           NULL);
-        if (error) {
-                const char *udn;
-
-                udn = gupnp_service_info_get_udn
-                        (GUPNP_SERVICE_INFO (rendering_control));
-
-                g_warning ("Failed to set volume of %s: %s",
-                           udn,
-                           error->message);
-
-                g_error_free (error);
-                g_object_unref (rendering_control);
-        }
 
         return TRUE;
 }

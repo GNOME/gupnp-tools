@@ -725,17 +725,13 @@ browse_cb (GUPnPServiceProxy       *content_dir,
 static void
 browse (GUPnPServiceProxy *content_dir, const char *container_id)
 {
-        GError *error;
-
         g_object_ref (content_dir);
 
-        error = NULL;
         gupnp_service_proxy_begin_action
                                 (content_dir,
                                  "Browse",
                                  browse_cb,
                                  NULL,
-                                 &error,
                                  /* IN args */
                                  "ObjectID",
                                  G_TYPE_STRING,
@@ -755,10 +751,6 @@ browse (GUPnPServiceProxy *content_dir, const char *container_id)
                                  G_TYPE_STRING,
                                  "",
                                  NULL);
-        if (error) {
-                on_browse_failure (GUPNP_SERVICE_INFO (content_dir), error);
-                g_object_unref (content_dir);
-        }
 }
 
 static void
@@ -911,7 +903,6 @@ get_selected_item (GetSelectedItemCallback callback,
         gboolean            is_container;
         BrowseMetadataData *data;
         char               *id = NULL;
-        GError             *error;
         gboolean            ret = FALSE;
 
         selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (treeview));
@@ -934,13 +925,11 @@ get_selected_item (GetSelectedItemCallback callback,
 
         data = browse_metadata_data_new (callback, id, user_data);
 
-        error = NULL;
         gupnp_service_proxy_begin_action
                                 (g_object_ref (content_dir),
                                  "Browse",
                                  browse_metadata_cb,
                                  data,
-                                 &error,
                                  /* IN args */
                                  "ObjectID",
                                  G_TYPE_STRING,
@@ -960,12 +949,7 @@ get_selected_item (GetSelectedItemCallback callback,
                                  G_TYPE_STRING,
                                  "",
                                  NULL);
-        if (error) {
-                on_browse_metadata_failure (data, error);
-                g_object_unref (content_dir);
-        } else {
-                ret = TRUE;
-        }
+        ret = TRUE;
 
 free_and_return:
         if (id) {

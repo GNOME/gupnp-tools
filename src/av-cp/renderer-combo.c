@@ -770,7 +770,6 @@ add_media_renderer (GUPnPDeviceProxy *proxy)
         GUPnPServiceProxy *cm;
         GUPnPServiceProxy *av_transport;
         GUPnPServiceProxy *rendering_control;
-        GError            *error;
 
         udn = gupnp_device_info_get_udn (GUPNP_DEVICE_INFO (proxy));
         if (udn == NULL)
@@ -796,77 +795,33 @@ add_media_renderer (GUPnPDeviceProxy *proxy)
                                                rendering_control,
                                                udn);
 
-        error = NULL;
         gupnp_service_proxy_begin_action (g_object_ref (cm),
                                           "GetProtocolInfo",
                                           get_protocol_info_cb,
                                           NULL,
-                                          &error,
                                           NULL);
-        if (error) {
-                g_warning ("Failed to get sink protocol info from "
-                           "media renderer '%s':%s\n",
-                           udn,
-                           error->message);
 
-                g_error_free (error);
-                g_object_unref (cm);
-        }
-
-        error = NULL;
         gupnp_service_proxy_begin_action (g_object_ref (av_transport),
                                           "GetTransportInfo",
                                           get_transport_info_cb,
                                           NULL,
-                                          &error,
                                           "InstanceID", G_TYPE_UINT, 0,
                                           NULL);
-        if (error) {
-                g_warning ("Failed to get transport info from media renderer"
-                           " '%s':%s\n",
-                           udn,
-                           error->message);
 
-                g_error_free (error);
-                g_object_unref (av_transport);
-        }
-
-        error = NULL;
         gupnp_service_proxy_begin_action (g_object_ref (av_transport),
                                           "GetMediaInfo",
                                           get_media_info_cb,
                                           NULL,
-                                          &error,
                                           "InstanceID", G_TYPE_UINT, 0,
                                           NULL);
-        if (error) {
-                g_warning ("Failed to get current media duration"
-                           "from media renderer '%s':%s\n",
-                           udn,
-                           error->message);
 
-                g_error_free (error);
-                g_object_unref (av_transport);
-        }
-
-        error = NULL;
         gupnp_service_proxy_begin_action (g_object_ref (rendering_control),
                                           "GetVolume",
                                           get_volume_cb,
                                           NULL,
-                                          &error,
                                           "InstanceID", G_TYPE_UINT, 0,
                                           "Channel", G_TYPE_STRING, "Master",
                                           NULL);
-        if (error) {
-                g_warning ("Failed to get volume from media renderer"
-                           " '%s':%s\n",
-                           udn,
-                           error->message);
-
-                g_error_free (error);
-                g_object_unref (rendering_control);
-        }
 
         g_object_unref (rendering_control);
 no_rendering_control:
