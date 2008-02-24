@@ -1,5 +1,11 @@
 2008-02-23  Zeeshan Ali Khattak  <zeenix@gmail.com>
 
+	* data/gupnp-av-cp.glade:
+
+	Add tooltip to 'clear state' button.
+
+2008-02-23  Zeeshan Ali Khattak  <zeenix@gmail.com>
+
 	* src/av-cp/renderer-combo.c:
 
 	Don't ref the service proxy upon adding a notify on it.
