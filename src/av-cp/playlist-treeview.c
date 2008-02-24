@@ -775,7 +775,7 @@ append_media_server (GUPnPDeviceProxy *proxy,
         content_dir = get_content_dir (proxy);
         friendly_name = gupnp_device_info_get_friendly_name (info);
 
-        if (G_LIKELY (friendly_name && content_dir != NULL)) {
+        if (G_LIKELY (friendly_name != NULL && content_dir != NULL)) {
                 GtkTreeIter device_iter;
                 GList      *child;
 
