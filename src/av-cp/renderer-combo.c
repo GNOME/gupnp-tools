@@ -513,12 +513,12 @@ append_media_renderer_to_tree (GUPnPDeviceProxy  *proxy,
                  7, 0,
                  -1);
 
-        gupnp_service_proxy_add_notify (g_object_ref (av_transport),
+        gupnp_service_proxy_add_notify (av_transport,
                                         "LastChange",
                                         G_TYPE_STRING,
                                         on_last_change,
                                         NULL);
-        gupnp_service_proxy_add_notify (g_object_ref (rendering_control),
+        gupnp_service_proxy_add_notify (rendering_control,
                                         "LastChange",
                                         G_TYPE_STRING,
                                         on_rendering_control_last_change,
