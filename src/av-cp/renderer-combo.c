@@ -30,7 +30,8 @@
 #define AV_TRANSPORT "urn:schemas-upnp-org:service:AVTransport:*"
 #define RENDERING_CONTROL "urn:schemas-upnp-org:service:RenderingControl:*"
 
-static GtkWidget *renderer_combo;
+static GtkWidget             *renderer_combo;
+static GUPnPLastChangeParser *lc_parser;
 
 static GUPnPServiceProxy *
 get_av_transport (GUPnPDeviceProxy *renderer)
@@ -396,16 +397,17 @@ on_last_change (GUPnPServiceProxy *av_transport,
        state_name = NULL;
        duration = NULL;
 
-       if (gupnp_av_util_parse_last_change (last_change_xml,
-                                            0,
-                                            &error,
-                                            "TransportState",
-                                            G_TYPE_STRING,
-                                            &state_name,
-                                            "CurrentMediaDuration",
-                                            G_TYPE_STRING,
-                                            &duration,
-                                            NULL)) {
+       if (gupnp_last_change_parser_parse_last_change (lc_parser,
+                                                       last_change_xml,
+                                                       0,
+                                                       &error,
+                                                       "TransportState",
+                                                       G_TYPE_STRING,
+                                                       &state_name,
+                                                       "CurrentMediaDuration",
+                                                       G_TYPE_STRING,
+                                                       &duration,
+                                                       NULL)) {
                const char *udn;
 
                udn = gupnp_service_info_get_udn
@@ -439,13 +441,14 @@ on_rendering_control_last_change (GUPnPServiceProxy *rendering_control,
        last_change_xml = g_value_get_string (value);
        error = NULL;
 
-       if (gupnp_av_util_parse_last_change (last_change_xml,
-                                            0,
-                                            &error,
-                                            "Volume",
-                                            G_TYPE_UINT,
-                                            &volume,
-                                            NULL)) {
+       if (gupnp_last_change_parser_parse_last_change (lc_parser,
+                                                       last_change_xml,
+                                                       0,
+                                                       &error,
+                                                       "Volume",
+                                                       G_TYPE_UINT,
+                                                       &volume,
+                                                       NULL)) {
                        const char *udn;
 
                        udn = gupnp_service_info_get_udn
@@ -942,6 +945,7 @@ setup_renderer_combo (GladeXML *glade_xml)
 {
         GtkTreeModel *model;
 
+        lc_parser = gupnp_last_change_parser_new ();
         renderer_combo = glade_xml_get_widget (glade_xml, "renderer-combobox");
         g_assert (renderer_combo != NULL);
 

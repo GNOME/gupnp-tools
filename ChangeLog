@@ -1,5 +1,12 @@
 2008-02-25  Zeeshan Ali Khattak  <zeenix@gmail.com>
 
+	* src/av-cp/renderer-combo.c:
+
+	API update: We now need a LastChange parser object to be able to parse
+	LastChange events.
+
+2008-02-25  Zeeshan Ali Khattak  <zeenix@gmail.com>
+
 	* src/av-cp/playlist-treeview.c:
 	* src/av-cp/renderer-combo.c:
 	* src/av-cp/renderer-controls.c:
