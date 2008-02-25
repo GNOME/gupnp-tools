@@ -2,8 +2,10 @@
 
 	* src/av-cp/renderer-combo.c:
 
-	API update: We now need a LastChange parser object to be able to parse
-	LastChange events.
+	API updates:
+	- We now need a LastChange parser object to be able to parse LastChange
+	  events.
+	- 'instance-id' is now a property of LastChange parser object.
 
 2008-02-25  Zeeshan Ali Khattak  <zeenix@gmail.com>
 
