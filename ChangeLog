@@ -1,3 +1,9 @@
+2008-02-26  Zeeshan Ali Khattak  <zeenix@gmail.com>
+
+	* src/av-cp/main.c:
+
+	API update: Use g_type_init() instead of gupnp_av_init().
+
 2008-02-25  Zeeshan Ali Khattak  <zeenix@gmail.com>
 
 	* src/av-cp/renderer-combo.c:

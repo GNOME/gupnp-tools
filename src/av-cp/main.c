@@ -68,7 +68,7 @@ init_upnp (void)
 {
         GError *error;
 
-        gupnp_av_init ();
+        g_type_init ();
 
         error = NULL;
         context = gupnp_context_new (NULL, NULL, 0, &error);
