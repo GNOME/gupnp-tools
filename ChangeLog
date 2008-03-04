@@ -1,3 +1,9 @@
+2008-02-29  Zeeshan Ali Khattak  <zeenix@gmail.com>
+
+	* src/av-cp/playlist-treeview.c:
+
+	Better error handling in browse callbacks.
+
 2008-02-26  Zeeshan Ali Khattak  <zeenix@gmail.com>
 
 	* src/av-cp/main.c:
