@@ -409,7 +409,8 @@ get_item_icon (xmlNode *object_node)
         GdkPixbuf *icon;
         char      *class_name;
 
-        class_name = gupnp_didl_lite_object_get_upnp_class (object_node);
+        class_name = gupnp_didl_lite_object_get_property (object_node,
+                                                          "class");
         if (G_UNLIKELY (class_name == NULL)) {
                 return get_icon_by_id (ICON_FILE);
         }
@@ -530,7 +531,7 @@ append_didle_object (xmlNode           *object_node,
         if (id == NULL)
                 return;
 
-        title = gupnp_didl_lite_object_get_title (object_node);
+        title = gupnp_didl_lite_object_get_property (object_node, "title");
         if (title == NULL) {
                 g_free (id);
                 return;
