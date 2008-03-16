@@ -488,16 +488,23 @@ find_compat_uri_from_metadata (const char *metadata, char **duration)
 {
         OnDIDLItemAvailableData *data;
         char                    *uri;
+        GError                  *error;
 
         data = NULL;
         uri = NULL;
+        error = NULL;
 
         /* Assumption: metadata only contains a single didl object */
         gupnp_didl_lite_parser_parse_didl (didl_parser,
                                            metadata,
                                            on_didl_item_available,
-                                           &data);
-        if (data != NULL) {
+                                           &data,
+                                           &error);
+        if (error) {
+                g_warning ("%s\n", error->message);
+
+                g_error_free (error);
+        } else if (data != NULL) {
                 uri = g_strdup (data->uri);
                 *duration = g_strdup (data->duration);
 

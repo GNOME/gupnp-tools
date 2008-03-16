@@ -690,10 +690,18 @@ browse_cb (GUPnPServiceProxy       *content_dir,
                                         &didl_xml,
                                         NULL);
         if (didl_xml) {
-                gupnp_didl_lite_parser_parse_didl (didl_parser,
-                                                   didl_xml,
-                                                   on_didl_object_available,
-                                                   content_dir);
+                GError *error;
+
+                error = NULL;
+                if (!gupnp_didl_lite_parser_parse_didl
+                                                (didl_parser,
+                                                 didl_xml,
+                                                 on_didl_object_available,
+                                                 content_dir,
+                                                 &error)) {
+                        g_warning ("%s\n", error->message);
+                        g_error_free (error);
+                }
 
                 g_free (didl_xml);
         } else if (error) {
