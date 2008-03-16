@@ -1,3 +1,10 @@
+2008-03-16  Zeeshan Ali Khattak  <zeenix@gmail.com>
+
+	* src/av-cp/playlist-treeview.c:
+	* src/av-cp/renderer-controls.c:
+
+	API update: Use specific getters for basic DIDL props.
+
 2008-03-10  Zeeshan Ali Khattak  <zeenix@gmail.com>
 
 	* src/av-cp/playlist-treeview.c:
