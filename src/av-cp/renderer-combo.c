@@ -398,6 +398,7 @@ on_last_change (GUPnPServiceProxy *av_transport,
        duration = NULL;
 
        if (gupnp_last_change_parser_parse_last_change (lc_parser,
+                                                       0,
                                                        last_change_xml,
                                                        &error,
                                                        "TransportState",
@@ -441,6 +442,7 @@ on_rendering_control_last_change (GUPnPServiceProxy *rendering_control,
        error = NULL;
 
        if (gupnp_last_change_parser_parse_last_change (lc_parser,
+                                                       0,
                                                        last_change_xml,
                                                        &error,
                                                        "Volume",
@@ -943,7 +945,7 @@ setup_renderer_combo (GladeXML *glade_xml)
 {
         GtkTreeModel *model;
 
-        lc_parser = gupnp_last_change_parser_new (0);
+        lc_parser = gupnp_last_change_parser_new ();
         renderer_combo = glade_xml_get_widget (glade_xml, "renderer-combobox");
         g_assert (renderer_combo != NULL);
 

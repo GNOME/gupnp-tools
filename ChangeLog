@@ -1,5 +1,11 @@
 2008-03-16  Zeeshan Ali Khattak  <zeenix@gmail.com>
 
+	* src/av-cp/renderer-combo.c:
+
+	API update: "instance-id" is no longer a property of parser object.
+
+2008-03-16  Zeeshan Ali Khattak  <zeenix@gmail.com>
+
 	* src/av-cp/playlist-treeview.c:
 	* src/av-cp/renderer-controls.c:
 
