@@ -367,7 +367,8 @@ protocol_equal_func (xmlNode     *res_node,
         gchar **renderer_proto_tokens;
         gint ret = -1;
 
-        item_protocol = gupnp_didl_lite_resource_get_protocol_info (res_node);
+        item_protocol = gupnp_didl_lite_property_get_attribute (res_node,
+                                                                "protocolInfo");
         if (item_protocol == NULL) {
                 return -1;
         }
@@ -435,8 +436,9 @@ find_compat_uri_from_res (GList *resources, char **duration)
                 }
 
                 res_node = (xmlNode *) res->data;
-                uri = gupnp_didl_lite_resource_get_contents (res_node);
-                *duration = gupnp_didl_lite_resource_get_duration (res_node);
+                uri = gupnp_didl_lite_property_get_value (res_node);
+                *duration = gupnp_didl_lite_property_get_attribute (res_node,
+                                                                    "duration");
         }
 
         if (protocols) {
@@ -458,7 +460,7 @@ on_didl_item_available (GUPnPDIDLLiteParser *didl_parser,
         char                     *uri;
         char                     *duration;
 
-        resources = gupnp_didl_lite_object_get_resources (item_node);
+        resources = gupnp_didl_lite_object_get_property (item_node, "res");
         if (resources == NULL) {
                 return;
         }

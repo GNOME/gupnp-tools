@@ -3,7 +3,9 @@
 	* src/av-cp/playlist-treeview.c:
 	* src/av-cp/renderer-controls.c:
 
-	API update: Use specific getters for basic DIDL props.
+	API update:
+	- Use specific getters for basic DIDL props.
+	- Use generic getters for 'res' property and it's attributes.
 
 2008-03-10  Zeeshan Ali Khattak  <zeenix@gmail.com>
 
