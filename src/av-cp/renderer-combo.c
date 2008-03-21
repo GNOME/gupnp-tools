@@ -26,9 +26,9 @@
 #include "renderer-controls.h"
 #include "icons.h"
 
-#define CONNECTION_MANAGER "urn:schemas-upnp-org:service:ConnectionManager:*"
-#define AV_TRANSPORT "urn:schemas-upnp-org:service:AVTransport:*"
-#define RENDERING_CONTROL "urn:schemas-upnp-org:service:RenderingControl:*"
+#define CONNECTION_MANAGER "urn:schemas-upnp-org:service:ConnectionManager"
+#define AV_TRANSPORT "urn:schemas-upnp-org:service:AVTransport"
+#define RENDERING_CONTROL "urn:schemas-upnp-org:service:RenderingControl"
 
 static GtkWidget             *renderer_combo;
 static GUPnPLastChangeParser *lc_parser;
@@ -37,30 +37,11 @@ static GUPnPServiceProxy *
 get_av_transport (GUPnPDeviceProxy *renderer)
 {
         GUPnPDeviceInfo  *info;
-        GList            *types;
-        GList            *type;
-        GUPnPServiceInfo *av_transport = NULL;
+        GUPnPServiceInfo *av_transport;
 
         info = GUPNP_DEVICE_INFO (renderer);
 
-        types = gupnp_device_info_list_service_types (info);
-        for (type = types;
-             type;
-             type = type->next) {
-                if (g_pattern_match_simple (AV_TRANSPORT,
-                                            (char *) type->data)) {
-                        av_transport = gupnp_device_info_get_service
-                                                      (info,
-                                                       (char *) type->data);
-                }
-
-                g_free (type->data);
-        }
-
-        if (types) {
-                g_list_free (types);
-        }
-
+        av_transport = gupnp_device_info_get_service (info, AV_TRANSPORT);
 
         return GUPNP_SERVICE_PROXY (av_transport);
 }
@@ -544,29 +525,11 @@ static GUPnPServiceProxy *
 get_connection_manager (GUPnPDeviceProxy *proxy)
 {
         GUPnPDeviceInfo  *info;
-        GList            *types;
-        GList            *type;
-        GUPnPServiceInfo *cm = NULL;
+        GUPnPServiceInfo *cm;
 
         info = GUPNP_DEVICE_INFO (proxy);
 
-        types = gupnp_device_info_list_service_types (info);
-        for (type = types;
-             type;
-             type = type->next) {
-                if (g_pattern_match_simple (CONNECTION_MANAGER,
-                                            (char *) type->data)) {
-                        cm = gupnp_device_info_get_service
-                                                      (info,
-                                                       (char *) type->data);
-                }
-
-                g_free (type->data);
-        }
-
-        if (types) {
-                g_list_free (types);
-        }
+        cm = gupnp_device_info_get_service (info, CONNECTION_MANAGER);
 
         return GUPNP_SERVICE_PROXY (cm);
 }
@@ -575,29 +538,12 @@ static GUPnPServiceProxy *
 get_rendering_control (GUPnPDeviceProxy *proxy)
 {
         GUPnPDeviceInfo  *info;
-        GList            *types;
-        GList            *type;
-        GUPnPServiceInfo *rendering_control = NULL;
+        GUPnPServiceInfo *rendering_control;
 
         info = GUPNP_DEVICE_INFO (proxy);
 
-        types = gupnp_device_info_list_service_types (info);
-        for (type = types;
-             type;
-             type = type->next) {
-                if (g_pattern_match_simple (RENDERING_CONTROL,
-                                            (char *) type->data)) {
-                        rendering_control = gupnp_device_info_get_service
-                                                      (info,
-                                                       (char *) type->data);
-                }
-
-                g_free (type->data);
-        }
-
-        if (types) {
-                g_list_free (types);
-        }
+        rendering_control = gupnp_device_info_get_service (info,
+                                                           RENDERING_CONTROL);
 
         return GUPNP_SERVICE_PROXY (rendering_control);
 }

@@ -1,3 +1,10 @@
+2008-03-17  Zeeshan Ali Khattak  <zeenix@gmail.com>
+
+	* src/av-cp/playlist-treeview.c:
+	* src/av-cp/renderer-combo.c:
+
+	No need to do any magic for being version agostic to services anymore.
+
 2008-03-16  Zeeshan Ali Khattak  <zeenix@gmail.com>
 
 	* src/av-cp/playlist-treeview.c:
