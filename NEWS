@@ -1,3 +1,17 @@
+0.3
+===
+
+This release features AV Control Point, a simple media player UI that enables
+one to discover and play multimedia contents available on a network. Hopefully
+a useful tool to test and debug UPnP MediaServer and MediaRenderer
+implementations. [Zeeshan Ali]
+
+Other changes in this release:
+
+- Desktop file for each tool. [Ross Burton, Zeeshan Ali]
+- New Icons. [Vinicius Depizzol]
+- Various misc improvements and fixes. [Zeeshan Ali]
+
 0.2
 ===
 
