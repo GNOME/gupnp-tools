@@ -42,8 +42,6 @@ GtkWidget *prev_button;
 
 static guint timeout_id;
 
-/* FIXME: display a dialog to report problems? */
-
 typedef struct
 {
   GCallback callback;

@@ -129,8 +129,6 @@ get_selected_renderer_volume (void)
         return volume;
 }
 
-/* FIXME: implement this function
- */
 PlaybackState
 get_selected_renderer_state (void)
 {

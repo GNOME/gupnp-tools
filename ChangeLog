@@ -1,3 +1,10 @@
+2008-04-02  Zeeshan Ali Khattak  <zeenix@gmail.com>
+
+	* src/av-cp/renderer-combo.c:
+	* src/av-cp/renderer-controls.c:
+
+	Remove now useless FIXME comments.
+
 2008-04-01  Zeeshan Ali Khattak  <zeenix@gmail.com>
 
 	* data/gupnp-av-cp.desktop.in.in:
