@@ -1,5 +1,13 @@
 2008-04-01  Zeeshan Ali Khattak  <zeenix@gmail.com>
 
+	* data/gupnp-av-cp.desktop.in.in:
+	* data/gupnp-network-light.desktop.in.in:
+	* data/gupnp-universal-cp.desktop.in.in:
+
+	Add icons to desktop entries.
+
+2008-04-01  Zeeshan Ali Khattak  <zeenix@gmail.com>
+
 	* configure.ac:
 	* data/Makefile.am:
 	* data/gupnp-av-cp.desktop:
