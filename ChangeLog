@@ -1,5 +1,11 @@
 2008-04-02  Zeeshan Ali Khattak  <zeenix@gmail.com>
 
+	* configure.ac:
+
+	Bump-up the version.
+
+2008-04-02  Zeeshan Ali Khattak  <zeenix@gmail.com>
+
 	* src/av-cp/renderer-combo.c:
 	* src/av-cp/renderer-controls.c:
 
