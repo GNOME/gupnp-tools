@@ -1,3 +1,17 @@
+2008-04-01  Zeeshan Ali Khattak  <zeenix@gmail.com>
+
+	* configure.ac:
+	* data/Makefile.am:
+	* data/gupnp-av-cp.desktop:
+	* data/gupnp-av-cp.desktop.in.in:
+	* data/gupnp-network-light.desktop:
+	* data/gupnp-network-light.desktop.in.in:
+	* data/gupnp-universal-cp.desktop:
+	* data/gupnp-universal-cp.desktop.in.in:
+
+	Create desktop files as part of build to be able to substitute
+	variables like prefix in them.
+
 2008-03-17  Zeeshan Ali Khattak  <zeenix@gmail.com>
 
 	* src/av-cp/playlist-treeview.c:

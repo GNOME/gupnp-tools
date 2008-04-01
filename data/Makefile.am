@@ -7,8 +7,17 @@ dist_shared_DATA = $(srcdir)/gupnp-universal-cp.glade \
 		   $(srcdir)/gupnp-av-cp.glade
 
 desktopdir = ${datadir}/applications
-dist_desktop_DATA = gupnp-universal-cp.desktop \
-		    gupnp-av-cp.desktop \
-		    gupnp-network-light.desktop
+desktop_in_files = gupnp-universal-cp.desktop.in \
+		   gupnp-av-cp.desktop.in \
+		   gupnp-network-light.desktop.in
+desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)
+
+# Rule to create the .desktop files
+$(desktop_DATA): $(desktop_in_files) Makefile
+	@sed -e "s,\$${prefix},${prefix},g" $(@:.desktop=.desktop.in) > $@
+
+EXTRA_DIST = $(desktop_in_files:.desktop.in=.desktop.in.in)
+
+CLEANFILES = $(desktop_DATA)
 
 MAINTAINERCLEANFILES = Makefile.in

@@ -94,6 +94,9 @@ src/common/Makefile
 src/network-light/Makefile
 src/universal-cp/Makefile
 data/Makefile
+data/gupnp-universal-cp.desktop.in
+data/gupnp-av-cp.desktop.in
+data/gupnp-network-light.desktop.in
 data/pixmaps/Makefile
 data/xml/Makefile
 ])
