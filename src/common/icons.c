@@ -66,8 +66,8 @@ get_icon_from_message (SoupMessage    *msg,
                 return NULL;
 
         gdk_pixbuf_loader_write (loader,
-                                 (guchar *) msg->response.body,
-                                 msg->response.length,
+                                 (guchar *) msg->response_body->data,
+                                 msg->response_body->length,
                                  error);
         pixbuf = gdk_pixbuf_loader_get_pixbuf (loader);
         if (pixbuf) {
@@ -162,7 +162,7 @@ schedule_icon_update (GUPnPDeviceInfo            *info,
         pending_gets = g_list_prepend (pending_gets, data);
         soup_session_queue_message (session,
                                     data->message,
-                                    (SoupMessageCallbackFn) got_icon_url,
+                                    (SoupSessionCallback) got_icon_url,
                                     data);
 
         g_free (icon_url);
@@ -181,10 +181,9 @@ unschedule_icon_update (GUPnPDeviceInfo *info)
                 udn2 = gupnp_device_info_get_udn (data->info);
 
                 if (udn1 && udn2 && strcmp (udn1, udn2) == 0) {
-                        soup_message_set_status (data->message,
-                                                 SOUP_STATUS_CANCELLED);
                         soup_session_cancel_message (session,
-                                                     data->message);
+                                                     data->message,
+                                                     SOUP_STATUS_CANCELLED);
                         break;
                 }
         }
@@ -330,9 +329,9 @@ deinit_icons (void)
 
                 data = pending_gets->data;
 
-                soup_message_set_status (data->message,
-                                         SOUP_STATUS_CANCELLED);
-                soup_session_cancel_message (session, data->message);
+                soup_session_cancel_message (session,
+                                             data->message,
+                                             SOUP_STATUS_CANCELLED);
         }
 
         g_object_unref (session);

@@ -292,7 +292,7 @@ void
 show_service_details (GUPnPServiceInfo *info)
 {
         char          *details[32];
-        const SoupUri *uri;
+        const SoupURI *uri;
         const char    *str;
         int            i = 0;
 
@@ -314,7 +314,7 @@ show_service_details (GUPnPServiceInfo *info)
         details[i++] = "Base URL";
         uri = gupnp_service_info_get_url_base (info);
         if (uri)
-                details[i++] = soup_uri_to_string (uri, FALSE);
+                details[i++] = soup_uri_to_string ((SoupURI *) uri, FALSE);
 
         details[i++] = "Service ID";
         details[i++] = gupnp_service_info_get_id (info);
@@ -339,7 +339,7 @@ void
 show_device_details (GUPnPDeviceInfo *info)
 {
         char          *details[32];
-        const SoupUri *uri;
+        const SoupURI *uri;
         const char    *str;
         int            i = 0;
 
@@ -361,7 +361,7 @@ show_device_details (GUPnPDeviceInfo *info)
         details[i++] = "Base URL";
         uri = gupnp_device_info_get_url_base (info);
         if (uri)
-                details[i++] = soup_uri_to_string (uri, FALSE);
+                details[i++] = soup_uri_to_string ((SoupURI *) uri, FALSE);
 
         details[i++] = "Friendly Name";
         details[i++] = gupnp_device_info_get_friendly_name (info);

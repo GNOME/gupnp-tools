@@ -1,3 +1,13 @@
+2008-04-15  Jorn Baayen  <jorn@openedhand.com>
+
+	* configure.ac:
+	* src/common/icons.c (get_icon_from_message),
+	(schedule_icon_update), (unschedule_icon_update), (deinit_icons):
+	* src/universal-cp/details-treeview.c (show_service_details),
+	(show_device_details):
+
+	Port to libsoup 2.4.
+
 2008-04-02  Zeeshan Ali Khattak  <zeenix@gmail.com>
 
 	* NEWS:
