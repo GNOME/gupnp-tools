@@ -92,7 +92,8 @@ get_icon_from_message (SoupMessage    *msg,
  * Icon downloaded.
  **/
 static void
-got_icon_url (SoupMessage    *msg,
+got_icon_url (SoupSession    *session,
+              SoupMessage    *msg,
               GetIconURLData *data)
 {
         if (SOUP_STATUS_IS_SUCCESSFUL (msg->status_code)) {

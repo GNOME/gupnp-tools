@@ -1,3 +1,10 @@
+2008-04-17  Zeeshan Ali Khattak  <zeenix@gmail.com>
+
+	* src/common/icons.c:
+
+	Update soup_session_queue_message() callback signature according to
+	the new API.
+
 2008-04-15  Jorn Baayen  <jorn@openedhand.com>
 
 	* configure.ac:
