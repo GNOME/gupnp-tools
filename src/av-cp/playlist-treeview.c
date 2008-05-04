@@ -36,6 +36,8 @@
 #define ITEM_CLASS_VIDEO "object.item.videoItem"
 #define ITEM_CLASS_TEXT  "object.item.textItem"
 
+#define MAX_BROWSE 64
+
 typedef gboolean (* RowCompareFunc) (GtkTreeModel *model,
                                      GtkTreeIter  *iter,
                                      gpointer      user_data);
@@ -47,12 +49,39 @@ static GUPnPDIDLLiteParser *didl_parser;
 
 typedef struct
 {
+  gchar *id;
+
+  guint32 starting_index;
+} BrowseData;
+
+typedef struct
+{
   GetSelectedItemCallback callback;
 
   gchar *id;
 
   gpointer user_data;
 } BrowseMetadataData;
+
+static BrowseData *
+browse_data_new (const char *id,
+                 guint32     starting_index)
+{
+        BrowseData *data;
+
+        data = g_slice_new (BrowseData);
+        data->id = g_strdup (id);
+        data->starting_index = starting_index;
+
+        return data;
+}
+
+static void
+browse_data_free (BrowseData *data)
+{
+        g_free (data->id);
+        g_slice_free (BrowseData, data);
+}
 
 static BrowseMetadataData *
 browse_metadata_data_new (GetSelectedItemCallback callback,
@@ -77,7 +106,10 @@ browse_metadata_data_free (BrowseMetadataData *data)
 }
 
 static void
-browse (GUPnPServiceProxy *content_dir, const char *container_id);
+browse (GUPnPServiceProxy *content_dir,
+        const char        *container_id,
+        guint32            starting_index,
+        guint32            requested_count);
 
 gboolean
 on_playlist_treeview_button_release (GtkWidget      *widget,
@@ -191,7 +223,7 @@ on_playlist_row_expanded (GtkTreeView *tree_view,
                                     -1);
 
                 if (is_container) {
-                        browse (content_dir, id);
+                        browse (content_dir, id, 0, MAX_BROWSE);
                 }
 
                 g_object_unref (content_dir);
@@ -489,7 +521,7 @@ update_container (GUPnPServiceProxy *content_dir,
                 /* Remove everyting under the container */
                 unpopulate_container (model, &container_iter);
                 /* Browse it again */
-                browse (content_dir, container_id);
+                browse (content_dir, container_id, 0, MAX_BROWSE);
         }
 }
 
@@ -657,9 +689,13 @@ browse_cb (GUPnPServiceProxy       *content_dir,
            GUPnPServiceProxyAction *action,
            gpointer                 user_data)
 {
-        char   *didl_xml;
-        GError *error;
+        BrowseData *data;
+        char       *didl_xml;
+        guint32     number_returned;
+        guint32     total_matches;
+        GError     *error;
 
+        data = (BrowseData *) user_data;
         didl_xml = NULL;
         error = NULL;
 
@@ -670,8 +706,15 @@ browse_cb (GUPnPServiceProxy       *content_dir,
                                         "Result",
                                         G_TYPE_STRING,
                                         &didl_xml,
+                                        "NumberReturned",
+                                        G_TYPE_UINT,
+                                        &number_returned,
+                                        "TotalMatches",
+                                        G_TYPE_UINT,
+                                        &total_matches,
                                         NULL);
         if (didl_xml) {
+                guint32 remaining;
                 GError *error;
 
                 error = NULL;
@@ -686,6 +729,17 @@ browse_cb (GUPnPServiceProxy       *content_dir,
                 }
 
                 g_free (didl_xml);
+
+                data->starting_index += number_returned;
+
+                /* See if we have more objects to get */
+                remaining = total_matches - data->starting_index;
+                /* Keep browsing till we get each and every object */
+                if (remaining != 0)
+                        browse (content_dir,
+                                data->id,
+                                data->starting_index,
+                                MIN (remaining, MAX_BROWSE));
         } else if (error) {
                 GUPnPServiceInfo *info;
 
@@ -697,19 +751,27 @@ browse_cb (GUPnPServiceProxy       *content_dir,
                 g_error_free (error);
         }
 
+        browse_data_free (data);
         g_object_unref (content_dir);
 }
 
 static void
-browse (GUPnPServiceProxy *content_dir, const char *container_id)
+browse (GUPnPServiceProxy *content_dir,
+        const char        *container_id,
+        guint32            starting_index,
+        guint32            requested_count)
 {
+        BrowseData *data;
+
         g_object_ref (content_dir);
+
+        data = browse_data_new (container_id, starting_index);
 
         gupnp_service_proxy_begin_action
                                 (content_dir,
                                  "Browse",
                                  browse_cb,
-                                 NULL,
+                                 data,
                                  /* IN args */
                                  "ObjectID",
                                  G_TYPE_STRING,
@@ -722,9 +784,10 @@ browse (GUPnPServiceProxy *content_dir, const char *container_id)
                                  "*",
                                  "StartingIndex",
                                  G_TYPE_UINT,
-                                 0,
+                                 starting_index,
                                  "RequestedCount",
-                                 G_TYPE_UINT, 0,
+                                 G_TYPE_UINT,
+                                 requested_count,
                                  "SortCriteria",
                                  G_TYPE_STRING,
                                  "",
@@ -772,7 +835,7 @@ append_media_server (GUPnPDeviceProxy *proxy,
 
                 schedule_icon_update (info, on_device_icon_available);
 
-                browse (content_dir, "0");
+                browse (content_dir, "0", 0, MAX_BROWSE);
                 gupnp_service_proxy_add_notify (content_dir,
                                                 "ContainerUpdateIDs",
                                                 G_TYPE_STRING,
