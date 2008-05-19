@@ -1,5 +1,5 @@
-0.3.99
-======
+0.4
+===
 
 - Use libsoup 2.4. [Jorn Baayen, Zeeshan Ali Khattak]
 - Incremental browsing of containers. [Zeeshan Ali Khattak]
