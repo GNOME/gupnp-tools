@@ -381,6 +381,8 @@ show_device_details (GUPnPDeviceInfo *info)
         details[i++] = gupnp_device_info_get_serial_number (info);
         details[i++] = "UPC";
         details[i++] = gupnp_device_info_get_upc (info);
+        details[i++] = "Presentation URL";
+        details[i++] = gupnp_device_info_get_presentation_url (info);
         details[i] = NULL;
 
         update_details ((const char **) details);

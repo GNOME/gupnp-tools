@@ -1,3 +1,8 @@
+2008-05-22  Ross Burton  <ross@openedhand.com>
+
+	* src/universal-cp/details-treeview.c:
+	Display the device presentation URL (requires libgupnp from svn).
+
 2008-05-15  Zeeshan Ali Khattak  <zeenix@gmail.com>
 
 	* configure.ac:
