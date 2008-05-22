@@ -1,3 +1,9 @@
+2008-05-22  Jorn Baayen  <jorn@openedhand.com>
+
+	* configure.ac:
+
+	Require gupnp 0.10.1.99.
+
 2008-05-22  Ross Burton  <ross@openedhand.com>
 
 	* src/universal-cp/details-treeview.c:
