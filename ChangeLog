@@ -1,3 +1,9 @@
+2008-05-26  Zeeshan Ali Khattak  <zeenix@gmail.com>
+
+	* src/network-light/upnp.c:
+
+	Remove the unneeded periodic notification to susbscribers.
+
 2008-05-22  Jorn Baayen  <jorn@openedhand.com>
 
 	* configure.ac:

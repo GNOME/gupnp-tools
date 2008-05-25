@@ -215,24 +215,6 @@ on_notify_failed (GUPnPService *service,
         g_string_free (warning, TRUE);
 }
 
-static gboolean
-timeout (gpointer user_data)
-{
-        gupnp_service_notify (GUPNP_SERVICE (switch_power),
-                              "Status",
-                              G_TYPE_BOOLEAN,
-                              get_status (),
-                              NULL);
-
-        gupnp_service_notify (GUPNP_SERVICE (dimming),
-                              "LoadLevelStatus",
-                              G_TYPE_UINT,
-                              get_load_level (),
-                              NULL);
-
-        return FALSE;
-}
-
 gboolean
 init_upnp (void)
 {
@@ -298,8 +280,6 @@ init_upnp (void)
                                   G_CALLBACK (on_notify_failed),
                                   NULL);
         }
-
-        g_timeout_add (5000, timeout, NULL);
 
         /* Run */
         gupnp_root_device_set_available (dev, TRUE);
