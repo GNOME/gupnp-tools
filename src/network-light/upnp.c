@@ -25,6 +25,8 @@
 #include <stdio.h>
 #include <locale.h>
 #include <string.h>
+#include <uuid/uuid.h>
+#include <glib/gstdio.h>
 
 #include "gui.h"
 #include "upnp.h"
@@ -38,6 +40,9 @@ static GUPnPContext     *context;
 static GUPnPRootDevice  *dev;
 static GUPnPServiceInfo *switch_power;
 static GUPnPServiceInfo *dimming;
+
+static char *uuid;
+static char *desc_location;
 
 void
 notify_status_change (gboolean status)
@@ -215,11 +220,81 @@ on_notify_failed (GUPnPService *service,
         g_string_free (warning, TRUE);
 }
 
+/* Copied from gupnp/libgupnp/xml-utils.c */
+static xmlNode *
+xml_util_get_element (xmlNode *node,
+                      ...)
+{
+        va_list var_args;
+
+        va_start (var_args, node);
+
+        while (TRUE) {
+                const char *arg;
+
+                arg = va_arg (var_args, const char *);
+                if (!arg)
+                        break;
+
+                for (node = node->children; node; node = node->next) {
+                        if (node->name == NULL)
+                                continue;
+
+                        if (!strcmp (arg, (char *) node->name))
+                                break;
+                }
+
+                if (!node)
+                        break;
+        }
+
+        va_end (var_args);
+
+        return node;
+}
+
+static char *
+change_uuid (xmlDoc *doc)
+{
+        xmlNode *uuid_node;
+        uuid_t uuid;
+        char *udn, uuidstr[37];
+
+        uuid_node = xml_util_get_element ((xmlNode *) doc,
+                                          "root",
+                                          "device",
+                                          "UDN",
+                                          NULL);
+        if (uuid_node == NULL) {
+                g_critical ("Failed to find UDN element"
+                            "in device description");
+
+                return NULL;
+        }
+
+        uuid_generate (uuid);
+        uuid_unparse (uuid, uuidstr);
+
+        if (uuidstr == NULL) {
+                udn = (char *) xmlNodeGetContent (uuid_node);
+                g_warning ("Failed to generate UUID for device description."
+                           "Using default UDN: %s", udn);
+                udn = g_strdup (udn);
+        } else
+                udn = g_strdup_printf ("uuid:%s", uuidstr);
+
+        xmlNodeSetContent (uuid_node, (unsigned char *) udn);
+        g_free (udn);
+
+        return g_strdup (uuidstr);
+}
+
 gboolean
 init_upnp (void)
 {
         GError *error;
         xmlDoc *doc = NULL;
+        char *ext_desc_path;
 
         g_thread_init (NULL);
 
@@ -235,19 +310,50 @@ init_upnp (void)
 
         g_print ("Running on port %d\n", gupnp_context_get_port (context));
 
-	doc = xmlParseFile (DATA_DIR "/" DESCRIPTION_DOC);
-	if (doc == NULL) {
-	        g_critical ("Unable to load the XML description file %s",
-			    DESCRIPTION_DOC);
+        doc = xmlParseFile (DATA_DIR "/" DESCRIPTION_DOC);
+        if (doc == NULL) {
+                g_critical ("Unable to load the XML description file %s",
+                            DESCRIPTION_DOC);
+                g_object_unref (context);
                 return FALSE;
-	}
+        }
 
+        /* Geting a new uuid and updating the xmlDoc */
+        uuid = change_uuid (doc);
+        if (!uuid) {
+                xmlFreeDoc (doc);
+                g_object_unref (context);
+
+                return FALSE;
+        }
+
+        /* saving the xml file to the temporal location with the uuid name */
+        desc_location = g_strdup_printf ("%s/gupnp-network-light-%s.xml",
+                                         g_get_tmp_dir (),
+                                         uuid);
+        g_assert (desc_location != NULL);
+
+        if (xmlSaveFile (desc_location, doc) < 0) {
+                g_print ("Error saving description file to %s.\n",
+                         desc_location);
+
+                g_free (desc_location);
+                xmlFreeDoc (doc);
+                g_object_unref (context);
+
+                return FALSE;
+        }
+
+        ext_desc_path = g_strdup_printf ("/%s.xml",uuid);
+
+        gupnp_context_host_path (context, desc_location, ext_desc_path);
         gupnp_context_host_path (context, DATA_DIR, "");
 
         /* Create root device */
         dev = gupnp_root_device_new (context,
                                      doc,
-                                     DESCRIPTION_DOC);
+                                     ext_desc_path);
+        g_free (ext_desc_path);
 
         /* Free doc when root device is destroyed */
         g_object_weak_ref (G_OBJECT (dev), (GWeakNotify) xmlFreeDoc, doc);
@@ -294,5 +400,11 @@ deinit_upnp (void)
         g_object_unref (dimming);
         g_object_unref (dev);
         g_object_unref (context);
+
+	if (g_remove (desc_location) != 0)
+                g_warning ("error removing %s\n", desc_location);
+
+        g_free (desc_location);
+        g_free (uuid);
 }
 

@@ -1,3 +1,10 @@
+2008-06-02  Zeeshan Ali Khattak  <zeenix@gmail.com>
+	    Hugo Calleja <hugo.calleja@gmail.com>
+
+	* src/network-light/upnp.c:
+
+	Create a new UUID for each instance of network-light.
+
 2008-05-26  Zeeshan Ali Khattak  <zeenix@gmail.com>
 
 	* src/network-light/upnp.c:
