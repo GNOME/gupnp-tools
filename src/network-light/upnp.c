@@ -350,9 +350,10 @@ init_upnp (void)
         gupnp_context_host_path (context, DATA_DIR, "");
 
         /* Create root device */
-        dev = gupnp_root_device_new (context,
-                                     doc,
-                                     ext_desc_path);
+        dev = gupnp_root_device_new_full (context,
+                                          gupnp_resource_factory_get_default (),
+                                          doc,
+                                          ext_desc_path);
         g_free (ext_desc_path);
 
         /* Free doc when root device is destroyed */
