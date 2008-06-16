@@ -11,6 +11,9 @@ network-light:
 universal-cp:
 - Display the device presentation URL [Ross Burton]
 
+general:
+- Fix `make distcheck`. [Zeeshan Ali Khattak]
+
 0.4
 ===
 

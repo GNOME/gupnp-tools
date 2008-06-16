@@ -1,5 +1,11 @@
 2008-06-16  Zeeshan Ali Khattak  <zeenix@gmail.com>
 
+	* NEWS:
+
+	Update the NEWS file as par the latest change.
+
+2008-06-16  Zeeshan Ali Khattak  <zeenix@gmail.com>
+
 	* src/av-cp/Makefile.am:
 	* src/network-light/Makefile.am:
 	* src/universal-cp/Makefile.am:
