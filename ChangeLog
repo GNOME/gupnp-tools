@@ -2,7 +2,8 @@
 
 	* configure.ac:
 
-	Require gupnp 0.12 and gupnp-av 0.2.
+	- Require gupnp 0.12 and gupnp-av 0.2.
+	- Bump version to 0.6.
 
 2008-06-03  Jorn Baayen  <jorn@openedhand.com>
 
