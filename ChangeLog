@@ -1,5 +1,14 @@
 2008-06-16  Zeeshan Ali Khattak  <zeenix@gmail.com>
 
+	* src/av-cp/Makefile.am:
+	* src/network-light/Makefile.am:
+	* src/universal-cp/Makefile.am:
+
+	Fix distcheck: Use 'top_srcdir' variable in Makefile.am rather than
+	relative paths.
+
+2008-06-16  Zeeshan Ali Khattak  <zeenix@gmail.com>
+
 	* NEWS:
 
 	Prepare NEWS file for release.

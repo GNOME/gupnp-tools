@@ -5,7 +5,7 @@ shareddir = $(datadir)/gupnp-tools
 endif
 
 AM_CFLAGS = $(LIBGUPNP_CFLAGS) $(LIBGLADE_CFLAGS) -I$(top_srcdir) \
-	    -DDATA_DIR='"$(shareddir)"' -I../common
+	    -DDATA_DIR='"$(shareddir)"' -I$(top_srcdir)/src/common
 
 bin_PROGRAMS = gupnp-universal-cp
 
