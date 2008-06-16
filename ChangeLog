@@ -1,3 +1,9 @@
+2008-06-16  Zeeshan Ali Khattak  <zeenix@gmail.com>
+
+	* configure.ac:
+
+	Require gupnp 0.12 and gupnp-av 0.2.
+
 2008-06-03  Jorn Baayen  <jorn@openedhand.com>
 
 	* src/network-light/upnp.c (init_upnp):
