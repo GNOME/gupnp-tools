@@ -1,3 +1,16 @@
+0.6
+===
+
+network-light:
+- Remove the unneeded periodic notification to susbscribers.
+  [Zeeshan Ali Khattak]
+- Create a new UUID for each instance of network-light.
+  [Hugo Calleja, Zeeshan Ali Khattak]
+- Use the new gupnp_root_device_new() API. [Jorn Baayen]
+
+universal-cp:
+- Display the device presentation URL [Ross Burton]
+
 0.4
 ===
 

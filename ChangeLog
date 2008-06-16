@@ -1,5 +1,11 @@
 2008-06-16  Zeeshan Ali Khattak  <zeenix@gmail.com>
 
+	* NEWS:
+
+	Prepare NEWS file for release.
+
+2008-06-16  Zeeshan Ali Khattak  <zeenix@gmail.com>
+
 	* configure.ac:
 
 	- Require gupnp 0.12 and gupnp-av 0.2.
