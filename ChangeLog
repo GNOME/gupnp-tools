@@ -1,3 +1,13 @@
+2008-08-12  Zeeshan Ali Khattak  <zeenix@gmail.com>
+
+	* configure.ac:
+	* src/av-cp/Makefile.am:
+	* src/network-light/Makefile.am:
+	* src/universal-cp/Makefile.am:
+
+	Explicitly require and link to libgthread-2.0. This should fix the
+	build issues on Rawhide.
+
 2008-06-16  Zeeshan Ali Khattak  <zeenix@gmail.com>
 
 	* NEWS:
