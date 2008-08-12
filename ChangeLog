@@ -1,5 +1,11 @@
 2008-08-12  Zeeshan Ali Khattak  <zeenix@gmail.com>
 
+	* NEWS:
+
+	Update NEWS file for release 0.6.1.
+
+2008-08-12  Zeeshan Ali Khattak  <zeenix@gmail.com>
+
 	* configure.ac:
 
 	Bump version number to 0.6.1.
