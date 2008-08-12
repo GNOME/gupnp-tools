@@ -1,6 +1,12 @@
 2008-08-12  Zeeshan Ali Khattak  <zeenix@gmail.com>
 
 	* configure.ac:
+
+	Bump version number to 0.6.1.
+
+2008-08-12  Zeeshan Ali Khattak  <zeenix@gmail.com>
+
+	* configure.ac:
 	* src/av-cp/Makefile.am:
 	* src/network-light/Makefile.am:
 	* src/universal-cp/Makefile.am:
