@@ -1,8 +1,10 @@
 0.6.1
 =====
 
-Minor release to fix build on Rawhide by explicitly requiring and linking to
-libgthread-2.0.
+Minor release.
+
+- Fix build on Rawhide by explicitly requiring and linking to libgthread-2.0.
+- AV Control Point doesn't add orphan items/containers to tree anymore.
 
 0.6
 ===
