@@ -586,15 +586,15 @@ append_didle_object (xmlNode           *object_node,
                 icon = get_item_icon (object_node);
         }
 
-        if (!find_row (model,
-                       server_iter,
-                       &parent_iter,
-                       compare_container,
-                       (gpointer) parent_id,
-                       TRUE)) {
-                /* Assume parent to be the root container if parentID is
-                 * unknown */
+        if (strcmp (parent_id, "0") == 0) {
                 parent_iter = *server_iter;
+        } else if (!find_row (model,
+                              server_iter,
+                              &parent_iter,
+                              compare_container,
+                              (gpointer) parent_id,
+                              TRUE)) {
+                goto return_point;
         }
 
         gtk_tree_store_insert_with_values (GTK_TREE_STORE (model),
@@ -606,6 +606,7 @@ append_didle_object (xmlNode           *object_node,
                                            5, is_container,
                                            -1);
 
+return_point:
         g_free (parent_id);
         g_free (title);
         g_free (id);

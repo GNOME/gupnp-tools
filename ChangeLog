@@ -1,3 +1,9 @@
+2008-08-21  Zeeshan Ali Khattak  <zeenix@gmail.com>
+
+	* src/av-cp/playlist-treeview.c:
+
+	No need to add orphan objects to tree.
+
 2008-08-12  Zeeshan Ali Khattak  <zeenix@gmail.com>
 
 	* NEWS:
