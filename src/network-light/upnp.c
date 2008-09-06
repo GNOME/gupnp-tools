@@ -442,44 +442,15 @@ on_network_light_unavailable (GUPnPControlPoint *control_point,
         }
 }
 
-gboolean
-init_upnp (void)
+static gboolean
+init_server (GUPnPContext *context)
 {
         GError *error;
         xmlDoc *doc = NULL;
         char *ext_desc_path;
 
-        g_thread_init (NULL);
-
-        error = NULL;
-        context = gupnp_context_new (NULL, NULL, 0, &error);
-
-        if (error) {
-                g_error (error->message);
-                g_error_free (error);
-
-                return FALSE;
-        }
-
         g_print ("Running on port %d\n", gupnp_context_get_port (context));
 
-        /* Initialize client-side stuff */
-        cp = gupnp_control_point_new (context, NETWORK_LIGHT);
-        switch_proxies = NULL;
-        dimming_proxies = NULL;
-
-        g_signal_connect (cp,
-                          "device-proxy-available",
-                          G_CALLBACK (on_network_light_available),
-                          NULL);
-        g_signal_connect (cp,
-                          "device-proxy-unavailable",
-                          G_CALLBACK (on_network_light_unavailable),
-                          NULL);
-
-        gssdp_resource_browser_set_active (GSSDP_RESOURCE_BROWSER (cp), TRUE);
-
-        /* Now the server-side stuff */
         doc = xmlParseFile (DATA_DIR "/" DESCRIPTION_DOC);
         if (doc == NULL) {
                 g_critical ("Unable to load the XML description file %s",
@@ -564,8 +535,63 @@ init_upnp (void)
         return TRUE;
 }
 
-void
-deinit_upnp (void)
+static gboolean
+init_client (GUPnPContext *context)
+{
+        GError *error;
+        xmlDoc *doc = NULL;
+        char *ext_desc_path;
+
+        cp = gupnp_control_point_new (context, NETWORK_LIGHT);
+        switch_proxies = NULL;
+        dimming_proxies = NULL;
+
+        g_signal_connect (cp,
+                          "device-proxy-available",
+                          G_CALLBACK (on_network_light_available),
+                          NULL);
+        g_signal_connect (cp,
+                          "device-proxy-unavailable",
+                          G_CALLBACK (on_network_light_unavailable),
+                          NULL);
+
+        gssdp_resource_browser_set_active (GSSDP_RESOURCE_BROWSER (cp), TRUE);
+
+        return TRUE;
+}
+
+gboolean
+init_upnp (void)
+{
+        GError *error;
+        xmlDoc *doc = NULL;
+        char *ext_desc_path;
+
+        g_thread_init (NULL);
+
+        error = NULL;
+        context = gupnp_context_new (NULL, NULL, 0, &error);
+
+        if (error) {
+                g_error (error->message);
+                g_error_free (error);
+
+                return FALSE;
+        }
+
+        /* Initialize client-side stuff */
+        if (!init_client (context))
+                return FALSE;
+
+        /* Then the server-side stuff */
+        if (!init_server(context))
+                return FALSE;
+
+        return TRUE;
+}
+
+static void
+deinit_server (void)
 {
         g_object_unref (switch_power);
         g_object_unref (dimming);
@@ -577,9 +603,20 @@ deinit_upnp (void)
 
         g_free (desc_location);
         g_free (uuid);
+}
 
+static void
+deinit_client (void)
+{
         g_object_unref (cp);
         g_list_foreach (switch_proxies, (GFunc) g_object_unref, NULL);
         g_list_foreach (dimming_proxies, (GFunc) g_object_unref, NULL);
+}
+
+void
+deinit_upnp (void)
+{
+        deinit_server ();
+        deinit_client ();
 }
 

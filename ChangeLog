@@ -1,5 +1,12 @@
 2008-09-06  Zeeshan Ali (Khattak)  <zeeshanak@gnome.org>
 
+	* src/network-light/upnp.c:
+
+	Refactor: Put client and server (de)initialization in separate
+	functions.
+
+2008-09-06  Zeeshan Ali (Khattak)  <zeeshanak@gnome.org>
+
 	* src/network-light/gui.c:
 	* src/network-light/upnp.c:
 
