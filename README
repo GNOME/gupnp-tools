@@ -14,7 +14,9 @@ test and debug one's UPnP devices and control points:
     invoke actions.
 
   * Network Light: a virtual light bulb that allows control points to switch
-    it on and off, change its dimming level and query its current status.
+    it on and off, change its dimming level and query its current status. It
+    also provides a simple UI to control all the network lights available on
+    the network.
 
   * AV Control Point: a simple media player UI that enables one to discover and
     play multimedia contents available on a network.

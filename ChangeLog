@@ -1,3 +1,10 @@
+2008-09-07  Zeeshan Ali (Khattak)  <zeeshanak@gnome.org>
+
+	* NEWS:
+	* README:
+
+	Update the NEWS and README files as per the latest changes.
+
 2008-09-06  Zeeshan Ali (Khattak)  <zeeshanak@gnome.org>
 
 	* src/network-light/upnp.c:

@@ -1,10 +1,14 @@
 0.6.1
 =====
 
-Minor release.
+Network Light:
+- The UI now controls all network lights on the network, not just itself.
 
+AV Control Point:
+- Don't add orphan items/containers to tree anymore.
+
+General:
 - Fix build on Rawhide by explicitly requiring and linking to libgthread-2.0.
-- AV Control Point doesn't add orphan items/containers to tree anymore.
 
 0.6
 ===
