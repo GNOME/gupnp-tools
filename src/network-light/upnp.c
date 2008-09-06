@@ -35,11 +35,17 @@
 #define DESCRIPTION_DOC "xml/network-light-desc.xml"
 #define DIMMING_SERVICE "urn:schemas-upnp-org:service:Dimming:1"
 #define SWITCH_SERVICE "urn:schemas-upnp-org:service:SwitchPower:1"
+#define NETWORK_LIGHT "urn:schemas-upnp-org:device:DimmableLight:1"
 
 static GUPnPContext     *context;
 static GUPnPRootDevice  *dev;
 static GUPnPServiceInfo *switch_power;
 static GUPnPServiceInfo *dimming;
+
+static GUPnPControlPoint *cp;
+/* Other network light services on the network */
+static GList *switch_proxies;
+static GList *dimming_proxies;
 
 static char *uuid;
 static char *desc_location;
@@ -289,6 +295,153 @@ change_uuid (xmlDoc *doc)
         return g_strdup (uuidstr);
 }
 
+void on_service_proxy_action_ret (GUPnPServiceProxy *proxy,
+                                  GUPnPServiceProxyAction *action,
+                                  gpointer user_data)
+{
+        GError *error = NULL;
+
+        gupnp_service_proxy_end_action (proxy,
+                                        action,
+                                        &error,
+                                        NULL);
+        if (error) {
+                GUPnPServiceInfo *info = GUPNP_SERVICE_INFO (proxy);
+
+                g_warning ("Failed to call action \"%s\" on \"%s\": %s",
+                           (char *) user_data,
+                           gupnp_service_info_get_location (info),
+                           error->message);
+
+                g_error_free (error);
+        }
+
+        g_free (user_data);
+}
+
+void
+set_all_status (gboolean status)
+{
+        GList *proxy_node;
+
+        for (proxy_node = switch_proxies;
+             proxy_node;
+             proxy_node = g_list_next (proxy_node)) {
+                GUPnPServiceProxy *proxy;
+                char *action_name;
+
+                proxy = GUPNP_SERVICE_PROXY (proxy_node->data);
+                action_name = g_strdup ("SetTarget");
+
+                gupnp_service_proxy_begin_action (proxy,
+                                                  action_name,
+                                                  on_service_proxy_action_ret,
+                                                  action_name,
+                                                  "NewTargetValue",
+                                                  G_TYPE_BOOLEAN,
+                                                  status,
+                                                  NULL);
+        }
+}
+
+void
+set_all_load_level (gint load_level)
+{
+        GList *proxy_node;
+
+        for (proxy_node = dimming_proxies;
+             proxy_node;
+             proxy_node = g_list_next (proxy_node)) {
+                GUPnPServiceProxy *proxy;
+                char *action_name;
+
+                proxy = GUPNP_SERVICE_PROXY (proxy_node->data);
+                action_name = g_strdup ("SetLoadLevelTarget");
+
+                gupnp_service_proxy_begin_action (proxy,
+                                                  action_name,
+                                                  on_service_proxy_action_ret,
+                                                  action_name,
+                                                  "newLoadlevelTarget",
+                                                  G_TYPE_UINT,
+                                                  load_level,
+                                                  NULL);
+        }
+}
+
+static void
+on_network_light_available (GUPnPControlPoint *cp,
+                            GUPnPDeviceProxy  *light_proxy,
+                            gpointer           user_data)
+{
+        GUPnPServiceProxy *switch_proxy;
+        GUPnPServiceProxy *dimming_proxy;
+        GUPnPServiceInfo  *info;
+
+        info = gupnp_device_info_get_service (GUPNP_DEVICE_INFO (light_proxy),
+                                              SWITCH_SERVICE);
+        switch_proxy = GUPNP_SERVICE_PROXY (info);
+
+        if (switch_proxy) {
+                switch_proxies = g_list_append (switch_proxies, switch_proxy);
+        }
+
+        info = gupnp_device_info_get_service (GUPNP_DEVICE_INFO (light_proxy),
+                                              DIMMING_SERVICE);
+        dimming_proxy = GUPNP_SERVICE_PROXY (info);
+
+        if (dimming_proxy) {
+                dimming_proxies = g_list_append (dimming_proxies,
+                                                 dimming_proxy);
+        }
+}
+
+static gint compare_service (GUPnPServiceInfo *info1,
+                             GUPnPServiceInfo *info2)
+{
+        const char *udn1;
+        const char *udn2;
+
+        udn1 = gupnp_service_info_get_udn (info1);
+        udn2 = gupnp_service_info_get_udn (info2);
+
+        return strcmp (udn1, udn2);
+}
+
+static void remove_service_from_list (GUPnPServiceInfo *info,
+                                      GList           **list)
+{
+        GList *proxy_node;
+
+        proxy_node = g_list_find_custom (*list,
+                                         info,
+                                         (GCompareFunc) compare_service);
+        if (proxy_node) {
+                g_object_unref (proxy_node->data);
+                *list = g_list_remove (*list, proxy_node->data);
+        }
+}
+
+static void
+on_network_light_unavailable (GUPnPControlPoint *control_point,
+                              GUPnPDeviceProxy  *light_proxy,
+                              gpointer           user_data)
+{
+        GUPnPServiceInfo *info;
+
+        info = gupnp_device_info_get_service (GUPNP_DEVICE_INFO (light_proxy),
+                                              SWITCH_SERVICE);
+        if (info) {
+                remove_service_from_list (info, &switch_proxies);
+        }
+
+        info = gupnp_device_info_get_service (GUPNP_DEVICE_INFO (light_proxy),
+                                              DIMMING_SERVICE);
+        if (info) {
+                remove_service_from_list (info, &dimming_proxies);
+        }
+}
+
 gboolean
 init_upnp (void)
 {
@@ -310,6 +463,23 @@ init_upnp (void)
 
         g_print ("Running on port %d\n", gupnp_context_get_port (context));
 
+        /* Initialize client-side stuff */
+        cp = gupnp_control_point_new (context, NETWORK_LIGHT);
+        switch_proxies = NULL;
+        dimming_proxies = NULL;
+
+        g_signal_connect (cp,
+                          "device-proxy-available",
+                          G_CALLBACK (on_network_light_available),
+                          NULL);
+        g_signal_connect (cp,
+                          "device-proxy-unavailable",
+                          G_CALLBACK (on_network_light_unavailable),
+                          NULL);
+
+        gssdp_resource_browser_set_active (GSSDP_RESOURCE_BROWSER (cp), TRUE);
+
+        /* Now the server-side stuff */
         doc = xmlParseFile (DATA_DIR "/" DESCRIPTION_DOC);
         if (doc == NULL) {
                 g_critical ("Unable to load the XML description file %s",
@@ -407,5 +577,9 @@ deinit_upnp (void)
 
         g_free (desc_location);
         g_free (uuid);
+
+        g_object_unref (cp);
+        g_list_foreach (switch_proxies, (GFunc) g_object_unref, NULL);
+        g_list_foreach (dimming_proxies, (GFunc) g_object_unref, NULL);
 }
 

@@ -1,3 +1,10 @@
+2008-09-06  Zeeshan Ali (Khattak)  <zeeshanak@gnome.org>
+
+	* src/network-light/gui.c:
+	* src/network-light/upnp.c:
+
+	The UI now controls all network lights on the network, not just itself.
+
 2008-08-23  Zeeshan Ali Khattak  <zeenix@gmail.com>
 
 	* NEWS:

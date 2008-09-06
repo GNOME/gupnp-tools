@@ -71,7 +71,7 @@ void
 on_light_status_menuitem_activate (GtkCheckMenuItem *menuitem,
                                    gpointer          user_data)
 {
-        set_status (gtk_check_menu_item_get_active (menuitem));
+        set_all_status (gtk_check_menu_item_get_active (menuitem));
 }
 
 void
@@ -90,14 +90,14 @@ void
 on_increase_luminance_menuitem_activate (GtkMenuItem *menuitem,
                                          gpointer     user_data)
 {
-        set_load_level (get_load_level () + 20);
+        set_all_load_level (get_load_level () + 20);
 }
 
 void
 on_decrease_luminance_menuitem_activate (GtkMenuItem *menuitem,
                                          gpointer     user_data)
 {
-        set_load_level (get_load_level () - 20);
+        set_all_load_level (get_load_level () - 20);
 }
 
 static void
