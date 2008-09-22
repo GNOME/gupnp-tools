@@ -35,4 +35,10 @@ init_upnp                       (void);
 void
 deinit_upnp                     (void);
 
+void
+set_all_status (gboolean status);
+
+void
+set_all_load_level (gint load_level);
+
 #endif /* __UPNP_H__ */

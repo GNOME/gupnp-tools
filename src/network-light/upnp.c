@@ -538,10 +538,6 @@ init_server (GUPnPContext *context)
 static gboolean
 init_client (GUPnPContext *context)
 {
-        GError *error;
-        xmlDoc *doc = NULL;
-        char *ext_desc_path;
-
         cp = gupnp_control_point_new (context, NETWORK_LIGHT);
         switch_proxies = NULL;
         dimming_proxies = NULL;
@@ -564,8 +560,6 @@ gboolean
 init_upnp (void)
 {
         GError *error;
-        xmlDoc *doc = NULL;
-        char *ext_desc_path;
 
         g_thread_init (NULL);
 

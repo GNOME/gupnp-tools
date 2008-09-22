@@ -1,5 +1,10 @@
 2008-09-22  Ross Burton  <ross@linux.intel.com>
 
+	* src/network-light/upnp.[ch]:
+	Fix compile errors (well, warnings after the previous commit).
+
+2008-09-22  Ross Burton  <ross@linux.intel.com>
+
 	* configure.ac:
 	Don't ever use -Werror, it's stupid. Just always do -Wall.
 
