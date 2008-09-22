@@ -1,3 +1,8 @@
+2008-09-22  Ross Burton  <ross@linux.intel.com>
+
+	* configure.ac:
+	Don't ever use -Werror, it's stupid. Just always do -Wall.
+
 2008-09-07  Zeeshan Ali (Khattak)  <zeeshanak@gnome.org>
 
 	* NEWS:

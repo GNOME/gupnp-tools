@@ -60,13 +60,7 @@ AM_CONDITIONAL(BUILD_AV, test x$BUILD_AV = xyes)
 GLIB_GENMARSHAL=`pkg-config --variable=glib_genmarshal glib-2.0`
 AC_SUBST(GLIB_GENMARSHAL)
 
-# Debugging
-AC_ARG_ENABLE(debug,
-	[  --enable-debug          enable debugging],,
-        enable_debug=no)
-if test "x$enable_debug" = "xyes"; then
-        CFLAGS="$CFLAGS -g -Wall -Werror"
-fi
+CFLAGS="$CFLAGS -Wall"
 
 # Run uninstalled
 AC_ARG_ENABLE(uninstalled,
