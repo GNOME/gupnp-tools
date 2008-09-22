@@ -1,5 +1,10 @@
 2008-09-22  Ross Burton  <ross@linux.intel.com>
 
+	* data/Makefile.am:
+	Don't install the AV glade and desktop files if AV tools are disabled.
+
+2008-09-22  Ross Burton  <ross@linux.intel.com>
+
 	* src/network-light/upnp.[ch]:
 	Fix compile errors (well, warnings after the previous commit).
 

@@ -2,15 +2,18 @@ SUBDIRS = pixmaps xml
 
 shareddir = $(datadir)/gupnp-tools
 
-dist_shared_DATA = $(srcdir)/gupnp-universal-cp.glade \
-		   $(srcdir)/gupnp-network-light.glade \
-		   $(srcdir)/gupnp-av-cp.glade
+dist_shared_DATA = gupnp-universal-cp.glade \
+		   gupnp-network-light.glade
 
 desktopdir = ${datadir}/applications
 desktop_in_files = gupnp-universal-cp.desktop.in \
-		   gupnp-av-cp.desktop.in \
 		   gupnp-network-light.desktop.in
 desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)
+
+if BUILD_AV
+dist_shared_DATA += gupnp-av-cp.glade
+desktop_in_files += gupnp-av-cp.desktop.in
+endif
 
 # Rule to create the .desktop files
 $(desktop_DATA): $(desktop_in_files) Makefile
