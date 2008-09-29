@@ -591,7 +591,8 @@ append_didle_object (xmlNode      *object_node,
                 icon = get_item_icon (object_node);
         }
 
-        if (strcmp (parent_id, "0") == 0) {
+        /* Check if we browsed the root container. */
+        if (strcmp (browse_data->id, "0") == 0) {
                 parent_iter = *server_iter;
         } else if (!find_row (model,
                               server_iter,

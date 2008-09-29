@@ -2,6 +2,15 @@
 
 	* src/av-cp/playlist-treeview.c:
 
+	Convert the check for top children to be based on the ID of the
+	container we browsed rather than the parentID of the DIDL object. We
+	should not be assuming that the actual ID of the root container is
+	guaranteed to be "0".
+
+2008-09-29  Zeeshan Ali (Khattak)  <zeeshanak@gnome.org>
+
+	* src/av-cp/playlist-treeview.c:
+
 	Pass the whole BrowseData to DIDL handling functions rather than just
 	ContentDirectory proxy.
 
