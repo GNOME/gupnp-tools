@@ -550,10 +550,10 @@ on_container_update_ids (GUPnPServiceProxy *content_dir,
 }
 
 static void
-append_didle_object (xmlNode           *object_node,
-                     GUPnPServiceProxy *content_dir,
-                     GtkTreeModel      *model,
-                     GtkTreeIter       *server_iter)
+append_didle_object (xmlNode      *object_node,
+                     BrowseData   *browse_data,
+                     GtkTreeModel *model,
+                     GtkTreeIter  *server_iter)
 {
         GtkTreeIter parent_iter;
         char       *id;
@@ -606,7 +606,7 @@ append_didle_object (xmlNode           *object_node,
                                            NULL, &parent_iter, position,
                                            0, icon,
                                            1, title,
-                                           3, content_dir,
+                                           3, browse_data->content_dir,
                                            4, id,
                                            5, is_container,
                                            -1);
@@ -663,17 +663,17 @@ on_didl_object_available (GUPnPDIDLLiteParser *didl_parser,
                           xmlNode             *object_node,
                           gpointer             user_data)
 {
-        GUPnPServiceInfo *content_dir;
-        GtkTreeModel     *model;
-        GtkTreeIter       server_iter;
-        const char       *udn;
+        BrowseData   *browse_data;
+        GtkTreeModel *model;
+        GtkTreeIter   server_iter;
+        const char   *udn;
 
         model = gtk_tree_view_get_model (GTK_TREE_VIEW (treeview));
         g_assert (model != NULL);
 
-        content_dir = GUPNP_SERVICE_INFO (user_data);
+        browse_data = (BrowseData *) user_data;
 
-        udn = gupnp_service_info_get_udn (content_dir);
+        udn = gupnp_service_info_get_udn (browse_data->content_dir);
 
         if (find_row (model,
                        NULL,
@@ -682,7 +682,7 @@ on_didl_object_available (GUPnPDIDLLiteParser *didl_parser,
                        (gpointer) udn,
                        FALSE)) {
                 append_didle_object (object_node,
-                                     GUPNP_SERVICE_PROXY (content_dir),
+                                     browse_data,
                                      model,
                                      &server_iter);
         }
@@ -728,7 +728,7 @@ browse_cb (GUPnPServiceProxy       *content_dir,
                                                 (didl_parser,
                                                  didl_xml,
                                                  on_didl_object_available,
-                                                 content_dir,
+                                                 data,
                                                  &error)) {
                         g_warning ("%s\n", error->message);
                         g_error_free (error);
