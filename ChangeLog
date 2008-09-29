@@ -1,5 +1,11 @@
 2008-09-29  Zeeshan Ali (Khattak)  <zeeshanak@gnome.org>
 
+	* src/av-cp/playlist-treeview.c:
+
+	Use BrowseData to keep ref to ContentDirectory proxy.
+
+2008-09-29  Zeeshan Ali (Khattak)  <zeeshanak@gnome.org>
+
 	* src/av-cp/gui.c:
 	* src/network-light/upnp.c:
 	* src/universal-cp/gui.c:

@@ -49,6 +49,8 @@ static GUPnPDIDLLiteParser *didl_parser;
 
 typedef struct
 {
+  GUPnPServiceProxy *content_dir;
+
   gchar *id;
 
   guint32 starting_index;
@@ -64,12 +66,14 @@ typedef struct
 } BrowseMetadataData;
 
 static BrowseData *
-browse_data_new (const char *id,
-                 guint32     starting_index)
+browse_data_new (GUPnPServiceProxy *content_dir,
+                 const char        *id,
+                 guint32            starting_index)
 {
         BrowseData *data;
 
         data = g_slice_new (BrowseData);
+        data->content_dir = g_object_ref (content_dir);
         data->id = g_strdup (id);
         data->starting_index = starting_index;
 
@@ -80,6 +84,7 @@ static void
 browse_data_free (BrowseData *data)
 {
         g_free (data->id);
+        g_object_unref (data->content_dir);
         g_slice_free (BrowseData, data);
 }
 
@@ -753,7 +758,6 @@ browse_cb (GUPnPServiceProxy       *content_dir,
         }
 
         browse_data_free (data);
-        g_object_unref (content_dir);
 }
 
 static void
@@ -764,9 +768,9 @@ browse (GUPnPServiceProxy *content_dir,
 {
         BrowseData *data;
 
-        g_object_ref (content_dir);
-
-        data = browse_data_new (container_id, starting_index);
+        data = browse_data_new (content_dir,
+                                container_id,
+                                starting_index);
 
         gupnp_service_proxy_begin_action
                                 (content_dir,
