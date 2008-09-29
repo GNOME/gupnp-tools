@@ -1,3 +1,11 @@
+2008-09-29  Zeeshan Ali (Khattak)  <zeeshanak@gnome.org>
+
+	* src/av-cp/gui.c:
+	* src/network-light/upnp.c:
+	* src/universal-cp/gui.c:
+
+	Don't initialize thread system if it is already initialized.
+
 2008-09-22  Ross Burton  <ross@linux.intel.com>
 
 	* data/Makefile.am:

@@ -561,7 +561,8 @@ init_upnp (void)
 {
         GError *error;
 
-        g_thread_init (NULL);
+        if (!g_thread_supported ())
+                g_thread_init (NULL);
 
         error = NULL;
         context = gupnp_context_new (NULL, NULL, 0, &error);
