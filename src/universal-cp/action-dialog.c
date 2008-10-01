@@ -678,15 +678,21 @@ on_action_complete (GUPnPServiceProxy       *proxy,
                                              &error,
                                              out_args);
         if (error) {
-                gchar *id;
+                GtkWidget *error_dialog;
 
-                id = gupnp_service_info_get_id (GUPNP_SERVICE_INFO (proxy));
-                g_warning ("Failed to send action '%s' to service '%s': %s\n",
-                           action_info->name,
-                           id,
-                           error->message);
+                error_dialog = gtk_message_dialog_new (dialog,
+                                                       GTK_DIALOG_MODAL,
+                                                       GTK_MESSAGE_ERROR,
+                                                       GTK_BUTTONS_CLOSE,
+                                                       "%s\n\n%s %s (%d)",
+                                                       "Action failed.",
+                                                       "Error: ",
+                                                       error->message,
+                                                       error->code);
 
-                g_free (id);
+                gtk_dialog_run (error_dialog);
+                gtk_widget_destroy (error_dialog);
+
                 g_error_free (error);
         } else {
                 display_action_out_arguments (out_args);

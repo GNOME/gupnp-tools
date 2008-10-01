@@ -1,3 +1,10 @@
+2008-10-01  Zeeshan Ali (Khattak)  <zeeshanak@gnome.org>
+
+	* src/universal-cp/action-dialog.c:
+
+	Use a message dialog to display action invocation errors rather than a
+	warning on the console. Fixes #936.
+
 2008-09-29  Zeeshan Ali (Khattak)  <zeeshanak@gnome.org>
 
 	* src/av-cp/playlist-treeview.c:
