@@ -680,15 +680,15 @@ on_action_complete (GUPnPServiceProxy       *proxy,
         if (error) {
                 GtkWidget *error_dialog;
 
-                error_dialog = gtk_message_dialog_new (dialog,
-                                                       GTK_DIALOG_MODAL,
-                                                       GTK_MESSAGE_ERROR,
-                                                       GTK_BUTTONS_CLOSE,
-                                                       "%s\n\n%s %s (%d)",
-                                                       "Action failed.",
-                                                       "Error: ",
-                                                       error->message,
-                                                       error->code);
+                error_dialog =
+                        gtk_message_dialog_new (
+                                        dialog,
+                                        GTK_DIALOG_MODAL,
+                                        GTK_MESSAGE_ERROR,
+                                        GTK_BUTTONS_CLOSE,
+                                        "Action failed.\n\nError %d: %s",
+                                        error->code,
+                                        error->message);
 
                 gtk_dialog_run (error_dialog);
                 gtk_widget_destroy (error_dialog);

@@ -2,6 +2,12 @@
 
 	* src/universal-cp/action-dialog.c:
 
+	A bit more beautiful error dialog. :)
+
+2008-10-01  Zeeshan Ali (Khattak)  <zeeshanak@gnome.org>
+
+	* src/universal-cp/action-dialog.c:
+
 	Use a message dialog to display action invocation errors rather than a
 	warning on the console. Fixes #936.
 
