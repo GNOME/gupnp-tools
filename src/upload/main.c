@@ -124,8 +124,6 @@ void
 application_exit (void)
 {
         g_main_loop_quit (main_loop);
-
-        deinit_control_point ();
 }
 
 gint
@@ -192,7 +190,9 @@ main (gint   argc,
 
         g_main_loop_run (main_loop);
 
-        g_object_unref (main_loop);
+        /* Clean-up */
+        g_main_loop_unref (main_loop);
+        deinit_control_point ();
         g_object_unref (upnp_context);
         g_option_context_free (context);
 

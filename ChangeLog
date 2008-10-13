@@ -1,3 +1,9 @@
+2008-10-14  Zeeshan Ali (Khattak)  <zeeshanak@gnome.org>
+
+	* src/upload/main.c:
+
+	Use g_main_loop_unref() instead of g_object_unref() to unref main_loop.
+
 2008-10-13  Zeeshan Ali (Khattak)  <zeeshanak@gnome.org>
 
 	* src/upload/item-creation.c:
