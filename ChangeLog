@@ -1,6 +1,25 @@
 2008-10-13  Zeeshan Ali (Khattak)  <zeeshanak@gnome.org>
 
 	* configure.ac:
+	* src/Makefile.am:
+	* src/upload/Makefile.am:
+	* src/upload/container-search.c:
+	* src/upload/container-search.h:
+	* src/upload/control_point.c:
+	* src/upload/control_point.h:
+	* src/upload/item-creation.c:
+	* src/upload/item-creation.h:
+	* src/upload/main.c:
+	* src/upload/main.h:
+	* src/upload/transfer.c:
+	* src/upload/transfer.h:
+
+	Introducing gupnp-upload: A small utility commandline application that
+	uploads files to MediaServers.
+
+2008-10-13  Zeeshan Ali (Khattak)  <zeeshanak@gnome.org>
+
+	* configure.ac:
 
 	Require GIO >= 2.12.
 

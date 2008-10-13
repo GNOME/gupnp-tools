@@ -91,6 +91,7 @@ src/av-cp/Makefile
 src/common/Makefile
 src/network-light/Makefile
 src/universal-cp/Makefile
+src/upload/Makefile
 data/Makefile
 data/gupnp-universal-cp.desktop.in
 data/gupnp-av-cp.desktop.in
