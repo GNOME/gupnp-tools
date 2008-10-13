@@ -1,5 +1,11 @@
 2008-10-13  Zeeshan Ali (Khattak)  <zeeshanak@gnome.org>
 
+	* src/upload/transfer.c:
+
+	Display the name of the file being transfered.
+
+2008-10-13  Zeeshan Ali (Khattak)  <zeeshanak@gnome.org>
+
 	* src/upload/main.c:
 
 	Invert the order of commandline arguments.

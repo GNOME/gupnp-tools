@@ -141,6 +141,9 @@ import_resource_cb (GUPnPServiceProxy       *cds_proxy,
 {
         GError *error;
         guint   transfer_id;
+        char   *file_name;
+
+        file_name = (gchar *) user_data;
 
         error = NULL;
         if (!gupnp_service_proxy_end_action (cds_proxy,
@@ -153,15 +156,18 @@ import_resource_cb (GUPnPServiceProxy       *cds_proxy,
                 g_critical ("Failed to start file transfer: %s",
                             error->message);
 
+                g_free (file_name);
                 g_error_free (error);
 
-                application_exit ();
+                transfer_completed ();
 
                 return;
         }
 
-        g_print ("Uploading: 00%%");
+        g_print ("Uploading %s: 00%%", file_name);
         start_tracking_transfer (cds_proxy, transfer_id);
+
+        g_free (file_name);
 }
 
 void
@@ -171,6 +177,7 @@ start_transfer (const char        *file_path,
                 GUPnPContext      *context)
 {
         char *source_uri;
+        char *file_name;
 
         if (!g_path_is_absolute (file_path)) {
                 g_critical ("Given file path '%s' is not absolute.", file_path);
@@ -188,10 +195,11 @@ start_transfer (const char        *file_path,
                                       gupnp_context_get_port (context),
                                       file_path);
 
+        file_name = g_path_get_basename (file_path);
         gupnp_service_proxy_begin_action (cds_proxy,
                                           "ImportResource",
                                           import_resource_cb,
-                                          NULL,
+                                          file_name,
                                           "SourceURI",
                                                 G_TYPE_STRING,
                                                 source_uri,
