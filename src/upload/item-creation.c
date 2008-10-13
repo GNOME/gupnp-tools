@@ -208,7 +208,7 @@ create_object_cb (GUPnPServiceProxy       *cds_proxy,
 
                 g_error_free (error);
 
-                application_exit ();
+                item_created (NULL);
 
                 return;
         }
@@ -217,21 +217,14 @@ create_object_cb (GUPnPServiceProxy       *cds_proxy,
                 g_critical ("Failed to create new item on remote container."
                             "No reasons given by MediaServer.");
 
-                application_exit ();
+                item_created (NULL);
 
                 return;
         }
 
         import_uri = parse_result (result);
-        if (import_uri == NULL) {
-                g_free (result);
 
-                application_exit ();
-
-                return;
-        } else {
-                item_created (import_uri);
-        }
+        item_created (import_uri);
 
         g_free (result);
 }
@@ -246,7 +239,7 @@ create_item (const char        *file_path,
 
         didl = create_didl_for_file (file_path, title, container_id);
         if (didl == NULL) {
-                application_exit ();
+                item_created (NULL);
 
                 return;
         }

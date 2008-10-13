@@ -33,5 +33,8 @@ item_created                    (const char *import_uri);
 void
 container_found                 (const char *container_id);
 
+void
+transfer_completed              (void);
+
 #endif /* __MAIN_H__ */
 

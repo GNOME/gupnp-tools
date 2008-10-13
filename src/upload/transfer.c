@@ -67,7 +67,7 @@ get_transfer_progress_cb (GUPnPServiceProxy       *cds_proxy,
 
                 g_error_free (error);
 
-                application_exit ();
+                transfer_completed ();
 
                 return;
         }
@@ -89,9 +89,7 @@ get_transfer_progress_cb (GUPnPServiceProxy       *cds_proxy,
                 g_source_remove (data->timeout_id);
                 g_slice_free (TrackTransferData, data);
 
-                application_exit ();
-
-                return;
+                transfer_completed ();
         }
 }
 
@@ -182,7 +180,7 @@ start_transfer (const char        *file_path,
         if (!g_path_is_absolute (file_path)) {
                 g_critical ("Given file path '%s' is not absolute.", file_path);
 
-                application_exit ();
+                transfer_completed ();
 
                 return;
         }

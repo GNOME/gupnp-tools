@@ -27,16 +27,17 @@
 #include "item-creation.h"
 #include "transfer.h"
 #include "container-search.h"
+#include "main.h"
 
 static GMainLoop         *main_loop;
 static GUPnPContext      *upnp_context;
 static GUPnPServiceProxy *cds_proxy;
 
-static char *file_path;
+static GList *files = NULL;
 static char *udn;
 
 static char *title = NULL;
-static char *container_id = NULL;
+static char *dest_container = NULL;
 static guint search_timeout = 0;
 
 static GOptionEntry entries[] =
@@ -45,7 +46,7 @@ static GOptionEntry entries[] =
           G_OPTION_ARG_INT, &search_timeout,
           "Search Timeout", "seconds" },
         { "container-id", 'c', 0,
-          G_OPTION_ARG_STRING, &container_id,
+          G_OPTION_ARG_STRING, &dest_container,
           "Destination Container ID", "CONTAINER_ID" },
         { "title", 'i', 0,
           G_OPTION_ARG_STRING, &title,
@@ -53,23 +54,53 @@ static GOptionEntry entries[] =
         { NULL }
 };
 
+static void
+goto_next_file (void)
+{
+        files = g_list_next (files);
+
+        if (files != NULL) {
+                create_item ((char *) files->data,
+                             title,
+                             cds_proxy,
+                             dest_container,
+                             upnp_context);
+        } else {
+                /* Exit if there are no more files to upload */
+                application_exit ();
+        }
+}
+
+void
+transfer_completed (void)
+{
+        goto_next_file ();
+}
+
 void
 container_found (const char *container_id)
 {
+        dest_container = container_id;
+
         /* Now create the item container */
-        create_item (file_path,
+        create_item ((char *) files->data,
                      title,
                      cds_proxy,
-                     container_id,
+                     dest_container,
                      upnp_context);
 }
 
 void
 item_created (const char *import_uri) {
-        start_transfer (file_path,
-                        import_uri,
-                        cds_proxy,
-                        upnp_context);
+        if (import_uri == NULL) {
+                /* Item creation failed, lets try next file */
+                goto_next_file ();
+        } else {
+                start_transfer ((char *) files->data,
+                                import_uri,
+                                cds_proxy,
+                                upnp_context);
+        }
 }
 
 void
@@ -77,11 +108,11 @@ target_cds_found (GUPnPServiceProxy *target_cds_proxy)
 {
         cds_proxy = target_cds_proxy;
 
-        if (container_id != NULL) {
-                create_item (file_path,
+        if (dest_container != NULL) {
+                create_item ((char *) files->data,
                              title,
                              cds_proxy,
-                             container_id,
+                             dest_container,
                              upnp_context);
         } else {
                 /* Find a suitable container */
@@ -102,6 +133,7 @@ main (gint   argc,
       gchar *argv[])
 {
         GError *error;
+        gint i;
 
         error = NULL;
         GOptionContext *context;
@@ -115,13 +147,27 @@ main (gint   argc,
         }
 
         if (argc < 3) {
-                g_print ("Usage: %s UDN FILE_PATH\n", argv[0]);
+                g_print ("Usage: %s UDN FILE_PATH...\n", argv[0]);
 
                 return -4;
         }
 
         udn = argv[1];
-        file_path = argv[2];
+
+        /* Get the list of files to upload */
+        for (i = 2; i < argc; i++) {
+                if (!g_file_test (argv[i],
+                                  G_FILE_TEST_EXISTS |
+                                  G_FILE_TEST_IS_REGULAR)) {
+                        g_critical ("File %s does not exist", argv[i]);
+                } else {
+                        files = g_list_append (files, argv[i]);
+                }
+        }
+
+        if (files == NULL) {
+                return -5;
+        }
 
         if (!g_thread_supported ()) {
                 g_thread_init (NULL);
@@ -136,13 +182,6 @@ main (gint   argc,
                 g_error_free (error);
 
                 return -6;
-        }
-
-        if (!g_file_test (file_path,
-                          G_FILE_TEST_EXISTS | G_FILE_TEST_IS_REGULAR)) {
-           g_critical ("File %s does not exist", file_path);
-
-           return -5;
         }
 
         if (!init_control_point (upnp_context, udn, search_timeout)) {

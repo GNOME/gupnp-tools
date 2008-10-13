@@ -1,5 +1,14 @@
 2008-10-13  Zeeshan Ali (Khattak)  <zeeshanak@gnome.org>
 
+	* src/upload/item-creation.c:
+	* src/upload/main.c:
+	* src/upload/main.h:
+	* src/upload/transfer.c:
+
+	Support uploading of multiple files.
+
+2008-10-13  Zeeshan Ali (Khattak)  <zeeshanak@gnome.org>
+
 	* src/upload/transfer.c:
 
 	Display the name of the file being transfered.
