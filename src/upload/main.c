@@ -115,13 +115,13 @@ main (gint   argc,
         }
 
         if (argc < 3) {
-                g_print ("Usage: %s FILE_PATH UDN\n", argv[0]);
+                g_print ("Usage: %s UDN FILE_PATH\n", argv[0]);
 
                 return -4;
         }
 
-        file_path = argv[1];
-        udn = argv[2];
+        udn = argv[1];
+        file_path = argv[2];
 
         if (!g_thread_supported ()) {
                 g_thread_init (NULL);

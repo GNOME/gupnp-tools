@@ -1,5 +1,11 @@
 2008-10-13  Zeeshan Ali (Khattak)  <zeeshanak@gnome.org>
 
+	* src/upload/main.c:
+
+	Invert the order of commandline arguments.
+
+2008-10-13  Zeeshan Ali (Khattak)  <zeeshanak@gnome.org>
+
 	* configure.ac:
 	* src/Makefile.am:
 	* src/upload/Makefile.am:
