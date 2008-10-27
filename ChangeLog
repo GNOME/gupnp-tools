@@ -1,3 +1,9 @@
+2008-10-27  Zeeshan Ali (Khattak)  <zeeshanak@gnome.org>
+
+	* configure.ac:
+
+	Bump-up version to 0.7.
+
 2008-10-17  Zeeshan Ali (Khattak)  <zeeshanak@gnome.org>
 
 	* src/upload/main.c:
