@@ -109,11 +109,7 @@ target_cds_found (GUPnPServiceProxy *target_cds_proxy)
         cds_proxy = target_cds_proxy;
 
         if (dest_container != NULL) {
-                create_item ((char *) files->data,
-                             title,
-                             cds_proxy,
-                             dest_container,
-                             upnp_context);
+                container_found (dest_container);
         } else {
                 /* Find a suitable container */
                 search_container (target_cds_proxy);
