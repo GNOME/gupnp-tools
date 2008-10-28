@@ -1,3 +1,18 @@
+2008-10-28  Zeeshan Ali (Khattak)  <zeeshanak@gnome.org>
+Sven Neumann   <s.neumann@phase-zero.de>
+
+	* src/av-cp/gui.c:
+	* src/av-cp/main.c:
+	* src/network-light/main.c:
+	* src/network-light/upnp.c:
+	* src/universal-cp/gui.c:
+	* src/universal-cp/main.c:
+	* src/upload/main.c:
+
+	Initialize the thread system before doing anything else. This
+	automatically removes the need to check for thread system already
+	initialized.
+
 2008-10-27  Zeeshan Ali (Khattak)  <zeeshanak@gnome.org>
 
 	* NEWS:

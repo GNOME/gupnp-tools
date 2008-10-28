@@ -559,12 +559,8 @@ init_client (GUPnPContext *context)
 gboolean
 init_upnp (void)
 {
-        GError *error;
+        GError *error = NULL;
 
-        if (!g_thread_supported ())
-                g_thread_init (NULL);
-
-        error = NULL;
         context = gupnp_context_new (NULL, NULL, 0, &error);
 
         if (error) {

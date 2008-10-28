@@ -83,8 +83,6 @@ init_ui (gint   *argc,
 
         gtk_init (argc, argv);
         glade_init ();
-        if (!g_thread_supported ())
-                g_thread_init (NULL);
 
         glade_xml = glade_xml_new (GLADE_FILE, NULL, NULL);
         if (glade_xml == NULL) {

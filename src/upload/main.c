@@ -132,6 +132,9 @@ main (gint   argc,
         error = NULL;
         GOptionContext *context;
 
+        /* First thing initialize the thread system */
+        g_thread_init (NULL);
+
         context = g_option_context_new ("- Upload file to UPnP MediaServer");
         g_option_context_add_main_entries (context, entries, GETTEXT_PACKAGE);
         if (!g_option_context_parse (context, &argc, &argv, &error))
@@ -161,10 +164,6 @@ main (gint   argc,
 
         if (files == NULL) {
                 return -5;
-        }
-
-        if (!g_thread_supported ()) {
-                g_thread_init (NULL);
         }
 
         g_type_init ();

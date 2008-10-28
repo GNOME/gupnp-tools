@@ -93,6 +93,9 @@ gint
 main (gint   argc,
       gchar *argv[])
 {
+        /* First thing initialize the thread system */
+        g_thread_init (NULL);
+
         if (!init_ui (&argc, &argv)) {
            return -2;
         }
