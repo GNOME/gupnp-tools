@@ -7,10 +7,12 @@ for discovering the MediaServers. [Zeeshan Ali]
 
 Other changes in this release:
 
-- Don't initialize thread system if it is already initialized.
-- Don't assume that the actual ID of the root container is guaranteed to be "0".
+- Initialize thread system before doing anythin else. [Sven Neumann,
+  Zeeshan Ali]
+- Don't assume that the actual ID of the root container is guaranteed to be "0".  [Zeeshan Ali]
 - Use a message dialog to display action invocation errors. Fixes #936.
-- Some other minor changes.
+  [Zeeshan Ali]
+- Some other minor changes. [Zeeshan Ali]
 
 Added dependency in this release: GIO (>= 2.12).
 

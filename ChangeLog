@@ -1,4 +1,10 @@
 2008-10-28  Zeeshan Ali (Khattak)  <zeeshanak@gnome.org>
+
+	* NEWS:
+
+	Update the release announcement according to the last change.
+
+2008-10-28  Zeeshan Ali (Khattak)  <zeeshanak@gnome.org>
 Sven Neumann   <s.neumann@phase-zero.de>
 
 	* src/av-cp/gui.c:
