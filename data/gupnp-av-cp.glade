@@ -787,13 +787,13 @@
   <property name="border_width">12</property>
   <property name="destroy_with_parent">False</property>
   <property name="name">GUPnP AV Control Point</property>
-  <property name="copyright" translatable="yes">Copyright (C) 2007 Zeeshan Ali</property>
+  <property name="copyright" translatable="yes">Copyright (C) 2007 Zeeshan Ali (Khattak)</property>
   <property name="comments" translatable="yes">A UPNP AV Control Point based on GUPnP framework.
 Inspired by Intel Tools for UPnP.</property>
   <property name="license" translatable="yes">GPL</property>
   <property name="website">http://www.gupnp.org</property>
   <property name="website_label" translatable="yes">GUPnP homepage</property>
-  <property name="authors">Zeeshan Ali &lt;zeenix@gstreamer.net&gt;</property>
+  <property name="authors">Zeeshan Ali (Khattak) &lt;zeeshanak@gnome.org&gt;</property>
   <property name="artists">Lapo Calamandrei &lt;calamandrei@gmail.com&gt;
 Vinicius Depizzol &lt;vdepizzol@gmail.com&gt;</property>
   <property name="translator_credits" translatable="yes" comments="TRANSLATORS: Replace this string with your names, one name per line.">translator-credits</property>

@@ -1,3 +1,41 @@
+2008-11-06  Zeeshan Ali (Khattak)  <zeeshanak@gnome.org>
+
+	* AUTHORS:
+	* data/gupnp-av-cp.glade:
+	* data/gupnp-network-light.glade:
+	* data/gupnp-universal-cp.glade:
+	* src/av-cp/gui.c:
+	* src/av-cp/gui.h:
+	* src/av-cp/main.c:
+	* src/av-cp/main.h:
+	* src/av-cp/playlist-treeview.c:
+	* src/av-cp/playlist-treeview.h:
+	* src/av-cp/renderer-combo.c:
+	* src/av-cp/renderer-combo.h:
+	* src/av-cp/renderer-controls.c:
+	* src/av-cp/renderer-controls.h:
+	* src/common/icons.c:
+	* src/common/icons.h:
+	* src/network-light/gui.c:
+	* src/network-light/gui.h:
+	* src/network-light/main.c:
+	* src/network-light/main.h:
+	* src/network-light/upnp.h:
+	* src/universal-cp/action-dialog.c:
+	* src/universal-cp/action-dialog.h:
+	* src/universal-cp/details-treeview.c:
+	* src/universal-cp/details-treeview.h:
+	* src/universal-cp/device-treeview.c:
+	* src/universal-cp/device-treeview.h:
+	* src/universal-cp/event-treeview.c:
+	* src/universal-cp/event-treeview.h:
+	* src/universal-cp/gui.c:
+	* src/universal-cp/gui.h:
+	* src/universal-cp/main.c:
+	* src/universal-cp/main.h:
+
+        Replace my non-working "@gstreamer.net" email with "@gnome.org" one.
+
 2008-10-28  Zeeshan Ali (Khattak)  <zeeshanak@gnome.org>
 
 	* NEWS:

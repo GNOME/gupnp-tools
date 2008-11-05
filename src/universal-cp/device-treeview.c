@@ -1,7 +1,7 @@
 /*
- * Copyright (C) 2007 Zeeshan Ali <zeenix@gstreamer.net>
+ * Copyright (C) 2007 Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
  *
- * Authors: Zeeshan Ali <zeenix@gstreamer.net>
+ * Authors: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -31,7 +31,7 @@
 static const char *default_details[] = {
         "Software", "GUPnP Universal Control Point",
         "Version", VERSION,
-        "Author", "Zeeshan Ali <zeenix@gstreamer.net>", NULL};
+        "Author", "Zeeshan Ali (Khattak) <zeeshanak@gnome.org>", NULL};
 
 static GtkWidget *treeview;
 static GtkWidget *popup;
