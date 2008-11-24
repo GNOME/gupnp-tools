@@ -2,6 +2,14 @@
 
 	* src/av-cp/main.c:
 	* src/universal-cp/main.c:
+
+        Initialize the GError to NULL at declaration. Patch by Sven Neumann
+        <s.neumann@phase-zero.de>.
+
+2008-11-24  Zeeshan Ali (Khattak)  <zeeshanak@gnome.org>
+
+	* src/av-cp/main.c:
+	* src/universal-cp/main.c:
 	* src/upload/main.c:
 
         Use g_printerr() instead of g_critical() in case of problems. Based on

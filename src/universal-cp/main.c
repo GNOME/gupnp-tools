@@ -43,11 +43,10 @@ device_proxy_unavailable_cb (GUPnPControlPoint *cp,
 static gboolean
 init_upnp (void)
 {
-        GError *error;
+        GError *error = NULL;
 
         g_type_init ();
 
-        error = NULL;
         context = gupnp_context_new (NULL, NULL, 0, &error);
         if (error) {
                 g_printerr ("Error creating the GUPnP context: %s\n",
