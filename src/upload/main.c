@@ -156,7 +156,7 @@ main (gint   argc,
                 if (!g_file_test (argv[i],
                                   G_FILE_TEST_EXISTS |
                                   G_FILE_TEST_IS_REGULAR)) {
-                        g_critical ("File %s does not exist", argv[i]);
+                        g_printerr ("File %s does not exist\n", argv[i]);
                 } else {
                         files = g_list_append (files, argv[i]);
                 }
@@ -171,7 +171,8 @@ main (gint   argc,
         error = NULL;
         upnp_context = gupnp_context_new (NULL, NULL, 0, &error);
         if (error) {
-                g_critical (error->message);
+                g_printerr ("Error creating the GUPnP context: %s\n",
+			    error->message);
                 g_error_free (error);
 
                 return -6;

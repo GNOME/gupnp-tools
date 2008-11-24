@@ -73,7 +73,8 @@ init_upnp (void)
         error = NULL;
         context = gupnp_context_new (NULL, NULL, 0, &error);
         if (error) {
-                g_critical (error->message);
+                g_printerr ("Error creating the GUPnP context: %s\n",
+			    error->message);
                 g_error_free (error);
 
                 return FALSE;
