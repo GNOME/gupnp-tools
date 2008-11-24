@@ -36,8 +36,8 @@ static GUPnPServiceProxy *cds_proxy;
 static GList *files = NULL;
 static char *udn;
 
-static char *title = NULL;
-static char *dest_container = NULL;
+static const char *title = NULL;
+static const char *dest_container = NULL;
 static guint search_timeout = 0;
 
 static GOptionEntry entries[] =
