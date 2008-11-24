@@ -682,7 +682,7 @@ on_action_complete (GUPnPServiceProxy       *proxy,
 
                 error_dialog =
                         gtk_message_dialog_new (
-                                        dialog,
+                                        GTK_WINDOW (dialog),
                                         GTK_DIALOG_MODAL,
                                         GTK_MESSAGE_ERROR,
                                         GTK_BUTTONS_CLOSE,
@@ -690,7 +690,7 @@ on_action_complete (GUPnPServiceProxy       *proxy,
                                         error->code,
                                         error->message);
 
-                gtk_dialog_run (error_dialog);
+                gtk_dialog_run (GTK_DIALOG (error_dialog));
                 gtk_widget_destroy (error_dialog);
 
                 g_error_free (error);

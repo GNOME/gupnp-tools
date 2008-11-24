@@ -1,5 +1,12 @@
 2008-11-24  Zeeshan Ali (Khattak)  <zeeshanak@gnome.org>
 
+	* src/av-cp/playlist-treeview.c:
+	* src/universal-cp/action-dialog.c:
+
+        Add missing casts. Patch by Sven Neumann <s.neumann@phase-zero.de>.
+
+2008-11-24  Zeeshan Ali (Khattak)  <zeeshanak@gnome.org>
+
 	* src/upload/main.c:
 
         Declare variables as const to setisfy the compiler. Patch by

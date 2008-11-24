@@ -674,7 +674,7 @@ on_didl_object_available (GUPnPDIDLLiteParser *didl_parser,
 
         browse_data = (BrowseData *) user_data;
 
-        udn = gupnp_service_info_get_udn (browse_data->content_dir);
+        udn = gupnp_service_info_get_udn (GUPNP_SERVICE_INFO (browse_data->content_dir));
 
         if (find_row (model,
                        NULL,
