@@ -513,8 +513,6 @@ init_server (GUPnPContext *context)
         xmlDoc *doc = NULL;
         char *ext_desc_path;
 
-        g_print ("Running on port %d\n", gupnp_context_get_port (context));
-
         doc = xmlParseFile (DATA_DIR "/" DESCRIPTION_DOC);
         if (doc == NULL) {
                 g_critical ("Unable to load the XML description file %s",
@@ -605,6 +603,10 @@ init_server (GUPnPContext *context)
 
         /* Run */
         gupnp_root_device_set_available (dev, TRUE);
+
+        g_print ("Attaching to IP/Host %s on port %d\n",
+                 gupnp_context_get_host_ip (context),
+                 gupnp_context_get_port (context));
 
         return TRUE;
 }
