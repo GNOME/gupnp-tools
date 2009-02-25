@@ -339,13 +339,7 @@ change_uuid (xmlDoc *doc)
         uuid_generate (uuid);
         uuid_unparse (uuid, uuidstr);
 
-        if (uuidstr == NULL) {
-                udn = (char *) xmlNodeGetContent (uuid_node);
-                g_warning ("Failed to generate UUID for device description."
-                           "Using default UDN: %s", udn);
-                udn = g_strdup (udn);
-        } else
-                udn = g_strdup_printf ("uuid:%s", uuidstr);
+        udn = g_strdup_printf ("uuid:%s", uuidstr);
 
         xmlNodeSetContent (uuid_node, (unsigned char *) udn);
         g_free (udn);
