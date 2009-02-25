@@ -18,13 +18,13 @@
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  */
 
-#include <libgupnp/gupnp-control-point.h>
+#include <libgupnp/gupnp.h>
 #include "gui.h"
 #include <string.h>
 #include <stdlib.h>
 
-static GUPnPContext      *context;
-static GUPnPControlPoint *cp;
+static GUPnPContextManager *context_manager;
+static GHashTable *cp_hash;
 
 static void
 device_proxy_available_cb (GUPnPControlPoint *cp,
@@ -40,24 +40,17 @@ device_proxy_unavailable_cb (GUPnPControlPoint *cp,
         remove_device (GUPNP_DEVICE_INFO (proxy));
 }
 
-static gboolean
-init_upnp (void)
+static void
+on_context_available (GUPnPContextManager *context_manager,
+                      GUPnPContext        *context,
+                      gpointer            *user_data)
 {
-        GError *error = NULL;
-
-        g_type_init ();
-
-        context = gupnp_context_new (NULL, NULL, 0, &error);
-        if (error) {
-                g_printerr ("Error creating the GUPnP context: %s\n",
-			    error->message);
-                g_error_free (error);
-
-                return FALSE;
-        }
+        GUPnPControlPoint *cp;
 
         /* We're interested in everything */
         cp = gupnp_control_point_new (context, "upnp:rootdevice");
+
+        g_hash_table_insert (cp_hash, g_object_ref (context), cp);
 
         g_signal_connect (cp,
                           "device-proxy-available",
@@ -69,6 +62,44 @@ init_upnp (void)
                           NULL);
 
         gssdp_resource_browser_set_active (GSSDP_RESOURCE_BROWSER (cp), TRUE);
+}
+
+static void
+on_context_unavailable (GUPnPContextManager *context_manager,
+                        GUPnPContext        *context,
+                        gpointer            *user_data)
+{
+        g_hash_table_remove (cp_hash, context);
+}
+
+static gboolean
+context_equal (GUPnPContext *context1, GUPnPContext *context2)
+{
+        return g_ascii_strcasecmp (gupnp_context_get_host_ip (context1),
+                                   gupnp_context_get_host_ip (context2)) == 0;
+}
+
+static gboolean
+init_upnp (void)
+{
+        g_type_init ();
+
+        cp_hash = g_hash_table_new_full (g_direct_hash,
+                                         (GEqualFunc) context_equal,
+                                         g_object_unref,
+                                         g_object_unref);
+
+        context_manager = gupnp_context_manager_new (NULL, 0);
+        g_assert (context_manager != NULL);
+
+        g_signal_connect (context_manager,
+                          "context-available",
+                          G_CALLBACK (on_context_available),
+                          NULL);
+        g_signal_connect (context_manager,
+                          "context-unavailable",
+                          G_CALLBACK (on_context_unavailable),
+                          NULL);
 
         return TRUE;
 }
@@ -76,8 +107,9 @@ init_upnp (void)
 static void
 deinit_upnp (void)
 {
-        g_object_unref (cp);
-        g_object_unref (context);
+        g_object_unref (context_manager);
+
+        g_hash_table_unref (cp_hash);
 }
 
 void

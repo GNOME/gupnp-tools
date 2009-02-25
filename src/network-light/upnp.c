@@ -37,37 +37,95 @@
 #define SWITCH_SERVICE "urn:schemas-upnp-org:service:SwitchPower:1"
 #define NETWORK_LIGHT "urn:schemas-upnp-org:device:DimmableLight:1"
 
-static GUPnPContext     *context;
-static GUPnPRootDevice  *dev;
-static GUPnPServiceInfo *switch_power;
-static GUPnPServiceInfo *dimming;
+typedef struct
+{
+        GUPnPRootDevice *dev;
+        GUPnPServiceInfo *switch_power;
+        GUPnPServiceInfo *dimming;
 
-static GUPnPControlPoint *cp;
+        char *desc_location;
+} NetworkLight;
+
+static GUPnPContextManager *context_manager;
+static GHashTable *nl_hash;
+
+static GHashTable *cp_hash;
 /* Other network light services on the network */
 static GList *switch_proxies;
 static GList *dimming_proxies;
 
-static char *uuid;
-static char *desc_location;
+static NetworkLight *
+network_light_new (GUPnPRootDevice  *dev,
+                   GUPnPServiceInfo *switch_power,
+                   GUPnPServiceInfo *dimming,
+                   const char       *desc_location)
+{
+        NetworkLight *network_light;
+
+        network_light = g_slice_new (NetworkLight);
+
+        network_light->dev = dev;
+        network_light->switch_power = switch_power;
+        network_light->dimming = dimming;
+        network_light->desc_location = g_strdup (desc_location);
+
+        return network_light;
+}
+
+static void
+network_light_free (NetworkLight *network_light)
+{
+        g_object_unref (network_light->dev);
+        g_object_unref (network_light->switch_power);
+        g_object_unref (network_light->dimming);
+
+	if (g_remove (network_light->desc_location) != 0)
+                g_warning ("error removing %s\n", network_light->desc_location);
+        g_free (network_light->desc_location);
+
+        g_slice_free (NetworkLight, network_light);
+}
 
 void
 notify_status_change (gboolean status)
 {
-        gupnp_service_notify (GUPNP_SERVICE (switch_power),
-                              "Status",
-                              G_TYPE_BOOLEAN,
-                              status,
-                              NULL);
+        GList *network_lights;
+        GList *nl_node;
+
+        network_lights = g_hash_table_get_values (nl_hash);
+
+        for (nl_node = network_lights;
+             nl_node != NULL;
+             nl_node = nl_node->next) {
+                NetworkLight *nl = (NetworkLight *) nl_node->data;
+
+                gupnp_service_notify (GUPNP_SERVICE (nl->switch_power),
+                                      "Status",
+                                      G_TYPE_BOOLEAN,
+                                      status,
+                                      NULL);
+        }
 }
 
 void
 notify_load_level_change (gint load_level)
 {
-        gupnp_service_notify (GUPNP_SERVICE (dimming),
-                              "LoadLevelStatus",
-                              G_TYPE_UINT,
-                              load_level,
-                              NULL);
+        GList *network_lights;
+        GList *nl_node;
+
+        network_lights = g_hash_table_get_values (nl_hash);
+
+        for (nl_node = network_lights;
+             nl_node != NULL;
+             nl_node = nl_node->next) {
+                NetworkLight *nl = (NetworkLight *) nl_node->data;
+
+                gupnp_service_notify (GUPNP_SERVICE (nl->dimming),
+                                      "LoadLevelStatus",
+                                      G_TYPE_UINT,
+                                      load_level,
+                                      NULL);
+        }
 }
 
 void
@@ -445,6 +503,12 @@ on_network_light_unavailable (GUPnPControlPoint *control_point,
 static gboolean
 init_server (GUPnPContext *context)
 {
+        NetworkLight *network_light;
+        GUPnPRootDevice *dev;
+        GUPnPServiceInfo *switch_power;
+        GUPnPServiceInfo *dimming;
+        char *uuid;
+        char *desc_location;
         GError *error;
         xmlDoc *doc = NULL;
         char *ext_desc_path;
@@ -460,6 +524,7 @@ init_server (GUPnPContext *context)
         }
 
         /* Geting a new uuid and updating the xmlDoc */
+        /* FIXME: The UUID needs to be the same on all networks */
         uuid = change_uuid (doc);
         if (!uuid) {
                 xmlFreeDoc (doc);
@@ -469,9 +534,10 @@ init_server (GUPnPContext *context)
         }
 
         /* saving the xml file to the temporal location with the uuid name */
-        desc_location = g_strdup_printf ("%s/gupnp-network-light-%s.xml",
+        desc_location = g_strdup_printf ("%s/gupnp-network-light-%s-%s.xml",
                                          g_get_tmp_dir (),
-                                         uuid);
+                                         uuid,
+                                         gupnp_context_get_host_ip (context));
         g_assert (desc_location != NULL);
 
         if (xmlSaveFile (desc_location, doc) < 0) {
@@ -486,6 +552,7 @@ init_server (GUPnPContext *context)
         }
 
         ext_desc_path = g_strdup_printf ("/%s.xml",uuid);
+        g_free (uuid);
 
         gupnp_context_host_path (context, desc_location, ext_desc_path);
         gupnp_context_host_path (context, DATA_DIR, "");
@@ -495,6 +562,7 @@ init_server (GUPnPContext *context)
                                           gupnp_resource_factory_get_default (),
                                           doc,
                                           ext_desc_path);
+
         g_free (ext_desc_path);
 
         /* Free doc when root device is destroyed */
@@ -529,6 +597,12 @@ init_server (GUPnPContext *context)
                                   NULL);
         }
 
+        network_light = network_light_new (dev,
+                                           switch_power,
+                                           dimming,
+                                           desc_location);
+        g_hash_table_insert (nl_hash, g_object_ref (context), network_light);
+
         /* Run */
         gupnp_root_device_set_available (dev, TRUE);
 
@@ -538,9 +612,11 @@ init_server (GUPnPContext *context)
 static gboolean
 init_client (GUPnPContext *context)
 {
+        GUPnPControlPoint *cp;
+
         cp = gupnp_control_point_new (context, NETWORK_LIGHT);
-        switch_proxies = NULL;
-        dimming_proxies = NULL;
+
+        g_hash_table_insert (cp_hash, g_object_ref (context), cp);
 
         g_signal_connect (cp,
                           "device-proxy-available",
@@ -556,58 +632,84 @@ init_client (GUPnPContext *context)
         return TRUE;
 }
 
+static void
+on_context_available (GUPnPContextManager *context_manager,
+                      GUPnPContext        *context,
+                      gpointer            *user_data)
+{
+        /* Initialize client-side stuff */
+        init_client (context);
+
+        /* Then the server-side stuff */
+        init_server (context);
+}
+
+static void
+on_context_unavailable (GUPnPContextManager *context_manager,
+                        GUPnPContext        *context,
+                        gpointer            *user_data)
+{
+        g_print ("Dettaching from IP/Host %s and port %d\n",
+                 gupnp_context_get_host_ip (context),
+                 gupnp_context_get_port (context));
+
+        g_hash_table_remove (cp_hash, context);
+        g_hash_table_remove (nl_hash, context);
+}
+
+static gboolean
+context_equal (GUPnPContext *context1, GUPnPContext *context2)
+{
+        return g_ascii_strcasecmp (gupnp_context_get_host_ip (context1),
+                                   gupnp_context_get_host_ip (context2)) == 0;
+}
+
 gboolean
 init_upnp (void)
 {
         GError *error = NULL;
 
-        context = gupnp_context_new (NULL, NULL, 0, &error);
+        switch_proxies = NULL;
+        dimming_proxies = NULL;
 
-        if (error) {
-                g_error (error->message);
-                g_error_free (error);
+        cp_hash = g_hash_table_new_full (g_direct_hash,
+                                         (GEqualFunc) context_equal,
+                                         g_object_unref,
+                                         g_object_unref);
 
+        nl_hash = g_hash_table_new_full (g_direct_hash,
+                                         (GEqualFunc) context_equal,
+                                         g_object_unref,
+                                         (GDestroyNotify) network_light_free);
+
+        if (!prepare_desc (&error)) {
                 return FALSE;
         }
 
-        /* Initialize client-side stuff */
-        if (!init_client (context))
-                return FALSE;
+        context_manager = gupnp_context_manager_new (NULL, 0);
+        g_assert (context_manager != NULL);
 
-        /* Then the server-side stuff */
-        if (!init_server(context))
-                return FALSE;
+        g_signal_connect (context_manager,
+                          "context-available",
+                          on_context_available,
+                          NULL);
+        g_signal_connect (context_manager,
+                          "context-unavailable",
+                          on_context_unavailable,
+                          NULL);
 
         return TRUE;
-}
-
-static void
-deinit_server (void)
-{
-        g_object_unref (switch_power);
-        g_object_unref (dimming);
-        g_object_unref (dev);
-        g_object_unref (context);
-
-	if (g_remove (desc_location) != 0)
-                g_warning ("error removing %s\n", desc_location);
-
-        g_free (desc_location);
-        g_free (uuid);
-}
-
-static void
-deinit_client (void)
-{
-        g_object_unref (cp);
-        g_list_foreach (switch_proxies, (GFunc) g_object_unref, NULL);
-        g_list_foreach (dimming_proxies, (GFunc) g_object_unref, NULL);
 }
 
 void
 deinit_upnp (void)
 {
-        deinit_server ();
-        deinit_client ();
+        g_object_unref (context_manager);
+
+        g_hash_table_unref (nl_hash);
+
+        g_hash_table_unref (cp_hash);
+        g_list_foreach (switch_proxies, (GFunc) g_object_unref, NULL);
+        g_list_foreach (dimming_proxies, (GFunc) g_object_unref, NULL);
 }
 
