@@ -54,6 +54,8 @@ static GHashTable *cp_hash;
 static GList *switch_proxies;
 static GList *dimming_proxies;
 
+char uuid[37];
+
 static NetworkLight *
 network_light_new (GUPnPRootDevice  *dev,
                    GUPnPServiceInfo *switch_power,
@@ -317,12 +319,19 @@ xml_util_get_element (xmlNode *node,
         return node;
 }
 
-static char *
+static void init_uuid ()
+{
+        uuid_t uuid_context;
+
+        uuid_generate (uuid_context);
+        uuid_unparse (uuid_context, uuid);
+}
+
+static void
 change_uuid (xmlDoc *doc)
 {
         xmlNode *uuid_node;
-        uuid_t uuid;
-        char *udn, uuidstr[37];
+        char *udn;
 
         uuid_node = xml_util_get_element ((xmlNode *) doc,
                                           "root",
@@ -333,18 +342,14 @@ change_uuid (xmlDoc *doc)
                 g_critical ("Failed to find UDN element"
                             "in device description");
 
-                return NULL;
+                return;
         }
 
-        uuid_generate (uuid);
-        uuid_unparse (uuid, uuidstr);
-
-        udn = g_strdup_printf ("uuid:%s", uuidstr);
+        udn = g_strdup_printf ("uuid:%s", uuid);
 
         xmlNodeSetContent (uuid_node, (unsigned char *) udn);
-        g_free (udn);
 
-        return g_strdup (uuidstr);
+        g_free (udn);
 }
 
 void on_service_proxy_action_ret (GUPnPServiceProxy *proxy,
@@ -501,7 +506,6 @@ init_server (GUPnPContext *context)
         GUPnPRootDevice *dev;
         GUPnPServiceInfo *switch_power;
         GUPnPServiceInfo *dimming;
-        char *uuid;
         char *desc_location;
         GError *error;
         xmlDoc *doc = NULL;
@@ -515,15 +519,8 @@ init_server (GUPnPContext *context)
                 return FALSE;
         }
 
-        /* Geting a new uuid and updating the xmlDoc */
-        /* FIXME: The UUID needs to be the same on all networks */
-        uuid = change_uuid (doc);
-        if (!uuid) {
-                xmlFreeDoc (doc);
-                g_object_unref (context);
-
-                return FALSE;
-        }
+        /* updating UUID in the xmlDoc */
+        change_uuid (doc);
 
         /* saving the xml file to the temporal location with the uuid name */
         desc_location = g_strdup_printf ("%s/gupnp-network-light-%s-%s.xml",
@@ -543,8 +540,7 @@ init_server (GUPnPContext *context)
                 return FALSE;
         }
 
-        ext_desc_path = g_strdup_printf ("/%s.xml",uuid);
-        g_free (uuid);
+        ext_desc_path = g_strdup_printf ("/%s.xml", uuid);
 
         gupnp_context_host_path (context, desc_location, ext_desc_path);
         gupnp_context_host_path (context, DATA_DIR, "");
