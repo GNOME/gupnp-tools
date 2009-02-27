@@ -42,8 +42,6 @@ typedef struct
         GUPnPRootDevice *dev;
         GUPnPServiceInfo *switch_power;
         GUPnPServiceInfo *dimming;
-
-        char *desc_location;
 } NetworkLight;
 
 static GUPnPContextManager *context_manager;
@@ -54,13 +52,15 @@ static GHashTable *cp_hash;
 static GList *switch_proxies;
 static GList *dimming_proxies;
 
-char uuid[37];
+static xmlDoc *doc;
+static char *desc_location;
+static char *ext_desc_path;
+static char uuid[37];
 
 static NetworkLight *
 network_light_new (GUPnPRootDevice  *dev,
                    GUPnPServiceInfo *switch_power,
-                   GUPnPServiceInfo *dimming,
-                   const char       *desc_location)
+                   GUPnPServiceInfo *dimming)
 {
         NetworkLight *network_light;
 
@@ -69,7 +69,6 @@ network_light_new (GUPnPRootDevice  *dev,
         network_light->dev = dev;
         network_light->switch_power = switch_power;
         network_light->dimming = dimming;
-        network_light->desc_location = g_strdup (desc_location);
 
         return network_light;
 }
@@ -80,10 +79,6 @@ network_light_free (NetworkLight *network_light)
         g_object_unref (network_light->dev);
         g_object_unref (network_light->switch_power);
         g_object_unref (network_light->dimming);
-
-	if (g_remove (network_light->desc_location) != 0)
-                g_warning ("error removing %s\n", network_light->desc_location);
-        g_free (network_light->desc_location);
 
         g_slice_free (NetworkLight, network_light);
 }
@@ -322,16 +317,11 @@ xml_util_get_element (xmlNode *node,
 static void init_uuid ()
 {
         uuid_t uuid_context;
+        xmlNode *uuid_node;
+        char *udn;
 
         uuid_generate (uuid_context);
         uuid_unparse (uuid_context, uuid);
-}
-
-static void
-change_uuid (xmlDoc *doc)
-{
-        xmlNode *uuid_node;
-        char *udn;
 
         uuid_node = xml_util_get_element ((xmlNode *) doc,
                                           "root",
@@ -506,41 +496,7 @@ init_server (GUPnPContext *context)
         GUPnPRootDevice *dev;
         GUPnPServiceInfo *switch_power;
         GUPnPServiceInfo *dimming;
-        char *desc_location;
-        GError *error;
-        xmlDoc *doc = NULL;
-        char *ext_desc_path;
-
-        doc = xmlParseFile (DATA_DIR "/" DESCRIPTION_DOC);
-        if (doc == NULL) {
-                g_critical ("Unable to load the XML description file %s",
-                            DESCRIPTION_DOC);
-                g_object_unref (context);
-                return FALSE;
-        }
-
-        /* updating UUID in the xmlDoc */
-        change_uuid (doc);
-
-        /* saving the xml file to the temporal location with the uuid name */
-        desc_location = g_strdup_printf ("%s/gupnp-network-light-%s-%s.xml",
-                                         g_get_tmp_dir (),
-                                         uuid,
-                                         gupnp_context_get_host_ip (context));
-        g_assert (desc_location != NULL);
-
-        if (xmlSaveFile (desc_location, doc) < 0) {
-                g_print ("Error saving description file to %s.\n",
-                         desc_location);
-
-                g_free (desc_location);
-                xmlFreeDoc (doc);
-                g_object_unref (context);
-
-                return FALSE;
-        }
-
-        ext_desc_path = g_strdup_printf ("/%s.xml", uuid);
+        GError *error = NULL;
 
         gupnp_context_host_path (context, desc_location, ext_desc_path);
         gupnp_context_host_path (context, DATA_DIR, "");
@@ -550,11 +506,6 @@ init_server (GUPnPContext *context)
                                           gupnp_resource_factory_get_default (),
                                           doc,
                                           ext_desc_path);
-
-        g_free (ext_desc_path);
-
-        /* Free doc when root device is destroyed */
-        g_object_weak_ref (G_OBJECT (dev), (GWeakNotify) xmlFreeDoc, doc);
 
         switch_power = gupnp_device_info_get_service (GUPNP_DEVICE_INFO (dev),
                                                       SWITCH_SERVICE);
@@ -585,10 +536,7 @@ init_server (GUPnPContext *context)
                                   NULL);
         }
 
-        network_light = network_light_new (dev,
-                                           switch_power,
-                                           dimming,
-                                           desc_location);
+        network_light = network_light_new (dev, switch_power, dimming);
         g_hash_table_insert (nl_hash, g_object_ref (context), network_light);
 
         /* Run */
@@ -597,6 +545,40 @@ init_server (GUPnPContext *context)
         g_print ("Attaching to IP/Host %s on port %d\n",
                  gupnp_context_get_host_ip (context),
                  gupnp_context_get_port (context));
+
+        return TRUE;
+}
+
+static gboolean
+prepare_desc ()
+{
+        doc = xmlParseFile (DATA_DIR "/" DESCRIPTION_DOC);
+        if (doc == NULL) {
+                g_critical ("Unable to load the XML description file %s",
+                            DESCRIPTION_DOC);
+                return FALSE;
+        }
+
+        /* create and set the UUID in the xmlDoc */
+        init_uuid ();
+
+        /* saving the xml file to the temporal location with the uuid name */
+        desc_location = g_strdup_printf ("%s/gupnp-network-light-%s.xml",
+                                         g_get_tmp_dir (),
+                                         uuid);
+        g_assert (desc_location != NULL);
+
+        if (xmlSaveFile (desc_location, doc) < 0) {
+                g_print ("Error saving description file to %s.\n",
+                         desc_location);
+
+                g_free (desc_location);
+                xmlFreeDoc (doc);
+
+                return FALSE;
+        }
+
+        ext_desc_path = g_strdup_printf ("/%s.xml", uuid);
 
         return TRUE;
 }
@@ -703,5 +685,13 @@ deinit_upnp (void)
         g_hash_table_unref (cp_hash);
         g_list_foreach (switch_proxies, (GFunc) g_object_unref, NULL);
         g_list_foreach (dimming_proxies, (GFunc) g_object_unref, NULL);
+
+        /* Free descriptiont doc */
+        xmlFreeDoc (doc);
+
+        if (g_remove (desc_location) != 0)
+                g_warning ("error removing %s\n", desc_location);
+        g_free (desc_location);
+        g_free (ext_desc_path);
 }
 
