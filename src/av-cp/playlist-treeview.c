@@ -550,10 +550,10 @@ on_container_update_ids (GUPnPServiceProxy *content_dir,
 }
 
 static void
-append_didle_object (xmlNode      *object_node,
-                     BrowseData   *browse_data,
-                     GtkTreeModel *model,
-                     GtkTreeIter  *server_iter)
+append_didl_object (xmlNode      *object_node,
+                    BrowseData   *browse_data,
+                    GtkTreeModel *model,
+                    GtkTreeIter  *server_iter)
 {
         GtkTreeIter parent_iter;
         char       *id;
@@ -682,10 +682,10 @@ on_didl_object_available (GUPnPDIDLLiteParser *didl_parser,
                        compare_media_server,
                        (gpointer) udn,
                        FALSE)) {
-                append_didle_object (object_node,
-                                     browse_data,
-                                     model,
-                                     &server_iter);
+                append_didl_object (object_node,
+                                    browse_data,
+                                    model,
+                                    &server_iter);
         }
 
         return;
