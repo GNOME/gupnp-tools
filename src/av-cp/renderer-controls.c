@@ -263,6 +263,26 @@ set_volume_hscale (guint volume)
 }
 
 static gboolean
+mime_type_is_a (const char *mime_type1, const char *mime_type2)
+{
+        gboolean ret;
+
+        char *content_type1 = g_content_type_from_mime_type (mime_type1);
+        char *content_type2 = g_content_type_from_mime_type (mime_type2);
+        if (content_type1 == NULL || content_type2 == NULL) {
+                /* Uknown content type, just do a simple comarison */
+                ret = g_ascii_strcasecmp (mime_type1, mime_type2) == 0;
+        } else {
+                ret = g_content_type_is_a (content_type1, content_type2);
+        }
+
+        g_free (content_type1);
+        g_free (content_type2);
+
+        return ret;
+}
+
+static gboolean
 is_transport_compat (const gchar *renderer_protocol,
                      const gchar *renderer_host,
                      const gchar *item_protocol,
@@ -285,8 +305,7 @@ is_content_format_compat (const gchar *renderer_content_format,
                           const gchar *item_content_format)
 {
         if (g_ascii_strcasecmp (renderer_content_format, "*") != 0 &&
-            g_ascii_strcasecmp (renderer_content_format,
-                                item_content_format) != 0) {
+            !mime_type_is_a (renderer_content_format, item_content_format)) {
                 return FALSE;
         } else {
                 return TRUE;
