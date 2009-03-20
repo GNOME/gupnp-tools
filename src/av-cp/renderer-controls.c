@@ -305,7 +305,7 @@ is_content_format_compat (const gchar *renderer_content_format,
                           const gchar *item_content_format)
 {
         if (g_ascii_strcasecmp (renderer_content_format, "*") != 0 &&
-            !mime_type_is_a (renderer_content_format, item_content_format)) {
+            !mime_type_is_a (item_content_format, renderer_content_format)) {
                 return FALSE;
         } else {
                 return TRUE;
