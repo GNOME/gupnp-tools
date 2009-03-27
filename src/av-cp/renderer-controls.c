@@ -375,19 +375,19 @@ no_item_tokens:
 }
 
 
-static gint
-protocol_equal_func (xmlNode     *res_node,
-                     const gchar *renderer_protocol)
+static gboolean
+is_protocol_info_compat (xmlNode     *res_node,
+                         const gchar *renderer_protocol)
 {
         gchar *item_protocol;
         gchar **item_proto_tokens;
         gchar **renderer_proto_tokens;
-        gint ret = -1;
+        gboolean ret = FALSE;
 
         item_protocol = gupnp_didl_lite_property_get_attribute (res_node,
                                                                 "protocolInfo");
         if (item_protocol == NULL) {
-                return -1;
+                return FALSE;
         }
 
         item_proto_tokens = g_strsplit (item_protocol,
@@ -415,13 +415,47 @@ protocol_equal_func (xmlNode     *res_node,
                                       item_proto_tokens[2]) &&
             is_additional_info_compat (renderer_proto_tokens[3],
                                        item_proto_tokens[3])) {
-                ret = 0;
+                ret = TRUE;
         }
 
 return_point:
         g_free (item_protocol);
         g_strfreev (renderer_proto_tokens);
         g_strfreev (item_proto_tokens);
+
+        return ret;
+}
+
+static gboolean
+is_resource_compat (xmlNode *res_node, char **protocols)
+{
+        gboolean ret = FALSE;
+        int i;
+
+        for (i = 0; protocols[i]; i++) {
+                if (is_protocol_info_compat (res_node, protocols[i])) {
+                        ret = TRUE;
+                        break;
+                }
+        }
+
+        return ret;
+}
+
+static GList *
+find_compatible_res (GList *resources, char **protocols)
+{
+        GList *res;
+        GList *ret = NULL;
+
+        for (res = resources; res != NULL; res = res->next) {
+                xmlNode *res_node = (xmlNode *) res->data;
+
+                if (is_resource_compat (res_node, protocols)) {
+                        ret = res;
+                        break;
+                }
+        }
 
         return ret;
 }
@@ -445,9 +479,7 @@ find_compat_uri_from_res (GList *resources, char **duration)
                 GList   *res;
                 xmlNode *res_node;
 
-                res = g_list_find_custom (resources,
-                                          protocols[i],
-                                          (GCompareFunc) protocol_equal_func);
+                res = find_compatible_res (resources, protocols);
                 if (res == NULL) {
                         continue;
                 }
