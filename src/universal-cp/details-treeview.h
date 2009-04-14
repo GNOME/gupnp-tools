@@ -22,7 +22,6 @@
 #define __GUPNP_UNIVERSAL_CP_DETAILS_TREEVIEW_H__
 
 #include <gtk/gtk.h>
-#include <glade/glade.h>
 #include <libgupnp/gupnp-control-point.h>
 
 void
@@ -44,6 +43,6 @@ void
 show_device_details             (GUPnPDeviceInfo               *info);
 
 void
-setup_details_treeview          (GladeXML                      *glade_xml);
+setup_details_treeview          (GtkBuilder                    *builder);
 
 #endif /* __GUPNP_UNIVERSAL_CP_DETAILS_TREEVIEW_H__ */

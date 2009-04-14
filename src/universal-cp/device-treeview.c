@@ -660,7 +660,7 @@ create_device_treemodel (void)
 }
 
 void
-setup_device_treeview (GladeXML *glade_xml)
+setup_device_treeview (GtkBuilder *builder)
 {
         GtkTreeModel      *model;
         GtkTreeSelection  *selection;
@@ -668,20 +668,25 @@ setup_device_treeview (GladeXML *glade_xml)
         GtkTreeViewColumn *column;
         char              *headers[] = { "Device", NULL};
 
-        treeview = glade_xml_get_widget (glade_xml, "device-treeview");
+        treeview = GTK_WIDGET (gtk_builder_get_object (builder,
+                                                       "device-treeview"));
         g_assert (treeview != NULL);
-        popup = glade_xml_get_widget (glade_xml, "device-popup");
+        popup = GTK_WIDGET (gtk_builder_get_object (builder, "device-popup"));
         g_assert (popup != NULL);
 
         g_object_weak_ref (G_OBJECT (treeview),
                            (GWeakNotify) gtk_widget_destroy,
                            popup);
-        subscribe_menuitem = glade_xml_get_widget (glade_xml,
-                                                   "subscribe-to-events");
+        subscribe_menuitem = GTK_WIDGET (gtk_builder_get_object (
+                                                builder,
+                                                "subscribe-to-events"));
         g_assert (subscribe_menuitem != NULL);
-        action_menuitem = glade_xml_get_widget (glade_xml, "invoke-action");
+        action_menuitem = GTK_WIDGET (gtk_builder_get_object (builder,
+                                                              "invoke-action"));
         g_assert (action_menuitem != NULL);
-        separator = glade_xml_get_widget (glade_xml, "device-popup-separator");
+        separator = GTK_WIDGET (gtk_builder_get_object (
+                                                builder,
+                                                "device-popup-separator"));
         g_assert (separator != NULL);
 
         model = create_device_treemodel ();

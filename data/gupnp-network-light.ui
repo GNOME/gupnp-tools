@@ -1,0 +1,122 @@
+<?xml version="1.0"?>
+<!--*- mode: xml -*-->
+<interface>
+  <object class="GtkUIManager" id="uimanager1">
+    <child>
+      <object class="GtkActionGroup" id="actiongroup1">
+        <child>
+          <object class="GtkToggleAction" id="light-status-menuitem">
+            <property name="active">False</property>
+            <property name="name">light-status-menuitem</property>
+            <property name="label" translatable="yes">On</property>
+            <signal handler="on_light_status_menuitem_activate" last_modification_time="Sat, 01 Sep 2007 19:52:54 GMT" name="activate"/>
+          </object>
+        </child>
+        <child>
+          <object class="GtkAction" id="increase_luminance_menuitem">
+            <property name="name">increase_luminance_menuitem</property>
+            <property name="label" translatable="yes">increase luminance by 20%</property>
+            <signal handler="on_increase_luminance_menuitem_activate" last_modification_time="Sat, 01 Sep 2007 21:10:19 GMT" name="activate"/>
+          </object>
+        </child>
+        <child>
+          <object class="GtkAction" id="decrease_luminance_menuitem">
+            <property name="name">decrease_luminance_menuitem</property>
+            <property name="label" translatable="yes">decrease luminance by 20%</property>
+            <signal handler="on_decrease_luminance_menuitem_activate" last_modification_time="Sat, 01 Sep 2007 21:10:19 GMT" name="activate"/>
+          </object>
+        </child>
+        <child>
+          <object class="GtkAction" id="about_menuitem">
+            <property name="name">about_menuitem</property>
+            <property name="label" translatable="yes">about</property>
+            <signal handler="on_about_menuitem_activate" last_modification_time="Sat, 01 Sep 2007 17:12:47 GMT" name="activate"/>
+          </object>
+        </child>
+      </object>
+    </child>
+    <ui>
+      <popup name="popup-menu">
+        <menuitem action="light-status-menuitem"/>
+        <separator/>
+        <menuitem action="increase_luminance_menuitem"/>
+        <menuitem action="decrease_luminance_menuitem"/>
+        <separator/>
+        <menuitem action="about_menuitem"/>
+      </popup>
+    </ui>
+  </object>
+  <object class="GtkWindow" id="main-window">
+    <property name="events">GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
+    <property name="title" translatable="yes">GUPnP Network Light</property>
+    <property name="type">GTK_WINDOW_TOPLEVEL</property>
+    <property name="window_position">GTK_WIN_POS_CENTER</property>
+    <property name="modal">False</property>
+    <property name="resizable">True</property>
+    <property name="destroy_with_parent">False</property>
+    <property name="decorated">True</property>
+    <property name="skip_taskbar_hint">False</property>
+    <property name="skip_pager_hint">False</property>
+    <property name="type_hint">GDK_WINDOW_TYPE_HINT_NORMAL</property>
+    <property name="gravity">GDK_GRAVITY_NORTH_WEST</property>
+    <property name="focus_on_map">True</property>
+    <signal handler="on_delete_event" name="delete_event"/>
+    <signal handler="on_main_window_button_event" last_modification_time="Sat, 01 Sep 2007 20:25:29 GMT" name="button_release_event"/>
+    <signal handler="on_main_window_button_event" last_modification_time="Sat, 01 Sep 2007 21:34:11 GMT" name="button_press_event"/>
+    <child>
+      <object class="GtkImage" id="light-bulb-image">
+        <property name="visible">True</property>
+        <property name="xalign">0.5</property>
+        <property name="yalign">0.5</property>
+        <property name="xpad">0</property>
+        <property name="ypad">0</property>
+      </object>
+    </child>
+  </object>
+  <object class="GtkAboutDialog" id="about-dialog">
+    <property name="destroy_with_parent">False</property>
+    <property name="name">GUPnP Network Light</property>
+    <property name="copyright" translatable="yes">Copyright (C) 2007 Zeeshan Ali (Khattak)</property>
+    <property name="comments" translatable="yes">A virtual network light bulb based on GUPnP framework.
+Inspired by Intel Tools for UPnP.</property>
+    <property name="license" translatable="yes">GPL</property>
+    <property name="website">http://www.gupnp.org/</property>
+    <property name="website_label" translatable="yes">GUPnP homepage</property>
+    <property name="authors">Zeeshan Ali (Khattak) &lt;zeeshanak@gnome.org&gt;</property>
+    <property name="artists">Lapo Calamandrei &lt;calamandrei@gmail.com&gt;</property>
+    <property comments="TRANSLATORS: Replace this string with your names, one name per line." name="translator_credits" translatable="yes">translator-credits</property>
+    <signal handler="gtk_widget_hide" last_modification_time="Sat, 01 Sep 2007 20:46:06 GMT" name="close"/>
+    <signal handler="gtk_widget_hide" last_modification_time="Sat, 01 Sep 2007 20:46:21 GMT" name="response"/>
+    <child internal-child="vbox">
+      <object class="GtkVBox" id="dialog-vbox1">
+        <property name="homogeneous">False</property>
+        <property name="spacing">0</property>
+        <child internal-child="action_area">
+          <object class="GtkHButtonBox" id="dialog-action_area1">
+            <property name="layout_style">GTK_BUTTONBOX_DEFAULT_STYLE</property>
+          </object>
+          <packing>
+            <property name="padding">0</property>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="pack_type">GTK_PACK_END</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+  <object class="GtkMenu" constructor="uimanager1" id="popup-menu">
+
+
+
+
+
+
+
+
+
+
+
+
+</object>
+</interface>

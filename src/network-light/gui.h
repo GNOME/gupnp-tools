@@ -22,7 +22,6 @@
 #define __GUI_H__
 
 #include <gtk/gtk.h>
-#include <glade/glade.h>
 
 void
 update_image       (void);

@@ -25,7 +25,6 @@
 #include <libgupnp-av/gupnp-av.h>
 #include <config.h>
 #include <gtk/gtk.h>
-#include <glade/glade.h>
 
 #include "renderer-combo.h"
 
@@ -50,6 +49,6 @@ av_transport_send_action        (char *action,
                                  char *additional_args[]);
 
 void
-setup_renderer_controls         (GladeXML *glade_xml);
+setup_renderer_controls         (GtkBuilder *builder);
 
 #endif /* __RENDERER_CONTROL_H__ */

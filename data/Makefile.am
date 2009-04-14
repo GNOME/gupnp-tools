@@ -2,8 +2,8 @@ SUBDIRS = pixmaps xml
 
 shareddir = $(datadir)/gupnp-tools
 
-dist_shared_DATA = gupnp-universal-cp.glade \
-		   gupnp-network-light.glade
+dist_shared_DATA = gupnp-universal-cp.ui \
+		   gupnp-network-light.ui
 
 desktopdir = ${datadir}/applications
 desktop_in_files = gupnp-universal-cp.desktop.in \
@@ -11,7 +11,7 @@ desktop_in_files = gupnp-universal-cp.desktop.in \
 desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)
 
 if BUILD_AV
-dist_shared_DATA += gupnp-av-cp.glade
+dist_shared_DATA += gupnp-av-cp.ui
 desktop_in_files += gupnp-av-cp.desktop.in
 endif
 

@@ -41,7 +41,7 @@ void
 append_device           (GUPnPDeviceInfo            *info);
 
 void
-setup_device_treeview   (GladeXML                   *glade_xml);
+setup_device_treeview   (GtkBuilder                 *builder);
 
 GUPnPServiceProxy *
 get_selected_service    (void);

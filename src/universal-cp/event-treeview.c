@@ -359,7 +359,7 @@ create_event_treemodel (void)
 }
 
 void
-setup_event_treeview (GladeXML *glade_xml)
+setup_event_treeview (GtkBuilder *builder)
 {
         GtkTreeModel *model;
         char         *headers[6] = {"Time",
@@ -369,20 +369,23 @@ setup_event_treeview (GladeXML *glade_xml)
                                    "Value",
                                    NULL };
 
-        treeview = glade_xml_get_widget (glade_xml, "event-treeview");
+        treeview = GTK_WIDGET (gtk_builder_get_object (builder,
+                                                       "event-treeview"));
         g_assert (treeview != NULL);
-        copy_event_menuitem = glade_xml_get_widget (glade_xml,
-                                                    "copy-event-menuitem");
+        copy_event_menuitem = GTK_WIDGET (gtk_builder_get_object (
+                                                builder,
+                                                "copy-event-menuitem"));
         g_assert (copy_event_menuitem != NULL);
-        popup = glade_xml_get_widget (glade_xml, "event-popup");
+        popup = GTK_WIDGET (gtk_builder_get_object (builder, "event-popup"));
         g_assert (popup != NULL);
 
         g_object_weak_ref (G_OBJECT (treeview),
                            (GWeakNotify) gtk_widget_destroy,
                            popup);
 
-        scrolled_window = glade_xml_get_widget (glade_xml,
-                                                "event-scrolledwindow");
+        scrolled_window = GTK_WIDGET (gtk_builder_get_object (
+                                                builder,
+                                                "event-scrolledwindow"));
         g_assert (scrolled_window != NULL);
 
         model = create_event_treemodel ();

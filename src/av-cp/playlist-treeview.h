@@ -23,14 +23,13 @@
 
 #include <config.h>
 #include <gtk/gtk.h>
-#include <glade/glade.h>
 #include <libgupnp-av/gupnp-av.h>
 
 typedef void (* GetSelectedItemCallback) (const char *metadata,
                                           gpointer    user_data);
 
 void
-setup_playlist_treeview         (GladeXML               *glade_xml);
+setup_playlist_treeview         (GtkBuilder             *builder);
 
 void
 add_media_server                (GUPnPDeviceProxy       *proxy);

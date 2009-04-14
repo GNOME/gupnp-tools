@@ -29,10 +29,10 @@
 #include "icons.h"
 #include "main.h"
 
-#define GLADE_FILE DATA_DIR "/gupnp-universal-cp.glade"
+#define UI_FILE DATA_DIR "/gupnp-universal-cp.ui"
 #define ICON_FILE  "pixmaps/universal-cp.png"
 
-GladeXML *glade_xml;
+GtkBuilder *builder;
 static GtkWidget *main_window;
 
 void
@@ -74,9 +74,9 @@ setup_treeview (GtkWidget    *treeview,
 static void
 setup_treeviews (void)
 {
-        setup_details_treeview (glade_xml);
-        setup_event_treeview (glade_xml);
-        setup_device_treeview (glade_xml);
+        setup_details_treeview (builder);
+        setup_event_treeview (builder);
+        setup_device_treeview (builder);
 }
 
 gboolean
@@ -99,20 +99,30 @@ init_ui (gint   *argc,
         GtkWidget *vpaned;
         gint       window_width, window_height;
         gint       position;
+        GError    *error = NULL;
 
         gtk_init (argc, argv);
-        glade_init ();
 
-        glade_xml = glade_xml_new (GLADE_FILE, NULL, NULL);
-        if (glade_xml == NULL) {
-                g_critical ("Unable to load the GUI file %s", GLADE_FILE);
+        builder = gtk_builder_new ();
+        g_assert (builder != NULL);
+
+        if (!gtk_builder_add_from_file (builder, UI_FILE, &error)) {
+                g_critical ("Unable to load the GUI file %s: %s",
+                            UI_FILE,
+                            error->message);
+
+                g_error_free (error);
                 return FALSE;
         }
 
-        main_window = glade_xml_get_widget (glade_xml, "main-window");
-        about_dialog = glade_xml_get_widget (glade_xml, "about-dialog");
-        hpaned = glade_xml_get_widget (glade_xml, "main-window-hpaned");
-        vpaned = glade_xml_get_widget (glade_xml, "main-window-vpaned");
+        main_window = GTK_WIDGET (gtk_builder_get_object (builder,
+                                                          "main-window"));
+        about_dialog = GTK_WIDGET (gtk_builder_get_object (builder,
+                                                           "about-dialog"));
+        hpaned = GTK_WIDGET (gtk_builder_get_object (builder,
+                                                     "main-window-hpaned"));
+        vpaned = GTK_WIDGET (gtk_builder_get_object (builder,
+                                                     "main-window-vpaned"));
 
         g_assert (main_window != NULL);
         g_assert (about_dialog != NULL);
@@ -140,11 +150,11 @@ init_ui (gint   *argc,
 
         g_object_unref (icon_pixbuf);
 
-        glade_xml_signal_autoconnect (glade_xml);
+        gtk_builder_connect_signals (builder, NULL);
 
         init_icons ();
         setup_treeviews ();
-        init_action_dialog (glade_xml);
+        init_action_dialog (builder);
 
         gtk_widget_show_all (main_window);
 
@@ -164,7 +174,7 @@ init_ui (gint   *argc,
 void
 deinit_ui (void)
 {
-        g_object_unref (glade_xml);
+        g_object_unref (builder);
         gtk_widget_destroy (main_window);
         deinit_action_dialog ();
         deinit_icons ();

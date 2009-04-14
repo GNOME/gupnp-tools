@@ -730,7 +730,7 @@ on_action_invocation (GtkButton *button,
 }
 
 void
-init_action_dialog (GladeXML *glade_xml)
+init_action_dialog (GtkBuilder *builder)
 {
         GtkWidget *image;
 
@@ -742,44 +742,53 @@ init_action_dialog (GladeXML *glade_xml)
                 gtk_size_group_new (GTK_SIZE_GROUP_HORIZONTAL);
 
         /* Dialog box and tables */
-        dialog = glade_xml_get_widget (glade_xml, "action-invocation-dialog");
+        dialog = GTK_WIDGET (gtk_builder_get_object (
+                                        builder,
+                                        "action-invocation-dialog"));
         g_assert (dialog != NULL);
-        in_args_table = glade_xml_get_widget (glade_xml,
-                                              "in-action-arguments-table");
+        in_args_table = GTK_WIDGET (gtk_builder_get_object (
+                                        builder,
+                                        "in-action-arguments-table"));
         g_assert (in_args_table != NULL);
-        out_args_table = glade_xml_get_widget (glade_xml,
-                                               "out-action-arguments-table");
+        out_args_table = GTK_WIDGET (gtk_builder_get_object (
+                                        builder,
+                                        "out-action-arguments-table"));
         g_assert (out_args_table != NULL);
 
         /* All the labels */
-        in_args_label = glade_xml_get_widget (glade_xml,
-                                              "in-action-arguments-label");
+        in_args_label = GTK_WIDGET (gtk_builder_get_object (
+                                        builder,
+                                        "in-action-arguments-label"));
         g_assert (in_args_label != NULL);
-        out_args_label = glade_xml_get_widget (glade_xml,
-                                              "out-action-arguments-label");
+        out_args_label = GTK_WIDGET (gtk_builder_get_object (
+                                        builder,
+                                        "out-action-arguments-label"));
         g_assert (out_args_label != NULL);
-        device_label = glade_xml_get_widget (glade_xml, "device-label");
+        device_label = GTK_WIDGET (gtk_builder_get_object (builder,
+                                                           "device-label"));
         g_assert (device_label != NULL);
         gtk_size_group_add_widget (static_labels_group, device_label);
-        service_label = glade_xml_get_widget (glade_xml, "service-label");
+        service_label = GTK_WIDGET (gtk_builder_get_object (builder,
+                                                            "service-label"));
         g_assert (service_label != NULL);
         gtk_size_group_add_widget (static_labels_group, service_label);
-        action_label = glade_xml_get_widget (glade_xml, "action-label");
+        action_label = GTK_WIDGET (gtk_builder_get_object (builder,
+                                                           "action-label"));
         g_assert (action_label != NULL);
         gtk_size_group_add_widget (static_labels_group, action_label);
 
         /* the images */
-        image = glade_xml_get_widget (glade_xml, "device-image");
+        image = GTK_WIDGET (gtk_builder_get_object (builder, "device-image"));
         g_assert (image != NULL);
         gtk_image_set_from_pixbuf (GTK_IMAGE (image),
                                    get_icon_by_id (ICON_DEVICE));
 
-        image = glade_xml_get_widget (glade_xml, "service-image");
+        image = GTK_WIDGET (gtk_builder_get_object (builder, "service-image"));
         g_assert (image != NULL);
         gtk_image_set_from_pixbuf (GTK_IMAGE (image),
                                    get_icon_by_id (ICON_SERVICE));
 
-        image = glade_xml_get_widget (glade_xml, "action-image");
+        image = GTK_WIDGET (gtk_builder_get_object (builder, "action-image"));
         g_assert (image != NULL);
         gtk_image_set_from_pixbuf (GTK_IMAGE (image),
                                    get_icon_by_id (ICON_ACTION));

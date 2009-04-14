@@ -23,7 +23,6 @@
 
 #include <libgupnp/gupnp-control-point.h>
 #include <gtk/gtk.h>
-#include <glade/glade.h>
 
 void
 application_exit            (void);

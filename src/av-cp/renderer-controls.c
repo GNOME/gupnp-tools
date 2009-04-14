@@ -966,27 +966,35 @@ on_volume_vscale_value_changed (GtkRange *range,
 }
 
 void
-setup_renderer_controls (GladeXML *glade_xml)
+setup_renderer_controls (GtkBuilder *builder)
 {
-        volume_vscale = glade_xml_get_widget (glade_xml, "volume-vscale");
+        volume_vscale = GTK_WIDGET (gtk_builder_get_object (builder,
+                                                            "volume-vscale"));
         g_assert (volume_vscale != NULL);
 
-        position_hscale = glade_xml_get_widget (glade_xml, "position-hscale");
+        position_hscale = GTK_WIDGET (gtk_builder_get_object (
+                                                builder,
+                                                "position-hscale"));
         g_assert (position_hscale != NULL);
 
-        play_button = glade_xml_get_widget (glade_xml, "play-button");
+        play_button = GTK_WIDGET (gtk_builder_get_object (builder,
+                                                          "play-button"));
         g_assert (play_button != NULL);
 
-        pause_button = glade_xml_get_widget (glade_xml, "pause-button");
+        pause_button = GTK_WIDGET (gtk_builder_get_object (builder,
+                                                           "pause-button"));
         g_assert (pause_button != NULL);
 
-        stop_button = glade_xml_get_widget (glade_xml, "stop-button");
+        stop_button = GTK_WIDGET (gtk_builder_get_object (builder,
+                                                          "stop-button"));
         g_assert (stop_button != NULL);
 
-        next_button = glade_xml_get_widget (glade_xml, "next-button");
+        next_button = GTK_WIDGET (gtk_builder_get_object (builder,
+                                                          "next-button"));
         g_assert (next_button != NULL);
 
-        prev_button = glade_xml_get_widget (glade_xml, "previous-button");
+        prev_button = GTK_WIDGET (gtk_builder_get_object (builder,
+                                                          "previous-button"));
         g_assert (prev_button != NULL);
 
         didl_parser = gupnp_didl_lite_parser_new ();

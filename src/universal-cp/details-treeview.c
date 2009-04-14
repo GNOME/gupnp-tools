@@ -407,19 +407,20 @@ create_details_treemodel (void)
 }
 
 void
-setup_details_treeview (GladeXML *glade_xml)
+setup_details_treeview (GtkBuilder *builder)
 {
         GtkTreeModel *model;
         char         *headers[3] = { "Name",
                                      "Value",
                                      NULL };
 
-        treeview = glade_xml_get_widget (glade_xml, "details-treeview");
+        treeview = GTK_WIDGET (gtk_builder_get_object (builder,
+                                                       "details-treeview"));
         g_assert (treeview != NULL);
-        copy_value_menuitem = glade_xml_get_widget (glade_xml,
-                                                    "copy-value-menuitem");
+        copy_value_menuitem = GTK_WIDGET (gtk_builder_get_object (builder,
+                                                     "copy-value-menuitem"));
         g_assert (copy_value_menuitem != NULL);
-        popup = glade_xml_get_widget (glade_xml, "details-popup");
+        popup = GTK_WIDGET (gtk_builder_get_object (builder, "details-popup"));
         g_assert (popup != NULL);
 
         g_object_weak_ref (G_OBJECT (treeview),

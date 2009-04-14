@@ -23,7 +23,6 @@
 
 #include <libgupnp/gupnp-control-point.h>
 #include <gtk/gtk.h>
-#include <glade/glade.h>
 
 #include "playlist-treeview.h"
 

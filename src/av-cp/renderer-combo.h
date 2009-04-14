@@ -25,7 +25,6 @@
 #include <libgupnp-av/gupnp-av.h>
 #include <config.h>
 #include <gtk/gtk.h>
-#include <glade/glade.h>
 
 typedef enum
 {
@@ -58,6 +57,6 @@ void
 remove_media_renderer           (GUPnPDeviceProxy *proxy);
 
 void
-setup_renderer_combo            (GladeXML                *glade_xml);
+setup_renderer_combo            (GtkBuilder       *builder);
 
 #endif /* __RENDERERCOMBO_H__ */

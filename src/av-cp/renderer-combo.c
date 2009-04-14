@@ -885,12 +885,14 @@ on_renderer_combo_changed (GtkComboBox *widget,
 }
 
 void
-setup_renderer_combo (GladeXML *glade_xml)
+setup_renderer_combo (GtkBuilder *builder)
 {
         GtkTreeModel *model;
 
         lc_parser = gupnp_last_change_parser_new ();
-        renderer_combo = glade_xml_get_widget (glade_xml, "renderer-combobox");
+        renderer_combo = GTK_WIDGET (gtk_builder_get_object (
+                                                builder,
+                                                "renderer-combobox"));
         g_assert (renderer_combo != NULL);
 
         model = create_renderer_treemodel ();

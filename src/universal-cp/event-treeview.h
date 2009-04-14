@@ -23,7 +23,6 @@
 
 #include <libgupnp/gupnp-control-point.h>
 #include <gtk/gtk.h>
-#include <glade/glade.h>
 
 void
 display_event           (const char       *notified_at,
@@ -33,6 +32,6 @@ display_event           (const char       *notified_at,
                          const char       *value);
 
 void
-setup_event_treeview    (GladeXML         *glade_xml);
+setup_event_treeview    (GtkBuilder       *builder);
 
 #endif /* __GUPNP_UNIVERSAL_CP_EVENT_TREEVIEW_H__ */

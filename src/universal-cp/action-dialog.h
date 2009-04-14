@@ -23,14 +23,13 @@
 
 #include <libgupnp/gupnp-control-point.h>
 #include <gtk/gtk.h>
-#include <glade/glade.h>
 
 void
 run_action_dialog       (GUPnPServiceActionInfo         *action_info,
                          GUPnPServiceProxy              *proxy,
                          GUPnPServiceIntrospection      *introspection);
 void
-init_action_dialog      (GladeXML *glade_xml);
+init_action_dialog      (GtkBuilder *builder);
 
 void
 deinit_action_dialog    (void);

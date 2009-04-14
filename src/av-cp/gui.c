@@ -29,10 +29,10 @@
 #include "main.h"
 #include "icons.h"
 
-#define GLADE_FILE DATA_DIR "/gupnp-av-cp.glade"
+#define UI_FILE DATA_DIR "/gupnp-av-cp.ui"
 #define ICON_FILE  "pixmaps/av-cp.png"
 
-static GladeXML  *glade_xml;
+static GtkBuilder  *builder;
 static GtkWidget *main_window;
 static GtkWidget *about_dialog;
 
@@ -47,7 +47,7 @@ on_delete_event (GtkWidget *widget,
 }
 
 static void
-setup_icons (GladeXML *glade_xml)
+setup_icons (GtkBuilder *builder)
 {
         GdkPixbuf *icon_pixbuf;
         GtkWidget *volume_min;
@@ -64,9 +64,11 @@ setup_icons (GladeXML *glade_xml)
                                    icon_pixbuf);
         g_object_unref (icon_pixbuf);
 
-        volume_min = glade_xml_get_widget (glade_xml, "volume-min-image");
+        volume_min = GTK_WIDGET (gtk_builder_get_object (builder,
+                                                         "volume-min-image"));
         g_assert (volume_min != NULL);
-        volume_max = glade_xml_get_widget (glade_xml, "volume-max-image");
+        volume_max = GTK_WIDGET (gtk_builder_get_object (builder,
+                                                         "volume-max-image"));
         g_assert (volume_max != NULL);
 
         gtk_image_set_from_pixbuf (GTK_IMAGE (volume_min),
@@ -80,19 +82,27 @@ init_ui (gint   *argc,
          gchar **argv[])
 {
         gint window_width, window_height;
+        GError *error = NULL;
 
         gtk_init (argc, argv);
-        glade_init ();
 
-        glade_xml = glade_xml_new (GLADE_FILE, NULL, NULL);
-        if (glade_xml == NULL) {
-                g_critical ("Unable to load the GUI file %s", GLADE_FILE);
+        builder = gtk_builder_new ();
+        g_assert (builder != NULL);
+
+        if (!gtk_builder_add_from_file (builder, UI_FILE, &error)) {
+                g_critical ("Unable to load the GUI file %s: %s",
+                            UI_FILE,
+                            error->message);
+
+                g_error_free (error);
                 return FALSE;
         }
 
-        main_window = glade_xml_get_widget (glade_xml, "main-window");
+        main_window = GTK_WIDGET (gtk_builder_get_object (builder,
+                                                          "main-window"));
         g_assert (main_window != NULL);
-        about_dialog = glade_xml_get_widget (glade_xml, "about-dialog");
+        about_dialog = GTK_WIDGET (gtk_builder_get_object (builder,
+                                                           "about-dialog"));
         g_assert (about_dialog != NULL);
 
         /* 40% of the screen but don't get bigger than 1000x800 */
@@ -105,12 +115,12 @@ init_ui (gint   *argc,
         gtk_about_dialog_set_version (GTK_ABOUT_DIALOG (about_dialog),
                                       VERSION);
 
-        glade_xml_signal_autoconnect (glade_xml);
+        gtk_builder_connect_signals (builder, NULL);
 
-        setup_icons (glade_xml);
-        setup_playlist_treeview (glade_xml);
-        setup_renderer_controls (glade_xml);
-        setup_renderer_combo (glade_xml);
+        setup_icons (builder);
+        setup_playlist_treeview (builder);
+        setup_renderer_controls (builder);
+        setup_renderer_combo (builder);
 
         gtk_widget_show_all (main_window);
 
@@ -120,7 +130,7 @@ init_ui (gint   *argc,
 void
 deinit_ui (void)
 {
-        g_object_unref (glade_xml);
+        g_object_unref (builder);
         gtk_widget_destroy (main_window);
         gtk_widget_destroy (about_dialog);
         deinit_icons ();

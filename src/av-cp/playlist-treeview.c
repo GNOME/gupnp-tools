@@ -301,12 +301,13 @@ tree_selection_func (GtkTreeSelection *selection,
 }
 
 void
-setup_playlist_treeview (GladeXML *glade_xml)
+setup_playlist_treeview (GtkBuilder *builder)
 {
         GtkTreeModel      *model;
         GtkTreeSelection  *selection;
 
-        treeview = glade_xml_get_widget (glade_xml, "playlist-treeview");
+        treeview = GTK_WIDGET (gtk_builder_get_object (builder,
+                                                       "playlist-treeview"));
         g_assert (treeview != NULL);
 
         model = create_playlist_treemodel ();

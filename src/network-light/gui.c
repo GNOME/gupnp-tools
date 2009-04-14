@@ -27,16 +27,16 @@
 #include "upnp.h"
 #include "main.h"
 
-#define GLADE_FILE DATA_DIR "/gupnp-network-light.glade"
-#define ICON_FILE  "pixmaps/network-light-256x256.png"
-#define OFF_FILE   "pixmaps/network-light-off.png"
-#define ON_FILE    "pixmaps/network-light-on.png"
+#define UI_FILE DATA_DIR "/gupnp-network-light.ui"
+#define ICON_FILE        "pixmaps/network-light-256x256.png"
+#define OFF_FILE         "pixmaps/network-light-off.png"
+#define ON_FILE          "pixmaps/network-light-on.png"
 
-static GladeXML  *glade_xml;
-static GtkWidget *main_window;
-static GtkWidget *about_dialog;
-static GdkPixbuf *on_pixbuf;
-static GdkPixbuf *off_pixbuf;
+static GtkBuilder *builder;
+static GtkWidget  *main_window;
+static GtkWidget  *about_dialog;
+static GdkPixbuf  *on_pixbuf;
+static GdkPixbuf  *off_pixbuf;
 
 void
 update_image (void)
@@ -45,7 +45,8 @@ update_image (void)
         GdkPixbuf *pixbuf;
         gfloat     alpha;
 
-        image = glade_xml_get_widget (glade_xml, "light-bulb-image");
+        image = GTK_WIDGET (gtk_builder_get_object (builder,
+                                                    "light-bulb-image"));
         g_assert (image != NULL);
 
         if (get_status ()) {
@@ -80,7 +81,8 @@ on_about_menuitem_activate (GtkMenuItem *menuitem,
 {
         GtkWidget *about_dialog;
 
-        about_dialog = glade_xml_get_widget (glade_xml, "about-dialog");
+        about_dialog = GTK_WIDGET (gtk_builder_get_object (builder,
+                                                           "about-dialog"));
         g_assert (about_dialog != NULL);
 
         gtk_widget_show (about_dialog);
@@ -106,8 +108,9 @@ setup_popup ()
         GtkWidget *status_menuitem;
         GtkWidget *label;
 
-        status_menuitem = glade_xml_get_widget (glade_xml,
-                                                "light-status-menuitem");
+        status_menuitem = GTK_WIDGET (gtk_builder_get_object (
+                                                builder,
+                                                "light-status-menuitem"));
         g_assert (status_menuitem != NULL);
 
         label = gtk_bin_get_child (GTK_BIN (status_menuitem));
@@ -121,8 +124,9 @@ prepare_popup ()
 {
         GtkWidget *status_menuitem;
 
-        status_menuitem = glade_xml_get_widget (glade_xml,
-                                                "light-status-menuitem");
+        status_menuitem = GTK_WIDGET (gtk_builder_get_object (
+                                                builder,
+                                                "light-status-menuitem"));
         g_assert (status_menuitem != NULL);
 
         gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (status_menuitem),
@@ -134,7 +138,7 @@ on_main_window_right_clicked (GdkEventButton *event)
 {
         GtkWidget *popup;
 
-        popup = glade_xml_get_widget (glade_xml, "popup-menu");
+        popup = GTK_WIDGET (gtk_builder_get_object (builder, "popup-menu"));
         g_assert (popup != NULL);
 
         prepare_popup ();
@@ -182,20 +186,28 @@ init_ui (gint   *argc,
          gchar **argv[])
 {
         GdkPixbuf *icon_pixbuf;
+        GError *error = NULL;
 
         gtk_init (argc, argv);
-        glade_init ();
 
-        glade_xml = glade_xml_new (GLADE_FILE, NULL, NULL);
-        if (glade_xml == NULL) {
-                g_critical ("Unable to load the GUI file %s", GLADE_FILE);
+        builder = gtk_builder_new ();
+        g_assert (builder != NULL);
+
+        if (!gtk_builder_add_from_file (builder, UI_FILE, &error)) {
+                g_critical ("Unable to load the GUI file %s: %s",
+                            UI_FILE,
+                            error->message);
+
+                g_error_free (error);
                 return FALSE;
         }
 
-        main_window = glade_xml_get_widget (glade_xml, "main-window");
+        main_window = GTK_WIDGET (gtk_builder_get_object (builder,
+                                                          "main-window"));
         g_assert (main_window != NULL);
 
-        about_dialog = glade_xml_get_widget (glade_xml, "about-dialog");
+        about_dialog = GTK_WIDGET (gtk_builder_get_object (builder,
+                                                           "about-dialog"));
         g_assert (about_dialog != NULL);
 
         on_pixbuf = load_pixbuf_file (ON_FILE);
@@ -224,7 +236,7 @@ init_ui (gint   *argc,
 
         g_object_unref (icon_pixbuf);
 
-        glade_xml_signal_autoconnect (glade_xml);
+        gtk_builder_connect_signals (builder, NULL);
 
         setup_popup ();
         update_image ();
@@ -237,7 +249,7 @@ init_ui (gint   *argc,
 void
 deinit_ui (void)
 {
-        g_object_unref (glade_xml);
+        g_object_unref (builder);
         gtk_widget_destroy (main_window);
         gtk_widget_destroy (about_dialog);
         g_object_unref (on_pixbuf);

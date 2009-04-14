@@ -4,7 +4,7 @@ else
 shareddir = $(datadir)/gupnp-tools
 endif
 
-AM_CFLAGS = $(LIBGUPNP_CFLAGS) $(LIBGLADE_CFLAGS) -I$(top_srcdir) \
+AM_CFLAGS = $(LIBGUPNP_CFLAGS) $(GTK_CFLAGS) -I$(top_srcdir) \
 	    -DDATA_DIR='"$(shareddir)"' -I$(top_builddir)/src/common
 
 noinst_LIBRARIES = libicons.a
