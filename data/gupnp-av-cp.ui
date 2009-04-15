@@ -110,7 +110,7 @@
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="update_policy">GTK_UPDATE_DISCONTINUOUS</property>
-                            <property name="adjustment"></property>
+                            <property name="adjustment">adjustment1</property>
                             <property name="inverted">True</property>
                             <property name="digits">0</property>
                             <property name="draw_value">False</property>
@@ -153,7 +153,7 @@
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="update_policy">GTK_UPDATE_DISCONTINUOUS</property>
-                    <property name="adjustment"></property>
+                    <property name="adjustment">adjustment2</property>
                     <property name="digits">0</property>
                     <property name="draw_value">False</property>
                     <signal name="value_changed" handler="on_position_hscale_value_changed"/>
@@ -548,5 +548,13 @@ Vinicius Depizzol &lt;vdepizzol@gmail.com&gt;</property>
         </child>
       </object>
     </child>
+  </object>
+  <object class="GtkAdjustment" id="adjustment1">
+    <property name="upper">100</property>
+    <property name="step_increment">1</property>
+  </object>
+  <object class="GtkAdjustment" id="adjustment2">
+    <property name="upper">100</property>
+    <property name="step_increment">1</property>
   </object>
 </interface>
