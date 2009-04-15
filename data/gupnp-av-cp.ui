@@ -197,6 +197,7 @@
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="can_default">True</property>
+                    <property name="tooltip_text">Clears the CP's idea of the state of the currently selected AV Renderer. Useful for dealing with AV Renderers that don't report state changes.</property>
                     <signal name="clicked" handler="on_clear_state_button_clicked"/>
                     <child>
                       <object class="GtkAlignment" id="alignment14">
