@@ -379,10 +379,6 @@ setup_event_treeview (GtkBuilder *builder)
         popup = GTK_WIDGET (gtk_builder_get_object (builder, "event-popup"));
         g_assert (popup != NULL);
 
-        g_object_weak_ref (G_OBJECT (treeview),
-                           (GWeakNotify) gtk_widget_destroy,
-                           popup);
-
         scrolled_window = GTK_WIDGET (gtk_builder_get_object (
                                                 builder,
                                                 "event-scrolledwindow"));

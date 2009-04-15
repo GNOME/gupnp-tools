@@ -674,9 +674,6 @@ setup_device_treeview (GtkBuilder *builder)
         popup = GTK_WIDGET (gtk_builder_get_object (builder, "device-popup"));
         g_assert (popup != NULL);
 
-        g_object_weak_ref (G_OBJECT (treeview),
-                           (GWeakNotify) gtk_widget_destroy,
-                           popup);
         subscribe_menuitem = GTK_WIDGET (gtk_builder_get_object (
                                                 builder,
                                                 "subscribe-to-events"));

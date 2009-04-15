@@ -423,10 +423,6 @@ setup_details_treeview (GtkBuilder *builder)
         popup = GTK_WIDGET (gtk_builder_get_object (builder, "details-popup"));
         g_assert (popup != NULL);
 
-        g_object_weak_ref (G_OBJECT (treeview),
-                           (GWeakNotify) gtk_widget_destroy,
-                           popup);
-
         model = create_details_treemodel ();
         g_assert (model != NULL);
 
