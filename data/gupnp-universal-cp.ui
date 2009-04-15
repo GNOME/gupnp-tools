@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <interface>
-  <requires lib="gtk+" version="2.14"/>
+  <requires lib="gtk+" version="2.16"/>
   <!-- interface-naming-policy toplevel-contextual -->
   <object class="GtkWindow" id="main-window">
     <property name="title" translatable="yes">GUPnP Universal Control Point</property>
@@ -16,21 +16,15 @@
                 <property name="visible">True</property>
                 <property name="label" translatable="yes">_File</property>
                 <property name="use_underline">True</property>
-                <child>
+                <child type="submenu">
                   <object class="GtkMenu" id="file_menuitem_menu">
                     <child>
                       <object class="GtkImageMenuItem" id="clear_event_log">
+                        <property name="label">Clear event log</property>
                         <property name="visible">True</property>
-                        <property name="label" translatable="yes">Clear event log</property>
                         <property name="use_underline">True</property>
+                        <property name="use_stock">True</property>
                         <signal name="activate" handler="on_clear_event_log_activate"/>
-                        <child internal-child="image">
-                          <object class="GtkImage" id="image10">
-                            <property name="visible">True</property>
-                            <property name="stock">gtk-clear</property>
-                            <property name="icon_size">1</property>
-                          </object>
-                        </child>
                       </object>
                     </child>
                     <child>
@@ -40,8 +34,9 @@
                     </child>
                     <child>
                       <object class="GtkImageMenuItem" id="quit">
-                        <property name="visible">True</property>
                         <property name="label">gtk-quit</property>
+                        <property name="visible">True</property>
+                        <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
                         <signal name="activate" handler="application_exit"/>
                       </object>
@@ -55,7 +50,7 @@
                 <property name="visible">True</property>
                 <property name="label" translatable="yes">View</property>
                 <property name="use_underline">True</property>
-                <child>
+                <child type="submenu">
                   <object class="GtkMenu" id="view_menuitem_menu">
                     <child>
                       <object class="GtkMenuItem" id="expand_devices">
@@ -96,12 +91,13 @@
                 <property name="visible">True</property>
                 <property name="label" translatable="yes">_Help</property>
                 <property name="use_underline">True</property>
-                <child>
+                <child type="submenu">
                   <object class="GtkMenu" id="help_menuitem_menu">
                     <child>
                       <object class="GtkImageMenuItem" id="about">
-                        <property name="visible">True</property>
                         <property name="label">gtk-about</property>
+                        <property name="visible">True</property>
+                        <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
                         <signal name="activate" handler="gtk_widget_show" object="about-dialog"/>
                       </object>
@@ -126,9 +122,9 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="border_width">6</property>
-                <property name="hscrollbar_policy">GTK_POLICY_AUTOMATIC</property>
-                <property name="vscrollbar_policy">GTK_POLICY_AUTOMATIC</property>
-                <property name="shadow_type">GTK_SHADOW_IN</property>
+                <property name="hscrollbar_policy">automatic</property>
+                <property name="vscrollbar_policy">automatic</property>
+                <property name="shadow_type">in</property>
                 <child>
                   <object class="GtkTreeView" id="device-treeview">
                     <property name="visible">True</property>
@@ -152,9 +148,9 @@
                   <object class="GtkScrolledWindow" id="details-scrolledwindow">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="hscrollbar_policy">GTK_POLICY_AUTOMATIC</property>
-                    <property name="vscrollbar_policy">GTK_POLICY_AUTOMATIC</property>
-                    <property name="shadow_type">GTK_SHADOW_IN</property>
+                    <property name="hscrollbar_policy">automatic</property>
+                    <property name="vscrollbar_policy">automatic</property>
+                    <property name="shadow_type">in</property>
                     <child>
                       <object class="GtkTreeView" id="details-treeview">
                         <property name="visible">True</property>
@@ -173,9 +169,9 @@
                   <object class="GtkScrolledWindow" id="event-scrolledwindow">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="hscrollbar_policy">GTK_POLICY_AUTOMATIC</property>
-                    <property name="vscrollbar_policy">GTK_POLICY_AUTOMATIC</property>
-                    <property name="shadow_type">GTK_SHADOW_IN</property>
+                    <property name="hscrollbar_policy">automatic</property>
+                    <property name="vscrollbar_policy">automatic</property>
+                    <property name="shadow_type">in</property>
                     <child>
                       <object class="GtkTreeView" id="event-treeview">
                         <property name="visible">True</property>
@@ -205,7 +201,7 @@
     </child>
   </object>
   <object class="GtkAboutDialog" id="about-dialog">
-    <property name="type_hint">GDK_WINDOW_TYPE_HINT_NORMAL</property>
+    <property name="type_hint">normal</property>
     <property name="copyright" translatable="yes">Copyright (C) 2007 Zeeshan Ali (Khattak)</property>
     <property name="comments" translatable="yes">A Generic Control Point based on GUPnP framework.
 Inspired by Intel Tools for UPnP.</property>
@@ -213,7 +209,6 @@ Inspired by Intel Tools for UPnP.</property>
     <property name="website_label" translatable="yes">GUPnP homepage</property>
     <property name="license" translatable="yes">GPL</property>
     <property name="authors">Zeeshan Ali (Khattak) &lt;zeeshanak@gnome.org&gt;</property>
-    <property name="documenters"></property>
     <property name="translator_credits" translatable="yes" comments="TRANSLATORS: Replace this string with your names, one name per line.">translator-credits</property>
     <property name="artists">Lapo Calamandrei &lt;calamandrei@gmail.com&gt;</property>
     <signal name="response" handler="gtk_widget_hide" object="about-dialog"/>
@@ -224,7 +219,7 @@ Inspired by Intel Tools for UPnP.</property>
           <object class="GtkHButtonBox" id="dialog-action_area1"/>
           <packing>
             <property name="expand">False</property>
-            <property name="pack_type">GTK_PACK_END</property>
+            <property name="pack_type">end</property>
             <property name="position">0</property>
           </packing>
         </child>
@@ -275,9 +270,9 @@ Inspired by Intel Tools for UPnP.</property>
     <property name="border_width">7</property>
     <property name="title" translatable="yes">Action Invocation</property>
     <property name="modal">True</property>
-    <property name="window_position">GTK_WIN_POS_CENTER_ON_PARENT</property>
+    <property name="window_position">center-on-parent</property>
     <property name="default_width">470</property>
-    <property name="type_hint">GDK_WINDOW_TYPE_HINT_DIALOG</property>
+    <property name="type_hint">dialog</property>
     <property name="has_separator">False</property>
     <child internal-child="vbox">
       <object class="GtkVBox" id="action-invocation-vbox">
@@ -345,6 +340,7 @@ Inspired by Intel Tools for UPnP.</property>
                       <object class="GtkImage" id="action-image">
                         <property name="visible">True</property>
                         <property name="stock">gtk-missing-image</property>
+                        <property name="icon-size">4</property>
                       </object>
                       <packing>
                         <property name="top_attach">2</property>
@@ -357,6 +353,7 @@ Inspired by Intel Tools for UPnP.</property>
                       <object class="GtkImage" id="service-image">
                         <property name="visible">True</property>
                         <property name="stock">gtk-missing-image</property>
+                        <property name="icon-size">4</property>
                       </object>
                       <packing>
                         <property name="top_attach">1</property>
@@ -369,6 +366,7 @@ Inspired by Intel Tools for UPnP.</property>
                       <object class="GtkImage" id="device-image">
                         <property name="visible">True</property>
                         <property name="stock">gtk-missing-image</property>
+                        <property name="icon-size">4</property>
                       </object>
                       <packing>
                         <property name="x_options"></property>
@@ -386,6 +384,7 @@ Inspired by Intel Tools for UPnP.</property>
               <object class="GtkButton" id="action-invocation-button">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
+                <property name="receives_default">False</property>
                 <signal name="clicked" handler="on_action_invocation"/>
                 <child>
                   <object class="GtkHBox" id="hbox1">
@@ -396,7 +395,7 @@ Inspired by Intel Tools for UPnP.</property>
                       <object class="GtkImage" id="image1">
                         <property name="visible">True</property>
                         <property name="stock">gtk-execute</property>
-                        <property name="icon_size">3</property>
+                        <property name="icon-size">3</property>
                       </object>
                       <packing>
                         <property name="position">0</property>
@@ -515,14 +514,14 @@ Inspired by Intel Tools for UPnP.</property>
         <child internal-child="action_area">
           <object class="GtkHButtonBox" id="dialog-action_area3">
             <property name="visible">True</property>
-            <property name="layout_style">GTK_BUTTONBOX_END</property>
+            <property name="layout_style">end</property>
             <child>
               <object class="GtkButton" id="action-invocation-dialog-close-button">
+                <property name="label">gtk-close</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="label">gtk-close</property>
+                <property name="receives_default">False</property>
                 <property name="use_stock">True</property>
-                <property name="response_id">0</property>
                 <signal name="clicked" handler="gtk_dialog_response" object="action-invocation-dialog"/>
               </object>
               <packing>
@@ -534,12 +533,15 @@ Inspired by Intel Tools for UPnP.</property>
           </object>
           <packing>
             <property name="expand">False</property>
-            <property name="pack_type">GTK_PACK_END</property>
+            <property name="pack_type">end</property>
             <property name="position">0</property>
           </packing>
         </child>
       </object>
     </child>
+    <action-widgets>
+      <action-widget response="0">action-invocation-dialog-close-button</action-widget>
+    </action-widgets>
   </object>
   <object class="GtkMenu" id="details-popup">
     <child>
