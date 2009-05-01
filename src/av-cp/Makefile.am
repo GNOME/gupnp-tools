@@ -24,11 +24,11 @@ gupnp_av_cp_SOURCES = main.c \
 		      renderer-combo.h \
 		      renderer-controls.h
 
-gupnp_av_cp_LDADD = $(LIBGUPNP_LIBS) \
+gupnp_av_cp_LDADD = ../common/libicons.a \
+		    $(LIBGUPNP_LIBS) \
 		    $(LIBGUPNP_AV_LIBS) \
 		    $(GTK_LIBS) \
-	    	    $(GTHREAD_LIBS) \
-		    ../common/libicons.a
+		    $(GTHREAD_LIBS)
 gupnp_av_cp_LDFLAGS = -export-dynamic
 
 MAINTAINERCLEANFILES = Makefile.in

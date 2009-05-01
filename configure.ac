@@ -18,11 +18,30 @@ GTHREAD_REQUIRED=2.12
 GIO_REQUIRED=2.12
 ICON_THEME_REQUIRED=2.20
 
+AC_MSG_CHECKING([for Win32])
+case "$host" in
+    *-*-mingw*)
+        os_win32=yes
+        ;;
+    *)
+        os_win32=no
+        ;;
+esac
+AC_MSG_RESULT([$os_win32])
+AM_CONDITIONAL(OS_WIN32, [test $os_win32 = yes])
+
 PKG_CHECK_MODULES(LIBGUPNP, gupnp-1.0 >= $GUPNP_REQUIRED)
 PKG_CHECK_MODULES(GTK, gtk+-2.0 >= $GTK_REQUIRED)
 PKG_CHECK_MODULES(GTHREAD, gthread-2.0 >= $GTHREAD_REQUIRED)
 PKG_CHECK_MODULES(GNOME_ICON_THEME, gnome-icon-theme >= $ICON_THEME_REQUIRED)
 PKG_CHECK_MODULES(GIO, gio-2.0 >= $GIO_REQUIRED)
+
+if test "x$os_win32" = "xno"; then
+    PKG_CHECK_MODULES(UUID, uuid)
+else
+    AC_SUBST([UUID_LIBS], ["-lrpcrt4"])
+    AC_SUBST([WIN32_LDFLAGS], ["-subsystem windows"])
+fi
 
 AC_ARG_WITH( av,
   AC_HELP_STRING([--disable-av],[Don't build AV tools]),

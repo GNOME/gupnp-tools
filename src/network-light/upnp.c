@@ -25,7 +25,12 @@
 #include <stdio.h>
 #include <locale.h>
 #include <string.h>
-#include <uuid/uuid.h>
+#ifndef G_OS_WIN32
+#	include <uuid/uuid.h>
+#else
+#	include <rpc.h>
+typedef UUID uuid_t;
+#endif
 #include <glib/gstdio.h>
 
 #include "gui.h"
@@ -318,8 +323,18 @@ static void init_uuid ()
         xmlNode *uuid_node;
         char *udn;
 
+#ifndef G_OS_WIN32
         uuid_generate (uuid_context);
         uuid_unparse (uuid_context, uuid);
+#else
+	{
+		gchar *tmp_uuid;
+		UuidCreate(&uuid_context);
+		UuidToString(&uuid_context, &tmp_uuid);
+		memcpy(uuid, tmp_uuid, 36);
+		RpcStringFree(&tmp_uuid);
+	}
+#endif
 
         uuid_node = xml_util_get_element ((xmlNode *) doc->doc,
                                           "root",
