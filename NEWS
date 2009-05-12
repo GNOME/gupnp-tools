@@ -1,3 +1,25 @@
+0.7.1
+=====
+
+Changes in this release:
+
+- Use g_printerr() instead of g_critical() in case of problems.
+- Initialize the GError to NULL at declaration.
+- Declare variables as const to setisfy the compiler.
+- Add missing casts.
+- Use g_content_type_is_a() to compare mimetypes.
+- Correct the order of mimetype check.
+- Iterate over item resources rather than renderer protocols.
+- Port all UIs to use GtkBuilder.
+- Bump-up Gtk+ requirement to 2.16.
+
+Removed dependency in this release: libglade.
+
+Contributors to this release:
+
+Sven Neumann <s.neumann@phase-zero.de>
+Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+
 0.7
 ===
 
