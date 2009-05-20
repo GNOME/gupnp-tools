@@ -39,6 +39,7 @@ GtkWidget *pause_button;
 GtkWidget *stop_button;
 GtkWidget *next_button;
 GtkWidget *prev_button;
+GtkWidget *lenient_mode_menuitem;
 
 static guint timeout_id;
 
@@ -447,6 +448,11 @@ find_compatible_res (GList *resources, char **protocols)
 {
         GList *res;
         GList *ret = NULL;
+
+        if (gtk_check_menu_item_get_active (lenient_mode_menuitem)) {
+                /* Linient mode, just return the first resource */
+                return resources;
+        }
 
         for (res = resources; res != NULL; res = res->next) {
                 xmlNode *res_node = (xmlNode *) res->data;
@@ -996,6 +1002,11 @@ setup_renderer_controls (GtkBuilder *builder)
         prev_button = GTK_WIDGET (gtk_builder_get_object (builder,
                                                           "previous-button"));
         g_assert (prev_button != NULL);
+
+        lenient_mode_menuitem = GTK_WIDGET (gtk_builder_get_object (
+                                                builder,
+                                                "lenient_mode_menuitem"));
+        g_assert (lenient_mode_menuitem != NULL);
 
         didl_parser = gupnp_didl_lite_parser_new ();
         g_assert (didl_parser != NULL);
