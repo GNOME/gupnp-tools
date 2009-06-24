@@ -803,8 +803,8 @@ browse (GUPnPServiceProxy *content_dir,
 
 static void
 append_media_server (GUPnPDeviceProxy *proxy,
-                     GtkTreeModel          *model,
-                     GtkTreeIter           *parent_iter)
+                     GtkTreeModel     *model,
+                     GtkTreeIter      *parent_iter)
 {
         GUPnPDeviceInfo   *info;
         GUPnPServiceProxy *content_dir;
