@@ -231,7 +231,7 @@ on_playlist_row_expanded (GtkTreeView *tree_view,
                                     6, &child_count,
                                     -1);
 
-                if (is_container) {
+                if (is_container && child_count > 0) {
                         browse (content_dir, id, 0, MAX_BROWSE);
                 }
 
