@@ -537,6 +537,31 @@ update_container (GUPnPServiceProxy *content_dir,
 }
 
 static void
+update_container_child_count (GUPnPServiceProxy *content_dir,
+                              const char        *container_id)
+{
+        GtkTreeModel *model;
+        GtkTreeIter   container_iter;
+
+        model = gtk_tree_view_get_model (GTK_TREE_VIEW (treeview));
+        g_assert (model != NULL);
+
+        if (find_container (content_dir,
+                            model,
+                            &container_iter,
+                            container_id)) {
+                int child_count;
+
+                child_count = gtk_tree_model_iter_n_children (model,
+                                                              &container_iter);
+                gtk_tree_store_set (GTK_TREE_STORE (model),
+                                    &container_iter,
+                                    6, child_count,
+                                    -1);
+        }
+}
+
+static void
 on_container_update_ids (GUPnPServiceProxy *content_dir,
                          const char        *variable,
                          GValue            *value,
@@ -757,6 +782,8 @@ browse_cb (GUPnPServiceProxy       *content_dir,
                                 data->id,
                                 data->starting_index,
                                 MIN (remaining, MAX_BROWSE));
+                else
+                        update_container_child_count (content_dir, data->id);
         } else if (error) {
                 GUPnPServiceInfo *info;
 
