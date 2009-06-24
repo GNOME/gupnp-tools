@@ -522,14 +522,15 @@ update_container (GUPnPServiceProxy *content_dir,
         model = gtk_tree_view_get_model (GTK_TREE_VIEW (treeview));
         g_assert (model != NULL);
 
-        if (!find_container (content_dir,
-                             model,
-                             &container_iter,
-                             container_id)) {
-                return;
-        } else if (gtk_tree_model_iter_has_child (model, &container_iter)) {
+        if (find_container (content_dir,
+                            model,
+                            &container_iter,
+                            container_id)) {
                 /* Remove everyting under the container */
-                unpopulate_container (model, &container_iter);
+                if (gtk_tree_model_iter_has_child (model, &container_iter)) {
+                        unpopulate_container (model, &container_iter);
+                }
+
                 /* Browse it again */
                 browse (content_dir, container_id, 0, MAX_BROWSE);
         }
