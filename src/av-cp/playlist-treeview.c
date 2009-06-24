@@ -147,7 +147,7 @@ create_playlist_treemodel (void)
 {
         GtkTreeStore *store;
 
-        store = gtk_tree_store_new (6,
+        store = gtk_tree_store_new (7,
                                     /* Icon */
                                     GDK_TYPE_PIXBUF,
                                     /* Title */
@@ -159,7 +159,9 @@ create_playlist_treemodel (void)
                                     /* Id */
                                     G_TYPE_STRING,
                                     /* Is container? */
-                                    G_TYPE_BOOLEAN);
+                                    G_TYPE_BOOLEAN,
+                                    /* childCount */
+                                    G_TYPE_UINT);
 
         return GTK_TREE_MODEL (store);
 }
@@ -220,11 +222,13 @@ on_playlist_row_expanded (GtkTreeView *tree_view,
                 GUPnPServiceProxy *content_dir;
                 gchar             *id;
                 gboolean           is_container;
+                guint              child_count;
 
                 gtk_tree_model_get (model, &child_iter,
                                     3, &content_dir,
                                     4, &id,
                                     5, &is_container,
+                                    6, &child_count,
                                     -1);
 
                 if (is_container) {
@@ -561,6 +565,7 @@ append_didl_object (xmlNode      *object_node,
         char       *parent_id;
         char       *title;
         gboolean    is_container;
+        uint        child_count;
         GdkPixbuf  *icon;
         gint        position;
 
@@ -586,9 +591,11 @@ append_didl_object (xmlNode      *object_node,
         if (is_container) {
                 position = 0;
                 icon = get_icon_by_id (ICON_CONTAINER);
+                child_count = gupnp_didl_lite_container_get_child_count
+                                                                (object_node);
         } else {
                 position = -1;
-
+                child_count = 0;
                 icon = get_item_icon (object_node);
         }
 
@@ -611,6 +618,7 @@ append_didl_object (xmlNode      *object_node,
                                            3, browse_data->content_dir,
                                            4, id,
                                            5, is_container,
+                                           6, child_count,
                                            -1);
 
 return_point:
