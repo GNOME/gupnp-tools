@@ -27,40 +27,38 @@
 #include "renderer-combo.h"
 #include "playlist-treeview.h"
 
-#define MEDIA_RENDERER "urn:schemas-upnp-org:device:MediaRenderer:*"
-#define MEDIA_SERVER "urn:schemas-upnp-org:device:MediaServer:*"
+#define MEDIA_RENDERER "urn:schemas-upnp-org:device:MediaRenderer:1"
+#define MEDIA_SERVER "urn:schemas-upnp-org:device:MediaServer:1"
 
 static GUPnPContextManager *context_manager;
 static GHashTable *cp_hash;
 
 static void
-device_proxy_available_cb (GUPnPControlPoint *cp,
-                           GUPnPDeviceProxy  *proxy)
+dms_proxy_available_cb (GUPnPControlPoint *cp,
+                        GUPnPDeviceProxy  *proxy)
 {
-        const char *type;
-
-        type = gupnp_device_info_get_device_type (GUPNP_DEVICE_INFO (proxy));
-
-        if (g_pattern_match_simple (MEDIA_RENDERER, type)) {
-                add_media_renderer (proxy);
-        } else if (g_pattern_match_simple (MEDIA_SERVER, type)) {
-                add_media_server (proxy);
-        }
+        add_media_server (proxy);
 }
 
 static void
-device_proxy_unavailable_cb (GUPnPControlPoint *cp,
-                             GUPnPDeviceProxy  *proxy)
+dmr_proxy_available_cb (GUPnPControlPoint *cp,
+                        GUPnPDeviceProxy  *proxy)
 {
-        const char *type;
+        add_media_renderer (proxy);
+}
 
-        type = gupnp_device_info_get_device_type (GUPNP_DEVICE_INFO (proxy));
+static void
+dms_proxy_unavailable_cb (GUPnPControlPoint *cp,
+                          GUPnPDeviceProxy  *proxy)
+{
+        remove_media_server (proxy);
+}
 
-        if (g_pattern_match_simple (MEDIA_RENDERER, type)) {
-                remove_media_renderer (proxy);
-        } else if (g_pattern_match_simple (MEDIA_SERVER, type)) {
-                remove_media_server (proxy);
-        }
+static void
+dmr_proxy_unavailable_cb (GUPnPControlPoint *cp,
+                          GUPnPDeviceProxy  *proxy)
+{
+        remove_media_server (proxy);
 }
 
 static void
@@ -68,23 +66,37 @@ on_context_available (GUPnPContextManager *context_manager,
                       GUPnPContext        *context,
                       gpointer            *user_data)
 {
-        GUPnPControlPoint *cp;
+        GUPnPControlPoint *dms_cp;
+        GUPnPControlPoint *dmr_cp;
 
         /* We're interested in everything */
-        cp = gupnp_control_point_new (context, "ssdp:all");
+        dms_cp = gupnp_control_point_new (context, MEDIA_SERVER);
+        dmr_cp = gupnp_control_point_new (context, MEDIA_RENDERER);
 
-        g_hash_table_insert (cp_hash, g_object_ref (context), cp);
+        g_hash_table_insert (cp_hash, g_object_ref (context), dms_cp);
+        g_hash_table_insert (cp_hash, g_object_ref (context), dmr_cp);
 
-        g_signal_connect (cp,
+        g_signal_connect (dms_cp,
                           "device-proxy-available",
-                          G_CALLBACK (device_proxy_available_cb),
+                          G_CALLBACK (dms_proxy_available_cb),
                           NULL);
-        g_signal_connect (cp,
+        g_signal_connect (dmr_cp,
+                          "device-proxy-available",
+                          G_CALLBACK (dmr_proxy_available_cb),
+                          NULL);
+        g_signal_connect (dms_cp,
                           "device-proxy-unavailable",
-                          G_CALLBACK (device_proxy_unavailable_cb),
+                          G_CALLBACK (dms_proxy_unavailable_cb),
+                          NULL);
+        g_signal_connect (dmr_cp,
+                          "device-proxy-unavailable",
+                          G_CALLBACK (dmr_proxy_unavailable_cb),
                           NULL);
 
-        gssdp_resource_browser_set_active (GSSDP_RESOURCE_BROWSER (cp), TRUE);
+        gssdp_resource_browser_set_active (GSSDP_RESOURCE_BROWSER (dms_cp),
+                                           TRUE);
+        gssdp_resource_browser_set_active (GSSDP_RESOURCE_BROWSER (dmr_cp),
+                                           TRUE);
 }
 
 static void
