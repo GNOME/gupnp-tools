@@ -31,7 +31,17 @@
 #define MEDIA_SERVER "urn:schemas-upnp-org:device:MediaServer:1"
 
 static GUPnPContextManager *context_manager;
-static GHashTable *cp_hash;
+static GList *control_points;
+static GList *contexts;
+
+static gboolean
+context_equal (GUPnPContext *context1, GUPnPContext *context2)
+{
+        return g_ascii_strcasecmp (gupnp_context_get_name (context1),
+                                   gupnp_context_get_name (context2)) == 0 &&
+               g_ascii_strcasecmp (gupnp_context_get_host_ip (context1),
+                                   gupnp_context_get_host_ip (context2)) == 0;
+}
 
 static void
 dms_proxy_available_cb (GUPnPControlPoint *cp,
@@ -58,7 +68,7 @@ static void
 dmr_proxy_unavailable_cb (GUPnPControlPoint *cp,
                           GUPnPDeviceProxy  *proxy)
 {
-        remove_media_server (proxy);
+        remove_media_renderer (proxy);
 }
 
 static void
@@ -69,12 +79,13 @@ on_context_available (GUPnPContextManager *context_manager,
         GUPnPControlPoint *dms_cp;
         GUPnPControlPoint *dmr_cp;
 
-        /* We're interested in everything */
+        contexts = g_list_append (contexts, g_object_ref (context));
+
         dms_cp = gupnp_control_point_new (context, MEDIA_SERVER);
         dmr_cp = gupnp_control_point_new (context, MEDIA_RENDERER);
 
-        g_hash_table_insert (cp_hash, g_object_ref (context), dms_cp);
-        g_hash_table_insert (cp_hash, g_object_ref (context), dmr_cp);
+        control_points = g_list_append (control_points, dms_cp);
+        control_points = g_list_append (control_points, dmr_cp);
 
         g_signal_connect (dms_cp,
                           "device-proxy-available",
@@ -104,16 +115,26 @@ on_context_unavailable (GUPnPContextManager *context_manager,
                         GUPnPContext        *context,
                         gpointer            *user_data)
 {
-        g_hash_table_remove (cp_hash, context);
-}
+        GList *l = control_points;
 
-static gboolean
-context_equal (GUPnPContext *context1, GUPnPContext *context2)
-{
-        return g_ascii_strcasecmp (gupnp_context_get_name (context1),
-                                   gupnp_context_get_name (context2)) == 0 &&
-               g_ascii_strcasecmp (gupnp_context_get_host_ip (context1),
-                                   gupnp_context_get_host_ip (context2)) == 0;
+        while (l) {
+                GUPnPControlPoint *cp = GUPNP_CONTROL_POINT (l->data);
+
+                if (context_equal (context,
+                                   gupnp_control_point_get_context (cp))) {
+                        GList *next = l->next;
+
+                        control_points = g_list_delete_link (control_points, l);
+                        l = next;
+
+                        g_object_unref (cp);
+                } else {
+                        l = l->next;
+                }
+        }
+
+        contexts = g_list_remove (contexts, context);
+        g_object_unref (context);
 }
 
 static gboolean
@@ -121,10 +142,8 @@ init_upnp (void)
 {
         g_type_init ();
 
-        cp_hash = g_hash_table_new_full (g_direct_hash,
-                                         (GEqualFunc) context_equal,
-                                         g_object_unref,
-                                         g_object_unref);
+        control_points = NULL;
+        contexts = NULL;
 
         context_manager = gupnp_context_manager_new (NULL, 0);
         g_assert (context_manager != NULL);
@@ -146,7 +165,18 @@ deinit_upnp (void)
 {
         g_object_unref (context_manager);
 
-        g_hash_table_unref (cp_hash);
+        while (control_points) {
+                g_object_unref (control_points->data);
+
+                control_points = g_list_delete_link (control_points,
+                                                     control_points);
+        }
+
+        while (contexts) {
+                g_object_unref (contexts->data);
+
+                contexts = g_list_delete_link (contexts, contexts);
+        }
 }
 
 void
