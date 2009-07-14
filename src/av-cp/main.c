@@ -110,7 +110,9 @@ on_context_unavailable (GUPnPContextManager *context_manager,
 static gboolean
 context_equal (GUPnPContext *context1, GUPnPContext *context2)
 {
-        return g_ascii_strcasecmp (gupnp_context_get_host_ip (context1),
+        return g_ascii_strcasecmp (gupnp_context_get_name (context1),
+                                   gupnp_context_get_name (context2)) == 0 &&
+               g_ascii_strcasecmp (gupnp_context_get_host_ip (context1),
                                    gupnp_context_get_host_ip (context2)) == 0;
 }
 
