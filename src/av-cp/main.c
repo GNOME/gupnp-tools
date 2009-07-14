@@ -129,11 +129,11 @@ init_upnp (void)
 
         g_signal_connect (context_manager,
                           "context-available",
-                          on_context_available,
+                          G_CALLBACK (on_context_available),
                           NULL);
         g_signal_connect (context_manager,
                           "context-unavailable",
-                          on_context_unavailable,
+                          G_CALLBACK (on_context_unavailable),
                           NULL);
 
         return TRUE;
