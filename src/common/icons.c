@@ -174,12 +174,14 @@ schedule_icon_update (GUPnPDeviceInfo            *info,
 void
 unschedule_icon_update (GUPnPDeviceInfo *info)
 {
-        while (pending_gets) {
+        GList *gets;
+
+        for (gets = pending_gets; gets; gets = gets->next) {
                 GetIconURLData *data;
                 const char *udn1;
                 const char *udn2;
 
-                data = pending_gets->data;
+                data = gets->data;
                 udn1 = gupnp_device_info_get_udn (info);
                 udn2 = gupnp_device_info_get_udn (data->info);
 
