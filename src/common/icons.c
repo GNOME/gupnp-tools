@@ -49,6 +49,8 @@ typedef struct {
 static void
 get_icon_url_data_free (GetIconURLData *data)
 {
+        g_object_unref (data->info);
+
         g_free (data->mime_type);
         g_slice_free (GetIconURLData, data);
 }
@@ -157,7 +159,7 @@ schedule_icon_update (GUPnPDeviceInfo            *info,
                 return;
         }
 
-        data->info = info;
+        data->info = g_object_ref (info);
         data->callback = callback;
 
         pending_gets = g_list_prepend (pending_gets, data);
