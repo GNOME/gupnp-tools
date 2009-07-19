@@ -612,7 +612,7 @@ init_client (GUPnPContext *context)
 static void
 on_context_available (GUPnPContextManager *context_manager,
                       GUPnPContext        *context,
-                      gpointer            *user_data)
+                      gpointer             user_data)
 {
         /* Initialize client-side stuff */
         init_client (context);

@@ -42,7 +42,7 @@ device_proxy_unavailable_cb (GUPnPControlPoint *cp,
 static void
 on_context_available (GUPnPContextManager *context_manager,
                       GUPnPContext        *context,
-                      gpointer            *user_data)
+                      gpointer             user_data)
 {
         GUPnPControlPoint *cp;
 
