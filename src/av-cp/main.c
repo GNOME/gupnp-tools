@@ -31,17 +31,6 @@
 #define MEDIA_SERVER "urn:schemas-upnp-org:device:MediaServer:1"
 
 static GUPnPContextManager *context_manager;
-static GList *control_points;
-static GList *contexts;
-
-static gboolean
-context_equal (GUPnPContext *context1, GUPnPContext *context2)
-{
-        return g_ascii_strcasecmp (gupnp_context_get_name (context1),
-                                   gupnp_context_get_name (context2)) == 0 &&
-               g_ascii_strcasecmp (gupnp_context_get_host_ip (context1),
-                                   gupnp_context_get_host_ip (context2)) == 0;
-}
 
 static void
 dms_proxy_available_cb (GUPnPControlPoint *cp,
@@ -79,13 +68,8 @@ on_context_available (GUPnPContextManager *context_manager,
         GUPnPControlPoint *dms_cp;
         GUPnPControlPoint *dmr_cp;
 
-        contexts = g_list_append (contexts, g_object_ref (context));
-
         dms_cp = gupnp_control_point_new (context, MEDIA_SERVER);
         dmr_cp = gupnp_control_point_new (context, MEDIA_RENDERER);
-
-        control_points = g_list_append (control_points, dms_cp);
-        control_points = g_list_append (control_points, dmr_cp);
 
         g_signal_connect (dms_cp,
                           "device-proxy-available",
@@ -108,33 +92,14 @@ on_context_available (GUPnPContextManager *context_manager,
                                            TRUE);
         gssdp_resource_browser_set_active (GSSDP_RESOURCE_BROWSER (dmr_cp),
                                            TRUE);
-}
 
-static void
-on_context_unavailable (GUPnPContextManager *context_manager,
-                        GUPnPContext        *context,
-                        gpointer            *user_data)
-{
-        GList *l = control_points;
+        /* Let context manager take care of the control point life cycle */
+        gupnp_context_manager_manage_control_point (context_manager, dms_cp);
+        gupnp_context_manager_manage_control_point (context_manager, dmr_cp);
 
-        while (l) {
-                GUPnPControlPoint *cp = GUPNP_CONTROL_POINT (l->data);
-
-                if (context_equal (context,
-                                   gupnp_control_point_get_context (cp))) {
-                        GList *next = l->next;
-
-                        control_points = g_list_delete_link (control_points, l);
-                        l = next;
-
-                        g_object_unref (cp);
-                } else {
-                        l = l->next;
-                }
-        }
-
-        contexts = g_list_remove (contexts, context);
-        g_object_unref (context);
+        /* We don't need to keep our own references to the control points */
+        g_object_unref (dms_cp);
+        g_object_unref (dmr_cp);
 }
 
 static gboolean
@@ -142,19 +107,12 @@ init_upnp (void)
 {
         g_type_init ();
 
-        control_points = NULL;
-        contexts = NULL;
-
         context_manager = gupnp_context_manager_new (NULL, 0);
         g_assert (context_manager != NULL);
 
         g_signal_connect (context_manager,
                           "context-available",
                           G_CALLBACK (on_context_available),
-                          NULL);
-        g_signal_connect (context_manager,
-                          "context-unavailable",
-                          G_CALLBACK (on_context_unavailable),
                           NULL);
 
         return TRUE;
@@ -164,19 +122,6 @@ static void
 deinit_upnp (void)
 {
         g_object_unref (context_manager);
-
-        while (control_points) {
-                g_object_unref (control_points->data);
-
-                control_points = g_list_delete_link (control_points,
-                                                     control_points);
-        }
-
-        while (contexts) {
-                g_object_unref (contexts->data);
-
-                contexts = g_list_delete_link (contexts, contexts);
-        }
 }
 
 void

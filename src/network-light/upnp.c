@@ -47,7 +47,6 @@ typedef struct
 static GUPnPContextManager *context_manager;
 static GHashTable *nl_hash;
 
-static GHashTable *cp_hash;
 /* Other network light services on the network */
 static GList *switch_proxies;
 static GList *dimming_proxies;
@@ -590,8 +589,6 @@ init_client (GUPnPContext *context)
 
         cp = gupnp_control_point_new (context, NETWORK_LIGHT);
 
-        g_hash_table_insert (cp_hash, g_object_ref (context), cp);
-
         g_signal_connect (cp,
                           "device-proxy-available",
                           G_CALLBACK (on_network_light_available),
@@ -602,6 +599,12 @@ init_client (GUPnPContext *context)
                           NULL);
 
         gssdp_resource_browser_set_active (GSSDP_RESOURCE_BROWSER (cp), TRUE);
+
+        /* Let context manager take care of the control point life cycle */
+        gupnp_context_manager_manage_control_point (context_manager, cp);
+
+        /* We don't need to keep our own references to the control points */
+        g_object_unref (cp);
 
         return TRUE;
 }
@@ -621,13 +624,12 @@ on_context_available (GUPnPContextManager *context_manager,
 static void
 on_context_unavailable (GUPnPContextManager *context_manager,
                         GUPnPContext        *context,
-                        gpointer            *user_data)
+                        gpointer             user_data)
 {
         g_print ("Dettaching from IP/Host %s and port %d\n",
                  gupnp_context_get_host_ip (context),
                  gupnp_context_get_port (context));
 
-        g_hash_table_remove (cp_hash, context);
         g_hash_table_remove (nl_hash, context);
 }
 
@@ -645,11 +647,6 @@ init_upnp (void)
 
         switch_proxies = NULL;
         dimming_proxies = NULL;
-
-        cp_hash = g_hash_table_new_full (g_direct_hash,
-                                         (GEqualFunc) context_equal,
-                                         g_object_unref,
-                                         g_object_unref);
 
         nl_hash = g_hash_table_new_full (g_direct_hash,
                                          (GEqualFunc) context_equal,
@@ -682,7 +679,6 @@ deinit_upnp (void)
 
         g_hash_table_unref (nl_hash);
 
-        g_hash_table_unref (cp_hash);
         g_list_foreach (switch_proxies, (GFunc) g_object_unref, NULL);
         g_list_foreach (dimming_proxies, (GFunc) g_object_unref, NULL);
 

@@ -24,7 +24,6 @@
 #include <stdlib.h>
 
 static GUPnPContextManager *context_manager;
-static GHashTable *cp_hash;
 
 static void
 device_proxy_available_cb (GUPnPControlPoint *cp,
@@ -50,8 +49,6 @@ on_context_available (GUPnPContextManager *context_manager,
         /* We're interested in everything */
         cp = gupnp_control_point_new (context, "upnp:rootdevice");
 
-        g_hash_table_insert (cp_hash, g_object_ref (context), cp);
-
         g_signal_connect (cp,
                           "device-proxy-available",
                           G_CALLBACK (device_proxy_available_cb),
@@ -62,23 +59,12 @@ on_context_available (GUPnPContextManager *context_manager,
                           NULL);
 
         gssdp_resource_browser_set_active (GSSDP_RESOURCE_BROWSER (cp), TRUE);
-}
 
-static void
-on_context_unavailable (GUPnPContextManager *context_manager,
-                        GUPnPContext        *context,
-                        gpointer            *user_data)
-{
-        g_hash_table_remove (cp_hash, context);
-}
+        /* Let context manager take care of the control point life cycle */
+        gupnp_context_manager_manage_control_point (context_manager, cp);
 
-static gboolean
-context_equal (GUPnPContext *context1, GUPnPContext *context2)
-{
-        return g_ascii_strcasecmp (gupnp_context_get_name (context1),
-                                   gupnp_context_get_name (context2)) == 0 &&
-               g_ascii_strcasecmp (gupnp_context_get_host_ip (context1),
-                                   gupnp_context_get_host_ip (context2)) == 0;
+        /* We don't need to keep our own reference to the control point */
+        g_object_unref (cp);
 }
 
 static gboolean
@@ -86,21 +72,12 @@ init_upnp (void)
 {
         g_type_init ();
 
-        cp_hash = g_hash_table_new_full (g_direct_hash,
-                                         (GEqualFunc) context_equal,
-                                         g_object_unref,
-                                         g_object_unref);
-
         context_manager = gupnp_context_manager_new (NULL, 0);
         g_assert (context_manager != NULL);
 
         g_signal_connect (context_manager,
                           "context-available",
                           G_CALLBACK (on_context_available),
-                          NULL);
-        g_signal_connect (context_manager,
-                          "context-unavailable",
-                          G_CALLBACK (on_context_unavailable),
                           NULL);
 
         return TRUE;
@@ -110,8 +87,6 @@ static void
 deinit_upnp (void)
 {
         g_object_unref (context_manager);
-
-        g_hash_table_unref (cp_hash);
 }
 
 void
