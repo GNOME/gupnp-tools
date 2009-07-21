@@ -53,7 +53,6 @@ static GList *dimming_proxies;
 
 static xmlDoc *doc;
 static char *desc_location;
-static char *ext_desc_path;
 static char uuid[37];
 
 static NetworkLight *
@@ -497,14 +496,12 @@ init_server (GUPnPContext *context)
         GUPnPServiceInfo *dimming;
         GError *error = NULL;
 
-        gupnp_context_host_path (context, desc_location, ext_desc_path);
-        gupnp_context_host_path (context, DATA_DIR, "");
-
         /* Create root device */
         dev = gupnp_root_device_new_full (context,
                                           gupnp_resource_factory_get_default (),
                                           doc,
-                                          ext_desc_path);
+                                          desc_location,
+                                          DATA_DIR);
 
         switch_power = gupnp_device_info_get_service (GUPNP_DEVICE_INFO (dev),
                                                       SWITCH_SERVICE);
@@ -576,8 +573,6 @@ prepare_desc ()
 
                 return FALSE;
         }
-
-        ext_desc_path = g_strdup_printf ("/%s.xml", uuid);
 
         return TRUE;
 }
@@ -688,6 +683,5 @@ deinit_upnp (void)
         if (g_remove (desc_location) != 0)
                 g_warning ("error removing %s\n", desc_location);
         g_free (desc_location);
-        g_free (ext_desc_path);
 }
 
