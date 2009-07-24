@@ -409,7 +409,7 @@ is_protocol_info_compat (xmlNode     *res_node,
         }
 
         if (is_transport_compat (renderer_proto_tokens[0],
-                                 renderer_proto_tokens[2],
+                                 renderer_proto_tokens[1],
                                  item_proto_tokens[0],
                                  item_proto_tokens[1]) &&
             is_content_format_compat (renderer_proto_tokens[2],
