@@ -47,7 +47,7 @@ get_av_transport (GUPnPDeviceProxy *renderer)
 }
 
 GUPnPServiceProxy *
-get_selected_av_transport (gchar ***protocols)
+get_selected_av_transport (gchar **sink_protocol_info)
 {
         GUPnPServiceProxy *av_transport;
         GtkComboBox       *combo;
@@ -62,13 +62,13 @@ get_selected_av_transport (gchar ***protocols)
                 return NULL;
         }
 
-        if (protocols != NULL) {
+        if (sink_protocol_info != NULL) {
                 gtk_tree_model_get (model,
                                     &iter,
-                                    5, protocols,
+                                    5, sink_protocol_info,
                                     -1);
 
-                if (*protocols == NULL) {
+                if (*sink_protocol_info == NULL) {
                         return NULL;
                 }
         }
@@ -551,8 +551,7 @@ get_protocol_info_cb (GUPnPServiceProxy       *cm,
                       GUPnPServiceProxyAction *action,
                       gpointer                 user_data)
 {
-        gchar       *sink_protocols;
-        gchar      **protocols;
+        gchar      *sink_protocol_info;
         const gchar *udn;
         GError      *error;
 
@@ -564,7 +563,7 @@ get_protocol_info_cb (GUPnPServiceProxy       *cm,
                                              &error,
                                              "Sink",
                                              G_TYPE_STRING,
-                                             &sink_protocols,
+                                             &sink_protocol_info,
                                              NULL)) {
                 g_warning ("Failed to get sink protocol info from "
                            "media renderer '%s':%s\n",
@@ -575,11 +574,7 @@ get_protocol_info_cb (GUPnPServiceProxy       *cm,
                 goto return_point;
         }
 
-        protocols = g_strsplit (sink_protocols,
-                                ",",
-                                0);
-
-        if (protocols) {
+        if (sink_protocol_info) {
                 GtkTreeModel *model;
                 GtkTreeIter   iter;
 
@@ -590,11 +585,9 @@ get_protocol_info_cb (GUPnPServiceProxy       *cm,
                 if (find_renderer (model, udn, &iter)) {
                         gtk_list_store_set (GTK_LIST_STORE (model),
                                             &iter,
-                                            5, protocols,
+                                            5, sink_protocol_info,
                                             -1);
                 }
-
-                g_strfreev (protocols);
         }
 
 return_point:
@@ -814,7 +807,7 @@ create_renderer_treemodel (void)
                                     G_TYPE_OBJECT,   /* AVTranport proxy  */
                                     G_TYPE_OBJECT,   /* Rendering Control */
                                                      /* proxy             */
-                                    G_TYPE_STRV,     /* ProtocolInfo      */
+                                    G_TYPE_STRING,   /* SinkProtocolInfo  */
                                     G_TYPE_UINT,     /* AVTranport state  */
                                     G_TYPE_UINT,     /* Volume            */
                                     G_TYPE_UINT);    /* Duration          */

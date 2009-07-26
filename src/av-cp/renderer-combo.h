@@ -36,7 +36,7 @@ typedef enum
 } PlaybackState;
 
 GUPnPServiceProxy *
-get_selected_av_transport       (gchar                 ***protocols);
+get_selected_av_transport       (gchar                 **sink_protocol_info);
 
 GUPnPServiceProxy *
 get_selected_rendering_control  (void);
