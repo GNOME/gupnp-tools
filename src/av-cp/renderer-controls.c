@@ -46,27 +46,20 @@ static guint timeout_id;
 typedef struct
 {
   GCallback callback;
-  gchar    *uri;
-  gchar    *duration;
+
+  GUPnPDIDLLiteResource *resource;
 } SetAVTransportURIData;
 
-typedef struct
-{
-  gchar *uri;
-  gchar *duration;
-} OnDIDLItemAvailableData;
-
 static SetAVTransportURIData *
-set_av_transport_uri_data_new (GCallback callback,
-                               const char *uri,
-                               const char *duration)
+set_av_transport_uri_data_new (GCallback              callback,
+                               GUPnPDIDLLiteResource *resource)
 {
         SetAVTransportURIData *data;
 
         data = g_slice_new (SetAVTransportURIData);
+
         data->callback = callback;
-        data->uri = g_strdup (uri);
-        data->duration = g_strdup (duration);
+        data->resource = resource;
 
         return data;
 }
@@ -74,33 +67,8 @@ set_av_transport_uri_data_new (GCallback callback,
 static void
 set_av_transport_uri_data_free (SetAVTransportURIData *data)
 {
-        g_free (data->uri);
-        if (data->duration) {
-                g_free (data->duration);
-        }
+        g_boxed_free (GUPNP_TYPE_DIDL_LITE_RESOURCE, data->resource);
         g_slice_free (SetAVTransportURIData, data);
-}
-
-static OnDIDLItemAvailableData *
-on_didl_item_available_data_new (const char *uri, const char *duration)
-{
-        OnDIDLItemAvailableData *data;
-
-        data = g_slice_new (OnDIDLItemAvailableData);
-        data->uri = g_strdup (uri);
-        data->duration = g_strdup (duration);
-
-        return data;
-}
-
-static void
-on_didl_item_available_data_free (OnDIDLItemAvailableData *data)
-{
-        g_free (data->uri);
-        if (data->duration) {
-                g_free (data->duration);
-        }
-        g_slice_free (OnDIDLItemAvailableData, data);
 }
 
 static void
@@ -224,8 +192,10 @@ set_av_transport_uri_cb (GUPnPServiceProxy       *av_transport,
                         data->callback ();
                 }
 
-                if (data->duration) {
-                        set_position_hscale_duration (data->duration);
+                if (data->resource->duration) {
+                        gtk_range_set_range (GTK_RANGE (position_hscale),
+                                             0.0,
+                                             data->resource->duration);
                 }
         } else {
                 const char *udn;
@@ -234,7 +204,7 @@ set_av_transport_uri_cb (GUPnPServiceProxy       *av_transport,
                                         (GUPNP_SERVICE_INFO (av_transport));
 
                 g_warning ("Failed to set URI '%s' on %s: %s",
-                           data->uri,
+                           data->resource->uri,
                            udn,
                            error->message);
 
@@ -263,310 +233,56 @@ set_volume_hscale (guint volume)
                                            NULL);
 }
 
-static gboolean
-mime_type_is_a (const char *mime_type1, const char *mime_type2)
-{
-        gboolean ret;
-
-        char *content_type1 = g_content_type_from_mime_type (mime_type1);
-        char *content_type2 = g_content_type_from_mime_type (mime_type2);
-        if (content_type1 == NULL || content_type2 == NULL) {
-                /* Uknown content type, just do a simple comarison */
-                ret = g_ascii_strcasecmp (mime_type1, mime_type2) == 0;
-        } else {
-                ret = g_content_type_is_a (content_type1, content_type2);
-        }
-
-        g_free (content_type1);
-        g_free (content_type2);
-
-        return ret;
-}
-
-static gboolean
-is_transport_compat (const gchar *renderer_protocol,
-                     const gchar *renderer_host,
-                     const gchar *item_protocol,
-                     const gchar *item_host)
-{
-        if (g_ascii_strcasecmp (renderer_protocol, item_protocol) != 0 &&
-            g_ascii_strcasecmp (renderer_protocol, "*") != 0) {
-                return FALSE;
-        } else if (g_ascii_strcasecmp ("INTERNAL", renderer_protocol) == 0 &&
-                   g_ascii_strcasecmp (renderer_host, item_host) != 0) {
-                   /* Host must be the same in case of INTERNAL protocol */
-                        return FALSE;
-        } else {
-                return TRUE;
-        }
-}
-
-static gboolean
-is_content_format_compat (const gchar *renderer_content_format,
-                          const gchar *item_content_format)
-{
-        if (g_ascii_strcasecmp (renderer_content_format, "*") != 0 &&
-            !mime_type_is_a (item_content_format, renderer_content_format)) {
-                return FALSE;
-        } else {
-                return TRUE;
-        }
-}
-
-static gchar *
-get_dlna_pn (gchar **additional_info_fields)
-{
-        gchar *pn = NULL;
-        gint   i;
-
-        for (i = 0; additional_info_fields[i]; i++) {
-                pn = g_strstr_len (additional_info_fields[i],
-                                   strlen (additional_info_fields[i]),
-                                   "DLNA.ORG_PN=");
-                if (pn != NULL) {
-                        pn += 12; /* end of "DLNA.ORG_PN=" */
-
-                        break;
-                }
-        }
-
-        return pn;
-}
-
-static gboolean
-is_additional_info_compat (const gchar *renderer_additional_info,
-                           const gchar *item_additional_info)
-{
-        gchar  **renderer_tokens;
-        gchar  **item_tokens;
-        gchar   *renderer_pn;
-        gchar   *item_pn;
-        gboolean ret = FALSE;
-
-        if (g_ascii_strcasecmp (renderer_additional_info, "*") == 0) {
-                return TRUE;
-        }
-
-        renderer_tokens = g_strsplit (renderer_additional_info, ";", -1);
-        if (renderer_tokens == NULL) {
-                return FALSE;
-        }
-
-        item_tokens = g_strsplit (item_additional_info, ";", -1);
-        if (item_tokens == NULL) {
-                goto no_item_tokens;
-        }
-
-        renderer_pn = get_dlna_pn (renderer_tokens);
-        item_pn = get_dlna_pn (item_tokens);
-        if (renderer_pn == NULL || item_pn == NULL) {
-                goto no_renderer_pn;
-        }
-
-        if (g_ascii_strcasecmp (renderer_pn, item_pn) == 0) {
-                ret = TRUE;
-        }
-
-no_renderer_pn:
-        g_strfreev (item_tokens);
-no_item_tokens:
-        g_strfreev (renderer_tokens);
-
-        return ret;
-}
-
-
-static gboolean
-is_protocol_info_compat (xmlNode     *res_node,
-                         const gchar *renderer_protocol)
-{
-        gchar *item_protocol;
-        gchar **item_proto_tokens;
-        gchar **renderer_proto_tokens;
-        gboolean ret = FALSE;
-
-        item_protocol = gupnp_didl_lite_property_get_attribute (res_node,
-                                                                "protocolInfo");
-        if (item_protocol == NULL) {
-                return FALSE;
-        }
-
-        item_proto_tokens = g_strsplit (item_protocol,
-                                        ":",
-                                        4);
-        renderer_proto_tokens = g_strsplit (renderer_protocol,
-                                            ":",
-                                            4);
-        if (item_proto_tokens[0] == NULL ||
-            item_proto_tokens[1] == NULL ||
-            item_proto_tokens[2] == NULL ||
-            item_proto_tokens[3] == NULL ||
-            renderer_proto_tokens[0] == NULL ||
-            renderer_proto_tokens[1] == NULL ||
-            renderer_proto_tokens[2] == NULL ||
-            renderer_proto_tokens[3] == NULL) {
-                goto return_point;
-        }
-
-        if (is_transport_compat (renderer_proto_tokens[0],
-                                 renderer_proto_tokens[1],
-                                 item_proto_tokens[0],
-                                 item_proto_tokens[1]) &&
-            is_content_format_compat (renderer_proto_tokens[2],
-                                      item_proto_tokens[2]) &&
-            is_additional_info_compat (renderer_proto_tokens[3],
-                                       item_proto_tokens[3])) {
-                ret = TRUE;
-        }
-
-return_point:
-        g_free (item_protocol);
-        g_strfreev (renderer_proto_tokens);
-        g_strfreev (item_proto_tokens);
-
-        return ret;
-}
-
-static gboolean
-is_resource_compat (xmlNode *res_node, char **protocols)
-{
-        gboolean ret = FALSE;
-        int i;
-
-        for (i = 0; protocols[i]; i++) {
-                if (is_protocol_info_compat (res_node, protocols[i])) {
-                        ret = TRUE;
-                        break;
-                }
-        }
-
-        return ret;
-}
-
-static GList *
-find_compatible_res (GList *resources, char **protocols)
-{
-        GList *res;
-        GList *ret = NULL;
-
-        if (gtk_check_menu_item_get_active (lenient_mode_menuitem)) {
-                /* Linient mode, just return the first resource */
-                return resources;
-        }
-
-        for (res = resources; res != NULL; res = res->next) {
-                xmlNode *res_node = (xmlNode *) res->data;
-
-                if (is_resource_compat (res_node, protocols)) {
-                        ret = res;
-                        break;
-                }
-        }
-
-        return ret;
-}
-
-static char *
-find_compat_uri_from_res (GList *resources, char **duration)
-{
-        GUPnPServiceProxy *av_transport;
-        char             **protocols;
-        char              *uri = NULL;
-        guint              i;
-
-        av_transport = get_selected_av_transport (&protocols);
-        if (av_transport == NULL) {
-                g_warning ("No renderer selected");
-
-                return NULL;
-        }
-
-        for (i = 0; protocols[i] && uri == NULL; i++) {
-                GList   *res;
-                xmlNode *res_node;
-
-                res = find_compatible_res (resources, protocols);
-                if (res == NULL) {
-                        continue;
-                }
-
-                res_node = (xmlNode *) res->data;
-                uri = gupnp_didl_lite_property_get_value (res_node);
-                *duration = gupnp_didl_lite_property_get_attribute (res_node,
-                                                                    "duration");
-        }
-
-        if (protocols) {
-                g_strfreev (protocols);
-        }
-
-        g_object_unref (av_transport);
-
-        return uri;
-}
-
 static void
 on_didl_item_available (GUPnPDIDLLiteParser *didl_parser,
                         xmlNode             *item_node,
                         gpointer             user_data)
 {
-        GList                    *resources;
-        OnDIDLItemAvailableData **data;
-        char                     *uri;
-        char                     *duration;
+        GUPnPDIDLLiteResource **resource;
+        GUPnPServiceProxy      *av_transport;
+        char                   *sink_protocol_info;
+        gboolean                lenient_mode;
 
-        resources = gupnp_didl_lite_object_get_property (item_node, "res");
-        if (resources == NULL) {
+        resource = (GUPnPDIDLLiteResource **) user_data;
+
+        av_transport = get_selected_av_transport (&sink_protocol_info);
+        if (av_transport == NULL) {
+                g_warning ("No renderer selected");
+
                 return;
         }
 
-        duration = NULL;
-        uri = find_compat_uri_from_res (resources, &duration);
-        g_list_free (resources);
+        lenient_mode = gtk_check_menu_item_get_active (lenient_mode_menuitem);
 
-        if (uri == NULL) {
-                return;
-        }
-
-        data = (OnDIDLItemAvailableData **) user_data;
-
-        *data = on_didl_item_available_data_new (uri, duration);
-
-        g_free (uri);
-        if (duration) {
-                g_free (duration);
-        }
+        *resource = gupnp_didl_lite_object_get_compat_resource (item_node,
+                                                                sink_protocol_info,
+                                                                lenient_mode);
+        g_free (sink_protocol_info);
+        g_object_unref (av_transport);
 }
 
-static char *
-find_compat_uri_from_metadata (const char *metadata, char **duration)
+static GUPnPDIDLLiteResource *
+find_compat_res_from_metadata (const char *metadata)
 {
-        OnDIDLItemAvailableData *data;
-        char                    *uri;
-        GError                  *error;
+        GUPnPDIDLLiteResource *resource;
+        GError                *error;
 
-        data = NULL;
-        uri = NULL;
+        resource = NULL;
         error = NULL;
 
         /* Assumption: metadata only contains a single didl object */
         gupnp_didl_lite_parser_parse_didl (didl_parser,
                                            metadata,
                                            on_didl_item_available,
-                                           &data,
+                                           &resource,
                                            &error);
         if (error) {
                 g_warning ("%s\n", error->message);
 
                 g_error_free (error);
-        } else if (data != NULL) {
-                uri = g_strdup (data->uri);
-                *duration = g_strdup (data->duration);
-
-                on_didl_item_available_data_free (data);
         }
 
-        return uri;
+        return resource;
 }
 
 void
@@ -575,8 +291,7 @@ set_av_transport_uri (const char *metadata,
 {
         GUPnPServiceProxy     *av_transport;
         SetAVTransportURIData *data;
-        char                  *uri;
-        char                  *duration;
+        GUPnPDIDLLiteResource *resource;
 
         av_transport = get_selected_av_transport (NULL);
         if (av_transport == NULL) {
@@ -584,8 +299,8 @@ set_av_transport_uri (const char *metadata,
                 return;
         }
 
-        uri = find_compat_uri_from_metadata (metadata, &duration);
-        if (uri == NULL) {
+        resource = find_compat_res_from_metadata (metadata);
+        if (resource == NULL) {
                 g_warning ("no compatible URI found.");
 
                 g_object_unref (av_transport);
@@ -593,9 +308,7 @@ set_av_transport_uri (const char *metadata,
                 return;
         }
 
-        data = set_av_transport_uri_data_new (callback, uri, duration);
-        g_free (uri);
-        g_free (duration);
+        data = set_av_transport_uri_data_new (callback, resource);
 
         gupnp_service_proxy_begin_action (av_transport,
                                           "SetAVTransportURI",
@@ -606,7 +319,7 @@ set_av_transport_uri (const char *metadata,
                                           0,
                                           "CurrentURI",
                                           G_TYPE_STRING,
-                                          data->uri,
+                                          resource->uri,
                                           "CurrentURIMetaData",
                                           G_TYPE_STRING,
                                           metadata,
