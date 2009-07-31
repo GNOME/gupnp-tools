@@ -59,7 +59,7 @@ set_av_transport_uri_data_new (GCallback              callback,
         data = g_slice_new (SetAVTransportURIData);
 
         data->callback = callback;
-        data->resource = resource;
+        data->resource = resource; /* Steal the ref */
 
         return data;
 }
@@ -67,7 +67,7 @@ set_av_transport_uri_data_new (GCallback              callback,
 static void
 set_av_transport_uri_data_free (SetAVTransportURIData *data)
 {
-        g_boxed_free (GUPNP_TYPE_DIDL_LITE_RESOURCE, data->resource);
+        g_object_unref (data->resource);
         g_slice_free (SetAVTransportURIData, data);
 }
 
@@ -188,14 +188,17 @@ set_av_transport_uri_cb (GUPnPServiceProxy       *av_transport,
                                             action,
                                             &error,
                                             NULL)) {
+                long duration ;
                 if (data->callback) {
                         data->callback ();
                 }
 
-                if (data->resource->duration) {
+                duration = gupnp_didl_lite_resource_get_duration
+                                                        (data->resource);
+                if (duration > 0) {
                         gtk_range_set_range (GTK_RANGE (position_hscale),
                                              0.0,
-                                             data->resource->duration);
+                                             duration);
                 }
         } else {
                 const char *udn;
@@ -204,7 +207,7 @@ set_av_transport_uri_cb (GUPnPServiceProxy       *av_transport,
                                         (GUPNP_SERVICE_INFO (av_transport));
 
                 g_warning ("Failed to set URI '%s' on %s: %s",
-                           data->resource->uri,
+                           gupnp_didl_lite_resource_get_uri (data->resource),
                            udn,
                            error->message);
 
@@ -252,11 +255,13 @@ on_didl_item_available (GUPnPDIDLLiteParser *didl_parser,
                 return;
         }
 
-        lenient_mode = gtk_check_menu_item_get_active (lenient_mode_menuitem);
+        lenient_mode = gtk_check_menu_item_get_active
+                                (GTK_CHECK_MENU_ITEM (lenient_mode_menuitem));
 
-        *resource = gupnp_didl_lite_object_get_compat_resource (item_node,
-                                                                sink_protocol_info,
-                                                                lenient_mode);
+        *resource = gupnp_didl_lite_object_get_compat_resource
+                                                        (item_node,
+                                                         sink_protocol_info,
+                                                         lenient_mode);
         g_free (sink_protocol_info);
         g_object_unref (av_transport);
 }
@@ -292,6 +297,7 @@ set_av_transport_uri (const char *metadata,
         GUPnPServiceProxy     *av_transport;
         SetAVTransportURIData *data;
         GUPnPDIDLLiteResource *resource;
+        const char            *uri;
 
         av_transport = get_selected_av_transport (NULL);
         if (av_transport == NULL) {
@@ -309,6 +315,7 @@ set_av_transport_uri (const char *metadata,
         }
 
         data = set_av_transport_uri_data_new (callback, resource);
+        uri = gupnp_didl_lite_resource_get_uri (resource);
 
         gupnp_service_proxy_begin_action (av_transport,
                                           "SetAVTransportURI",
@@ -319,7 +326,7 @@ set_av_transport_uri (const char *metadata,
                                           0,
                                           "CurrentURI",
                                           G_TYPE_STRING,
-                                          resource->uri,
+                                          uri,
                                           "CurrentURIMetaData",
                                           G_TYPE_STRING,
                                           metadata,

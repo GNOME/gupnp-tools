@@ -26,28 +26,26 @@
 
 #include "main.h"
 
-static void
-fill_res_for_file (const char            *file_path,
-                   GUPnPDIDLLiteResource *res)
+static GUPnPDIDLLiteResource *
+create_res_for_file (const char *file_path)
 {
+        GUPnPDIDLLiteResource *res;
         char *content_type;
 
-        memset (res, 0, sizeof (GUPnPDIDLLiteResource));
-        content_type = g_content_type_guess (file_path, NULL, 0, NULL);
-        res->mime_type = g_content_type_get_mime_type (content_type);
+        res = gupnp_didl_lite_resource_new ("");
 
-        res->uri = "";
-        res->protocol = "*";
-        res->network = "*";
-        res->dlna_profile = "MP3"; /* FIXME */
+        content_type = g_content_type_guess (file_path, NULL, 0, NULL);
+
+        g_object_set (res,
+                      "mime-type", g_content_type_get_mime_type (content_type),
+                      "protocol", "*",
+                      "network", "*",
+                      "dlna-profile", "MP3", /* FIXME */
+                      NULL);
 
         g_free (content_type);
-}
 
-static void
-clear_res (GUPnPDIDLLiteResource *res)
-{
-        g_free (res->mime_type);
+        return res;
 }
 
 static char *
@@ -72,14 +70,16 @@ create_didl_for_file (const char *file_path,
                       const char *parent_id)
 {
         GUPnPDIDLLiteWriter *writer;
-        GUPnPDIDLLiteResource res;
+        GUPnPDIDLLiteResource *res;
         char *didl;
         char *upnp_class;
         char *new_title;
+        const char *mime_type;
 
-        fill_res_for_file (file_path, &res);
+        res = create_res_for_file (file_path);
 
-        upnp_class = guess_upnp_class_for_mime_type (res.mime_type);
+        mime_type = gupnp_didl_lite_resource_get_mime_type (res);
+        upnp_class = guess_upnp_class_for_mime_type (mime_type);
         if (upnp_class == NULL) {
                 g_critical ("Failed to guess UPnP class for file '%s'",
                             file_path);
@@ -116,7 +116,7 @@ create_didl_for_file (const char *file_path,
                                         GUPNP_DIDL_LITE_WRITER_NAMESPACE_UPNP,
                                         NULL,
                                         upnp_class);
-        gupnp_didl_lite_writer_add_res (writer, &res);
+        gupnp_didl_lite_writer_add_res (writer, res);
 
         gupnp_didl_lite_writer_end_item (writer);
         gupnp_didl_lite_writer_end_didl_lite (writer);
@@ -124,7 +124,7 @@ create_didl_for_file (const char *file_path,
         didl = g_strdup (gupnp_didl_lite_writer_get_string (writer));
 
         g_free (new_title);
-        clear_res (&res);
+        g_object_unref (res);
 
         return didl;
 }
