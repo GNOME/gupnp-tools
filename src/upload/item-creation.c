@@ -39,8 +39,6 @@ create_res_for_file (const char *file_path)
         g_object_set (res,
                       "mime-type", g_content_type_get_mime_type (content_type),
                       "protocol", "*",
-                      "network", "*",
-                      "dlna-profile", "MP3", /* FIXME */
                       NULL);
 
         g_free (content_type);
