@@ -238,7 +238,7 @@ set_volume_hscale (guint volume)
 
 static void
 on_didl_item_available (GUPnPDIDLLiteParser *didl_parser,
-                        xmlNode             *item_node,
+                        GUPnPDIDLLiteObject *object,
                         gpointer             user_data)
 {
         GUPnPDIDLLiteResource **resource;
@@ -259,7 +259,7 @@ on_didl_item_available (GUPnPDIDLLiteParser *didl_parser,
                                 (GTK_CHECK_MENU_ITEM (lenient_mode_menuitem));
 
         *resource = gupnp_didl_lite_object_get_compat_resource
-                                                        (item_node,
+                                                        (object,
                                                          sink_protocol_info,
                                                          lenient_mode);
         g_free (sink_protocol_info);

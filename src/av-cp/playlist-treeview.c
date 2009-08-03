@@ -446,12 +446,12 @@ compare_container (GtkTreeModel *model,
 }
 
 static GdkPixbuf *
-get_item_icon (xmlNode *object_node)
+get_item_icon (GUPnPDIDLLiteObject *object)
 {
         GdkPixbuf *icon;
         char      *class_name;
 
-        class_name = gupnp_didl_lite_object_get_upnp_class (object_node);
+        class_name = gupnp_didl_lite_object_get_upnp_class (object);
         if (G_UNLIKELY (class_name == NULL)) {
                 return get_icon_by_id (ICON_FILE);
         }
@@ -581,10 +581,10 @@ on_container_update_ids (GUPnPServiceProxy *content_dir,
 }
 
 static void
-append_didl_object (xmlNode      *object_node,
-                    BrowseData   *browse_data,
-                    GtkTreeModel *model,
-                    GtkTreeIter  *server_iter)
+append_didl_object (GUPnPDIDLLiteObject *object,
+                    BrowseData          *browse_data,
+                    GtkTreeModel        *model,
+                    GtkTreeIter         *server_iter)
 {
         GtkTreeIter parent_iter;
         char       *id;
@@ -595,34 +595,37 @@ append_didl_object (xmlNode      *object_node,
         GdkPixbuf  *icon;
         gint        position;
 
-        id = gupnp_didl_lite_object_get_id (object_node);
+        id = gupnp_didl_lite_object_get_id (object);
         if (id == NULL)
                 return;
 
-        title = gupnp_didl_lite_object_get_title (object_node);
+        title = gupnp_didl_lite_object_get_title (object);
         if (title == NULL) {
                 g_free (id);
                 return;
         }
 
-        parent_id = gupnp_didl_lite_object_get_parent_id (object_node);
+        parent_id = gupnp_didl_lite_object_get_parent_id (object);
         if (parent_id == NULL) {
                 g_free (id);
                 g_free (title);
                 return;
         }
 
-        is_container = gupnp_didl_lite_object_is_container (object_node);
+        is_container = GUPNP_IS_DIDL_LITE_CONTAINER (object);
 
         if (is_container) {
+                GUPnPDIDLLiteContainer *container;
                 position = 0;
                 icon = get_icon_by_id (ICON_CONTAINER);
+
+                container = GUPNP_DIDL_LITE_CONTAINER (object);
                 child_count = gupnp_didl_lite_container_get_child_count
-                                                                (object_node);
+                                                                (container);
         } else {
                 position = -1;
                 child_count = 0;
-                icon = get_item_icon (object_node);
+                icon = get_item_icon (object);
         }
 
         /* Check if we browsed the root container. */
@@ -696,7 +699,7 @@ get_content_dir (GUPnPDeviceProxy *proxy)
 
 static void
 on_didl_object_available (GUPnPDIDLLiteParser *didl_parser,
-                          xmlNode             *object_node,
+                          GUPnPDIDLLiteObject *object,
                           gpointer             user_data)
 {
         BrowseData   *browse_data;
@@ -709,7 +712,8 @@ on_didl_object_available (GUPnPDIDLLiteParser *didl_parser,
 
         browse_data = (BrowseData *) user_data;
 
-        udn = gupnp_service_info_get_udn (GUPNP_SERVICE_INFO (browse_data->content_dir));
+        udn = gupnp_service_info_get_udn
+                                (GUPNP_SERVICE_INFO (browse_data->content_dir));
 
         if (find_row (model,
                        NULL,
@@ -717,7 +721,7 @@ on_didl_object_available (GUPnPDIDLLiteParser *didl_parser,
                        compare_media_server,
                        (gpointer) udn,
                        FALSE)) {
-                append_didl_object (object_node,
+                append_didl_object (object,
                                     browse_data,
                                     model,
                                     &server_iter);
