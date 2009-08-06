@@ -30,8 +30,6 @@
 #define SEC_PER_MIN 60
 #define SEC_PER_HOUR 3600
 
-static GUPnPDIDLLiteParser *didl_parser;
-
 GtkWidget *volume_vscale;
 GtkWidget *position_hscale;
 GtkWidget *play_button;
@@ -237,7 +235,7 @@ set_volume_hscale (guint volume)
 }
 
 static void
-on_didl_item_available (GUPnPDIDLLiteParser *didl_parser,
+on_didl_item_available (GUPnPDIDLLiteParser *parser,
                         GUPnPDIDLLiteObject *object,
                         gpointer             user_data)
 {
@@ -269,23 +267,28 @@ on_didl_item_available (GUPnPDIDLLiteParser *didl_parser,
 static GUPnPDIDLLiteResource *
 find_compat_res_from_metadata (const char *metadata)
 {
+        GUPnPDIDLLiteParser   *parser;
         GUPnPDIDLLiteResource *resource;
         GError                *error;
 
+        parser = gupnp_didl_lite_parser_new ();
         resource = NULL;
         error = NULL;
 
+        g_signal_connect (parser,
+                          "item-available",
+                          G_CALLBACK (on_didl_item_available),
+                          &resource);
+
         /* Assumption: metadata only contains a single didl object */
-        gupnp_didl_lite_parser_parse_didl (didl_parser,
-                                           metadata,
-                                           on_didl_item_available,
-                                           &resource,
-                                           &error);
+        gupnp_didl_lite_parser_parse_didl (parser, metadata, &error);
         if (error) {
                 g_warning ("%s\n", error->message);
 
                 g_error_free (error);
         }
+
+        g_object_unref (parser);
 
         return resource;
 }
@@ -728,8 +731,6 @@ setup_renderer_controls (GtkBuilder *builder)
                                                 "lenient_mode_menuitem"));
         g_assert (lenient_mode_menuitem != NULL);
 
-        didl_parser = gupnp_didl_lite_parser_new ();
-        g_assert (didl_parser != NULL);
         timeout_id = 0;
 
         g_object_weak_ref (G_OBJECT (position_hscale),

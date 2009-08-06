@@ -45,8 +45,6 @@ typedef gboolean (* RowCompareFunc) (GtkTreeModel *model,
 static GtkWidget *treeview;
 static gboolean   expanded;
 
-static GUPnPDIDLLiteParser *didl_parser;
-
 typedef struct
 {
   GUPnPServiceProxy *content_dir;
@@ -334,9 +332,6 @@ setup_playlist_treeview (GtkBuilder *builder)
                                                 NULL);
 
         expanded = FALSE;
-
-        didl_parser = gupnp_didl_lite_parser_new ();
-        g_assert (didl_parser != NULL);
 }
 
 static gboolean
@@ -698,7 +693,7 @@ get_content_dir (GUPnPDeviceProxy *proxy)
 }
 
 static void
-on_didl_object_available (GUPnPDIDLLiteParser *didl_parser,
+on_didl_object_available (GUPnPDIDLLiteParser *parser,
                           GUPnPDIDLLiteObject *object,
                           gpointer             user_data)
 {
@@ -760,20 +755,26 @@ browse_cb (GUPnPServiceProxy       *content_dir,
                                         &total_matches,
                                         NULL);
         if (didl_xml) {
-                guint32 remaining;
-                GError *error;
+                GUPnPDIDLLiteParser *parser;
+                guint32              remaining;
+                GError              *error;
 
                 error = NULL;
-                if (!gupnp_didl_lite_parser_parse_didl
-                                                (didl_parser,
-                                                 didl_xml,
-                                                 on_didl_object_available,
-                                                 data,
-                                                 &error)) {
+                parser = gupnp_didl_lite_parser_new ();
+
+                g_signal_connect (parser,
+                                  "object-available",
+                                  G_CALLBACK (on_didl_object_available),
+                                  data);
+
+                if (!gupnp_didl_lite_parser_parse_didl (parser,
+                                                        didl_xml,
+                                                        &error)) {
                         g_warning ("%s\n", error->message);
                         g_error_free (error);
                 }
 
+                g_object_unref (parser);
                 g_free (didl_xml);
 
                 data->starting_index += number_returned;
