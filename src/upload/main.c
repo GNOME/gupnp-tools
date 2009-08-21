@@ -35,6 +35,7 @@ static GUPnPServiceProxy *cds_proxy;
 
 static GList *files = NULL;
 static char *udn;
+static char *interface = NULL;
 
 static const char *title = NULL;
 static char *dest_container = NULL;
@@ -51,6 +52,9 @@ static GOptionEntry entries[] =
         { "title", 'i', 0,
           G_OPTION_ARG_STRING, &title,
           "Title for item", "TITLE" },
+        { "interface", 'e', 0,
+          G_OPTION_ARG_STRING, &interface,
+          "Network interface to search MediaServer on", "INTERFACE" },
         { NULL }
 };
 
@@ -169,7 +173,7 @@ main (gint   argc,
         g_type_init ();
 
         error = NULL;
-        upnp_context = gupnp_context_new (NULL, NULL, 0, &error);
+        upnp_context = gupnp_context_new (NULL, interface, 0, &error);
         if (error) {
                 g_printerr ("Error creating the GUPnP context: %s\n",
 			    error->message);
@@ -192,6 +196,7 @@ main (gint   argc,
         g_object_unref (upnp_context);
         g_option_context_free (context);
         g_free (dest_container);
+        g_free (interface);
 
         return 0;
 }
