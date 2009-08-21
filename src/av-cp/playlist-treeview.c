@@ -443,8 +443,8 @@ compare_container (GtkTreeModel *model,
 static GdkPixbuf *
 get_item_icon (GUPnPDIDLLiteObject *object)
 {
-        GdkPixbuf *icon;
-        char      *class_name;
+        GdkPixbuf  *icon;
+        const char *class_name;
 
         class_name = gupnp_didl_lite_object_get_upnp_class (object);
         if (G_UNLIKELY (class_name == NULL)) {
@@ -470,8 +470,6 @@ get_item_icon (GUPnPDIDLLiteObject *object)
         } else {
                 icon = get_icon_by_id (ICON_FILE);
         }
-
-        g_free (class_name);
 
         return icon;
 }
@@ -582,30 +580,19 @@ append_didl_object (GUPnPDIDLLiteObject *object,
                     GtkTreeIter         *server_iter)
 {
         GtkTreeIter parent_iter;
-        char       *id;
-        char       *parent_id;
-        char       *title;
+        const char *id;
+        const char *parent_id;
+        const char *title;
         gboolean    is_container;
         uint        child_count;
         GdkPixbuf  *icon;
         gint        position;
 
         id = gupnp_didl_lite_object_get_id (object);
-        if (id == NULL)
-                return;
-
         title = gupnp_didl_lite_object_get_title (object);
-        if (title == NULL) {
-                g_free (id);
-                return;
-        }
-
         parent_id = gupnp_didl_lite_object_get_parent_id (object);
-        if (parent_id == NULL) {
-                g_free (id);
-                g_free (title);
+        if (id == NULL || title == NULL || parent_id == NULL)
                 return;
-        }
 
         is_container = GUPNP_IS_DIDL_LITE_CONTAINER (object);
 
@@ -631,9 +618,8 @@ append_didl_object (GUPnPDIDLLiteObject *object,
                               &parent_iter,
                               compare_container,
                               (gpointer) parent_id,
-                              TRUE)) {
-                goto return_point;
-        }
+                              TRUE))
+                return;
 
         gtk_tree_store_insert_with_values (GTK_TREE_STORE (model),
                                            NULL, &parent_iter, position,
@@ -644,11 +630,6 @@ append_didl_object (GUPnPDIDLLiteObject *object,
                                            5, is_container,
                                            6, child_count,
                                            -1);
-
-return_point:
-        g_free (parent_id);
-        g_free (title);
-        g_free (id);
 }
 
 static void

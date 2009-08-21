@@ -51,7 +51,7 @@ static GHashTable *nl_hash;
 static GList *switch_proxies;
 static GList *dimming_proxies;
 
-static xmlDoc *doc;
+static GUPnPXMLDoc *doc;
 static char *desc_location;
 static char uuid[37];
 
@@ -321,7 +321,7 @@ static void init_uuid ()
         uuid_generate (uuid_context);
         uuid_unparse (uuid_context, uuid);
 
-        uuid_node = xml_util_get_element ((xmlNode *) doc,
+        uuid_node = xml_util_get_element ((xmlNode *) doc->doc,
                                           "root",
                                           "device",
                                           "UDN",
@@ -548,10 +548,17 @@ init_server (GUPnPContext *context)
 static gboolean
 prepare_desc ()
 {
-        doc = xmlParseFile (DATA_DIR "/" DESCRIPTION_DOC);
+        GError *error;
+
+        error = NULL;
+        doc = gupnp_xml_doc_new_from_path (DATA_DIR "/" DESCRIPTION_DOC,
+                                           &error);
         if (doc == NULL) {
-                g_critical ("Unable to load the XML description file %s",
-                            DESCRIPTION_DOC);
+                g_critical ("Unable to load the XML description file: %s",
+                            error->message);
+
+                g_error_free (error);
+
                 return FALSE;
         }
 
@@ -564,12 +571,12 @@ prepare_desc ()
                                          uuid);
         g_assert (desc_location != NULL);
 
-        if (xmlSaveFile (desc_location, doc) < 0) {
+        if (xmlSaveFile (desc_location, doc->doc) < 0) {
                 g_print ("Error saving description file to %s.\n",
                          desc_location);
 
                 g_free (desc_location);
-                xmlFreeDoc (doc);
+                g_object_unref (doc);
 
                 return FALSE;
         }
@@ -677,8 +684,8 @@ deinit_upnp (void)
         g_list_foreach (switch_proxies, (GFunc) g_object_unref, NULL);
         g_list_foreach (dimming_proxies, (GFunc) g_object_unref, NULL);
 
-        /* Free descriptiont doc */
-        xmlFreeDoc (doc);
+        /* Unref the descriptiont doc */
+        g_object_unref (doc);
 
         if (g_remove (desc_location) != 0)
                 g_warning ("error removing %s\n", desc_location);

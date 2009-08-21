@@ -27,27 +27,19 @@
 #include "main.h"
 
 static void
-didl_object_available_cb (GUPnPDIDLLiteParser *parser,
-                          xmlNode             *object_node,
-                          gpointer             user_data)
+didl_container_available_cb (GUPnPDIDLLiteParser *parser,
+                             GUPnPDIDLLiteObject *container,
+                             gpointer             user_data)
 {
         char **container_id = (char **) user_data;
 
-        if (!gupnp_didl_lite_object_is_container (object_node)) {
-                return;
-        }
-
-        if (!gupnp_didl_lite_object_get_restricted (object_node)) {
-                char *title;
-
+        if (!gupnp_didl_lite_object_get_restricted (container)) {
                 /* Seems like we found a suitable container */
-                *container_id = gupnp_didl_lite_object_get_id (object_node);
-                title = gupnp_didl_lite_object_get_title (object_node);
+                *container_id = g_strdup (gupnp_didl_lite_object_get_id
+                                                                (container));
                 g_print ("Automatically choosing '%s' (%s) as destination.\n",
-                         title,
+                         gupnp_didl_lite_object_get_title (container),
                          *container_id);
-
-                g_free (title);
         }
 }
 
@@ -59,14 +51,14 @@ parse_result (const char *result)
         GError *error;
 
         parser = gupnp_didl_lite_parser_new ();
+        g_signal_connect (parser,
+                          "container-available",
+                          G_CALLBACK (didl_container_available_cb),
+                          &container_id);
 
         container_id = NULL;
         error = NULL;
-        if (!gupnp_didl_lite_parser_parse_didl (parser,
-                                                result,
-                                                didl_object_available_cb,
-                                                &container_id,
-                                                &error)) {
+        if (!gupnp_didl_lite_parser_parse_didl (parser, result, &error)) {
                 g_critical ("Failed to parse result DIDL from MediaServer: %s",
                             error->message);
 
@@ -117,6 +109,7 @@ browse_cb (GUPnPServiceProxy       *cds_proxy,
                 return;
         } else {
                 container_found (container_id);
+                g_free (container_id);
         }
 
         g_free (result);

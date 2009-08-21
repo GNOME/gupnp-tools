@@ -26,30 +26,10 @@
 
 #include "main.h"
 
-static GUPnPDIDLLiteResource *
-create_res_for_file (const char *file_path)
-{
-        GUPnPDIDLLiteResource *res;
-        char *content_type;
-
-        res = gupnp_didl_lite_resource_new ("");
-
-        content_type = g_content_type_guess (file_path, NULL, 0, NULL);
-
-        g_object_set (res,
-                      "mime-type", g_content_type_get_mime_type (content_type),
-                      "protocol", "*",
-                      NULL);
-
-        g_free (content_type);
-
-        return res;
-}
-
-static char *
+static const char *
 guess_upnp_class_for_mime_type (const char *mime_type)
 {
-        char *upnp_class = NULL;
+        const char *upnp_class = NULL;
 
         if (g_pattern_match_simple ("audio/*", mime_type)) {
                 upnp_class = "object.item.audioItem.musicTrack";
@@ -62,79 +42,90 @@ guess_upnp_class_for_mime_type (const char *mime_type)
         return upnp_class;
 }
 
+static const char *
+create_res_for_file (const char          *file_path,
+                     GUPnPDIDLLiteObject *object)
+{
+        GUPnPDIDLLiteResource *res;
+        GUPnPProtocolInfo *info;
+        char *content_type;
+        char *mime_type;
+        const char *upnp_class;
+
+        res = gupnp_didl_lite_object_add_resource (object);
+        gupnp_didl_lite_resource_set_uri (res, "");
+
+        content_type = g_content_type_guess (file_path, NULL, 0, NULL);
+        mime_type = g_content_type_get_mime_type (content_type);
+        upnp_class = guess_upnp_class_for_mime_type (mime_type);
+
+        info = gupnp_protocol_info_new ();
+        gupnp_protocol_info_set_mime_type (info, mime_type);
+        gupnp_protocol_info_set_protocol (info, "*");
+
+        gupnp_didl_lite_resource_set_protocol_info (res, info);
+
+        g_object_unref (info);
+        g_object_unref (res);
+        g_free (mime_type);
+        g_free (content_type);
+
+        return upnp_class;
+}
+
 static char *
 create_didl_for_file (const char *file_path,
                       const char *title,
                       const char *parent_id)
 {
         GUPnPDIDLLiteWriter *writer;
-        GUPnPDIDLLiteResource *res;
+        GUPnPDIDLLiteObject *item;
         char *didl;
-        char *upnp_class;
         char *new_title;
-        const char *mime_type;
+        const char *upnp_class;
 
-        res = create_res_for_file (file_path);
+        writer = gupnp_didl_lite_writer_new (NULL);
 
-        mime_type = gupnp_didl_lite_resource_get_mime_type (res);
-        upnp_class = guess_upnp_class_for_mime_type (mime_type);
-        if (upnp_class == NULL) {
-                g_critical ("Failed to guess UPnP class for file '%s'",
-                            file_path);
-
-                return NULL;
-        }
+        item = GUPNP_DIDL_LITE_OBJECT
+                        (gupnp_didl_lite_writer_add_item (writer));
+        gupnp_didl_lite_object_set_parent_id (item, parent_id);
+        gupnp_didl_lite_object_set_restricted (item, FALSE);
 
         if (title == NULL) {
                 new_title = g_path_get_basename (file_path);
         } else {
                 new_title = g_strdup (title);
         }
-
-        writer = gupnp_didl_lite_writer_new ();
-
-        gupnp_didl_lite_writer_start_didl_lite (writer,
-                                                NULL,
-                                                NULL,
-                                                FALSE);
-        gupnp_didl_lite_writer_start_item (writer,
-                                           "",
-                                           parent_id,
-                                           NULL,
-                                           FALSE);
-
-        gupnp_didl_lite_writer_add_string (writer,
-                                           "title",
-                                           GUPNP_DIDL_LITE_WRITER_NAMESPACE_DC,
-                                           NULL,
-                                           new_title);
-        gupnp_didl_lite_writer_add_string (
-                                        writer,
-                                        "class",
-                                        GUPNP_DIDL_LITE_WRITER_NAMESPACE_UPNP,
-                                        NULL,
-                                        upnp_class);
-        gupnp_didl_lite_writer_add_res (writer, res);
-
-        gupnp_didl_lite_writer_end_item (writer);
-        gupnp_didl_lite_writer_end_didl_lite (writer);
-
-        didl = g_strdup (gupnp_didl_lite_writer_get_string (writer));
-
+        gupnp_didl_lite_object_set_title (item, new_title);
         g_free (new_title);
-        g_object_unref (res);
+
+        upnp_class = create_res_for_file (file_path, item);
+        if (upnp_class == NULL) {
+                g_critical ("Failed to guess UPnP class for file '%s'",
+                            file_path);
+
+                g_object_unref (writer);
+
+                return NULL;
+        } else
+                gupnp_didl_lite_object_set_upnp_class (item, upnp_class);
+
+        didl = gupnp_didl_lite_writer_get_string (writer);
+
+        g_object_unref (item);
+        g_object_unref (writer);
 
         return didl;
 }
 
 static void
 didl_item_available_cb (GUPnPDIDLLiteParser *parser,
-                        xmlNode             *object_node,
+                        GUPnPDIDLLiteObject *object,
                         gpointer             user_data)
 {
         GList *resources;
-        xmlNode *res_node;
-        char **import_uri = (char **) user_data;
+        GUPnPDIDLLiteResource *resource;
+        const char **import_uri = (const char **) user_data;
 
         if (*import_uri != NULL) {
                 /* This means we've already found importURI. */
@@ -142,17 +133,21 @@ didl_item_available_cb (GUPnPDIDLLiteParser *parser,
                 return;
         }
 
-        resources = gupnp_didl_lite_object_get_property (object_node, "res");
+        resources = gupnp_didl_lite_object_get_resources (object);
         if (resources == NULL) {
                 return;
         }
 
-        res_node = (xmlNode *) resources->data;
+        resource = (GUPnPDIDLLiteResource *) resources->data;
 
-        *import_uri = gupnp_didl_lite_property_get_attribute (res_node,
-                                                              "importUri");
+        *import_uri = gupnp_didl_lite_resource_get_import_uri(resource);
         if (*import_uri != NULL) {
                 *import_uri = g_strdup (*import_uri);
+        }
+
+        while (resources) {
+                g_object_unref ((GUPnPDIDLLiteResource *) resources->data);
+                resources = g_list_delete_link (resources, resources);
         }
 }
 
@@ -161,18 +156,18 @@ parse_result (const char *result)
 {
         GUPnPDIDLLiteParser *parser;
         GError *error;
-        char *import_uri;
+        const char *import_uri;
 
         parser = gupnp_didl_lite_parser_new ();
 
-        import_uri = NULL;
+        g_signal_connect (parser,
+                          "item-available",
+                          G_CALLBACK (didl_item_available_cb),
+                          &import_uri);
 
+        import_uri = NULL;
         error = NULL;
-        if (!gupnp_didl_lite_parser_parse_didl (parser,
-                                                result,
-                                                didl_item_available_cb,
-                                                &import_uri,
-                                                &error)) {
+        if (!gupnp_didl_lite_parser_parse_didl (parser, result, &error)) {
                 g_critical ("Failed to parse result DIDL from MediaServer: %s",
                             error->message);
 
@@ -181,7 +176,7 @@ parse_result (const char *result)
 
         g_object_unref (parser);
 
-        return import_uri;
+        return g_strdup (import_uri);
 }
 
 static void
@@ -191,7 +186,7 @@ create_object_cb (GUPnPServiceProxy       *cds_proxy,
 {
         GError *error;
         char *result;
-        char *import_uri;
+        const char *import_uri;
 
         error = NULL;
         if (!gupnp_service_proxy_end_action (cds_proxy,

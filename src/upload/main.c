@@ -37,7 +37,7 @@ static GList *files = NULL;
 static char *udn;
 
 static const char *title = NULL;
-static const char *dest_container = NULL;
+static char *dest_container = NULL;
 static guint search_timeout = 0;
 
 static GOptionEntry entries[] =
@@ -80,7 +80,7 @@ transfer_completed (void)
 void
 container_found (const char *container_id)
 {
-        dest_container = container_id;
+        dest_container = g_strdup (container_id);
 
         /* Now create the item container */
         create_item ((char *) files->data,
@@ -191,6 +191,7 @@ main (gint   argc,
         deinit_control_point ();
         g_object_unref (upnp_context);
         g_option_context_free (context);
+        g_free (dest_container);
 
         return 0;
 }
