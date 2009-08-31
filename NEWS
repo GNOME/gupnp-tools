@@ -1,3 +1,33 @@
+0.8
+====
+
+Changes since 0.7.1:
+
+- Add lenient mode: Just pick-up the first resource available.
+- Specify filter in Browse actions to reduce network usage.
+- Don't browse containers with no children.
+- Always re-browse containers on updates.
+- Update childCount after browsing is done.
+- Support for multiple networks.
+- Leave selection of resource to gupnp-av.
+- No need to search for all UPnP resources anymore.
+- Fix infinite loop in icon cancelation code.
+- No need to care about hosting of description document anymore.
+- Adapt to new gupnp-av API.
+- Add cmdline option to gupnp-upload to specify network interface.
+- Many other minor/internal fixes.
+
+Dependencies changed:
+
+- gssdp >= 0.7
+- gupnp >= 0.13
+- gupnp-av >= 0.6
+
+All contributors:
+
+Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Ross Burton <ross@linux.intel.com>
+
 0.7.1
 =====
 
