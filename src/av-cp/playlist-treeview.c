@@ -751,7 +751,7 @@ browse_cb (GUPnPServiceProxy       *content_dir,
                 if (!gupnp_didl_lite_parser_parse_didl (parser,
                                                         didl_xml,
                                                         &error)) {
-                        g_warning ("%s\n", error->message);
+                        g_warning ("%s", error->message);
                         g_error_free (error);
                 }
 
@@ -774,7 +774,7 @@ browse_cb (GUPnPServiceProxy       *content_dir,
                 GUPnPServiceInfo *info;
 
                 info = GUPNP_SERVICE_INFO (content_dir);
-                g_warning ("Failed to browse '%s': %s\n",
+                g_warning ("Failed to browse '%s': %s",
                            gupnp_service_info_get_location (info),
                            error->message);
 
@@ -957,7 +957,7 @@ browse_metadata_cb (GUPnPServiceProxy       *content_dir,
 
                 g_free (metadata);
         } else if (error) {
-                g_warning ("Failed to get metadata for '%s': %s\n",
+                g_warning ("Failed to get metadata for '%s': %s",
                            data->id,
                            error->message);
 
