@@ -12,7 +12,7 @@ desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)
 
 if BUILD_AV
 dist_shared_DATA += gupnp-av-cp.ui
-desktop_in_files += gupnp-av-cp.desktop.in
+desktop_in_files += gupnp-av-cp.desktop.in gupnp-av-browser.desktop.in
 endif
 
 # Rule to create the .desktop files
