@@ -22,6 +22,8 @@
 #include <stdlib.h>
 #include <config.h>
 
+#include <gmodule.h>
+
 #include "gui.h"
 #include "icons.h"
 #include "action-dialog.h"
@@ -162,6 +164,7 @@ setup_device_popup (GtkWidget *popup)
                 g_object_unref (proxy);
 }
 
+G_MODULE_EXPORT
 gboolean
 on_device_treeview_button_release (GtkWidget      *widget,
                                    GdkEventButton *event,
@@ -183,6 +186,7 @@ on_device_treeview_button_release (GtkWidget      *widget,
         return TRUE;
 }
 
+G_MODULE_EXPORT
 void
 on_device_treeview_row_activate (GtkMenuItem *menuitem,
                                  gpointer     user_data)
@@ -790,6 +794,7 @@ get_selected_action (GUPnPServiceProxy         **ret_proxy,
         return action_info;
 }
 
+G_MODULE_EXPORT
 void
 on_expand_devices_activate (GtkMenuItem *menuitem,
                             gpointer     user_data)
@@ -797,6 +802,7 @@ on_expand_devices_activate (GtkMenuItem *menuitem,
         gtk_tree_view_expand_all (GTK_TREE_VIEW (treeview));
 }
 
+G_MODULE_EXPORT
 void
 on_collapse_devices_activate (GtkMenuItem *menuitem,
                               gpointer     user_data)

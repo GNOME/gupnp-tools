@@ -23,6 +23,8 @@
 #include <string.h>
 #include <stdlib.h>
 
+#include <gmodule.h>
+
 static GUPnPContextManager *context_manager;
 
 static void
@@ -89,6 +91,7 @@ deinit_upnp (void)
         g_object_unref (context_manager);
 }
 
+G_MODULE_EXPORT
 void
 application_exit (void)
 {

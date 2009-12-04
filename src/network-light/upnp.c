@@ -25,10 +25,11 @@
 #include <stdio.h>
 #include <locale.h>
 #include <string.h>
+#include <gmodule.h>
 #ifndef G_OS_WIN32
-#	include <uuid/uuid.h>
+#include <uuid/uuid.h>
 #else
-#	include <rpc.h>
+#include <rpc.h>
 typedef UUID uuid_t;
 #endif
 #include <glib/gstdio.h>
@@ -128,6 +129,7 @@ notify_load_level_change (gint load_level)
         }
 }
 
+G_MODULE_EXPORT
 void
 on_get_status (GUPnPService       *service,
                GUPnPServiceAction *action,
@@ -142,6 +144,7 @@ on_get_status (GUPnPService       *service,
         gupnp_service_action_return (action);
 }
 
+G_MODULE_EXPORT
 void
 on_get_target (GUPnPService       *service,
                GUPnPServiceAction *action,
@@ -156,6 +159,7 @@ on_get_target (GUPnPService       *service,
         gupnp_service_action_return (action);
 }
 
+G_MODULE_EXPORT
 void
 on_set_target (GUPnPService       *service,
                GUPnPServiceAction *action,
@@ -173,6 +177,7 @@ on_set_target (GUPnPService       *service,
         set_status (status);
 }
 
+G_MODULE_EXPORT
 void
 on_query_status (GUPnPService *service,
                  const char   *variable_name,
@@ -183,6 +188,7 @@ on_query_status (GUPnPService *service,
         g_value_set_boolean (value, get_status ());
 }
 
+G_MODULE_EXPORT
 void
 on_query_target (GUPnPService *service,
                  const char   *variable_name,
@@ -193,6 +199,7 @@ on_query_target (GUPnPService *service,
         g_value_set_boolean (value, get_status ());
 }
 
+G_MODULE_EXPORT
 void
 on_get_load_level_status (GUPnPService       *service,
                           GUPnPServiceAction *action,
@@ -207,6 +214,7 @@ on_get_load_level_status (GUPnPService       *service,
         gupnp_service_action_return (action);
 }
 
+G_MODULE_EXPORT
 void
 on_get_load_level_target (GUPnPService       *service,
                           GUPnPServiceAction *action,
@@ -221,6 +229,7 @@ on_get_load_level_target (GUPnPService       *service,
         gupnp_service_action_return (action);
 }
 
+G_MODULE_EXPORT
 void
 on_set_load_level_target (GUPnPService       *service,
                           GUPnPServiceAction *action,
@@ -239,6 +248,7 @@ on_set_load_level_target (GUPnPService       *service,
         set_load_level (load_level);
 }
 
+G_MODULE_EXPORT
 void
 on_query_load_level_status (GUPnPService *service,
                             const char   *variable_name,
@@ -249,6 +259,7 @@ on_query_load_level_status (GUPnPService *service,
         g_value_set_uint (value, get_load_level ());
 }
 
+G_MODULE_EXPORT
 void
 on_query_load_level_target (GUPnPService *service,
                             const char   *variable_name,

@@ -22,6 +22,8 @@
 #include <stdlib.h>
 #include <config.h>
 
+#include <gmodule.h>
+
 #include "details-treeview.h"
 #include "gui.h"
 
@@ -53,6 +55,7 @@ setup_details_popup (GtkWidget *popup)
                       NULL);
 }
 
+G_MODULE_EXPORT
 gboolean
 on_details_treeview_button_release (GtkWidget      *widget,
                                     GdkEventButton *event,
@@ -74,6 +77,7 @@ on_details_treeview_button_release (GtkWidget      *widget,
         return TRUE;
 }
 
+G_MODULE_EXPORT
 void
 on_details_treeview_row_activate (GtkMenuItem *menuitem,
                                   gpointer     user_data)
@@ -100,6 +104,7 @@ on_details_treeview_row_activate (GtkMenuItem *menuitem,
         }
 }
 
+G_MODULE_EXPORT
 void
 on_copy_all_details_activate (GtkMenuItem *menuitem,
                               gpointer     user_data)

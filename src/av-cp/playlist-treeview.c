@@ -21,13 +21,13 @@
 #include <string.h>
 #include <stdlib.h>
 #include <config.h>
+#include <gmodule.h>
 
 #include "playlist-treeview.h"
 #include "renderer-combo.h"
 #include "renderer-controls.h"
 #include "icons.h"
 #include "gui.h"
-#include "main.h"
 
 #define CONTENT_DIR "urn:schemas-upnp-org:service:ContentDirectory"
 
@@ -114,6 +114,7 @@ browse (GUPnPServiceProxy *content_dir,
         guint32            starting_index,
         guint32            requested_count);
 
+G_MODULE_EXPORT
 gboolean
 on_playlist_treeview_button_release (GtkWidget      *widget,
                                      GdkEventButton *event,
@@ -200,6 +201,7 @@ setup_treeview_columns (GtkWidget *treeview)
         gtk_tree_selection_set_mode (selection, GTK_SELECTION_SINGLE);
 }
 
+G_MODULE_EXPORT
 void
 on_playlist_row_expanded (GtkTreeView *tree_view,
                           GtkTreeIter *iter,
@@ -254,6 +256,7 @@ unpopulate_container (GtkTreeModel *model,
                                      &child_iter));
 }
 
+G_MODULE_EXPORT
 void
 on_playlist_row_collapsed (GtkTreeView *tree_view,
                            GtkTreeIter *iter,
@@ -584,7 +587,7 @@ append_didl_object (GUPnPDIDLLiteObject *object,
         const char *parent_id;
         const char *title;
         gboolean    is_container;
-        uint        child_count;
+        guint        child_count;
         GdkPixbuf  *icon;
         gint        position;
 

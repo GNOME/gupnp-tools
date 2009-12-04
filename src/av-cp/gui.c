@@ -21,6 +21,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <config.h>
+#include <gmodule.h>
 
 #include "gui.h"
 #include "playlist-treeview.h"
@@ -36,6 +37,7 @@ static GtkBuilder  *builder;
 static GtkWidget *main_window;
 static GtkWidget *about_dialog;
 
+G_MODULE_EXPORT
 gboolean
 on_delete_event (GtkWidget *widget,
                  GdkEvent  *event,

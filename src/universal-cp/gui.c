@@ -22,6 +22,8 @@
 #include <stdlib.h>
 #include <config.h>
 
+#include <gmodule.h>
+
 #include "gui.h"
 #include "device-treeview.h"
 #include "event-treeview.h"
@@ -79,6 +81,7 @@ setup_treeviews (void)
         setup_device_treeview (builder);
 }
 
+G_MODULE_EXPORT
 gboolean
 on_delete_event (GtkWidget *widget,
                  GdkEvent  *event,

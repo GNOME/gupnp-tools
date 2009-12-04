@@ -22,6 +22,7 @@
 #include <stdlib.h>
 #include <config.h>
 #include <gtk/gtk.h>
+#include <gmodule.h>
 
 #include "playlist-treeview.h"
 #include "renderer-controls.h"
@@ -216,6 +217,7 @@ set_av_transport_uri_cb (GUPnPServiceProxy       *av_transport,
         g_object_unref (av_transport);
 }
 
+G_MODULE_EXPORT
 gboolean
 on_volume_vscale_value_changed (GtkRange *range,
                                 gpointer  user_data);
@@ -336,6 +338,7 @@ set_av_transport_uri (const char *metadata,
                                           NULL);
 }
 
+G_MODULE_EXPORT
 void
 on_play_button_clicked (GtkButton *button,
                         gpointer   user_data)
@@ -354,6 +357,7 @@ on_play_button_clicked (GtkButton *button,
         }
 }
 
+G_MODULE_EXPORT
 void
 on_pause_button_clicked (GtkButton *button,
                          gpointer   user_data)
@@ -361,6 +365,7 @@ on_pause_button_clicked (GtkButton *button,
         av_transport_send_action ("Pause", NULL);
 }
 
+G_MODULE_EXPORT
 void
 on_stop_button_clicked (GtkButton *button,
                         gpointer   user_data)
@@ -368,6 +373,7 @@ on_stop_button_clicked (GtkButton *button,
         av_transport_send_action ("Stop", NULL);
 }
 
+G_MODULE_EXPORT
 void
 on_next_button_clicked (GtkButton *button,
                         gpointer   user_data)
@@ -375,6 +381,7 @@ on_next_button_clicked (GtkButton *button,
         select_next_object ();
 }
 
+G_MODULE_EXPORT
 void
 on_previous_button_clicked (GtkButton *button,
                             gpointer   user_data)
@@ -382,6 +389,7 @@ on_previous_button_clicked (GtkButton *button,
         select_prev_object ();
 }
 
+G_MODULE_EXPORT
 void
 on_clear_state_button_clicked (GtkButton *button,
                                gpointer   user_data)
@@ -389,6 +397,7 @@ on_clear_state_button_clicked (GtkButton *button,
         clear_selected_renderer_state ();
 }
 
+G_MODULE_EXPORT
 gboolean
 on_position_hscale_value_changed (GtkRange *range,
                                   gpointer  user_data)
@@ -661,6 +670,7 @@ set_volume_cb (GUPnPServiceProxy       *rendering_control,
         g_object_unref (rendering_control);
 }
 
+G_MODULE_EXPORT
 gboolean
 on_volume_vscale_value_changed (GtkRange *range,
                                 gpointer  user_data)

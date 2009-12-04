@@ -22,6 +22,7 @@
 #include <libgupnp-av/gupnp-av.h>
 #include <string.h>
 #include <stdlib.h>
+#include <gmodule.h>
 
 #include "gui.h"
 #include "renderer-combo.h"
@@ -124,6 +125,7 @@ deinit_upnp (void)
         g_object_unref (context_manager);
 }
 
+G_MODULE_EXPORT
 void
 application_exit (void)
 {

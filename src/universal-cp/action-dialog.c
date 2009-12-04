@@ -22,6 +22,8 @@
 #include <stdlib.h>
 #include <config.h>
 
+#include <gmodule.h>
+
 #include "gui.h"
 #include "device-treeview.h"
 #include "icons.h"
@@ -702,6 +704,7 @@ on_action_complete (GUPnPServiceProxy       *proxy,
         g_object_unref (introspection);
 }
 
+G_MODULE_EXPORT
 void
 on_action_invocation (GtkButton *button,
                       gpointer   user_data)

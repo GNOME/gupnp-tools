@@ -21,6 +21,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <config.h>
+#include <gmodule.h>
 
 #include "gui.h"
 #include "icons.h"
@@ -68,6 +69,7 @@ update_image (void)
         g_object_unref (pixbuf);
 }
 
+G_MODULE_EXPORT
 void
 on_light_status_menuitem_activate (GtkCheckMenuItem *menuitem,
                                    gpointer          user_data)
@@ -75,6 +77,7 @@ on_light_status_menuitem_activate (GtkCheckMenuItem *menuitem,
         set_all_status (gtk_check_menu_item_get_active (menuitem));
 }
 
+G_MODULE_EXPORT
 void
 on_about_menuitem_activate (GtkMenuItem *menuitem,
                             gpointer     user_data)
@@ -88,6 +91,7 @@ on_about_menuitem_activate (GtkMenuItem *menuitem,
         gtk_widget_show (about_dialog);
 }
 
+G_MODULE_EXPORT
 void
 on_increase_luminance_menuitem_activate (GtkMenuItem *menuitem,
                                          gpointer     user_data)
@@ -95,6 +99,7 @@ on_increase_luminance_menuitem_activate (GtkMenuItem *menuitem,
         set_all_load_level (get_load_level () + 20);
 }
 
+G_MODULE_EXPORT
 void
 on_decrease_luminance_menuitem_activate (GtkMenuItem *menuitem,
                                          gpointer     user_data)
@@ -152,6 +157,7 @@ on_main_window_right_clicked (GdkEventButton *event)
                         event->time);
 }
 
+G_MODULE_EXPORT
 gboolean
 on_main_window_button_event (GtkWidget      *widget,
                              GdkEventButton *event,
@@ -172,6 +178,7 @@ on_main_window_button_event (GtkWidget      *widget,
         }
 }
 
+G_MODULE_EXPORT
 gboolean
 on_delete_event (GtkWidget *widget,
                  GdkEvent  *event,

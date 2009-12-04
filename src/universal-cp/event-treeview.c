@@ -22,6 +22,8 @@
 #include <stdlib.h>
 #include <config.h>
 
+#include <gmodule.h>
+
 #include "event-treeview.h"
 #include "gui.h"
 
@@ -112,6 +114,7 @@ setup_event_popup (GtkWidget *popup)
                       NULL);
 }
 
+G_MODULE_EXPORT
 gboolean
 on_event_treeview_button_release (GtkWidget      *widget,
                                   GdkEventButton *event,
@@ -133,6 +136,7 @@ on_event_treeview_button_release (GtkWidget      *widget,
         return TRUE;
 }
 
+G_MODULE_EXPORT
 void
 on_event_treeview_row_activate (GtkMenuItem *menuitem,
                                 gpointer     user_data)
@@ -181,6 +185,7 @@ on_event_treeview_row_activate (GtkMenuItem *menuitem,
         }
 }
 
+G_MODULE_EXPORT
 void
 on_copy_all_events_activate (GtkMenuItem *menuitem,
                              gpointer     user_data)
@@ -335,6 +340,7 @@ clear_event_treeview (void)
                 more = gtk_list_store_remove (GTK_LIST_STORE (model), &iter);
 }
 
+G_MODULE_EXPORT
 void
 on_clear_event_log_activate (GtkMenuItem *menuitem,
                              gpointer     user_data)
@@ -397,6 +403,7 @@ setup_event_treeview (GtkBuilder *builder)
                           NULL);
 }
 
+G_MODULE_EXPORT
 void
 on_event_log_activate (GtkCheckMenuItem *menuitem,
                        gpointer          user_data)
@@ -407,6 +414,7 @@ on_event_log_activate (GtkCheckMenuItem *menuitem,
                       NULL);
 }
 
+G_MODULE_EXPORT
 void
 on_subscribe_to_events_activate (GtkCheckMenuItem *menuitem,
                                  gpointer          user_data)
