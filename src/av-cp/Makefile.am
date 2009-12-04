@@ -31,4 +31,15 @@ gupnp_av_cp_LDADD = ../common/libicons.a \
 		    $(GTHREAD_LIBS)
 gupnp_av_cp_LDFLAGS = -export-dynamic
 
+if OS_WIN32
+av-cp.res: av-cp.rc
+	$(WINDRES) -i av-cp.rc --input-format=rc -o av-cp.res -O coff
+gupnp_av_cp_LDADD += av-cp.res
+BUILT_SOURCES=av-cp.res
+CLEAN_FILES=av-cp.res
+gupnp_av_cp_LDFLAGS += -Wl,-subsystem,windows
+endif
+
+EXTRA_DIST=av-cp.rc
+
 MAINTAINERCLEANFILES = Makefile.in

@@ -39,8 +39,8 @@ PKG_CHECK_MODULES(GIO, gio-2.0 >= $GIO_REQUIRED)
 if test "x$os_win32" = "xno"; then
     PKG_CHECK_MODULES(UUID, uuid)
 else
+    AC_CHECK_TOOL(WINDRES, windres)
     AC_SUBST([UUID_LIBS], ["-lrpcrt4"])
-    AC_SUBST([WIN32_LDFLAGS], ["-subsystem windows"])
 fi
 
 AC_ARG_WITH( av,

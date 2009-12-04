@@ -24,4 +24,15 @@ gupnp_network_light_LDADD = ../common/libicons.a $(LIBGUPNP_LIBS) $(GTK_LIBS) $(
 
 gupnp_network_light_LDFLAGS = -export-dynamic
 
+if OS_WIN32
+network-light.res: network-light.rc
+	$(WINDRES) -i network-light.rc --input-format=rc -o network-light.res -O coff
+gupnp_network_light_LDADD += network-light.res
+BUILT_SOURCES=network-light.res
+CLEAN_FILES=network-light.res
+gupnp_network_light_LDFLAGS += -Wl,-subsystem,windows
+endif
+
+EXTRA_DIST=network-light.rc
+
 MAINTAINERCLEANFILES = Makefile.in

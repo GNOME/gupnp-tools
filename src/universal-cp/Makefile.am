@@ -25,4 +25,16 @@ gupnp_universal_cp_SOURCES = main.c \
 gupnp_universal_cp_LDADD = ../common/libicons.a $(GTK_LIBS) $(LIBGUPNP_LIBS) $(GTHREAD_LIBS)
 gupnp_universal_cp_LDFLAGS = -export-dynamic
 
+if OS_WIN32
+universal-cp.res: universal-cp.rc
+	$(WINDRES) -i universal-cp.rc --input-format=rc -o universal-cp.res -O coff
+gupnp_universal_cp_LDADD += universal-cp.res
+BUILT_SOURCES=universal-cp.res
+CLEAN_FILES=universal-cp.res
+gupnp_universal_cp_LDFLAGS += -Wl,-subsystem,windows
+endif
+
+EXTRA_DIST=universal-cp.rc
+
+
 MAINTAINERCLEANFILES = Makefile.in
