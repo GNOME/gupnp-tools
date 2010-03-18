@@ -160,7 +160,7 @@ create_playlist_treemodel (void)
                                     /* Is container? */
                                     G_TYPE_BOOLEAN,
                                     /* childCount */
-                                    G_TYPE_UINT);
+                                    G_TYPE_INT);
 
         return GTK_TREE_MODEL (store);
 }
@@ -222,7 +222,7 @@ on_playlist_row_expanded (GtkTreeView *tree_view,
                 GUPnPServiceProxy *content_dir;
                 gchar             *id;
                 gboolean           is_container;
-                guint              child_count;
+                gint              child_count;
 
                 gtk_tree_model_get (model, &child_iter,
                                     3, &content_dir,
@@ -231,7 +231,7 @@ on_playlist_row_expanded (GtkTreeView *tree_view,
                                     6, &child_count,
                                     -1);
 
-                if (is_container && child_count > 0) {
+                if (is_container && child_count != 0) {
                         browse (content_dir, id, 0, MAX_BROWSE);
                 }
 
@@ -587,7 +587,7 @@ append_didl_object (GUPnPDIDLLiteObject *object,
         const char *parent_id;
         const char *title;
         gboolean    is_container;
-        guint        child_count;
+        gint        child_count;
         GdkPixbuf  *icon;
         gint        position;
 
