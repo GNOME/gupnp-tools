@@ -234,7 +234,6 @@
                               <object class="GtkImage" id="image21">
                                 <property name="visible">True</property>
                                 <property name="stock">gtk-clear</property>
-                                <property name="icon-size">4</property>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -295,7 +294,6 @@
                               <object class="GtkImage" id="image16">
                                 <property name="visible">True</property>
                                 <property name="stock">gtk-media-play</property>
-                                <property name="icon-size">4</property>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -346,7 +344,6 @@
                               <object class="GtkImage" id="image17">
                                 <property name="visible">True</property>
                                 <property name="stock">gtk-media-pause</property>
-                                <property name="icon-size">4</property>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -397,7 +394,6 @@
                               <object class="GtkImage" id="image18">
                                 <property name="visible">True</property>
                                 <property name="stock">gtk-media-stop</property>
-                                <property name="icon-size">4</property>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -448,7 +444,6 @@
                               <object class="GtkImage" id="image19">
                                 <property name="visible">True</property>
                                 <property name="stock">gtk-media-previous</property>
-                                <property name="icon-size">4</property>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -499,7 +494,6 @@
                               <object class="GtkImage" id="image20">
                                 <property name="visible">True</property>
                                 <property name="stock">gtk-media-next</property>
-                                <property name="icon-size">4</property>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
