@@ -45,16 +45,6 @@ get_selected_row (GtkTreeIter *iter)
         return gtk_tree_selection_get_selected (selection, &model, iter);
 }
 
-static void
-setup_details_popup (GtkWidget *popup)
-{
-        /* Only show "Copy Value" menuitem when a row is selected */
-        g_object_set (copy_value_menuitem,
-                      "visible",
-                      get_selected_row (NULL),
-                      NULL);
-}
-
 G_MODULE_EXPORT
 gboolean
 on_details_treeview_button_release (GtkWidget      *widget,
@@ -65,7 +55,11 @@ on_details_treeview_button_release (GtkWidget      *widget,
             event->button != 3)
                 return FALSE;
 
-        setup_details_popup (popup);
+        /* Only show "Copy Value" menuitem when a row is selected */
+        g_object_set (copy_value_menuitem,
+                      "visible",
+                      get_selected_row (NULL),
+                      NULL);
 
         gtk_menu_popup (GTK_MENU (popup),
                         NULL,
