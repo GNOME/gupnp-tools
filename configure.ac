@@ -75,8 +75,6 @@ fi
 AC_SUBST(HAVE_LIBGUPNP_AV)
 AM_CONDITIONAL(BUILD_AV, test x$BUILD_AV = xyes)
 
-AC_PATH_PROG(GUPNP_BINDING_TOOL, gupnp-binding-tool)
-
 # glib-genmarshal
 GLIB_GENMARSHAL=`pkg-config --variable=glib_genmarshal glib-2.0`
 AC_SUBST(GLIB_GENMARSHAL)
@@ -106,7 +104,6 @@ AM_GLIB_DEFINE_LOCALEDIR([LOCALEDIR])
 AC_OUTPUT([
 Makefile
 src/Makefile
-src/av-browser/Makefile
 src/av-cp/Makefile
 src/common/Makefile
 src/network-light/Makefile
@@ -114,7 +111,6 @@ src/universal-cp/Makefile
 src/upload/Makefile
 data/Makefile
 data/gupnp-universal-cp.desktop.in
-data/gupnp-av-browser.desktop.in
 data/gupnp-av-cp.desktop.in
 data/gupnp-network-light.desktop.in
 data/pixmaps/Makefile

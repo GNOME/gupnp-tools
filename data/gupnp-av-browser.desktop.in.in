@@ -1,9 +1,0 @@
-[Desktop Entry]
-Encoding=UTF-8
-Name=UPnP AV Browser
-Categories=GTK;Development;
-Exec=gupnp-av-browser
-Icon=@datarootdir@/gupnp-tools/pixmaps/av-cp.png
-Terminal=false
-Type=Application
-StartupNotify=true
