@@ -25,8 +25,8 @@
 #include <gtk/gtk.h>
 #include <libgupnp-av/gupnp-av.h>
 
-typedef void (* GetSelectedItemCallback) (const char *metadata,
-                                          gpointer    user_data);
+typedef void (* MetadataFunc) (const char *metadata,
+                               gpointer    user_data);
 
 void
 setup_playlist_treeview         (GtkBuilder             *builder);
@@ -38,7 +38,7 @@ void
 remove_media_server             (GUPnPDeviceProxy       *proxy);
 
 gboolean
-get_selected_item               (GetSelectedItemCallback callback,
+get_selected_object             (MetadataFunc            callback,
                                  gpointer                user_data);
 
 void

@@ -349,9 +349,7 @@ on_play_button_clicked (GtkButton *button,
 
         if (state == PLAYBACK_STATE_STOPPED ||
             state == PLAYBACK_STATE_UNKNOWN) {
-                get_selected_item ((GetSelectedItemCallback)
-                                   set_av_transport_uri,
-                                   play);
+                get_selected_object ((MetadataFunc) set_av_transport_uri, play);
         } else {
                 play ();
         }

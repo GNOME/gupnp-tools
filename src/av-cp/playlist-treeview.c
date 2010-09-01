@@ -59,7 +59,7 @@ typedef struct
 
 typedef struct
 {
-  GetSelectedItemCallback callback;
+  MetadataFunc callback;
 
   gchar *id;
 
@@ -90,9 +90,9 @@ browse_data_free (BrowseData *data)
 }
 
 static BrowseMetadataData *
-browse_metadata_data_new (GetSelectedItemCallback callback,
-                          const char             *id,
-                          gpointer                user_data)
+browse_metadata_data_new (MetadataFunc callback,
+                          const char  *id,
+                          gpointer     user_data)
 {
         BrowseMetadataData *data;
 
@@ -159,9 +159,8 @@ on_item_selected (GtkTreeSelection *selection,
 
         if (state == PLAYBACK_STATE_PLAYING ||
             state == PLAYBACK_STATE_PAUSED) {
-                if (!get_selected_item ((GetSelectedItemCallback)
-                                         set_av_transport_uri,
-                                        NULL)) {
+                if (!get_selected_object ((MetadataFunc) set_av_transport_uri,
+                                          NULL)) {
                         av_transport_send_action ("Stop", NULL);
                 }
        }
@@ -320,34 +319,7 @@ void
 on_didl_menuitem_activate (GtkMenuItem *menuitem,
                            gpointer     user_data)
 {
-        get_selected_item (display_metadata, NULL);
-}
-
-static gboolean
-tree_selection_func (GtkTreeSelection *selection,
-                     GtkTreeModel     *model,
-                     GtkTreePath      *path,
-                     gboolean          path_currently_selected,
-                     gpointer          data)
-{
-        GtkTreeIter iter;
-        gboolean    is_container;
-
-        if (path_currently_selected) {
-                return TRUE;
-        }
-
-        if (!gtk_tree_model_get_iter (model, &iter, path)) {
-                return FALSE;
-        }
-
-        gtk_tree_model_get (model,
-                            &iter,
-                            5, &is_container,
-                            -1);
-
-        /* Let it be selected if it's an item */
-        return !is_container;
+        get_selected_object (display_metadata, NULL);
 }
 
 void
@@ -382,10 +354,6 @@ setup_playlist_treeview (GtkBuilder *builder)
                           "changed",
                           G_CALLBACK (on_item_selected),
                           NULL);
-        gtk_tree_selection_set_select_function (selection,
-                                                tree_selection_func,
-                                                NULL,
-                                                NULL);
 
         expanded = FALSE;
 }
@@ -918,10 +886,10 @@ browse (GUPnPServiceProxy *content_dir,
 }
 
 static void
-browse_metadata (GUPnPServiceProxy      *content_dir,
-                 const char             *id,
-                 GetSelectedItemCallback callback,
-                 gpointer                user_data)
+browse_metadata (GUPnPServiceProxy *content_dir,
+                 const char        *id,
+                 MetadataFunc       callback,
+                 gpointer           user_data)
 {
         BrowseMetadataData *data;
 
@@ -1061,14 +1029,13 @@ remove_media_server (GUPnPDeviceProxy *proxy)
 }
 
 gboolean
-get_selected_item (GetSelectedItemCallback callback,
-                   gpointer                user_data)
+get_selected_object (MetadataFunc callback,
+                     gpointer     user_data)
 {
         GUPnPServiceProxy  *content_dir;
         GtkTreeSelection   *selection;
         GtkTreeModel       *model;
         GtkTreeIter         iter;
-        gboolean            is_container;
         char               *id = NULL;
         gboolean            ret = FALSE;
 
@@ -1083,18 +1050,12 @@ get_selected_item (GetSelectedItemCallback callback,
                             &iter,
                             3, &content_dir,
                             4, &id,
-                            5, &is_container,
                             -1);
-
-        if (is_container) {
-                goto free_and_return;
-        }
 
         browse_metadata (g_object_ref (content_dir), id, callback, user_data);
 
         ret = TRUE;
 
-free_and_return:
         if (id) {
                 g_free (id);
         }
