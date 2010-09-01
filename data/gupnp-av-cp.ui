@@ -130,8 +130,8 @@
                           <object class="GtkVScale" id="volume-vscale">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
-                            <property name="adjustment">adjustment1</property>
                             <property name="update_policy">discontinuous</property>
+                            <property name="adjustment">adjustment1</property>
                             <property name="inverted">True</property>
                             <property name="digits">0</property>
                             <property name="draw_value">False</property>
@@ -173,8 +173,8 @@
                   <object class="GtkHScale" id="position-hscale">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="adjustment">adjustment2</property>
                     <property name="update_policy">discontinuous</property>
+                    <property name="adjustment">adjustment2</property>
                     <property name="digits">0</property>
                     <property name="draw_value">False</property>
                     <signal name="value_changed" handler="on_position_hscale_value_changed"/>
@@ -218,8 +218,8 @@
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="can_default">True</property>
-                    <property name="tooltip_text">Clears the CP's idea of the state of the currently selected AV Renderer. Useful for dealing with AV Renderers that don't report state changes.</property>
                     <property name="receives_default">False</property>
+                    <property name="tooltip_text">Clears the CP's idea of the state of the currently selected AV Renderer. Useful for dealing with AV Renderers that don't report state changes.</property>
                     <signal name="clicked" handler="on_clear_state_button_clicked"/>
                     <child>
                       <object class="GtkAlignment" id="alignment14">
