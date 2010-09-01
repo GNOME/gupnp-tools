@@ -44,6 +44,8 @@ typedef gboolean (* RowCompareFunc) (GtkTreeModel *model,
 
 static GtkWidget *treeview;
 static GtkWidget *popup;
+static GtkWidget *didl_dialog;
+static GtkWidget *didl_textview;
 static gboolean   expanded;
 
 typedef struct
@@ -302,6 +304,25 @@ on_playlist_row_collapsed (GtkTreeView *tree_view,
         } while (gtk_tree_model_iter_next (model, &child_iter));
 }
 
+static void display_metadata (const char *metadata,
+                              gpointer    user_data)
+{
+        GtkTextBuffer *buffer;
+
+        buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (didl_textview));
+        gtk_text_buffer_set_text (buffer, metadata, -1);
+
+        gtk_dialog_run (GTK_DIALOG (didl_dialog));
+}
+
+G_MODULE_EXPORT
+void
+on_didl_menuitem_activate (GtkMenuItem *menuitem,
+                           gpointer     user_data)
+{
+        get_selected_item (display_metadata, NULL);
+}
+
 static gboolean
 tree_selection_func (GtkTreeSelection *selection,
                      GtkTreeModel     *model,
@@ -341,6 +362,11 @@ setup_playlist_treeview (GtkBuilder *builder)
 
         popup = GTK_WIDGET (gtk_builder_get_object (builder, "playlist-popup"));
         g_assert (popup != NULL);
+
+        didl_dialog = GTK_WIDGET (gtk_builder_get_object (builder,
+                                                          "didl-dialog"));
+        didl_textview = GTK_WIDGET (gtk_builder_get_object (builder,
+                                                          "didl-textview"));
 
         model = create_playlist_treemodel ();
         g_assert (model != NULL);
