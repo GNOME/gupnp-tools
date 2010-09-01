@@ -815,6 +815,44 @@ browse_cb (GUPnPServiceProxy       *content_dir,
 }
 
 static void
+browse_metadata_cb (GUPnPServiceProxy       *content_dir,
+                    GUPnPServiceProxyAction *action,
+                    gpointer                 user_data)
+{
+        BrowseMetadataData *data;
+        char               *metadata;
+        GError             *error;
+
+        data = (BrowseMetadataData *) user_data;
+
+        metadata = NULL;
+        error = NULL;
+
+        gupnp_service_proxy_end_action (content_dir,
+                                        action,
+                                        &error,
+                                        /* OUT args */
+                                        "Result",
+                                        G_TYPE_STRING,
+                                        &metadata,
+                                        NULL);
+        if (metadata) {
+                data->callback (metadata, data->user_data);
+
+                g_free (metadata);
+        } else if (error) {
+                g_warning ("Failed to get metadata for '%s': %s",
+                           data->id,
+                           error->message);
+
+                g_error_free (error);
+        }
+
+        browse_metadata_data_free (data);
+        g_object_unref (content_dir);
+}
+
+static void
 browse (GUPnPServiceProxy *content_dir,
         const char        *container_id,
         guint32            starting_index,
@@ -847,6 +885,42 @@ browse (GUPnPServiceProxy *content_dir,
                                  "RequestedCount",
                                  G_TYPE_UINT,
                                  requested_count,
+                                 "SortCriteria",
+                                 G_TYPE_STRING,
+                                 "",
+                                 NULL);
+}
+
+static void
+browse_metadata (GUPnPServiceProxy      *content_dir,
+                 const char             *id,
+                 GetSelectedItemCallback callback,
+                 gpointer                user_data)
+{
+        BrowseMetadataData *data;
+
+        data = browse_metadata_data_new (callback, id, user_data);
+
+        gupnp_service_proxy_begin_action
+                                (g_object_ref (content_dir),
+                                 "Browse",
+                                 browse_metadata_cb,
+                                 data,
+                                 /* IN args */
+                                 "ObjectID",
+                                 G_TYPE_STRING,
+                                 data->id,
+                                 "BrowseFlag",
+                                 G_TYPE_STRING,
+                                 "BrowseMetadata",
+                                 "Filter",
+                                 G_TYPE_STRING,
+                                 "*",
+                                 "StartingIndex",
+                                 G_TYPE_UINT,
+                                 0,
+                                 "RequestedCount",
+                                 G_TYPE_UINT, 0,
                                  "SortCriteria",
                                  G_TYPE_STRING,
                                  "",
@@ -960,44 +1034,6 @@ remove_media_server (GUPnPDeviceProxy *proxy)
         }
 }
 
-void
-browse_metadata_cb (GUPnPServiceProxy       *content_dir,
-                    GUPnPServiceProxyAction *action,
-                    gpointer                 user_data)
-{
-        BrowseMetadataData *data;
-        char               *metadata;
-        GError             *error;
-
-        data = (BrowseMetadataData *) user_data;
-
-        metadata = NULL;
-        error = NULL;
-
-        gupnp_service_proxy_end_action (content_dir,
-                                        action,
-                                        &error,
-                                        /* OUT args */
-                                        "Result",
-                                        G_TYPE_STRING,
-                                        &metadata,
-                                        NULL);
-        if (metadata) {
-                data->callback (metadata, data->user_data);
-
-                g_free (metadata);
-        } else if (error) {
-                g_warning ("Failed to get metadata for '%s': %s",
-                           data->id,
-                           error->message);
-
-                g_error_free (error);
-        }
-
-        browse_metadata_data_free (data);
-        g_object_unref (content_dir);
-}
-
 gboolean
 get_selected_item (GetSelectedItemCallback callback,
                    gpointer                user_data)
@@ -1007,7 +1043,6 @@ get_selected_item (GetSelectedItemCallback callback,
         GtkTreeModel       *model;
         GtkTreeIter         iter;
         gboolean            is_container;
-        BrowseMetadataData *data;
         char               *id = NULL;
         gboolean            ret = FALSE;
 
@@ -1029,32 +1064,8 @@ get_selected_item (GetSelectedItemCallback callback,
                 goto free_and_return;
         }
 
-        data = browse_metadata_data_new (callback, id, user_data);
+        browse_metadata (g_object_ref (content_dir), id, callback, user_data);
 
-        gupnp_service_proxy_begin_action
-                                (g_object_ref (content_dir),
-                                 "Browse",
-                                 browse_metadata_cb,
-                                 data,
-                                 /* IN args */
-                                 "ObjectID",
-                                 G_TYPE_STRING,
-                                 data->id,
-                                 "BrowseFlag",
-                                 G_TYPE_STRING,
-                                 "BrowseMetadata",
-                                 "Filter",
-                                 G_TYPE_STRING,
-                                 "*",
-                                 "StartingIndex",
-                                 G_TYPE_UINT,
-                                 0,
-                                 "RequestedCount",
-                                 G_TYPE_UINT, 0,
-                                 "SortCriteria",
-                                 G_TYPE_STRING,
-                                 "",
-                                 NULL);
         ret = TRUE;
 
 free_and_return:
