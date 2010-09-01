@@ -590,4 +590,15 @@ Vinicius Depizzol &lt;vdepizzol@gmail.com&gt;</property>
     <property name="upper">100</property>
     <property name="step_increment">1</property>
   </object>
+  <object class="GtkMenu" id="playlist-popup">
+    <property name="visible">True</property>
+    <child>
+      <object class="GtkMenuItem" id="play-menuitem">
+        <property name="visible">True</property>
+        <property name="label" translatable="yes">_Play</property>
+        <property name="use_underline">True</property>
+        <signal name="activate" handler="on_play_button_clicked"/>
+      </object>
+    </child>
+  </object>
 </interface>

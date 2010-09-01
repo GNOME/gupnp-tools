@@ -43,6 +43,7 @@ typedef gboolean (* RowCompareFunc) (GtkTreeModel *model,
                                      gpointer      user_data);
 
 static GtkWidget *treeview;
+static GtkWidget *popup;
 static gboolean   expanded;
 
 typedef struct
@@ -120,7 +121,30 @@ on_playlist_treeview_button_release (GtkWidget      *widget,
                                      GdkEventButton *event,
                                      gpointer        user_data)
 {
-        return FALSE;
+        GtkTreeSelection *selection;
+        GtkTreeModel     *model;
+        GtkTreeIter       iter;
+
+        if (event->type != GDK_BUTTON_RELEASE ||
+            event->button != 3)
+                return FALSE;
+
+        selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (treeview));
+        g_assert (selection != NULL);
+
+        /* Only show the popup menu when a row is selected */
+        if (!gtk_tree_selection_get_selected (selection, &model, &iter))
+                return FALSE;
+
+        gtk_menu_popup (GTK_MENU (popup),
+                        NULL,
+                        NULL,
+                        NULL,
+                        NULL,
+                        event->button,
+                        event->time);
+
+        return TRUE;
 }
 
 static void
@@ -314,6 +338,9 @@ setup_playlist_treeview (GtkBuilder *builder)
         treeview = GTK_WIDGET (gtk_builder_get_object (builder,
                                                        "playlist-treeview"));
         g_assert (treeview != NULL);
+
+        popup = GTK_WIDGET (gtk_builder_get_object (builder, "playlist-popup"));
+        g_assert (popup != NULL);
 
         model = create_playlist_treemodel ();
         g_assert (model != NULL);
