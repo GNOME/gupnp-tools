@@ -1,3 +1,27 @@
+0.8.1
+=====
+
+Changes since 0.8:
+
+- Make sure everything builds and runs on windows.
+- Add popup menu to playlist treeview.
+- Add UI for user to fetch and view the DIDL-Lite XML for media objects.
+- Make it possible for user to select containers.
+- Get rid of redundant newline in warning messages.
+- Obey the ACLOCAL_FLAGS environment variable.
+- Other non-functional improvements.
+
+Dependencies changed:
+
+- Require and adapt to gupnp-av >= 0.5.5
+
+All contributors:
+
+Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Ross Burton <ross@linux.intel.com>
+Jens Georg <mail@jensge.org>
+Neil Roberts <neil@linux.intel.com>
+
 0.8
 ====
 
