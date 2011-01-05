@@ -222,7 +222,7 @@ get_pixbuf_from_theme (const char *icon_name,
                                            &error);
         if (pixbuf == NULL) {
                 g_warning ("Failed to load icon %s: %s",
-                           fallback_icon_name,
+                           icon_name,
                            error->message);
                 g_error_free (error);
 
