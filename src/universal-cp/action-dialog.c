@@ -168,13 +168,14 @@ create_widget_for_argument (GUPnPServiceActionArgInfo *arg_info,
                         GList *node;
                         gint index = 0;
 
-                        widget = gtk_combo_box_new_text ();
+                        widget = gtk_combo_box_text_new ();
                         for (node = variable->allowed_values;
                              node;
                              node = node->next) {
-                                gtk_combo_box_insert_text (
-                                                GTK_COMBO_BOX (widget),
+                                gtk_combo_box_text_insert (
+                                                GTK_COMBO_BOX_TEXT (widget),
                                                 index,
+                                                NULL,
                                                 (const char *) node->data);
 
                                 if (default_str != NULL &&
@@ -468,8 +469,8 @@ get_action_arg_widget_info (GtkWidget                 *arg_widget,
                 else {
                         gchar *text;
 
-                        text = gtk_combo_box_get_active_text (
-                                        GTK_COMBO_BOX (arg_widget));
+                        text = gtk_combo_box_text_get_active_text (
+                                        GTK_COMBO_BOX_TEXT (arg_widget));
                         g_value_set_string (&str_value, text);
                         g_free (text);
                 }
