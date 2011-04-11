@@ -1,3 +1,22 @@
+0.8.2
+=====
+
+Changes since 0.8.1:
+
+- Fix icon name in a warning message.
+- Clear the (obsolete) ChangeLog file.
+
+Dependencies changed:
+
+- Require and adapt to gtk+ >= 3.0.0.
+
+All contributors:
+
+Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+Jens Georg <mail@jensge.org>
+Sven Neumann <s.neumann@raumfeld.com>
+Luis de Bethencourt <luis@debethencourt.com>
+
 0.8.1
 =====
 
