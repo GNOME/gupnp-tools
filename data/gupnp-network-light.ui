@@ -1,22 +1,8 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <requires lib="gtk+" version="2.16"/>
-  <!-- interface-naming-policy toplevel-contextual -->
-  <object class="GtkWindow" id="main-window">
-    <property name="events">GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-    <property name="title" translatable="yes">GUPnP Network Light</property>
-    <property name="window_position">center</property>
-    <signal name="button_press_event" handler="on_main_window_button_event"/>
-    <signal name="button_release_event" handler="on_main_window_button_event"/>
-    <signal name="delete_event" handler="on_delete_event"/>
-    <child>
-      <object class="GtkImage" id="light-bulb-image">
-        <property name="visible">True</property>
-        <property name="stock">gtk-missing-image</property>
-      </object>
-    </child>
-  </object>
   <object class="GtkAboutDialog" id="about-dialog">
+    <property name="can_focus">False</property>
     <property name="type_hint">normal</property>
     <property name="copyright" translatable="yes">Copyright (C) 2007 Zeeshan Ali (Khattak)</property>
     <property name="comments" translatable="yes">A virtual network light bulb based on GUPnP framework.
@@ -27,62 +13,87 @@ Inspired by Intel Tools for UPnP.</property>
     <property name="authors">Zeeshan Ali (Khattak) &lt;zeeshanak@gnome.org&gt;</property>
     <property name="translator_credits" translatable="yes" comments="TRANSLATORS: Replace this string with your names, one name per line.">translator-credits</property>
     <property name="artists">Lapo Calamandrei &lt;calamandrei@gmail.com&gt;</property>
-    <signal name="close" handler="gtk_widget_hide"/>
-    <signal name="response" handler="gtk_widget_hide"/>
+    <signal name="close" handler="gtk_widget_hide" swapped="no"/>
+    <signal name="response" handler="gtk_widget_hide" swapped="no"/>
     <child internal-child="vbox">
-      <object class="GtkVBox" id="dialog-vbox1">
+      <object class="GtkBox" id="dialog-vbox1">
+        <property name="can_focus">False</property>
         <child internal-child="action_area">
-          <object class="GtkHButtonBox" id="dialog-action_area1"/>
-          <packing>
-            <property name="expand">False</property>
-            <property name="pack_type">end</property>
-            <property name="position">0</property>
-          </packing>
+          <object class="GtkButtonBox" id="dialog-action_area1">
+            <property name="can_focus">False</property>
+          </object>
         </child>
       </object>
     </child>
   </object>
+  <object class="GtkWindow" id="main-window">
+    <property name="can_focus">False</property>
+    <property name="events">GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
+    <property name="title" translatable="yes">GUPnP Network Light</property>
+    <property name="window_position">center</property>
+    <signal name="button-press-event" handler="on_main_window_button_event" swapped="no"/>
+    <signal name="button-release-event" handler="on_main_window_button_event" swapped="no"/>
+    <signal name="delete-event" handler="on_delete_event" swapped="no"/>
+    <child>
+      <object class="GtkImage" id="light-bulb-image">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="stock">gtk-missing-image</property>
+      </object>
+    </child>
+  </object>
   <object class="GtkMenu" id="popup-menu">
+    <property name="can_focus">False</property>
     <child>
       <object class="GtkCheckMenuItem" id="light-status-menuitem">
         <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="use_action_appearance">False</property>
         <property name="label" translatable="yes">On</property>
         <property name="use_underline">True</property>
-        <signal name="activate" handler="on_light_status_menuitem_activate"/>
+        <signal name="activate" handler="on_light_status_menuitem_activate" swapped="no"/>
       </object>
     </child>
     <child>
       <object class="GtkSeparatorMenuItem" id="separator1">
         <property name="visible">True</property>
+        <property name="can_focus">False</property>
       </object>
     </child>
     <child>
       <object class="GtkMenuItem" id="increase_luminance_menuitem">
         <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="use_action_appearance">False</property>
         <property name="label" translatable="yes">increase luminance by 20%</property>
         <property name="use_underline">True</property>
-        <signal name="activate" handler="on_increase_luminance_menuitem_activate"/>
+        <signal name="activate" handler="on_increase_luminance_menuitem_activate" swapped="no"/>
       </object>
     </child>
     <child>
       <object class="GtkMenuItem" id="decrease_luminance_menuitem">
         <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="use_action_appearance">False</property>
         <property name="label" translatable="yes">decrease luminance by 20%</property>
         <property name="use_underline">True</property>
-        <signal name="activate" handler="on_decrease_luminance_menuitem_activate"/>
+        <signal name="activate" handler="on_decrease_luminance_menuitem_activate" swapped="no"/>
       </object>
     </child>
     <child>
       <object class="GtkSeparatorMenuItem" id="separator2">
         <property name="visible">True</property>
+        <property name="can_focus">False</property>
       </object>
     </child>
     <child>
       <object class="GtkMenuItem" id="about_menuitem">
         <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="use_action_appearance">False</property>
         <property name="label" translatable="yes">about</property>
         <property name="use_underline">True</property>
-        <signal name="activate" handler="on_about_menuitem_activate"/>
+        <signal name="activate" handler="on_about_menuitem_activate" swapped="no"/>
       </object>
     </child>
   </object>
