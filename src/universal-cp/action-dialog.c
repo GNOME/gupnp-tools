@@ -29,6 +29,8 @@
 #include "icons.h"
 #include "main.h"
 
+#define DEFAULT_TEXTVIEW_HEIGHT 55
+
 static GtkWidget *dialog;
 static GtkWidget *in_args_table;
 static GtkWidget *out_args_table;
@@ -197,6 +199,7 @@ create_widget_for_argument (GUPnPServiceActionArgInfo *arg_info,
                                       "shadow-type", GTK_SHADOW_IN,
                                       "hscrollbar-policy", GTK_POLICY_AUTOMATIC,
                                       "vscrollbar-policy", GTK_POLICY_AUTOMATIC,
+                                      "min-content-height", DEFAULT_TEXTVIEW_HEIGHT,
                                       NULL);
 
                         gtk_container_add (GTK_CONTAINER (widget),
