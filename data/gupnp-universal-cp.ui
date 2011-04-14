@@ -248,11 +248,10 @@ Inspired by Intel Tools for UPnP.</property>
             <property name="can_focus">False</property>
             <property name="spacing">2</property>
             <child>
-              <object class="GtkFrame" id="frame1">
+              <object class="GtkExpander" id="in-action-arguments-expander">
                 <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="label_xalign">0</property>
-                <property name="shadow_type">none</property>
+                <property name="can_focus">True</property>
+                <property name="expanded">True</property>
                 <child>
                   <object class="GtkAlignment" id="alignment1">
                     <property name="visible">True</property>
@@ -277,7 +276,7 @@ Inspired by Intel Tools for UPnP.</property>
                   </object>
                 </child>
                 <child type="label">
-                  <object class="GtkLabel" id="in-action-arguments-label">
+                  <object class="GtkLabel" id="label2">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">&lt;b&gt;'in' arguments&lt;/b&gt;</property>
@@ -292,11 +291,9 @@ Inspired by Intel Tools for UPnP.</property>
               </packing>
             </child>
             <child>
-              <object class="GtkFrame" id="frame2">
+              <object class="GtkExpander" id="out-action-arguments-expander">
                 <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="label_xalign">0</property>
-                <property name="shadow_type">none</property>
+                <property name="can_focus">True</property>
                 <child>
                   <object class="GtkAlignment" id="alignment3">
                     <property name="visible">True</property>
@@ -322,7 +319,7 @@ Inspired by Intel Tools for UPnP.</property>
                   </object>
                 </child>
                 <child type="label">
-                  <object class="GtkLabel" id="out-action-arguments-label">
+                  <object class="GtkLabel" id="label3">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">&lt;b&gt;'out' arguments&lt;/b&gt;</property>

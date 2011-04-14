@@ -1,7 +1,9 @@
 /*
  * Copyright (C) 2007 Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+ * Copyright (C) 2011 Jens Georg <mail@jensge.org>
  *
  * Authors: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+ * Authors: Jens Georg <mail@jensge.org>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -37,11 +39,20 @@ static GtkWidget *out_args_table;
 static GtkWidget *device_label;
 static GtkWidget *service_label;
 static GtkWidget *action_label;
-static GtkWidget *in_args_label;
-static GtkWidget *out_args_label;
+static GtkWidget *in_args_expander;
+static GtkWidget *out_args_expander;
 static GtkSizeGroup *static_labels_group;
 static GtkSizeGroup *arguments_label_group;
 static GtkSizeGroup *arguments_widget_group;
+
+static void
+on_expander_clicked (GObject    *expander,
+                     GParamSpec *param_spec,
+                     gpointer   user_data)
+{
+        /* Unfortunately set_size_request doesn't here */
+        gtk_window_resize (GTK_WINDOW (user_data), 1, 1);
+}
 
 /*
  * 1. Gets rid of all the existing arguments
@@ -55,6 +66,10 @@ prepare_action_arguments_table (GtkContainer                  *table,
 {
         GList     *child_node;
         GtkWidget *label;
+
+        /* reset expander state */
+        gtk_expander_set_expanded (GTK_EXPANDER (in_args_expander),  TRUE);
+        gtk_expander_set_expanded (GTK_EXPANDER (out_args_expander), FALSE);
 
         for (child_node = gtk_container_get_children (table);
              child_node;
@@ -80,9 +95,9 @@ prepare_action_arguments_table (GtkContainer                  *table,
         }
 
         if (direction == GUPNP_SERVICE_ACTION_ARG_DIRECTION_IN) {
-                label = in_args_label;
+                label = in_args_expander;
         } else {
-                label = out_args_label;
+                label = out_args_expander;
         }
 
         if (arguments) {
@@ -242,8 +257,7 @@ populate_action_arguments_table (GtkWidget                     *table,
                                         direction,
                                         arguments);
 
-        /* FIXME: Is there a better way to shrink the dialog? */
-        gtk_window_resize (GTK_WINDOW (dialog), 10, 10);
+        gtk_widget_set_size_request (dialog, 0, 0);
 
         row = 0;
         for (arg_node = arguments;
@@ -361,6 +375,10 @@ run_action_dialog (GUPnPServiceActionInfo    *action_info,
                         out_arguments,
                         GUPNP_SERVICE_ACTION_ARG_DIRECTION_OUT,
                         introspection);
+
+        /* If the action only has out arguments, open the out expander */
+        if (!in_arguments)
+                gtk_expander_set_expanded (GTK_EXPANDER (out_args_expander), TRUE);
 
         gtk_dialog_run (GTK_DIALOG (dialog));
         gtk_widget_hide (dialog);
@@ -763,14 +781,14 @@ init_action_dialog (GtkBuilder *builder)
         g_assert (out_args_table != NULL);
 
         /* All the labels */
-        in_args_label = GTK_WIDGET (gtk_builder_get_object (
+        in_args_expander = GTK_WIDGET (gtk_builder_get_object (
                                         builder,
-                                        "in-action-arguments-label"));
-        g_assert (in_args_label != NULL);
-        out_args_label = GTK_WIDGET (gtk_builder_get_object (
+                                        "in-action-arguments-expander"));
+        g_assert (in_args_expander != NULL);
+        out_args_expander = GTK_WIDGET (gtk_builder_get_object (
                                         builder,
-                                        "out-action-arguments-label"));
-        g_assert (out_args_label != NULL);
+                                        "out-action-arguments-expander"));
+        g_assert (out_args_expander != NULL);
         device_label = GTK_WIDGET (gtk_builder_get_object (builder,
                                                            "device-label"));
         g_assert (device_label != NULL);
@@ -799,6 +817,16 @@ init_action_dialog (GtkBuilder *builder)
         g_assert (image != NULL);
         gtk_image_set_from_pixbuf (GTK_IMAGE (image),
                                    get_icon_by_id (ICON_ACTION));
+
+        g_signal_connect (in_args_expander,
+                          "notify::expanded",
+                          G_CALLBACK (on_expander_clicked),
+                          dialog);
+
+        g_signal_connect (out_args_expander,
+                          "notify::expanded",
+                          G_CALLBACK (on_expander_clicked),
+                          dialog);
 }
 
 void
