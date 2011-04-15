@@ -1,3 +1,14 @@
+0.8.3
+=====
+
+Another micro release that fixes all the UI issues introduce in the last release
+due to port to newer gtk+/glade.
+
+All contributors:
+
+Jens Georg <mail@jensge.org>
+Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+
 0.8.2
 =====
 
