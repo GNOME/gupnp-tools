@@ -24,7 +24,7 @@ gupnp_av_cp_SOURCES = main.c \
 		      renderer-combo.h \
 		      renderer-controls.h
 
-gupnp_av_cp_LDADD = ../common/libicons.a \
+gupnp_av_cp_LDADD = ../common/libutil.a \
 		    $(LIBGUPNP_LIBS) \
 		    $(LIBGUPNP_AV_LIBS) \
 		    $(GTK_LIBS) \

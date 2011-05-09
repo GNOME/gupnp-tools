@@ -20,7 +20,7 @@ gupnp_network_light_SOURCES = main.c \
 			      main.h \
 			      gui.h \
 			      upnp.h
-gupnp_network_light_LDADD = ../common/libicons.a $(LIBGUPNP_LIBS) $(GTK_LIBS) $(GTHREAD_LIBS) $(UUID_LIBS)
+gupnp_network_light_LDADD = ../common/libutil.a $(LIBGUPNP_LIBS) $(GTK_LIBS) $(GTHREAD_LIBS) $(UUID_LIBS)
 
 gupnp_network_light_LDFLAGS = -export-dynamic
 

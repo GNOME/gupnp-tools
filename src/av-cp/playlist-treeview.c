@@ -27,6 +27,7 @@
 #include "renderer-combo.h"
 #include "renderer-controls.h"
 #include "icons.h"
+#include "pretty-print.h"
 #include "gui.h"
 
 #define CONTENT_DIR "urn:schemas-upnp-org:service:ContentDirectory"
@@ -307,11 +308,17 @@ static void display_metadata (const char *metadata,
                               gpointer    user_data)
 {
         GtkTextBuffer *buffer;
+        char *formatted;
+
+        formatted = pretty_print_xml (metadata);
 
         buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (didl_textview));
-        gtk_text_buffer_set_text (buffer, metadata, -1);
+        gtk_text_buffer_set_text (buffer, formatted, -1);
+        gtk_widget_show (GTK_WIDGET (didl_textview));
 
         gtk_dialog_run (GTK_DIALOG (didl_dialog));
+
+        g_free (formatted);
 }
 
 G_MODULE_EXPORT
