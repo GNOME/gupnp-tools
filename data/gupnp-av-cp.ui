@@ -50,6 +50,7 @@ Vinicius Depizzol &lt;vdepizzol@gmail.com&gt;</property>
     <property name="border_width">5</property>
     <property name="title" translatable="yes">GUPnP AV CP - Metadata View</property>
     <property name="type_hint">normal</property>
+    <signal name="close" handler="gtk_widget_hide" swapped="no"/>
     <child internal-child="vbox">
       <object class="GtkBox" id="dialog-vbox3">
         <property name="visible">True</property>
