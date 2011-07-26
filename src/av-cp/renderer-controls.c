@@ -523,14 +523,11 @@ static gboolean
 update_position (gpointer data)
 {
         GUPnPServiceProxy *av_transport;
-        const gchar       *udn;
 
         av_transport = get_selected_av_transport (NULL);
         if (av_transport == NULL) {
                 return FALSE;
         }
-
-        udn = gupnp_service_info_get_udn (GUPNP_SERVICE_INFO (av_transport));
 
         gupnp_service_proxy_begin_action (av_transport,
                                           "GetPositionInfo",
