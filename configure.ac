@@ -11,6 +11,7 @@ AC_STDC_HEADERS
 AC_PROG_LIBTOOL
 AC_FUNC_MMAP
 
+GSSDP_REQUIRED=0.10
 GUPNP_REQUIRED=0.13
 GUPNP_AV_REQUIRED=0.5.5
 GTK_REQUIRED=3.0.0
@@ -31,6 +32,7 @@ esac
 AC_MSG_RESULT([$os_win32])
 AM_CONDITIONAL(OS_WIN32, [test $os_win32 = yes])
 
+PKG_CHECK_MODULES(LIBGSSDP, gssdp-1.0 >= $GSSDP_REQUIRED)
 PKG_CHECK_MODULES(LIBGUPNP, gupnp-1.0 >= $GUPNP_REQUIRED)
 PKG_CHECK_MODULES(GTK, gtk+-3.0 >= $GTK_REQUIRED)
 PKG_CHECK_MODULES(GTHREAD, gthread-2.0 >= $GTHREAD_REQUIRED)
@@ -111,6 +113,7 @@ Makefile
 src/Makefile
 src/av-cp/Makefile
 src/common/Makefile
+src/discover/Makefile
 src/network-light/Makefile
 src/universal-cp/Makefile
 src/upload/Makefile
