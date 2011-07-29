@@ -23,6 +23,12 @@
 #include <config.h>
 #include <gmodule.h>
 
+#ifdef HAVE_GTK_SOURCEVIEW
+#include <gtksourceview/gtksourceview.h>
+#include <gtksourceview/gtksourcelanguagemanager.h>
+#include <gtksourceview/gtksourcelanguage.h>
+#endif
+
 #include "playlist-treeview.h"
 #include "renderer-combo.h"
 #include "renderer-controls.h"
@@ -346,6 +352,22 @@ setup_playlist_treeview (GtkBuilder *builder)
                                                           "didl-dialog"));
         didl_textview = GTK_WIDGET (gtk_builder_get_object (builder,
                                                           "didl-textview"));
+#ifdef HAVE_GTK_SOURCEVIEW
+        GtkSourceLanguageManager *manager =
+                                gtk_source_language_manager_get_default ();
+        GtkSourceLanguage *language =
+                gtk_source_language_manager_guess_language (manager,
+                                                            NULL,
+                                                            "text/xml");
+
+        GtkSourceBuffer *buffer = gtk_source_buffer_new_with_language (language);
+        gtk_source_buffer_set_highlight_syntax (buffer, TRUE);
+        gtk_source_view_set_show_line_numbers (GTK_SOURCE_VIEW (didl_textview),
+                                               TRUE);
+
+        gtk_text_view_set_buffer (GTK_TEXT_VIEW (didl_textview),
+                                  GTK_TEXT_BUFFER (buffer));
+#endif
 
         model = create_playlist_treemodel ();
         g_assert (model != NULL);

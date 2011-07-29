@@ -91,7 +91,7 @@ Vinicius Depizzol &lt;vdepizzol@gmail.com&gt;</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <child>
-              <object class="GtkTextView" id="didl-textview">
+              <object class="@TEXT_VIEW@" id="didl-textview">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="editable">False</property>

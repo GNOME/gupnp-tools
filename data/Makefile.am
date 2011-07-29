@@ -11,7 +11,7 @@ desktop_in_files = gupnp-universal-cp.desktop.in \
 desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)
 
 if BUILD_AV
-dist_shared_DATA += gupnp-av-cp.ui
+shared_DATA = gupnp-av-cp.ui
 desktop_in_files += gupnp-av-cp.desktop.in
 endif
 
@@ -19,7 +19,7 @@ endif
 $(desktop_DATA): $(desktop_in_files) Makefile
 	@sed -e "s,\$${prefix},${prefix},g" $(@:.desktop=.desktop.in) > $@
 
-EXTRA_DIST = $(desktop_in_files:.desktop.in=.desktop.in.in)
+EXTRA_DIST = $(desktop_in_files:.desktop.in=.desktop.in.in) gupnp-av-cp.ui.in
 
 CLEANFILES = $(desktop_DATA)
 

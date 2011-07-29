@@ -17,6 +17,7 @@ GTK_REQUIRED=3.0.0
 GTHREAD_REQUIRED=2.12
 GIO_REQUIRED=2.12
 ICON_THEME_REQUIRED=2.20
+GTKSOURCEVIEW_REQUIRED=3.0.0
 
 AC_MSG_CHECKING([for Win32])
 case "$host" in
@@ -35,6 +36,10 @@ PKG_CHECK_MODULES(GTK, gtk+-3.0 >= $GTK_REQUIRED)
 PKG_CHECK_MODULES(GTHREAD, gthread-2.0 >= $GTHREAD_REQUIRED)
 PKG_CHECK_MODULES(GNOME_ICON_THEME, gnome-icon-theme >= $ICON_THEME_REQUIRED)
 PKG_CHECK_MODULES(GIO, gio-2.0 >= $GIO_REQUIRED)
+PKG_CHECK_MODULES(GTKSOURCEVIEW, gtksourceview-3.0 >= GTKSOURCEVIEW_REQUIRED,
+                  AC_DEFINE([HAVE_GTK_SOURCEVIEW], [1], [Use GtkSourceView])
+                  AC_SUBST([TEXT_VIEW],[GtkSourceView]),
+                  AC_SUBST([TEXT_VIEW],[GtkTextView]))
 
 if test "x$os_win32" = "xno"; then
     PKG_CHECK_MODULES(UUID, uuid)
@@ -112,6 +117,7 @@ src/upload/Makefile
 data/Makefile
 data/gupnp-universal-cp.desktop.in
 data/gupnp-av-cp.desktop.in
+data/gupnp-av-cp.ui
 data/gupnp-network-light.desktop.in
 data/pixmaps/Makefile
 data/xml/Makefile
