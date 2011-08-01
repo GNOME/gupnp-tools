@@ -76,7 +76,7 @@ get_transfer_progress_cb (GUPnPServiceProxy       *cds_proxy,
                 if (total > 0) {
                         guint64 progress = length * 100 / total;
 
-                        g_print ("\b\b\b%2llu%%", progress);
+                        g_print ("\b\b\b%2" G_GUINT64_FORMAT "%%", progress);
                 }
 
                 data->action = NULL;
