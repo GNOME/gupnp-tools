@@ -89,6 +89,7 @@ create_didl_for_file (const char *file_path,
         item = GUPNP_DIDL_LITE_OBJECT
                         (gupnp_didl_lite_writer_add_item (writer));
         gupnp_didl_lite_object_set_parent_id (item, parent_id);
+        gupnp_didl_lite_object_set_id (item, "");
         gupnp_didl_lite_object_set_restricted (item, FALSE);
 
         if (title == NULL) {
