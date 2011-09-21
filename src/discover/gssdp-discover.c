@@ -39,7 +39,7 @@ static GOptionEntry entries[] =
 {
         { "interface", 'i', 0, G_OPTION_ARG_STRING, &interface, "Network INTERFACE to use", "INTERFACE" },
         { "target", 't', 0, G_OPTION_ARG_STRING, &target, "SSDP TARGET to search for (default: ssdp:all)", "TARGET" },
-        { "timeout", 'n', 0, G_OPTION_ARG_INT, &timeout, "TIME in seconds to wait for replys before exiting", "TIME" },
+        { "timeout", 'n', 0, G_OPTION_ARG_INT, &timeout, "TIME in seconds to wait for replies before exiting", "TIME" },
         { "rescan-interval", 'r', 0, G_OPTION_ARG_INT, &rescan_interval, "TIME in seconds to wait before sending another discovery request", "TIME" },
         { NULL }
 };
