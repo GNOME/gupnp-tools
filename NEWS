@@ -1,3 +1,37 @@
+0.8.4
+=====
+
+Changes since 0.8.3:
+
+- Autotools use has been modernized.
+- Minor code clean-up.
+
+gupnp-av-cp:
+  - Fix issue that DIDL dialog was empty on next usage when user pressed ESC
+    to close it.
+  - Add XML pretty-printing to DIDL dialog.
+  - Use GtkSourceView for DIDL dialog when available during build-time.
+
+gssdp-discover:
+  - A new simple SSDP discovery tool.
+
+gupnp-upload:
+  - Fix compiling with -Wall.
+  - Set empty item id as mandated by UPnP.
+
+Bugs fixed:
+ https://bugzilla.gnome.org/show_bug.cgi?id=655562
+ https://bugzilla.gnome.org/show_bug.cgi?id=655563
+ https://bugzilla.gnome.org/show_bug.cgi?id=655579
+ https://bugzilla.gnome.org/show_bug.cgi?id=654979
+ https://bugzilla.gnome.org/show_bug.cgi?id=659315
+ https://bugzilla.gnome.org/show_bug.cgi?id=659316
+
+All contributors:
+ Jens Georg <mail@jensge.org>
+ Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+ Thijs Vermeir <thijsvermeir@gmail.com>
+
 0.8.3
 =====
 
