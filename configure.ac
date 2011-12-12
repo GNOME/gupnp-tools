@@ -1,15 +1,27 @@
-AC_PREREQ(2.53)
-AC_INIT(gupnp-tools, 0.8.3, http://www.gupnp.org/)
-AM_INIT_AUTOMAKE()
-AC_CONFIG_SRCDIR(src/common/icons.h)
-AM_CONFIG_HEADER(config.h)
-AM_MAINTAINER_MODE
+AC_PREREQ([2.63])
+AC_INIT([gupnp-tools],
+        [0.8.3],
+        [https://bugzilla.gnome.org/enter_bug.cgi?product=gupnp-tools],
+        [gupnp-tools],
+        [http://www.gupnp.org/])
 
-AC_ISC_POSIX
+AC_CONFIG_HEADERS([config.h])
+AC_CONFIG_SRCDIR(src/common/icons.h)
+AC_CONFIG_MACRO_DIR([m4])
+AC_CONFIG_AUX_DIR([build-aux])
+
+AM_INIT_AUTOMAKE([1.11 tar-ustar no-dist-gzip dist-xz])
+AM_MAINTAINER_MODE([enable])
+AM_SILENT_RULES([yes])
+
+AC_SEARCH_LIBS([strerror],[cposix])
 AC_PROG_CC
-AC_STDC_HEADERS
-AC_PROG_LIBTOOL
+AC_HEADER_STDC
 AC_FUNC_MMAP
+
+# libtool
+LT_PREREQ([2.2])
+LT_INIT([])
 
 GSSDP_REQUIRED=0.10
 GUPNP_REQUIRED=0.13
@@ -51,7 +63,7 @@ else
 fi
 
 AC_ARG_WITH( av,
-  AC_HELP_STRING([--disable-av],[Don't build AV tools]),
+  AS_HELP_STRING([--disable-av],[Don't build AV tools]),
   try_av=$withval, try_av=yes )
 
 HAVE_LIBGUPNP_AV=no
@@ -108,7 +120,7 @@ ALL_LINGUAS=""
 AM_GLIB_GNU_GETTEXT
 AM_GLIB_DEFINE_LOCALEDIR([LOCALEDIR])
 
-AC_OUTPUT([
+AC_CONFIG_FILES([
 Makefile
 src/Makefile
 src/av-cp/Makefile
@@ -125,3 +137,4 @@ data/gupnp-network-light.desktop.in
 data/pixmaps/Makefile
 data/xml/Makefile
 ])
+AC_OUTPUT
