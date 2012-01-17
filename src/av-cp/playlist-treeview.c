@@ -804,7 +804,9 @@ browse_cb (GUPnPServiceProxy       *content_dir,
                 if (!gupnp_didl_lite_parser_parse_didl (parser,
                                                         didl_xml,
                                                         &error)) {
-                        g_warning ("%s", error->message);
+                        g_warning ("Error while browsing %s: %s",
+                                   data->id,
+                                   error->message);
                         g_error_free (error);
                 }
 
