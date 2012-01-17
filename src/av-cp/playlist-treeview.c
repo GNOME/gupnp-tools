@@ -790,7 +790,8 @@ browse_cb (GUPnPServiceProxy       *content_dir,
                                         NULL);
         if (didl_xml) {
                 GUPnPDIDLLiteParser *parser;
-                guint32              remaining;
+                gint32              remaining;
+                gint32              batch_size;
                 GError              *error;
 
                 error = NULL;
@@ -801,14 +802,17 @@ browse_cb (GUPnPServiceProxy       *content_dir,
                                   G_CALLBACK (on_didl_object_available),
                                   data);
 
-                if (!gupnp_didl_lite_parser_parse_didl (parser,
-                                                        didl_xml,
-                                                        &error)) {
-                        g_warning ("Error while browsing %s: %s",
-                                   data->id,
-                                   error->message);
-                        g_error_free (error);
-                }
+                /* Only try to parse DIDL if server claims that there was a
+                 * result */
+                if (number_returned > 0)
+                        if (!gupnp_didl_lite_parser_parse_didl (parser,
+                                                                didl_xml,
+                                                                &error)) {
+                                g_warning ("Error while browsing %s: %s",
+                                           data->id,
+                                           error->message);
+                                g_error_free (error);
+                        }
 
                 g_object_unref (parser);
                 g_free (didl_xml);
@@ -817,13 +821,19 @@ browse_cb (GUPnPServiceProxy       *content_dir,
 
                 /* See if we have more objects to get */
                 remaining = total_matches - data->starting_index;
+
                 /* Keep browsing till we get each and every object */
-                if (remaining != 0)
+                if ((remaining > 0 || total_matches == 0) && number_returned != 0) {
+                        if (remaining > 0)
+                                batch_size = MIN (remaining, MAX_BROWSE);
+                        else
+                                batch_size = MAX_BROWSE;
+
                         browse (content_dir,
                                 data->id,
                                 data->starting_index,
-                                MIN (remaining, MAX_BROWSE));
-                else
+                                batch_size);
+                } else
                         update_container_child_count (content_dir, data->id);
         } else if (error) {
                 GUPnPServiceInfo *info;
