@@ -654,7 +654,7 @@ on_context_unavailable (GUPnPContextManager *context_manager,
                         GUPnPContext        *context,
                         gpointer             user_data)
 {
-        g_print ("Dettaching from IP/Host %s and port %d\n",
+        g_print ("Detaching from IP/Host %s and port %d\n",
                  gupnp_context_get_host_ip (context),
                  gupnp_context_get_port (context));
 
