@@ -19,6 +19,7 @@ gupnp_upload_SOURCES = main.c \
 		       transfer.h
 
 gupnp_upload_LDADD = $(LIBGUPNP_LIBS)    \
+		     $(LIBGSSDP_LIBS)    \
 		     $(LIBGUPNP_AV_LIBS) \
 	    	     $(GTHREAD_LIBS)     \
 	    	     $(GIO_LIBS)

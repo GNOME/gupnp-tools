@@ -22,7 +22,14 @@ gupnp_universal_cp_SOURCES = main.c \
 			     details-treeview.h \
 			     event-treeview.h \
 			     action-dialog.h
-gupnp_universal_cp_LDADD = ../common/libutil.a $(GTK_LIBS) $(LIBGUPNP_LIBS) $(GTHREAD_LIBS)
+gupnp_universal_cp_LDADD = ../common/libutil.a \
+			   $(GTK_LIBS) \
+			   $(LIBGSSDP_LIBS) \
+			   $(LIBSOUP_LIBS) \
+			   $(LIBXML_LIBS) \
+			   $(GTHREAD_LIBS) \
+			   $(LIBGUPNP_LIBS)
+
 gupnp_universal_cp_LDFLAGS = -export-dynamic
 
 if OS_WIN32
