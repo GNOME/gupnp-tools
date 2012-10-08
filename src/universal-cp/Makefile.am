@@ -4,7 +4,7 @@ else
 shareddir = $(datadir)/gupnp-tools
 endif
 
-AM_CFLAGS = $(GTK_CFLAGS) $(LIBGUPNP_CFLAGS) $(GTHREAD_CFLAGS) \
+AM_CFLAGS = $(GTK_CFLAGS) $(LIBGUPNP_CFLAGS) \
 	    -I$(top_srcdir) -DDATA_DIR='"$(shareddir)"' \
 	    -I$(top_srcdir)/src/common
 
@@ -27,7 +27,6 @@ gupnp_universal_cp_LDADD = ../common/libutil.a \
 			   $(LIBGSSDP_LIBS) \
 			   $(LIBSOUP_LIBS) \
 			   $(LIBXML_LIBS) \
-			   $(GTHREAD_LIBS) \
 			   $(LIBGUPNP_LIBS)
 
 gupnp_universal_cp_LDFLAGS = -export-dynamic

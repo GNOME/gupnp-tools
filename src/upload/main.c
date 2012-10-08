@@ -136,8 +136,7 @@ main (gint   argc,
         error = NULL;
         GOptionContext *context;
 
-        /* First thing initialize the thread system */
-        g_thread_init (NULL);
+        g_type_init ();
 
         context = g_option_context_new ("- Upload file to UPnP MediaServer");
         g_option_context_add_main_entries (context, entries, GETTEXT_PACKAGE);

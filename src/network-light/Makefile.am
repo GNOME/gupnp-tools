@@ -6,7 +6,6 @@ endif
 
 AM_CFLAGS = $(LIBGUPNP_CFLAGS) \
 	    $(GTK_CFLAGS) \
-	    $(GTHREAD_CFLAGS) \
 	    $(UUID_CFLAGS) \
 	    -I$(top_srcdir) \
 	    -DDATA_DIR='"$(shareddir)"' \
@@ -26,7 +25,6 @@ gupnp_network_light_LDADD = ../common/libutil.a \
 			    $(LIBGSSDP_LIBS) \
 			    $(LIBGUPNP_LIBS) \
 			    $(GTK_LIBS) \
-			    $(GTHREAD_LIBS) \
 			    $(UUID_LIBS)
 
 gupnp_network_light_LDFLAGS = -export-dynamic

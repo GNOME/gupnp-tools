@@ -1,5 +1,4 @@
 AM_CFLAGS = $(LIBGSSDP_CFLAGS)    \
-	    $(GTHREAD_CFLAGS)     \
 	    $(GIO_CFLAGS)         \
 	    -I$(top_srcdir)
 

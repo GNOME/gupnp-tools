@@ -139,9 +139,6 @@ gint
 main (gint   argc,
       gchar *argv[])
 {
-        /* First thing initialze the thread system */
-        g_thread_init (NULL);
-
         if (!init_ui (&argc, &argv)) {
            return -2;
         }

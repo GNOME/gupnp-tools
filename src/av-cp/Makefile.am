@@ -7,7 +7,6 @@ endif
 AM_CFLAGS = $(LIBGUPNP_CFLAGS) \
 	    $(LIBGUPNP_AV_CFLAGS) \
 	    $(GTK_CFLAGS) \
-	    $(GTHREAD_CFLAGS) \
 	    $(GTKSOURCEVIEW_CFLAGS) \
 	    -I$(top_srcdir) -DDATA_DIR='"$(shareddir)"' \
 	    -I$(top_srcdir)/src/common
@@ -32,7 +31,6 @@ gupnp_av_cp_LDADD = ../common/libutil.a \
 		    $(LIBGUPNP_LIBS) \
 		    $(LIBGUPNP_AV_LIBS) \
 		    $(GTK_LIBS) \
-		    $(GTHREAD_LIBS) \
 		    $(GTKSOURCEVIEW_LIBS)
 gupnp_av_cp_LDFLAGS = -export-dynamic
 
