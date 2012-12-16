@@ -54,6 +54,7 @@ static GtkWidget *popup;
 static GtkWidget *didl_dialog;
 static GtkWidget *didl_textview;
 static gboolean   expanded;
+static GHashTable *initial_notify;
 
 typedef struct
 {
@@ -341,9 +342,15 @@ setup_playlist_treeview (GtkBuilder *builder)
         GtkTreeModel      *model;
         GtkTreeSelection  *selection;
 
+        initial_notify = g_hash_table_new (g_direct_hash, g_direct_equal);
+
         treeview = GTK_WIDGET (gtk_builder_get_object (builder,
                                                        "playlist-treeview"));
         g_assert (treeview != NULL);
+
+        g_object_weak_ref (G_OBJECT (treeview),
+                           (GWeakNotify) g_hash_table_destroy,
+                           initial_notify);
 
         popup = GTK_WIDGET (gtk_builder_get_object (builder, "playlist-popup"));
         g_assert (popup != NULL);
@@ -615,6 +622,15 @@ on_container_update_ids (GUPnPServiceProxy *content_dir,
 {
         char **tokens;
         guint  i;
+
+        /* Ignore initial event. It might have some old updates that happened
+         * ages ago and cause duplicate entries in our list.
+         */
+        if (g_hash_table_contains (initial_notify, content_dir)) {
+                g_hash_table_remove (initial_notify, content_dir);
+
+                return;
+        }
 
         tokens = g_strsplit (g_value_get_string (value), ",", 0);
         for (i = 0;
@@ -1011,6 +1027,7 @@ append_media_server (GUPnPDeviceProxy *proxy,
                                                 on_container_update_ids,
                                                 NULL);
                 gupnp_service_proxy_set_subscribed (content_dir, TRUE);
+                g_hash_table_insert (initial_notify, content_dir, content_dir);
 
                 g_object_unref (content_dir);
         }
