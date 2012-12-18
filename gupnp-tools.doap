@@ -29,7 +29,10 @@ test and debug one's UPnP devices and control points:
     relies on external UPnP MediaRenderer devices for actual playback.
 
   * Upload: a simple commandline utility that uploads files to known
-    MediaServers. Use Universal Control Point for discovering the MediaServers.</description>
+    MediaServers. Use Universal Control Point for discovering the MediaServers.
+
+  * Discover: a simple commandline utility to run a SSDP discovery on the
+    network.</description>
 
   <homepage
   rdf:resource="http://gupnp.org" />
@@ -42,9 +45,9 @@ test and debug one's UPnP devices and control points:
 
   <maintainer>
     <foaf:Person>
-      <foaf:name>Zeeshan Ali (Khattak)</foaf:name>
-      <foaf:mbox rdf:resource="mailto:zeeshanak@gnome.org" />
-      <gnome:userid>zeeshanak</gnome:userid>
+      <foaf:name>Jens Georg</foaf:name>
+      <foaf:mbox rdf:resource="mailto:mail@jensge.org" />
+      <gnome:userid>jensgeorg</gnome:userid>
     </foaf:Person>
   </maintainer>
   <maintainer>
