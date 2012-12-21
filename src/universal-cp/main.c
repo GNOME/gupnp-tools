@@ -72,7 +72,9 @@ on_context_available (GUPnPContextManager *context_manager,
 static gboolean
 init_upnp (void)
 {
+#if !GLIB_CHECK_VERSION(2, 35, 0)
         g_type_init ();
+#endif
 
         context_manager = gupnp_context_manager_new (NULL, 0);
         g_assert (context_manager != NULL);

@@ -136,7 +136,9 @@ main (gint   argc,
         error = NULL;
         GOptionContext *context;
 
+#if !GLIB_CHECK_VERSION(2, 35, 0)
         g_type_init ();
+#endif
 
         context = g_option_context_new ("- Upload file to UPnP MediaServer");
         g_option_context_add_main_entries (context, entries, GETTEXT_PACKAGE);
@@ -168,8 +170,6 @@ main (gint   argc,
         if (files == NULL) {
                 return -5;
         }
-
-        g_type_init ();
 
         error = NULL;
         upnp_context = gupnp_context_new (NULL, interface, 0, &error);
