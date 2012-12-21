@@ -1,3 +1,27 @@
+0.8.5
+=====
+
+Changes since 0.8.4:
+
+- Fix linking against newer versions of GUPnP.
+- Drop deprecated g_thread_init.
+- Disable g_type_init on newer GLib.
+
+gupnp-av-cp:
+ - Be a bit more precise on what exactly failed.
+ - Fix an endless loop while browsing.
+ - Ignore initial notify for ContainerUpdateID event.
+
+network-light:
+ - Fix a typo.
+
+Bugs fixed:
+ https://bugzilla.gnome.org/show_bug.cgi?id=668090
+ https://bugzilla.gnome.org/show_bug.cgi?id=690309
+
+All contributors:
+ Jens Georg <mail@jensge.org>
+
 0.8.4
 =====
 
