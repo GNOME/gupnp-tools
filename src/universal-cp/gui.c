@@ -108,6 +108,7 @@ init_ui (gint   *argc,
 
         builder = gtk_builder_new ();
         g_assert (builder != NULL);
+        gtk_builder_set_translation_domain (builder, GETTEXT_PACKAGE);
 
         if (!gtk_builder_add_from_file (builder, UI_FILE, &error)) {
                 g_critical ("Unable to load the GUI file %s: %s",

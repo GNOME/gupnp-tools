@@ -20,9 +20,14 @@
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  */
 
+#ifdef HAVE_CONFIG_H
+#include "config.h"
+#endif
+
 #include <stdio.h>
 #include <locale.h>
 #include <string.h>
+#include <glib/gi18n.h>
 
 #include "gui.h"
 #include "upnp.h"
@@ -71,6 +76,11 @@ main (int argc, char **argv)
         /* Light is off in the beginning */
         light_status = FALSE;
         light_load_level = 100;
+
+        setlocale (LC_ALL, "");
+        bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
+        bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
+        textdomain (GETTEXT_PACKAGE);
 
         if (!init_ui (&argc, &argv)) {
                 return -1;

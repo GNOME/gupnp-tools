@@ -18,12 +18,17 @@
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  */
 
+#ifdef HAVE_CONFIG_H
+#include "config.h"
+#endif
+
 #include <libgupnp/gupnp.h>
 #include "gui.h"
 #include <string.h>
 #include <stdlib.h>
 
 #include <gmodule.h>
+#include <glib/gi18n.h>
 
 static GUPnPContextManager *context_manager;
 
@@ -107,6 +112,11 @@ gint
 main (gint   argc,
       gchar *argv[])
 {
+        setlocale (LC_ALL, "");
+        bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
+        bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
+        textdomain (GETTEXT_PACKAGE);
+
         if (!init_ui (&argc, &argv)) {
            return -2;
         }
