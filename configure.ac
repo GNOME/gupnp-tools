@@ -117,6 +117,7 @@ fi
 AM_CONDITIONAL([UNINSTALLED], [test "x$enable_uninstalled" = "xyes"])
 
 # Gettext
+IT_PROG_INTLTOOL([0.40.6])
 GETTEXT_PACKAGE=gupnp-tools
 AC_SUBST(GETTEXT_PACKAGE)
 AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE, ["$GETTEXT_PACKAGE"], 
@@ -125,6 +126,8 @@ AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE, ["$GETTEXT_PACKAGE"],
 ALL_LINGUAS=""
 AM_GLIB_GNU_GETTEXT
 AM_GLIB_DEFINE_LOCALEDIR([LOCALEDIR])
+
+AS_AC_EXPAND(PKGDATADIR, "${datadir}/${PACKAGE}")
 
 AC_CONFIG_FILES([
 Makefile
@@ -142,5 +145,6 @@ data/gupnp-av-cp.ui
 data/gupnp-network-light.desktop.in
 data/pixmaps/Makefile
 data/xml/Makefile
+po/Makefile.in
 ])
 AC_OUTPUT

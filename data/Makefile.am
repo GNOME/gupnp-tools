@@ -15,9 +15,7 @@ shared_DATA = gupnp-av-cp.ui
 desktop_in_files += gupnp-av-cp.desktop.in
 endif
 
-# Rule to create the .desktop files
-$(desktop_DATA): $(desktop_in_files) Makefile
-	@sed -e "s,\$${prefix},${prefix},g" $(@:.desktop=.desktop.in) > $@
+@INTLTOOL_DESKTOP_RULE@
 
 EXTRA_DIST = $(desktop_in_files:.desktop.in=.desktop.in.in) gupnp-av-cp.ui.in
 
