@@ -1,0 +1,175 @@
+# Serbian translation for gupnp-tools.
+# Copyright (C) 2013 gupnp-tools's COPYRIGHT HOLDER
+# This file is distributed under the same license as the gupnp-tools package.
+# Miroslav Nikolić <miroslavnikolic@rocketmail.com>, 2013.
+msgid ""
+msgstr ""
+"Project-Id-Version: gupnp-tools master\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gupnp-"
+"tools&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2013-01-02 01:46+0000\n"
+"PO-Revision-Date: 2013-01-02 22:14+0200\n"
+"Last-Translator: Miroslav Nikolić <miroslavnikolic@rocketmail.com>\n"
+"Language-Team: Serbian <gnom@prevod.org>\n"
+"Language: sr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
+"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Virtaal 0.7.1\n"
+"X-Project-Style: gnome\n"
+
+#: ../data/gupnp-av-cp.desktop.in.in.h:1
+msgid "UPnP AV Control Point"
+msgstr "UPnP AV upravljačka tačka"
+
+#: ../data/gupnp-network-light.desktop.in.in.h:1
+msgid "UPnP Network Light"
+msgstr "UPnP mrežno svetlo"
+
+#: ../data/gupnp-network-light.ui.h:1 ../data/gupnp-universal-cp.ui.h:1
+msgid "Copyright (C) 2007 Zeeshan Ali (Khattak)"
+msgstr "Autorska prava (C) 2007 Zišan Ali (Khattak)"
+
+#: ../data/gupnp-network-light.ui.h:2
+msgid ""
+"A virtual network light bulb based on GUPnP framework.\n"
+"Inspired by Intel Tools for UPnP."
+msgstr ""
+"Lampica virtuelne mreže zasnovana na GUPnP radnom okviru.\n"
+"Ideja je viđena u Intelovim alatima za UPnP."
+
+#: ../data/gupnp-network-light.ui.h:4 ../data/gupnp-universal-cp.ui.h:4
+msgid "GUPnP homepage"
+msgstr "GUPnP matična stranica"
+
+#: ../data/gupnp-network-light.ui.h:5 ../data/gupnp-universal-cp.ui.h:5
+msgid "GPL"
+msgstr "OJL"
+
+#. TRANSLATORS: Replace this string with your names, one name per line.
+#: ../data/gupnp-network-light.ui.h:7 ../data/gupnp-universal-cp.ui.h:7
+msgid "translator-credits"
+msgstr ""
+"  Miroslav Nikolić\n"
+"\n"
+"  http://prevod.org — prevod na srpski jezik"
+
+#: ../data/gupnp-network-light.ui.h:8
+msgid "GUPnP Network Light"
+msgstr "GUPnP mrežno svetlo"
+
+#: ../data/gupnp-network-light.ui.h:9
+msgid "On"
+msgstr "Uklj."
+
+#: ../data/gupnp-network-light.ui.h:11
+#, no-c-format
+msgid "increase luminance by 20%"
+msgstr "povećaj osvetljaj za 20%"
+
+#: ../data/gupnp-network-light.ui.h:13
+#, no-c-format
+msgid "decrease luminance by 20%"
+msgstr "umanji osvetljaj za 20%"
+
+#: ../data/gupnp-network-light.ui.h:14
+msgid "about"
+msgstr "o projektu"
+
+#: ../data/gupnp-universal-cp.desktop.in.in.h:1
+msgid "UPnP Universal Control Point"
+msgstr "UPnP sveopšta upravljačka tačka"
+
+#: ../data/gupnp-universal-cp.ui.h:2
+msgid ""
+"A Generic Control Point based on GUPnP framework.\n"
+"Inspired by Intel Tools for UPnP."
+msgstr ""
+"Opšta upravljačka tačka zasnovana na GUPnP radnom okviru.\n"
+"Ideja je viđena u Intelovim alatima za UPnP."
+
+#: ../data/gupnp-universal-cp.ui.h:8
+msgid "Action Invocation"
+msgstr "Prizivanje radnje"
+
+#: ../data/gupnp-universal-cp.ui.h:9
+msgid "action"
+msgstr "radnja"
+
+#: ../data/gupnp-universal-cp.ui.h:10
+msgid "service"
+msgstr "usluga"
+
+#: ../data/gupnp-universal-cp.ui.h:11
+msgid "device"
+msgstr "uređaj"
+
+#: ../data/gupnp-universal-cp.ui.h:12
+msgid "_Invoke"
+msgstr "_Prizovi"
+
+#: ../data/gupnp-universal-cp.ui.h:13
+msgid "<b>'in' arguments</b>"
+msgstr "<b>„ulazni“ argumenti</b>"
+
+#: ../data/gupnp-universal-cp.ui.h:14
+msgid "<b>'out' arguments</b>"
+msgstr "<b>„izlazni“ argumenti</b>"
+
+#: ../data/gupnp-universal-cp.ui.h:15
+msgid "Copy value"
+msgstr "Umnoži vrednost"
+
+#: ../data/gupnp-universal-cp.ui.h:16
+msgid "Copy all details"
+msgstr "Umnoži sve pojedinosti"
+
+#: ../data/gupnp-universal-cp.ui.h:17
+msgid "Invoke"
+msgstr "Prizovi"
+
+#: ../data/gupnp-universal-cp.ui.h:18
+msgid "Subscribe to events"
+msgstr "Pretplatite se na događaje"
+
+#: ../data/gupnp-universal-cp.ui.h:19
+msgid "Expand all devices"
+msgstr "Raširi sve uređaje"
+
+#: ../data/gupnp-universal-cp.ui.h:20
+msgid "Collapse all devices"
+msgstr "Skupi sve uređaje"
+
+#: ../data/gupnp-universal-cp.ui.h:21
+msgid "Copy event"
+msgstr "Umnoži događaj"
+
+#: ../data/gupnp-universal-cp.ui.h:22
+msgid "Copy all events"
+msgstr "Umnoži sve događaje"
+
+#: ../data/gupnp-universal-cp.ui.h:23
+msgid "Clear event log"
+msgstr "Očisti dnevnik događaja"
+
+#: ../data/gupnp-universal-cp.ui.h:24
+msgid "GUPnP Universal Control Point"
+msgstr "GUPnP sveopšta upravljačka tačka"
+
+#: ../data/gupnp-universal-cp.ui.h:25
+msgid "_File"
+msgstr "_Datoteka"
+
+#: ../data/gupnp-universal-cp.ui.h:26
+msgid "View"
+msgstr "Pregled"
+
+#: ../data/gupnp-universal-cp.ui.h:27
+msgid "Event log"
+msgstr "Dnevnik događaja"
+
+#: ../data/gupnp-universal-cp.ui.h:28
+msgid "_Help"
+msgstr "Po_moć"
