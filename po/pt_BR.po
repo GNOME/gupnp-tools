@@ -1,0 +1,171 @@
+# Brazilian Portuguese translation for gupnp-tools.
+# Copyright (C) 2013 gupnp-tools's COPYRIGHT HOLDER
+# This file is distributed under the same license as the gupnp-tools package.
+# Enrico Nicoletto <liverig@gmail.com>, 2013.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gupnp-tools master\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gupnp-"
+"tools&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2013-01-02 21:15+0000\n"
+"PO-Revision-Date: 2013-01-02 23:09-0300\n"
+"Last-Translator: Enrico Nicoletto <liverig@gmail.com>\n"
+"Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+# GUPnP-AV is a collection of helpers for building AV (audio/video) applications using GUPnP. 
+#: ../data/gupnp-av-cp.desktop.in.in.h:1
+msgid "UPnP AV Control Point"
+msgstr "Ponto de controle áudio/vídeo (AV) UPnP"
+
+#: ../data/gupnp-network-light.desktop.in.in.h:1
+msgid "UPnP Network Light"
+msgstr "Luz da rede UPnP"
+
+#: ../data/gupnp-network-light.ui.h:1 ../data/gupnp-universal-cp.ui.h:1
+msgid "Copyright (C) 2007 Zeeshan Ali (Khattak)"
+msgstr "Copyright (C) 2007 Zeeshan Ali (Khattak)"
+
+#: ../data/gupnp-network-light.ui.h:2
+msgid ""
+"A virtual network light bulb based on GUPnP framework.\n"
+"Inspired by Intel Tools for UPnP."
+msgstr ""
+"Uma lâmpada virtual de luz de rede baseado no framework GUPnP.\n"
+"Inspirado pelas ferramentas da Intel para UPnP."
+
+#: ../data/gupnp-network-light.ui.h:4 ../data/gupnp-universal-cp.ui.h:4
+msgid "GUPnP homepage"
+msgstr "Página inicial do GUPnP"
+
+#: ../data/gupnp-network-light.ui.h:5 ../data/gupnp-universal-cp.ui.h:5
+msgid "GPL"
+msgstr "GPL"
+
+#. TRANSLATORS: Replace this string with your names, one name per line.
+#: ../data/gupnp-network-light.ui.h:7 ../data/gupnp-universal-cp.ui.h:7
+msgid "translator-credits"
+msgstr "Enrico Nicoletto <liverig@gmail.com>, 2013."
+
+#: ../data/gupnp-network-light.ui.h:8
+msgid "GUPnP Network Light"
+msgstr "Luz da rede GUPnP"
+
+#: ../data/gupnp-network-light.ui.h:9
+msgid "On"
+msgstr "Ligado"
+
+#: ../data/gupnp-network-light.ui.h:11
+#, no-c-format
+msgid "increase luminance by 20%"
+msgstr "aumentar luminância em 20%"
+
+#: ../data/gupnp-network-light.ui.h:13
+#, no-c-format
+msgid "decrease luminance by 20%"
+msgstr "diminuir luminância em 20%"
+
+#: ../data/gupnp-network-light.ui.h:14
+msgid "about"
+msgstr "sobre"
+
+#: ../data/gupnp-universal-cp.desktop.in.in.h:1
+msgid "UPnP Universal Control Point"
+msgstr "Ponto de controle universal UPnP"
+
+#: ../data/gupnp-universal-cp.ui.h:2
+msgid ""
+"A Generic Control Point based on GUPnP framework.\n"
+"Inspired by Intel Tools for UPnP."
+msgstr ""
+"Um ponto de controle genérico baseado no framework GUPnP.\n"
+"Inspirado pelas ferramentas da Intel para UPnP."
+
+#: ../data/gupnp-universal-cp.ui.h:8
+msgid "Action Invocation"
+msgstr "Chamadas de ação"
+
+#: ../data/gupnp-universal-cp.ui.h:9
+msgid "action"
+msgstr "ação"
+
+#: ../data/gupnp-universal-cp.ui.h:10
+msgid "service"
+msgstr "serviço"
+
+#: ../data/gupnp-universal-cp.ui.h:11
+msgid "device"
+msgstr "dispositivo"
+
+#: ../data/gupnp-universal-cp.ui.h:12
+msgid "_Invoke"
+msgstr "_Invocar"
+
+#: ../data/gupnp-universal-cp.ui.h:13
+msgid "<b>'in' arguments</b>"
+msgstr "<b>argumentos de entrada</b>"
+
+#: ../data/gupnp-universal-cp.ui.h:14
+msgid "<b>'out' arguments</b>"
+msgstr "<b>argumentos de saída</b>"
+
+#: ../data/gupnp-universal-cp.ui.h:15
+msgid "Copy value"
+msgstr "Copiar valor"
+
+#: ../data/gupnp-universal-cp.ui.h:16
+msgid "Copy all details"
+msgstr "Copiar todos os detalhes"
+
+#: ../data/gupnp-universal-cp.ui.h:17
+msgid "Invoke"
+msgstr "Chamar"
+
+#: ../data/gupnp-universal-cp.ui.h:18
+msgid "Subscribe to events"
+msgstr "Inscrever-se aos eventos"
+
+#: ../data/gupnp-universal-cp.ui.h:19
+msgid "Expand all devices"
+msgstr "Expandir todos os dispositivos"
+
+#: ../data/gupnp-universal-cp.ui.h:20
+msgid "Collapse all devices"
+msgstr "Recolher todos os dispositivos"
+
+#: ../data/gupnp-universal-cp.ui.h:21
+msgid "Copy event"
+msgstr "Copiar evento"
+
+#: ../data/gupnp-universal-cp.ui.h:22
+msgid "Copy all events"
+msgstr "Copiar todos os eventos"
+
+#: ../data/gupnp-universal-cp.ui.h:23
+msgid "Clear event log"
+msgstr "Limpar registro de eventos"
+
+#: ../data/gupnp-universal-cp.ui.h:24
+msgid "GUPnP Universal Control Point"
+msgstr "Ponto de controle universal GUPnP"
+
+#: ../data/gupnp-universal-cp.ui.h:25
+msgid "_File"
+msgstr "_Arquivo"
+
+#: ../data/gupnp-universal-cp.ui.h:26
+msgid "View"
+msgstr "Visualizar"
+
+#: ../data/gupnp-universal-cp.ui.h:27
+msgid "Event log"
+msgstr "Registro de eventos"
+
+#: ../data/gupnp-universal-cp.ui.h:28
+msgid "_Help"
+msgstr "A_juda"
