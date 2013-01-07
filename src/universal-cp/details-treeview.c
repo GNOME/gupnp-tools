@@ -23,6 +23,7 @@
 #include <config.h>
 
 #include <gmodule.h>
+#include <glib/gi18n.h>
 
 #include "details-treeview.h"
 #include "gui.h"
@@ -176,17 +177,17 @@ show_action_arg_details (GUPnPServiceActionArgInfo *info)
         char *details[32];
         int   i = 0;
 
-        details[i++] = "Name";
+        details[i++] = _("Name");
         details[i++] = g_strdup (info->name);
-        details[i++] = "Direction";
+        details[i++] = _("Direction");
         if (info->direction == GUPNP_SERVICE_ACTION_ARG_DIRECTION_IN)
                 details[i++] = g_strdup ("in");
         else
                 details[i++] = g_strdup ("out");
-        details[i++] = "Related State Variable";
+        details[i++] = _("Related State Variable");
         details[i++] = g_strdup (info->related_state_variable);
-        details[i++] = "Is Return Value";
-        details[i++] = g_strdup (info->retval? "Yes": "No");
+        details[i++] = _("Is Return Value");
+        details[i++] = g_strdup (info->retval? _("Yes"): _("No"));
         details[i] = NULL;
 
         update_details ((const char **) details);
@@ -204,9 +205,9 @@ show_action_details (GUPnPServiceActionInfo *info)
         char *details[32];
         int   i = 0;
 
-        details[i++] = "Name";
+        details[i++] = _("Name");
         details[i++] = g_strdup (info->name);
-        details[i++] = "Number of Arguments";
+        details[i++] = _("Number of Arguments");
         details[i++] = g_strdup_printf ("%u",
                                         g_list_length (info->arguments));
         details[i] = NULL;
@@ -230,28 +231,28 @@ show_state_variable_details (GUPnPServiceStateVariableInfo *info)
         memset (&str_value, 0, sizeof (GValue));
         g_value_init (&str_value, G_TYPE_STRING);
 
-        details[i++] = "Name";
+        details[i++] = _("Name");
         details[i++] = g_strdup (info->name);
-        details[i++] = "Send Events";
-        details[i++] = g_strdup (info->send_events? "Yes": "No");
-        details[i++] = "GType";
+        details[i++] = _("Send Events");
+        details[i++] = g_strdup (info->send_events? _("Yes"): _("No"));
+        details[i++] = _("GType");
         details[i++] = g_strdup (g_type_name (info->type));
 
-        details[i++] = "Default Value";
+        details[i++] = _("Default Value");
         g_value_transform (&info->default_value,
                            &str_value);
         details[i++] = g_value_dup_string (&str_value);
 
         if (info->is_numeric) {
-                details[i++] = "Minimum";
+                details[i++] = _("Minimum");
                 g_value_transform (&info->minimum,
                                    &str_value);
                 details[i++] = g_value_dup_string (&str_value);
-                details[i++] = "Maximum";
+                details[i++] = _("Maximum");
                 g_value_transform (&info->maximum,
                                    &str_value);
                 details[i++] = g_value_dup_string (&str_value);
-                details[i++] = "Step";
+                details[i++] = _("Step");
                 g_value_transform (&info->step,
                                    &str_value);
                 details[i++] = g_value_dup_string (&str_value);
@@ -271,7 +272,7 @@ show_state_variable_details (GUPnPServiceStateVariableInfo *info)
                 }
                 valuesv[j] = NULL;
 
-                details[i++] = "Allowed Values";
+                details[i++] = _("Allowed Values");
                 details[i++] = g_strjoinv (", ", valuesv);
         }
 
@@ -295,33 +296,33 @@ show_service_details (GUPnPServiceInfo *info)
         const char    *str;
         int            i = 0;
 
-        details[i++] = "Location";
+        details[i++] = _("Location");
         str = gupnp_service_info_get_location (info);
         if (str)
                 details[i++] = g_strdup (str);
 
-        details[i++] = "UDN";
+        details[i++] = _("UDN");
         str = gupnp_service_info_get_udn (info);
         if (str)
                 details[i++] = g_strdup (str);
 
-        details[i++] = "Type";
+        details[i++] = _("Type");
         str = gupnp_service_info_get_service_type (info);
         if (str)
                 details[i++] = g_strdup (str);
 
-        details[i++] = "Base URL";
+        details[i++] = _("Base URL");
         uri = gupnp_service_info_get_url_base (info);
         if (uri)
                 details[i++] = soup_uri_to_string ((SoupURI *) uri, FALSE);
 
-        details[i++] = "Service ID";
+        details[i++] = _("Service ID");
         details[i++] = gupnp_service_info_get_id (info);
-        details[i++] = "Service URL";
+        details[i++] = _("Service URL");
         details[i++] = gupnp_service_info_get_scpd_url (info);
-        details[i++] = "Control URL";
+        details[i++] = _("Control URL");
         details[i++] = gupnp_service_info_get_control_url (info);
-        details[i++] = "Event Subscription URL";
+        details[i++] = _("Event Subscription URL");
         details[i++] = gupnp_service_info_get_event_subscription_url (info);
         details[i] = NULL;
 
@@ -342,45 +343,45 @@ show_device_details (GUPnPDeviceInfo *info)
         const char    *str;
         int            i = 0;
 
-        details[i++] = "Location";
+        details[i++] = _("Location");
         str = gupnp_device_info_get_location (info);
         if (str)
                 details[i++] = g_strdup (str);
 
-        details[i++] = "UDN";
+        details[i++] = _("UDN");
         str = gupnp_device_info_get_udn (info);
         if (str)
                 details[i++] = g_strdup (str);
 
-        details[i++] = "Type";
+        details[i++] = _("Type");
         str = gupnp_device_info_get_device_type (info);
         if (str)
                 details[i++] = g_strdup (str);
 
-        details[i++] = "Base URL";
+        details[i++] = _("Base URL");
         uri = gupnp_device_info_get_url_base (info);
         if (uri)
                 details[i++] = soup_uri_to_string ((SoupURI *) uri, FALSE);
 
-        details[i++] = "Friendly Name";
+        details[i++] = _("Friendly Name");
         details[i++] = gupnp_device_info_get_friendly_name (info);
-        details[i++] = "Manufacturer";
+        details[i++] = _("Manufacturer");
         details[i++] = gupnp_device_info_get_manufacturer (info);
-        details[i++] = "Manufacturer URL";
+        details[i++] = _("Manufacturer URL");
         details[i++] = gupnp_device_info_get_manufacturer_url (info);
-        details[i++] = "Model Description";
+        details[i++] = _("Model Description");
         details[i++] = gupnp_device_info_get_model_description (info);
-        details[i++] = "Model Name";
+        details[i++] = _("Model Name");
         details[i++] = gupnp_device_info_get_model_name (info);
-        details[i++] = "Model Number";
+        details[i++] = _("Model Number");
         details[i++] = gupnp_device_info_get_model_number (info);
-        details[i++] = "Model URL";
+        details[i++] = _("Model URL");
         details[i++] = gupnp_device_info_get_model_url (info);
-        details[i++] = "Serial Number";
+        details[i++] = _("Serial Number");
         details[i++] = gupnp_device_info_get_serial_number (info);
-        details[i++] = "UPC";
+        details[i++] = _("UPC");
         details[i++] = gupnp_device_info_get_upc (info);
-        details[i++] = "Presentation URL";
+        details[i++] = _("Presentation URL");
         details[i++] = gupnp_device_info_get_presentation_url (info);
         details[i] = NULL;
 
@@ -409,8 +410,8 @@ void
 setup_details_treeview (GtkBuilder *builder)
 {
         GtkTreeModel *model;
-        char         *headers[3] = { "Name",
-                                     "Value",
+        char         *headers[3] = { _("Name"),
+                                     _("Value"),
                                      NULL };
 
         treeview = GTK_WIDGET (gtk_builder_get_object (builder,

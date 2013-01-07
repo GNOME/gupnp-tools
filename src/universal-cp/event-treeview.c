@@ -23,6 +23,7 @@
 #include <config.h>
 
 #include <gmodule.h>
+#include <glib/gi18n.h>
 
 #include "event-treeview.h"
 #include "gui.h"
@@ -368,11 +369,11 @@ void
 setup_event_treeview (GtkBuilder *builder)
 {
         GtkTreeModel *model;
-        char         *headers[6] = {"Time",
-                                   "Device",
-                                   "Service",
-                                   "State Variable",
-                                   "Value",
+        char         *headers[6] = {_("Time"),
+                                   _("Device"),
+                                   _("Service"),
+                                   _("State Variable"),
+                                   _("Value"),
                                    NULL };
 
         treeview = GTK_WIDGET (gtk_builder_get_object (builder,

@@ -25,6 +25,7 @@
 #include <config.h>
 
 #include <gmodule.h>
+#include <glib/gi18n.h>
 
 #include "gui.h"
 #include "device-treeview.h"
@@ -710,7 +711,7 @@ on_action_complete (GUPnPServiceProxy       *proxy,
                                         GTK_DIALOG_MODAL,
                                         GTK_MESSAGE_ERROR,
                                         GTK_BUTTONS_CLOSE,
-                                        "Action failed.\n\nError %d: %s",
+                                        _("Action failed.\n\nError %d: %s"),
                                         error->code,
                                         error->message);
 

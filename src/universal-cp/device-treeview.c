@@ -23,6 +23,7 @@
 #include <config.h>
 
 #include <gmodule.h>
+#include <glib/gi18n.h>
 
 #include "gui.h"
 #include "icons.h"
@@ -30,10 +31,9 @@
 #include "details-treeview.h"
 #include "main.h"
 
-static const char *default_details[] = {
-        "Software", "GUPnP Universal Control Point",
-        "Version", VERSION,
-        "Author", "Zeeshan Ali (Khattak) <zeeshanak@gnome.org>", NULL};
+/* default details */
+#define SOFTWARE_INFO   N_("GUPnP Universal Control Point")
+#define AUTHOR_INFO     "Zeeshan Ali (Khattak) <zeeshanak@gnome.org>"
 
 static GtkWidget *treeview;
 static GtkWidget *popup;
@@ -42,6 +42,22 @@ static GtkWidget *action_menuitem;
 static GtkWidget *separator;
 
 static gboolean   expanded;
+
+static void
+show_default_details ()
+{
+        const char *details[32];
+        int         i = 0;
+
+        details[i++] = _("Software");
+        details[i++] = _(SOFTWARE_INFO);
+        details[i++] = _("Version");
+        details[i++] = VERSION;
+        details[i++] = _("Author");
+        details[i++] = AUTHOR_INFO;
+        details[i] = NULL;
+        update_details (details);
+}
 
 gboolean
 find_device (GtkTreeModel *model,
@@ -260,11 +276,11 @@ on_something_selected (GtkTreeSelection *selection,
                         gtk_tree_model_get (model, &iter, 4, &info, -1);
                         show_action_arg_details (info);
                 } else
-                        update_details (default_details);
+                        show_default_details ();
         }
 
         else
-                update_details (default_details);
+                show_default_details ();
 }
 
 void
@@ -440,7 +456,7 @@ append_state_variables (GUPnPServiceProxy *proxy,
                                            &variables_iter,
                                            service_iter, -1,
                                            0, get_icon_by_id (ICON_VARIABLES),
-                                           1, "State variables",
+                                           1, _("State variables"),
                                            5, ICON_VARIABLES,
                                            -1);
 
@@ -480,7 +496,7 @@ append_introspection (GUPnPServiceProxy         *proxy,
                 gtk_tree_store_insert_with_values (store,
                                  NULL, service_iter, -1,
                                  0, get_icon_by_id (ICON_MISSING),
-                                 1, "Information not available",
+                                 1, _("Information not available"),
                                  5, ICON_MISSING,
                                  -1);
 
@@ -657,7 +673,7 @@ create_device_treemodel (void)
 
         gtk_tree_store_insert_with_values (store, NULL, NULL, 0,
                                         0, get_icon_by_id (ICON_NETWORK),
-                                        1, "UPnP Network",
+                                        1, _("UPnP Network"),
                                         5, ICON_NETWORK,
                                         -1);
         return GTK_TREE_MODEL (store);
@@ -670,7 +686,7 @@ setup_device_treeview (GtkBuilder *builder)
         GtkTreeSelection  *selection;
         GtkCellRenderer   *renderer;
         GtkTreeViewColumn *column;
-        char              *headers[] = { "Device", NULL};
+        char              *headers[] = { _("Device"), NULL};
 
         treeview = GTK_WIDGET (gtk_builder_get_object (builder,
                                                        "device-treeview"));

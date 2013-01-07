@@ -403,7 +403,7 @@ Inspired by Intel Tools for UPnP.</property>
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="use_action_appearance">False</property>
-        <property name="label" translatable="yes">Expand all devices</property>
+        <property name="label" translatable="yes">_Expand all devices</property>
         <property name="use_underline">True</property>
         <signal name="activate" handler="on_expand_devices_activate" swapped="no"/>
       </object>
@@ -413,7 +413,7 @@ Inspired by Intel Tools for UPnP.</property>
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="use_action_appearance">False</property>
-        <property name="label" translatable="yes">Collapse all devices</property>
+        <property name="label" translatable="yes">_Collapse all devices</property>
         <property name="use_underline">True</property>
         <signal name="activate" handler="on_collapse_devices_activate" swapped="no"/>
       </object>
@@ -452,7 +452,7 @@ Inspired by Intel Tools for UPnP.</property>
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="use_action_appearance">False</property>
-        <property name="label" translatable="yes">Clear event log</property>
+        <property name="label" translatable="yes">_Clear event log</property>
         <property name="use_underline">True</property>
         <signal name="activate" handler="on_clear_event_log_activate" swapped="no"/>
       </object>
@@ -482,7 +482,7 @@ Inspired by Intel Tools for UPnP.</property>
                     <property name="can_focus">False</property>
                     <child>
                       <object class="GtkImageMenuItem" id="clear_event_log">
-                        <property name="label">Clear event log</property>
+                        <property name="label" translatable="yes">_Clear event log</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="use_action_appearance">False</property>
@@ -517,7 +517,7 @@ Inspired by Intel Tools for UPnP.</property>
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="use_action_appearance">False</property>
-                <property name="label" translatable="yes">View</property>
+                <property name="label" translatable="yes">_View</property>
                 <property name="use_underline">True</property>
                 <child type="submenu">
                   <object class="GtkMenu" id="view_menuitem_menu">
@@ -527,7 +527,7 @@ Inspired by Intel Tools for UPnP.</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="use_action_appearance">False</property>
-                        <property name="label" translatable="yes">Expand all devices</property>
+                        <property name="label" translatable="yes">_Expand all devices</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="on_expand_devices_activate" swapped="no"/>
                       </object>
@@ -537,7 +537,7 @@ Inspired by Intel Tools for UPnP.</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="use_action_appearance">False</property>
-                        <property name="label" translatable="yes">Collapse all devices</property>
+                        <property name="label" translatable="yes">_Collapse all devices</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="on_collapse_devices_activate" swapped="no"/>
                       </object>
@@ -553,7 +553,7 @@ Inspired by Intel Tools for UPnP.</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="use_action_appearance">False</property>
-                        <property name="label" translatable="yes">Event log</property>
+                        <property name="label" translatable="yes">Event _log</property>
                         <property name="use_underline">True</property>
                         <property name="active">True</property>
                         <signal name="activate" handler="on_event_log_activate" swapped="no"/>
