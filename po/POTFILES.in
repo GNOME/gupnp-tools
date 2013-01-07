@@ -2,6 +2,7 @@
 # Please keep this file sorted alphabetically.
 [encoding: UTF-8]
 data/gupnp-av-cp.desktop.in.in
+[type: gettext/glade]data/gupnp-av-cp.ui.in
 data/gupnp-network-light.desktop.in.in
 [type: gettext/glade]data/gupnp-network-light.ui
 data/gupnp-universal-cp.desktop.in.in
