@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: gupnp-tools master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gupnp-"
 "tools&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-01-02 21:15+0000\n"
-"PO-Revision-Date: 2013-01-02 23:09-0300\n"
+"POT-Creation-Date: 2013-01-07 15:08+0000\n"
+"PO-Revision-Date: 2013-01-07 20:35-0300\n"
 "Last-Translator: Enrico Nicoletto <liverig@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
 "Language: pt_BR\n"
@@ -17,19 +17,115 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 1.5.4\n"
 
-# GUPnP-AV is a collection of helpers for building AV (audio/video) applications using GUPnP. 
+# GUPnP-AV is a collection of helpers for building AV (audio/video) applications using GUPnP.
 #: ../data/gupnp-av-cp.desktop.in.in.h:1
 msgid "UPnP AV Control Point"
 msgstr "Ponto de controle áudio/vídeo (AV) UPnP"
 
+#: ../data/gupnp-av-cp.ui.in.h:1 ../data/gupnp-network-light.ui.h:1
+#: ../data/gupnp-universal-cp.ui.h:1
+msgid "Copyright (C) 2007 Zeeshan Ali (Khattak)"
+msgstr "Copyright (C) 2007 Zeeshan Ali (Khattak)"
+
+#: ../data/gupnp-av-cp.ui.in.h:2
+msgid ""
+"A UPNP AV Control Point based on GUPnP framework.\n"
+"Inspired by Intel Tools for UPnP."
+msgstr ""
+"Um ponto de controle UPNP áudio/vídeo (AV) baseado no framework GUPnP.\n"
+"Inspirado pelas ferramentas da Intel para UPnP."
+
+#: ../data/gupnp-av-cp.ui.in.h:4 ../data/gupnp-network-light.ui.h:4
+#: ../data/gupnp-universal-cp.ui.h:4
+msgid "GUPnP homepage"
+msgstr "Página inicial do GUPnP"
+
+#: ../data/gupnp-av-cp.ui.in.h:5 ../data/gupnp-network-light.ui.h:5
+#: ../data/gupnp-universal-cp.ui.h:5
+msgid "GPL"
+msgstr "GPL"
+
+#. TRANSLATORS: Replace this string with your names, one name per line.
+#: ../data/gupnp-av-cp.ui.in.h:7 ../data/gupnp-network-light.ui.h:7
+#: ../data/gupnp-universal-cp.ui.h:7
+msgid "translator-credits"
+msgstr "Enrico Nicoletto <liverig@gmail.com>, 2013."
+
+#: ../data/gupnp-av-cp.ui.in.h:8
+msgid "GUPnP AV CP - Metadata View"
+msgstr "Visualizador de metadados - GUPnP AV CP"
+
+# GUPnP-AV is a collection of helpers for building AV (audio/video) applications using GUPnP.
+#: ../data/gupnp-av-cp.ui.in.h:9
+msgid "GUPnP AV Control Point"
+msgstr "Ponto de controle áudio/vídeo (AV) UPnP"
+
+#: ../data/gupnp-av-cp.ui.in.h:10 ../data/gupnp-universal-cp.ui.h:25
+msgid "_File"
+msgstr "_Arquivo"
+
+#: ../data/gupnp-av-cp.ui.in.h:11
+msgid "_Tools"
+msgstr "_Ferramentas"
+
+#: ../data/gupnp-av-cp.ui.in.h:12
+msgid "_Lenient Mode"
+msgstr "Modo _condescendente"
+
+#: ../data/gupnp-av-cp.ui.in.h:13 ../data/gupnp-universal-cp.ui.h:28
+msgid "_Help"
+msgstr "A_juda"
+
+#: ../data/gupnp-av-cp.ui.in.h:14
+msgid "_Renderer: "
+msgstr "R_enderizador: "
+
+#: ../data/gupnp-av-cp.ui.in.h:15
+msgid ""
+"Clears the CP's idea of the state of the currently selected AV Renderer. "
+"Useful for dealing with AV Renderers that don't report state changes."
+msgstr ""
+"Apaga a concepção do ponto de controle a respeito do estado do renderizador "
+"áudio/vídeo atualmente selecionado. Útil para lidar com renderizadores AV "
+"que não informam mudanças de estado."
+
+#: ../data/gupnp-av-cp.ui.in.h:16
+msgid "_Clear state"
+msgstr "_Limpar estado"
+
+#: ../data/gupnp-av-cp.ui.in.h:17
+msgid "_Play"
+msgstr "_Reproduzir"
+
+#: ../data/gupnp-av-cp.ui.in.h:18
+msgid "P_ause"
+msgstr "_Pausar"
+
+#: ../data/gupnp-av-cp.ui.in.h:19
+msgid "_Stop"
+msgstr "P_arar"
+
+#: ../data/gupnp-av-cp.ui.in.h:20
+msgid "Pre_vious"
+msgstr "A_nterior"
+
+#: ../data/gupnp-av-cp.ui.in.h:21
+msgid "_Next"
+msgstr "P_róximo"
+
+#: ../data/gupnp-av-cp.ui.in.h:22
+msgid "Fetch the DIDL-Lite XML for this media object"
+msgstr "Traz o XML DIDL-Lite para este objeto de mídia"
+
+#: ../data/gupnp-av-cp.ui.in.h:23
+msgid "Fetch _DIDL-Lite"
+msgstr "Trazer _DIDL-Lite"
+
 #: ../data/gupnp-network-light.desktop.in.in.h:1
 msgid "UPnP Network Light"
 msgstr "Luz da rede UPnP"
-
-#: ../data/gupnp-network-light.ui.h:1 ../data/gupnp-universal-cp.ui.h:1
-msgid "Copyright (C) 2007 Zeeshan Ali (Khattak)"
-msgstr "Copyright (C) 2007 Zeeshan Ali (Khattak)"
 
 #: ../data/gupnp-network-light.ui.h:2
 msgid ""
@@ -39,40 +135,28 @@ msgstr ""
 "Uma lâmpada virtual de luz de rede baseado no framework GUPnP.\n"
 "Inspirado pelas ferramentas da Intel para UPnP."
 
-#: ../data/gupnp-network-light.ui.h:4 ../data/gupnp-universal-cp.ui.h:4
-msgid "GUPnP homepage"
-msgstr "Página inicial do GUPnP"
-
-#: ../data/gupnp-network-light.ui.h:5 ../data/gupnp-universal-cp.ui.h:5
-msgid "GPL"
-msgstr "GPL"
-
-#. TRANSLATORS: Replace this string with your names, one name per line.
-#: ../data/gupnp-network-light.ui.h:7 ../data/gupnp-universal-cp.ui.h:7
-msgid "translator-credits"
-msgstr "Enrico Nicoletto <liverig@gmail.com>, 2013."
-
 #: ../data/gupnp-network-light.ui.h:8
 msgid "GUPnP Network Light"
 msgstr "Luz da rede GUPnP"
 
 #: ../data/gupnp-network-light.ui.h:9
-msgid "On"
-msgstr "Ligado"
+msgctxt "network-light"
+msgid "_On"
+msgstr "_Ligado"
 
 #: ../data/gupnp-network-light.ui.h:11
 #, no-c-format
-msgid "increase luminance by 20%"
-msgstr "aumentar luminância em 20%"
+msgid "_Increase luminance by 20%"
+msgstr "_Aumentar luminância em 20%"
 
 #: ../data/gupnp-network-light.ui.h:13
 #, no-c-format
-msgid "decrease luminance by 20%"
-msgstr "diminuir luminância em 20%"
+msgid "_Decrease luminance by 20%"
+msgstr "_Diminuir luminância em 20%"
 
 #: ../data/gupnp-network-light.ui.h:14
-msgid "about"
-msgstr "sobre"
+msgid "_About"
+msgstr "_Sobre"
 
 #: ../data/gupnp-universal-cp.desktop.in.in.h:1
 msgid "UPnP Universal Control Point"
@@ -131,12 +215,12 @@ msgid "Subscribe to events"
 msgstr "Inscrever-se aos eventos"
 
 #: ../data/gupnp-universal-cp.ui.h:19
-msgid "Expand all devices"
-msgstr "Expandir todos os dispositivos"
+msgid "_Expand all devices"
+msgstr "_Expandir todos os dispositivos"
 
 #: ../data/gupnp-universal-cp.ui.h:20
-msgid "Collapse all devices"
-msgstr "Recolher todos os dispositivos"
+msgid "_Collapse all devices"
+msgstr "_Recolher todos os dispositivos"
 
 #: ../data/gupnp-universal-cp.ui.h:21
 msgid "Copy event"
@@ -147,25 +231,212 @@ msgid "Copy all events"
 msgstr "Copiar todos os eventos"
 
 #: ../data/gupnp-universal-cp.ui.h:23
-msgid "Clear event log"
-msgstr "Limpar registro de eventos"
+msgid "_Clear event log"
+msgstr "_Limpar registro de eventos"
 
-#: ../data/gupnp-universal-cp.ui.h:24
+#. default details
+#: ../data/gupnp-universal-cp.ui.h:24 ../src/universal-cp/device-treeview.c:35
 msgid "GUPnP Universal Control Point"
 msgstr "Ponto de controle universal GUPnP"
 
-#: ../data/gupnp-universal-cp.ui.h:25
-msgid "_File"
-msgstr "_Arquivo"
-
 #: ../data/gupnp-universal-cp.ui.h:26
-msgid "View"
-msgstr "Visualizar"
+msgid "_View"
+msgstr "_Visualizar"
 
 #: ../data/gupnp-universal-cp.ui.h:27
-msgid "Event log"
-msgstr "Registro de eventos"
+msgid "Event _log"
+msgstr "Re_gistro do evento"
 
-#: ../data/gupnp-universal-cp.ui.h:28
-msgid "_Help"
-msgstr "A_juda"
+#: ../src/universal-cp/action-dialog.c:714
+#, c-format
+msgid ""
+"Action failed.\n"
+"\n"
+"Error %d: %s"
+msgstr ""
+"A ação falhou.\n"
+"\n"
+"Erro %d: %s"
+
+#: ../src/universal-cp/details-treeview.c:180
+#: ../src/universal-cp/details-treeview.c:208
+#: ../src/universal-cp/details-treeview.c:234
+#: ../src/universal-cp/details-treeview.c:413
+msgid "Name"
+msgstr "Nome"
+
+#: ../src/universal-cp/details-treeview.c:182
+msgid "Direction"
+msgstr "Direção"
+
+#: ../src/universal-cp/details-treeview.c:187
+msgid "Related State Variable"
+msgstr "Variável de estado relacionada"
+
+#: ../src/universal-cp/details-treeview.c:189
+msgid "Is Return Value"
+msgstr "É valor de retorno"
+
+#: ../src/universal-cp/details-treeview.c:190
+#: ../src/universal-cp/details-treeview.c:237
+msgid "Yes"
+msgstr "Sim"
+
+#: ../src/universal-cp/details-treeview.c:190
+#: ../src/universal-cp/details-treeview.c:237
+msgid "No"
+msgstr "Não"
+
+#: ../src/universal-cp/details-treeview.c:210
+msgid "Number of Arguments"
+msgstr "Número de argumentos"
+
+#: ../src/universal-cp/details-treeview.c:236
+msgid "Send Events"
+msgstr "Enviar eventos"
+
+#: ../src/universal-cp/details-treeview.c:238
+msgid "GType"
+msgstr "GType"
+
+#: ../src/universal-cp/details-treeview.c:241
+msgid "Default Value"
+msgstr "Valor padrão"
+
+#: ../src/universal-cp/details-treeview.c:247
+msgid "Minimum"
+msgstr "Mínimo"
+
+#: ../src/universal-cp/details-treeview.c:251
+msgid "Maximum"
+msgstr "Máximo"
+
+#: ../src/universal-cp/details-treeview.c:255
+msgid "Step"
+msgstr "Passo"
+
+#: ../src/universal-cp/details-treeview.c:275
+msgid "Allowed Values"
+msgstr "Valores permitidos"
+
+#: ../src/universal-cp/details-treeview.c:299
+#: ../src/universal-cp/details-treeview.c:346
+msgid "Location"
+msgstr "Local"
+
+#: ../src/universal-cp/details-treeview.c:304
+#: ../src/universal-cp/details-treeview.c:351
+msgid "UDN"
+msgstr "UDN"
+
+#: ../src/universal-cp/details-treeview.c:309
+#: ../src/universal-cp/details-treeview.c:356
+msgid "Type"
+msgstr "Tipo"
+
+#: ../src/universal-cp/details-treeview.c:314
+#: ../src/universal-cp/details-treeview.c:361
+msgid "Base URL"
+msgstr "URL base"
+
+#: ../src/universal-cp/details-treeview.c:319
+msgid "Service ID"
+msgstr "ID do serviço"
+
+#: ../src/universal-cp/details-treeview.c:321
+msgid "Service URL"
+msgstr "URL do serviço"
+
+#: ../src/universal-cp/details-treeview.c:323
+msgid "Control URL"
+msgstr "URL de controle"
+
+#: ../src/universal-cp/details-treeview.c:325
+msgid "Event Subscription URL"
+msgstr "URL de inscrição do evento"
+
+#: ../src/universal-cp/details-treeview.c:366
+msgid "Friendly Name"
+msgstr "Nome amigável"
+
+#: ../src/universal-cp/details-treeview.c:368
+msgid "Manufacturer"
+msgstr "Fabricante"
+
+#: ../src/universal-cp/details-treeview.c:370
+msgid "Manufacturer URL"
+msgstr "URL do fabricante"
+
+#: ../src/universal-cp/details-treeview.c:372
+msgid "Model Description"
+msgstr "Descrição do modelo"
+
+#: ../src/universal-cp/details-treeview.c:374
+msgid "Model Name"
+msgstr "Nome do modelo"
+
+#: ../src/universal-cp/details-treeview.c:376
+msgid "Model Number"
+msgstr "Número do modelo"
+
+#: ../src/universal-cp/details-treeview.c:378
+msgid "Model URL"
+msgstr "URL do modelo"
+
+#: ../src/universal-cp/details-treeview.c:380
+msgid "Serial Number"
+msgstr "Número de série"
+
+#: ../src/universal-cp/details-treeview.c:382
+msgid "UPC"
+msgstr "UPC"
+
+#: ../src/universal-cp/details-treeview.c:384
+msgid "Presentation URL"
+msgstr "URL de apresentação"
+
+#: ../src/universal-cp/details-treeview.c:414
+#: ../src/universal-cp/event-treeview.c:376
+msgid "Value"
+msgstr "Valor"
+
+#: ../src/universal-cp/device-treeview.c:52
+msgid "Software"
+msgstr "Software"
+
+#: ../src/universal-cp/device-treeview.c:54
+msgid "Version"
+msgstr "Versão"
+
+#: ../src/universal-cp/device-treeview.c:56
+msgid "Author"
+msgstr "Autor"
+
+#: ../src/universal-cp/device-treeview.c:459
+msgid "State variables"
+msgstr "Variáveis de estado"
+
+#: ../src/universal-cp/device-treeview.c:499
+msgid "Information not available"
+msgstr "Informação não disponível"
+
+#: ../src/universal-cp/device-treeview.c:676
+msgid "UPnP Network"
+msgstr "Rede UPnP"
+
+#: ../src/universal-cp/device-treeview.c:689
+#: ../src/universal-cp/event-treeview.c:373
+msgid "Device"
+msgstr "Dispositivo"
+
+#: ../src/universal-cp/event-treeview.c:372
+msgid "Time"
+msgstr "Hora"
+
+#: ../src/universal-cp/event-treeview.c:374
+msgid "Service"
+msgstr "Serviço"
+
+#: ../src/universal-cp/event-treeview.c:375
+msgid "State Variable"
+msgstr "Variável de estado"
