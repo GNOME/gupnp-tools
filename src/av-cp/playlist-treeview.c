@@ -483,8 +483,11 @@ compare_container (GtkTreeModel *model,
                             4, &container_id,
                             5, &is_container, -1);
 
-        if (!is_container)
+        if (!is_container) {
+                g_free (container_id);
+
                 return found;
+        }
 
         if (container_id == NULL)
                 return found;
