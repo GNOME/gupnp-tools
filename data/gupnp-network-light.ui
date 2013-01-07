@@ -49,8 +49,18 @@ Inspired by Intel Tools for UPnP.</property>
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="use_action_appearance">False</property>
-        <property name="label" translatable="yes">On</property>
-        <property name="use_underline">True</property>
+        <child>
+          <object class="GtkLabel" id="light-status-menuitem-label">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="xalign">0</property>
+            <property name="label" translatable="yes" context="network-light">_On</property>
+            <property name="use_underline">True</property>
+            <attributes>
+              <attribute name="weight" value="bold"/>
+            </attributes>
+          </object>
+        </child>
         <signal name="activate" handler="on_light_status_menuitem_activate" swapped="no"/>
       </object>
     </child>
@@ -65,7 +75,7 @@ Inspired by Intel Tools for UPnP.</property>
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="use_action_appearance">False</property>
-        <property name="label" translatable="yes">increase luminance by 20%</property>
+        <property name="label" translatable="yes">_Increase luminance by 20%</property>
         <property name="use_underline">True</property>
         <signal name="activate" handler="on_increase_luminance_menuitem_activate" swapped="no"/>
       </object>
@@ -75,7 +85,7 @@ Inspired by Intel Tools for UPnP.</property>
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="use_action_appearance">False</property>
-        <property name="label" translatable="yes">decrease luminance by 20%</property>
+        <property name="label" translatable="yes">_Decrease luminance by 20%</property>
         <property name="use_underline">True</property>
         <signal name="activate" handler="on_decrease_luminance_menuitem_activate" swapped="no"/>
       </object>
@@ -91,7 +101,7 @@ Inspired by Intel Tools for UPnP.</property>
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="use_action_appearance">False</property>
-        <property name="label" translatable="yes">about</property>
+        <property name="label" translatable="yes">_About</property>
         <property name="use_underline">True</property>
         <signal name="activate" handler="on_about_menuitem_activate" swapped="no"/>
       </object>

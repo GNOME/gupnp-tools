@@ -108,23 +108,6 @@ on_decrease_luminance_menuitem_activate (GtkMenuItem *menuitem,
 }
 
 static void
-setup_popup ()
-{
-        GtkWidget *status_menuitem;
-        GtkWidget *label;
-
-        status_menuitem = GTK_WIDGET (gtk_builder_get_object (
-                                                builder,
-                                                "light-status-menuitem"));
-        g_assert (status_menuitem != NULL);
-
-        label = gtk_bin_get_child (GTK_BIN (status_menuitem));
-        g_assert (label != NULL);
-
-        gtk_label_set_markup (GTK_LABEL (label), "<b>On</b>");
-}
-
-static void
 prepare_popup ()
 {
         GtkWidget *status_menuitem;
@@ -246,7 +229,6 @@ init_ui (gint   *argc,
 
         gtk_builder_connect_signals (builder, NULL);
 
-        setup_popup ();
         update_image ();
 
         gtk_widget_show_all (main_window);
