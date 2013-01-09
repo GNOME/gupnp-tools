@@ -26,6 +26,7 @@
 #include "gui.h"
 #include <string.h>
 #include <stdlib.h>
+#include <locale.h>
 
 #include <gmodule.h>
 #include <glib/gi18n.h>
