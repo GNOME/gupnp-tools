@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gupnp-tools\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-02 02:44+0100\n"
-"PO-Revision-Date: 2013-01-02 02:45+0100\n"
+"POT-Creation-Date: 2013-01-12 18:43+0100\n"
+"PO-Revision-Date: 2013-01-12 18:44+0100\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <gnomepl@aviary.pl>\n"
 "Language: pl\n"
@@ -27,13 +27,109 @@ msgstr ""
 msgid "UPnP AV Control Point"
 msgstr "Punkt kontrolny UPnP AV"
 
+#: ../data/gupnp-av-cp.ui.in.h:1 ../data/gupnp-network-light.ui.h:1
+#: ../data/gupnp-universal-cp.ui.h:1
+msgid "Copyright (C) 2007 Zeeshan Ali (Khattak)"
+msgstr "Copyright (C) 2007 Zeeshan Ali (Khattak)"
+
+#: ../data/gupnp-av-cp.ui.in.h:2
+msgid ""
+"A UPNP AV Control Point based on GUPnP framework.\n"
+"Inspired by Intel Tools for UPnP."
+msgstr ""
+"Punkt kontrolny UPnP AV oparty na strukturze GUPnP.\n"
+"Zainspirowane przez oprogramowanie Intel Tools for UPnP."
+
+#: ../data/gupnp-av-cp.ui.in.h:4 ../data/gupnp-network-light.ui.h:4
+#: ../data/gupnp-universal-cp.ui.h:4
+msgid "GUPnP homepage"
+msgstr "Witryna GUPnP"
+
+#: ../data/gupnp-av-cp.ui.in.h:5 ../data/gupnp-network-light.ui.h:5
+#: ../data/gupnp-universal-cp.ui.h:5
+msgid "GPL"
+msgstr "GPL"
+
+#. TRANSLATORS: Replace this string with your names, one name per line.
+#: ../data/gupnp-av-cp.ui.in.h:7 ../data/gupnp-network-light.ui.h:7
+#: ../data/gupnp-universal-cp.ui.h:7
+msgid "translator-credits"
+msgstr ""
+"Piotr Drąg <piotrdrag@gmail.com>, 2012-2013\n"
+"Aviary.pl <gnomepl@aviary.pl>, 2012-2013"
+
+#: ../data/gupnp-av-cp.ui.in.h:8
+msgid "GUPnP AV CP - Metadata View"
+msgstr "GUPnP AV CP - widok metadanych"
+
+#: ../data/gupnp-av-cp.ui.in.h:9
+msgid "GUPnP AV Control Point"
+msgstr "Punkt kontrolny GUPnP AV"
+
+#: ../data/gupnp-av-cp.ui.in.h:10 ../data/gupnp-universal-cp.ui.h:25
+msgid "_File"
+msgstr "_Plik"
+
+#: ../data/gupnp-av-cp.ui.in.h:11
+msgid "_Tools"
+msgstr "_Narzędzia"
+
+#: ../data/gupnp-av-cp.ui.in.h:12
+msgid "_Lenient Mode"
+msgstr "_Tryb łagodny"
+
+#: ../data/gupnp-av-cp.ui.in.h:13 ../data/gupnp-universal-cp.ui.h:28
+msgid "_Help"
+msgstr "Pomo_c"
+
+#: ../data/gupnp-av-cp.ui.in.h:14
+msgid "_Renderer: "
+msgstr "_Mechanizm wyświetlający: "
+
+#: ../data/gupnp-av-cp.ui.in.h:15
+msgid ""
+"Clears the CP's idea of the state of the currently selected AV Renderer. "
+"Useful for dealing with AV Renderers that don't report state changes."
+msgstr ""
+"Czyści stan obecnie zaznaczonego mechanizmu wyświetlającego AV znany przez "
+"CP. Jest to przydatne podczas używania z mechanizmami AV, które nie "
+"zgłaszają zmian stanu."
+
+#: ../data/gupnp-av-cp.ui.in.h:16
+msgid "_Clear state"
+msgstr "Wy_czyść stan"
+
+#: ../data/gupnp-av-cp.ui.in.h:17
+msgid "_Play"
+msgstr "_Odtwórz"
+
+#: ../data/gupnp-av-cp.ui.in.h:18
+msgid "P_ause"
+msgstr "_Wstrzymaj"
+
+#: ../data/gupnp-av-cp.ui.in.h:19
+msgid "_Stop"
+msgstr "_Zatrzymaj"
+
+#: ../data/gupnp-av-cp.ui.in.h:20
+msgid "Pre_vious"
+msgstr "_Poprzedni"
+
+#: ../data/gupnp-av-cp.ui.in.h:21
+msgid "_Next"
+msgstr "_Następny"
+
+#: ../data/gupnp-av-cp.ui.in.h:22
+msgid "Fetch the DIDL-Lite XML for this media object"
+msgstr "Pobiera kod XML DIDL-Lite dla tego obiektu multimedialnego"
+
+#: ../data/gupnp-av-cp.ui.in.h:23
+msgid "Fetch _DIDL-Lite"
+msgstr "Pobierz _DIDL-Lite"
+
 #: ../data/gupnp-network-light.desktop.in.in.h:1
 msgid "UPnP Network Light"
 msgstr "Światło sieciowe UPnP"
-
-#: ../data/gupnp-network-light.ui.h:1 ../data/gupnp-universal-cp.ui.h:1
-msgid "Copyright (C) 2007 Zeeshan Ali (Khattak)"
-msgstr "Copyright (C) 2007 Zeeshan Ali (Khattak)"
 
 #: ../data/gupnp-network-light.ui.h:2
 msgid ""
@@ -43,42 +139,28 @@ msgstr ""
 "Wirtualna sieciowa żarówka oparta na strukturze GUPnP.\n"
 "Zainspirowane przez oprogramowanie Intel Tools for UPnP."
 
-#: ../data/gupnp-network-light.ui.h:4 ../data/gupnp-universal-cp.ui.h:4
-msgid "GUPnP homepage"
-msgstr "Witryna GUPnP"
-
-#: ../data/gupnp-network-light.ui.h:5 ../data/gupnp-universal-cp.ui.h:5
-msgid "GPL"
-msgstr "GPL"
-
-#. TRANSLATORS: Replace this string with your names, one name per line.
-#: ../data/gupnp-network-light.ui.h:7 ../data/gupnp-universal-cp.ui.h:7
-msgid "translator-credits"
-msgstr ""
-"Piotr Drąg <piotrdrag@gmail.com>, 2012-2013\n"
-"Aviary.pl <gnomepl@aviary.pl>, 2012-2013"
-
 #: ../data/gupnp-network-light.ui.h:8
 msgid "GUPnP Network Light"
 msgstr "Światło sieciowe GUPnP"
 
 #: ../data/gupnp-network-light.ui.h:9
-msgid "On"
-msgstr "Włączone"
+msgctxt "network-light"
+msgid "_On"
+msgstr "_Włączone"
 
 #: ../data/gupnp-network-light.ui.h:11
 #, no-c-format
-msgid "increase luminance by 20%"
-msgstr "zwiększ jasność o 20%"
+msgid "_Increase luminance by 20%"
+msgstr "_Zwiększ jasność o 20%"
 
 #: ../data/gupnp-network-light.ui.h:13
 #, no-c-format
-msgid "decrease luminance by 20%"
-msgstr "zmniejsz jasność o 20%"
+msgid "_Decrease luminance by 20%"
+msgstr "Z_mniejsz jasność o 20%"
 
 #: ../data/gupnp-network-light.ui.h:14
-msgid "about"
-msgstr "o programie"
+msgid "_About"
+msgstr "_O programie"
 
 #: ../data/gupnp-universal-cp.desktop.in.in.h:1
 msgid "UPnP Universal Control Point"
@@ -137,12 +219,12 @@ msgid "Subscribe to events"
 msgstr "Subskrybuj zdarzenia"
 
 #: ../data/gupnp-universal-cp.ui.h:19
-msgid "Expand all devices"
-msgstr "Rozwiń wszystkie urządzenia"
+msgid "_Expand all devices"
+msgstr "_Rozwiń wszystkie urządzenia"
 
 #: ../data/gupnp-universal-cp.ui.h:20
-msgid "Collapse all devices"
-msgstr "Zwiń wszystkie urządzenia"
+msgid "_Collapse all devices"
+msgstr "_Zwiń wszystkie urządzenia"
 
 #: ../data/gupnp-universal-cp.ui.h:21
 msgid "Copy event"
@@ -153,25 +235,212 @@ msgid "Copy all events"
 msgstr "Skopiuj wszystkie zdarzenia"
 
 #: ../data/gupnp-universal-cp.ui.h:23
-msgid "Clear event log"
-msgstr "Wyczyść dziennik zdarzeń"
+msgid "_Clear event log"
+msgstr "Wy_czyść dziennik zdarzeń"
 
-#: ../data/gupnp-universal-cp.ui.h:24
+#. default details
+#: ../data/gupnp-universal-cp.ui.h:24 ../src/universal-cp/device-treeview.c:35
 msgid "GUPnP Universal Control Point"
 msgstr "Uniwersalny punkt kontrolny GUPnP"
 
-#: ../data/gupnp-universal-cp.ui.h:25
-msgid "_File"
-msgstr "_Plik"
-
 #: ../data/gupnp-universal-cp.ui.h:26
-msgid "View"
-msgstr "Widok"
+msgid "_View"
+msgstr "_Widok"
 
 #: ../data/gupnp-universal-cp.ui.h:27
-msgid "Event log"
-msgstr "Dziennik zdarzeń"
+msgid "Event _log"
+msgstr "_Dziennik zdarzeń"
 
-#: ../data/gupnp-universal-cp.ui.h:28
-msgid "_Help"
-msgstr "Pomo_c"
+#: ../src/universal-cp/action-dialog.c:714
+#, c-format
+msgid ""
+"Action failed.\n"
+"\n"
+"Error %d: %s"
+msgstr ""
+"Działanie się nie powiodło.\n"
+"\n"
+"Błąd %d: %s"
+
+#: ../src/universal-cp/details-treeview.c:180
+#: ../src/universal-cp/details-treeview.c:208
+#: ../src/universal-cp/details-treeview.c:234
+#: ../src/universal-cp/details-treeview.c:413
+msgid "Name"
+msgstr "Nazwa"
+
+#: ../src/universal-cp/details-treeview.c:182
+msgid "Direction"
+msgstr "Kierunek"
+
+#: ../src/universal-cp/details-treeview.c:187
+msgid "Related State Variable"
+msgstr "Powiązana zmienna stanu"
+
+#: ../src/universal-cp/details-treeview.c:189
+msgid "Is Return Value"
+msgstr "Jest wartością zwrotną"
+
+#: ../src/universal-cp/details-treeview.c:190
+#: ../src/universal-cp/details-treeview.c:237
+msgid "Yes"
+msgstr "Tak"
+
+#: ../src/universal-cp/details-treeview.c:190
+#: ../src/universal-cp/details-treeview.c:237
+msgid "No"
+msgstr "Nie"
+
+#: ../src/universal-cp/details-treeview.c:210
+msgid "Number of Arguments"
+msgstr "Liczba parametrów"
+
+#: ../src/universal-cp/details-treeview.c:236
+msgid "Send Events"
+msgstr "Wyślij zdarzenia"
+
+#: ../src/universal-cp/details-treeview.c:238
+msgid "GType"
+msgstr "GType"
+
+#: ../src/universal-cp/details-treeview.c:241
+msgid "Default Value"
+msgstr "Domyślna wartość"
+
+#: ../src/universal-cp/details-treeview.c:247
+msgid "Minimum"
+msgstr "Minimalna"
+
+#: ../src/universal-cp/details-treeview.c:251
+msgid "Maximum"
+msgstr "Maksymalna"
+
+#: ../src/universal-cp/details-treeview.c:255
+msgid "Step"
+msgstr "Krok"
+
+#: ../src/universal-cp/details-treeview.c:275
+msgid "Allowed Values"
+msgstr "Dozwolone wartości"
+
+#: ../src/universal-cp/details-treeview.c:299
+#: ../src/universal-cp/details-treeview.c:346
+msgid "Location"
+msgstr "Położenie"
+
+#: ../src/universal-cp/details-treeview.c:304
+#: ../src/universal-cp/details-treeview.c:351
+msgid "UDN"
+msgstr "UDN"
+
+#: ../src/universal-cp/details-treeview.c:309
+#: ../src/universal-cp/details-treeview.c:356
+msgid "Type"
+msgstr "Typ"
+
+#: ../src/universal-cp/details-treeview.c:314
+#: ../src/universal-cp/details-treeview.c:361
+msgid "Base URL"
+msgstr "Podstawowy adres URL"
+
+#: ../src/universal-cp/details-treeview.c:319
+msgid "Service ID"
+msgstr "Identyfikator usługi"
+
+#: ../src/universal-cp/details-treeview.c:321
+msgid "Service URL"
+msgstr "Adres URL usługi"
+
+#: ../src/universal-cp/details-treeview.c:323
+msgid "Control URL"
+msgstr "Adres URL kontroli"
+
+#: ../src/universal-cp/details-treeview.c:325
+msgid "Event Subscription URL"
+msgstr "Adres URL subskrypcji zdarzeń"
+
+#: ../src/universal-cp/details-treeview.c:366
+msgid "Friendly Name"
+msgstr "Przyjazna nazwa"
+
+#: ../src/universal-cp/details-treeview.c:368
+msgid "Manufacturer"
+msgstr "Producent"
+
+#: ../src/universal-cp/details-treeview.c:370
+msgid "Manufacturer URL"
+msgstr "Adres URL producenta"
+
+#: ../src/universal-cp/details-treeview.c:372
+msgid "Model Description"
+msgstr "Opis modelu"
+
+#: ../src/universal-cp/details-treeview.c:374
+msgid "Model Name"
+msgstr "Nazwa modelu"
+
+#: ../src/universal-cp/details-treeview.c:376
+msgid "Model Number"
+msgstr "Numer modelu"
+
+#: ../src/universal-cp/details-treeview.c:378
+msgid "Model URL"
+msgstr "Adres URL modelu"
+
+#: ../src/universal-cp/details-treeview.c:380
+msgid "Serial Number"
+msgstr "Numer seryjny"
+
+#: ../src/universal-cp/details-treeview.c:382
+msgid "UPC"
+msgstr "UPC"
+
+#: ../src/universal-cp/details-treeview.c:384
+msgid "Presentation URL"
+msgstr "Adres URL prezentacji"
+
+#: ../src/universal-cp/details-treeview.c:414
+#: ../src/universal-cp/event-treeview.c:376
+msgid "Value"
+msgstr "Wartość"
+
+#: ../src/universal-cp/device-treeview.c:52
+msgid "Software"
+msgstr "Oprogramowanie"
+
+#: ../src/universal-cp/device-treeview.c:54
+msgid "Version"
+msgstr "Wersja"
+
+#: ../src/universal-cp/device-treeview.c:56
+msgid "Author"
+msgstr "Autor"
+
+#: ../src/universal-cp/device-treeview.c:459
+msgid "State variables"
+msgstr "Zmienne stanu"
+
+#: ../src/universal-cp/device-treeview.c:499
+msgid "Information not available"
+msgstr "Informacja jest niedostępna"
+
+#: ../src/universal-cp/device-treeview.c:676
+msgid "UPnP Network"
+msgstr "Sieć UPnP"
+
+#: ../src/universal-cp/device-treeview.c:689
+#: ../src/universal-cp/event-treeview.c:373
+msgid "Device"
+msgstr "Urządzenie"
+
+#: ../src/universal-cp/event-treeview.c:372
+msgid "Time"
+msgstr "Czas"
+
+#: ../src/universal-cp/event-treeview.c:374
+msgid "Service"
+msgstr "Usługa"
+
+#: ../src/universal-cp/event-treeview.c:375
+msgid "State Variable"
+msgstr "Zmienna stanu"
