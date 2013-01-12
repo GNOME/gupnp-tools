@@ -24,9 +24,7 @@
 #include <gmodule.h>
 
 #ifdef HAVE_GTK_SOURCEVIEW
-#include <gtksourceview/gtksourceview.h>
-#include <gtksourceview/gtksourcelanguagemanager.h>
-#include <gtksourceview/gtksourcelanguage.h>
+#include <gtksourceview/gtksource.h>
 #endif
 
 #include "playlist-treeview.h"
