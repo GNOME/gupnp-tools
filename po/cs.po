@@ -1,0 +1,441 @@
+# Czech translation for gupnp-tools.
+# Copyright (C) 2013 gupnp-tools's COPYRIGHT HOLDER
+# This file is distributed under the same license as the gupnp-tools package.
+#
+# Marek Černocký <marek@manet.cz>, 2013.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gupnp-tools master\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gupnp-"
+"tools&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2013-01-18 07:36+0000\n"
+"PO-Revision-Date: 2013-01-28 16:18+0100\n"
+"Last-Translator: Marek Černocký <marek@manet.cz>\n"
+"Language-Team: Czech <gnome-cs-list@gnome.org>\n"
+"Language: cs\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: Gtranslator 2.91.6\n"
+
+#: ../data/gupnp-av-cp.desktop.in.in.h:1
+msgid "UPnP AV Control Point"
+msgstr "Řídící bod UPnP AV"
+
+#: ../data/gupnp-av-cp.ui.in.h:1 ../data/gupnp-network-light.ui.h:1
+#: ../data/gupnp-universal-cp.ui.h:1
+msgid "Copyright (C) 2007 Zeeshan Ali (Khattak)"
+msgstr "Copyright © 2007 Zeeshan Ali (Khattak)"
+
+#: ../data/gupnp-av-cp.ui.in.h:2
+msgid ""
+"A UPNP AV Control Point based on GUPnP framework.\n"
+"Inspired by Intel Tools for UPnP."
+msgstr ""
+"Řídící bod UPnP AV založený na knihovně GUPnP.\n"
+"Inspirováno nástroji pro UPnP od firmy Intel."
+
+#: ../data/gupnp-av-cp.ui.in.h:4 ../data/gupnp-network-light.ui.h:4
+#: ../data/gupnp-universal-cp.ui.h:4
+msgid "GUPnP homepage"
+msgstr "Domovská stránka GUPnP"
+
+#: ../data/gupnp-av-cp.ui.in.h:5 ../data/gupnp-network-light.ui.h:5
+#: ../data/gupnp-universal-cp.ui.h:5
+msgid "GPL"
+msgstr "GPL"
+
+#. TRANSLATORS: Replace this string with your names, one name per line.
+#: ../data/gupnp-av-cp.ui.in.h:7 ../data/gupnp-network-light.ui.h:7
+#: ../data/gupnp-universal-cp.ui.h:7
+msgid "translator-credits"
+msgstr "Marek Černocký, <marek@manet.cz>"
+
+#: ../data/gupnp-av-cp.ui.in.h:8
+msgid "GUPnP AV CP - Metadata View"
+msgstr "GUPnP AV CP – zobrazení metadat"
+
+#: ../data/gupnp-av-cp.ui.in.h:9
+msgid "GUPnP AV Control Point"
+msgstr "Řídící bod GUPnP AV"
+
+#: ../data/gupnp-av-cp.ui.in.h:10 ../data/gupnp-universal-cp.ui.h:25
+msgid "_File"
+msgstr "_Soubor"
+
+#: ../data/gupnp-av-cp.ui.in.h:11
+msgid "_Tools"
+msgstr "Nás_troje"
+
+#: ../data/gupnp-av-cp.ui.in.h:12
+msgid "_Lenient Mode"
+msgstr "_Shovívavý režim"
+
+#: ../data/gupnp-av-cp.ui.in.h:13 ../data/gupnp-universal-cp.ui.h:28
+msgid "_Help"
+msgstr "_Nápověda"
+
+#: ../data/gupnp-av-cp.ui.in.h:14
+msgid "_Renderer: "
+msgstr "Vyk_reslovací zařízení: "
+
+#: ../data/gupnp-av-cp.ui.in.h:15
+msgid ""
+"Clears the CP's idea of the state of the currently selected AV Renderer. "
+"Useful for dealing with AV Renderers that don't report state changes."
+msgstr ""
+"Vymaže představu řídícího bodu o stavu aktuálně vybraného zařízení pro "
+"vykreslování AV. To je užitečné pro práci s vykreslovacími zařízeními AV, "
+"které neoznamují změny svého stavu."
+
+#: ../data/gupnp-av-cp.ui.in.h:16
+msgid "_Clear state"
+msgstr "_Vymazat stav"
+
+#: ../data/gupnp-av-cp.ui.in.h:17
+msgid "_Play"
+msgstr "_Přehrát"
+
+#: ../data/gupnp-av-cp.ui.in.h:18
+msgid "P_ause"
+msgstr "Poz_astavit"
+
+#: ../data/gupnp-av-cp.ui.in.h:19
+msgid "_Stop"
+msgstr "Za_stavit"
+
+#: ../data/gupnp-av-cp.ui.in.h:20
+msgid "Pre_vious"
+msgstr "Př_edchozí"
+
+#: ../data/gupnp-av-cp.ui.in.h:21
+msgid "_Next"
+msgstr "_Následující"
+
+#: ../data/gupnp-av-cp.ui.in.h:22
+msgid "Fetch the DIDL-Lite XML for this media object"
+msgstr "Získat DIDL-Lite XML pro tento multimediální objekt"
+
+#: ../data/gupnp-av-cp.ui.in.h:23
+msgid "Fetch _DIDL-Lite"
+msgstr "Získat _DIDL-Lite"
+
+#: ../data/gupnp-network-light.desktop.in.in.h:1
+msgid "UPnP Network Light"
+msgstr "Síťové světlo UPnP"
+
+#: ../data/gupnp-network-light.ui.h:2
+msgid ""
+"A virtual network light bulb based on GUPnP framework.\n"
+"Inspired by Intel Tools for UPnP."
+msgstr ""
+"Virtuální žárovka v síti založená na knihovně GUPnP.\n"
+"Inspirováno nástroji pro UPnP od firmy Intel."
+
+#: ../data/gupnp-network-light.ui.h:8
+msgid "GUPnP Network Light"
+msgstr "Síťové světlo GUPnP"
+
+#: ../data/gupnp-network-light.ui.h:9
+msgctxt "network-light"
+msgid "_On"
+msgstr "Zapn_out"
+
+#: ../data/gupnp-network-light.ui.h:11
+#, no-c-format
+msgid "_Increase luminance by 20%"
+msgstr "Zvýš_it jas o 20 %"
+
+#: ../data/gupnp-network-light.ui.h:13
+#, no-c-format
+msgid "_Decrease luminance by 20%"
+msgstr "Sníži_t jas o 20 %"
+
+#: ../data/gupnp-network-light.ui.h:14
+msgid "_About"
+msgstr "O _aplikaci"
+
+#: ../data/gupnp-universal-cp.desktop.in.in.h:1
+msgid "UPnP Universal Control Point"
+msgstr "Univerzální řídící bod UPnP"
+
+#: ../data/gupnp-universal-cp.ui.h:2
+msgid ""
+"A Generic Control Point based on GUPnP framework.\n"
+"Inspired by Intel Tools for UPnP."
+msgstr ""
+"Obecný řídící bod založený na knihovně GUPnP.\n"
+"Inspirováno nástroji pro UPnP od firmy Intel."
+
+#: ../data/gupnp-universal-cp.ui.h:8
+msgid "Action Invocation"
+msgstr "Vyvolání činnosti"
+
+#: ../data/gupnp-universal-cp.ui.h:9
+msgid "action"
+msgstr "činnost"
+
+#: ../data/gupnp-universal-cp.ui.h:10
+msgid "service"
+msgstr "služba"
+
+#: ../data/gupnp-universal-cp.ui.h:11
+msgid "device"
+msgstr "zařízení"
+
+#: ../data/gupnp-universal-cp.ui.h:12
+msgid "_Invoke"
+msgstr "_Vyvolat"
+
+#: ../data/gupnp-universal-cp.ui.h:13
+msgid "<b>'in' arguments</b>"
+msgstr "<b>„vstupní“ parametry</b>"
+
+#: ../data/gupnp-universal-cp.ui.h:14
+msgid "<b>'out' arguments</b>"
+msgstr "<b>„výstupní“ parametry</b>"
+
+#: ../data/gupnp-universal-cp.ui.h:15
+msgid "Copy value"
+msgstr "Kopírovat hodnotu"
+
+#: ../data/gupnp-universal-cp.ui.h:16
+msgid "Copy all details"
+msgstr "Kopírovat všechny podrobnosti"
+
+#: ../data/gupnp-universal-cp.ui.h:17
+msgid "Invoke"
+msgstr "Vyvolat"
+
+#: ../data/gupnp-universal-cp.ui.h:18
+msgid "Subscribe to events"
+msgstr "Odebírat události"
+
+#: ../data/gupnp-universal-cp.ui.h:19
+msgid "_Expand all devices"
+msgstr "Rozbalit vš_echna zařízení"
+
+#: ../data/gupnp-universal-cp.ui.h:20
+msgid "_Collapse all devices"
+msgstr "S_balit všechna zařízení"
+
+#: ../data/gupnp-universal-cp.ui.h:21
+msgid "Copy event"
+msgstr "Kopírovat událost"
+
+#: ../data/gupnp-universal-cp.ui.h:22
+msgid "Copy all events"
+msgstr "Kopírovat všechny události"
+
+#: ../data/gupnp-universal-cp.ui.h:23
+msgid "_Clear event log"
+msgstr "_Vymazat protokol událostí"
+
+#. default details
+#: ../data/gupnp-universal-cp.ui.h:24 ../src/universal-cp/device-treeview.c:35
+msgid "GUPnP Universal Control Point"
+msgstr "Univerzální řídící bod GUPnP"
+
+#: ../data/gupnp-universal-cp.ui.h:26
+msgid "_View"
+msgstr "_Zobrazit"
+
+#: ../data/gupnp-universal-cp.ui.h:27
+msgid "Event _log"
+msgstr "Protokol udá_lostí"
+
+#: ../src/universal-cp/action-dialog.c:714
+#, c-format
+msgid ""
+"Action failed.\n"
+"\n"
+"Error %d: %s"
+msgstr ""
+"Činnost selhala.\n"
+"\n"
+"Chyba %d: %s"
+
+#: ../src/universal-cp/details-treeview.c:180
+#: ../src/universal-cp/details-treeview.c:208
+#: ../src/universal-cp/details-treeview.c:234
+#: ../src/universal-cp/details-treeview.c:413
+msgid "Name"
+msgstr "Název"
+
+#: ../src/universal-cp/details-treeview.c:182
+msgid "Direction"
+msgstr "Směr"
+
+#: ../src/universal-cp/details-treeview.c:187
+msgid "Related State Variable"
+msgstr "Příslušná stavová proměnná"
+
+#: ../src/universal-cp/details-treeview.c:189
+msgid "Is Return Value"
+msgstr "Je návratovou hodnotou"
+
+#: ../src/universal-cp/details-treeview.c:190
+#: ../src/universal-cp/details-treeview.c:237
+msgid "Yes"
+msgstr "Ano"
+
+#: ../src/universal-cp/details-treeview.c:190
+#: ../src/universal-cp/details-treeview.c:237
+msgid "No"
+msgstr "Ne"
+
+#: ../src/universal-cp/details-treeview.c:210
+msgid "Number of Arguments"
+msgstr "Počet parametrů"
+
+#: ../src/universal-cp/details-treeview.c:236
+msgid "Send Events"
+msgstr "Posílat události"
+
+#: ../src/universal-cp/details-treeview.c:238
+msgid "GType"
+msgstr "GType"
+
+#: ../src/universal-cp/details-treeview.c:241
+msgid "Default Value"
+msgstr "Výchozí hodnota"
+
+#: ../src/universal-cp/details-treeview.c:247
+msgid "Minimum"
+msgstr "Minimum"
+
+#: ../src/universal-cp/details-treeview.c:251
+msgid "Maximum"
+msgstr "Maximum"
+
+#: ../src/universal-cp/details-treeview.c:255
+msgid "Step"
+msgstr "Krok"
+
+#: ../src/universal-cp/details-treeview.c:275
+msgid "Allowed Values"
+msgstr "Dovolené hodnoty"
+
+#: ../src/universal-cp/details-treeview.c:299
+#: ../src/universal-cp/details-treeview.c:346
+msgid "Location"
+msgstr "Umístění"
+
+#: ../src/universal-cp/details-treeview.c:304
+#: ../src/universal-cp/details-treeview.c:351
+msgid "UDN"
+msgstr "UDN"
+
+#: ../src/universal-cp/details-treeview.c:309
+#: ../src/universal-cp/details-treeview.c:356
+msgid "Type"
+msgstr "Typ"
+
+#: ../src/universal-cp/details-treeview.c:314
+#: ../src/universal-cp/details-treeview.c:361
+msgid "Base URL"
+msgstr "Základní adresa URL"
+
+#: ../src/universal-cp/details-treeview.c:319
+msgid "Service ID"
+msgstr "ID služby"
+
+#: ../src/universal-cp/details-treeview.c:321
+msgid "Service URL"
+msgstr "Adresa URL služby"
+
+#: ../src/universal-cp/details-treeview.c:323
+msgid "Control URL"
+msgstr "Adresa URL řízení"
+
+#: ../src/universal-cp/details-treeview.c:325
+msgid "Event Subscription URL"
+msgstr "Adresa URL odběru událostí"
+
+#: ../src/universal-cp/details-treeview.c:366
+msgid "Friendly Name"
+msgstr "Přátelský název"
+
+#: ../src/universal-cp/details-treeview.c:368
+msgid "Manufacturer"
+msgstr "Výrobce"
+
+#: ../src/universal-cp/details-treeview.c:370
+msgid "Manufacturer URL"
+msgstr "Adresa URL výrobce"
+
+#: ../src/universal-cp/details-treeview.c:372
+msgid "Model Description"
+msgstr "Popis modelu"
+
+#: ../src/universal-cp/details-treeview.c:374
+msgid "Model Name"
+msgstr "Název modelu"
+
+#: ../src/universal-cp/details-treeview.c:376
+msgid "Model Number"
+msgstr "Číslo modelu"
+
+#: ../src/universal-cp/details-treeview.c:378
+msgid "Model URL"
+msgstr "Adresa URL modelu"
+
+#: ../src/universal-cp/details-treeview.c:380
+msgid "Serial Number"
+msgstr "Sériové číslo"
+
+#: ../src/universal-cp/details-treeview.c:382
+msgid "UPC"
+msgstr "UPC"
+
+#: ../src/universal-cp/details-treeview.c:384
+msgid "Presentation URL"
+msgstr "Adresa URL prezentace"
+
+#: ../src/universal-cp/details-treeview.c:414
+#: ../src/universal-cp/event-treeview.c:376
+msgid "Value"
+msgstr "Hodnota"
+
+#: ../src/universal-cp/device-treeview.c:52
+msgid "Software"
+msgstr "Software"
+
+#: ../src/universal-cp/device-treeview.c:54
+msgid "Version"
+msgstr "Verze"
+
+#: ../src/universal-cp/device-treeview.c:56
+msgid "Author"
+msgstr "Autor"
+
+#: ../src/universal-cp/device-treeview.c:459
+msgid "State variables"
+msgstr "Stavové proměnné"
+
+#: ../src/universal-cp/device-treeview.c:499
+msgid "Information not available"
+msgstr "Informace není dostupná"
+
+#: ../src/universal-cp/device-treeview.c:676
+msgid "UPnP Network"
+msgstr "Síť UPnP"
+
+#: ../src/universal-cp/device-treeview.c:689
+#: ../src/universal-cp/event-treeview.c:373
+msgid "Device"
+msgstr "Zařízení"
+
+#: ../src/universal-cp/event-treeview.c:372
+msgid "Time"
+msgstr "Čas"
+
+#: ../src/universal-cp/event-treeview.c:374
+msgid "Service"
+msgstr "Služba"
+
+#: ../src/universal-cp/event-treeview.c:375
+msgid "State Variable"
+msgstr "Stavová proměnná"
