@@ -1,0 +1,433 @@
+# Japanese translation for gupnp-tools.
+# Copyright (C) 2013 gupnp-tools's COPYRIGHT HOLDER
+# This file is distributed under the same license as the gupnp-tools package.
+# Kentaro KAZUHAMA <kazken3@gmail.com>, 2013.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gupnp-tools master\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gupnp-tools&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2013-01-28 17:04+0000\n"
+"PO-Revision-Date: 2013-02-07 03:22+0900\n"
+"Last-Translator: Kentaro KAZUHAMA <kazken3@gmail.com>\n"
+"Language-Team: Japanese <gnome-translation@gnome.gr.jp>\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: ../data/gupnp-av-cp.desktop.in.in.h:1
+msgid "UPnP AV Control Point"
+msgstr "UPnP AVコントロールポイント"
+
+#: ../data/gupnp-av-cp.ui.in.h:1 ../data/gupnp-network-light.ui.h:1
+#: ../data/gupnp-universal-cp.ui.h:1
+msgid "Copyright (C) 2007 Zeeshan Ali (Khattak)"
+msgstr "Copyright (C) 2007 Zeeshan Ali (Khattak)"
+
+#: ../data/gupnp-av-cp.ui.in.h:2
+msgid ""
+"A UPNP AV Control Point based on GUPnP framework.\n"
+"Inspired by Intel Tools for UPnP."
+msgstr ""
+"GUPnPフレームワークをベースとしたUPNP AVコントロールポイントです。\n"
+"IntelのUPnPツールからインスピレーションを受けました。"
+
+#: ../data/gupnp-av-cp.ui.in.h:4 ../data/gupnp-network-light.ui.h:4
+#: ../data/gupnp-universal-cp.ui.h:4
+msgid "GUPnP homepage"
+msgstr "GUPnPのウェブサイト"
+
+#: ../data/gupnp-av-cp.ui.in.h:5 ../data/gupnp-network-light.ui.h:5
+#: ../data/gupnp-universal-cp.ui.h:5
+msgid "GPL"
+msgstr "GPL"
+
+#. TRANSLATORS: Replace this string with your names, one name per line.
+#: ../data/gupnp-av-cp.ui.in.h:7 ../data/gupnp-network-light.ui.h:7
+#: ../data/gupnp-universal-cp.ui.h:7
+msgid "translator-credits"
+msgstr "Kentaro KAZUHAMA <kazken3@gmail.com>, 2013."
+
+#: ../data/gupnp-av-cp.ui.in.h:8
+msgid "GUPnP AV CP - Metadata View"
+msgstr "GUPnP AV CP - メタデータ表示"
+
+#: ../data/gupnp-av-cp.ui.in.h:9
+msgid "GUPnP AV Control Point"
+msgstr "GUPnP AVコントロールポイント"
+
+#: ../data/gupnp-av-cp.ui.in.h:10 ../data/gupnp-universal-cp.ui.h:25
+msgid "_File"
+msgstr "ファイル(_F)"
+
+#: ../data/gupnp-av-cp.ui.in.h:11
+msgid "_Tools"
+msgstr "ツール(_T)"
+
+#: ../data/gupnp-av-cp.ui.in.h:12
+msgid "_Lenient Mode"
+msgstr "寛大モード(_L)"
+
+#: ../data/gupnp-av-cp.ui.in.h:13 ../data/gupnp-universal-cp.ui.h:28
+msgid "_Help"
+msgstr "ヘルプ(_H)"
+
+#: ../data/gupnp-av-cp.ui.in.h:14
+msgid "_Renderer: "
+msgstr "レンダラー(_R): "
+
+#: ../data/gupnp-av-cp.ui.in.h:15
+msgid "Clears the CP's idea of the state of the currently selected AV Renderer. Useful for dealing with AV Renderers that don't report state changes."
+msgstr "現在選択しているAVレンダラーの状態をコントロールポイントの記録から消去します。状態変更を報告しないAVレンダラーの処理に役立ちます。"
+
+#: ../data/gupnp-av-cp.ui.in.h:16
+msgid "_Clear state"
+msgstr "状態を消去(_C)"
+
+#: ../data/gupnp-av-cp.ui.in.h:17
+msgid "_Play"
+msgstr "再生(_P)"
+
+#: ../data/gupnp-av-cp.ui.in.h:18
+msgid "P_ause"
+msgstr "一時停止(_A)"
+
+#: ../data/gupnp-av-cp.ui.in.h:19
+msgid "_Stop"
+msgstr "停止(_S)"
+
+#: ../data/gupnp-av-cp.ui.in.h:20
+msgid "Pre_vious"
+msgstr "戻る(_V)"
+
+#: ../data/gupnp-av-cp.ui.in.h:21
+msgid "_Next"
+msgstr "進む(_N)"
+
+#: ../data/gupnp-av-cp.ui.in.h:22
+msgid "Fetch the DIDL-Lite XML for this media object"
+msgstr "このメディアオブジェクトのDIDL-Lite XMLを取得"
+
+#: ../data/gupnp-av-cp.ui.in.h:23
+msgid "Fetch _DIDL-Lite"
+msgstr "DIDL-Liteを取得(_D)"
+
+#: ../data/gupnp-network-light.desktop.in.in.h:1
+msgid "UPnP Network Light"
+msgstr "UPnPネットワークライト"
+
+#: ../data/gupnp-network-light.ui.h:2
+msgid ""
+"A virtual network light bulb based on GUPnP framework.\n"
+"Inspired by Intel Tools for UPnP."
+msgstr ""
+"GUPnPフレームワークをベースとした仮想的なネットワークライトです。\n"
+"IntelのUPnPツールからインスピレーションを受けました。"
+
+#: ../data/gupnp-network-light.ui.h:8
+msgid "GUPnP Network Light"
+msgstr "GUPnPネットワークライト"
+
+#: ../data/gupnp-network-light.ui.h:9
+msgctxt "network-light"
+msgid "_On"
+msgstr "オン(_O)"
+
+#: ../data/gupnp-network-light.ui.h:11
+#, no-c-format
+msgid "_Increase luminance by 20%"
+msgstr "輝度を20%上げる(_I)"
+
+#: ../data/gupnp-network-light.ui.h:13
+#, no-c-format
+msgid "_Decrease luminance by 20%"
+msgstr "輝度を20%下げる(_D)"
+
+#: ../data/gupnp-network-light.ui.h:14
+msgid "_About"
+msgstr "このアプリケーションについて(_A)"
+
+#: ../data/gupnp-universal-cp.desktop.in.in.h:1
+msgid "UPnP Universal Control Point"
+msgstr "UPnPユニバーサルコントロールポイント"
+
+#: ../data/gupnp-universal-cp.ui.h:2
+msgid ""
+"A Generic Control Point based on GUPnP framework.\n"
+"Inspired by Intel Tools for UPnP."
+msgstr ""
+"GUPnPフレームワークをベースとした一般的なコントロールポイントです。\n"
+"IntelのUPnPツールからインスピレーションを受けました。"
+
+#: ../data/gupnp-universal-cp.ui.h:8
+msgid "Action Invocation"
+msgstr "アクションインボケーション"
+
+#: ../data/gupnp-universal-cp.ui.h:9
+msgid "action"
+msgstr "アクション"
+
+#: ../data/gupnp-universal-cp.ui.h:10
+msgid "service"
+msgstr "サービス"
+
+#: ../data/gupnp-universal-cp.ui.h:11
+msgid "device"
+msgstr "デバイス"
+
+#: ../data/gupnp-universal-cp.ui.h:12
+msgid "_Invoke"
+msgstr "インボーク(_I)"
+
+#: ../data/gupnp-universal-cp.ui.h:13
+msgid "<b>'in' arguments</b>"
+msgstr "<b>'入力'引数</b>"
+
+#: ../data/gupnp-universal-cp.ui.h:14
+msgid "<b>'out' arguments</b>"
+msgstr "<b>'出力'引数</b>"
+
+#: ../data/gupnp-universal-cp.ui.h:15
+msgid "Copy value"
+msgstr "値をコピー"
+
+#: ../data/gupnp-universal-cp.ui.h:16
+msgid "Copy all details"
+msgstr "すべての詳細をコピー"
+
+#: ../data/gupnp-universal-cp.ui.h:17
+msgid "Invoke"
+msgstr "インボーク"
+
+#: ../data/gupnp-universal-cp.ui.h:18
+msgid "Subscribe to events"
+msgstr "イベントを購読"
+
+#: ../data/gupnp-universal-cp.ui.h:19
+msgid "_Expand all devices"
+msgstr "すべてのデバイスを開く(_E)"
+
+#: ../data/gupnp-universal-cp.ui.h:20
+msgid "_Collapse all devices"
+msgstr "すべてのデバイスを閉じる(_C)"
+
+#: ../data/gupnp-universal-cp.ui.h:21
+msgid "Copy event"
+msgstr "イベントをコピー"
+
+#: ../data/gupnp-universal-cp.ui.h:22
+msgid "Copy all events"
+msgstr "すべてのイベントをコピー"
+
+#: ../data/gupnp-universal-cp.ui.h:23
+msgid "_Clear event log"
+msgstr "イベントログを消去(_C)"
+
+#. default details
+#: ../data/gupnp-universal-cp.ui.h:24 ../src/universal-cp/device-treeview.c:35
+msgid "GUPnP Universal Control Point"
+msgstr "GUPnPユニバーサルコントロールポイント"
+
+#: ../data/gupnp-universal-cp.ui.h:26
+msgid "_View"
+msgstr "表示(_V)"
+
+#: ../data/gupnp-universal-cp.ui.h:27
+msgid "Event _log"
+msgstr "イベントログ(_L)"
+
+#: ../src/universal-cp/action-dialog.c:714
+#, c-format
+msgid ""
+"Action failed.\n"
+"\n"
+"Error %d: %s"
+msgstr ""
+"アクションに失敗しました。\n"
+"\n"
+"エラー %d: %s"
+
+#: ../src/universal-cp/details-treeview.c:180
+#: ../src/universal-cp/details-treeview.c:208
+#: ../src/universal-cp/details-treeview.c:234
+#: ../src/universal-cp/details-treeview.c:413
+msgid "Name"
+msgstr "名前"
+
+#: ../src/universal-cp/details-treeview.c:182
+msgid "Direction"
+msgstr "方向"
+
+#: ../src/universal-cp/details-treeview.c:187
+msgid "Related State Variable"
+msgstr "関連する状態変数"
+
+#: ../src/universal-cp/details-treeview.c:189
+msgid "Is Return Value"
+msgstr "Is Return Value"
+
+#: ../src/universal-cp/details-treeview.c:190
+#: ../src/universal-cp/details-treeview.c:237
+msgid "Yes"
+msgstr "Yes"
+
+#: ../src/universal-cp/details-treeview.c:190
+#: ../src/universal-cp/details-treeview.c:237
+msgid "No"
+msgstr "No"
+
+#: ../src/universal-cp/details-treeview.c:210
+msgid "Number of Arguments"
+msgstr "引数の数"
+
+#: ../src/universal-cp/details-treeview.c:236
+msgid "Send Events"
+msgstr "送信イベント"
+
+#: ../src/universal-cp/details-treeview.c:238
+msgid "GType"
+msgstr "GType"
+
+#: ../src/universal-cp/details-treeview.c:241
+msgid "Default Value"
+msgstr "デフォルト値"
+
+#: ../src/universal-cp/details-treeview.c:247
+msgid "Minimum"
+msgstr "最小値"
+
+#: ../src/universal-cp/details-treeview.c:251
+msgid "Maximum"
+msgstr "最大値"
+
+#: ../src/universal-cp/details-treeview.c:255
+msgid "Step"
+msgstr "ステップ"
+
+#: ../src/universal-cp/details-treeview.c:275
+msgid "Allowed Values"
+msgstr "許可された値"
+
+#: ../src/universal-cp/details-treeview.c:299
+#: ../src/universal-cp/details-treeview.c:346
+msgid "Location"
+msgstr "場所"
+
+#: ../src/universal-cp/details-treeview.c:304
+#: ../src/universal-cp/details-treeview.c:351
+msgid "UDN"
+msgstr "UDN"
+
+#: ../src/universal-cp/details-treeview.c:309
+#: ../src/universal-cp/details-treeview.c:356
+msgid "Type"
+msgstr "タイプ"
+
+#: ../src/universal-cp/details-treeview.c:314
+#: ../src/universal-cp/details-treeview.c:361
+msgid "Base URL"
+msgstr "ベースURL"
+
+#: ../src/universal-cp/details-treeview.c:319
+msgid "Service ID"
+msgstr "サービスID"
+
+#: ../src/universal-cp/details-treeview.c:321
+msgid "Service URL"
+msgstr "サービスURL"
+
+#: ../src/universal-cp/details-treeview.c:323
+msgid "Control URL"
+msgstr "コントロールURL"
+
+#: ../src/universal-cp/details-treeview.c:325
+msgid "Event Subscription URL"
+msgstr "イベント購読URL"
+
+#: ../src/universal-cp/details-treeview.c:366
+msgid "Friendly Name"
+msgstr "フレンドリ名"
+
+#: ../src/universal-cp/details-treeview.c:368
+msgid "Manufacturer"
+msgstr "製造者"
+
+#: ../src/universal-cp/details-treeview.c:370
+msgid "Manufacturer URL"
+msgstr "製造者URL"
+
+#: ../src/universal-cp/details-treeview.c:372
+msgid "Model Description"
+msgstr "モデルの説明"
+
+#: ../src/universal-cp/details-treeview.c:374
+msgid "Model Name"
+msgstr "モデル名"
+
+#: ../src/universal-cp/details-treeview.c:376
+msgid "Model Number"
+msgstr "モデル番号"
+
+#: ../src/universal-cp/details-treeview.c:378
+msgid "Model URL"
+msgstr "モデルURL"
+
+#: ../src/universal-cp/details-treeview.c:380
+msgid "Serial Number"
+msgstr "シリアル番号"
+
+#: ../src/universal-cp/details-treeview.c:382
+msgid "UPC"
+msgstr "UPC"
+
+#: ../src/universal-cp/details-treeview.c:384
+msgid "Presentation URL"
+msgstr "プレゼンテーションURL"
+
+#: ../src/universal-cp/details-treeview.c:414
+#: ../src/universal-cp/event-treeview.c:376
+msgid "Value"
+msgstr "値"
+
+#: ../src/universal-cp/device-treeview.c:52
+msgid "Software"
+msgstr "ソフトウェア"
+
+#: ../src/universal-cp/device-treeview.c:54
+msgid "Version"
+msgstr "バージョン"
+
+#: ../src/universal-cp/device-treeview.c:56
+msgid "Author"
+msgstr "作者"
+
+#: ../src/universal-cp/device-treeview.c:459
+msgid "State variables"
+msgstr "状態変数"
+
+#: ../src/universal-cp/device-treeview.c:499
+msgid "Information not available"
+msgstr "情報が利用できません"
+
+#: ../src/universal-cp/device-treeview.c:676
+msgid "UPnP Network"
+msgstr "UPnPネットワーク"
+
+#: ../src/universal-cp/device-treeview.c:689
+#: ../src/universal-cp/event-treeview.c:373
+msgid "Device"
+msgstr "デバイス"
+
+#: ../src/universal-cp/event-treeview.c:372
+msgid "Time"
+msgstr "時間"
+
+#: ../src/universal-cp/event-treeview.c:374
+msgid "Service"
+msgstr "サービス"
+
+#: ../src/universal-cp/event-treeview.c:375
+msgid "State Variable"
+msgstr "状態変数"
