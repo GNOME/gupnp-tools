@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: gupnp-tools master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gupnp-"
 "tools&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-01-07 15:08+0000\n"
-"PO-Revision-Date: 2013-01-08 20:53+0200\n"
+"POT-Creation-Date: 2013-02-20 10:46+0000\n"
+"PO-Revision-Date: 2013-02-20 20:19+0200\n"
 "Last-Translator: Мирослав Николић <miroslavnikolic@rocketmail.com>\n"
 "Language-Team: Serbian <gnom@prevod.org>\n"
 "Language: sr\n"
@@ -29,9 +29,6 @@ msgid "Copyright (C) 2007 Zeeshan Ali (Khattak)"
 msgstr "Ауторска права (C) 2007 Зишан Али (Khattak)"
 
 #: ../data/gupnp-av-cp.ui.in.h:2
-#| msgid ""
-#| "A Generic Control Point based on GUPnP framework.\n"
-#| "Inspired by Intel Tools for UPnP."
 msgid ""
 "A UPNP AV Control Point based on GUPnP framework.\n"
 "Inspired by Intel Tools for UPnP."
@@ -63,7 +60,6 @@ msgid "GUPnP AV CP - Metadata View"
 msgstr "ГУПнП АВ ЦП — Преглед метаподатака"
 
 #: ../data/gupnp-av-cp.ui.in.h:9
-#| msgid "UPnP AV Control Point"
 msgid "GUPnP AV Control Point"
 msgstr "ГУПнП АВ управљачка тачка"
 
@@ -120,10 +116,14 @@ msgid "_Next"
 msgstr "_Следеће"
 
 #: ../data/gupnp-av-cp.ui.in.h:22
+msgid "Rescan"
+msgstr "Поново претражи"
+
+#: ../data/gupnp-av-cp.ui.in.h:23
 msgid "Fetch the DIDL-Lite XML for this media object"
 msgstr "Довуците ДИДЛ-Лајт ИксМЛ за овај објекат медија"
 
-#: ../data/gupnp-av-cp.ui.in.h:23
+#: ../data/gupnp-av-cp.ui.in.h:24
 msgid "Fetch _DIDL-Lite"
 msgstr "Довуци _ДИДЛ-Лајт"
 
@@ -144,25 +144,21 @@ msgid "GUPnP Network Light"
 msgstr "ГУПнП мрежно светло"
 
 #: ../data/gupnp-network-light.ui.h:9
-#| msgid "On"
 msgctxt "network-light"
 msgid "_On"
 msgstr "_Укљ."
 
 #: ../data/gupnp-network-light.ui.h:11
 #, no-c-format
-#| msgid "increase luminance by 20%"
 msgid "_Increase luminance by 20%"
 msgstr "_Повећај осветљај за 20%"
 
 #: ../data/gupnp-network-light.ui.h:13
 #, no-c-format
-#| msgid "decrease luminance by 20%"
 msgid "_Decrease luminance by 20%"
 msgstr "_Умањи осветљај за 20%"
 
 #: ../data/gupnp-network-light.ui.h:14
-#| msgid "about"
 msgid "_About"
 msgstr "_О програму"
 
@@ -223,12 +219,10 @@ msgid "Subscribe to events"
 msgstr "Претплатите се на догађаје"
 
 #: ../data/gupnp-universal-cp.ui.h:19
-#| msgid "Expand all devices"
 msgid "_Expand all devices"
 msgstr "_Рашири све уређаје"
 
 #: ../data/gupnp-universal-cp.ui.h:20
-#| msgid "Collapse all devices"
 msgid "_Collapse all devices"
 msgstr "_Скупи све уређаје"
 
@@ -241,7 +235,6 @@ msgid "Copy all events"
 msgstr "Умножи све догађаје"
 
 #: ../data/gupnp-universal-cp.ui.h:23
-#| msgid "Clear event log"
 msgid "_Clear event log"
 msgstr "_Очисти дневник догађаја"
 
@@ -251,12 +244,10 @@ msgid "GUPnP Universal Control Point"
 msgstr "ГУПнП свеопшта управљачка тачка"
 
 #: ../data/gupnp-universal-cp.ui.h:26
-#| msgid "View"
 msgid "_View"
 msgstr "_Преглед"
 
 #: ../data/gupnp-universal-cp.ui.h:27
-#| msgid "Event log"
 msgid "Event _log"
 msgstr "Дневник _догађаја"
 
@@ -279,7 +270,6 @@ msgid "Name"
 msgstr "Назив"
 
 #: ../src/universal-cp/details-treeview.c:182
-#| msgid "action"
 msgid "Direction"
 msgstr "Усмерење"
 
@@ -335,7 +325,6 @@ msgstr "Допуштене вредности"
 
 #: ../src/universal-cp/details-treeview.c:299
 #: ../src/universal-cp/details-treeview.c:346
-#| msgid "action"
 msgid "Location"
 msgstr "Место"
 
@@ -355,12 +344,10 @@ msgid "Base URL"
 msgstr "Основна адреса"
 
 #: ../src/universal-cp/details-treeview.c:319
-#| msgid "service"
 msgid "Service ID"
 msgstr "ИБ услуге"
 
 #: ../src/universal-cp/details-treeview.c:321
-#| msgid "service"
 msgid "Service URL"
 msgstr "Адреса услуге"
 
@@ -438,13 +425,11 @@ msgid "Information not available"
 msgstr "Подаци нису доступни"
 
 #: ../src/universal-cp/device-treeview.c:676
-#| msgid "UPnP Network Light"
 msgid "UPnP Network"
 msgstr "УПнП мрежа"
 
 #: ../src/universal-cp/device-treeview.c:689
 #: ../src/universal-cp/event-treeview.c:373
-#| msgid "device"
 msgid "Device"
 msgstr "Уређај"
 
@@ -453,7 +438,6 @@ msgid "Time"
 msgstr "Време"
 
 #: ../src/universal-cp/event-treeview.c:374
-#| msgid "service"
 msgid "Service"
 msgstr "Услуга"
 
