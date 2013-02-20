@@ -30,6 +30,9 @@ gboolean
 init_ui                         (gint             *argc,
                                  gchar           **argv[]);
 
+GtkButton *
+get_rescan_button               (void);
+
 void
 deinit_ui                       (void);
 

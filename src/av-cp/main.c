@@ -68,12 +68,22 @@ dmr_proxy_unavailable_cb (GUPnPControlPoint *cp,
 }
 
 static void
+on_rescan_button_clicked (GtkButton *button,
+                          gpointer user_data)
+{
+        GSSDPResourceBrowser *browser = GSSDP_RESOURCE_BROWSER (user_data);
+
+        gssdp_resource_browser_rescan (browser);
+}
+
+static void
 on_context_available (GUPnPContextManager *context_manager,
                       GUPnPContext        *context,
                       gpointer             user_data)
 {
         GUPnPControlPoint *dms_cp;
         GUPnPControlPoint *dmr_cp;
+        GtkButton *button;
 
         dms_cp = gupnp_control_point_new (context, MEDIA_SERVER);
         dmr_cp = gupnp_control_point_new (context, MEDIA_RENDERER);
@@ -95,10 +105,17 @@ on_context_available (GUPnPContextManager *context_manager,
                           G_CALLBACK (dmr_proxy_unavailable_cb),
                           NULL);
 
+        button = get_rescan_button ();
+
         gssdp_resource_browser_set_active (GSSDP_RESOURCE_BROWSER (dms_cp),
                                            TRUE);
         gssdp_resource_browser_set_active (GSSDP_RESOURCE_BROWSER (dmr_cp),
                                            TRUE);
+
+        g_signal_connect (button, "clicked",
+                          G_CALLBACK (on_rescan_button_clicked), dms_cp);
+        g_signal_connect (button, "clicked",
+                          G_CALLBACK (on_rescan_button_clicked), dmr_cp);
 
         /* Let context manager take care of the control point life cycle */
         gupnp_context_manager_manage_control_point (context_manager, dms_cp);

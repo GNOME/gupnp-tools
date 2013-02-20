@@ -36,6 +36,7 @@
 static GtkBuilder  *builder;
 static GtkWidget *main_window;
 static GtkWidget *about_dialog;
+static GtkButton *rescan_button;
 
 G_MODULE_EXPORT
 gboolean
@@ -107,6 +108,9 @@ init_ui (gint   *argc,
         about_dialog = GTK_WIDGET (gtk_builder_get_object (builder,
                                                            "about-dialog"));
         g_assert (about_dialog != NULL);
+        rescan_button = GTK_BUTTON (gtk_builder_get_object (builder,
+                                                            "rescan-button"));
+        g_assert (rescan_button != NULL);
 
         /* 40% of the screen but don't get bigger than 1000x800 */
         window_width = CLAMP ((gdk_screen_width () * 40 / 100), 10, 1000);
@@ -128,6 +132,12 @@ init_ui (gint   *argc,
         gtk_widget_show_all (main_window);
 
         return TRUE;
+}
+
+GtkButton *
+get_rescan_button (void)
+{
+        return rescan_button;
 }
 
 void
