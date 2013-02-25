@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: gupnp-tools master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gupnp-"
 "tools&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-01-07 15:08+0000\n"
-"PO-Revision-Date: 2013-01-16 13:08+0100\n"
+"POT-Creation-Date: 2013-02-20 10:46+0000\n"
+"PO-Revision-Date: 2013-02-25 11:44+0100\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "Language: es\n"
@@ -29,9 +29,6 @@ msgid "Copyright (C) 2007 Zeeshan Ali (Khattak)"
 msgstr "Copyright (C) 2007 Zeeshan Ali (Khattak)"
 
 #: ../data/gupnp-av-cp.ui.in.h:2
-#| msgid ""
-#| "A Generic Control Point based on GUPnP framework.\n"
-#| "Inspired by Intel Tools for UPnP."
 msgid ""
 "A UPNP AV Control Point based on GUPnP framework.\n"
 "Inspired by Intel Tools for UPnP."
@@ -60,7 +57,6 @@ msgid "GUPnP AV CP - Metadata View"
 msgstr "Punto de control AV de GUPnP; vista de metadatos"
 
 #: ../data/gupnp-av-cp.ui.in.h:9
-#| msgid "UPnP AV Control Point"
 msgid "GUPnP AV Control Point"
 msgstr "Punto de control AV de GUPnP"
 
@@ -118,10 +114,14 @@ msgid "_Next"
 msgstr "_Siguiente"
 
 #: ../data/gupnp-av-cp.ui.in.h:22
+msgid "Rescan"
+msgstr "Volver a analizar"
+
+#: ../data/gupnp-av-cp.ui.in.h:23
 msgid "Fetch the DIDL-Lite XML for this media object"
 msgstr "Obtener el XML DIDL-Lite para este objeto multimedia"
 
-#: ../data/gupnp-av-cp.ui.in.h:23
+#: ../data/gupnp-av-cp.ui.in.h:24
 msgid "Fetch _DIDL-Lite"
 msgstr "Obtener _DIDL-Lite"
 
@@ -142,25 +142,21 @@ msgid "GUPnP Network Light"
 msgstr "Luz de red GUPnP"
 
 #: ../data/gupnp-network-light.ui.h:9
-#| msgid "On"
 msgctxt "network-light"
 msgid "_On"
 msgstr "_Activada"
 
 #: ../data/gupnp-network-light.ui.h:11
 #, no-c-format
-#| msgid "increase luminance by 20%"
 msgid "_Increase luminance by 20%"
 msgstr "_Aumentar la luminosidad un 20%"
 
 #: ../data/gupnp-network-light.ui.h:13
 #, no-c-format
-#| msgid "decrease luminance by 20%"
 msgid "_Decrease luminance by 20%"
 msgstr "_Reducir la luminosidad un 20%"
 
 #: ../data/gupnp-network-light.ui.h:14
-#| msgid "about"
 msgid "_About"
 msgstr "A_cerca de"
 
@@ -221,12 +217,10 @@ msgid "Subscribe to events"
 msgstr "Suscribirse a todos los eventos"
 
 #: ../data/gupnp-universal-cp.ui.h:19
-#| msgid "Expand all devices"
 msgid "_Expand all devices"
 msgstr "_Expandir todos los dispositivos"
 
 #: ../data/gupnp-universal-cp.ui.h:20
-#| msgid "Collapse all devices"
 msgid "_Collapse all devices"
 msgstr "_Contraer todos los dispositivos"
 
@@ -239,7 +233,6 @@ msgid "Copy all events"
 msgstr "Copiar todos los eventos"
 
 #: ../data/gupnp-universal-cp.ui.h:23
-#| msgid "Clear event log"
 msgid "_Clear event log"
 msgstr "_Limpiar el registro de eventos"
 
@@ -249,12 +242,10 @@ msgid "GUPnP Universal Control Point"
 msgstr "Punto de control de GUPnP universal"
 
 #: ../data/gupnp-universal-cp.ui.h:26
-#| msgid "View"
 msgid "_View"
 msgstr "_Ver"
 
 #: ../data/gupnp-universal-cp.ui.h:27
-#| msgid "Event log"
 msgid "Event _log"
 msgstr "Registro de _eventos"
 
@@ -277,7 +268,6 @@ msgid "Name"
 msgstr "Nombre"
 
 #: ../src/universal-cp/details-treeview.c:182
-#| msgid "action"
 msgid "Direction"
 msgstr "Dirección"
 
@@ -333,7 +323,6 @@ msgstr "Valores permitidos"
 
 #: ../src/universal-cp/details-treeview.c:299
 #: ../src/universal-cp/details-treeview.c:346
-#| msgid "action"
 msgid "Location"
 msgstr "Lugar"
 
@@ -353,12 +342,10 @@ msgid "Base URL"
 msgstr "URL base"
 
 #: ../src/universal-cp/details-treeview.c:319
-#| msgid "service"
 msgid "Service ID"
 msgstr "ID del servicio"
 
 #: ../src/universal-cp/details-treeview.c:321
-#| msgid "service"
 msgid "Service URL"
 msgstr "URL del servicio"
 
@@ -436,13 +423,11 @@ msgid "Information not available"
 msgstr "Información no disponible"
 
 #: ../src/universal-cp/device-treeview.c:676
-#| msgid "UPnP Network Light"
 msgid "UPnP Network"
 msgstr "Red UPnP"
 
 #: ../src/universal-cp/device-treeview.c:689
 #: ../src/universal-cp/event-treeview.c:373
-#| msgid "device"
 msgid "Device"
 msgstr "Dispositivo"
 
@@ -451,7 +436,6 @@ msgid "Time"
 msgstr "Hora"
 
 #: ../src/universal-cp/event-treeview.c:374
-#| msgid "service"
 msgid "Service"
 msgstr "Servicio"
 
