@@ -8,9 +8,9 @@ msgstr ""
 "Project-Id-Version: gupnp-tools master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gupnp-"
 "tools&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-01-07 15:08+0000\n"
-"PO-Revision-Date: 2013-01-07 20:35-0300\n"
-"Last-Translator: Enrico Nicoletto <liverig@gmail.com>\n"
+"POT-Creation-Date: 2013-02-20 10:46+0000\n"
+"PO-Revision-Date: 2013-03-10 22:15-0300\n"
+"Last-Translator: Rafael Ferreira <rafael.f.f1@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
@@ -116,10 +116,14 @@ msgid "_Next"
 msgstr "P_róximo"
 
 #: ../data/gupnp-av-cp.ui.in.h:22
+msgid "Rescan"
+msgstr "Buscar novamente"
+
+#: ../data/gupnp-av-cp.ui.in.h:23
 msgid "Fetch the DIDL-Lite XML for this media object"
 msgstr "Traz o XML DIDL-Lite para este objeto de mídia"
 
-#: ../data/gupnp-av-cp.ui.in.h:23
+#: ../data/gupnp-av-cp.ui.in.h:24
 msgid "Fetch _DIDL-Lite"
 msgstr "Trazer _DIDL-Lite"
 
