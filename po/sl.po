@@ -7,25 +7,27 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gupnp-tools master\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gupnp-"
-"tools&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-01-07 15:08+0000\n"
-"PO-Revision-Date: 2013-01-10 21:17+0100\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gupnp-tools&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2013-02-20 10:46+0000\n"
+"PO-Revision-Date: 2013-03-11 19:19+0100\n"
 "Last-Translator: Matej Urbančič <mateju@svn.gnome.org>\n"
 "Language-Team: Slovenian <gnome-si@googlegroups.com>\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
-"%100==4 ? 3 : 0);\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n%100==4 ? 3 : 0);\n"
 "X-Generator: Poedit 1.5.4\n"
+"X-Poedit-Language: Slovenian\n"
+"X-Poedit-Country: SLOVENIA\n"
+"X-Poedit-SourceCharset: utf-8\n"
 
 #: ../data/gupnp-av-cp.desktop.in.in.h:1
 msgid "UPnP AV Control Point"
 msgstr "Nadzorna točka UPnP AV"
 
-#: ../data/gupnp-av-cp.ui.in.h:1 ../data/gupnp-network-light.ui.h:1
+#: ../data/gupnp-av-cp.ui.in.h:1
+#: ../data/gupnp-network-light.ui.h:1
 #: ../data/gupnp-universal-cp.ui.h:1
 msgid "Copyright (C) 2007 Zeeshan Ali (Khattak)"
 msgstr "Avtorske pravice (C) 2007 Zeeshan Ali (Khattak)"
@@ -35,34 +37,39 @@ msgid ""
 "A UPNP AV Control Point based on GUPnP framework.\n"
 "Inspired by Intel Tools for UPnP."
 msgstr ""
+"Nadzorna točka UPNP AV, ki temelji na ogrodju GUPnP.\n"
+"Navdihnjeno z Intel Tools za UPnP."
 
-#: ../data/gupnp-av-cp.ui.in.h:4 ../data/gupnp-network-light.ui.h:4
+#: ../data/gupnp-av-cp.ui.in.h:4
+#: ../data/gupnp-network-light.ui.h:4
 #: ../data/gupnp-universal-cp.ui.h:4
 msgid "GUPnP homepage"
 msgstr "Spletna stran programa GUPnP"
 
-#: ../data/gupnp-av-cp.ui.in.h:5 ../data/gupnp-network-light.ui.h:5
+#: ../data/gupnp-av-cp.ui.in.h:5
+#: ../data/gupnp-network-light.ui.h:5
 #: ../data/gupnp-universal-cp.ui.h:5
 msgid "GPL"
 msgstr "GPL"
 
 #. TRANSLATORS: Replace this string with your names, one name per line.
-#: ../data/gupnp-av-cp.ui.in.h:7 ../data/gupnp-network-light.ui.h:7
+#: ../data/gupnp-av-cp.ui.in.h:7
+#: ../data/gupnp-network-light.ui.h:7
 #: ../data/gupnp-universal-cp.ui.h:7
 msgid "translator-credits"
 msgstr "Matej Urbančič"
 
 #: ../data/gupnp-av-cp.ui.in.h:8
 msgid "GUPnP AV CP - Metadata View"
-msgstr ""
+msgstr "NP GUPnP AV - pogled metapodatkov"
 
 #: ../data/gupnp-av-cp.ui.in.h:9
-#, fuzzy
 #| msgid "UPnP AV Control Point"
 msgid "GUPnP AV Control Point"
-msgstr "Nadzorna točka UPnP AV"
+msgstr "Nadzorna točka GUPnP AV"
 
-#: ../data/gupnp-av-cp.ui.in.h:10 ../data/gupnp-universal-cp.ui.h:25
+#: ../data/gupnp-av-cp.ui.in.h:10
+#: ../data/gupnp-universal-cp.ui.h:25
 msgid "_File"
 msgstr "_Datoteka"
 
@@ -73,9 +80,10 @@ msgstr "_Orodja"
 #: ../data/gupnp-av-cp.ui.in.h:12
 #, fuzzy
 msgid "_Lenient Mode"
-msgstr "Premešani način"
+msgstr "P_remešani način"
 
-#: ../data/gupnp-av-cp.ui.in.h:13 ../data/gupnp-universal-cp.ui.h:28
+#: ../data/gupnp-av-cp.ui.in.h:13
+#: ../data/gupnp-universal-cp.ui.h:28
 msgid "_Help"
 msgstr "Pomo_č"
 
@@ -84,9 +92,7 @@ msgid "_Renderer: "
 msgstr "_Izrisovalnik:"
 
 #: ../data/gupnp-av-cp.ui.in.h:15
-msgid ""
-"Clears the CP's idea of the state of the currently selected AV Renderer. "
-"Useful for dealing with AV Renderers that don't report state changes."
+msgid "Clears the CP's idea of the state of the currently selected AV Renderer. Useful for dealing with AV Renderers that don't report state changes."
 msgstr ""
 
 #: ../data/gupnp-av-cp.ui.in.h:16
@@ -114,17 +120,21 @@ msgid "_Next"
 msgstr "_Naslednji"
 
 #: ../data/gupnp-av-cp.ui.in.h:22
+msgid "Rescan"
+msgstr "Ponovno preišči"
+
+#: ../data/gupnp-av-cp.ui.in.h:23
 msgid "Fetch the DIDL-Lite XML for this media object"
 msgstr ""
 
-#: ../data/gupnp-av-cp.ui.in.h:23
+#: ../data/gupnp-av-cp.ui.in.h:24
 msgid "Fetch _DIDL-Lite"
 msgstr "Pridobi _DIDL-Lite"
 
 #: ../data/gupnp-network-light.desktop.in.in.h:1
 #, fuzzy
 msgid "UPnP Network Light"
-msgstr "Vrsta vira svetlobe."
+msgstr "Omrežno svetilo UPnP"
 
 #: ../data/gupnp-network-light.ui.h:2
 msgid ""
@@ -135,13 +145,12 @@ msgstr ""
 #: ../data/gupnp-network-light.ui.h:8
 #, fuzzy
 msgid "GUPnP Network Light"
-msgstr "Vrsta vira svetlobe."
+msgstr "Omrežno svetilo GUPnP"
 
 #: ../data/gupnp-network-light.ui.h:9
-#, fuzzy
 msgctxt "network-light"
 msgid "_On"
-msgstr "%s na %s"
+msgstr "_Vključeno"
 
 #: ../data/gupnp-network-light.ui.h:11
 #, no-c-format
@@ -154,7 +163,6 @@ msgid "_Decrease luminance by 20%"
 msgstr "_Zmanjšaj svetlost za 20%"
 
 #: ../data/gupnp-network-light.ui.h:14
-#| msgid "about"
 msgid "_About"
 msgstr "_O programu"
 
@@ -171,7 +179,7 @@ msgstr ""
 #: ../data/gupnp-universal-cp.ui.h:8
 #, fuzzy
 msgid "Action Invocation"
-msgstr "Izvajanje dejanja"
+msgstr "Izvajanje priklica"
 
 #: ../data/gupnp-universal-cp.ui.h:9
 msgid "action"
@@ -186,8 +194,9 @@ msgid "device"
 msgstr "naprava"
 
 #: ../data/gupnp-universal-cp.ui.h:12
+#, fuzzy
 msgid "_Invoke"
-msgstr ""
+msgstr "Pr_ikliči"
 
 #: ../data/gupnp-universal-cp.ui.h:13
 msgid "<b>'in' arguments</b>"
@@ -206,8 +215,9 @@ msgid "Copy all details"
 msgstr "Kopiraj vse podrobnosti"
 
 #: ../data/gupnp-universal-cp.ui.h:17
+#, fuzzy
 msgid "Invoke"
-msgstr ""
+msgstr "Prikliči"
 
 #: ../data/gupnp-universal-cp.ui.h:18
 msgid "Subscribe to events"
@@ -230,34 +240,33 @@ msgid "Copy all events"
 msgstr "Kopiraj vse dogodke"
 
 #: ../data/gupnp-universal-cp.ui.h:23
-#| msgid "Clear event log"
 msgid "_Clear event log"
 msgstr "_Počisti dnevnik dogodkov"
 
 #. default details
-#: ../data/gupnp-universal-cp.ui.h:24 ../src/universal-cp/device-treeview.c:35
+#: ../data/gupnp-universal-cp.ui.h:24
+#: ../src/universal-cp/device-treeview.c:35
 msgid "GUPnP Universal Control Point"
-msgstr ""
+msgstr "Univerzalna nadzorna točka GUPnP"
 
 #: ../data/gupnp-universal-cp.ui.h:26
-#| msgid "View"
 msgid "_View"
 msgstr "_Pogled"
 
 #: ../data/gupnp-universal-cp.ui.h:27
-#| msgid "Event log"
 msgid "Event _log"
 msgstr "Dn_evnik dogodkov"
 
 #: ../src/universal-cp/action-dialog.c:714
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Action failed.\n"
 "\n"
 "Error %d: %s"
 msgstr ""
-"med prevajanjem %s\n"
-"napaka: %s"
+"Dejanje in uspelo.\n"
+"\n"
+"Napaka %d: %s"
 
 #: ../src/universal-cp/details-treeview.c:180
 #: ../src/universal-cp/details-treeview.c:208
@@ -267,19 +276,16 @@ msgid "Name"
 msgstr "Ime"
 
 #: ../src/universal-cp/details-treeview.c:182
-#| msgid "action"
 msgid "Direction"
 msgstr "Smer"
 
 #: ../src/universal-cp/details-treeview.c:187
-#, fuzzy
 msgid "Related State Variable"
-msgstr "Uporaba spremenljive bitne hitrosti"
+msgstr "Spremenljivka sorodnega stanja"
 
 #: ../src/universal-cp/details-treeview.c:189
-#, fuzzy
 msgid "Is Return Value"
-msgstr "Vrednosti je določena kot NULL"
+msgstr "Je vrnjena vrednost"
 
 #: ../src/universal-cp/details-treeview.c:190
 #: ../src/universal-cp/details-treeview.c:237
@@ -325,7 +331,6 @@ msgstr "Dovoljene vrednosti"
 
 #: ../src/universal-cp/details-treeview.c:299
 #: ../src/universal-cp/details-treeview.c:346
-#| msgid "action"
 msgid "Location"
 msgstr "Mesto"
 
@@ -345,12 +350,10 @@ msgid "Base URL"
 msgstr "Osnovni URL"
 
 #: ../src/universal-cp/details-treeview.c:319
-#| msgid "service"
 msgid "Service ID"
 msgstr "ID storitve"
 
 #: ../src/universal-cp/details-treeview.c:321
-#| msgid "service"
 msgid "Service URL"
 msgstr "Naslov URL storitve"
 
@@ -359,9 +362,8 @@ msgid "Control URL"
 msgstr "Naslov URL nadzora"
 
 #: ../src/universal-cp/details-treeview.c:325
-#, fuzzy
 msgid "Event Subscription URL"
-msgstr "Naslov URL poročila o hrošču:"
+msgstr "Naslov URL naročnine na dogodek"
 
 #: ../src/universal-cp/details-treeview.c:366
 msgid "Friendly Name"
@@ -434,7 +436,6 @@ msgstr "Omrežje UPnP"
 
 #: ../src/universal-cp/device-treeview.c:689
 #: ../src/universal-cp/event-treeview.c:373
-#| msgid "device"
 msgid "Device"
 msgstr "Naprava"
 
@@ -443,10 +444,10 @@ msgid "Time"
 msgstr "Čas"
 
 #: ../src/universal-cp/event-treeview.c:374
-#| msgid "service"
 msgid "Service"
 msgstr "Storitev"
 
 #: ../src/universal-cp/event-treeview.c:375
 msgid "State Variable"
 msgstr "Spremenljivka stanja"
+
