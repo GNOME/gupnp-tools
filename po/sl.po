@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gupnp-tools master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gupnp-tools&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-02-20 10:46+0000\n"
-"PO-Revision-Date: 2013-03-11 19:19+0100\n"
+"POT-Creation-Date: 2013-03-14 19:47+0000\n"
+"PO-Revision-Date: 2013-03-15 16:58+0100\n"
 "Last-Translator: Matej Urbančič <mateju@svn.gnome.org>\n"
 "Language-Team: Slovenian <gnome-si@googlegroups.com>\n"
 "Language: sl\n"
@@ -38,7 +38,7 @@ msgid ""
 "Inspired by Intel Tools for UPnP."
 msgstr ""
 "Nadzorna točka UPNP AV, ki temelji na ogrodju GUPnP.\n"
-"Navdihnjeno z Intel Tools za UPnP."
+"Navdihnjeno z orodji Intel Tools za UPnP."
 
 #: ../data/gupnp-av-cp.ui.in.h:4
 #: ../data/gupnp-network-light.ui.h:4
@@ -64,7 +64,6 @@ msgid "GUPnP AV CP - Metadata View"
 msgstr "NP GUPnP AV - pogled metapodatkov"
 
 #: ../data/gupnp-av-cp.ui.in.h:9
-#| msgid "UPnP AV Control Point"
 msgid "GUPnP AV Control Point"
 msgstr "Nadzorna točka GUPnP AV"
 
@@ -78,9 +77,8 @@ msgid "_Tools"
 msgstr "_Orodja"
 
 #: ../data/gupnp-av-cp.ui.in.h:12
-#, fuzzy
 msgid "_Lenient Mode"
-msgstr "P_remešani način"
+msgstr "_Strogi način"
 
 #: ../data/gupnp-av-cp.ui.in.h:13
 #: ../data/gupnp-universal-cp.ui.h:28
@@ -93,7 +91,7 @@ msgstr "_Izrisovalnik:"
 
 #: ../data/gupnp-av-cp.ui.in.h:15
 msgid "Clears the CP's idea of the state of the currently selected AV Renderer. Useful for dealing with AV Renderers that don't report state changes."
-msgstr ""
+msgstr "Počisti zamisel stanja CP trenutno izbranega izrisovalnika AV. Uporabno za delo z izrisovalniki AV, ki ne poročajo o spremembi stanj."
 
 #: ../data/gupnp-av-cp.ui.in.h:16
 msgid "_Clear state"
@@ -125,14 +123,13 @@ msgstr "Ponovno preišči"
 
 #: ../data/gupnp-av-cp.ui.in.h:23
 msgid "Fetch the DIDL-Lite XML for this media object"
-msgstr ""
+msgstr "Pridobi XML DIDL-Lite za ta predstavni predmet"
 
 #: ../data/gupnp-av-cp.ui.in.h:24
 msgid "Fetch _DIDL-Lite"
 msgstr "Pridobi _DIDL-Lite"
 
 #: ../data/gupnp-network-light.desktop.in.in.h:1
-#, fuzzy
 msgid "UPnP Network Light"
 msgstr "Omrežno svetilo UPnP"
 
@@ -141,9 +138,10 @@ msgid ""
 "A virtual network light bulb based on GUPnP framework.\n"
 "Inspired by Intel Tools for UPnP."
 msgstr ""
+"Navidezna omrežna lučka, ki temelji na ogrodju GUPnP.\n"
+"Navdihnjeno z orodji Intel Tools za UPnP."
 
 #: ../data/gupnp-network-light.ui.h:8
-#, fuzzy
 msgid "GUPnP Network Light"
 msgstr "Omrežno svetilo GUPnP"
 
@@ -175,11 +173,12 @@ msgid ""
 "A Generic Control Point based on GUPnP framework.\n"
 "Inspired by Intel Tools for UPnP."
 msgstr ""
+"Splošna nadzorna točka, ki temelji na ogrodju GUPnP.\n"
+"Navdihnjeno z orodji Intel Tools za UPnP."
 
 #: ../data/gupnp-universal-cp.ui.h:8
-#, fuzzy
 msgid "Action Invocation"
-msgstr "Izvajanje priklica"
+msgstr "Priklic dejanja"
 
 #: ../data/gupnp-universal-cp.ui.h:9
 msgid "action"
@@ -194,7 +193,6 @@ msgid "device"
 msgstr "naprava"
 
 #: ../data/gupnp-universal-cp.ui.h:12
-#, fuzzy
 msgid "_Invoke"
 msgstr "Pr_ikliči"
 
@@ -215,7 +213,6 @@ msgid "Copy all details"
 msgstr "Kopiraj vse podrobnosti"
 
 #: ../data/gupnp-universal-cp.ui.h:17
-#, fuzzy
 msgid "Invoke"
 msgstr "Prikliči"
 
