@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
-  <requires lib="gtk+" version="2.16"/>
+  <!-- interface-requires gtk+ 3.0 -->
   <object class="GtkAboutDialog" id="about-dialog">
     <property name="can_focus">False</property>
     <property name="border_width">12</property>
@@ -68,7 +68,6 @@ Vinicius Depizzol &lt;vdepizzol@gmail.com&gt;</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="use_action_appearance">False</property>
                 <property name="use_stock">True</property>
                 <signal name="clicked" handler="gtk_widget_hide" object="didl-dialog" swapped="yes"/>
               </object>
@@ -127,7 +126,6 @@ Vinicius Depizzol &lt;vdepizzol@gmail.com&gt;</property>
               <object class="GtkMenuItem" id="file-menuitem">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="use_action_appearance">False</property>
                 <property name="label" translatable="yes">_File</property>
                 <property name="use_underline">True</property>
                 <child type="submenu">
@@ -138,7 +136,6 @@ Vinicius Depizzol &lt;vdepizzol@gmail.com&gt;</property>
                         <property name="label">gtk-quit</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
                         <signal name="activate" handler="application_exit" swapped="no"/>
@@ -152,7 +149,6 @@ Vinicius Depizzol &lt;vdepizzol@gmail.com&gt;</property>
               <object class="GtkMenuItem" id="tools_menuitem">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="use_action_appearance">False</property>
                 <property name="label" translatable="yes">_Tools</property>
                 <property name="use_underline">True</property>
                 <child type="submenu">
@@ -163,7 +159,6 @@ Vinicius Depizzol &lt;vdepizzol@gmail.com&gt;</property>
                       <object class="GtkCheckMenuItem" id="lenient_mode_menuitem">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="label" translatable="yes">_Lenient Mode</property>
                         <property name="use_underline">True</property>
                       </object>
@@ -176,7 +171,6 @@ Vinicius Depizzol &lt;vdepizzol@gmail.com&gt;</property>
               <object class="GtkMenuItem" id="help_menuitem">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="use_action_appearance">False</property>
                 <property name="label" translatable="yes">_Help</property>
                 <property name="use_underline">True</property>
                 <child type="submenu">
@@ -187,7 +181,6 @@ Vinicius Depizzol &lt;vdepizzol@gmail.com&gt;</property>
                         <property name="label">gtk-about</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
                         <signal name="activate" handler="gtk_widget_show" object="about-dialog" swapped="yes"/>
@@ -372,7 +365,6 @@ Vinicius Depizzol &lt;vdepizzol@gmail.com&gt;</property>
                     <property name="can_default">True</property>
                     <property name="receives_default">False</property>
                     <property name="tooltip_text" translatable="yes">Clears the CP's idea of the state of the currently selected AV Renderer. Useful for dealing with AV Renderers that don't report state changes.</property>
-                    <property name="use_action_appearance">False</property>
                     <signal name="clicked" handler="on_clear_state_button_clicked" swapped="no"/>
                     <child>
                       <object class="GtkAlignment" id="alignment14">
@@ -439,7 +431,6 @@ Vinicius Depizzol &lt;vdepizzol@gmail.com&gt;</property>
                     <property name="can_focus">True</property>
                     <property name="can_default">True</property>
                     <property name="receives_default">False</property>
-                    <property name="use_action_appearance">False</property>
                     <signal name="clicked" handler="on_play_button_clicked" swapped="no"/>
                     <child>
                       <object class="GtkAlignment" id="alignment9">
@@ -494,7 +485,6 @@ Vinicius Depizzol &lt;vdepizzol@gmail.com&gt;</property>
                     <property name="can_focus">True</property>
                     <property name="can_default">True</property>
                     <property name="receives_default">False</property>
-                    <property name="use_action_appearance">False</property>
                     <signal name="clicked" handler="on_pause_button_clicked" swapped="no"/>
                     <child>
                       <object class="GtkAlignment" id="alignment10">
@@ -549,7 +539,6 @@ Vinicius Depizzol &lt;vdepizzol@gmail.com&gt;</property>
                     <property name="can_focus">True</property>
                     <property name="can_default">True</property>
                     <property name="receives_default">False</property>
-                    <property name="use_action_appearance">False</property>
                     <signal name="clicked" handler="on_stop_button_clicked" swapped="no"/>
                     <child>
                       <object class="GtkAlignment" id="alignment11">
@@ -604,7 +593,6 @@ Vinicius Depizzol &lt;vdepizzol@gmail.com&gt;</property>
                     <property name="can_focus">True</property>
                     <property name="can_default">True</property>
                     <property name="receives_default">False</property>
-                    <property name="use_action_appearance">False</property>
                     <signal name="clicked" handler="on_previous_button_clicked" swapped="no"/>
                     <child>
                       <object class="GtkAlignment" id="alignment12">
@@ -659,7 +647,6 @@ Vinicius Depizzol &lt;vdepizzol@gmail.com&gt;</property>
                     <property name="can_focus">True</property>
                     <property name="can_default">True</property>
                     <property name="receives_default">False</property>
-                    <property name="use_action_appearance">False</property>
                     <signal name="clicked" handler="on_next_button_clicked" swapped="no"/>
                     <child>
                       <object class="GtkAlignment" id="alignment13">
@@ -715,7 +702,6 @@ Vinicius Depizzol &lt;vdepizzol@gmail.com&gt;</property>
                     <property name="can_focus">True</property>
                     <property name="can_default">True</property>
                     <property name="receives_default">False</property>
-                    <property name="use_action_appearance">False</property>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -758,7 +744,6 @@ Vinicius Depizzol &lt;vdepizzol@gmail.com&gt;</property>
       <object class="GtkMenuItem" id="play-menuitem">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
-        <property name="use_action_appearance">False</property>
         <property name="label" translatable="yes">_Play</property>
         <property name="use_underline">True</property>
         <signal name="activate" handler="on_play_button_clicked" swapped="no"/>
@@ -769,7 +754,6 @@ Vinicius Depizzol &lt;vdepizzol@gmail.com&gt;</property>
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="tooltip_text" translatable="yes">Fetch the DIDL-Lite XML for this media object</property>
-        <property name="use_action_appearance">False</property>
         <property name="label" translatable="yes">Fetch _DIDL-Lite</property>
         <property name="use_underline">True</property>
         <signal name="activate" handler="on_didl_menuitem_activate" swapped="no"/>

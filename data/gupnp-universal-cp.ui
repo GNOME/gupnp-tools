@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
-  <requires lib="gtk+" version="2.16"/>
+  <!-- interface-requires gtk+ 3.0 -->
   <object class="GtkAboutDialog" id="about-dialog">
     <property name="can_focus">False</property>
     <property name="type_hint">normal</property>
@@ -59,7 +59,6 @@ Inspired by Intel Tools for UPnP.</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">False</property>
-                <property name="use_action_appearance">False</property>
                 <property name="use_stock">True</property>
                 <signal name="clicked" handler="gtk_dialog_response" object="action-invocation-dialog" swapped="yes"/>
               </object>
@@ -107,8 +106,8 @@ Inspired by Intel Tools for UPnP.</property>
                         <property name="right_attach">2</property>
                         <property name="top_attach">2</property>
                         <property name="bottom_attach">3</property>
-                        <property name="x_options"></property>
-                        <property name="y_options"></property>
+                        <property name="x_options"/>
+                        <property name="y_options"/>
                       </packing>
                     </child>
                     <child>
@@ -123,8 +122,8 @@ Inspired by Intel Tools for UPnP.</property>
                         <property name="right_attach">2</property>
                         <property name="top_attach">1</property>
                         <property name="bottom_attach">2</property>
-                        <property name="x_options"></property>
-                        <property name="y_options"></property>
+                        <property name="x_options"/>
+                        <property name="y_options"/>
                       </packing>
                     </child>
                     <child>
@@ -137,8 +136,8 @@ Inspired by Intel Tools for UPnP.</property>
                       <packing>
                         <property name="left_attach">1</property>
                         <property name="right_attach">2</property>
-                        <property name="x_options"></property>
-                        <property name="y_options"></property>
+                        <property name="x_options"/>
+                        <property name="y_options"/>
                       </packing>
                     </child>
                     <child>
@@ -150,8 +149,8 @@ Inspired by Intel Tools for UPnP.</property>
                       <packing>
                         <property name="top_attach">2</property>
                         <property name="bottom_attach">3</property>
-                        <property name="x_options"></property>
-                        <property name="y_options"></property>
+                        <property name="x_options"/>
+                        <property name="y_options"/>
                       </packing>
                     </child>
                     <child>
@@ -163,8 +162,8 @@ Inspired by Intel Tools for UPnP.</property>
                       <packing>
                         <property name="top_attach">1</property>
                         <property name="bottom_attach">2</property>
-                        <property name="x_options"></property>
-                        <property name="y_options"></property>
+                        <property name="x_options"/>
+                        <property name="y_options"/>
                       </packing>
                     </child>
                     <child>
@@ -174,8 +173,8 @@ Inspired by Intel Tools for UPnP.</property>
                         <property name="stock">gtk-missing-image</property>
                       </object>
                       <packing>
-                        <property name="x_options"></property>
-                        <property name="y_options"></property>
+                        <property name="x_options"/>
+                        <property name="y_options"/>
                       </packing>
                     </child>
                   </object>
@@ -192,7 +191,6 @@ Inspired by Intel Tools for UPnP.</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">False</property>
-                <property name="use_action_appearance">False</property>
                 <signal name="clicked" handler="on_action_invocation" swapped="no"/>
                 <child>
                   <object class="GtkHBox" id="hbox1">
@@ -271,6 +269,12 @@ Inspired by Intel Tools for UPnP.</property>
                         <child>
                           <placeholder/>
                         </child>
+                        <child>
+                          <placeholder/>
+                        </child>
+                        <child>
+                          <placeholder/>
+                        </child>
                       </object>
                     </child>
                   </object>
@@ -308,6 +312,12 @@ Inspired by Intel Tools for UPnP.</property>
                         <property name="n_columns">2</property>
                         <property name="column_spacing">4</property>
                         <property name="row_spacing">4</property>
+                        <child>
+                          <placeholder/>
+                        </child>
+                        <child>
+                          <placeholder/>
+                        </child>
                         <child>
                           <placeholder/>
                         </child>
@@ -353,7 +363,6 @@ Inspired by Intel Tools for UPnP.</property>
       <object class="GtkMenuItem" id="copy-value-menuitem">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
-        <property name="use_action_appearance">False</property>
         <property name="label" translatable="yes">Copy value</property>
         <property name="use_underline">True</property>
         <signal name="activate" handler="on_details_treeview_row_activate" swapped="no"/>
@@ -363,7 +372,6 @@ Inspired by Intel Tools for UPnP.</property>
       <object class="GtkMenuItem" id="copy-all-menuitem">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
-        <property name="use_action_appearance">False</property>
         <property name="label" translatable="yes">Copy all details</property>
         <property name="use_underline">True</property>
         <signal name="activate" handler="on_copy_all_details_activate" swapped="no"/>
@@ -376,7 +384,6 @@ Inspired by Intel Tools for UPnP.</property>
       <object class="GtkMenuItem" id="invoke-action">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
-        <property name="use_action_appearance">False</property>
         <property name="label" translatable="yes">Invoke</property>
         <property name="use_underline">True</property>
         <signal name="activate" handler="on_device_treeview_row_activate" swapped="no"/>
@@ -386,7 +393,6 @@ Inspired by Intel Tools for UPnP.</property>
       <object class="GtkCheckMenuItem" id="subscribe-to-events">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
-        <property name="use_action_appearance">False</property>
         <property name="label" translatable="yes">Subscribe to events</property>
         <property name="use_underline">True</property>
         <signal name="activate" handler="on_subscribe_to_events_activate" swapped="no"/>
@@ -402,7 +408,6 @@ Inspired by Intel Tools for UPnP.</property>
       <object class="GtkMenuItem" id="expand_all_devices">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
-        <property name="use_action_appearance">False</property>
         <property name="label" translatable="yes">_Expand all devices</property>
         <property name="use_underline">True</property>
         <signal name="activate" handler="on_expand_devices_activate" swapped="no"/>
@@ -412,7 +417,6 @@ Inspired by Intel Tools for UPnP.</property>
       <object class="GtkMenuItem" id="collapse_all_devices">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
-        <property name="use_action_appearance">False</property>
         <property name="label" translatable="yes">_Collapse all devices</property>
         <property name="use_underline">True</property>
         <signal name="activate" handler="on_collapse_devices_activate" swapped="no"/>
@@ -425,7 +429,6 @@ Inspired by Intel Tools for UPnP.</property>
       <object class="GtkMenuItem" id="copy-event-menuitem">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
-        <property name="use_action_appearance">False</property>
         <property name="label" translatable="yes">Copy event</property>
         <property name="use_underline">True</property>
         <signal name="activate" handler="on_event_treeview_row_activate" swapped="no"/>
@@ -435,7 +438,6 @@ Inspired by Intel Tools for UPnP.</property>
       <object class="GtkMenuItem" id="copy-all-events-menuitem">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
-        <property name="use_action_appearance">False</property>
         <property name="label" translatable="yes">Copy all events</property>
         <property name="use_underline">True</property>
         <signal name="activate" handler="on_copy_all_events_activate" swapped="no"/>
@@ -451,7 +453,6 @@ Inspired by Intel Tools for UPnP.</property>
       <object class="GtkMenuItem" id="clear-event-log-menuitem">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
-        <property name="use_action_appearance">False</property>
         <property name="label" translatable="yes">_Clear event log</property>
         <property name="use_underline">True</property>
         <signal name="activate" handler="on_clear_event_log_activate" swapped="no"/>
@@ -474,7 +475,6 @@ Inspired by Intel Tools for UPnP.</property>
               <object class="GtkMenuItem" id="file_menuitem">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="use_action_appearance">False</property>
                 <property name="label" translatable="yes">_File</property>
                 <property name="use_underline">True</property>
                 <child type="submenu">
@@ -485,7 +485,6 @@ Inspired by Intel Tools for UPnP.</property>
                         <property name="label" translatable="yes">_Clear event log</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
                         <signal name="activate" handler="on_clear_event_log_activate" swapped="no"/>
@@ -502,7 +501,6 @@ Inspired by Intel Tools for UPnP.</property>
                         <property name="label">gtk-quit</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
                         <signal name="activate" handler="application_exit" swapped="no"/>
@@ -516,7 +514,6 @@ Inspired by Intel Tools for UPnP.</property>
               <object class="GtkMenuItem" id="view_menuitem">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="use_action_appearance">False</property>
                 <property name="label" translatable="yes">_View</property>
                 <property name="use_underline">True</property>
                 <child type="submenu">
@@ -526,7 +523,6 @@ Inspired by Intel Tools for UPnP.</property>
                       <object class="GtkMenuItem" id="expand_devices">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="label" translatable="yes">_Expand all devices</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="on_expand_devices_activate" swapped="no"/>
@@ -536,7 +532,6 @@ Inspired by Intel Tools for UPnP.</property>
                       <object class="GtkMenuItem" id="collapse_devices">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="label" translatable="yes">_Collapse all devices</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="on_collapse_devices_activate" swapped="no"/>
@@ -552,7 +547,6 @@ Inspired by Intel Tools for UPnP.</property>
                       <object class="GtkCheckMenuItem" id="event_log">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="label" translatable="yes">Event _log</property>
                         <property name="use_underline">True</property>
                         <property name="active">True</property>
@@ -567,7 +561,6 @@ Inspired by Intel Tools for UPnP.</property>
               <object class="GtkMenuItem" id="help_menuitem">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="use_action_appearance">False</property>
                 <property name="label" translatable="yes">_Help</property>
                 <property name="use_underline">True</property>
                 <child type="submenu">
@@ -578,7 +571,6 @@ Inspired by Intel Tools for UPnP.</property>
                         <property name="label">gtk-about</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
                         <signal name="activate" handler="gtk_widget_show" object="about-dialog" swapped="yes"/>
