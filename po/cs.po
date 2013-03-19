@@ -31,7 +31,7 @@ msgstr "Copyright © 2007 Zeeshan Ali (Khattak)"
 
 #: ../data/gupnp-av-cp.ui.in.h:2
 msgid ""
-"A UPNP AV Control Point based on GUPnP framework.\n"
+"An UPnP AV Control Point based on GUPnP framework.\n"
 "Inspired by Intel Tools for UPnP."
 msgstr ""
 "Řídící bod UPnP AV založený na knihovně GUPnP.\n"

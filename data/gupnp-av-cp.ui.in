@@ -6,7 +6,7 @@
     <property name="border_width">12</property>
     <property name="type_hint">normal</property>
     <property name="copyright" translatable="yes">Copyright (C) 2007 Zeeshan Ali (Khattak)</property>
-    <property name="comments" translatable="yes">A UPNP AV Control Point based on GUPnP framework.
+    <property name="comments" translatable="yes">An UPnP AV Control Point based on GUPnP framework.
 Inspired by Intel Tools for UPnP.</property>
     <property name="website">http://www.gupnp.org</property>
     <property name="website_label" translatable="yes">GUPnP homepage</property>

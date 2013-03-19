@@ -34,10 +34,10 @@ msgstr "Avtorske pravice (C) 2007 Zeeshan Ali (Khattak)"
 
 #: ../data/gupnp-av-cp.ui.in.h:2
 msgid ""
-"A UPNP AV Control Point based on GUPnP framework.\n"
+"An UPnP AV Control Point based on GUPnP framework.\n"
 "Inspired by Intel Tools for UPnP."
 msgstr ""
-"Nadzorna točka UPNP AV, ki temelji na ogrodju GUPnP.\n"
+"Nadzorna točka UPnP AV, ki temelji na ogrodju GUPnP.\n"
 "Navdihnjeno z orodji Intel Tools za UPnP."
 
 #: ../data/gupnp-av-cp.ui.in.h:4
