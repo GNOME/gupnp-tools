@@ -10,11 +10,11 @@
 Inspired by Intel Tools for UPnP.</property>
     <property name="website">http://www.gupnp.org</property>
     <property name="website_label" translatable="yes">GUPnP homepage</property>
-    <property name="license" translatable="yes">GPL</property>
     <property name="authors">Zeeshan Ali (Khattak) &lt;zeeshanak@gnome.org&gt;</property>
     <property name="translator_credits" translatable="yes" comments="TRANSLATORS: Replace this string with your names, one name per line.">translator-credits</property>
     <property name="artists">Lapo Calamandrei &lt;calamandrei@gmail.com&gt;
 Vinicius Depizzol &lt;vdepizzol@gmail.com&gt;</property>
+    <property name="license_type">gpl-2-0</property>
     <signal name="delete-event" handler="gtk_widget_hide" object="about-dialog" swapped="yes"/>
     <signal name="response" handler="gtk_widget_hide" object="about-dialog" swapped="yes"/>
     <child internal-child="vbox">
