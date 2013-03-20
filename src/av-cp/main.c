@@ -37,6 +37,14 @@
 #define MEDIA_RENDERER "urn:schemas-upnp-org:device:MediaRenderer:1"
 #define MEDIA_SERVER "urn:schemas-upnp-org:device:MediaServer:1"
 
+static int upnp_port = 0;
+
+static GOptionEntry entries[] =
+{
+        { "port", 'p', 0, G_OPTION_ARG_INT, &upnp_port, N_("Network PORT to use for UPnP"), "PORT" },
+        { NULL }
+};
+
 static GUPnPContextManager *context_manager;
 
 static void
@@ -127,13 +135,13 @@ on_context_available (GUPnPContextManager *context_manager,
 }
 
 static gboolean
-init_upnp (void)
+init_upnp (int port)
 {
 #if !GLIB_CHECK_VERSION(2, 35, 0)
         g_type_init ();
 #endif
 
-        context_manager = gupnp_context_manager_new (NULL, 0);
+        context_manager = gupnp_context_manager_create (port);
         g_assert (context_manager != NULL);
 
         g_signal_connect (context_manager,
@@ -164,16 +172,29 @@ gint
 main (gint   argc,
       gchar *argv[])
 {
+        GError *error = NULL;
+        GOptionContext *context = NULL;
+
         setlocale (LC_ALL, "");
         bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
         bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
         textdomain (GETTEXT_PACKAGE);
 
-        if (!init_ui (&argc, &argv)) {
+        context = g_option_context_new (_("- UPnP AV control point"));
+        g_option_context_add_main_entries (context, entries, GETTEXT_PACKAGE);
+        g_option_context_add_group (context, gtk_get_option_group (TRUE));
+
+        if (!g_option_context_parse (context, &argc, &argv, &error)) {
+                g_print (_("Could not parse options: %s\n"), error->message);
+
+                return -4;
+        }
+
+        if (!init_ui ()) {
            return -2;
         }
 
-        if (!init_upnp ()) {
+        if (!init_upnp (upnp_port)) {
            return -3;
         }
 

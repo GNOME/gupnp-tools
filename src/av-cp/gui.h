@@ -27,8 +27,7 @@
 #include "playlist-treeview.h"
 
 gboolean
-init_ui                         (gint             *argc,
-                                 gchar           **argv[]);
+init_ui                         (void);
 
 GtkButton *
 get_rescan_button               (void);

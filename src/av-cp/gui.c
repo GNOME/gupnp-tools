@@ -81,13 +81,10 @@ setup_icons (GtkBuilder *builder)
 }
 
 gboolean
-init_ui (gint   *argc,
-         gchar **argv[])
+init_ui ()
 {
         gint window_width, window_height;
         GError *error = NULL;
-
-        gtk_init (argc, argv);
 
         builder = gtk_builder_new ();
         g_assert (builder != NULL);
