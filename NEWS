@@ -1,3 +1,58 @@
+0.8.6
+=====
+
+Changes since 0.8.5:
+
+- Support i18n.
+- Added translations for several languages, see below.
+- Upgrade GtkBuilder files.
+- Use license links provided by GtkAbout.
+
+AV-CP:
+
+ - Fix GtkSourceView include.
+ - Fix memory leak in TreeView.
+ - Add a rescan button.
+ - Fix a typo in About dialog.
+ - Make network port configurable.
+
+Changes in requirements:
+ - GSSDP >= 0.13.3
+ - GUPnP >= 0.18
+
+ Optional:
+  - GtkSourceView >= 3.2
+
+All contributors to this release:
+  Jiro Matsuzawa <jmatsuzawa@gnome.org>
+  Piotr Drąg <piotrdrag@gmail.com>
+  Matej Urbančič <mateju@svn.gnome.org>
+  Jens Georg <mail@jensge.org>
+  Мирослав Николић <miroslavnikolic@rocketmail.com>
+  Marek Černocký <marek@manet.cz>
+  Daniel Mustieles <daniel.mustieles@gmail.com>
+  Martin Srebotnjak <miles@filmsi.net>
+  Rafael Ferreira <rafael.f.f1@gmail.com>
+  pasdVn <pasdVn3@gmx.de>
+  Krzesimir Nowak <qdlacz@gmail.com>
+  Krzesimir Nowak <krnowak@openismus.com>
+  Kentaro KAZUHAMA <kazken3@gmail.com>
+  Enrico Nicoletto <liverig@gmail.com>
+  Enrico Nicoletto <enriconlto@src.gnome.org>
+  Dominique Leuenberger <dimstar@opensuse.org>
+  Christian Kirbach <Christian.Kirbach@googlemail.com>
+
+Added/updated translations
+ - cs, courtesy of Marek Černocký
+ - de, courtesy of Christian Kirbach
+ - es, courtesy of Daniel Mustieles
+ - ja, courtesy of Kentaro KAZUHAMA
+ - pl, courtesy of Piotr Drąg
+ - pt_BR, courtesy of Rafael Ferreira
+ - sl, courtesy of Matej Urbančič
+ - sr, courtesy of Мирослав Николић
+ - sr@latin, courtesy of Miroslav Nikolić
+
 0.8.5
 =====
 
