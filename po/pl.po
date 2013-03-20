@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gupnp-tools\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-20 23:07+0100\n"
-"PO-Revision-Date: 2013-02-20 23:08+0100\n"
+"POT-Creation-Date: 2013-03-20 19:03+0100\n"
+"PO-Revision-Date: 2013-03-20 19:04+0100\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <gnomepl@aviary.pl>\n"
 "Language: pl\n"
@@ -45,48 +45,43 @@ msgstr ""
 msgid "GUPnP homepage"
 msgstr "Witryna GUPnP"
 
-#: ../data/gupnp-av-cp.ui.in.h:5 ../data/gupnp-network-light.ui.h:5
-#: ../data/gupnp-universal-cp.ui.h:5
-msgid "GPL"
-msgstr "GPL"
-
 #. TRANSLATORS: Replace this string with your names, one name per line.
-#: ../data/gupnp-av-cp.ui.in.h:7 ../data/gupnp-network-light.ui.h:7
-#: ../data/gupnp-universal-cp.ui.h:7
+#: ../data/gupnp-av-cp.ui.in.h:6 ../data/gupnp-network-light.ui.h:6
+#: ../data/gupnp-universal-cp.ui.h:6
 msgid "translator-credits"
 msgstr ""
 "Piotr Drąg <piotrdrag@gmail.com>, 2012-2013\n"
 "Aviary.pl <gnomepl@aviary.pl>, 2012-2013"
 
-#: ../data/gupnp-av-cp.ui.in.h:8
+#: ../data/gupnp-av-cp.ui.in.h:7
 msgid "GUPnP AV CP - Metadata View"
 msgstr "GUPnP AV CP - widok metadanych"
 
-#: ../data/gupnp-av-cp.ui.in.h:9
+#: ../data/gupnp-av-cp.ui.in.h:8
 msgid "GUPnP AV Control Point"
 msgstr "Punkt kontrolny GUPnP AV"
 
-#: ../data/gupnp-av-cp.ui.in.h:10 ../data/gupnp-universal-cp.ui.h:25
+#: ../data/gupnp-av-cp.ui.in.h:9 ../data/gupnp-universal-cp.ui.h:24
 msgid "_File"
 msgstr "_Plik"
 
-#: ../data/gupnp-av-cp.ui.in.h:11
+#: ../data/gupnp-av-cp.ui.in.h:10
 msgid "_Tools"
 msgstr "_Narzędzia"
 
-#: ../data/gupnp-av-cp.ui.in.h:12
+#: ../data/gupnp-av-cp.ui.in.h:11
 msgid "_Lenient Mode"
 msgstr "_Tryb łagodny"
 
-#: ../data/gupnp-av-cp.ui.in.h:13 ../data/gupnp-universal-cp.ui.h:28
+#: ../data/gupnp-av-cp.ui.in.h:12 ../data/gupnp-universal-cp.ui.h:27
 msgid "_Help"
 msgstr "Pomo_c"
 
-#: ../data/gupnp-av-cp.ui.in.h:14
+#: ../data/gupnp-av-cp.ui.in.h:13
 msgid "_Renderer: "
 msgstr "_Mechanizm wyświetlający: "
 
-#: ../data/gupnp-av-cp.ui.in.h:15
+#: ../data/gupnp-av-cp.ui.in.h:14
 msgid ""
 "Clears the CP's idea of the state of the currently selected AV Renderer. "
 "Useful for dealing with AV Renderers that don't report state changes."
@@ -95,39 +90,39 @@ msgstr ""
 "CP. Jest to przydatne podczas używania z mechanizmami AV, które nie "
 "zgłaszają zmian stanu."
 
-#: ../data/gupnp-av-cp.ui.in.h:16
+#: ../data/gupnp-av-cp.ui.in.h:15
 msgid "_Clear state"
 msgstr "Wy_czyść stan"
 
-#: ../data/gupnp-av-cp.ui.in.h:17
+#: ../data/gupnp-av-cp.ui.in.h:16
 msgid "_Play"
 msgstr "_Odtwórz"
 
-#: ../data/gupnp-av-cp.ui.in.h:18
+#: ../data/gupnp-av-cp.ui.in.h:17
 msgid "P_ause"
 msgstr "_Wstrzymaj"
 
-#: ../data/gupnp-av-cp.ui.in.h:19
+#: ../data/gupnp-av-cp.ui.in.h:18
 msgid "_Stop"
 msgstr "_Zatrzymaj"
 
-#: ../data/gupnp-av-cp.ui.in.h:20
+#: ../data/gupnp-av-cp.ui.in.h:19
 msgid "Pre_vious"
 msgstr "_Poprzedni"
 
-#: ../data/gupnp-av-cp.ui.in.h:21
+#: ../data/gupnp-av-cp.ui.in.h:20
 msgid "_Next"
 msgstr "_Następny"
 
-#: ../data/gupnp-av-cp.ui.in.h:22
+#: ../data/gupnp-av-cp.ui.in.h:21
 msgid "Rescan"
 msgstr "Skanuj ponownie"
 
-#: ../data/gupnp-av-cp.ui.in.h:23
+#: ../data/gupnp-av-cp.ui.in.h:22
 msgid "Fetch the DIDL-Lite XML for this media object"
 msgstr "Pobiera kod XML DIDL-Lite dla tego obiektu multimedialnego"
 
-#: ../data/gupnp-av-cp.ui.in.h:24
+#: ../data/gupnp-av-cp.ui.in.h:23
 msgid "Fetch _DIDL-Lite"
 msgstr "Pobierz _DIDL-Lite"
 
@@ -143,26 +138,26 @@ msgstr ""
 "Wirtualna sieciowa żarówka oparta na strukturze GUPnP.\n"
 "Zainspirowane przez oprogramowanie Intel Tools for UPnP."
 
-#: ../data/gupnp-network-light.ui.h:8
+#: ../data/gupnp-network-light.ui.h:7
 msgid "GUPnP Network Light"
 msgstr "Światło sieciowe GUPnP"
 
-#: ../data/gupnp-network-light.ui.h:9
+#: ../data/gupnp-network-light.ui.h:8
 msgctxt "network-light"
 msgid "_On"
 msgstr "_Włączone"
 
-#: ../data/gupnp-network-light.ui.h:11
+#: ../data/gupnp-network-light.ui.h:10
 #, no-c-format
 msgid "_Increase luminance by 20%"
 msgstr "_Zwiększ jasność o 20%"
 
-#: ../data/gupnp-network-light.ui.h:13
+#: ../data/gupnp-network-light.ui.h:12
 #, no-c-format
 msgid "_Decrease luminance by 20%"
 msgstr "Z_mniejsz jasność o 20%"
 
-#: ../data/gupnp-network-light.ui.h:14
+#: ../data/gupnp-network-light.ui.h:13
 msgid "_About"
 msgstr "_O programie"
 
@@ -178,82 +173,95 @@ msgstr ""
 "Uniwersalny punkt kontrolny oparty na strukturze GUPnP.\n"
 "Zainspirowane przez oprogramowanie Intel Tools for UPnP."
 
-#: ../data/gupnp-universal-cp.ui.h:8
+#: ../data/gupnp-universal-cp.ui.h:7
 msgid "Action Invocation"
 msgstr "Wywołanie działania"
 
-#: ../data/gupnp-universal-cp.ui.h:9
+#: ../data/gupnp-universal-cp.ui.h:8
 msgid "action"
 msgstr "działanie"
 
-#: ../data/gupnp-universal-cp.ui.h:10
+#: ../data/gupnp-universal-cp.ui.h:9
 msgid "service"
 msgstr "usługa"
 
-#: ../data/gupnp-universal-cp.ui.h:11
+#: ../data/gupnp-universal-cp.ui.h:10
 msgid "device"
 msgstr "urządzenie"
 
-#: ../data/gupnp-universal-cp.ui.h:12
+#: ../data/gupnp-universal-cp.ui.h:11
 msgid "_Invoke"
 msgstr "_Wywołaj"
 
-#: ../data/gupnp-universal-cp.ui.h:13
+#: ../data/gupnp-universal-cp.ui.h:12
 msgid "<b>'in' arguments</b>"
 msgstr "<b>parametry \"in\"</b>"
 
-#: ../data/gupnp-universal-cp.ui.h:14
+#: ../data/gupnp-universal-cp.ui.h:13
 msgid "<b>'out' arguments</b>"
 msgstr "<b>parametry \"out\"</b>"
 
-#: ../data/gupnp-universal-cp.ui.h:15
+#: ../data/gupnp-universal-cp.ui.h:14
 msgid "Copy value"
 msgstr "Skopiuj wartość"
 
-#: ../data/gupnp-universal-cp.ui.h:16
+#: ../data/gupnp-universal-cp.ui.h:15
 msgid "Copy all details"
 msgstr "Skopiuj wszystkie informacje"
 
-#: ../data/gupnp-universal-cp.ui.h:17
+#: ../data/gupnp-universal-cp.ui.h:16
 msgid "Invoke"
 msgstr "Wywołaj"
 
-#: ../data/gupnp-universal-cp.ui.h:18
+#: ../data/gupnp-universal-cp.ui.h:17
 msgid "Subscribe to events"
 msgstr "Subskrybuj zdarzenia"
 
-#: ../data/gupnp-universal-cp.ui.h:19
+#: ../data/gupnp-universal-cp.ui.h:18
 msgid "_Expand all devices"
 msgstr "_Rozwiń wszystkie urządzenia"
 
-#: ../data/gupnp-universal-cp.ui.h:20
+#: ../data/gupnp-universal-cp.ui.h:19
 msgid "_Collapse all devices"
 msgstr "_Zwiń wszystkie urządzenia"
 
-#: ../data/gupnp-universal-cp.ui.h:21
+#: ../data/gupnp-universal-cp.ui.h:20
 msgid "Copy event"
 msgstr "Skopuj zdarzenie"
 
-#: ../data/gupnp-universal-cp.ui.h:22
+#: ../data/gupnp-universal-cp.ui.h:21
 msgid "Copy all events"
 msgstr "Skopiuj wszystkie zdarzenia"
 
-#: ../data/gupnp-universal-cp.ui.h:23
+#: ../data/gupnp-universal-cp.ui.h:22
 msgid "_Clear event log"
 msgstr "Wy_czyść dziennik zdarzeń"
 
 #. default details
-#: ../data/gupnp-universal-cp.ui.h:24 ../src/universal-cp/device-treeview.c:35
+#: ../data/gupnp-universal-cp.ui.h:23 ../src/universal-cp/device-treeview.c:35
 msgid "GUPnP Universal Control Point"
 msgstr "Uniwersalny punkt kontrolny GUPnP"
 
-#: ../data/gupnp-universal-cp.ui.h:26
+#: ../data/gupnp-universal-cp.ui.h:25
 msgid "_View"
 msgstr "_Widok"
 
-#: ../data/gupnp-universal-cp.ui.h:27
+#: ../data/gupnp-universal-cp.ui.h:26
 msgid "Event _log"
 msgstr "_Dziennik zdarzeń"
+
+#: ../src/av-cp/main.c:44
+msgid "Network PORT to use for UPnP"
+msgstr "PORT sieciowy używany dla UPnP"
+
+#: ../src/av-cp/main.c:183
+msgid "- UPnP AV control point"
+msgstr "- punkt kontrolny UPnP AV"
+
+#: ../src/av-cp/main.c:188
+#, c-format
+msgid "Could not parse options: %s\n"
+msgstr "Nie można przetworzyć opcji: %s\n"
 
 #: ../src/universal-cp/action-dialog.c:714
 #, c-format
