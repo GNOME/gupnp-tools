@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: gupnp-tools master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gupnp-"
 "tools&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-02-20 10:46+0000\n"
-"PO-Revision-Date: 2013-02-25 11:44+0100\n"
+"POT-Creation-Date: 2013-03-20 11:32+0000\n"
+"PO-Revision-Date: 2013-03-28 17:33+0100\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
-"Language-Team: Español <gnome-es-list@gnome.org>\n"
+"Language-Team: Español; Castellano <gnome-es-list@gnome.org>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Gtranslator 2.91.5\n"
 
 #: ../data/gupnp-av-cp.desktop.in.in.h:1
@@ -41,46 +41,41 @@ msgstr ""
 msgid "GUPnP homepage"
 msgstr "Página principal de GUPnP"
 
-#: ../data/gupnp-av-cp.ui.in.h:5 ../data/gupnp-network-light.ui.h:5
-#: ../data/gupnp-universal-cp.ui.h:5
-msgid "GPL"
-msgstr "GPL"
-
 #. TRANSLATORS: Replace this string with your names, one name per line.
-#: ../data/gupnp-av-cp.ui.in.h:7 ../data/gupnp-network-light.ui.h:7
-#: ../data/gupnp-universal-cp.ui.h:7
+#: ../data/gupnp-av-cp.ui.in.h:6 ../data/gupnp-network-light.ui.h:6
+#: ../data/gupnp-universal-cp.ui.h:6
 msgid "translator-credits"
 msgstr "Daniel Mustieles <daniel.mustieles@gmail.com>, 2012, 2013"
 
-#: ../data/gupnp-av-cp.ui.in.h:8
+#: ../data/gupnp-av-cp.ui.in.h:7
 msgid "GUPnP AV CP - Metadata View"
 msgstr "Punto de control AV de GUPnP; vista de metadatos"
 
-#: ../data/gupnp-av-cp.ui.in.h:9
+#: ../data/gupnp-av-cp.ui.in.h:8
 msgid "GUPnP AV Control Point"
 msgstr "Punto de control AV de GUPnP"
 
-#: ../data/gupnp-av-cp.ui.in.h:10 ../data/gupnp-universal-cp.ui.h:25
+#: ../data/gupnp-av-cp.ui.in.h:9 ../data/gupnp-universal-cp.ui.h:24
 msgid "_File"
 msgstr "_Archivo"
 
-#: ../data/gupnp-av-cp.ui.in.h:11
+#: ../data/gupnp-av-cp.ui.in.h:10
 msgid "_Tools"
 msgstr "Herramien_tas"
 
-#: ../data/gupnp-av-cp.ui.in.h:12
+#: ../data/gupnp-av-cp.ui.in.h:11
 msgid "_Lenient Mode"
 msgstr "Modo _indulgente"
 
-#: ../data/gupnp-av-cp.ui.in.h:13 ../data/gupnp-universal-cp.ui.h:28
+#: ../data/gupnp-av-cp.ui.in.h:12 ../data/gupnp-universal-cp.ui.h:27
 msgid "_Help"
 msgstr "Ay_uda"
 
-#: ../data/gupnp-av-cp.ui.in.h:14
+#: ../data/gupnp-av-cp.ui.in.h:13
 msgid "_Renderer: "
 msgstr "_Renderizador: "
 
-#: ../data/gupnp-av-cp.ui.in.h:15
+#: ../data/gupnp-av-cp.ui.in.h:14
 msgid ""
 "Clears the CP's idea of the state of the currently selected AV Renderer. "
 "Useful for dealing with AV Renderers that don't report state changes."
@@ -89,39 +84,39 @@ msgstr ""
 "actualmente. Útil para trabajar con renderizadores AV que no informar de "
 "cambios de estado."
 
-#: ../data/gupnp-av-cp.ui.in.h:16
+#: ../data/gupnp-av-cp.ui.in.h:15
 msgid "_Clear state"
 msgstr "_Limpiar estado"
 
-#: ../data/gupnp-av-cp.ui.in.h:17
+#: ../data/gupnp-av-cp.ui.in.h:16
 msgid "_Play"
 msgstr "_Reproducir"
 
-#: ../data/gupnp-av-cp.ui.in.h:18
+#: ../data/gupnp-av-cp.ui.in.h:17
 msgid "P_ause"
 msgstr "_Pausa"
 
-#: ../data/gupnp-av-cp.ui.in.h:19
+#: ../data/gupnp-av-cp.ui.in.h:18
 msgid "_Stop"
 msgstr "_Detener"
 
-#: ../data/gupnp-av-cp.ui.in.h:20
+#: ../data/gupnp-av-cp.ui.in.h:19
 msgid "Pre_vious"
 msgstr "_Anterior"
 
-#: ../data/gupnp-av-cp.ui.in.h:21
+#: ../data/gupnp-av-cp.ui.in.h:20
 msgid "_Next"
 msgstr "_Siguiente"
 
-#: ../data/gupnp-av-cp.ui.in.h:22
+#: ../data/gupnp-av-cp.ui.in.h:21
 msgid "Rescan"
 msgstr "Volver a analizar"
 
-#: ../data/gupnp-av-cp.ui.in.h:23
+#: ../data/gupnp-av-cp.ui.in.h:22
 msgid "Fetch the DIDL-Lite XML for this media object"
 msgstr "Obtener el XML DIDL-Lite para este objeto multimedia"
 
-#: ../data/gupnp-av-cp.ui.in.h:24
+#: ../data/gupnp-av-cp.ui.in.h:23
 msgid "Fetch _DIDL-Lite"
 msgstr "Obtener _DIDL-Lite"
 
@@ -137,26 +132,26 @@ msgstr ""
 "Una bombilla de red virtual basada en el entorno de trabajo GUPnP.\n"
 "Inspirada en las herramientas de Intel para UPnP."
 
-#: ../data/gupnp-network-light.ui.h:8
+#: ../data/gupnp-network-light.ui.h:7
 msgid "GUPnP Network Light"
 msgstr "Luz de red GUPnP"
 
-#: ../data/gupnp-network-light.ui.h:9
+#: ../data/gupnp-network-light.ui.h:8
 msgctxt "network-light"
 msgid "_On"
 msgstr "_Activada"
 
-#: ../data/gupnp-network-light.ui.h:11
+#: ../data/gupnp-network-light.ui.h:10
 #, no-c-format
 msgid "_Increase luminance by 20%"
 msgstr "_Aumentar la luminosidad un 20%"
 
-#: ../data/gupnp-network-light.ui.h:13
+#: ../data/gupnp-network-light.ui.h:12
 #, no-c-format
 msgid "_Decrease luminance by 20%"
 msgstr "_Reducir la luminosidad un 20%"
 
-#: ../data/gupnp-network-light.ui.h:14
+#: ../data/gupnp-network-light.ui.h:13
 msgid "_About"
 msgstr "A_cerca de"
 
@@ -172,82 +167,96 @@ msgstr ""
 "Un punto de control genérico basado en el entorno de trabajo GUPnP.\n"
 "Inspirado en las herramientas de Intel para UPnP."
 
-#: ../data/gupnp-universal-cp.ui.h:8
+#: ../data/gupnp-universal-cp.ui.h:7
 msgid "Action Invocation"
 msgstr "Invocación de la acción"
 
-#: ../data/gupnp-universal-cp.ui.h:9
+#: ../data/gupnp-universal-cp.ui.h:8
 msgid "action"
 msgstr "acción"
 
-#: ../data/gupnp-universal-cp.ui.h:10
+#: ../data/gupnp-universal-cp.ui.h:9
 msgid "service"
 msgstr "servicio"
 
-#: ../data/gupnp-universal-cp.ui.h:11
+#: ../data/gupnp-universal-cp.ui.h:10
 msgid "device"
 msgstr "dispositivo"
 
-#: ../data/gupnp-universal-cp.ui.h:12
+#: ../data/gupnp-universal-cp.ui.h:11
 msgid "_Invoke"
 msgstr "_Invocar"
 
-#: ../data/gupnp-universal-cp.ui.h:13
+#: ../data/gupnp-universal-cp.ui.h:12
 msgid "<b>'in' arguments</b>"
 msgstr "<b>argumentos de entrada</b>"
 
-#: ../data/gupnp-universal-cp.ui.h:14
+#: ../data/gupnp-universal-cp.ui.h:13
 msgid "<b>'out' arguments</b>"
 msgstr "<b>argumentos de salida</b>"
 
-#: ../data/gupnp-universal-cp.ui.h:15
+#: ../data/gupnp-universal-cp.ui.h:14
 msgid "Copy value"
 msgstr "Copiar valor"
 
-#: ../data/gupnp-universal-cp.ui.h:16
+#: ../data/gupnp-universal-cp.ui.h:15
 msgid "Copy all details"
 msgstr "Copiar todos los detalles"
 
-#: ../data/gupnp-universal-cp.ui.h:17
+#: ../data/gupnp-universal-cp.ui.h:16
 msgid "Invoke"
 msgstr "Invokar"
 
-#: ../data/gupnp-universal-cp.ui.h:18
+#: ../data/gupnp-universal-cp.ui.h:17
 msgid "Subscribe to events"
 msgstr "Suscribirse a todos los eventos"
 
-#: ../data/gupnp-universal-cp.ui.h:19
+#: ../data/gupnp-universal-cp.ui.h:18
 msgid "_Expand all devices"
 msgstr "_Expandir todos los dispositivos"
 
-#: ../data/gupnp-universal-cp.ui.h:20
+#: ../data/gupnp-universal-cp.ui.h:19
 msgid "_Collapse all devices"
 msgstr "_Contraer todos los dispositivos"
 
-#: ../data/gupnp-universal-cp.ui.h:21
+#: ../data/gupnp-universal-cp.ui.h:20
 msgid "Copy event"
 msgstr "Copiar evento"
 
-#: ../data/gupnp-universal-cp.ui.h:22
+#: ../data/gupnp-universal-cp.ui.h:21
 msgid "Copy all events"
 msgstr "Copiar todos los eventos"
 
-#: ../data/gupnp-universal-cp.ui.h:23
+#: ../data/gupnp-universal-cp.ui.h:22
 msgid "_Clear event log"
 msgstr "_Limpiar el registro de eventos"
 
 #. default details
-#: ../data/gupnp-universal-cp.ui.h:24 ../src/universal-cp/device-treeview.c:35
+#: ../data/gupnp-universal-cp.ui.h:23 ../src/universal-cp/device-treeview.c:35
 msgid "GUPnP Universal Control Point"
 msgstr "Punto de control de GUPnP universal"
 
-#: ../data/gupnp-universal-cp.ui.h:26
+#: ../data/gupnp-universal-cp.ui.h:25
 msgid "_View"
 msgstr "_Ver"
 
-#: ../data/gupnp-universal-cp.ui.h:27
+#: ../data/gupnp-universal-cp.ui.h:26
 msgid "Event _log"
 msgstr "Registro de _eventos"
+
+#: ../src/av-cp/main.c:44
+msgid "Network PORT to use for UPnP"
+msgstr "PUERTO de red que usar para UPnP"
+
+#: ../src/av-cp/main.c:183
+#| msgid "UPnP AV Control Point"
+msgid "- UPnP AV control point"
+msgstr "- Punto de control AV de UPnP"
+
+#: ../src/av-cp/main.c:188
+#, c-format
+msgid "Could not parse options: %s\n"
+msgstr "No se pudieron analizar las opciones: %s\n"
 
 #: ../src/universal-cp/action-dialog.c:714
 #, c-format
@@ -442,3 +451,6 @@ msgstr "Servicio"
 #: ../src/universal-cp/event-treeview.c:375
 msgid "State Variable"
 msgstr "Variable de estado"
+
+#~ msgid "GPL"
+#~ msgstr "GPL"
