@@ -572,17 +572,13 @@ update_out_action_argument_widget (GtkWidget                 *arg_widget,
         }
 }
 
-static GHashTable *
+static void
 retrieve_in_action_arguments (GUPnPServiceIntrospection *introspection,
-                              GUPnPServiceActionInfo    *action_info)
+                              GUPnPServiceActionInfo    *action_info,
+                              GList                     **in_names,
+                              GList                     **in_values)
 {
-        GHashTable *in_args;
         GList      *arg_node;
-
-        in_args = g_hash_table_new_full (g_str_hash,
-                                         g_direct_equal,
-                                         NULL,
-                                         g_value_free);
 
         arg_node = gtk_container_get_children (GTK_CONTAINER (in_args_table));
 
@@ -600,10 +596,9 @@ retrieve_in_action_arguments (GUPnPServiceIntrospection *introspection,
                 if (name == NULL)
                         continue;
 
-                g_hash_table_insert (in_args, name, value);
+                *in_names = g_list_append (*in_names, name);
+                *in_values = g_list_append (*in_values, value);
         }
-
-        return in_args;
 }
 
 static GHashTable *
@@ -735,22 +730,27 @@ on_action_invocation (GtkButton *button,
         GUPnPServiceProxy         *proxy;
         GUPnPServiceIntrospection *introspection;
         GUPnPServiceActionInfo    *action_info;
-        GHashTable                *in_args;
+        GList                     *in_names = NULL, *in_values = NULL;
 
         action_info = get_selected_action (&proxy, &introspection);
         if (action_info == NULL)
                 return;
 
-        in_args = retrieve_in_action_arguments (introspection,
-                                                action_info);
+        retrieve_in_action_arguments (introspection,
+                                      action_info,
+                                      &in_names,
+                                      &in_values);
 
-        gupnp_service_proxy_begin_action_hash (proxy,
-                                              action_info->name,
-                                              on_action_complete,
-                                              NULL,
-                                              in_args);
+        gupnp_service_proxy_begin_action_list (proxy,
+                                               action_info->name,
+                                               in_names,
+                                               in_values,
+                                               on_action_complete,
+                                               NULL);
 
-        g_hash_table_destroy (in_args);
+        g_list_free (in_names);
+        g_list_free_full (in_values, g_value_free);
+
         g_object_unref (proxy);
         g_object_unref (introspection);
 }
