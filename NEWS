@@ -1,3 +1,24 @@
+0.8.6.1
+=======
+
+Changes since 0.8.6:
+
+- More translations.
+- Fix configure.
+
+All contributors to this release:
+  Piotr Drąg <piotrdrag@gmail.com>
+  Martin Srebotnjak <miles@filmsi.net>
+  Marek Černocký <marek@manet.cz>
+  Jasper Lievisse Adriaanse <jasper@humppa.nl>
+  Daniel Mustieles <daniel.mustieles@gmail.com>
+
+Added/updated translations
+ - cs, courtesy of Marek Černocký
+ - es, courtesy of Daniel Mustieles
+ - pl, courtesy of Piotr Drąg
+ - sl, courtesy of Matej Urbančič
+
 0.8.6
 =====
 
