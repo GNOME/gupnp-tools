@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: gupnp-tools master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gupnp-"
 "tools&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-02-20 10:46+0000\n"
-"PO-Revision-Date: 2013-02-20 20:19+0200\n"
+"POT-Creation-Date: 2013-03-20 11:32+0000\n"
+"PO-Revision-Date: 2013-04-02 09:55+0200\n"
 "Last-Translator: Miroslav Nikolić <miroslavnikolic@rocketmail.com>\n"
 "Language-Team: Serbian <gnom@prevod.org>\n"
 "Language: sr\n"
@@ -33,7 +33,7 @@ msgid ""
 "An UPnP AV Control Point based on GUPnP framework.\n"
 "Inspired by Intel Tools for UPnP."
 msgstr ""
-"UPnP AV upravljačka tačka zasnovana na GUPnP radnom okviru.\n"
+"UPNP AV upravljačka tačka zasnovana na GUPnP radnom okviru.\n"
 "Ideja je viđena u Intelovim alatima za UPnP."
 
 #: ../data/gupnp-av-cp.ui.in.h:4 ../data/gupnp-network-light.ui.h:4
@@ -41,49 +41,44 @@ msgstr ""
 msgid "GUPnP homepage"
 msgstr "GUPnP matična stranica"
 
-#: ../data/gupnp-av-cp.ui.in.h:5 ../data/gupnp-network-light.ui.h:5
-#: ../data/gupnp-universal-cp.ui.h:5
-msgid "GPL"
-msgstr "OJL"
-
 #. TRANSLATORS: Replace this string with your names, one name per line.
-#: ../data/gupnp-av-cp.ui.in.h:7 ../data/gupnp-network-light.ui.h:7
-#: ../data/gupnp-universal-cp.ui.h:7
+#: ../data/gupnp-av-cp.ui.in.h:6 ../data/gupnp-network-light.ui.h:6
+#: ../data/gupnp-universal-cp.ui.h:6
 msgid "translator-credits"
 msgstr ""
 "  Miroslav Nikolić\n"
 "\n"
 "  http://prevod.org — prevod na srpski jezik"
 
-#: ../data/gupnp-av-cp.ui.in.h:8
+#: ../data/gupnp-av-cp.ui.in.h:7
 msgid "GUPnP AV CP - Metadata View"
 msgstr "GUPnP AV CP — Pregled metapodataka"
 
-#: ../data/gupnp-av-cp.ui.in.h:9
+#: ../data/gupnp-av-cp.ui.in.h:8
 msgid "GUPnP AV Control Point"
 msgstr "GUPnP AV upravljačka tačka"
 
-#: ../data/gupnp-av-cp.ui.in.h:10 ../data/gupnp-universal-cp.ui.h:25
+#: ../data/gupnp-av-cp.ui.in.h:9 ../data/gupnp-universal-cp.ui.h:24
 msgid "_File"
 msgstr "_Datoteka"
 
-#: ../data/gupnp-av-cp.ui.in.h:11
+#: ../data/gupnp-av-cp.ui.in.h:10
 msgid "_Tools"
 msgstr "_Alati"
 
-#: ../data/gupnp-av-cp.ui.in.h:12
+#: ../data/gupnp-av-cp.ui.in.h:11
 msgid "_Lenient Mode"
 msgstr "_Režim popustljivosti"
 
-#: ../data/gupnp-av-cp.ui.in.h:13 ../data/gupnp-universal-cp.ui.h:28
+#: ../data/gupnp-av-cp.ui.in.h:12 ../data/gupnp-universal-cp.ui.h:27
 msgid "_Help"
 msgstr "Po_moć"
 
-#: ../data/gupnp-av-cp.ui.in.h:14
+#: ../data/gupnp-av-cp.ui.in.h:13
 msgid "_Renderer: "
 msgstr "_Iscrtavač: "
 
-#: ../data/gupnp-av-cp.ui.in.h:15
+#: ../data/gupnp-av-cp.ui.in.h:14
 msgid ""
 "Clears the CP's idea of the state of the currently selected AV Renderer. "
 "Useful for dealing with AV Renderers that don't report state changes."
@@ -91,39 +86,39 @@ msgstr ""
 "Čisti ideje upravljačkih tačaka stanja trenutno izabranog AV iscrtavača. "
 "Korisno za rukovanje AV iscrtavačima koji ne izveštavaju o promenama stanja."
 
-#: ../data/gupnp-av-cp.ui.in.h:16
+#: ../data/gupnp-av-cp.ui.in.h:15
 msgid "_Clear state"
 msgstr "_Očisti stanje"
 
-#: ../data/gupnp-av-cp.ui.in.h:17
+#: ../data/gupnp-av-cp.ui.in.h:16
 msgid "_Play"
 msgstr "_Pusti"
 
-#: ../data/gupnp-av-cp.ui.in.h:18
+#: ../data/gupnp-av-cp.ui.in.h:17
 msgid "P_ause"
 msgstr "_Zastani"
 
-#: ../data/gupnp-av-cp.ui.in.h:19
+#: ../data/gupnp-av-cp.ui.in.h:18
 msgid "_Stop"
 msgstr "_Zaustavi"
 
-#: ../data/gupnp-av-cp.ui.in.h:20
+#: ../data/gupnp-av-cp.ui.in.h:19
 msgid "Pre_vious"
 msgstr "_Prethodno"
 
-#: ../data/gupnp-av-cp.ui.in.h:21
+#: ../data/gupnp-av-cp.ui.in.h:20
 msgid "_Next"
 msgstr "_Sledeće"
 
-#: ../data/gupnp-av-cp.ui.in.h:22
+#: ../data/gupnp-av-cp.ui.in.h:21
 msgid "Rescan"
 msgstr "Ponovo pretraži"
 
-#: ../data/gupnp-av-cp.ui.in.h:23
+#: ../data/gupnp-av-cp.ui.in.h:22
 msgid "Fetch the DIDL-Lite XML for this media object"
 msgstr "Dovucite DIDL-Lajt IksML za ovaj objekat medija"
 
-#: ../data/gupnp-av-cp.ui.in.h:24
+#: ../data/gupnp-av-cp.ui.in.h:23
 msgid "Fetch _DIDL-Lite"
 msgstr "Dovuci _DIDL-Lajt"
 
@@ -139,26 +134,26 @@ msgstr ""
 "Lampica virtuelne mreže zasnovana na GUPnP radnom okviru.\n"
 "Ideja je viđena u Intelovim alatima za UPnP."
 
-#: ../data/gupnp-network-light.ui.h:8
+#: ../data/gupnp-network-light.ui.h:7
 msgid "GUPnP Network Light"
 msgstr "GUPnP mrežno svetlo"
 
-#: ../data/gupnp-network-light.ui.h:9
+#: ../data/gupnp-network-light.ui.h:8
 msgctxt "network-light"
 msgid "_On"
 msgstr "_Uklj."
 
-#: ../data/gupnp-network-light.ui.h:11
+#: ../data/gupnp-network-light.ui.h:10
 #, no-c-format
 msgid "_Increase luminance by 20%"
 msgstr "_Povećaj osvetljaj za 20%"
 
-#: ../data/gupnp-network-light.ui.h:13
+#: ../data/gupnp-network-light.ui.h:12
 #, no-c-format
 msgid "_Decrease luminance by 20%"
 msgstr "_Umanji osvetljaj za 20%"
 
-#: ../data/gupnp-network-light.ui.h:14
+#: ../data/gupnp-network-light.ui.h:13
 msgid "_About"
 msgstr "_O programu"
 
@@ -174,82 +169,96 @@ msgstr ""
 "Opšta upravljačka tačka zasnovana na GUPnP radnom okviru.\n"
 "Ideja je viđena u Intelovim alatima za UPnP."
 
-#: ../data/gupnp-universal-cp.ui.h:8
+#: ../data/gupnp-universal-cp.ui.h:7
 msgid "Action Invocation"
 msgstr "Prizivanje radnje"
 
-#: ../data/gupnp-universal-cp.ui.h:9
+#: ../data/gupnp-universal-cp.ui.h:8
 msgid "action"
 msgstr "radnja"
 
-#: ../data/gupnp-universal-cp.ui.h:10
+#: ../data/gupnp-universal-cp.ui.h:9
 msgid "service"
 msgstr "usluga"
 
-#: ../data/gupnp-universal-cp.ui.h:11
+#: ../data/gupnp-universal-cp.ui.h:10
 msgid "device"
 msgstr "uređaj"
 
-#: ../data/gupnp-universal-cp.ui.h:12
+#: ../data/gupnp-universal-cp.ui.h:11
 msgid "_Invoke"
 msgstr "_Prizovi"
 
-#: ../data/gupnp-universal-cp.ui.h:13
+#: ../data/gupnp-universal-cp.ui.h:12
 msgid "<b>'in' arguments</b>"
 msgstr "<b>„ulazni“ argumenti</b>"
 
-#: ../data/gupnp-universal-cp.ui.h:14
+#: ../data/gupnp-universal-cp.ui.h:13
 msgid "<b>'out' arguments</b>"
 msgstr "<b>„izlazni“ argumenti</b>"
 
-#: ../data/gupnp-universal-cp.ui.h:15
+#: ../data/gupnp-universal-cp.ui.h:14
 msgid "Copy value"
 msgstr "Umnoži vrednost"
 
-#: ../data/gupnp-universal-cp.ui.h:16
+#: ../data/gupnp-universal-cp.ui.h:15
 msgid "Copy all details"
 msgstr "Umnoži sve pojedinosti"
 
-#: ../data/gupnp-universal-cp.ui.h:17
+#: ../data/gupnp-universal-cp.ui.h:16
 msgid "Invoke"
 msgstr "Prizovi"
 
-#: ../data/gupnp-universal-cp.ui.h:18
+#: ../data/gupnp-universal-cp.ui.h:17
 msgid "Subscribe to events"
 msgstr "Pretplatite se na događaje"
 
-#: ../data/gupnp-universal-cp.ui.h:19
+#: ../data/gupnp-universal-cp.ui.h:18
 msgid "_Expand all devices"
 msgstr "_Raširi sve uređaje"
 
-#: ../data/gupnp-universal-cp.ui.h:20
+#: ../data/gupnp-universal-cp.ui.h:19
 msgid "_Collapse all devices"
 msgstr "_Skupi sve uređaje"
 
-#: ../data/gupnp-universal-cp.ui.h:21
+#: ../data/gupnp-universal-cp.ui.h:20
 msgid "Copy event"
 msgstr "Umnoži događaj"
 
-#: ../data/gupnp-universal-cp.ui.h:22
+#: ../data/gupnp-universal-cp.ui.h:21
 msgid "Copy all events"
 msgstr "Umnoži sve događaje"
 
-#: ../data/gupnp-universal-cp.ui.h:23
+#: ../data/gupnp-universal-cp.ui.h:22
 msgid "_Clear event log"
 msgstr "_Očisti dnevnik događaja"
 
 #. default details
-#: ../data/gupnp-universal-cp.ui.h:24 ../src/universal-cp/device-treeview.c:35
+#: ../data/gupnp-universal-cp.ui.h:23 ../src/universal-cp/device-treeview.c:35
 msgid "GUPnP Universal Control Point"
 msgstr "GUPnP sveopšta upravljačka tačka"
 
-#: ../data/gupnp-universal-cp.ui.h:26
+#: ../data/gupnp-universal-cp.ui.h:25
 msgid "_View"
 msgstr "_Pregled"
 
-#: ../data/gupnp-universal-cp.ui.h:27
+#: ../data/gupnp-universal-cp.ui.h:26
 msgid "Event _log"
 msgstr "Dnevnik _događaja"
+
+#: ../src/av-cp/main.c:44
+msgid "Network PORT to use for UPnP"
+msgstr "Mrežni PRIKLJUČNIK za korišćenje za UPnP"
+
+#: ../src/av-cp/main.c:183
+#| msgid "UPnP AV Control Point"
+msgid "- UPnP AV control point"
+msgstr "— UPnP AV upravljačka tačka"
+
+#: ../src/av-cp/main.c:188
+#, c-format
+msgid "Could not parse options: %s\n"
+msgstr "Ne mogu da obradim mogućnosti: %s\n"
 
 #: ../src/universal-cp/action-dialog.c:714
 #, c-format
