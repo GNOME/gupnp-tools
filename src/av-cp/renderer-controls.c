@@ -108,23 +108,20 @@ g_value_free (gpointer data)
        g_slice_free (GValue, data);
 }
 
-static GHashTable *
-create_av_transport_args_hash (char **additional_args)
+static GList *
+create_av_transport_args (char **additional_args, GList **out_values)
 {
-        GHashTable *args;
         GValue     *instance_id;
         gint        i;
-
-        args = g_hash_table_new_full (g_str_hash,
-                                      g_str_equal,
-                                      NULL,
-                                      g_value_free);
+        GList      *names = NULL, *values = NULL;
 
         instance_id = g_slice_alloc0 (sizeof (GValue));
         g_value_init (instance_id, G_TYPE_UINT);
         g_value_set_uint (instance_id, 0);
 
-        g_hash_table_insert (args, "InstanceID", instance_id);
+        names = g_list_append (names, g_strdup ("InstanceID"));
+        values = g_list_append (values, instance_id);
+
 
         if (additional_args != NULL) {
                 for (i = 0; additional_args[i]; i += 2) {
@@ -133,12 +130,15 @@ create_av_transport_args_hash (char **additional_args)
                         value = g_slice_alloc0 (sizeof (GValue));
                         g_value_init (value, G_TYPE_STRING);
                         g_value_set_string (value, additional_args[i + 1]);
-
-                        g_hash_table_insert (args, additional_args[i], value);
+                        names = g_list_append (names,
+                                               g_strdup (additional_args[i]));
+                        values = g_list_append (values, value);
                 }
         }
 
-        return args;
+        *out_values = values;
+
+        return names;
 }
 
 void
@@ -146,7 +146,7 @@ av_transport_send_action (char *action,
                           char *additional_args[])
 {
         GUPnPServiceProxy *av_transport;
-        GHashTable        *args;
+        GList             *names, *values;
 
         av_transport = get_selected_av_transport (NULL);
         if (av_transport == NULL) {
@@ -154,14 +154,16 @@ av_transport_send_action (char *action,
                 return;
         }
 
-        args = create_av_transport_args_hash (additional_args);
+        names = create_av_transport_args (additional_args, &values);
 
-        gupnp_service_proxy_begin_action_hash (av_transport,
+        gupnp_service_proxy_begin_action_list (av_transport,
                                                action,
+                                               names,
+                                               values,
                                                av_transport_action_cb,
-                                               (char *) action,
-                                               args);
-        g_hash_table_unref (args);
+                                               (char *) action);
+        g_list_free_full (names, g_free);
+        g_list_free_full (values, g_value_free);
 }
 
 static void
