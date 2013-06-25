@@ -1,0 +1,456 @@
+# Greek translation for gupnp-tools.
+# Copyright (C) 2013 gupnp-tools's COPYRIGHT HOLDER
+# This file is distributed under the same license as the gupnp-tools package.
+# Dimitris Spingos <dmtrs32@gmail.com>, 2013.
+# Dimitris Spingos (Δημήτρης Σπίγγος) <dmtrs32@gmail.com>, 2013.
+msgid ""
+msgstr ""
+"Project-Id-Version: gupnp-tools master\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gupnp-"
+"tools&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2013-06-11 10:31+0000\n"
+"PO-Revision-Date: 2013-06-25 08:07+0300\n"
+"Last-Translator: Dimitris Spingos (Δημήτρης Σπίγγος) <dmtrs32@gmail.com>\n"
+"Language-Team: team@gnome.gr\n"
+"Language: el\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Virtaal 0.7.1\n"
+"X-Project-Style: gnome\n"
+
+#: ../data/gupnp-av-cp.desktop.in.in.h:1
+msgid "UPnP AV Control Point"
+msgstr "UPnP AV Σημείο Ελέγχου"
+
+#: ../data/gupnp-av-cp.ui.in.h:1 ../data/gupnp-network-light.ui.h:1
+#: ../data/gupnp-universal-cp.ui.h:1
+msgid "Copyright (C) 2007 Zeeshan Ali (Khattak)"
+msgstr "Πνευματικά δικαιώματα (C) 2007 Zeeshan Ali (Khattak)"
+
+#: ../data/gupnp-av-cp.ui.in.h:2
+msgid ""
+"An UPnP AV Control Point based on GUPnP framework.\n"
+"Inspired by Intel Tools for UPnP."
+msgstr ""
+"Ένα σημείο ελέγχου UPnP AV με βάση τον σκελετό GUPnP.\n"
+"Εμπνευσμένο από τα εργαλεία Intel για UPnP."
+
+#: ../data/gupnp-av-cp.ui.in.h:4 ../data/gupnp-network-light.ui.h:4
+#: ../data/gupnp-universal-cp.ui.h:4
+msgid "GUPnP homepage"
+msgstr "Αρχική σελίδα GUPnP"
+
+#. TRANSLATORS: Replace this string with your names, one name per line.
+#: ../data/gupnp-av-cp.ui.in.h:6 ../data/gupnp-network-light.ui.h:6
+#: ../data/gupnp-universal-cp.ui.h:6
+msgid "translator-credits"
+msgstr ""
+"Ελληνική μεταφραστική ομάδα του GNOME\n"
+" Δημήτρης Σπίγγος <dmtrs32@gmail.com>\n"
+"Για περισσότερα δείτε: http://gnome.gr"
+
+#: ../data/gupnp-av-cp.ui.in.h:7
+msgid "GUPnP AV CP - Metadata View"
+msgstr "GUPnP AV CP - Προβολή μεταδεδομένων"
+
+#: ../data/gupnp-av-cp.ui.in.h:8
+msgid "GUPnP AV Control Point"
+msgstr "Σημείο Ελέγχου UPnP AV"
+
+#: ../data/gupnp-av-cp.ui.in.h:9 ../data/gupnp-universal-cp.ui.h:24
+msgid "_File"
+msgstr "_Αρχείο"
+
+#: ../data/gupnp-av-cp.ui.in.h:10
+msgid "_Tools"
+msgstr "_Εργαλεία"
+
+#: ../data/gupnp-av-cp.ui.in.h:11
+msgid "_Lenient Mode"
+msgstr "Ή_πια κατάσταση"
+
+#: ../data/gupnp-av-cp.ui.in.h:12 ../data/gupnp-universal-cp.ui.h:27
+msgid "_Help"
+msgstr "_Βοήθεια"
+
+#: ../data/gupnp-av-cp.ui.in.h:13
+msgid "_Renderer: "
+msgstr "_Αποτυπωτής: "
+
+#: ../data/gupnp-av-cp.ui.in.h:14
+msgid ""
+"Clears the CP's idea of the state of the currently selected AV Renderer. "
+"Useful for dealing with AV Renderers that don't report state changes."
+msgstr ""
+"Καθαρίζει την ιδέα της κατάστασης του τρέχοντος επιλεγμένου αποτυπωτή AV του "
+"CP. Χρήσιμη για αντιμετώπιση αποτυπωτές AV που δεν αναφέρουν αλλαγές "
+"κατάστασης."
+
+#: ../data/gupnp-av-cp.ui.in.h:15
+msgid "_Clear state"
+msgstr "_Καθαρισμός κατάστασης"
+
+#: ../data/gupnp-av-cp.ui.in.h:16
+msgid "_Play"
+msgstr "_Αναπαραγωγή"
+
+#: ../data/gupnp-av-cp.ui.in.h:17
+msgid "P_ause"
+msgstr "Παύ_ση"
+
+#: ../data/gupnp-av-cp.ui.in.h:18
+msgid "_Stop"
+msgstr "_Διακοπή"
+
+#: ../data/gupnp-av-cp.ui.in.h:19
+msgid "Pre_vious"
+msgstr "Προη_γούμενο"
+
+#: ../data/gupnp-av-cp.ui.in.h:20
+msgid "_Next"
+msgstr "_Επόμενο"
+
+#: ../data/gupnp-av-cp.ui.in.h:21
+msgid "Rescan"
+msgstr "Επανασάρωση"
+
+#: ../data/gupnp-av-cp.ui.in.h:22
+msgid "Fetch the DIDL-Lite XML for this media object"
+msgstr "Προσκόμιση του DIDL-Lite XML για αυτό το αντικείμενο μέσων"
+
+#: ../data/gupnp-av-cp.ui.in.h:23
+msgid "Fetch _DIDL-Lite"
+msgstr "Προσκόμιση _DIDL-Lite"
+
+#: ../data/gupnp-network-light.desktop.in.in.h:1
+msgid "UPnP Network Light"
+msgstr "UPnP Network Light"
+
+#: ../data/gupnp-network-light.ui.h:2
+msgid ""
+"A virtual network light bulb based on GUPnP framework.\n"
+"Inspired by Intel Tools for UPnP."
+msgstr ""
+"Ένα εικονικό δίκτυο λαμπτήρα με βάση τον σκελετό GUPnP.\n"
+"Εμπνευσμένο από τα εργαλεία Intel για UPnP."
+
+#: ../data/gupnp-network-light.ui.h:7
+msgid "GUPnP Network Light"
+msgstr "GUPnP Network Light"
+
+#: ../data/gupnp-network-light.ui.h:8
+msgctxt "network-light"
+msgid "_On"
+msgstr "_Σε"
+
+#: ../data/gupnp-network-light.ui.h:10
+#, no-c-format
+msgid "_Increase luminance by 20%"
+msgstr "_Αύξηση λαμπρότητας κατά 20%"
+
+#: ../data/gupnp-network-light.ui.h:12
+#, no-c-format
+msgid "_Decrease luminance by 20%"
+msgstr "_Μείωση λαμπρότητας κατά 20%"
+
+#: ../data/gupnp-network-light.ui.h:13
+msgid "_About"
+msgstr "_Περί"
+
+#: ../data/gupnp-universal-cp.desktop.in.in.h:1
+msgid "UPnP Universal Control Point"
+msgstr "Γενικό σημείο ελέγχου UPnP"
+
+#: ../data/gupnp-universal-cp.ui.h:2
+msgid ""
+"A Generic Control Point based on GUPnP framework.\n"
+"Inspired by Intel Tools for UPnP."
+msgstr ""
+"Ένα γενικό σημείο ελέγχου με βάση τον σκελετό GUPnP.\n"
+"Εμπνευσμένο από τα εργαλεία Intel για UPnP."
+
+#: ../data/gupnp-universal-cp.ui.h:7
+msgid "Action Invocation"
+msgstr "Κλήση ενέργειας"
+
+#: ../data/gupnp-universal-cp.ui.h:8
+msgid "action"
+msgstr "ενέργεια"
+
+#: ../data/gupnp-universal-cp.ui.h:9
+msgid "service"
+msgstr "υπηρεσία"
+
+#: ../data/gupnp-universal-cp.ui.h:10
+msgid "device"
+msgstr "συσκευή"
+
+#: ../data/gupnp-universal-cp.ui.h:11
+msgid "_Invoke"
+msgstr "_Κλήση"
+
+#: ../data/gupnp-universal-cp.ui.h:12
+msgid "<b>'in' arguments</b>"
+msgstr "<b>'εισερχόμενα' ορίσματα</b>"
+
+#: ../data/gupnp-universal-cp.ui.h:13
+msgid "<b>'out' arguments</b>"
+msgstr "<b>'εξερχόμενα' ορίσματα</b>"
+
+#: ../data/gupnp-universal-cp.ui.h:14
+msgid "Copy value"
+msgstr "Αντιγραφή τιμής"
+
+#: ../data/gupnp-universal-cp.ui.h:15
+msgid "Copy all details"
+msgstr "Αντιγραφή όλων των λεπτομερειών"
+
+#: ../data/gupnp-universal-cp.ui.h:16
+msgid "Invoke"
+msgstr "Κλήση"
+
+#: ../data/gupnp-universal-cp.ui.h:17
+msgid "Subscribe to events"
+msgstr "Εγγραφή στα συμβάντα"
+
+#: ../data/gupnp-universal-cp.ui.h:18
+msgid "_Expand all devices"
+msgstr "Α_νάπτυξη όλων των συσκευών"
+
+#: ../data/gupnp-universal-cp.ui.h:19
+msgid "_Collapse all devices"
+msgstr "_Σύμπτυξη όλων των συσκευών"
+
+#: ../data/gupnp-universal-cp.ui.h:20
+msgid "Copy event"
+msgstr "Αντιγραφή συμβάντος"
+
+#: ../data/gupnp-universal-cp.ui.h:21
+msgid "Copy all events"
+msgstr "Αντιγραφή όλων των συμβάντων"
+
+#: ../data/gupnp-universal-cp.ui.h:22
+msgid "_Clear event log"
+msgstr "Κα_θαρισμός καταγραφής συμβάντων"
+
+#. default details
+#: ../data/gupnp-universal-cp.ui.h:23 ../src/universal-cp/device-treeview.c:35
+msgid "GUPnP Universal Control Point"
+msgstr "Γενικό σημείο ελέγχου GUPnP"
+
+#: ../data/gupnp-universal-cp.ui.h:25
+msgid "_View"
+msgstr "_Προβολή"
+
+#: ../data/gupnp-universal-cp.ui.h:26
+msgid "Event _log"
+msgstr "Κα_ταγραφή συμβάντων"
+
+#: ../src/av-cp/main.c:44
+msgid "Network PORT to use for UPnP"
+msgstr "Δίκτυο PORT για χρήση με UPnP"
+
+#: ../src/av-cp/main.c:183
+msgid "- UPnP AV control point"
+msgstr "- Σημείο Ελέγχου UPnP AV"
+
+#: ../src/av-cp/main.c:188
+#, c-format
+msgid "Could not parse options: %s\n"
+msgstr "Αδύνατη η ανάλυση επιλογών: %s\n"
+
+#: ../src/universal-cp/action-dialog.c:709
+#, c-format
+msgid ""
+"Action failed.\n"
+"\n"
+"Error %d: %s"
+msgstr ""
+"Αποτυχία ενέργειας.\n"
+"\n"
+"Σφάλμα %d: %s"
+
+#: ../src/universal-cp/details-treeview.c:180
+#: ../src/universal-cp/details-treeview.c:208
+#: ../src/universal-cp/details-treeview.c:234
+#: ../src/universal-cp/details-treeview.c:413
+msgid "Name"
+msgstr "Όνομα"
+
+#: ../src/universal-cp/details-treeview.c:182
+msgid "Direction"
+msgstr "Κατεύθυνση"
+
+#: ../src/universal-cp/details-treeview.c:187
+msgid "Related State Variable"
+msgstr "Σχετική μεταβλητή κατάσταση"
+
+#: ../src/universal-cp/details-treeview.c:189
+msgid "Is Return Value"
+msgstr "Αν είναι επιστρεφόμενη τιμή"
+
+#: ../src/universal-cp/details-treeview.c:190
+#: ../src/universal-cp/details-treeview.c:237
+msgid "Yes"
+msgstr "Ναι"
+
+#: ../src/universal-cp/details-treeview.c:190
+#: ../src/universal-cp/details-treeview.c:237
+msgid "No"
+msgstr "Όχι"
+
+#: ../src/universal-cp/details-treeview.c:210
+msgid "Number of Arguments"
+msgstr "Αριθμός ορισμάτων"
+
+#: ../src/universal-cp/details-treeview.c:236
+msgid "Send Events"
+msgstr "Αποστολή συμβάντων"
+
+#: ../src/universal-cp/details-treeview.c:238
+msgid "GType"
+msgstr "Τύπος G"
+
+#: ../src/universal-cp/details-treeview.c:241
+msgid "Default Value"
+msgstr "Προεπιλεγμένη τιμή"
+
+#: ../src/universal-cp/details-treeview.c:247
+msgid "Minimum"
+msgstr "Ελάχιστη"
+
+#: ../src/universal-cp/details-treeview.c:251
+msgid "Maximum"
+msgstr "Μέγιστη"
+
+#: ../src/universal-cp/details-treeview.c:255
+msgid "Step"
+msgstr "Βήμα"
+
+#: ../src/universal-cp/details-treeview.c:275
+msgid "Allowed Values"
+msgstr "Επιτρεπόμενες τιμές"
+
+#: ../src/universal-cp/details-treeview.c:299
+#: ../src/universal-cp/details-treeview.c:346
+msgid "Location"
+msgstr "Θέση"
+
+#: ../src/universal-cp/details-treeview.c:304
+#: ../src/universal-cp/details-treeview.c:351
+msgid "UDN"
+msgstr "UDN"
+
+#: ../src/universal-cp/details-treeview.c:309
+#: ../src/universal-cp/details-treeview.c:356
+msgid "Type"
+msgstr "Τύπος"
+
+#: ../src/universal-cp/details-treeview.c:314
+#: ../src/universal-cp/details-treeview.c:361
+msgid "Base URL"
+msgstr "URL βάσης"
+
+#: ../src/universal-cp/details-treeview.c:319
+msgid "Service ID"
+msgstr "Αναγνωριστικό υπηρεσίας"
+
+#: ../src/universal-cp/details-treeview.c:321
+msgid "Service URL"
+msgstr "URL υπηρεσίας"
+
+#: ../src/universal-cp/details-treeview.c:323
+msgid "Control URL"
+msgstr "URL ελέγχου"
+
+#: ../src/universal-cp/details-treeview.c:325
+msgid "Event Subscription URL"
+msgstr "URL εγγραφής συμβάντων"
+
+#: ../src/universal-cp/details-treeview.c:366
+msgid "Friendly Name"
+msgstr "Φιλικό όνομα"
+
+#: ../src/universal-cp/details-treeview.c:368
+msgid "Manufacturer"
+msgstr "Κατασκευαστής"
+
+#: ../src/universal-cp/details-treeview.c:370
+msgid "Manufacturer URL"
+msgstr "URL κατασκευαστή"
+
+#: ../src/universal-cp/details-treeview.c:372
+msgid "Model Description"
+msgstr "Περιγραφή μοντέλου"
+
+#: ../src/universal-cp/details-treeview.c:374
+msgid "Model Name"
+msgstr "Όνομα μοντέλου"
+
+#: ../src/universal-cp/details-treeview.c:376
+msgid "Model Number"
+msgstr "Αριθμός μοντέλου"
+
+#: ../src/universal-cp/details-treeview.c:378
+msgid "Model URL"
+msgstr "URL μοντέλου"
+
+#: ../src/universal-cp/details-treeview.c:380
+msgid "Serial Number"
+msgstr "Σειριακός αριθμός"
+
+#: ../src/universal-cp/details-treeview.c:382
+msgid "UPC"
+msgstr "UPC"
+
+#: ../src/universal-cp/details-treeview.c:384
+msgid "Presentation URL"
+msgstr "URL παρουσίασης"
+
+#: ../src/universal-cp/details-treeview.c:414
+#: ../src/universal-cp/event-treeview.c:376
+msgid "Value"
+msgstr "Τιμή"
+
+#: ../src/universal-cp/device-treeview.c:52
+msgid "Software"
+msgstr "Λογισμικό"
+
+#: ../src/universal-cp/device-treeview.c:54
+msgid "Version"
+msgstr "Έκδοση"
+
+#: ../src/universal-cp/device-treeview.c:56
+msgid "Author"
+msgstr "Δημιουργός"
+
+#: ../src/universal-cp/device-treeview.c:459
+msgid "State variables"
+msgstr "Μεταβλητές κατάστασης"
+
+#: ../src/universal-cp/device-treeview.c:499
+msgid "Information not available"
+msgstr "Οι πληροφορίες δεν είναι διαθέσιμες"
+
+#: ../src/universal-cp/device-treeview.c:676
+msgid "UPnP Network"
+msgstr "Δίκτυο UPnP"
+
+#: ../src/universal-cp/device-treeview.c:689
+#: ../src/universal-cp/event-treeview.c:373
+msgid "Device"
+msgstr "Συσκευή"
+
+#: ../src/universal-cp/event-treeview.c:372
+msgid "Time"
+msgstr "Ώρα"
+
+#: ../src/universal-cp/event-treeview.c:374
+msgid "Service"
+msgstr "Υπηρεσία"
+
+#: ../src/universal-cp/event-treeview.c:375
+msgid "State Variable"
+msgstr "Μεταβλητή κατάστασης"
