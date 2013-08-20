@@ -1,3 +1,28 @@
+0.8.7
+=====
+
+Changes since 0.8.6.1:
+
+- Updated translations.
+- Fix argument order in UPnP calls.
+- Updated translations.
+
+Bugs fixed in this release:
+ - http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=519464
+ - https://bugzilla.gnome.org/show_bug.cgi?id=697325
+
+All contributors to this release:
+ - Jens Georg <mail@jensge.org>
+ - Мирослав Николић <miroslavnikolic@rocketmail.com>
+ - Rafael Ferreira <rafael.f.f1@gmail.com>
+ - Dimitris Spingos <dmtrs32@gmail.com>
+
+Added/updated translations
+ - el, courtesy of Dimitris Spingos (Δημήτρης Σπίγγος)
+ - pt_BR, courtesy of Rafael Ferreira
+ - sr, courtesy of Мирослав Николић
+ - sr@latin, courtesy of Miroslav Nikolić
+
 0.8.6.1
 =======
 
