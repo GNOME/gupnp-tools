@@ -650,9 +650,9 @@ append_didl_object (GUPnPDIDLLiteObject *object,
                     GtkTreeIter         *server_iter)
 {
         GtkTreeIter parent_iter;
-        const char *id;
-        const char *parent_id;
-        const char *title;
+        const char *id = NULL;
+        const char *parent_id = NULL;
+        const char *title = NULL;
         gboolean    is_container;
         gint        child_count;
         GdkPixbuf  *icon;
