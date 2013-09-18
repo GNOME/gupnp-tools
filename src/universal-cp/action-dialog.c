@@ -196,8 +196,9 @@ create_widget_for_argument (GUPnPServiceActionArgInfo *arg_info,
                                                 NULL,
                                                 (const char *) node->data);
 
-                                if (default_str != NULL &&
-                                    strcmp (default_str, node->data) == 0) {
+                                if (node == variable->allowed_values ||
+                                    (default_str != NULL &&
+                                     strcmp (default_str, node->data) == 0)) {
                                         gtk_combo_box_set_active (
                                                         GTK_COMBO_BOX (widget),
                                                         index);
