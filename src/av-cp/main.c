@@ -1,7 +1,9 @@
 /*
  * Copyright (C) 2007 Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+ * Copyright (C) 2013 Jens Georg <mail@jensge.org>
  *
  * Authors: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+ *          Jens Georg <mail@jensge.org>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -38,10 +40,12 @@
 #define MEDIA_SERVER "urn:schemas-upnp-org:device:MediaServer:1"
 
 static int upnp_port = 0;
+static char **interfaces = NULL;
 
 static GOptionEntry entries[] =
 {
         { "port", 'p', 0, G_OPTION_ARG_INT, &upnp_port, N_("Network PORT to use for UPnP"), "PORT" },
+        { "interface", 'i', 0, G_OPTION_ARG_STRING_ARRAY, &interfaces, N_("Network interfaces to use for UPnP communication"), "INTERFACE" },
         { NULL }
 };
 
@@ -137,12 +141,21 @@ on_context_available (GUPnPContextManager *context_manager,
 static gboolean
 init_upnp (int port)
 {
+        GUPnPWhiteList *white_list;
+
 #if !GLIB_CHECK_VERSION(2, 35, 0)
         g_type_init ();
 #endif
 
         context_manager = gupnp_context_manager_create (port);
         g_assert (context_manager != NULL);
+
+        if (interfaces != NULL) {
+                white_list = gupnp_context_manager_get_white_list
+                                            (context_manager);
+                gupnp_white_list_add_entryv (white_list, interfaces);
+                gupnp_white_list_set_enabled (white_list, TRUE);
+        }
 
         g_signal_connect (context_manager,
                           "context-available",
