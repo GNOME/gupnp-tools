@@ -445,6 +445,7 @@ append_actions (GUPnPServiceProxy         *proxy,
 
 static void
 append_state_variables (GUPnPServiceProxy *proxy,
+                        GUPnPServiceIntrospection *introspection,
                         const GList       *variables,
                         GtkTreeStore      *store,
                         GtkTreeIter       *service_iter)
@@ -471,6 +472,7 @@ append_state_variables (GUPnPServiceProxy *proxy,
                                  0, get_icon_by_id (ICON_VARIABLE),
                                  1, info->name,
                                  2, proxy,
+                                 3, introspection,
                                  4, info,
                                  5, ICON_VARIABLE,
                                  -1);
@@ -507,6 +509,7 @@ append_introspection (GUPnPServiceProxy         *proxy,
                         introspection);
         if (list)
                 append_state_variables (proxy,
+                                        introspection,
                                         list,
                                         store,
                                         service_iter);
