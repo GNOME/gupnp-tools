@@ -1,9 +1,11 @@
 /*
  * Copyright (C) 2007 Zeeshan Ali.
  * Copyright (C) 2007 OpenedHand Ltd.
+ * Copyright (C) 2013 Jens Georg <mail@jensge.org>
  *
- * Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
- * Author: Jorn Baayen <jorn@openedhand.com>
+ * Authors: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+ *          Jorn Baayen <jorn@openedhand.com>
+ *          Jens Georg <mail@jensge.org>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -35,6 +37,16 @@
 
 static gboolean light_status;
 static gint     light_load_level;
+
+static int      upnp_port = 0;
+static char   **interfaces = NULL;
+
+static GOptionEntry entries[] =
+{
+        { "port", 'p', 0, G_OPTION_ARG_INT, &upnp_port, N_("Network PORT to use for UPnP"), "PORT" },
+        { "interface", 'i', 0, G_OPTION_ARG_STRING_ARRAY, &interfaces, N_("Network interfaces to use for UPnP communication"), "INTERFACE" },
+        { NULL }
+};
 
 void
 set_status (gboolean status)
@@ -73,6 +85,9 @@ get_load_level (void)
 int
 main (int argc, char **argv)
 {
+        GError *error = NULL;
+        GOptionContext *context = NULL;
+
         /* Light is off in the beginning */
         light_status = FALSE;
         light_load_level = 100;
@@ -82,11 +97,21 @@ main (int argc, char **argv)
         bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
         textdomain (GETTEXT_PACKAGE);
 
+        context = g_option_context_new (_("- UPnP AV control point"));
+        g_option_context_add_main_entries (context, entries, GETTEXT_PACKAGE);
+        g_option_context_add_group (context, gtk_get_option_group (TRUE));
+
+        if (!g_option_context_parse (context, &argc, &argv, &error)) {
+                g_print (_("Could not parse options: %s\n"), error->message);
+
+                return -4;
+        }
+
         if (!init_ui (&argc, &argv)) {
                 return -1;
         }
 
-        if (!init_upnp ()) {
+        if (!init_upnp (interfaces, upnp_port)) {
                 return -2;
         }
 

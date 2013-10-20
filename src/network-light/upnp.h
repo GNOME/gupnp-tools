@@ -30,7 +30,7 @@ void
 notify_load_level_change        (gint           load_level);
 
 gboolean
-init_upnp                       (void);
+init_upnp                       (gchar **interfaces, guint port);
 
 void
 deinit_upnp                     (void);

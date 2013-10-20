@@ -669,9 +669,10 @@ context_equal (GUPnPContext *context1, GUPnPContext *context2)
 }
 
 gboolean
-init_upnp (void)
+init_upnp (gchar **interfaces, guint port)
 {
         GError *error = NULL;
+        GUPnPWhiteList *white_list;
 
         switch_proxies = NULL;
         dimming_proxies = NULL;
@@ -685,8 +686,15 @@ init_upnp (void)
                 return FALSE;
         }
 
-        context_manager = gupnp_context_manager_new (NULL, 0);
+        context_manager = gupnp_context_manager_new (NULL, port);
         g_assert (context_manager != NULL);
+
+        if (interfaces != NULL) {
+                white_list = gupnp_context_manager_get_white_list
+                                            (context_manager);
+                gupnp_white_list_add_entryv (white_list, interfaces);
+                gupnp_white_list_set_enabled (white_list, TRUE);
+        }
 
         g_signal_connect (context_manager,
                           "context-available",
