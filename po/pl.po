@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gupnp-tools\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-20 19:03+0100\n"
-"PO-Revision-Date: 2013-03-20 19:04+0100\n"
+"POT-Creation-Date: 2013-10-20 15:11+0200\n"
+"PO-Revision-Date: 2013-10-20 15:12+0200\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <gnomepl@aviary.pl>\n"
 "Language: pl\n"
@@ -250,20 +250,28 @@ msgstr "_Widok"
 msgid "Event _log"
 msgstr "_Dziennik zdarzeń"
 
-#: ../src/av-cp/main.c:44
+#: ../src/av-cp/main.c:47 ../src/network-light/main.c:46
+#: ../src/universal-cp/main.c:41
 msgid "Network PORT to use for UPnP"
 msgstr "PORT sieciowy używany dla UPnP"
 
-#: ../src/av-cp/main.c:183
+#: ../src/av-cp/main.c:48 ../src/network-light/main.c:47
+#: ../src/universal-cp/main.c:42
+msgid "Network interfaces to use for UPnP communication"
+msgstr "Interfejsy sieciowe używane do komunikacji UPnP"
+
+#: ../src/av-cp/main.c:196 ../src/network-light/main.c:100
+#: ../src/universal-cp/main.c:145
 msgid "- UPnP AV control point"
 msgstr "- punkt kontrolny UPnP AV"
 
-#: ../src/av-cp/main.c:188
+#: ../src/av-cp/main.c:201 ../src/network-light/main.c:105
+#: ../src/universal-cp/main.c:150
 #, c-format
 msgid "Could not parse options: %s\n"
 msgstr "Nie można przetworzyć opcji: %s\n"
 
-#: ../src/universal-cp/action-dialog.c:714
+#: ../src/universal-cp/action-dialog.c:709
 #, c-format
 msgid ""
 "Action failed.\n"
@@ -428,19 +436,19 @@ msgstr "Wersja"
 msgid "Author"
 msgstr "Autor"
 
-#: ../src/universal-cp/device-treeview.c:459
+#: ../src/universal-cp/device-treeview.c:460
 msgid "State variables"
 msgstr "Zmienne stanu"
 
-#: ../src/universal-cp/device-treeview.c:499
+#: ../src/universal-cp/device-treeview.c:501
 msgid "Information not available"
 msgstr "Informacja jest niedostępna"
 
-#: ../src/universal-cp/device-treeview.c:676
+#: ../src/universal-cp/device-treeview.c:679
 msgid "UPnP Network"
 msgstr "Sieć UPnP"
 
-#: ../src/universal-cp/device-treeview.c:689
+#: ../src/universal-cp/device-treeview.c:692
 #: ../src/universal-cp/event-treeview.c:373
 msgid "Device"
 msgstr "Urządzenie"
