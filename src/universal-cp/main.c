@@ -1,7 +1,9 @@
 /*
  * Copyright (C) 2007 Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+ * Copyright (C) 2013 Jens Georg <mail@jensge.org>
  *
  * Authors: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+ *          Jens Georg <mail@jensge.org>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -30,6 +32,16 @@
 
 #include <gmodule.h>
 #include <glib/gi18n.h>
+
+static int upnp_port = 0;
+static char **interfaces = NULL;
+
+static GOptionEntry entries[] =
+{
+        { "port", 'p', 0, G_OPTION_ARG_INT, &upnp_port, N_("Network PORT to use for UPnP"), "PORT" },
+        { "interface", 'i', 0, G_OPTION_ARG_STRING_ARRAY, &interfaces, N_("Network interfaces to use for UPnP communication"), "INTERFACE" },
+        { NULL }
+};
 
 static GUPnPContextManager *context_manager;
 
@@ -78,12 +90,21 @@ on_context_available (GUPnPContextManager *context_manager,
 static gboolean
 init_upnp (void)
 {
+        GUPnPWhiteList *white_list;
+
 #if !GLIB_CHECK_VERSION(2, 35, 0)
         g_type_init ();
 #endif
 
-        context_manager = gupnp_context_manager_new (NULL, 0);
+        context_manager = gupnp_context_manager_new (NULL, upnp_port);
         g_assert (context_manager != NULL);
+
+        if (interfaces != NULL) {
+                white_list = gupnp_context_manager_get_white_list
+                                            (context_manager);
+                gupnp_white_list_add_entryv (white_list, interfaces);
+                gupnp_white_list_set_enabled (white_list, TRUE);
+        }
 
         g_signal_connect (context_manager,
                           "context-available",
@@ -113,10 +134,23 @@ gint
 main (gint   argc,
       gchar *argv[])
 {
+        GError *error = NULL;
+        GOptionContext *context = NULL;
+
         setlocale (LC_ALL, "");
         bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
         bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
         textdomain (GETTEXT_PACKAGE);
+
+        context = g_option_context_new (_("- UPnP AV control point"));
+        g_option_context_add_main_entries (context, entries, GETTEXT_PACKAGE);
+        g_option_context_add_group (context, gtk_get_option_group (TRUE));
+
+        if (!g_option_context_parse (context, &argc, &argv, &error)) {
+                g_print (_("Could not parse options: %s\n"), error->message);
+
+                return -4;
+        }
 
         if (!init_ui (&argc, &argv)) {
            return -2;
