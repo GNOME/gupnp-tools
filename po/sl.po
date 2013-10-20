@@ -7,27 +7,26 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gupnp-tools master\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gupnp-tools&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-03-20 11:32+0000\n"
-"PO-Revision-Date: 2013-03-22 09:50+0100\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gupnp-"
+"tools&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2013-10-20 13:12+0000\n"
+"PO-Revision-Date: 2013-10-20 18:24+0100\n"
 "Last-Translator: Matej Urbančič <mateju@svn.gnome.org>\n"
 "Language-Team: Slovenian <gnome-si@googlegroups.com>\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n%100==4 ? 3 : 0);\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
+"%100==4 ? 3 : 0);\n"
 "X-Generator: Poedit 1.5.4\n"
-"X-Poedit-Language: Slovenian\n"
-"X-Poedit-Country: SLOVENIA\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
 #: ../data/gupnp-av-cp.desktop.in.in.h:1
 msgid "UPnP AV Control Point"
 msgstr "Nadzorna točka UPnP AV"
 
-#: ../data/gupnp-av-cp.ui.in.h:1
-#: ../data/gupnp-network-light.ui.h:1
+#: ../data/gupnp-av-cp.ui.in.h:1 ../data/gupnp-network-light.ui.h:1
 #: ../data/gupnp-universal-cp.ui.h:1
 msgid "Copyright (C) 2007 Zeeshan Ali (Khattak)"
 msgstr "Avtorske pravice (C) 2007 Zeeshan Ali (Khattak)"
@@ -40,15 +39,13 @@ msgstr ""
 "Nadzorna točka UPnP AV, ki temelji na ogrodju GUPnP.\n"
 "Navdihnjeno z orodji Intel Tools za UPnP."
 
-#: ../data/gupnp-av-cp.ui.in.h:4
-#: ../data/gupnp-network-light.ui.h:4
+#: ../data/gupnp-av-cp.ui.in.h:4 ../data/gupnp-network-light.ui.h:4
 #: ../data/gupnp-universal-cp.ui.h:4
 msgid "GUPnP homepage"
 msgstr "Spletna stran programa GUPnP"
 
 #. TRANSLATORS: Replace this string with your names, one name per line.
-#: ../data/gupnp-av-cp.ui.in.h:6
-#: ../data/gupnp-network-light.ui.h:6
+#: ../data/gupnp-av-cp.ui.in.h:6 ../data/gupnp-network-light.ui.h:6
 #: ../data/gupnp-universal-cp.ui.h:6
 msgid "translator-credits"
 msgstr "Matej Urbančič"
@@ -61,8 +58,7 @@ msgstr "NP GUPnP AV - pogled metapodatkov"
 msgid "GUPnP AV Control Point"
 msgstr "Nadzorna točka GUPnP AV"
 
-#: ../data/gupnp-av-cp.ui.in.h:9
-#: ../data/gupnp-universal-cp.ui.h:24
+#: ../data/gupnp-av-cp.ui.in.h:9 ../data/gupnp-universal-cp.ui.h:24
 msgid "_File"
 msgstr "_Datoteka"
 
@@ -74,8 +70,7 @@ msgstr "_Orodja"
 msgid "_Lenient Mode"
 msgstr "_Strogi način"
 
-#: ../data/gupnp-av-cp.ui.in.h:12
-#: ../data/gupnp-universal-cp.ui.h:27
+#: ../data/gupnp-av-cp.ui.in.h:12 ../data/gupnp-universal-cp.ui.h:27
 msgid "_Help"
 msgstr "Pomo_č"
 
@@ -84,8 +79,12 @@ msgid "_Renderer: "
 msgstr "_Izrisovalnik:"
 
 #: ../data/gupnp-av-cp.ui.in.h:14
-msgid "Clears the CP's idea of the state of the currently selected AV Renderer. Useful for dealing with AV Renderers that don't report state changes."
-msgstr "Počisti zamisel stanja CP trenutno izbranega izrisovalnika AV. Uporabno za delo z izrisovalniki AV, ki ne poročajo o spremembi stanj."
+msgid ""
+"Clears the CP's idea of the state of the currently selected AV Renderer. "
+"Useful for dealing with AV Renderers that don't report state changes."
+msgstr ""
+"Počisti zamisel stanja CP trenutno izbranega izrisovalnika AV. Uporabno za "
+"delo z izrisovalniki AV, ki ne poročajo o spremembi stanj."
 
 #: ../data/gupnp-av-cp.ui.in.h:15
 msgid "_Clear state"
@@ -235,8 +234,7 @@ msgid "_Clear event log"
 msgstr "_Počisti dnevnik dogodkov"
 
 #. default details
-#: ../data/gupnp-universal-cp.ui.h:23
-#: ../src/universal-cp/device-treeview.c:35
+#: ../data/gupnp-universal-cp.ui.h:23 ../src/universal-cp/device-treeview.c:35
 msgid "GUPnP Universal Control Point"
 msgstr "Univerzalna nadzorna točka GUPnP"
 
@@ -248,21 +246,28 @@ msgstr "_Pogled"
 msgid "Event _log"
 msgstr "Dn_evnik dogodkov"
 
-#: ../src/av-cp/main.c:44
+#: ../src/av-cp/main.c:47 ../src/network-light/main.c:46
+#: ../src/universal-cp/main.c:41
 msgid "Network PORT to use for UPnP"
 msgstr "Omrežna VRATA, ki se uporabljajo za UPnP"
 
-#: ../src/av-cp/main.c:183
-#| msgid "UPnP AV Control Point"
+#: ../src/av-cp/main.c:48 ../src/network-light/main.c:47
+#: ../src/universal-cp/main.c:42
+msgid "Network interfaces to use for UPnP communication"
+msgstr "Omrežni vmesniki, ki se uporabljajo za UPnP"
+
+#: ../src/av-cp/main.c:196 ../src/network-light/main.c:100
+#: ../src/universal-cp/main.c:145
 msgid "- UPnP AV control point"
 msgstr "- nadzorna točka UPnP AV"
 
-#: ../src/av-cp/main.c:188
+#: ../src/av-cp/main.c:201 ../src/network-light/main.c:105
+#: ../src/universal-cp/main.c:150
 #, c-format
 msgid "Could not parse options: %s\n"
 msgstr "Možnosti ni mogoče razčleniti: %s\n"
 
-#: ../src/universal-cp/action-dialog.c:714
+#: ../src/universal-cp/action-dialog.c:709
 #, c-format
 msgid ""
 "Action failed.\n"
@@ -427,19 +432,19 @@ msgstr "Različica"
 msgid "Author"
 msgstr "Avtor"
 
-#: ../src/universal-cp/device-treeview.c:459
+#: ../src/universal-cp/device-treeview.c:460
 msgid "State variables"
 msgstr "Spremenljivke stanja"
 
-#: ../src/universal-cp/device-treeview.c:499
+#: ../src/universal-cp/device-treeview.c:501
 msgid "Information not available"
 msgstr "Podrobnosti niso na voljo"
 
-#: ../src/universal-cp/device-treeview.c:676
+#: ../src/universal-cp/device-treeview.c:679
 msgid "UPnP Network"
 msgstr "Omrežje UPnP"
 
-#: ../src/universal-cp/device-treeview.c:689
+#: ../src/universal-cp/device-treeview.c:692
 #: ../src/universal-cp/event-treeview.c:373
 msgid "Device"
 msgstr "Naprava"
@@ -455,4 +460,3 @@ msgstr "Storitev"
 #: ../src/universal-cp/event-treeview.c:375
 msgid "State Variable"
 msgstr "Spremenljivka stanja"
-
