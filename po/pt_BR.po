@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: gupnp-tools master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gupnp-"
 "tools&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-04-01 13:17+0000\n"
-"PO-Revision-Date: 2013-03-20 20:59-0300\n"
-"Last-Translator: Rafael Ferreira <rafael.f.f1@gmail.com>\n"
+"POT-Creation-Date: 2013-10-20 16:24+0000\n"
+"PO-Revision-Date: 2013-10-21 13:04-0300\n"
+"Last-Translator: Enrico Nicoletto <liverig@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 1.5.7\n"
 
 # GUPnP-AV is a collection of helpers for building AV (audio/video) applications using GUPnP.
 #: ../data/gupnp-av-cp.desktop.in.in.h:1
@@ -246,16 +246,24 @@ msgstr "_Visualizar"
 msgid "Event _log"
 msgstr "Re_gistro do evento"
 
-#: ../src/av-cp/main.c:44
+#: ../src/av-cp/main.c:47 ../src/network-light/main.c:46
+#: ../src/universal-cp/main.c:41
 msgid "Network PORT to use for UPnP"
 msgstr "PORTA de rede a ser usada para UPnp"
 
+#: ../src/av-cp/main.c:48 ../src/network-light/main.c:47
+#: ../src/universal-cp/main.c:42
+msgid "Network interfaces to use for UPnP communication"
+msgstr "Interfaces de rede a serem usadas para comunicação UPnP"
+
 # GUPnP-AV is a collection of helpers for building AV (audio/video) applications using GUPnP.
-#: ../src/av-cp/main.c:183
+#: ../src/av-cp/main.c:196 ../src/network-light/main.c:100
+#: ../src/universal-cp/main.c:145
 msgid "- UPnP AV control point"
 msgstr "- Ponto de controle áudio/vídeo (AV) UPnP"
 
-#: ../src/av-cp/main.c:188
+#: ../src/av-cp/main.c:201 ../src/network-light/main.c:105
+#: ../src/universal-cp/main.c:150
 #, c-format
 msgid "Could not parse options: %s\n"
 msgstr "Não foi possível analisar as opções: %s\n"
@@ -425,19 +433,19 @@ msgstr "Versão"
 msgid "Author"
 msgstr "Autor"
 
-#: ../src/universal-cp/device-treeview.c:459
+#: ../src/universal-cp/device-treeview.c:460
 msgid "State variables"
 msgstr "Variáveis de estado"
 
-#: ../src/universal-cp/device-treeview.c:499
+#: ../src/universal-cp/device-treeview.c:501
 msgid "Information not available"
 msgstr "Informação não disponível"
 
-#: ../src/universal-cp/device-treeview.c:676
+#: ../src/universal-cp/device-treeview.c:679
 msgid "UPnP Network"
 msgstr "Rede UPnP"
 
-#: ../src/universal-cp/device-treeview.c:689
+#: ../src/universal-cp/device-treeview.c:692
 #: ../src/universal-cp/event-treeview.c:373
 msgid "Device"
 msgstr "Dispositivo"
