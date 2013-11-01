@@ -1,0 +1,464 @@
+# Chinese (China) translation for gupnp-tools.
+# Copyright (C) 2013 gupnp-tools's COPYRIGHT HOLDER
+# This file is distributed under the same license as the gupnp-tools package.
+# tuhaihe <1132321739qq@gmail.com>, 2013.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gupnp-tools master\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gupnp-"
+"tools&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2013-10-30 19:09+0000\n"
+"PO-Revision-Date: 2013-02-22 13:49+0800\n"
+"Last-Translator: tuhaihe <1132321739qq@gmail.com>\n"
+"Language-Team: Chinese (China) <i18n-zh@googlegroups.com>\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+
+#: ../data/gupnp-av-cp.desktop.in.in.h:1
+msgid "UPnP AV Control Point"
+msgstr "UPnP AV 控制点"
+
+#: ../data/gupnp-av-cp.ui.in.h:1 ../data/gupnp-network-light.ui.h:1
+#: ../data/gupnp-universal-cp.ui.h:1
+msgid "Copyright (C) 2007 Zeeshan Ali (Khattak)"
+msgstr "版权 (C) 2007 Zeeshan Ali (Khattak)"
+
+#: ../data/gupnp-av-cp.ui.in.h:2
+#| msgid ""
+#| "A UPNP AV Control Point based on GUPnP framework.\n"
+#| "Inspired by Intel Tools for UPnP."
+msgid ""
+"An UPnP AV Control Point based on GUPnP framework.\n"
+"Inspired by Intel Tools for UPnP."
+msgstr ""
+"一个基于 GUPnP 架构的 UPNP AV 控制点。\n"
+"灵感源于英特尔的 UPnP 工具。"
+
+#: ../data/gupnp-av-cp.ui.in.h:4 ../data/gupnp-network-light.ui.h:4
+#: ../data/gupnp-universal-cp.ui.h:4
+msgid "GUPnP homepage"
+msgstr "GUPnP 主页"
+
+#. TRANSLATORS: Replace this string with your names, one name per line.
+#: ../data/gupnp-av-cp.ui.in.h:6 ../data/gupnp-network-light.ui.h:6
+#: ../data/gupnp-universal-cp.ui.h:6
+msgid "translator-credits"
+msgstr "tuhaihe <1132321739qq@gmail.com>, 2013"
+
+#: ../data/gupnp-av-cp.ui.in.h:7
+msgid "GUPnP AV CP - Metadata View"
+msgstr "GUPnP AV CP - 元数据视图"
+
+#: ../data/gupnp-av-cp.ui.in.h:8
+msgid "GUPnP AV Control Point"
+msgstr "GUPnP AV 控制点"
+
+#: ../data/gupnp-av-cp.ui.in.h:9 ../data/gupnp-universal-cp.ui.h:24
+msgid "_File"
+msgstr "文件(_F)"
+
+#: ../data/gupnp-av-cp.ui.in.h:10
+msgid "_Tools"
+msgstr "工具(_T)"
+
+#: ../data/gupnp-av-cp.ui.in.h:11
+msgid "_Lenient Mode"
+msgstr ""
+
+#: ../data/gupnp-av-cp.ui.in.h:12 ../data/gupnp-universal-cp.ui.h:27
+msgid "_Help"
+msgstr "帮助(_H)"
+
+#: ../data/gupnp-av-cp.ui.in.h:13
+msgid "_Renderer: "
+msgstr "渲染器(_R)："
+
+#: ../data/gupnp-av-cp.ui.in.h:14
+msgid ""
+"Clears the CP's idea of the state of the currently selected AV Renderer. "
+"Useful for dealing with AV Renderers that don't report state changes."
+msgstr ""
+
+#: ../data/gupnp-av-cp.ui.in.h:15
+msgid "_Clear state"
+msgstr "清理状态(_C)"
+
+#: ../data/gupnp-av-cp.ui.in.h:16
+msgid "_Play"
+msgstr "播放(_P)"
+
+#: ../data/gupnp-av-cp.ui.in.h:17
+msgid "P_ause"
+msgstr "暂停(_A)"
+
+#: ../data/gupnp-av-cp.ui.in.h:18
+msgid "_Stop"
+msgstr "停止(_S)"
+
+#: ../data/gupnp-av-cp.ui.in.h:19
+msgid "Pre_vious"
+msgstr "上一个(_V)"
+
+#: ../data/gupnp-av-cp.ui.in.h:20
+msgid "_Next"
+msgstr "下一个(_N)"
+
+#: ../data/gupnp-av-cp.ui.in.h:21
+msgid "Rescan"
+msgstr "重新扫描"
+
+#: ../data/gupnp-av-cp.ui.in.h:22
+msgid "Fetch the DIDL-Lite XML for this media object"
+msgstr "获取该媒体对象的 DIDL-Lite XML"
+
+#: ../data/gupnp-av-cp.ui.in.h:23
+msgid "Fetch _DIDL-Lite"
+msgstr "获取 _DIDL-Lite"
+
+#: ../data/gupnp-network-light.desktop.in.in.h:1
+msgid "UPnP Network Light"
+msgstr "UPnP 网络指示灯"
+
+#: ../data/gupnp-network-light.ui.h:2
+msgid ""
+"A virtual network light bulb based on GUPnP framework.\n"
+"Inspired by Intel Tools for UPnP."
+msgstr ""
+"一个基于 GUPnP 框架的虚拟网络指示灯。\n"
+"灵感源于英特尔 UPnP 工具。"
+
+#: ../data/gupnp-network-light.ui.h:7
+msgid "GUPnP Network Light"
+msgstr "GUPnP 网络指示灯"
+
+#: ../data/gupnp-network-light.ui.h:8
+msgctxt "network-light"
+msgid "_On"
+msgstr "开(_O)"
+
+#: ../data/gupnp-network-light.ui.h:10
+#, no-c-format
+msgid "_Increase luminance by 20%"
+msgstr "亮度增加 20%(_I)"
+
+#: ../data/gupnp-network-light.ui.h:12
+#, no-c-format
+msgid "_Decrease luminance by 20%"
+msgstr "亮度降低 20%(_D)"
+
+#: ../data/gupnp-network-light.ui.h:13
+msgid "_About"
+msgstr "关于(_A)"
+
+#: ../data/gupnp-universal-cp.desktop.in.in.h:1
+msgid "UPnP Universal Control Point"
+msgstr "UPnP 通用控制点"
+
+#: ../data/gupnp-universal-cp.ui.h:2
+msgid ""
+"A Generic Control Point based on GUPnP framework.\n"
+"Inspired by Intel Tools for UPnP."
+msgstr ""
+"一个基于 GUPnP 架构的常规控制点。\n"
+"灵感源于英特尔的 UPnP 工具。"
+
+#: ../data/gupnp-universal-cp.ui.h:7
+msgid "Action Invocation"
+msgstr "动作调用"
+
+#: ../data/gupnp-universal-cp.ui.h:8
+msgid "action"
+msgstr "动作"
+
+#: ../data/gupnp-universal-cp.ui.h:9
+msgid "service"
+msgstr "服务"
+
+#: ../data/gupnp-universal-cp.ui.h:10
+msgid "device"
+msgstr "设备"
+
+#: ../data/gupnp-universal-cp.ui.h:11
+msgid "_Invoke"
+msgstr "调用(_I)"
+
+#: ../data/gupnp-universal-cp.ui.h:12
+msgid "<b>'in' arguments</b>"
+msgstr "<b>'in' 参数</b>"
+
+#: ../data/gupnp-universal-cp.ui.h:13
+msgid "<b>'out' arguments</b>"
+msgstr "<b>'out' 参数</b>"
+
+#: ../data/gupnp-universal-cp.ui.h:14
+msgid "Copy value"
+msgstr "复制值"
+
+#: ../data/gupnp-universal-cp.ui.h:15
+msgid "Copy all details"
+msgstr "复制全部详情"
+
+#: ../data/gupnp-universal-cp.ui.h:16
+msgid "Invoke"
+msgstr "调用"
+
+#: ../data/gupnp-universal-cp.ui.h:17
+msgid "Subscribe to events"
+msgstr "订阅事件"
+
+#: ../data/gupnp-universal-cp.ui.h:18
+msgid "_Expand all devices"
+msgstr "展开全部设备(_E)"
+
+#: ../data/gupnp-universal-cp.ui.h:19
+msgid "_Collapse all devices"
+msgstr "折叠全部设备(_C)"
+
+#: ../data/gupnp-universal-cp.ui.h:20
+msgid "Copy event"
+msgstr "复制事件"
+
+#: ../data/gupnp-universal-cp.ui.h:21
+msgid "Copy all events"
+msgstr "复制全部事件"
+
+#: ../data/gupnp-universal-cp.ui.h:22
+msgid "_Clear event log"
+msgstr "清除事件日志(_C)"
+
+#. default details
+#: ../data/gupnp-universal-cp.ui.h:23 ../src/universal-cp/device-treeview.c:35
+msgid "GUPnP Universal Control Point"
+msgstr "GUPnP 通用控制点"
+
+#: ../data/gupnp-universal-cp.ui.h:25
+msgid "_View"
+msgstr "查看(_V)"
+
+#: ../data/gupnp-universal-cp.ui.h:26
+msgid "Event _log"
+msgstr "事件日志(_L)"
+
+#: ../src/av-cp/main.c:47 ../src/network-light/main.c:46
+#: ../src/universal-cp/main.c:41
+msgid "Network PORT to use for UPnP"
+msgstr "用于 UPnP 的网络端口"
+
+#: ../src/av-cp/main.c:48 ../src/network-light/main.c:47
+#: ../src/universal-cp/main.c:42
+msgid "Network interfaces to use for UPnP communication"
+msgstr "用于 UPnP 通讯的网络接口"
+
+#: ../src/av-cp/main.c:196 ../src/network-light/main.c:100
+#: ../src/universal-cp/main.c:145
+#| msgid "UPnP AV Control Point"
+msgid "- UPnP AV control point"
+msgstr "- UPnP AV 控制点"
+
+#: ../src/av-cp/main.c:201 ../src/network-light/main.c:105
+#: ../src/universal-cp/main.c:150
+#, c-format
+msgid "Could not parse options: %s\n"
+msgstr "无法解析选项：%s\n"
+
+#: ../src/universal-cp/action-dialog.c:710
+#, c-format
+msgid ""
+"Action failed.\n"
+"\n"
+"Error %d: %s"
+msgstr ""
+"动作失败。\n"
+"\n"
+"错误 %d: %s"
+
+#: ../src/universal-cp/details-treeview.c:180
+#: ../src/universal-cp/details-treeview.c:208
+#: ../src/universal-cp/details-treeview.c:234
+#: ../src/universal-cp/details-treeview.c:413
+msgid "Name"
+msgstr "名称"
+
+#: ../src/universal-cp/details-treeview.c:182
+msgid "Direction"
+msgstr "方向"
+
+#: ../src/universal-cp/details-treeview.c:187
+msgid "Related State Variable"
+msgstr "相关的状态变量"
+
+#: ../src/universal-cp/details-treeview.c:189
+msgid "Is Return Value"
+msgstr "是返回值"
+
+#: ../src/universal-cp/details-treeview.c:190
+#: ../src/universal-cp/details-treeview.c:237
+msgid "Yes"
+msgstr "是"
+
+#: ../src/universal-cp/details-treeview.c:190
+#: ../src/universal-cp/details-treeview.c:237
+msgid "No"
+msgstr "否"
+
+#: ../src/universal-cp/details-treeview.c:210
+msgid "Number of Arguments"
+msgstr "参数个数"
+
+#: ../src/universal-cp/details-treeview.c:236
+msgid "Send Events"
+msgstr "发送事件"
+
+#: ../src/universal-cp/details-treeview.c:238
+msgid "GType"
+msgstr "GType"
+
+#: ../src/universal-cp/details-treeview.c:241
+msgid "Default Value"
+msgstr "默认值"
+
+#: ../src/universal-cp/details-treeview.c:247
+msgid "Minimum"
+msgstr "最小值"
+
+#: ../src/universal-cp/details-treeview.c:251
+msgid "Maximum"
+msgstr "最大值"
+
+#: ../src/universal-cp/details-treeview.c:255
+msgid "Step"
+msgstr "步长"
+
+#: ../src/universal-cp/details-treeview.c:275
+msgid "Allowed Values"
+msgstr "允许的值"
+
+#: ../src/universal-cp/details-treeview.c:299
+#: ../src/universal-cp/details-treeview.c:346
+msgid "Location"
+msgstr "位置"
+
+#: ../src/universal-cp/details-treeview.c:304
+#: ../src/universal-cp/details-treeview.c:351
+msgid "UDN"
+msgstr "UDN"
+
+#: ../src/universal-cp/details-treeview.c:309
+#: ../src/universal-cp/details-treeview.c:356
+msgid "Type"
+msgstr "类型"
+
+#: ../src/universal-cp/details-treeview.c:314
+#: ../src/universal-cp/details-treeview.c:361
+msgid "Base URL"
+msgstr "基 URL"
+
+#: ../src/universal-cp/details-treeview.c:319
+msgid "Service ID"
+msgstr "服务 ID"
+
+#: ../src/universal-cp/details-treeview.c:321
+msgid "Service URL"
+msgstr "服务 URL"
+
+#: ../src/universal-cp/details-treeview.c:323
+msgid "Control URL"
+msgstr "控制 URL"
+
+#: ../src/universal-cp/details-treeview.c:325
+msgid "Event Subscription URL"
+msgstr "事件订阅 URL"
+
+#: ../src/universal-cp/details-treeview.c:366
+msgid "Friendly Name"
+msgstr "好记的名称"
+
+#: ../src/universal-cp/details-treeview.c:368
+msgid "Manufacturer"
+msgstr "制造商"
+
+#: ../src/universal-cp/details-treeview.c:370
+msgid "Manufacturer URL"
+msgstr "制造商 URL"
+
+#: ../src/universal-cp/details-treeview.c:372
+msgid "Model Description"
+msgstr "型号描述"
+
+#: ../src/universal-cp/details-treeview.c:374
+msgid "Model Name"
+msgstr "型号名称"
+
+#: ../src/universal-cp/details-treeview.c:376
+msgid "Model Number"
+msgstr "型号数值"
+
+#: ../src/universal-cp/details-treeview.c:378
+msgid "Model URL"
+msgstr "型号 URL"
+
+#: ../src/universal-cp/details-treeview.c:380
+msgid "Serial Number"
+msgstr "序列号"
+
+#: ../src/universal-cp/details-treeview.c:382
+msgid "UPC"
+msgstr "UPC"
+
+#: ../src/universal-cp/details-treeview.c:384
+#, fuzzy
+msgid "Presentation URL"
+msgstr "演示 URL"
+
+#: ../src/universal-cp/details-treeview.c:414
+#: ../src/universal-cp/event-treeview.c:376
+msgid "Value"
+msgstr "值"
+
+#: ../src/universal-cp/device-treeview.c:52
+msgid "Software"
+msgstr "软件"
+
+#: ../src/universal-cp/device-treeview.c:54
+msgid "Version"
+msgstr "版本"
+
+#: ../src/universal-cp/device-treeview.c:56
+msgid "Author"
+msgstr "作者"
+
+#: ../src/universal-cp/device-treeview.c:460
+msgid "State variables"
+msgstr "状态变量"
+
+#: ../src/universal-cp/device-treeview.c:501
+msgid "Information not available"
+msgstr "信息不可用"
+
+#: ../src/universal-cp/device-treeview.c:679
+msgid "UPnP Network"
+msgstr "UPnP 网络"
+
+#: ../src/universal-cp/device-treeview.c:692
+#: ../src/universal-cp/event-treeview.c:373
+msgid "Device"
+msgstr "设备"
+
+#: ../src/universal-cp/event-treeview.c:372
+msgid "Time"
+msgstr "时间"
+
+#: ../src/universal-cp/event-treeview.c:374
+msgid "Service"
+msgstr "服务"
+
+#: ../src/universal-cp/event-treeview.c:375
+msgid "State Variable"
+msgstr "状态变量"
+
+#~ msgid "GPL"
+#~ msgstr "GPL"
