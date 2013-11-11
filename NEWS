@@ -1,3 +1,35 @@
+0.8.8
+=====
+
+Changes since 0.8.7:
+
+- Updated translations.
+- Add --interface/--port options to all GUI tools.
+
+Universal CP:
+ - Don't crash on variable-only services.
+ - Select first combo box value by default for restricted value lists.
+
+Bugs fixed in this release:
+ - https://bugzilla.gnome.org/show_bug.cgi?id=672863
+ - https://bugzilla.gnome.org/show_bug.cgi?id=708370
+
+All contributors to this release:
+ - Jens Georg <mail@jensge.org>
+ - tuhaihe <1132321739qq@gmail.com>
+ - Piotr Drąg <piotrdrag@gmail.com>
+ - Matej Urbančič <mateju@svn.gnome.org>
+ - Jussi Kukkonen <jussi.kukkonen@intel.com>
+ - Enrico Nicoletto <liverig@gmail.com>
+ - Daniel Mustieles <daniel.mustieles@gmail.com>
+
+Added/updated translations
+ - es, courtesy of Daniel Mustieles
+ - pl, courtesy of Piotr Drąg
+ - pt_BR, courtesy of Enrico Nicoletto
+ - sl, courtesy of Matej Urbančič
+ - zh_CN, courtesy of tuhaihe
+
 0.8.7
 =====
 
