@@ -1,7 +1,6 @@
 # Czech translation for gupnp-tools.
 # Copyright (C) 2013 gupnp-tools's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gupnp-tools package.
-#
 # Marek Černocký <marek@manet.cz>, 2013.
 #
 msgid ""
@@ -9,8 +8,8 @@ msgstr ""
 "Project-Id-Version: gupnp-tools master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gupnp-"
 "tools&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-03-20 11:32+0000\n"
-"PO-Revision-Date: 2013-03-26 23:42+0100\n"
+"POT-Creation-Date: 2013-10-20 11:17+0000\n"
+"PO-Revision-Date: 2013-12-07 17:47+0100\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -245,20 +244,29 @@ msgstr "_Zobrazit"
 msgid "Event _log"
 msgstr "Protokol udá_lostí"
 
-#: ../src/av-cp/main.c:44
+#: ../src/av-cp/main.c:47 ../src/network-light/main.c:46
+#: ../src/universal-cp/main.c:41
 msgid "Network PORT to use for UPnP"
-msgstr "Síťový PORT, který s má použit pro UPnP"
+msgstr "Síťový PORT, který s má použít pro UPnP"
 
-#: ../src/av-cp/main.c:183
+#: ../src/av-cp/main.c:48 ../src/network-light/main.c:47
+#: ../src/universal-cp/main.c:42
+#| msgid "Network PORT to use for UPnP"
+msgid "Network interfaces to use for UPnP communication"
+msgstr "Síťové rozhraní, které s má použít pro komunikaci UPnP"
+
+#: ../src/av-cp/main.c:196 ../src/network-light/main.c:100
+#: ../src/universal-cp/main.c:145
 msgid "- UPnP AV control point"
 msgstr "– řídicí bod UPnP AV"
 
-#: ../src/av-cp/main.c:188
+#: ../src/av-cp/main.c:201 ../src/network-light/main.c:105
+#: ../src/universal-cp/main.c:150
 #, c-format
 msgid "Could not parse options: %s\n"
 msgstr "Nelze zpracovat volbu: %s\n"
 
-#: ../src/universal-cp/action-dialog.c:714
+#: ../src/universal-cp/action-dialog.c:709
 #, c-format
 msgid ""
 "Action failed.\n"
@@ -423,19 +431,19 @@ msgstr "Verze"
 msgid "Author"
 msgstr "Autor"
 
-#: ../src/universal-cp/device-treeview.c:459
+#: ../src/universal-cp/device-treeview.c:460
 msgid "State variables"
 msgstr "Stavové proměnné"
 
-#: ../src/universal-cp/device-treeview.c:499
+#: ../src/universal-cp/device-treeview.c:501
 msgid "Information not available"
 msgstr "Informace není dostupná"
 
-#: ../src/universal-cp/device-treeview.c:676
+#: ../src/universal-cp/device-treeview.c:679
 msgid "UPnP Network"
 msgstr "Síť UPnP"
 
-#: ../src/universal-cp/device-treeview.c:689
+#: ../src/universal-cp/device-treeview.c:692
 #: ../src/universal-cp/event-treeview.c:373
 msgid "Device"
 msgstr "Zařízení"
