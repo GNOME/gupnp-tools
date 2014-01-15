@@ -355,6 +355,9 @@ setup_playlist_treeview (GtkBuilder *builder)
 
         didl_dialog = GTK_WIDGET (gtk_builder_get_object (builder,
                                                           "didl-dialog"));
+        g_signal_connect (didl_dialog, "delete-event",
+                          G_CALLBACK (gtk_widget_hide_on_delete), NULL);
+
         didl_textview = GTK_WIDGET (gtk_builder_get_object (builder,
                                                           "didl-textview"));
 #ifdef HAVE_GTK_SOURCEVIEW
