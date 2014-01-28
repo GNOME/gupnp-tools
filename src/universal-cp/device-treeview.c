@@ -94,16 +94,18 @@ find_device (GtkTreeModel *model,
                         }
 
                         g_object_unref (info);
-                }
 
-                if (found)
-                        break;
+                        if (found)
+                                break;
 
-                /* recurse into embedded-devices */
-                found = find_device (model, udn, iter, &tmp);
-                if (found) {
-                        *iter = tmp;
-                        break;
+                        if (icon_type == ICON_DEVICE) {
+                                /* recurse into embedded-devices */
+                                found = find_device (model, udn, iter, &tmp);
+                                if (found) {
+                                        *iter = tmp;
+                                        break;
+                                }
+                        }
                 }
 
                 more = gtk_tree_model_iter_next (model, iter);
