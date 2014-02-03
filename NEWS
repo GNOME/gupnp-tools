@@ -1,3 +1,26 @@
+0.8.9
+=====
+
+Changes since 0.8.8:
+
+- Make DIDL-Lite dialog work when closed with "X".
+- Make UniversalCP behave nicer in busy networks where a lot of devices
+  appear/disappear/reappear.
+
+Bugs fixed in this release:
+ - https://bugzilla.gnome.org/show_bug.cgi?id=722245
+ - https://bugzilla.gnome.org/show_bug.cgi?id=723172
+
+All contributors to this release:
+ - Jussi Kukkonen <jussi.kukkonen@intel.com>
+ - Мирослав Николић <miroslavnikolic@rocketmail.com>
+ - Marek Černocký <marek@manet.cz>
+
+Added/updated translations
+ - cs, courtesy of Marek Černocký
+ - sr, courtesy of Мирослав Николић
+ - sr@latin, courtesy of Miroslav Nikolić
+
 0.8.8
 =====
 
