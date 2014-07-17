@@ -35,16 +35,14 @@
 #define DEFAULT_TEXTVIEW_HEIGHT 55
 
 static GtkWidget *dialog;
-static GtkWidget *in_args_table;
-static GtkWidget *out_args_table;
+static GtkWidget *in_args_grid;
+static GtkWidget *out_args_grid;
 static GtkWidget *device_label;
 static GtkWidget *service_label;
 static GtkWidget *action_label;
 static GtkWidget *in_args_expander;
 static GtkWidget *out_args_expander;
-static GtkSizeGroup *static_labels_group;
-static GtkSizeGroup *arguments_label_group;
-static GtkSizeGroup *arguments_widget_group;
+static GtkSizeGroup *label_group;
 
 static void
 on_expander_clicked (GObject    *expander,
@@ -57,58 +55,33 @@ on_expander_clicked (GObject    *expander,
 
 /*
  * 1. Gets rid of all the existing arguments
- * 2. resizes the table according to the number of new arguments
- * 3. Only show the label if there are any arguments
+ * 2. Only show the label if there are any arguments
  */
 static void
-prepare_action_arguments_table (GtkContainer                  *table,
-                                GUPnPServiceActionArgDirection direction,
-                                GList                         *arguments)
+prepare_action_arguments_grid (GtkContainer                  *grid,
+                               GUPnPServiceActionArgDirection direction,
+                               GList                         *arguments)
 {
-        GList     *child_node;
-        GtkWidget *label;
+        GList     *child_node, *children;
 
         /* reset expander state */
         gtk_expander_set_expanded (GTK_EXPANDER (in_args_expander),  TRUE);
         gtk_expander_set_expanded (GTK_EXPANDER (out_args_expander), FALSE);
 
-        for (child_node = gtk_container_get_children (table);
+        children = gtk_container_get_children (grid);
+        for (child_node = children;
              child_node;
              child_node = child_node->next) {
-                GtkWidget *widget;
-                gchar     *name;
-
-                widget = GTK_WIDGET (child_node->data);
-                name = g_object_get_data (G_OBJECT (widget),
-                                   "argument-name");
-                if (name)
-                        g_free (name);
-
-                if (GTK_IS_LABEL (widget)) {
-                        gtk_size_group_remove_widget (arguments_label_group,
-                                                      widget);
-                } else {
-                        gtk_size_group_remove_widget (arguments_widget_group,
-                                                      widget);
-                }
-
-                gtk_container_remove (table, widget);
+                gtk_widget_destroy (GTK_WIDGET (child_node->data));
         }
+        g_list_free (children);
 
         if (direction == GUPNP_SERVICE_ACTION_ARG_DIRECTION_IN) {
-                label = in_args_expander;
+                gtk_widget_set_visible (in_args_expander,
+                                        arguments != NULL);
         } else {
-                label = out_args_expander;
-        }
-
-        if (arguments) {
-                gtk_table_resize (GTK_TABLE (table),
-                                  g_list_length (arguments),
-                                  2);
-                gtk_widget_show (label);
-        } else {
-                /* No need to resize the table if it's not visible */
-                gtk_widget_hide (label);
+                gtk_widget_set_visible (out_args_expander,
+                                        arguments != NULL);
         }
 }
 
@@ -238,30 +211,30 @@ create_widget_for_argument (GUPnPServiceActionArgInfo *arg_info,
                 g_value_unset (&default_value);
         }
 
-        g_object_set_data (G_OBJECT (widget),
-                           "argument-name",
-                           g_strdup (arg_info->name));
+        g_object_set_data_full (G_OBJECT (widget),
+                                "argument-name",
+                                g_strdup (arg_info->name),
+                                g_free);
         return widget;
 }
 
 static void
-populate_action_arguments_table (GtkWidget                     *table,
-                                 GList                         *arguments,
-                                 GUPnPServiceActionArgDirection direction,
-                                 GUPnPServiceIntrospection     *introspection)
+populate_action_arguments_grid (GtkWidget                     *grid,
+                                GList                         *arguments,
+                                GUPnPServiceActionArgDirection direction,
+                                GUPnPServiceIntrospection     *introspection)
 {
         GList *arg_node;
-        guint row;
+        GtkWidget *last_label = NULL;
 
         g_assert (introspection != NULL);
 
-        prepare_action_arguments_table (GTK_CONTAINER (table),
-                                        direction,
-                                        arguments);
+        prepare_action_arguments_grid (GTK_CONTAINER (grid),
+                                       direction,
+                                       arguments);
 
         gtk_widget_set_size_request (dialog, 0, 0);
 
-        row = 0;
         for (arg_node = arguments;
              arg_node;
              arg_node = arg_node->next) {
@@ -273,39 +246,27 @@ populate_action_arguments_table (GtkWidget                     *table,
 
                 /* First add the name */
                 label = gtk_label_new (arg_info->name);
-                gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
-                gtk_size_group_add_widget (arguments_label_group,
-                                           label);
-                gtk_table_attach (GTK_TABLE (table),
-                                  label,
-                                  0,
-                                  1,
-                                  row,
-                                  row + 1,
-                                  GTK_SHRINK,
-                                  GTK_EXPAND | GTK_FILL,
-                                  2,
-                                  2);
+                gtk_widget_set_valign (label, GTK_ALIGN_CENTER);
+                gtk_widget_set_halign (label, GTK_ALIGN_START);
+                gtk_grid_attach_next_to (GTK_GRID (grid),
+                                         label,
+                                         last_label,
+                                         GTK_POS_BOTTOM,
+                                         1, 1);
+                gtk_size_group_add_widget (label_group, label);
                 gtk_widget_show (label);
+                last_label = label;
 
                 /* Then the input widget */
                 input_widget = create_widget_for_argument (arg_info,
                                                            introspection);
-                gtk_size_group_add_widget (arguments_widget_group,
-                                           input_widget);
-                gtk_table_attach (GTK_TABLE (table),
-                                  input_widget,
-                                  1,
-                                  2,
-                                  row,
-                                  row + 1,
-                                  GTK_EXPAND | GTK_FILL,
-                                  GTK_EXPAND | GTK_FILL,
-                                  2,
-                                  2);
+                gtk_widget_set_hexpand (input_widget, TRUE);
+                gtk_grid_attach_next_to (GTK_GRID (grid),
+                                         input_widget,
+                                         label,
+                                         GTK_POS_RIGHT,
+                                         1,1);
                 gtk_widget_show_all (input_widget);
-
-                row += 1;
         }
 }
 
@@ -363,8 +324,8 @@ run_action_dialog (GUPnPServiceActionInfo    *action_info,
         in_arguments = find_arguments_by_direction (
                         action_info->arguments,
                         GUPNP_SERVICE_ACTION_ARG_DIRECTION_IN);
-        populate_action_arguments_table (
-                        in_args_table,
+        populate_action_arguments_grid (
+                        in_args_grid,
                         in_arguments,
                         GUPNP_SERVICE_ACTION_ARG_DIRECTION_IN,
                         introspection);
@@ -372,8 +333,8 @@ run_action_dialog (GUPnPServiceActionInfo    *action_info,
         out_arguments = find_arguments_by_direction (
                         action_info->arguments,
                         GUPNP_SERVICE_ACTION_ARG_DIRECTION_OUT);
-        populate_action_arguments_table (
-                        out_args_table,
+        populate_action_arguments_grid (
+                        out_args_grid,
                         out_arguments,
                         GUPNP_SERVICE_ACTION_ARG_DIRECTION_OUT,
                         introspection);
@@ -581,7 +542,7 @@ retrieve_in_action_arguments (GUPnPServiceIntrospection *introspection,
 {
         GList      *arg_node;
 
-        arg_node = gtk_container_get_children (GTK_CONTAINER (in_args_table));
+        arg_node = gtk_container_get_children (GTK_CONTAINER (in_args_grid));
 
         for (; arg_node; arg_node = arg_node->next) {
                 GtkWidget *arg_widget;
@@ -652,7 +613,7 @@ display_action_out_arguments (GHashTable *out_args)
         if (action_info == NULL)
                 return;
 
-        arg_node = gtk_container_get_children (GTK_CONTAINER (out_args_table));
+        arg_node = gtk_container_get_children (GTK_CONTAINER (out_args_grid));
 
         for (; arg_node; arg_node = arg_node->next) {
                 GtkWidget *arg_widget;
@@ -761,26 +722,22 @@ init_action_dialog (GtkBuilder *builder)
 {
         GtkWidget *image;
 
-        arguments_label_group =
-                gtk_size_group_new (GTK_SIZE_GROUP_HORIZONTAL);
-        arguments_widget_group =
-                gtk_size_group_new (GTK_SIZE_GROUP_HORIZONTAL);
-        static_labels_group =
+        label_group =
                 gtk_size_group_new (GTK_SIZE_GROUP_HORIZONTAL);
 
-        /* Dialog box and tables */
+        /* Dialog box and grids */
         dialog = GTK_WIDGET (gtk_builder_get_object (
                                         builder,
                                         "action-invocation-dialog"));
         g_assert (dialog != NULL);
-        in_args_table = GTK_WIDGET (gtk_builder_get_object (
+        in_args_grid = GTK_WIDGET (gtk_builder_get_object (
                                         builder,
-                                        "in-action-arguments-table"));
-        g_assert (in_args_table != NULL);
-        out_args_table = GTK_WIDGET (gtk_builder_get_object (
+                                        "in-action-arguments-grid"));
+        g_assert (in_args_grid != NULL);
+        out_args_grid = GTK_WIDGET (gtk_builder_get_object (
                                         builder,
-                                        "out-action-arguments-table"));
-        g_assert (out_args_table != NULL);
+                                        "out-action-arguments-grid"));
+        g_assert (out_args_grid != NULL);
 
         /* All the labels */
         in_args_expander = GTK_WIDGET (gtk_builder_get_object (
@@ -794,15 +751,12 @@ init_action_dialog (GtkBuilder *builder)
         device_label = GTK_WIDGET (gtk_builder_get_object (builder,
                                                            "device-label"));
         g_assert (device_label != NULL);
-        gtk_size_group_add_widget (static_labels_group, device_label);
         service_label = GTK_WIDGET (gtk_builder_get_object (builder,
                                                             "service-label"));
         g_assert (service_label != NULL);
-        gtk_size_group_add_widget (static_labels_group, service_label);
         action_label = GTK_WIDGET (gtk_builder_get_object (builder,
                                                            "action-label"));
         g_assert (action_label != NULL);
-        gtk_size_group_add_widget (static_labels_group, action_label);
 
         /* the images */
         image = GTK_WIDGET (gtk_builder_get_object (builder, "device-image"));
@@ -834,6 +788,7 @@ init_action_dialog (GtkBuilder *builder)
 void
 deinit_action_dialog (void)
 {
+        g_object_unref (label_group);
         gtk_widget_destroy (dialog);
 }
 
