@@ -239,9 +239,9 @@ set_volume_scale (guint volume)
 }
 
 static void
-on_didl_item_available (GUPnPDIDLLiteParser *parser,
-                        GUPnPDIDLLiteObject *object,
-                        gpointer             user_data)
+on_didl_object_available (GUPnPDIDLLiteParser *parser,
+                          GUPnPDIDLLiteObject *object,
+                          gpointer             user_data)
 {
         GUPnPDIDLLiteResource **resource;
         GUPnPServiceProxy      *av_transport;
@@ -280,8 +280,8 @@ find_compat_res_from_metadata (const char *metadata)
         error = NULL;
 
         g_signal_connect (parser,
-                          "item-available",
-                          G_CALLBACK (on_didl_item_available),
+                          "object-available",
+                          G_CALLBACK (on_didl_object_available),
                           &resource);
 
         /* Assumption: metadata only contains a single didl object */
