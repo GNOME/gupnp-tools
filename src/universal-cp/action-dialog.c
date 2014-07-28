@@ -42,7 +42,7 @@ static GtkWidget *service_label;
 static GtkWidget *action_label;
 static GtkWidget *in_args_expander;
 static GtkWidget *out_args_expander;
-static GtkSizeGroup *label_group;
+static GtkSizeGroup *label_container_group;
 
 static void
 on_expander_clicked (GObject    *expander,
@@ -225,7 +225,7 @@ populate_action_arguments_grid (GtkWidget                     *grid,
                                 GUPnPServiceIntrospection     *introspection)
 {
         GList *arg_node;
-        GtkWidget *last_label = NULL;
+        GtkWidget *last_aligner_grid = NULL;
 
         g_assert (introspection != NULL);
 
@@ -239,23 +239,32 @@ populate_action_arguments_grid (GtkWidget                     *grid,
              arg_node;
              arg_node = arg_node->next) {
                 GUPnPServiceActionArgInfo *arg_info;
+                GtkWidget                 *aligner_grid;
                 GtkWidget                 *label;
                 GtkWidget                 *input_widget;
 
                 arg_info = (GUPnPServiceActionArgInfo *) arg_node->data;
 
                 /* First add the name */
-                label = gtk_label_new (arg_info->name);
-                gtk_widget_set_valign (label, GTK_ALIGN_CENTER);
-                gtk_widget_set_halign (label, GTK_ALIGN_START);
+                /* GTK_ALIGN_START seems to have a bug in a size group:
+                 * use a container for alignment */
+                aligner_grid = gtk_grid_new ();
                 gtk_grid_attach_next_to (GTK_GRID (grid),
-                                         label,
-                                         last_label,
+                                         aligner_grid,
+                                         last_aligner_grid,
                                          GTK_POS_BOTTOM,
                                          1, 1);
-                gtk_size_group_add_widget (label_group, label);
-                gtk_widget_show (label);
-                last_label = label;
+                last_aligner_grid = aligner_grid;
+
+                label = gtk_label_new (arg_info->name);
+                gtk_widget_set_valign (label, GTK_ALIGN_CENTER);
+                gtk_widget_set_vexpand (label, TRUE);
+                gtk_widget_set_halign (label, GTK_ALIGN_START);
+                gtk_grid_attach (GTK_GRID (aligner_grid), label,
+                                 0, 0, 1, 1);
+                gtk_size_group_add_widget (label_container_group,
+                                           aligner_grid);
+                gtk_widget_show_all (aligner_grid);
 
                 /* Then the input widget */
                 input_widget = create_widget_for_argument (arg_info,
@@ -263,7 +272,7 @@ populate_action_arguments_grid (GtkWidget                     *grid,
                 gtk_widget_set_hexpand (input_widget, TRUE);
                 gtk_grid_attach_next_to (GTK_GRID (grid),
                                          input_widget,
-                                         label,
+                                         aligner_grid,
                                          GTK_POS_RIGHT,
                                          1,1);
                 gtk_widget_show_all (input_widget);
@@ -722,7 +731,7 @@ init_action_dialog (GtkBuilder *builder)
 {
         GtkWidget *image;
 
-        label_group =
+        label_container_group =
                 gtk_size_group_new (GTK_SIZE_GROUP_HORIZONTAL);
 
         /* Dialog box and grids */
@@ -788,7 +797,7 @@ init_action_dialog (GtkBuilder *builder)
 void
 deinit_action_dialog (void)
 {
-        g_object_unref (label_group);
+        g_object_unref (label_container_group);
         gtk_widget_destroy (dialog);
 }
 
