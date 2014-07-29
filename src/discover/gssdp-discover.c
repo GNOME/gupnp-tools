@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2011 Nokia Corporation.
+ * Copyright (C) 2014 Jens Georg <mail@jensge.org>
  *
  * Author: Jens Georg <jensg@openismus.com>
  *                    <mail@jensge.org>
@@ -23,9 +24,11 @@
 #include <glib.h>
 #include <libgssdp/gssdp.h>
 #include <stdlib.h>
+#include <string.h>
 
 static char *interface = NULL;
 static char *target = NULL;
+static char *message_type = NULL;
 static int timeout = 0;
 static int rescan_interval = 0;
 
@@ -41,6 +44,7 @@ static GOptionEntry entries[] =
         { "target", 't', 0, G_OPTION_ARG_STRING, &target, "SSDP TARGET to search for (default: ssdp:all)", "TARGET" },
         { "timeout", 'n', 0, G_OPTION_ARG_INT, &timeout, "TIME in seconds to wait for replies before exiting", "TIME" },
         { "rescan-interval", 'r', 0, G_OPTION_ARG_INT, &rescan_interval, "TIME in seconds to wait before sending another discovery request", "TIME" },
+        { "message-type", 'm', 0, G_OPTION_ARG_STRING, &message_type, "TYPE of message (available,unavailable,all)", "TYPE" },
         { NULL }
 };
 
@@ -67,6 +71,16 @@ on_resource_available (GSSDPResourceBrowser *browser,
         for (l = locations; l; l = l->next)
                 g_print ("  Location: %s\n", (char *) l->data);
 }
+
+void
+on_resource_unavailable (GSSDPResourceBrowser *browser,
+                         const char           *usn)
+{
+        g_print ("resource unavailable\n"
+                 "  USN:      %s\n",
+                 usn);
+}
+
 
 int main (int argc, char *argv[]) {
         GError *error = NULL;
@@ -108,10 +122,35 @@ int main (int argc, char *argv[]) {
                                         (discover.client, "ssdp:all");
         }
 
-        g_signal_connect (discover.browser,
-                          "resource-available",
-                          G_CALLBACK (on_resource_available),
-                          &discover);
+        if (message_type == NULL) {
+                message_type = "available";
+        } else {
+                if (strncmp (message_type, "available", 9) != 0 &&
+                    strncmp (message_type, "all", 3) != 0 &&
+                    strncmp (message_type, "unavailable", 11) != 0) {
+                        g_print ("Invalid message type. Use \"all\", ");
+                        g_print ("\"available\" or \"unavailable\"\n");
+                        exit (1);
+                }
+        }
+
+        if (strncmp (message_type, "available", 9) == 0 ||
+            strncmp (message_type, "all", 3) == 0) {
+                g_signal_connect (discover.browser,
+                                  "resource-available",
+                                  G_CALLBACK (on_resource_available),
+                                  &discover);
+        }
+
+        if (strncmp (message_type, "unavailable", 11) == 0 ||
+            strncmp (message_type, "all", 3) == 0) {
+                g_signal_connect (discover.browser,
+                                  "resource-unavailable",
+                                  G_CALLBACK (on_resource_unavailable),
+                                  &discover);
+        }
+
+        g_print ("Showing \"%s\" messages\n", message_type);
 
         discover.main_loop = g_main_loop_new (NULL, FALSE);
 
