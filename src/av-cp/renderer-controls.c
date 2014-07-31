@@ -31,8 +31,8 @@
 #define SEC_PER_MIN 60
 #define SEC_PER_HOUR 3600
 
-GtkWidget *volume_vscale;
-GtkWidget *position_hscale;
+GtkWidget *volume_scale;
+GtkWidget *position_scale;
 GtkWidget *play_button;
 GtkWidget *pause_button;
 GtkWidget *stop_button;
@@ -197,7 +197,7 @@ set_av_transport_uri_cb (GUPnPServiceProxy       *av_transport,
                 duration = gupnp_didl_lite_resource_get_duration
                                                         (data->resource);
                 if (duration > 0) {
-                        gtk_range_set_range (GTK_RANGE (position_hscale),
+                        gtk_range_set_range (GTK_RANGE (position_scale),
                                              0.0,
                                              duration);
                 }
@@ -221,20 +221,20 @@ set_av_transport_uri_cb (GUPnPServiceProxy       *av_transport,
 
 G_MODULE_EXPORT
 gboolean
-on_volume_vscale_value_changed (GtkRange *range,
-                                gpointer  user_data);
+on_volume_scale_value_changed (GtkRange *range,
+                               gpointer  user_data);
 
 void
-set_volume_hscale (guint volume)
+set_volume_scale (guint volume)
 {
-        g_signal_handlers_block_by_func (volume_vscale,
-                                         on_volume_vscale_value_changed,
+        g_signal_handlers_block_by_func (volume_scale,
+                                         on_volume_scale_value_changed,
                                          NULL);
 
-        gtk_range_set_value (GTK_RANGE (volume_vscale), volume);
+        gtk_range_set_value (GTK_RANGE (volume_scale), volume);
 
-        g_signal_handlers_unblock_by_func (volume_vscale,
-                                           on_volume_vscale_value_changed,
+        g_signal_handlers_unblock_by_func (volume_scale,
+                                           on_volume_scale_value_changed,
                                            NULL);
 }
 
@@ -399,8 +399,8 @@ on_clear_state_button_clicked (GtkButton *button,
 
 G_MODULE_EXPORT
 gboolean
-on_position_hscale_value_changed (GtkRange *range,
-                                  gpointer  user_data)
+on_position_scale_value_changed (GtkRange *range,
+                                 gpointer  user_data)
 {
         char *args[] = { "Unit", "ABS_TIME", "Target", NULL, NULL };
         guint total_secs;
@@ -454,35 +454,35 @@ return_point:
 }
 
 void
-set_position_hscale_duration (const char *duration_str)
+set_position_scale_duration (const char *duration_str)
 {
         gdouble duration;
 
         duration = seconds_from_time (duration_str);
         if (duration > 0.0) {
-                gtk_range_set_range (GTK_RANGE (position_hscale),
+                gtk_range_set_range (GTK_RANGE (position_scale),
                                      0.0,
                                      duration);
         }
 }
 
 void
-set_position_hscale_position (const char *position_str)
+set_position_scale_position (const char *position_str)
 {
         gdouble position;
 
         position = seconds_from_time (position_str);
         if (position >= 0.0) {
                 g_signal_handlers_block_by_func
-                                        (position_hscale,
-                                         on_position_hscale_value_changed,
+                                        (position_scale,
+                                         on_position_scale_value_changed,
                                          NULL);
 
-                gtk_range_set_value (GTK_RANGE (position_hscale), position);
+                gtk_range_set_value (GTK_RANGE (position_scale), position);
 
                 g_signal_handlers_unblock_by_func
-                                        (position_hscale,
-                                         on_position_hscale_value_changed,
+                                        (position_scale,
+                                         on_position_scale_value_changed,
                                          NULL);
         }
 }
@@ -515,7 +515,7 @@ get_position_info_cb (GUPnPServiceProxy       *av_transport,
                 goto return_point;
         }
 
-        set_position_hscale_position (position);
+        set_position_scale_position (position);
 
 return_point:
         g_object_unref (av_transport);
@@ -617,18 +617,18 @@ prepare_controls_for_state (PlaybackState state)
         }
 
         /* Disable the seekbar when the state is stopped */
-        gtk_widget_set_sensitive (position_hscale, stop_possible);
+        gtk_widget_set_sensitive (position_scale, stop_possible);
         if (!stop_possible) {
                 g_signal_handlers_block_by_func
-                                        (position_hscale,
-                                         on_position_hscale_value_changed,
+                                        (position_scale,
+                                         on_position_scale_value_changed,
                                          NULL);
 
-                gtk_range_set_value (GTK_RANGE (position_hscale), 0.0);
+                gtk_range_set_value (GTK_RANGE (position_scale), 0.0);
 
                 g_signal_handlers_unblock_by_func
-                                        (position_hscale,
-                                         on_position_hscale_value_changed,
+                                        (position_scale,
+                                         on_position_scale_value_changed,
                                          NULL);
         }
 
@@ -661,7 +661,7 @@ set_volume_cb (GUPnPServiceProxy       *rendering_control,
                 g_error_free (error);
 
                 /* Update the range according to the current volume */
-                set_volume_hscale (get_selected_renderer_volume ());
+                set_volume_scale (get_selected_renderer_volume ());
         }
 
         g_object_unref (rendering_control);
@@ -669,8 +669,8 @@ set_volume_cb (GUPnPServiceProxy       *rendering_control,
 
 G_MODULE_EXPORT
 gboolean
-on_volume_vscale_value_changed (GtkRange *range,
-                                gpointer  user_data)
+on_volume_scale_value_changed (GtkRange *range,
+                               gpointer  user_data)
 {
         GUPnPServiceProxy *rendering_control;
         guint              desired_volume;
@@ -704,14 +704,14 @@ on_volume_vscale_value_changed (GtkRange *range,
 void
 setup_renderer_controls (GtkBuilder *builder)
 {
-        volume_vscale = GTK_WIDGET (gtk_builder_get_object (builder,
-                                                            "volume-vscale"));
-        g_assert (volume_vscale != NULL);
+        volume_scale = GTK_WIDGET (gtk_builder_get_object (builder,
+                                                           "volume-scale"));
+        g_assert (volume_scale != NULL);
 
-        position_hscale = GTK_WIDGET (gtk_builder_get_object (
+        position_scale = GTK_WIDGET (gtk_builder_get_object (
                                                 builder,
-                                                "position-hscale"));
-        g_assert (position_hscale != NULL);
+                                                "position-scale"));
+        g_assert (position_scale != NULL);
 
         play_button = GTK_WIDGET (gtk_builder_get_object (builder,
                                                           "play-button"));
@@ -740,7 +740,7 @@ setup_renderer_controls (GtkBuilder *builder)
 
         timeout_id = 0;
 
-        g_object_weak_ref (G_OBJECT (position_hscale),
+        g_object_weak_ref (G_OBJECT (position_scale),
                            (GWeakNotify) remove_timeout,
                            NULL);
 }

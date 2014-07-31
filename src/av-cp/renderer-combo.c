@@ -309,7 +309,7 @@ set_volume (const gchar *udn,
                                     -1);
 
                 if (is_iter_active (GTK_COMBO_BOX (renderer_combo), &iter)) {
-                        set_volume_hscale (volume);
+                        set_volume_scale (volume);
                 }
         }
 }
@@ -332,7 +332,7 @@ set_duration (const gchar *udn,
                                     -1);
 
                 if (is_iter_active (GTK_COMBO_BOX (renderer_combo), &iter)) {
-                        set_position_hscale_duration (duration);
+                        set_position_scale_duration (duration);
                 }
         }
 }
@@ -873,7 +873,7 @@ on_renderer_combo_changed (GtkComboBox *widget,
                             6, &state,
                             7, &volume,
                             -1);
-        set_volume_hscale (volume);
+        set_volume_scale (volume);
         prepare_controls_for_state (state);
 }
 

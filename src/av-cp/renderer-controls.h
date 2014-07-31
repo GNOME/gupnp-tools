@@ -33,13 +33,13 @@ set_av_transport_uri            (const char *metadata,
                                  GCallback   callback);
 
 void
-set_volume_hscale               (guint volume);
+set_volume_scale                (guint volume);
 
 void
-set_position_hscale_duration    (const char *duration_str);
+set_position_scale_duration     (const char *duration_str);
 
 void
-set_position_hscale_position    (const char *position_str);
+set_position_scale_position     (const char *position_str);
 
 void
 prepare_controls_for_state      (PlaybackState state);
