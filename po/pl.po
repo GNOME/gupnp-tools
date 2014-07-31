@@ -4,14 +4,14 @@
 # pomóc w jego rozwijaniu i pielęgnowaniu, napisz do nas:
 # gnomepl@aviary.pl
 # -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-# Piotr Drąg <piotrdrag@gmail.com>, 2012-2013.
-# Aviary.pl <gnomepl@aviary.pl>, 2012-2013.
+# Piotr Drąg <piotrdrag@gmail.com>, 2012-2014.
+# Aviary.pl <gnomepl@aviary.pl>, 2012-2014.
 msgid ""
 msgstr ""
 "Project-Id-Version: gupnp-tools\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-20 15:11+0200\n"
-"PO-Revision-Date: 2013-10-20 15:12+0200\n"
+"POT-Creation-Date: 2014-07-31 17:44+0200\n"
+"PO-Revision-Date: 2014-07-31 17:45+0200\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <gnomepl@aviary.pl>\n"
 "Language: pl\n"
@@ -50,8 +50,8 @@ msgstr "Witryna GUPnP"
 #: ../data/gupnp-universal-cp.ui.h:6
 msgid "translator-credits"
 msgstr ""
-"Piotr Drąg <piotrdrag@gmail.com>, 2012-2013\n"
-"Aviary.pl <gnomepl@aviary.pl>, 2012-2013"
+"Piotr Drąg <piotrdrag@gmail.com>, 2012-2014\n"
+"Aviary.pl <gnomepl@aviary.pl>, 2012-2014"
 
 #: ../data/gupnp-av-cp.ui.in.h:7
 msgid "GUPnP AV CP - Metadata View"
@@ -73,7 +73,7 @@ msgstr "_Narzędzia"
 msgid "_Lenient Mode"
 msgstr "_Tryb łagodny"
 
-#: ../data/gupnp-av-cp.ui.in.h:12 ../data/gupnp-universal-cp.ui.h:27
+#: ../data/gupnp-av-cp.ui.in.h:12 ../data/gupnp-universal-cp.ui.h:29
 msgid "_Help"
 msgstr "Pomo_c"
 
@@ -178,28 +178,28 @@ msgid "Action Invocation"
 msgstr "Wywołanie działania"
 
 #: ../data/gupnp-universal-cp.ui.h:8
-msgid "action"
-msgstr "działanie"
-
-#: ../data/gupnp-universal-cp.ui.h:9
-msgid "service"
-msgstr "usługa"
-
-#: ../data/gupnp-universal-cp.ui.h:10
-msgid "device"
-msgstr "urządzenie"
-
-#: ../data/gupnp-universal-cp.ui.h:11
 msgid "_Invoke"
 msgstr "_Wywołaj"
 
+#: ../data/gupnp-universal-cp.ui.h:9
+msgid "device"
+msgstr "urządzenie"
+
+#: ../data/gupnp-universal-cp.ui.h:10
+msgid "service"
+msgstr "usługa"
+
+#: ../data/gupnp-universal-cp.ui.h:11
+msgid "action"
+msgstr "działanie"
+
 #: ../data/gupnp-universal-cp.ui.h:12
-msgid "<b>'in' arguments</b>"
-msgstr "<b>parametry \"in\"</b>"
+msgid "'in' arguments"
+msgstr "parametry \"in\""
 
 #: ../data/gupnp-universal-cp.ui.h:13
-msgid "<b>'out' arguments</b>"
-msgstr "<b>parametry \"out\"</b>"
+msgid "'out' arguments"
+msgstr "parametry \"out\""
 
 #: ../data/gupnp-universal-cp.ui.h:14
 msgid "Copy value"
@@ -243,12 +243,24 @@ msgid "GUPnP Universal Control Point"
 msgstr "Uniwersalny punkt kontrolny GUPnP"
 
 #: ../data/gupnp-universal-cp.ui.h:25
+msgid "Clear event log"
+msgstr "Wyczyść dziennik zdarzeń"
+
+#: ../data/gupnp-universal-cp.ui.h:26
+msgid "Quit"
+msgstr "Zakończ"
+
+#: ../data/gupnp-universal-cp.ui.h:27
 msgid "_View"
 msgstr "_Widok"
 
-#: ../data/gupnp-universal-cp.ui.h:26
+#: ../data/gupnp-universal-cp.ui.h:28
 msgid "Event _log"
 msgstr "_Dziennik zdarzeń"
+
+#: ../data/gupnp-universal-cp.ui.h:30
+msgid "About"
+msgstr "O programie"
 
 #: ../src/av-cp/main.c:47 ../src/network-light/main.c:46
 #: ../src/universal-cp/main.c:41
@@ -271,7 +283,7 @@ msgstr "- punkt kontrolny UPnP AV"
 msgid "Could not parse options: %s\n"
 msgstr "Nie można przetworzyć opcji: %s\n"
 
-#: ../src/universal-cp/action-dialog.c:709
+#: ../src/universal-cp/action-dialog.c:680
 #, c-format
 msgid ""
 "Action failed.\n"
@@ -436,19 +448,19 @@ msgstr "Wersja"
 msgid "Author"
 msgstr "Autor"
 
-#: ../src/universal-cp/device-treeview.c:460
+#: ../src/universal-cp/device-treeview.c:462
 msgid "State variables"
 msgstr "Zmienne stanu"
 
-#: ../src/universal-cp/device-treeview.c:501
+#: ../src/universal-cp/device-treeview.c:503
 msgid "Information not available"
 msgstr "Informacja jest niedostępna"
 
-#: ../src/universal-cp/device-treeview.c:679
+#: ../src/universal-cp/device-treeview.c:681
 msgid "UPnP Network"
 msgstr "Sieć UPnP"
 
-#: ../src/universal-cp/device-treeview.c:692
+#: ../src/universal-cp/device-treeview.c:694
 #: ../src/universal-cp/event-treeview.c:373
 msgid "Device"
 msgstr "Urządzenie"
