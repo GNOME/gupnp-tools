@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: gupnp-tools master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gupnp-"
 "tools&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-10-20 16:24+0000\n"
-"PO-Revision-Date: 2013-10-21 13:04-0300\n"
-"Last-Translator: Enrico Nicoletto <liverig@gmail.com>\n"
+"POT-Creation-Date: 2014-07-31 15:35+0000\n"
+"PO-Revision-Date: 2014-07-31 23:34-0300\n"
+"Last-Translator: Rafael Ferreira <rafael.f.f1@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 1.5.7\n"
+"X-Generator: Poedit 1.6.5\n"
 
 # GUPnP-AV is a collection of helpers for building AV (audio/video) applications using GUPnP.
 #: ../data/gupnp-av-cp.desktop.in.in.h:1
@@ -69,7 +69,7 @@ msgstr "_Ferramentas"
 msgid "_Lenient Mode"
 msgstr "Modo _condescendente"
 
-#: ../data/gupnp-av-cp.ui.in.h:12 ../data/gupnp-universal-cp.ui.h:27
+#: ../data/gupnp-av-cp.ui.in.h:12 ../data/gupnp-universal-cp.ui.h:29
 msgid "_Help"
 msgstr "A_juda"
 
@@ -174,28 +174,30 @@ msgid "Action Invocation"
 msgstr "Chamadas de ação"
 
 #: ../data/gupnp-universal-cp.ui.h:8
-msgid "action"
-msgstr "ação"
-
-#: ../data/gupnp-universal-cp.ui.h:9
-msgid "service"
-msgstr "serviço"
-
-#: ../data/gupnp-universal-cp.ui.h:10
-msgid "device"
-msgstr "dispositivo"
-
-#: ../data/gupnp-universal-cp.ui.h:11
 msgid "_Invoke"
 msgstr "_Invocar"
 
+#: ../data/gupnp-universal-cp.ui.h:9
+msgid "device"
+msgstr "dispositivo"
+
+#: ../data/gupnp-universal-cp.ui.h:10
+msgid "service"
+msgstr "serviço"
+
+#: ../data/gupnp-universal-cp.ui.h:11
+msgid "action"
+msgstr "ação"
+
 #: ../data/gupnp-universal-cp.ui.h:12
-msgid "<b>'in' arguments</b>"
-msgstr "<b>argumentos de entrada</b>"
+#| msgid "<b>'in' arguments</b>"
+msgid "'in' arguments"
+msgstr "argumentos de entrada"
 
 #: ../data/gupnp-universal-cp.ui.h:13
-msgid "<b>'out' arguments</b>"
-msgstr "<b>argumentos de saída</b>"
+#| msgid "<b>'out' arguments</b>"
+msgid "'out' arguments"
+msgstr "argumentos de saída"
 
 #: ../data/gupnp-universal-cp.ui.h:14
 msgid "Copy value"
@@ -239,12 +241,26 @@ msgid "GUPnP Universal Control Point"
 msgstr "Ponto de controle universal GUPnP"
 
 #: ../data/gupnp-universal-cp.ui.h:25
+#| msgid "_Clear event log"
+msgid "Clear event log"
+msgstr "Limpar registro de eventos"
+
+#: ../data/gupnp-universal-cp.ui.h:26
+msgid "Quit"
+msgstr "Sair"
+
+#: ../data/gupnp-universal-cp.ui.h:27
 msgid "_View"
 msgstr "_Visualizar"
 
-#: ../data/gupnp-universal-cp.ui.h:26
+#: ../data/gupnp-universal-cp.ui.h:28
 msgid "Event _log"
 msgstr "Re_gistro do evento"
+
+#: ../data/gupnp-universal-cp.ui.h:30
+#| msgid "_About"
+msgid "About"
+msgstr "Sobre"
 
 #: ../src/av-cp/main.c:47 ../src/network-light/main.c:46
 #: ../src/universal-cp/main.c:41
@@ -268,7 +284,7 @@ msgstr "- Ponto de controle áudio/vídeo (AV) UPnP"
 msgid "Could not parse options: %s\n"
 msgstr "Não foi possível analisar as opções: %s\n"
 
-#: ../src/universal-cp/action-dialog.c:709
+#: ../src/universal-cp/action-dialog.c:680
 #, c-format
 msgid ""
 "Action failed.\n"
@@ -433,19 +449,19 @@ msgstr "Versão"
 msgid "Author"
 msgstr "Autor"
 
-#: ../src/universal-cp/device-treeview.c:460
+#: ../src/universal-cp/device-treeview.c:462
 msgid "State variables"
 msgstr "Variáveis de estado"
 
-#: ../src/universal-cp/device-treeview.c:501
+#: ../src/universal-cp/device-treeview.c:503
 msgid "Information not available"
 msgstr "Informação não disponível"
 
-#: ../src/universal-cp/device-treeview.c:679
+#: ../src/universal-cp/device-treeview.c:681
 msgid "UPnP Network"
 msgstr "Rede UPnP"
 
-#: ../src/universal-cp/device-treeview.c:692
+#: ../src/universal-cp/device-treeview.c:694
 #: ../src/universal-cp/event-treeview.c:373
 msgid "Device"
 msgstr "Dispositivo"
