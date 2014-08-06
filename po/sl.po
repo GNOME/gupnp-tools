@@ -2,15 +2,15 @@
 # Copyright (C) 2012 gupnp-tools's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gupnp-tools package.
 #
-# Matej Urbančič <mateju@svn.gnome.org>, 2013.
+# Matej Urbančič <mateju@svn.gnome.org>, 2013-2014.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gupnp-tools master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gupnp-"
 "tools&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-10-20 13:12+0000\n"
-"PO-Revision-Date: 2013-10-20 18:24+0100\n"
+"POT-Creation-Date: 2014-08-06 09:14+0000\n"
+"PO-Revision-Date: 2014-08-06 14:52+0100\n"
 "Last-Translator: Matej Urbančič <mateju@svn.gnome.org>\n"
 "Language-Team: Slovenian <gnome-si@googlegroups.com>\n"
 "Language: sl\n"
@@ -70,7 +70,7 @@ msgstr "_Orodja"
 msgid "_Lenient Mode"
 msgstr "_Strogi način"
 
-#: ../data/gupnp-av-cp.ui.in.h:12 ../data/gupnp-universal-cp.ui.h:27
+#: ../data/gupnp-av-cp.ui.in.h:12 ../data/gupnp-universal-cp.ui.h:29
 msgid "_Help"
 msgstr "Pomo_č"
 
@@ -174,28 +174,28 @@ msgid "Action Invocation"
 msgstr "Priklic dejanja"
 
 #: ../data/gupnp-universal-cp.ui.h:8
-msgid "action"
-msgstr "dejanje"
-
-#: ../data/gupnp-universal-cp.ui.h:9
-msgid "service"
-msgstr "storitev"
-
-#: ../data/gupnp-universal-cp.ui.h:10
-msgid "device"
-msgstr "naprava"
-
-#: ../data/gupnp-universal-cp.ui.h:11
 msgid "_Invoke"
 msgstr "Pr_ikliči"
 
+#: ../data/gupnp-universal-cp.ui.h:9
+msgid "device"
+msgstr "naprava"
+
+#: ../data/gupnp-universal-cp.ui.h:10
+msgid "service"
+msgstr "storitev"
+
+#: ../data/gupnp-universal-cp.ui.h:11
+msgid "action"
+msgstr "dejanje"
+
 #: ../data/gupnp-universal-cp.ui.h:12
-msgid "<b>'in' arguments</b>"
-msgstr "<b>'vhodni' argumenti</b>"
+msgid "'in' arguments"
+msgstr "'notranji' argumenti"
 
 #: ../data/gupnp-universal-cp.ui.h:13
-msgid "<b>'out' arguments</b>"
-msgstr "<b>'izhodni' argumenti</b>"
+msgid "'out' arguments"
+msgstr "'zunanji' argumenti"
 
 #: ../data/gupnp-universal-cp.ui.h:14
 msgid "Copy value"
@@ -239,12 +239,24 @@ msgid "GUPnP Universal Control Point"
 msgstr "Univerzalna nadzorna točka GUPnP"
 
 #: ../data/gupnp-universal-cp.ui.h:25
+msgid "Clear event log"
+msgstr "Počisti dnevnik dogodkov"
+
+#: ../data/gupnp-universal-cp.ui.h:26
+msgid "Quit"
+msgstr "Končaj"
+
+#: ../data/gupnp-universal-cp.ui.h:27
 msgid "_View"
 msgstr "_Pogled"
 
-#: ../data/gupnp-universal-cp.ui.h:26
+#: ../data/gupnp-universal-cp.ui.h:28
 msgid "Event _log"
 msgstr "Dn_evnik dogodkov"
+
+#: ../data/gupnp-universal-cp.ui.h:30
+msgid "About"
+msgstr "O programu"
 
 #: ../src/av-cp/main.c:47 ../src/network-light/main.c:46
 #: ../src/universal-cp/main.c:41
@@ -267,7 +279,7 @@ msgstr "- nadzorna točka UPnP AV"
 msgid "Could not parse options: %s\n"
 msgstr "Možnosti ni mogoče razčleniti: %s\n"
 
-#: ../src/universal-cp/action-dialog.c:709
+#: ../src/universal-cp/action-dialog.c:680
 #, c-format
 msgid ""
 "Action failed.\n"
@@ -432,19 +444,19 @@ msgstr "Različica"
 msgid "Author"
 msgstr "Avtor"
 
-#: ../src/universal-cp/device-treeview.c:460
+#: ../src/universal-cp/device-treeview.c:462
 msgid "State variables"
 msgstr "Spremenljivke stanja"
 
-#: ../src/universal-cp/device-treeview.c:501
+#: ../src/universal-cp/device-treeview.c:503
 msgid "Information not available"
 msgstr "Podrobnosti niso na voljo"
 
-#: ../src/universal-cp/device-treeview.c:679
+#: ../src/universal-cp/device-treeview.c:681
 msgid "UPnP Network"
 msgstr "Omrežje UPnP"
 
-#: ../src/universal-cp/device-treeview.c:692
+#: ../src/universal-cp/device-treeview.c:694
 #: ../src/universal-cp/event-treeview.c:373
 msgid "Device"
 msgstr "Naprava"
