@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gupnp-tools\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-31 17:44+0200\n"
-"PO-Revision-Date: 2014-07-31 17:45+0200\n"
+"POT-Creation-Date: 2014-08-11 02:37+0200\n"
+"PO-Revision-Date: 2014-08-11 02:38+0200\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <gnomepl@aviary.pl>\n"
 "Language: pl\n"
@@ -54,16 +54,16 @@ msgstr ""
 "Aviary.pl <gnomepl@aviary.pl>, 2012-2014"
 
 #: ../data/gupnp-av-cp.ui.in.h:7
-msgid "GUPnP AV CP - Metadata View"
-msgstr "GUPnP AV CP - widok metadanych"
-
-#: ../data/gupnp-av-cp.ui.in.h:8
 msgid "GUPnP AV Control Point"
 msgstr "Punkt kontrolny GUPnP AV"
 
-#: ../data/gupnp-av-cp.ui.in.h:9 ../data/gupnp-universal-cp.ui.h:24
+#: ../data/gupnp-av-cp.ui.in.h:8 ../data/gupnp-universal-cp.ui.h:24
 msgid "_File"
 msgstr "_Plik"
+
+#: ../data/gupnp-av-cp.ui.in.h:9
+msgid "Close"
+msgstr "Zamknij"
 
 #: ../data/gupnp-av-cp.ui.in.h:10
 msgid "_Tools"
@@ -77,11 +77,35 @@ msgstr "_Tryb łagodny"
 msgid "_Help"
 msgstr "Pomo_c"
 
-#: ../data/gupnp-av-cp.ui.in.h:13
-msgid "_Renderer: "
-msgstr "_Mechanizm wyświetlający: "
+#: ../data/gupnp-av-cp.ui.in.h:13 ../data/gupnp-universal-cp.ui.h:30
+msgid "About"
+msgstr "O programie"
 
 #: ../data/gupnp-av-cp.ui.in.h:14
+msgid "_Play"
+msgstr "_Odtwórz"
+
+#: ../data/gupnp-av-cp.ui.in.h:15
+msgid "P_ause"
+msgstr "_Wstrzymaj"
+
+#: ../data/gupnp-av-cp.ui.in.h:16
+msgid "_Stop"
+msgstr "_Zatrzymaj"
+
+#: ../data/gupnp-av-cp.ui.in.h:17
+msgid "Pre_vious"
+msgstr "_Poprzedni"
+
+#: ../data/gupnp-av-cp.ui.in.h:18
+msgid "_Next"
+msgstr "_Następny"
+
+#: ../data/gupnp-av-cp.ui.in.h:19
+msgid "Rescan"
+msgstr "Skanuj ponownie"
+
+#: ../data/gupnp-av-cp.ui.in.h:20
 msgid ""
 "Clears the CP's idea of the state of the currently selected AV Renderer. "
 "Useful for dealing with AV Renderers that don't report state changes."
@@ -90,39 +114,23 @@ msgstr ""
 "CP. Jest to przydatne podczas używania z mechanizmami AV, które nie "
 "zgłaszają zmian stanu."
 
-#: ../data/gupnp-av-cp.ui.in.h:15
+#: ../data/gupnp-av-cp.ui.in.h:21
 msgid "_Clear state"
 msgstr "Wy_czyść stan"
 
-#: ../data/gupnp-av-cp.ui.in.h:16
-msgid "_Play"
-msgstr "_Odtwórz"
-
-#: ../data/gupnp-av-cp.ui.in.h:17
-msgid "P_ause"
-msgstr "_Wstrzymaj"
-
-#: ../data/gupnp-av-cp.ui.in.h:18
-msgid "_Stop"
-msgstr "_Zatrzymaj"
-
-#: ../data/gupnp-av-cp.ui.in.h:19
-msgid "Pre_vious"
-msgstr "_Poprzedni"
-
-#: ../data/gupnp-av-cp.ui.in.h:20
-msgid "_Next"
-msgstr "_Następny"
-
-#: ../data/gupnp-av-cp.ui.in.h:21
-msgid "Rescan"
-msgstr "Skanuj ponownie"
-
 #: ../data/gupnp-av-cp.ui.in.h:22
+msgid "_Renderer: "
+msgstr "_Mechanizm wyświetlający: "
+
+#: ../data/gupnp-av-cp.ui.in.h:23
+msgid "GUPnP AV CP - Metadata View"
+msgstr "GUPnP AV CP - widok metadanych"
+
+#: ../data/gupnp-av-cp.ui.in.h:24
 msgid "Fetch the DIDL-Lite XML for this media object"
 msgstr "Pobiera kod XML DIDL-Lite dla tego obiektu multimedialnego"
 
-#: ../data/gupnp-av-cp.ui.in.h:23
+#: ../data/gupnp-av-cp.ui.in.h:25
 msgid "Fetch _DIDL-Lite"
 msgstr "Pobierz _DIDL-Lite"
 
@@ -257,10 +265,6 @@ msgstr "_Widok"
 #: ../data/gupnp-universal-cp.ui.h:28
 msgid "Event _log"
 msgstr "_Dziennik zdarzeń"
-
-#: ../data/gupnp-universal-cp.ui.h:30
-msgid "About"
-msgstr "O programie"
 
 #: ../src/av-cp/main.c:47 ../src/network-light/main.c:46
 #: ../src/universal-cp/main.c:41
