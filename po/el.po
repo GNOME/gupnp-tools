@@ -8,21 +8,21 @@ msgstr ""
 "Project-Id-Version: gupnp-tools master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gupnp-"
 "tools&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-06-11 10:31+0000\n"
-"PO-Revision-Date: 2013-06-25 08:07+0300\n"
-"Last-Translator: Dimitris Spingos (Δημήτρης Σπίγγος) <dmtrs32@gmail.com>\n"
+"POT-Creation-Date: 2014-08-10 19:24+0000\n"
+"PO-Revision-Date: 2014-08-11 11:15+0200\n"
+"Last-Translator: Tom Tryfonidis <tomtryf@gmail.com>\n"
 "Language-Team: team@gnome.gr\n"
 "Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Virtaal 0.7.1\n"
+"X-Generator: Poedit 1.6.5\n"
 "X-Project-Style: gnome\n"
 
 #: ../data/gupnp-av-cp.desktop.in.in.h:1
 msgid "UPnP AV Control Point"
-msgstr "UPnP AV Σημείο Ελέγχου"
+msgstr "Σημείο ελέγχου UPnP AV "
 
 #: ../data/gupnp-av-cp.ui.in.h:1 ../data/gupnp-network-light.ui.h:1
 #: ../data/gupnp-universal-cp.ui.h:1
@@ -49,19 +49,22 @@ msgid "translator-credits"
 msgstr ""
 "Ελληνική μεταφραστική ομάδα του GNOME\n"
 " Δημήτρης Σπίγγος <dmtrs32@gmail.com>\n"
-"Για περισσότερα δείτε: http://gnome.gr"
+" Μαρία Μαυρίδου <mavridou@gmail.com>\n"
+"\n"
+"Για περισσότερες πληροφορίες, επισκεφθείτε τη σελίδα\n"
+"http://gnome.gr/"
 
 #: ../data/gupnp-av-cp.ui.in.h:7
-msgid "GUPnP AV CP - Metadata View"
-msgstr "GUPnP AV CP - Προβολή μεταδεδομένων"
-
-#: ../data/gupnp-av-cp.ui.in.h:8
 msgid "GUPnP AV Control Point"
 msgstr "Σημείο Ελέγχου UPnP AV"
 
-#: ../data/gupnp-av-cp.ui.in.h:9 ../data/gupnp-universal-cp.ui.h:24
+#: ../data/gupnp-av-cp.ui.in.h:8 ../data/gupnp-universal-cp.ui.h:24
 msgid "_File"
 msgstr "_Αρχείο"
+
+#: ../data/gupnp-av-cp.ui.in.h:9
+msgid "Close"
+msgstr "Κλείσιμο"
 
 #: ../data/gupnp-av-cp.ui.in.h:10
 msgid "_Tools"
@@ -71,58 +74,67 @@ msgstr "_Εργαλεία"
 msgid "_Lenient Mode"
 msgstr "Ή_πια κατάσταση"
 
-#: ../data/gupnp-av-cp.ui.in.h:12 ../data/gupnp-universal-cp.ui.h:27
+#: ../data/gupnp-av-cp.ui.in.h:12 ../data/gupnp-universal-cp.ui.h:29
 msgid "_Help"
 msgstr "_Βοήθεια"
 
-#: ../data/gupnp-av-cp.ui.in.h:13
-msgid "_Renderer: "
-msgstr "_Αποτυπωτής: "
+#: ../data/gupnp-av-cp.ui.in.h:13 ../data/gupnp-universal-cp.ui.h:30
+#| msgid "_About"
+msgid "About"
+msgstr "Περί"
 
 #: ../data/gupnp-av-cp.ui.in.h:14
+msgid "_Play"
+msgstr "_Αναπαραγωγή"
+
+#: ../data/gupnp-av-cp.ui.in.h:15
+msgid "P_ause"
+msgstr "Παύ_ση"
+
+#: ../data/gupnp-av-cp.ui.in.h:16
+msgid "_Stop"
+msgstr "_Διακοπή"
+
+#: ../data/gupnp-av-cp.ui.in.h:17
+msgid "Pre_vious"
+msgstr "Προη_γούμενο"
+
+#: ../data/gupnp-av-cp.ui.in.h:18
+msgid "_Next"
+msgstr "_Επόμενο"
+
+#: ../data/gupnp-av-cp.ui.in.h:19
+msgid "Rescan"
+msgstr "Επανασάρωση"
+
+#: ../data/gupnp-av-cp.ui.in.h:20
 msgid ""
 "Clears the CP's idea of the state of the currently selected AV Renderer. "
 "Useful for dealing with AV Renderers that don't report state changes."
 msgstr ""
 "Καθαρίζει την ιδέα της κατάστασης του τρέχοντος επιλεγμένου αποτυπωτή AV του "
-"CP. Χρήσιμη για αντιμετώπιση αποτυπωτές AV που δεν αναφέρουν αλλαγές "
+"CP. Χρήσιμη για αντιμετώπιση αποτυπωτών AV, που δεν αναφέρουν αλλαγές "
 "κατάστασης."
 
-#: ../data/gupnp-av-cp.ui.in.h:15
+#: ../data/gupnp-av-cp.ui.in.h:21
 msgid "_Clear state"
 msgstr "_Καθαρισμός κατάστασης"
 
-#: ../data/gupnp-av-cp.ui.in.h:16
-msgid "_Play"
-msgstr "_Αναπαραγωγή"
-
-#: ../data/gupnp-av-cp.ui.in.h:17
-msgid "P_ause"
-msgstr "Παύ_ση"
-
-#: ../data/gupnp-av-cp.ui.in.h:18
-msgid "_Stop"
-msgstr "_Διακοπή"
-
-#: ../data/gupnp-av-cp.ui.in.h:19
-msgid "Pre_vious"
-msgstr "Προη_γούμενο"
-
-#: ../data/gupnp-av-cp.ui.in.h:20
-msgid "_Next"
-msgstr "_Επόμενο"
-
-#: ../data/gupnp-av-cp.ui.in.h:21
-msgid "Rescan"
-msgstr "Επανασάρωση"
-
 #: ../data/gupnp-av-cp.ui.in.h:22
-msgid "Fetch the DIDL-Lite XML for this media object"
-msgstr "Προσκόμιση του DIDL-Lite XML για αυτό το αντικείμενο μέσων"
+msgid "_Renderer: "
+msgstr "_Αποτυπωτής: "
 
 #: ../data/gupnp-av-cp.ui.in.h:23
+msgid "GUPnP AV CP - Metadata View"
+msgstr "GUPnP AV CP - Προβολή μεταδεδομένων"
+
+#: ../data/gupnp-av-cp.ui.in.h:24
+msgid "Fetch the DIDL-Lite XML for this media object"
+msgstr "Ανάκτηση του DIDL-Lite XML για αυτό το αντικείμενο μέσων"
+
+#: ../data/gupnp-av-cp.ui.in.h:25
 msgid "Fetch _DIDL-Lite"
-msgstr "Προσκόμιση _DIDL-Lite"
+msgstr "Ανάκτηση _DIDL-Lite"
 
 #: ../data/gupnp-network-light.desktop.in.in.h:1
 msgid "UPnP Network Light"
@@ -176,28 +188,30 @@ msgid "Action Invocation"
 msgstr "Κλήση ενέργειας"
 
 #: ../data/gupnp-universal-cp.ui.h:8
-msgid "action"
-msgstr "ενέργεια"
-
-#: ../data/gupnp-universal-cp.ui.h:9
-msgid "service"
-msgstr "υπηρεσία"
-
-#: ../data/gupnp-universal-cp.ui.h:10
-msgid "device"
-msgstr "συσκευή"
-
-#: ../data/gupnp-universal-cp.ui.h:11
 msgid "_Invoke"
 msgstr "_Κλήση"
 
+#: ../data/gupnp-universal-cp.ui.h:9
+msgid "device"
+msgstr "συσκευή"
+
+#: ../data/gupnp-universal-cp.ui.h:10
+msgid "service"
+msgstr "υπηρεσία"
+
+#: ../data/gupnp-universal-cp.ui.h:11
+msgid "action"
+msgstr "ενέργεια"
+
 #: ../data/gupnp-universal-cp.ui.h:12
-msgid "<b>'in' arguments</b>"
-msgstr "<b>'εισερχόμενα' ορίσματα</b>"
+#| msgid "<b>'in' arguments</b>"
+msgid "'in' arguments"
+msgstr "'εισερχόμενα' ορίσματα"
 
 #: ../data/gupnp-universal-cp.ui.h:13
-msgid "<b>'out' arguments</b>"
-msgstr "<b>'εξερχόμενα' ορίσματα</b>"
+#| msgid "<b>'out' arguments</b>"
+msgid "'out' arguments"
+msgstr "'εξερχόμενα' ορίσματα"
 
 #: ../data/gupnp-universal-cp.ui.h:14
 msgid "Copy value"
@@ -241,27 +255,44 @@ msgid "GUPnP Universal Control Point"
 msgstr "Γενικό σημείο ελέγχου GUPnP"
 
 #: ../data/gupnp-universal-cp.ui.h:25
+#| msgid "_Clear event log"
+msgid "Clear event log"
+msgstr "Καθαρισμός καταγραφής συμβάντων"
+
+#: ../data/gupnp-universal-cp.ui.h:26
+msgid "Quit"
+msgstr "Έξοδος"
+
+#: ../data/gupnp-universal-cp.ui.h:27
 msgid "_View"
 msgstr "_Προβολή"
 
-#: ../data/gupnp-universal-cp.ui.h:26
+#: ../data/gupnp-universal-cp.ui.h:28
 msgid "Event _log"
 msgstr "Κα_ταγραφή συμβάντων"
 
-#: ../src/av-cp/main.c:44
+#: ../src/av-cp/main.c:47 ../src/network-light/main.c:46
+#: ../src/universal-cp/main.c:41
 msgid "Network PORT to use for UPnP"
-msgstr "Δίκτυο PORT για χρήση με UPnP"
+msgstr "ΘΥΡΑ δίκτυου για χρήση με UPnP"
 
-#: ../src/av-cp/main.c:183
+#: ../src/av-cp/main.c:48 ../src/network-light/main.c:47
+#: ../src/universal-cp/main.c:42
+msgid "Network interfaces to use for UPnP communication"
+msgstr "Διεπαφές δικτύου που θα χρησιμοποιηθούν για την επικοινωνία UPnP"
+
+#: ../src/av-cp/main.c:196 ../src/network-light/main.c:100
+#: ../src/universal-cp/main.c:145
 msgid "- UPnP AV control point"
-msgstr "- Σημείο Ελέγχου UPnP AV"
+msgstr "- Σημείο ελέγχου UPnP AV"
 
-#: ../src/av-cp/main.c:188
+#: ../src/av-cp/main.c:201 ../src/network-light/main.c:105
+#: ../src/universal-cp/main.c:150
 #, c-format
 msgid "Could not parse options: %s\n"
 msgstr "Αδύνατη η ανάλυση επιλογών: %s\n"
 
-#: ../src/universal-cp/action-dialog.c:709
+#: ../src/universal-cp/action-dialog.c:680
 #, c-format
 msgid ""
 "Action failed.\n"
@@ -311,7 +342,7 @@ msgstr "Αποστολή συμβάντων"
 
 #: ../src/universal-cp/details-treeview.c:238
 msgid "GType"
-msgstr "Τύπος G"
+msgstr "GType"
 
 #: ../src/universal-cp/details-treeview.c:241
 msgid "Default Value"
@@ -351,7 +382,7 @@ msgstr "Τύπος"
 #: ../src/universal-cp/details-treeview.c:314
 #: ../src/universal-cp/details-treeview.c:361
 msgid "Base URL"
-msgstr "URL βάσης"
+msgstr "Διεύθυνση βάσης"
 
 #: ../src/universal-cp/details-treeview.c:319
 msgid "Service ID"
@@ -359,15 +390,15 @@ msgstr "Αναγνωριστικό υπηρεσίας"
 
 #: ../src/universal-cp/details-treeview.c:321
 msgid "Service URL"
-msgstr "URL υπηρεσίας"
+msgstr "Διεύθυνση υπηρεσίας"
 
 #: ../src/universal-cp/details-treeview.c:323
 msgid "Control URL"
-msgstr "URL ελέγχου"
+msgstr "Διεύθυνση ελέγχου"
 
 #: ../src/universal-cp/details-treeview.c:325
 msgid "Event Subscription URL"
-msgstr "URL εγγραφής συμβάντων"
+msgstr "Διεύθυνση εγγραφής συμβάντων"
 
 #: ../src/universal-cp/details-treeview.c:366
 msgid "Friendly Name"
@@ -379,7 +410,7 @@ msgstr "Κατασκευαστής"
 
 #: ../src/universal-cp/details-treeview.c:370
 msgid "Manufacturer URL"
-msgstr "URL κατασκευαστή"
+msgstr "Διεύθυνση κατασκευαστή"
 
 #: ../src/universal-cp/details-treeview.c:372
 msgid "Model Description"
@@ -395,7 +426,7 @@ msgstr "Αριθμός μοντέλου"
 
 #: ../src/universal-cp/details-treeview.c:378
 msgid "Model URL"
-msgstr "URL μοντέλου"
+msgstr "Διεύθυνση μοντέλου"
 
 #: ../src/universal-cp/details-treeview.c:380
 msgid "Serial Number"
@@ -407,7 +438,7 @@ msgstr "UPC"
 
 #: ../src/universal-cp/details-treeview.c:384
 msgid "Presentation URL"
-msgstr "URL παρουσίασης"
+msgstr "Διεύθυνση παρουσίασης"
 
 #: ../src/universal-cp/details-treeview.c:414
 #: ../src/universal-cp/event-treeview.c:376
@@ -426,19 +457,19 @@ msgstr "Έκδοση"
 msgid "Author"
 msgstr "Δημιουργός"
 
-#: ../src/universal-cp/device-treeview.c:459
+#: ../src/universal-cp/device-treeview.c:462
 msgid "State variables"
 msgstr "Μεταβλητές κατάστασης"
 
-#: ../src/universal-cp/device-treeview.c:499
+#: ../src/universal-cp/device-treeview.c:503
 msgid "Information not available"
 msgstr "Οι πληροφορίες δεν είναι διαθέσιμες"
 
-#: ../src/universal-cp/device-treeview.c:676
+#: ../src/universal-cp/device-treeview.c:681
 msgid "UPnP Network"
 msgstr "Δίκτυο UPnP"
 
-#: ../src/universal-cp/device-treeview.c:689
+#: ../src/universal-cp/device-treeview.c:694
 #: ../src/universal-cp/event-treeview.c:373
 msgid "Device"
 msgstr "Συσκευή"
