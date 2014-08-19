@@ -1,15 +1,15 @@
 # Czech translation for gupnp-tools.
 # Copyright (C) 2013 gupnp-tools's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gupnp-tools package.
-# Marek Černocký <marek@manet.cz>, 2013.
+# Marek Černocký <marek@manet.cz>, 2013, 2014.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gupnp-tools master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gupnp-"
 "tools&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-10-20 11:17+0000\n"
-"PO-Revision-Date: 2013-12-07 17:47+0100\n"
+"POT-Creation-Date: 2014-08-10 19:24+0000\n"
+"PO-Revision-Date: 2014-08-19 07:01+0200\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -48,16 +48,16 @@ msgid "translator-credits"
 msgstr "Marek Černocký, <marek@manet.cz>"
 
 #: ../data/gupnp-av-cp.ui.in.h:7
-msgid "GUPnP AV CP - Metadata View"
-msgstr "GUPnP AV CP – zobrazení metadat"
-
-#: ../data/gupnp-av-cp.ui.in.h:8
 msgid "GUPnP AV Control Point"
 msgstr "Řídící bod GUPnP AV"
 
-#: ../data/gupnp-av-cp.ui.in.h:9 ../data/gupnp-universal-cp.ui.h:24
+#: ../data/gupnp-av-cp.ui.in.h:8 ../data/gupnp-universal-cp.ui.h:24
 msgid "_File"
 msgstr "_Soubor"
+
+#: ../data/gupnp-av-cp.ui.in.h:9
+msgid "Close"
+msgstr "Zavřít"
 
 #: ../data/gupnp-av-cp.ui.in.h:10
 msgid "_Tools"
@@ -67,15 +67,39 @@ msgstr "Nás_troje"
 msgid "_Lenient Mode"
 msgstr "_Shovívavý režim"
 
-#: ../data/gupnp-av-cp.ui.in.h:12 ../data/gupnp-universal-cp.ui.h:27
+#: ../data/gupnp-av-cp.ui.in.h:12 ../data/gupnp-universal-cp.ui.h:29
 msgid "_Help"
 msgstr "_Nápověda"
 
-#: ../data/gupnp-av-cp.ui.in.h:13
-msgid "_Renderer: "
-msgstr "Vyk_reslovací zařízení: "
+#: ../data/gupnp-av-cp.ui.in.h:13 ../data/gupnp-universal-cp.ui.h:30
+msgid "About"
+msgstr "O aplikaci"
 
 #: ../data/gupnp-av-cp.ui.in.h:14
+msgid "_Play"
+msgstr "_Přehrát"
+
+#: ../data/gupnp-av-cp.ui.in.h:15
+msgid "P_ause"
+msgstr "Poz_astavit"
+
+#: ../data/gupnp-av-cp.ui.in.h:16
+msgid "_Stop"
+msgstr "Za_stavit"
+
+#: ../data/gupnp-av-cp.ui.in.h:17
+msgid "Pre_vious"
+msgstr "Př_edchozí"
+
+#: ../data/gupnp-av-cp.ui.in.h:18
+msgid "_Next"
+msgstr "_Následující"
+
+#: ../data/gupnp-av-cp.ui.in.h:19
+msgid "Rescan"
+msgstr "Prohledat"
+
+#: ../data/gupnp-av-cp.ui.in.h:20
 msgid ""
 "Clears the CP's idea of the state of the currently selected AV Renderer. "
 "Useful for dealing with AV Renderers that don't report state changes."
@@ -84,39 +108,23 @@ msgstr ""
 "vykreslování AV. To je užitečné pro práci s vykreslovacími zařízeními AV, "
 "které neoznamují změny svého stavu."
 
-#: ../data/gupnp-av-cp.ui.in.h:15
+#: ../data/gupnp-av-cp.ui.in.h:21
 msgid "_Clear state"
 msgstr "_Vymazat stav"
 
-#: ../data/gupnp-av-cp.ui.in.h:16
-msgid "_Play"
-msgstr "_Přehrát"
-
-#: ../data/gupnp-av-cp.ui.in.h:17
-msgid "P_ause"
-msgstr "Poz_astavit"
-
-#: ../data/gupnp-av-cp.ui.in.h:18
-msgid "_Stop"
-msgstr "Za_stavit"
-
-#: ../data/gupnp-av-cp.ui.in.h:19
-msgid "Pre_vious"
-msgstr "Př_edchozí"
-
-#: ../data/gupnp-av-cp.ui.in.h:20
-msgid "_Next"
-msgstr "_Následující"
-
-#: ../data/gupnp-av-cp.ui.in.h:21
-msgid "Rescan"
-msgstr "Prohledat"
-
 #: ../data/gupnp-av-cp.ui.in.h:22
+msgid "_Renderer: "
+msgstr "Vyk_reslovací zařízení: "
+
+#: ../data/gupnp-av-cp.ui.in.h:23
+msgid "GUPnP AV CP - Metadata View"
+msgstr "GUPnP AV CP – zobrazení metadat"
+
+#: ../data/gupnp-av-cp.ui.in.h:24
 msgid "Fetch the DIDL-Lite XML for this media object"
 msgstr "Získat DIDL-Lite XML pro tento multimediální objekt"
 
-#: ../data/gupnp-av-cp.ui.in.h:23
+#: ../data/gupnp-av-cp.ui.in.h:25
 msgid "Fetch _DIDL-Lite"
 msgstr "Získat _DIDL-Lite"
 
@@ -172,28 +180,28 @@ msgid "Action Invocation"
 msgstr "Vyvolání činnosti"
 
 #: ../data/gupnp-universal-cp.ui.h:8
-msgid "action"
-msgstr "činnost"
-
-#: ../data/gupnp-universal-cp.ui.h:9
-msgid "service"
-msgstr "služba"
-
-#: ../data/gupnp-universal-cp.ui.h:10
-msgid "device"
-msgstr "zařízení"
-
-#: ../data/gupnp-universal-cp.ui.h:11
 msgid "_Invoke"
 msgstr "_Vyvolat"
 
+#: ../data/gupnp-universal-cp.ui.h:9
+msgid "device"
+msgstr "zařízení"
+
+#: ../data/gupnp-universal-cp.ui.h:10
+msgid "service"
+msgstr "služba"
+
+#: ../data/gupnp-universal-cp.ui.h:11
+msgid "action"
+msgstr "činnost"
+
 #: ../data/gupnp-universal-cp.ui.h:12
-msgid "<b>'in' arguments</b>"
-msgstr "<b>„vstupní“ parametry</b>"
+msgid "'in' arguments"
+msgstr "„vstupní“ parametry"
 
 #: ../data/gupnp-universal-cp.ui.h:13
-msgid "<b>'out' arguments</b>"
-msgstr "<b>„výstupní“ parametry</b>"
+msgid "'out' arguments"
+msgstr "„výstupní“ parametry"
 
 #: ../data/gupnp-universal-cp.ui.h:14
 msgid "Copy value"
@@ -229,7 +237,7 @@ msgstr "Kopírovat všechny události"
 
 #: ../data/gupnp-universal-cp.ui.h:22
 msgid "_Clear event log"
-msgstr "_Vymazat protokol událostí"
+msgstr "_Vymazat záznam událostí"
 
 #. default details
 #: ../data/gupnp-universal-cp.ui.h:23 ../src/universal-cp/device-treeview.c:35
@@ -237,12 +245,20 @@ msgid "GUPnP Universal Control Point"
 msgstr "Univerzální řídící bod GUPnP"
 
 #: ../data/gupnp-universal-cp.ui.h:25
+msgid "Clear event log"
+msgstr "Vymazat záznam událostí"
+
+#: ../data/gupnp-universal-cp.ui.h:26
+msgid "Quit"
+msgstr "Ukončit"
+
+#: ../data/gupnp-universal-cp.ui.h:27
 msgid "_View"
 msgstr "_Zobrazit"
 
-#: ../data/gupnp-universal-cp.ui.h:26
+#: ../data/gupnp-universal-cp.ui.h:28
 msgid "Event _log"
-msgstr "Protokol udá_lostí"
+msgstr "Záznam udá_lostí"
 
 #: ../src/av-cp/main.c:47 ../src/network-light/main.c:46
 #: ../src/universal-cp/main.c:41
@@ -251,7 +267,6 @@ msgstr "Síťový PORT, který s má použít pro UPnP"
 
 #: ../src/av-cp/main.c:48 ../src/network-light/main.c:47
 #: ../src/universal-cp/main.c:42
-#| msgid "Network PORT to use for UPnP"
 msgid "Network interfaces to use for UPnP communication"
 msgstr "Síťové rozhraní, které s má použít pro komunikaci UPnP"
 
@@ -266,7 +281,7 @@ msgstr "– řídicí bod UPnP AV"
 msgid "Could not parse options: %s\n"
 msgstr "Nelze zpracovat volbu: %s\n"
 
-#: ../src/universal-cp/action-dialog.c:709
+#: ../src/universal-cp/action-dialog.c:680
 #, c-format
 msgid ""
 "Action failed.\n"
@@ -431,19 +446,19 @@ msgstr "Verze"
 msgid "Author"
 msgstr "Autor"
 
-#: ../src/universal-cp/device-treeview.c:460
+#: ../src/universal-cp/device-treeview.c:462
 msgid "State variables"
 msgstr "Stavové proměnné"
 
-#: ../src/universal-cp/device-treeview.c:501
+#: ../src/universal-cp/device-treeview.c:503
 msgid "Information not available"
 msgstr "Informace není dostupná"
 
-#: ../src/universal-cp/device-treeview.c:679
+#: ../src/universal-cp/device-treeview.c:681
 msgid "UPnP Network"
 msgstr "Síť UPnP"
 
-#: ../src/universal-cp/device-treeview.c:692
+#: ../src/universal-cp/device-treeview.c:694
 #: ../src/universal-cp/event-treeview.c:373
 msgid "Device"
 msgstr "Zařízení"
