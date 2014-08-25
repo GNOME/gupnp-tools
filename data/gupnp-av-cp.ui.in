@@ -6,6 +6,7 @@
     <property name="can_focus">False</property>
     <property name="border_width">12</property>
     <property name="type_hint">normal</property>
+    <property name="transient_for">main-window</property>
     <property name="copyright" translatable="yes">Copyright (C) 2007 Zeeshan Ali (Khattak)</property>
     <property name="comments" translatable="yes">An UPnP AV Control Point based on GUPnP framework.
 Inspired by Intel Tools for UPnP.</property>
@@ -626,6 +627,7 @@ Vinicius Depizzol &lt;vdepizzol@gmail.com&gt;</property>
     <property name="can_focus">False</property>
     <property name="border_width">5</property>
     <property name="title" translatable="yes">GUPnP AV CP - Metadata View</property>
+    <property name="transient_for">main-window</property>
     <property name="type_hint">normal</property>
     <signal name="delete-event" handler="gtk_widget_hide_on_delete" swapped="no"/>
     <child internal-child="vbox">
@@ -633,7 +635,7 @@ Vinicius Depizzol &lt;vdepizzol@gmail.com&gt;</property>
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="orientation">vertical</property>
-        <property name="spacing">2</property>
+        <property name="spacing">6</property>
         <child internal-child="action_area">
           <object class="GtkButtonBox" id="didl-action-area">
             <property name="visible">True</property>
