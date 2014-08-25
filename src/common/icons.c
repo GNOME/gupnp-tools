@@ -203,8 +203,7 @@ get_icon_by_id (IconID icon_id)
 }
 
 static GdkPixbuf *
-get_pixbuf_from_theme (const char *icon_name,
-                       const char *fallback_icon_name)
+get_pixbuf_from_theme (const char *icon_name)
 {
         GdkScreen    *screen;
         GtkIconTheme *theme;
@@ -226,21 +225,16 @@ get_pixbuf_from_theme (const char *icon_name,
                            error->message);
                 g_error_free (error);
 
-                if (fallback_icon_name != NULL) {
-                        error = NULL;
-                        pixbuf = gtk_icon_theme_load_icon
-                                                (theme,
-                                                 fallback_icon_name,
-                                                 PREFERED_WIDTH,
-                                                 PREFERED_HEIGHT,
-                                                 &error);
-
-                        if (pixbuf == NULL) {
-                                g_warning ("Failed to load icon %s: %s",
-                                           fallback_icon_name,
-                                           error->message);
-                                g_error_free (error);
-                        }
+                error = NULL;
+                pixbuf = gtk_icon_theme_load_icon (theme,
+                                                   "image-missing",
+                                                   PREFERED_WIDTH,
+                                                   PREFERED_HEIGHT,
+                                                   &error);
+                if (pixbuf == NULL) {
+                    g_critical ("Failed to load fallback icon: %s",
+                                error->message);
+                    g_error_free (error);
                 }
         }
 
@@ -279,9 +273,9 @@ init_icons (void)
         char *theme_names[] = {
                 "image-missing",               /* ICON_MISSING    */
                 "network-workgroup",           /* ICON_NETWORK    */
-                "gtk-execute",                 /* ICON_ACTION     */
+                "system-run",                  /* ICON_ACTION     */
                 "folder",                      /* ICON_VARIABLES  */
-                "gtk-file",                    /* ICON_FILE       */
+                "text-x-generic",              /* ICON_FILE       */
                 "audio-volume-muted",          /* ICON_MIN_VOLUME */
                 "audio-volume-high",           /* ICON_MAX_VOLUME */
                 "folder-remote",               /* ICON_CONTAINER  */
@@ -291,30 +285,12 @@ init_icons (void)
                 "text-x-generic",              /* ICON_TEXT_ITEM */
         };
 
-        char *fallback_theme_names[] = {
-                "gtk-missing-image",          /* ICON_MISSING    */
-                "gtk-network",                /* ICON_NETWORK    */
-                NULL,                         /* ICON_ACTION     */
-                "gtk-directory",              /* ICON_VARIABLES  */
-                NULL,                         /* ICON_FILE       */
-                "stock_volume-0",             /* ICON_MIN_VOLUME */
-                "stock_volume-max",           /* ICON_MAX_VOLUME */
-                NULL,                         /* ICON_CONTAINER  */
-                NULL,                         /* ICON_AUDIO_ITEM */
-                NULL,                         /* ICON_VIDEO_ITEM */
-                NULL,                         /* ICON_IMAGE_ITEM */
-                NULL,                         /* ICON_TEXT_ITEM  */
-        };
-
         for (i = 0; i < ICON_MISSING; i++) {
                 icons[i] = load_pixbuf_file (file_names[i]);
-                g_assert (icons[i] != NULL);
         }
 
         for (j = 0; i < ICON_LAST; i++, j++) {
-                icons[i] = get_pixbuf_from_theme (theme_names[j],
-                                                  fallback_theme_names[j]);
-                g_assert (icons[i] != NULL);
+                icons[i] = get_pixbuf_from_theme (theme_names[j]);
         }
 
 
