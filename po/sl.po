@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: gupnp-tools master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gupnp-"
 "tools&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-08-06 09:14+0000\n"
-"PO-Revision-Date: 2014-08-06 14:52+0100\n"
+"POT-Creation-Date: 2014-09-16 09:18+0000\n"
+"PO-Revision-Date: 2014-09-16 17:36+0100\n"
 "Last-Translator: Matej Urbančič <mateju@svn.gnome.org>\n"
 "Language-Team: Slovenian <gnome-si@googlegroups.com>\n"
 "Language: sl\n"
@@ -51,16 +51,16 @@ msgid "translator-credits"
 msgstr "Matej Urbančič"
 
 #: ../data/gupnp-av-cp.ui.in.h:7
-msgid "GUPnP AV CP - Metadata View"
-msgstr "NP GUPnP AV - pogled metapodatkov"
-
-#: ../data/gupnp-av-cp.ui.in.h:8
 msgid "GUPnP AV Control Point"
 msgstr "Nadzorna točka GUPnP AV"
 
-#: ../data/gupnp-av-cp.ui.in.h:9 ../data/gupnp-universal-cp.ui.h:24
+#: ../data/gupnp-av-cp.ui.in.h:8 ../data/gupnp-universal-cp.ui.h:24
 msgid "_File"
 msgstr "_Datoteka"
+
+#: ../data/gupnp-av-cp.ui.in.h:9
+msgid "Close"
+msgstr "Zapri"
 
 #: ../data/gupnp-av-cp.ui.in.h:10
 msgid "_Tools"
@@ -74,11 +74,35 @@ msgstr "_Strogi način"
 msgid "_Help"
 msgstr "Pomo_č"
 
-#: ../data/gupnp-av-cp.ui.in.h:13
-msgid "_Renderer: "
-msgstr "_Izrisovalnik:"
+#: ../data/gupnp-av-cp.ui.in.h:13 ../data/gupnp-universal-cp.ui.h:30
+msgid "About"
+msgstr "O programu"
 
 #: ../data/gupnp-av-cp.ui.in.h:14
+msgid "_Play"
+msgstr "_Predvajaj"
+
+#: ../data/gupnp-av-cp.ui.in.h:15
+msgid "P_ause"
+msgstr "P_remor"
+
+#: ../data/gupnp-av-cp.ui.in.h:16
+msgid "_Stop"
+msgstr "_Zaustavi"
+
+#: ../data/gupnp-av-cp.ui.in.h:17
+msgid "Pre_vious"
+msgstr "_Predhodni"
+
+#: ../data/gupnp-av-cp.ui.in.h:18
+msgid "_Next"
+msgstr "_Naslednji"
+
+#: ../data/gupnp-av-cp.ui.in.h:19
+msgid "Rescan"
+msgstr "Ponovno preišči"
+
+#: ../data/gupnp-av-cp.ui.in.h:20
 msgid ""
 "Clears the CP's idea of the state of the currently selected AV Renderer. "
 "Useful for dealing with AV Renderers that don't report state changes."
@@ -86,39 +110,23 @@ msgstr ""
 "Počisti zamisel stanja CP trenutno izbranega izrisovalnika AV. Uporabno za "
 "delo z izrisovalniki AV, ki ne poročajo o spremembi stanj."
 
-#: ../data/gupnp-av-cp.ui.in.h:15
+#: ../data/gupnp-av-cp.ui.in.h:21
 msgid "_Clear state"
 msgstr "Počisti _stanje"
 
-#: ../data/gupnp-av-cp.ui.in.h:16
-msgid "_Play"
-msgstr "_Predvajaj"
-
-#: ../data/gupnp-av-cp.ui.in.h:17
-msgid "P_ause"
-msgstr "P_remor"
-
-#: ../data/gupnp-av-cp.ui.in.h:18
-msgid "_Stop"
-msgstr "_Zaustavi"
-
-#: ../data/gupnp-av-cp.ui.in.h:19
-msgid "Pre_vious"
-msgstr "_Predhodni"
-
-#: ../data/gupnp-av-cp.ui.in.h:20
-msgid "_Next"
-msgstr "_Naslednji"
-
-#: ../data/gupnp-av-cp.ui.in.h:21
-msgid "Rescan"
-msgstr "Ponovno preišči"
-
 #: ../data/gupnp-av-cp.ui.in.h:22
+msgid "_Renderer: "
+msgstr "_Izrisovalnik:"
+
+#: ../data/gupnp-av-cp.ui.in.h:23
+msgid "GUPnP AV CP - Metadata View"
+msgstr "NP GUPnP AV - pogled metapodatkov"
+
+#: ../data/gupnp-av-cp.ui.in.h:24
 msgid "Fetch the DIDL-Lite XML for this media object"
 msgstr "Pridobi XML DIDL-Lite za ta predstavni predmet"
 
-#: ../data/gupnp-av-cp.ui.in.h:23
+#: ../data/gupnp-av-cp.ui.in.h:25
 msgid "Fetch _DIDL-Lite"
 msgstr "Pridobi _DIDL-Lite"
 
@@ -253,10 +261,6 @@ msgstr "_Pogled"
 #: ../data/gupnp-universal-cp.ui.h:28
 msgid "Event _log"
 msgstr "Dn_evnik dogodkov"
-
-#: ../data/gupnp-universal-cp.ui.h:30
-msgid "About"
-msgstr "O programu"
 
 #: ../src/av-cp/main.c:47 ../src/network-light/main.c:46
 #: ../src/universal-cp/main.c:41
