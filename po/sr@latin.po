@@ -1,14 +1,14 @@
 # Serbian translation for gupnp-tools.
 # Copyright (C) 2013 gupnp-tools's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gupnp-tools package.
-# Miroslav Nikolić <miroslavnikolic@rocketmail.com>, 2013, 2014.
+# Miroslav Nikolić <miroslavnikolic@rocketmail.com>, 2013—2014.
 msgid ""
 msgstr ""
 "Project-Id-Version: gupnp-tools master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gupnp-"
 "tools&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-12-19 14:22+0000\n"
-"PO-Revision-Date: 2014-01-27 22:20+0200\n"
+"POT-Creation-Date: 2014-08-10 19:24+0000\n"
+"PO-Revision-Date: 2014-10-27 05:44+0200\n"
 "Last-Translator: Miroslav Nikolić <miroslavnikolic@rocketmail.com>\n"
 "Language-Team: Serbian <gnom@prevod.org>\n"
 "Language: sr\n"
@@ -46,21 +46,21 @@ msgstr "GUPnP matična stranica"
 #: ../data/gupnp-universal-cp.ui.h:6
 msgid "translator-credits"
 msgstr ""
-"  Miroslav Nikolić\n"
+"  Miroslav Nikolić <miroslavnikolic@rocketmail.com>\n"
 "\n"
 "  http://prevod.org — prevod na srpski jezik"
 
 #: ../data/gupnp-av-cp.ui.in.h:7
-msgid "GUPnP AV CP - Metadata View"
-msgstr "GUPnP AV CP — Pregled metapodataka"
-
-#: ../data/gupnp-av-cp.ui.in.h:8
 msgid "GUPnP AV Control Point"
 msgstr "GUPnP AV upravljačka tačka"
 
-#: ../data/gupnp-av-cp.ui.in.h:9 ../data/gupnp-universal-cp.ui.h:24
+#: ../data/gupnp-av-cp.ui.in.h:8 ../data/gupnp-universal-cp.ui.h:24
 msgid "_File"
 msgstr "_Datoteka"
+
+#: ../data/gupnp-av-cp.ui.in.h:9
+msgid "Close"
+msgstr "Zatvori"
 
 #: ../data/gupnp-av-cp.ui.in.h:10
 msgid "_Tools"
@@ -70,15 +70,40 @@ msgstr "_Alati"
 msgid "_Lenient Mode"
 msgstr "_Režim popustljivosti"
 
-#: ../data/gupnp-av-cp.ui.in.h:12 ../data/gupnp-universal-cp.ui.h:27
+#: ../data/gupnp-av-cp.ui.in.h:12 ../data/gupnp-universal-cp.ui.h:29
 msgid "_Help"
 msgstr "Po_moć"
 
-#: ../data/gupnp-av-cp.ui.in.h:13
-msgid "_Renderer: "
-msgstr "_Iscrtavač: "
+#: ../data/gupnp-av-cp.ui.in.h:13 ../data/gupnp-universal-cp.ui.h:30
+#| msgid "_About"
+msgid "About"
+msgstr "O programu"
 
 #: ../data/gupnp-av-cp.ui.in.h:14
+msgid "_Play"
+msgstr "_Pusti"
+
+#: ../data/gupnp-av-cp.ui.in.h:15
+msgid "P_ause"
+msgstr "_Zastani"
+
+#: ../data/gupnp-av-cp.ui.in.h:16
+msgid "_Stop"
+msgstr "_Zaustavi"
+
+#: ../data/gupnp-av-cp.ui.in.h:17
+msgid "Pre_vious"
+msgstr "_Prethodno"
+
+#: ../data/gupnp-av-cp.ui.in.h:18
+msgid "_Next"
+msgstr "_Sledeće"
+
+#: ../data/gupnp-av-cp.ui.in.h:19
+msgid "Rescan"
+msgstr "Ponovo pretraži"
+
+#: ../data/gupnp-av-cp.ui.in.h:20
 msgid ""
 "Clears the CP's idea of the state of the currently selected AV Renderer. "
 "Useful for dealing with AV Renderers that don't report state changes."
@@ -86,39 +111,23 @@ msgstr ""
 "Čisti ideje upravljačkih tačaka stanja trenutno izabranog AV iscrtavača. "
 "Korisno za rukovanje AV iscrtavačima koji ne izveštavaju o promenama stanja."
 
-#: ../data/gupnp-av-cp.ui.in.h:15
+#: ../data/gupnp-av-cp.ui.in.h:21
 msgid "_Clear state"
 msgstr "_Očisti stanje"
 
-#: ../data/gupnp-av-cp.ui.in.h:16
-msgid "_Play"
-msgstr "_Pusti"
-
-#: ../data/gupnp-av-cp.ui.in.h:17
-msgid "P_ause"
-msgstr "_Zastani"
-
-#: ../data/gupnp-av-cp.ui.in.h:18
-msgid "_Stop"
-msgstr "_Zaustavi"
-
-#: ../data/gupnp-av-cp.ui.in.h:19
-msgid "Pre_vious"
-msgstr "_Prethodno"
-
-#: ../data/gupnp-av-cp.ui.in.h:20
-msgid "_Next"
-msgstr "_Sledeće"
-
-#: ../data/gupnp-av-cp.ui.in.h:21
-msgid "Rescan"
-msgstr "Ponovo pretraži"
-
 #: ../data/gupnp-av-cp.ui.in.h:22
+msgid "_Renderer: "
+msgstr "_Iscrtavač: "
+
+#: ../data/gupnp-av-cp.ui.in.h:23
+msgid "GUPnP AV CP - Metadata View"
+msgstr "GUPnP AV CP — Pregled metapodataka"
+
+#: ../data/gupnp-av-cp.ui.in.h:24
 msgid "Fetch the DIDL-Lite XML for this media object"
 msgstr "Dovucite DIDL-Lajt IksML za ovaj objekat medija"
 
-#: ../data/gupnp-av-cp.ui.in.h:23
+#: ../data/gupnp-av-cp.ui.in.h:25
 msgid "Fetch _DIDL-Lite"
 msgstr "Dovuci _DIDL-Lajt"
 
@@ -174,28 +183,30 @@ msgid "Action Invocation"
 msgstr "Prizivanje radnje"
 
 #: ../data/gupnp-universal-cp.ui.h:8
-msgid "action"
-msgstr "radnja"
-
-#: ../data/gupnp-universal-cp.ui.h:9
-msgid "service"
-msgstr "usluga"
-
-#: ../data/gupnp-universal-cp.ui.h:10
-msgid "device"
-msgstr "uređaj"
-
-#: ../data/gupnp-universal-cp.ui.h:11
 msgid "_Invoke"
 msgstr "_Prizovi"
 
+#: ../data/gupnp-universal-cp.ui.h:9
+msgid "device"
+msgstr "uređaj"
+
+#: ../data/gupnp-universal-cp.ui.h:10
+msgid "service"
+msgstr "usluga"
+
+#: ../data/gupnp-universal-cp.ui.h:11
+msgid "action"
+msgstr "radnja"
+
 #: ../data/gupnp-universal-cp.ui.h:12
-msgid "<b>'in' arguments</b>"
-msgstr "<b>„ulazni“ argumenti</b>"
+#| msgid "<b>'in' arguments</b>"
+msgid "'in' arguments"
+msgstr "„ulazni“ argumenti"
 
 #: ../data/gupnp-universal-cp.ui.h:13
-msgid "<b>'out' arguments</b>"
-msgstr "<b>„izlazni“ argumenti</b>"
+#| msgid "<b>'out' arguments</b>"
+msgid "'out' arguments"
+msgstr "„izlazni“ argumenti"
 
 #: ../data/gupnp-universal-cp.ui.h:14
 msgid "Copy value"
@@ -239,10 +250,19 @@ msgid "GUPnP Universal Control Point"
 msgstr "GUPnP sveopšta upravljačka tačka"
 
 #: ../data/gupnp-universal-cp.ui.h:25
+#| msgid "_Clear event log"
+msgid "Clear event log"
+msgstr "Očisti dnevik događaja"
+
+#: ../data/gupnp-universal-cp.ui.h:26
+msgid "Quit"
+msgstr "Izađi"
+
+#: ../data/gupnp-universal-cp.ui.h:27
 msgid "_View"
 msgstr "_Pregled"
 
-#: ../data/gupnp-universal-cp.ui.h:26
+#: ../data/gupnp-universal-cp.ui.h:28
 msgid "Event _log"
 msgstr "Dnevnik _događaja"
 
@@ -253,7 +273,6 @@ msgstr "Mrežni PRIKLJUČNIK za korišćenje za UPnP"
 
 #: ../src/av-cp/main.c:48 ../src/network-light/main.c:47
 #: ../src/universal-cp/main.c:42
-#| msgid "Network PORT to use for UPnP"
 msgid "Network interfaces to use for UPnP communication"
 msgstr "Mrežno sučelje koje se koristi za UPnP veze"
 
@@ -268,7 +287,7 @@ msgstr "— UPnP AV upravljačka tačka"
 msgid "Could not parse options: %s\n"
 msgstr "Ne mogu da obradim mogućnosti: %s\n"
 
-#: ../src/universal-cp/action-dialog.c:710
+#: ../src/universal-cp/action-dialog.c:680
 #, c-format
 msgid ""
 "Action failed.\n"
@@ -433,19 +452,19 @@ msgstr "Izdanje"
 msgid "Author"
 msgstr "Autor"
 
-#: ../src/universal-cp/device-treeview.c:460
+#: ../src/universal-cp/device-treeview.c:462
 msgid "State variables"
 msgstr "Promenljive stanja"
 
-#: ../src/universal-cp/device-treeview.c:501
+#: ../src/universal-cp/device-treeview.c:503
 msgid "Information not available"
 msgstr "Podaci nisu dostupni"
 
-#: ../src/universal-cp/device-treeview.c:679
+#: ../src/universal-cp/device-treeview.c:681
 msgid "UPnP Network"
 msgstr "UPnP mreža"
 
-#: ../src/universal-cp/device-treeview.c:692
+#: ../src/universal-cp/device-treeview.c:694
 #: ../src/universal-cp/event-treeview.c:373
 msgid "Device"
 msgstr "Uređaj"
