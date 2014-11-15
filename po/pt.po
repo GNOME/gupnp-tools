@@ -1,0 +1,469 @@
+# Portuguese translation for gupnp-tools.
+# Copyright (C) 2014 gupnp-tools's COPYRIGHT HOLDER
+# This file is distributed under the same license as the gupnp-tools package.
+# Tiagosdot <almosthumane@portugalmail.pt>, 2014.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gupnp-tools master\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gupnp-"
+"tools&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2014-03-17 10:14+0000\n"
+"PO-Revision-Date: 2014-03-17 18:17+0100\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Portuguese <gnome_pt@yahoogroups.com>\n"
+"Language: pt\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.5.4\n"
+
+# GUPnP-AV is a collection of helpers for building AV (audio/video) applications using GUPnP.
+#: ../data/gupnp-av-cp.desktop.in.in.h:1
+msgid "UPnP AV Control Point"
+msgstr "Ponto de Controlo A/V UPnP"
+
+#: ../data/gupnp-av-cp.ui.in.h:1 ../data/gupnp-network-light.ui.h:1
+#: ../data/gupnp-universal-cp.ui.h:1
+msgid "Copyright (C) 2007 Zeeshan Ali (Khattak)"
+msgstr "Copyright (C) 2007 Zeeshan Ali (Khattak)"
+
+#: ../data/gupnp-av-cp.ui.in.h:2
+msgid ""
+"An UPnP AV Control Point based on GUPnP framework.\n"
+"Inspired by Intel Tools for UPnP."
+msgstr ""
+"Um ponto de controlo UPnP Audio/Vídeo (A/V) baseado no framework GUPnP.\n"
+"Inspirado pelas ferramentas da Intel para UPnP."
+
+#: ../data/gupnp-av-cp.ui.in.h:4 ../data/gupnp-network-light.ui.h:4
+#: ../data/gupnp-universal-cp.ui.h:4
+msgid "GUPnP homepage"
+msgstr "Página inicial do GUPnP"
+
+#. TRANSLATORS: Replace this string with your names, one name per line.
+#: ../data/gupnp-av-cp.ui.in.h:6 ../data/gupnp-network-light.ui.h:6
+#: ../data/gupnp-universal-cp.ui.h:6
+msgid "translator-credits"
+msgstr "Tiago S., 2014."
+
+#: ../data/gupnp-av-cp.ui.in.h:7
+msgid "GUPnP AV CP - Metadata View"
+msgstr "Visualizador de Metadados - GUPnP AV CP"
+
+# GUPnP-AV is a collection of helpers for building AV (audio/video) applications using GUPnP.
+#: ../data/gupnp-av-cp.ui.in.h:8
+msgid "GUPnP AV Control Point"
+msgstr "Ponto de Controle A/V"
+
+#: ../data/gupnp-av-cp.ui.in.h:9 ../data/gupnp-universal-cp.ui.h:24
+msgid "_File"
+msgstr "_Ficheiro"
+
+#: ../data/gupnp-av-cp.ui.in.h:10
+msgid "_Tools"
+msgstr "Ferramen_tas"
+
+#: ../data/gupnp-av-cp.ui.in.h:11
+msgid "_Lenient Mode"
+msgstr "Modo _Condescendente"
+
+#: ../data/gupnp-av-cp.ui.in.h:12 ../data/gupnp-universal-cp.ui.h:27
+msgid "_Help"
+msgstr "A_juda"
+
+#: ../data/gupnp-av-cp.ui.in.h:13
+msgid "_Renderer: "
+msgstr "R_enderizador: "
+
+#: ../data/gupnp-av-cp.ui.in.h:14
+#, fuzzy
+msgid ""
+"Clears the CP's idea of the state of the currently selected AV Renderer. "
+"Useful for dealing with AV Renderers that don't report state changes."
+msgstr ""
+"Apaga a concepção do ponto de controlo a respeito do estado do renderizador "
+"áudio/vídeo atualmente selecionado. Útil para lidar com renderizadores AV "
+"que não informam mudanças de estado."
+
+#: ../data/gupnp-av-cp.ui.in.h:15
+msgid "_Clear state"
+msgstr "_Limpar estado"
+
+#: ../data/gupnp-av-cp.ui.in.h:16
+msgid "_Play"
+msgstr "Re_produzir"
+
+#: ../data/gupnp-av-cp.ui.in.h:17
+msgid "P_ause"
+msgstr "P_ausar"
+
+#: ../data/gupnp-av-cp.ui.in.h:18
+msgid "_Stop"
+msgstr "Pa_rar"
+
+#: ../data/gupnp-av-cp.ui.in.h:19
+msgid "Pre_vious"
+msgstr "A_nterior"
+
+#: ../data/gupnp-av-cp.ui.in.h:20
+msgid "_Next"
+msgstr "P_róximo"
+
+#: ../data/gupnp-av-cp.ui.in.h:21
+#, fuzzy
+msgid "Rescan"
+msgstr "Buscar novamente"
+
+#: ../data/gupnp-av-cp.ui.in.h:22
+msgid "Fetch the DIDL-Lite XML for this media object"
+msgstr "Obtém XML DIDL-Lite para este objeto de média"
+
+#: ../data/gupnp-av-cp.ui.in.h:23
+msgid "Fetch _DIDL-Lite"
+msgstr "Obter _DIDL-Lite"
+
+#: ../data/gupnp-network-light.desktop.in.in.h:1
+msgid "UPnP Network Light"
+msgstr "Luz da Rede UPnP"
+
+#: ../data/gupnp-network-light.ui.h:2
+msgid ""
+"A virtual network light bulb based on GUPnP framework.\n"
+"Inspired by Intel Tools for UPnP."
+msgstr ""
+"Uma lâmpada virtual de luz de rede baseado no framework GUPnP.\n"
+"Inspirado pelas ferramentas da Intel para UPnP."
+
+#: ../data/gupnp-network-light.ui.h:7
+msgid "GUPnP Network Light"
+msgstr "Luz da Rede GUPnP"
+
+#: ../data/gupnp-network-light.ui.h:8
+msgctxt "network-light"
+msgid "_On"
+msgstr "_Ligado"
+
+#: ../data/gupnp-network-light.ui.h:10
+#, no-c-format
+msgid "_Increase luminance by 20%"
+msgstr "_Aumentar luminância em 20%"
+
+#: ../data/gupnp-network-light.ui.h:12
+#, no-c-format
+msgid "_Decrease luminance by 20%"
+msgstr "_Diminuir luminância em 20%"
+
+#: ../data/gupnp-network-light.ui.h:13
+msgid "_About"
+msgstr "_Sobre"
+
+#: ../data/gupnp-universal-cp.desktop.in.in.h:1
+msgid "UPnP Universal Control Point"
+msgstr "Ponto de Controlo Universal UPnP"
+
+#: ../data/gupnp-universal-cp.ui.h:2
+msgid ""
+"A Generic Control Point based on GUPnP framework.\n"
+"Inspired by Intel Tools for UPnP."
+msgstr ""
+"Um ponto de controlo genérico baseado no framework GUPnP.\n"
+"Inspirado pelas ferramentas da Intel para UPnP."
+
+#: ../data/gupnp-universal-cp.ui.h:7
+#, fuzzy
+msgid "Action Invocation"
+msgstr "Chamadas de Ação"
+
+#: ../data/gupnp-universal-cp.ui.h:8
+msgid "action"
+msgstr "ação"
+
+#: ../data/gupnp-universal-cp.ui.h:9
+msgid "service"
+msgstr "serviço"
+
+#: ../data/gupnp-universal-cp.ui.h:10
+msgid "device"
+msgstr "dispositivo"
+
+#: ../data/gupnp-universal-cp.ui.h:11
+msgid "_Invoke"
+msgstr "_Invocar"
+
+#: ../data/gupnp-universal-cp.ui.h:12
+msgid "<b>'in' arguments</b>"
+msgstr "<b>argumentos de entrada</b>"
+
+#: ../data/gupnp-universal-cp.ui.h:13
+msgid "<b>'out' arguments</b>"
+msgstr "<b>argumentos de saída</b>"
+
+#: ../data/gupnp-universal-cp.ui.h:14
+msgid "Copy value"
+msgstr "Copiar valor"
+
+#: ../data/gupnp-universal-cp.ui.h:15
+msgid "Copy all details"
+msgstr "Copiar todos os detalhes"
+
+#: ../data/gupnp-universal-cp.ui.h:16
+msgid "Invoke"
+msgstr "Chamar"
+
+#: ../data/gupnp-universal-cp.ui.h:17
+msgid "Subscribe to events"
+msgstr "Inscrever-se nos eventos"
+
+#: ../data/gupnp-universal-cp.ui.h:18
+msgid "_Expand all devices"
+msgstr "_Expandir todos os dispositivos"
+
+#: ../data/gupnp-universal-cp.ui.h:19
+msgid "_Collapse all devices"
+msgstr "_Colapsar todos os dispositivos"
+
+#: ../data/gupnp-universal-cp.ui.h:20
+msgid "Copy event"
+msgstr "Copiar evento"
+
+#: ../data/gupnp-universal-cp.ui.h:21
+msgid "Copy all events"
+msgstr "Copiar todos os eventos"
+
+#: ../data/gupnp-universal-cp.ui.h:22
+msgid "_Clear event log"
+msgstr "_Limpar registo de eventos"
+
+#. default details
+#: ../data/gupnp-universal-cp.ui.h:23 ../src/universal-cp/device-treeview.c:35
+msgid "GUPnP Universal Control Point"
+msgstr "Ponto de Controlo Universal GUPnP"
+
+#: ../data/gupnp-universal-cp.ui.h:25
+msgid "_View"
+msgstr "_Visualizar"
+
+#: ../data/gupnp-universal-cp.ui.h:26
+msgid "Event _log"
+msgstr "Re_gisto de eventos"
+
+#: ../src/av-cp/main.c:47 ../src/network-light/main.c:46
+#: ../src/universal-cp/main.c:41
+msgid "Network PORT to use for UPnP"
+msgstr "PORTA de rede a utilizar para UPnP"
+
+#: ../src/av-cp/main.c:48 ../src/network-light/main.c:47
+#: ../src/universal-cp/main.c:42
+msgid "Network interfaces to use for UPnP communication"
+msgstr "Interfaces de rede a utilizar para comunicação UPnP"
+
+# GUPnP-AV is a collection of helpers for building AV (audio/video) applications using GUPnP.
+#: ../src/av-cp/main.c:196 ../src/network-light/main.c:100
+#: ../src/universal-cp/main.c:145
+msgid "- UPnP AV control point"
+msgstr "- Ponto de controlo AV UPnP"
+
+#: ../src/av-cp/main.c:201 ../src/network-light/main.c:105
+#: ../src/universal-cp/main.c:150
+#, c-format
+msgid "Could not parse options: %s\n"
+msgstr "Não foi possível analisar as opções: %s\n"
+
+#: ../src/universal-cp/action-dialog.c:710
+#, c-format
+msgid ""
+"Action failed.\n"
+"\n"
+"Error %d: %s"
+msgstr ""
+"A ação falhou.\n"
+"\n"
+"Erro %d: %s"
+
+#: ../src/universal-cp/details-treeview.c:180
+#: ../src/universal-cp/details-treeview.c:208
+#: ../src/universal-cp/details-treeview.c:234
+#: ../src/universal-cp/details-treeview.c:413
+msgid "Name"
+msgstr "Nome"
+
+#: ../src/universal-cp/details-treeview.c:182
+msgid "Direction"
+msgstr "Direção"
+
+#: ../src/universal-cp/details-treeview.c:187
+msgid "Related State Variable"
+msgstr "Variável de Estado Relacionada"
+
+#: ../src/universal-cp/details-treeview.c:189
+msgid "Is Return Value"
+msgstr "É Valor de Retorno"
+
+#: ../src/universal-cp/details-treeview.c:190
+#: ../src/universal-cp/details-treeview.c:237
+msgid "Yes"
+msgstr "Sim"
+
+#: ../src/universal-cp/details-treeview.c:190
+#: ../src/universal-cp/details-treeview.c:237
+msgid "No"
+msgstr "Não"
+
+#: ../src/universal-cp/details-treeview.c:210
+msgid "Number of Arguments"
+msgstr "Número de Argumentos"
+
+#: ../src/universal-cp/details-treeview.c:236
+msgid "Send Events"
+msgstr "Enviar Eventos"
+
+#: ../src/universal-cp/details-treeview.c:238
+msgid "GType"
+msgstr "GType"
+
+#: ../src/universal-cp/details-treeview.c:241
+msgid "Default Value"
+msgstr "Valor Padrão"
+
+#: ../src/universal-cp/details-treeview.c:247
+msgid "Minimum"
+msgstr "Mínimo"
+
+#: ../src/universal-cp/details-treeview.c:251
+msgid "Maximum"
+msgstr "Máximo"
+
+#: ../src/universal-cp/details-treeview.c:255
+msgid "Step"
+msgstr "Passo"
+
+#: ../src/universal-cp/details-treeview.c:275
+msgid "Allowed Values"
+msgstr "Valores Permitidos"
+
+#: ../src/universal-cp/details-treeview.c:299
+#: ../src/universal-cp/details-treeview.c:346
+msgid "Location"
+msgstr "Localização"
+
+#: ../src/universal-cp/details-treeview.c:304
+#: ../src/universal-cp/details-treeview.c:351
+msgid "UDN"
+msgstr "UDN"
+
+#: ../src/universal-cp/details-treeview.c:309
+#: ../src/universal-cp/details-treeview.c:356
+msgid "Type"
+msgstr "Tipo"
+
+#: ../src/universal-cp/details-treeview.c:314
+#: ../src/universal-cp/details-treeview.c:361
+msgid "Base URL"
+msgstr "URL base"
+
+#: ../src/universal-cp/details-treeview.c:319
+msgid "Service ID"
+msgstr "ID do serviço"
+
+#: ../src/universal-cp/details-treeview.c:321
+msgid "Service URL"
+msgstr "URL do serviço"
+
+#: ../src/universal-cp/details-treeview.c:323
+msgid "Control URL"
+msgstr "URL de controlo"
+
+#: ../src/universal-cp/details-treeview.c:325
+msgid "Event Subscription URL"
+msgstr "URL de Inscrição do Evento"
+
+#: ../src/universal-cp/details-treeview.c:366
+msgid "Friendly Name"
+msgstr "Nome Amigável"
+
+#: ../src/universal-cp/details-treeview.c:368
+msgid "Manufacturer"
+msgstr "Fabricante"
+
+#: ../src/universal-cp/details-treeview.c:370
+msgid "Manufacturer URL"
+msgstr "URL do Fabricante"
+
+#: ../src/universal-cp/details-treeview.c:372
+msgid "Model Description"
+msgstr "Descrição do Modelo"
+
+#: ../src/universal-cp/details-treeview.c:374
+msgid "Model Name"
+msgstr "Nome do Modelo"
+
+#: ../src/universal-cp/details-treeview.c:376
+msgid "Model Number"
+msgstr "Número do Modelo"
+
+#: ../src/universal-cp/details-treeview.c:378
+msgid "Model URL"
+msgstr "URL do Modelo"
+
+#: ../src/universal-cp/details-treeview.c:380
+msgid "Serial Number"
+msgstr "Número de Série"
+
+#: ../src/universal-cp/details-treeview.c:382
+msgid "UPC"
+msgstr "UPC"
+
+#: ../src/universal-cp/details-treeview.c:384
+msgid "Presentation URL"
+msgstr "URL de Apresentação"
+
+#: ../src/universal-cp/details-treeview.c:414
+#: ../src/universal-cp/event-treeview.c:376
+msgid "Value"
+msgstr "Valor"
+
+#: ../src/universal-cp/device-treeview.c:52
+msgid "Software"
+msgstr "Software"
+
+#: ../src/universal-cp/device-treeview.c:54
+msgid "Version"
+msgstr "Versão"
+
+#: ../src/universal-cp/device-treeview.c:56
+msgid "Author"
+msgstr "Autor"
+
+#: ../src/universal-cp/device-treeview.c:460
+msgid "State variables"
+msgstr "Variáveis de estado"
+
+#: ../src/universal-cp/device-treeview.c:501
+msgid "Information not available"
+msgstr "Informação não disponível"
+
+#: ../src/universal-cp/device-treeview.c:679
+msgid "UPnP Network"
+msgstr "Rede UPnP"
+
+#: ../src/universal-cp/device-treeview.c:692
+#: ../src/universal-cp/event-treeview.c:373
+msgid "Device"
+msgstr "Dispositivo"
+
+#: ../src/universal-cp/event-treeview.c:372
+msgid "Time"
+msgstr "Hora"
+
+#: ../src/universal-cp/event-treeview.c:374
+msgid "Service"
+msgstr "Serviço"
+
+#: ../src/universal-cp/event-treeview.c:375
+msgid "State Variable"
+msgstr "Variável de Estado"
+
+#~ msgid "GPL"
+#~ msgstr "GPL"
