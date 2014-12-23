@@ -1,0 +1,476 @@
+# Hungarian translation for gupnp-tools.
+# Copyright (C) 2014 gupnp-tools's COPYRIGHT HOLDER
+# This file is distributed under the same license as the gupnp-tools package.
+#
+# Balázs Úr <urbalazs@gmail.com>, 2014.
+msgid ""
+msgstr ""
+"Project-Id-Version: gupnp-tools master\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gupnp-"
+"tools&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2014-12-23 10:22+0000\n"
+"PO-Revision-Date: 2014-12-23 18:44+0100\n"
+"Last-Translator: Balázs Úr <urbalazs@gmail.com>\n"
+"Language-Team: Hungarian <gnome-hu-list@gnome.org>\n"
+"Language: hu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 1.2\n"
+
+#: ../data/gupnp-av-cp.desktop.in.in.h:1
+msgid "UPnP AV Control Point"
+msgstr "UPnP AV vezérlőpont"
+
+#: ../data/gupnp-av-cp.ui.in.h:1 ../data/gupnp-network-light.ui.h:1
+#: ../data/gupnp-universal-cp.ui.h:1
+msgid "Copyright (C) 2007 Zeeshan Ali (Khattak)"
+msgstr "Copyright (C) Zeeshan Ali (Khattak), 2007."
+
+#: ../data/gupnp-av-cp.ui.in.h:2
+msgid ""
+"An UPnP AV Control Point based on GUPnP framework.\n"
+"Inspired by Intel Tools for UPnP."
+msgstr ""
+"Egy UPnP AV vezérlőpont a GUPnP keretrendszeren alapulva.\n"
+"Az UPnP Intel eszközei ihlették."
+
+#: ../data/gupnp-av-cp.ui.in.h:4 ../data/gupnp-network-light.ui.h:4
+#: ../data/gupnp-universal-cp.ui.h:4
+msgid "GUPnP homepage"
+msgstr "GUPnP honlap"
+
+#. TRANSLATORS: Replace this string with your names, one name per line.
+#: ../data/gupnp-av-cp.ui.in.h:6 ../data/gupnp-network-light.ui.h:6
+#: ../data/gupnp-universal-cp.ui.h:6
+msgid "translator-credits"
+msgstr "Úr Balázs <urbalazs@gmail.com>, 2014."
+
+#: ../data/gupnp-av-cp.ui.in.h:7
+msgid "GUPnP AV Control Point"
+msgstr "GUPnP AV vezérlőpont"
+
+#: ../data/gupnp-av-cp.ui.in.h:8 ../data/gupnp-universal-cp.ui.h:24
+msgid "_File"
+msgstr "_Fájl"
+
+#: ../data/gupnp-av-cp.ui.in.h:9
+msgid "Close"
+msgstr "Bezárás"
+
+#: ../data/gupnp-av-cp.ui.in.h:10
+msgid "_Tools"
+msgstr "_Eszközök"
+
+#: ../data/gupnp-av-cp.ui.in.h:11
+msgid "_Lenient Mode"
+msgstr "Engedékeny _mód"
+
+#: ../data/gupnp-av-cp.ui.in.h:12 ../data/gupnp-universal-cp.ui.h:29
+msgid "_Help"
+msgstr "_Súgó"
+
+#: ../data/gupnp-av-cp.ui.in.h:13 ../data/gupnp-universal-cp.ui.h:30
+msgid "About"
+msgstr "Névjegy"
+
+#: ../data/gupnp-av-cp.ui.in.h:14
+msgid "_Play"
+msgstr "_Lejátszás"
+
+#: ../data/gupnp-av-cp.ui.in.h:15
+msgid "P_ause"
+msgstr "_Szünet"
+
+#: ../data/gupnp-av-cp.ui.in.h:16
+msgid "_Stop"
+msgstr "Leállí_tás"
+
+#: ../data/gupnp-av-cp.ui.in.h:17
+msgid "Pre_vious"
+msgstr "_Előző"
+
+#: ../data/gupnp-av-cp.ui.in.h:18
+msgid "_Next"
+msgstr "_Következő"
+
+#: ../data/gupnp-av-cp.ui.in.h:19
+msgid "Rescan"
+msgstr "Újrakeresés"
+
+#: ../data/gupnp-av-cp.ui.in.h:20
+msgid ""
+"Clears the CP's idea of the state of the currently selected AV Renderer. "
+"Useful for dealing with AV Renderers that don't report state changes."
+msgstr ""
+"Törli a jelenleg kijelölt AV megjelenítő állapotának CP gondolatát. Olyan AV "
+"megjelenítők kezelésekor hasznos, amelyek nem jelentik az állapotváltozásokat."
+
+#: ../data/gupnp-av-cp.ui.in.h:21
+msgid "_Clear state"
+msgstr "Állapot _törlése"
+
+#: ../data/gupnp-av-cp.ui.in.h:22
+msgid "_Renderer: "
+msgstr "_Megjelenítő: "
+
+#: ../data/gupnp-av-cp.ui.in.h:23
+msgid "GUPnP AV CP - Metadata View"
+msgstr "GUPnP AV CP - Metaadat nézet"
+
+#: ../data/gupnp-av-cp.ui.in.h:24
+msgid "Fetch the DIDL-Lite XML for this media object"
+msgstr "A DIDL-Lite XML lekérése ehhez a médiaobjektumhoz"
+
+#: ../data/gupnp-av-cp.ui.in.h:25
+msgid "Fetch _DIDL-Lite"
+msgstr "_DIDL-Lite lekérése"
+
+#: ../data/gupnp-network-light.desktop.in.in.h:1
+msgid "UPnP Network Light"
+msgstr "UPnP hálózati fény"
+
+#: ../data/gupnp-network-light.ui.h:2
+msgid ""
+"A virtual network light bulb based on GUPnP framework.\n"
+"Inspired by Intel Tools for UPnP."
+msgstr ""
+"Egy virtuális hálózati villanykörte a GUPnP keretrendszeren alapulva.\n"
+"Az UPnP Intel eszközei ihlették."
+
+#: ../data/gupnp-network-light.ui.h:7
+msgid "GUPnP Network Light"
+msgstr "GUPnP hálózati fény"
+
+#: ../data/gupnp-network-light.ui.h:8
+msgctxt "network-light"
+msgid "_On"
+msgstr "_Be"
+
+#: ../data/gupnp-network-light.ui.h:10
+#, no-c-format
+msgid "_Increase luminance by 20%"
+msgstr "Fényesség _növelése 20%-kal"
+
+#: ../data/gupnp-network-light.ui.h:12
+#, no-c-format
+msgid "_Decrease luminance by 20%"
+msgstr "Fényesség _csökkentése 20%-kal"
+
+#: ../data/gupnp-network-light.ui.h:13
+msgid "_About"
+msgstr "_Névjegy"
+
+#: ../data/gupnp-universal-cp.desktop.in.in.h:1
+msgid "UPnP Universal Control Point"
+msgstr "UPnP egyetemes vezérlőpont"
+
+#: ../data/gupnp-universal-cp.ui.h:2
+msgid ""
+"A Generic Control Point based on GUPnP framework.\n"
+"Inspired by Intel Tools for UPnP."
+msgstr ""
+"Egy általános vezérlőpont a GUPnP keretrendszeren alapulva.\n"
+"Az UPnP Intel eszközei ihlették."
+
+#: ../data/gupnp-universal-cp.ui.h:7
+msgid "Action Invocation"
+msgstr "Művelet meghívás"
+
+#: ../data/gupnp-universal-cp.ui.h:8
+msgid "_Invoke"
+msgstr "_Meghívás"
+
+#: ../data/gupnp-universal-cp.ui.h:9
+msgid "device"
+msgstr "eszköz"
+
+#: ../data/gupnp-universal-cp.ui.h:10
+msgid "service"
+msgstr "szolgáltatás"
+
+#: ../data/gupnp-universal-cp.ui.h:11
+msgid "action"
+msgstr "művelet"
+
+#: ../data/gupnp-universal-cp.ui.h:12
+msgid "'in' arguments"
+msgstr "„in” argumentumok"
+
+#: ../data/gupnp-universal-cp.ui.h:13
+msgid "'out' arguments"
+msgstr "„out” argumentumok"
+
+#: ../data/gupnp-universal-cp.ui.h:14
+msgid "Copy value"
+msgstr "Érték másolása"
+
+#: ../data/gupnp-universal-cp.ui.h:15
+msgid "Copy all details"
+msgstr "Összes részlet másolása"
+
+#: ../data/gupnp-universal-cp.ui.h:16
+msgid "Invoke"
+msgstr "Meghívás"
+
+#: ../data/gupnp-universal-cp.ui.h:17
+msgid "Subscribe to events"
+msgstr "Feliratkozás az eseményre"
+
+#: ../data/gupnp-universal-cp.ui.h:18
+msgid "_Expand all devices"
+msgstr "Összes eszköz _kinyitása"
+
+#: ../data/gupnp-universal-cp.ui.h:19
+msgid "_Collapse all devices"
+msgstr "Összes eszköz össze_csukása"
+
+#: ../data/gupnp-universal-cp.ui.h:20
+msgid "Copy event"
+msgstr "Esemény másolása"
+
+#: ../data/gupnp-universal-cp.ui.h:21
+msgid "Copy all events"
+msgstr "Összes esemény másolása"
+
+#: ../data/gupnp-universal-cp.ui.h:22
+msgid "_Clear event log"
+msgstr "Eseménynapló _törlése"
+
+#. default details
+#: ../data/gupnp-universal-cp.ui.h:23 ../src/universal-cp/device-treeview.c:35
+msgid "GUPnP Universal Control Point"
+msgstr "GUPnP egyetemes vezérlőpont"
+
+#: ../data/gupnp-universal-cp.ui.h:25
+msgid "Clear event log"
+msgstr "Eseménynapló törlése"
+
+#: ../data/gupnp-universal-cp.ui.h:26
+msgid "Quit"
+msgstr "Kilépés"
+
+#: ../data/gupnp-universal-cp.ui.h:27
+msgid "_View"
+msgstr "_Nézet"
+
+#: ../data/gupnp-universal-cp.ui.h:28
+msgid "Event _log"
+msgstr "Esemény _napló"
+
+#: ../src/av-cp/main.c:47 ../src/network-light/main.c:46
+#: ../src/universal-cp/main.c:41
+msgid "Network PORT to use for UPnP"
+msgstr "Az UPnP-hez használt hálózati PORT"
+
+#: ../src/av-cp/main.c:48 ../src/network-light/main.c:47
+#: ../src/universal-cp/main.c:42
+msgid "Network interfaces to use for UPnP communication"
+msgstr "Az UPnP kommunikációhoz használt hálózati csatolók"
+
+#: ../src/av-cp/main.c:196 ../src/network-light/main.c:100
+#: ../src/universal-cp/main.c:145
+msgid "- UPnP AV control point"
+msgstr "- UPnP AV vezérlőpont"
+
+#: ../src/av-cp/main.c:201 ../src/network-light/main.c:105
+#: ../src/universal-cp/main.c:150
+#, c-format
+msgid "Could not parse options: %s\n"
+msgstr "Nem sikerült feldolgozni a kapcsolókat: %s\n"
+
+#: ../src/universal-cp/action-dialog.c:680
+#, c-format
+msgid ""
+"Action failed.\n"
+"\n"
+"Error %d: %s"
+msgstr ""
+"A művelet sikertelen.\n"
+"\n"
+"Hiba %d: %s"
+
+#: ../src/universal-cp/details-treeview.c:180
+#: ../src/universal-cp/details-treeview.c:208
+#: ../src/universal-cp/details-treeview.c:234
+#: ../src/universal-cp/details-treeview.c:413
+msgid "Name"
+msgstr "Név"
+
+#: ../src/universal-cp/details-treeview.c:182
+msgid "Direction"
+msgstr "Irány"
+
+#: ../src/universal-cp/details-treeview.c:187
+msgid "Related State Variable"
+msgstr "Kapcsolódó állapotváltozó"
+
+#: ../src/universal-cp/details-treeview.c:189
+msgid "Is Return Value"
+msgstr "Van visszatérési érték"
+
+#: ../src/universal-cp/details-treeview.c:190
+#: ../src/universal-cp/details-treeview.c:237
+msgid "Yes"
+msgstr "Igen"
+
+#: ../src/universal-cp/details-treeview.c:190
+#: ../src/universal-cp/details-treeview.c:237
+msgid "No"
+msgstr "Nem"
+
+#: ../src/universal-cp/details-treeview.c:210
+msgid "Number of Arguments"
+msgstr "Argumentumok száma"
+
+#: ../src/universal-cp/details-treeview.c:236
+msgid "Send Events"
+msgstr "Események küldése"
+
+#: ../src/universal-cp/details-treeview.c:238
+msgid "GType"
+msgstr "GType"
+
+#: ../src/universal-cp/details-treeview.c:241
+msgid "Default Value"
+msgstr "Alapértelmezett érték"
+
+#: ../src/universal-cp/details-treeview.c:247
+msgid "Minimum"
+msgstr "Minimum"
+
+#: ../src/universal-cp/details-treeview.c:251
+msgid "Maximum"
+msgstr "Maximum"
+
+#: ../src/universal-cp/details-treeview.c:255
+msgid "Step"
+msgstr "Lépés"
+
+#: ../src/universal-cp/details-treeview.c:275
+msgid "Allowed Values"
+msgstr "Engedélyezett értékek"
+
+#: ../src/universal-cp/details-treeview.c:299
+#: ../src/universal-cp/details-treeview.c:346
+msgid "Location"
+msgstr "Hely"
+
+#: ../src/universal-cp/details-treeview.c:304
+#: ../src/universal-cp/details-treeview.c:351
+msgid "UDN"
+msgstr "UDN"
+
+#: ../src/universal-cp/details-treeview.c:309
+#: ../src/universal-cp/details-treeview.c:356
+msgid "Type"
+msgstr "Típus"
+
+#: ../src/universal-cp/details-treeview.c:314
+#: ../src/universal-cp/details-treeview.c:361
+msgid "Base URL"
+msgstr "Alap URL"
+
+#: ../src/universal-cp/details-treeview.c:319
+msgid "Service ID"
+msgstr "Szolgáltatás azonosító"
+
+#: ../src/universal-cp/details-treeview.c:321
+msgid "Service URL"
+msgstr "Szolgáltatás URL"
+
+#: ../src/universal-cp/details-treeview.c:323
+msgid "Control URL"
+msgstr "Vezérlő URL"
+
+#: ../src/universal-cp/details-treeview.c:325
+msgid "Event Subscription URL"
+msgstr "Esemény feliratkozási URL"
+
+#: ../src/universal-cp/details-treeview.c:366
+msgid "Friendly Name"
+msgstr "Barátságos név"
+
+#: ../src/universal-cp/details-treeview.c:368
+msgid "Manufacturer"
+msgstr "Gyártó"
+
+#: ../src/universal-cp/details-treeview.c:370
+msgid "Manufacturer URL"
+msgstr "Gyártó URL"
+
+#: ../src/universal-cp/details-treeview.c:372
+msgid "Model Description"
+msgstr "Modell leírása"
+
+#: ../src/universal-cp/details-treeview.c:374
+msgid "Model Name"
+msgstr "Modellnév"
+
+#: ../src/universal-cp/details-treeview.c:376
+msgid "Model Number"
+msgstr "Modellszám"
+
+#: ../src/universal-cp/details-treeview.c:378
+msgid "Model URL"
+msgstr "Modell URL"
+
+#: ../src/universal-cp/details-treeview.c:380
+msgid "Serial Number"
+msgstr "Sorozatszám"
+
+#: ../src/universal-cp/details-treeview.c:382
+msgid "UPC"
+msgstr "UPC"
+
+#: ../src/universal-cp/details-treeview.c:384
+msgid "Presentation URL"
+msgstr "Bemutató URL"
+
+#: ../src/universal-cp/details-treeview.c:414
+#: ../src/universal-cp/event-treeview.c:376
+msgid "Value"
+msgstr "Érték"
+
+#: ../src/universal-cp/device-treeview.c:52
+msgid "Software"
+msgstr "Szoftver"
+
+#: ../src/universal-cp/device-treeview.c:54
+msgid "Version"
+msgstr "Verzió"
+
+#: ../src/universal-cp/device-treeview.c:56
+msgid "Author"
+msgstr "Szerző"
+
+#: ../src/universal-cp/device-treeview.c:462
+msgid "State variables"
+msgstr "Állapotváltozók"
+
+#: ../src/universal-cp/device-treeview.c:503
+msgid "Information not available"
+msgstr "Nem érhető el információ"
+
+#: ../src/universal-cp/device-treeview.c:681
+msgid "UPnP Network"
+msgstr "UPnP hálózat"
+
+#: ../src/universal-cp/device-treeview.c:694
+#: ../src/universal-cp/event-treeview.c:373
+msgid "Device"
+msgstr "Eszköz"
+
+#: ../src/universal-cp/event-treeview.c:372
+msgid "Time"
+msgstr "Idő"
+
+#: ../src/universal-cp/event-treeview.c:374
+msgid "Service"
+msgstr "Szolgáltatás"
+
+#: ../src/universal-cp/event-treeview.c:375
+msgid "State Variable"
+msgstr "Állapotváltozó"
+
