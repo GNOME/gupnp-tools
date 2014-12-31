@@ -123,7 +123,8 @@ target_cds_found (GUPnPServiceProxy *target_cds_proxy)
 void
 application_exit (void)
 {
-        g_main_loop_quit (main_loop);
+        if (main_loop != NULL)
+                g_main_loop_quit (main_loop);
 }
 
 gint
@@ -190,7 +191,7 @@ main (gint   argc,
         g_main_loop_run (main_loop);
 
         /* Clean-up */
-        g_main_loop_unref (main_loop);
+        g_clear_pointer (&main_loop, g_main_loop_unref);
         deinit_control_point ();
         g_object_unref (upnp_context);
         g_option_context_free (context);
