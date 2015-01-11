@@ -182,6 +182,10 @@ main (gint   argc,
                 return -6;
         }
 
+        g_print ("UPnP context created for interface %s (%s)\n",
+                 gssdp_client_get_interface (GSSDP_CLIENT (upnp_context)),
+                 gssdp_client_get_host_ip (GSSDP_CLIENT (upnp_context)));
+
         if (!init_control_point (upnp_context, udn, search_timeout)) {
            return -3;
         }
