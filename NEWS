@@ -1,3 +1,66 @@
+0.8.10
+======
+
+Changes since 0.8.9:
+
+- Remove checks for gnome-icon-theme
+- Change icon loader behavior to not fail if there's no fall-back icons.
+
+AV-CP:
+ - Remove deprecated GTK+ things.
+ - Fix warning about transient dialogs.
+ - Make it possible to call Play on folders if they expose resources.
+
+Universal-CP:
+ - Remove deprecated GTK+ things.
+
+Discover:
+ - Add --message-type commandline option.
+
+Upload:
+ - Fix critical on shut-down.
+ - Print interface and IP used for uploading.
+
+Changes in dependencies:
+ - GTK+3 >= 3.10
+ - Removed dependency to gnome-icon-theme.
+
+Bugs fixed in this release:
+ - https://bugzilla.gnome.org/show_bug.cgi?id=733592
+ - https://bugzilla.gnome.org/show_bug.cgi?id=733594
+ - https://bugzilla.gnome.org/show_bug.cgi?id=734162
+ - https://bugzilla.gnome.org/show_bug.cgi?id=735275
+
+All contributors to this release:
+ - Jens Georg <mail@jensge.org>
+ - Jussi Kukkonen <jku@goto.fi>
+ - Piotr Drąg <piotrdrag@gmail.com>
+ - Rafael Ferreira <rafael.f.f1@gmail.com>
+ - Matej Urbančič <mateju@svn.gnome.org>
+ - Daniel Mustieles <dnaiel.mustieles@gmail.com>
+ - Мирослав Николић <miroslavnikolic@rocketmail.com>
+ - Tiago S <almosthumane@portugalmail.pt>
+ - Samir Ribic <samir.ribic@etf.unsa.ba>
+ - MarMav <mavridou@gmail.com>
+ - Marek Černocký <marek@manet.cz>
+ - Dušan Kazik <prescott66@gmail.com>
+ - Dominique Leuenberger <dimstar@opensuse.org>
+ - Balázs Úr <urbalazs@src.gnome.org>
+
+Added/updated translations
+ - bs, courtesy of Azra Jarebica
+ - cs, courtesy of Marek Černocký
+ - el, courtesy of Tom Tryfonidis
+ - es, courtesy of Daniel Mustieles
+ - hu, courtesy of Balázs Úr
+ - pl, courtesy of Piotr Drąg
+ - pt_BR, courtesy of Rafael Ferreira
+ - pt, courtesy of FULL NAME
+ - sk, courtesy of Dušan Kazik
+ - sl, courtesy of Matej Urbančič
+ - sr, courtesy of Мирослав Николић
+ - sr@latin, courtesy of Miroslav Nikolić
+
 0.8.9
 =====
 
