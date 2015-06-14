@@ -30,7 +30,7 @@ LT_INIT([])
 
 GLIB_REQUIRED=2.24
 GSSDP_REQUIRED=0.13.3
-GUPNP_REQUIRED=0.20.8
+GUPNP_REQUIRED=0.20.14
 SOUP_REQUIRED=2.4
 GUPNP_AV_REQUIRED=0.5.5
 GTK_REQUIRED=3.10
@@ -64,11 +64,8 @@ PKG_CHECK_MODULES(GTKSOURCEVIEW, gtksourceview-3.0 >= $GTKSOURCEVIEW_REQUIRED,
                   AC_SUBST([TEXT_VIEW],[GtkSourceView]),
                   AC_SUBST([TEXT_VIEW],[GtkTextView]))
 
-if test "x$os_win32" = "xno"; then
-    PKG_CHECK_MODULES(UUID, uuid)
-else
+if test "x$os_win32" = "xyes"; then
     AC_CHECK_TOOL(WINDRES, windres)
-    AC_SUBST([UUID_LIBS], ["-lrpcrt4"])
 fi
 
 AC_ARG_WITH( av,

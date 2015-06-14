@@ -26,12 +26,6 @@
 #include <locale.h>
 #include <string.h>
 #include <gmodule.h>
-#ifndef G_OS_WIN32
-#include <uuid/uuid.h>
-#else
-#include <rpc.h>
-typedef UUID uuid_t;
-#endif
 #include <glib/gstdio.h>
 
 #include "gui.h"
@@ -59,7 +53,7 @@ static GList *dimming_proxies;
 
 static GUPnPXMLDoc *doc;
 static char *desc_location;
-static char uuid[37];
+static char *uuid;
 
 void
 on_get_status (GUPnPService       *service,
@@ -386,23 +380,10 @@ xml_util_get_element (xmlNode *node,
 
 static void init_uuid (void)
 {
-        uuid_t uuid_context;
         xmlNode *uuid_node;
         char *udn;
 
-#ifndef G_OS_WIN32
-        uuid_generate (uuid_context);
-        uuid_unparse (uuid_context, uuid);
-#else
-	{
-		gchar *tmp_uuid;
-		UuidCreate(&uuid_context);
-		UuidToString(&uuid_context, &tmp_uuid);
-		memcpy(uuid, tmp_uuid, 36);
-		RpcStringFree(&tmp_uuid);
-	}
-#endif
-
+        uuid = gupnp_get_uuid ();
         uuid_node = xml_util_get_element ((xmlNode *) doc->doc,
                                           "root",
                                           "device",
@@ -778,5 +759,7 @@ deinit_upnp (void)
         if (g_remove (desc_location) != 0)
                 g_warning ("error removing %s\n", desc_location);
         g_free (desc_location);
+        g_free (uuid);
+        uuid = NULL;
 }
 
