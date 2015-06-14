@@ -82,12 +82,6 @@ void
 on_about_menuitem_activate (GtkMenuItem *menuitem,
                             gpointer     user_data)
 {
-        GtkWidget *about_dialog;
-
-        about_dialog = GTK_WIDGET (gtk_builder_get_object (builder,
-                                                           "about-dialog"));
-        g_assert (about_dialog != NULL);
-
         gtk_widget_show (about_dialog);
 }
 
