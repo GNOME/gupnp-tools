@@ -22,6 +22,7 @@
 #include <string.h>
 #include <stdlib.h>
 
+#include "transfer.h"
 #include "main.h"
 
 typedef struct

@@ -43,6 +43,10 @@ static GOptionEntry entries[] =
         { NULL }
 };
 
+
+void
+application_exit (void);
+
 static GUPnPContextManager *context_manager;
 
 static void
@@ -60,7 +64,7 @@ device_proxy_unavailable_cb (GUPnPControlPoint *cp,
 }
 
 static void
-on_context_available (GUPnPContextManager *context_manager,
+on_context_available (GUPnPContextManager *manager,
                       GUPnPContext        *context,
                       gpointer             user_data)
 {

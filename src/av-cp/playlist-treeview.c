@@ -54,6 +54,26 @@ static GtkWidget *didl_textview;
 static gboolean   expanded;
 static GHashTable *initial_notify;
 
+gboolean
+on_playlist_treeview_button_release (GtkWidget      *widget,
+                                     GdkEventButton *event,
+                                     gpointer        user_data);
+void
+on_playlist_row_expanded (GtkTreeView *tree_view,
+                          GtkTreeIter *iter,
+                          GtkTreePath *path,
+                          gpointer     user_data);
+
+void
+on_playlist_row_collapsed (GtkTreeView *tree_view,
+                           GtkTreeIter *iter,
+                           GtkTreePath *path,
+                           gpointer     user_data);
+
+void
+on_didl_menuitem_activate (GtkMenuItem *menuitem,
+                           gpointer     user_data);
+
 typedef struct
 {
   GUPnPServiceProxy *content_dir;
@@ -197,14 +217,14 @@ create_playlist_treemodel (void)
 }
 
 static void
-setup_treeview_columns (GtkWidget *treeview)
+setup_treeview_columns (GtkWidget *tv)
 
 {
         GtkTreeSelection  *selection;
         GtkTreeViewColumn *column;
         GtkCellRenderer   *renderers[2];
-        char              *headers[] = { "Icon", "Title"};
-        char              *attribs[] = { "pixbuf", "text"};
+        const char        *headers[] = { "Icon", "Title"};
+        const char        *attribs[] = { "pixbuf", "text"};
         int                i;
 
         selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (treeview));
@@ -361,20 +381,22 @@ setup_playlist_treeview (GtkBuilder *builder)
         didl_textview = GTK_WIDGET (gtk_builder_get_object (builder,
                                                           "didl-textview"));
 #ifdef HAVE_GTK_SOURCEVIEW
-        GtkSourceLanguageManager *manager =
+        {
+                GtkSourceLanguageManager *manager =
                                 gtk_source_language_manager_get_default ();
-        GtkSourceLanguage *language =
-                gtk_source_language_manager_guess_language (manager,
-                                                            NULL,
-                                                            "text/xml");
+                GtkSourceLanguage *language =
+                    gtk_source_language_manager_guess_language (manager,
+                                                                NULL,
+                                                                "text/xml");
 
-        GtkSourceBuffer *buffer = gtk_source_buffer_new_with_language (language);
-        gtk_source_buffer_set_highlight_syntax (buffer, TRUE);
-        gtk_source_view_set_show_line_numbers (GTK_SOURCE_VIEW (didl_textview),
-                                               TRUE);
+                GtkSourceBuffer *buffer = gtk_source_buffer_new_with_language (language);
+                gtk_source_buffer_set_highlight_syntax (buffer, TRUE);
+                gtk_source_view_set_show_line_numbers (GTK_SOURCE_VIEW (didl_textview),
+                                                       TRUE);
 
-        gtk_text_view_set_buffer (GTK_TEXT_VIEW (didl_textview),
-                                  GTK_TEXT_BUFFER (buffer));
+                gtk_text_view_set_buffer (GTK_TEXT_VIEW (didl_textview),
+                                          GTK_TEXT_BUFFER (buffer));
+        }
 #endif
 
         model = create_playlist_treemodel ();
@@ -812,7 +834,6 @@ browse_cb (GUPnPServiceProxy       *content_dir,
                 GUPnPDIDLLiteParser *parser;
                 gint32              remaining;
                 gint32              batch_size;
-                GError              *error;
 
                 error = NULL;
                 parser = gupnp_didl_lite_parser_new ();

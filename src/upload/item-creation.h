@@ -27,8 +27,7 @@ void
 create_item                     (const char              *file_path,
                                  const char              *title,
                                  GUPnPServiceProxy       *cds_proxy,
-                                 const char              *container_id,
-                                 GUPnPContext            *context);
+                                 const char              *container_id);
 
 #endif /* __ITEM_CREATION_H__ */
 

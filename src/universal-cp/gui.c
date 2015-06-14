@@ -37,6 +37,11 @@
 GtkBuilder *builder;
 static GtkWidget *main_window;
 
+gboolean
+on_delete_event (GtkWidget *widget,
+                 GdkEvent  *event,
+                 gpointer   user_data);
+
 void
 setup_treeview (GtkWidget    *treeview,
                 GtkTreeModel *model,

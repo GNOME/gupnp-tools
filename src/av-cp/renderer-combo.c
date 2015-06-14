@@ -457,7 +457,7 @@ clear_selected_renderer_state (void)
         }
 }
 
-void
+static void
 append_media_renderer_to_tree (GUPnPDeviceProxy  *proxy,
                                GUPnPServiceProxy *av_transport,
                                GUPnPServiceProxy *rendering_control,
@@ -816,7 +816,7 @@ create_renderer_treemodel (void)
 }
 
 static void
-setup_renderer_combo_text_cell (GtkWidget *renderer_combo)
+setup_renderer_combo_text_cell (GtkWidget *widget)
 {
         GtkCellRenderer *renderer;
 
@@ -835,7 +835,7 @@ setup_renderer_combo_text_cell (GtkWidget *renderer_combo)
 }
 
 static void
-setup_renderer_combo_pixbuf_cell (GtkWidget *renderer_combo)
+setup_renderer_combo_pixbuf_cell (GtkWidget *widget)
 {
         GtkCellRenderer *renderer;
 

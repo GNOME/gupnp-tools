@@ -38,6 +38,11 @@ static GtkWidget *main_window;
 static GtkWidget *about_dialog;
 static GtkButton *rescan_button;
 
+gboolean
+on_delete_event (GtkWidget *widget,
+                 GdkEvent  *event,
+                 gpointer   user_data);
+
 G_MODULE_EXPORT
 gboolean
 on_delete_event (GtkWidget *widget,
@@ -50,7 +55,7 @@ on_delete_event (GtkWidget *widget,
 }
 
 static void
-setup_icons (GtkBuilder *builder)
+setup_icons (GtkBuilder *object)
 {
         GdkPixbuf *icon_pixbuf;
         GtkWidget *volume_min;
@@ -81,7 +86,7 @@ setup_icons (GtkBuilder *builder)
 }
 
 gboolean
-init_ui ()
+init_ui (void)
 {
         gint window_width, window_height;
         GError *error = NULL;

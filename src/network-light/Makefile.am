@@ -9,7 +9,8 @@ AM_CFLAGS = $(LIBGUPNP_CFLAGS) \
 	    $(UUID_CFLAGS) \
 	    -I$(top_srcdir) \
 	    -DDATA_DIR='"$(shareddir)"' \
-	    -I$(top_srcdir)/src/common
+	    -I$(top_srcdir)/src/common \
+	    $(WARN_CFLAGS)
 
 bin_PROGRAMS = gupnp-network-light
 
@@ -27,7 +28,7 @@ gupnp_network_light_LDADD = ../common/libutil.a \
 			    $(GTK_LIBS) \
 			    $(UUID_LIBS)
 
-gupnp_network_light_LDFLAGS = -export-dynamic
+gupnp_network_light_LDFLAGS = -export-dynamic $(WARN_LDFLAGS)
 
 if OS_WIN32
 network-light.res: network-light.rc

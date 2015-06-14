@@ -5,7 +5,8 @@ shareddir = $(datadir)/gupnp-tools
 endif
 
 AM_CFLAGS = $(LIBGUPNP_CFLAGS) $(GTK_CFLAGS) -I$(top_srcdir) \
-	    -DDATA_DIR='"$(shareddir)"' -I$(top_builddir)/src/common
+	    -DDATA_DIR='"$(shareddir)"' -I$(top_builddir)/src/common \
+	    $(WARN_CFLAGS)
 
 noinst_LIBRARIES = libutil.a
 

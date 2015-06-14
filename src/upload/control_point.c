@@ -22,6 +22,7 @@
 #include <string.h>
 #include <stdlib.h>
 
+#include "control_point.h"
 #include "main.h"
 
 #define CDS "urn:schemas-upnp-org:service:ContentDirectory"
@@ -32,7 +33,7 @@ static GUPnPServiceProxy *cds_proxy = NULL;
 static guint timeout_id = 0;
 
 static void
-device_proxy_unavailable_cb (GUPnPControlPoint *cp,
+device_proxy_unavailable_cb (GUPnPControlPoint *control_point,
                              GUPnPDeviceProxy  *proxy)
 {
         /* We don't need to check if it's our proxy */
@@ -40,7 +41,7 @@ device_proxy_unavailable_cb (GUPnPControlPoint *cp,
 }
 
 static void
-device_proxy_available_cb (GUPnPControlPoint *cp,
+device_proxy_available_cb (GUPnPControlPoint *control_point,
                            GUPnPDeviceProxy  *proxy)
 {
         GUPnPDeviceInfo *info;

@@ -14,10 +14,15 @@ AM_INIT_AUTOMAKE([1.11 tar-ustar no-dist-gzip dist-xz])
 AM_MAINTAINER_MODE([enable])
 AM_SILENT_RULES([yes])
 
+AX_CHECK_ENABLE_DEBUG([yes])
+
 AC_SEARCH_LIBS([strerror],[cposix])
 AC_PROG_CC
 AC_HEADER_STDC
 AC_FUNC_MMAP
+
+AX_IS_RELEASE([git-directory])
+AX_COMPILER_FLAGS
 
 # libtool
 LT_PREREQ([2.2])

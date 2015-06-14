@@ -45,7 +45,7 @@ void
 prepare_controls_for_state      (PlaybackState state);
 
 void
-av_transport_send_action        (char *action,
+av_transport_send_action        (const char *action,
                                  char *additional_args[]);
 
 void

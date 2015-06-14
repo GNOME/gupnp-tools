@@ -61,6 +61,60 @@ static GUPnPXMLDoc *doc;
 static char *desc_location;
 static char uuid[37];
 
+void
+on_get_status (GUPnPService       *service,
+               GUPnPServiceAction *action,
+               gpointer            user_data);
+
+void
+on_get_target (GUPnPService       *service,
+               GUPnPServiceAction *action,
+               gpointer            user_data);
+
+void
+on_set_target (GUPnPService       *service,
+               GUPnPServiceAction *action,
+               gpointer            user_data);
+
+void
+on_query_status (GUPnPService *service,
+                 const char   *variable_name,
+                 GValue       *value,
+                 gpointer      user_data);
+
+void
+on_query_target (GUPnPService *service,
+                 const char   *variable_name,
+                 GValue       *value,
+                 gpointer      user_data);
+
+void
+on_get_load_level_status (GUPnPService       *service,
+                          GUPnPServiceAction *action,
+                          gpointer            user_data);
+
+void
+on_get_load_level_target (GUPnPService       *service,
+                          GUPnPServiceAction *action,
+                          gpointer            user_data);
+
+void
+on_set_load_level_target (GUPnPService       *service,
+                          GUPnPServiceAction *action,
+                          gpointer            user_data);
+
+void
+on_query_load_level_status (GUPnPService *service,
+                            const char   *variable_name,
+                            GValue       *value,
+                            gpointer      user_data);
+
+void
+on_query_load_level_target (GUPnPService *service,
+                            const char   *variable_name,
+                            GValue       *value,
+                            gpointer      user_data);
+
 static NetworkLight *
 network_light_new (GUPnPRootDevice  *dev,
                    GUPnPServiceInfo *switch_power,
@@ -244,7 +298,9 @@ on_set_load_level_target (GUPnPService       *service,
                                   NULL);
         gupnp_service_action_return (action);
 
-        load_level = CLAMP (load_level, 0, 100);
+        if (load_level > 100)
+                load_level = 100;
+
         set_load_level (load_level);
 }
 
@@ -328,7 +384,7 @@ xml_util_get_element (xmlNode *node,
         return node;
 }
 
-static void init_uuid ()
+static void init_uuid (void)
 {
         uuid_t uuid_context;
         xmlNode *uuid_node;
@@ -366,7 +422,7 @@ static void init_uuid ()
         g_free (udn);
 }
 
-void on_service_proxy_action_ret (GUPnPServiceProxy *proxy,
+static void on_service_proxy_action_ret (GUPnPServiceProxy *proxy,
                                   GUPnPServiceProxyAction *action,
                                   gpointer user_data)
 {
@@ -572,11 +628,10 @@ init_server (GUPnPContext *context)
 }
 
 static gboolean
-prepare_desc ()
+prepare_desc (void)
 {
-        GError *error;
+        GError *error = NULL;
 
-        error = NULL;
         doc = gupnp_xml_doc_new_from_path (DATA_DIR "/" DESCRIPTION_DOC,
                                            &error);
         if (doc == NULL) {
@@ -638,7 +693,7 @@ init_client (GUPnPContext *context)
 }
 
 static void
-on_context_available (GUPnPContextManager *context_manager,
+on_context_available (GUPnPContextManager *manager,
                       GUPnPContext        *context,
                       gpointer             user_data)
 {
@@ -650,7 +705,7 @@ on_context_available (GUPnPContextManager *context_manager,
 }
 
 static void
-on_context_unavailable (GUPnPContextManager *context_manager,
+on_context_unavailable (GUPnPContextManager *manager,
                         GUPnPContext        *context,
                         gpointer             user_data)
 {
@@ -671,7 +726,6 @@ context_equal (GUPnPContext *context1, GUPnPContext *context2)
 gboolean
 init_upnp (gchar **interfaces, guint port)
 {
-        GError *error = NULL;
         GUPnPWhiteList *white_list;
 
         switch_proxies = NULL;
@@ -682,7 +736,7 @@ init_upnp (gchar **interfaces, guint port)
                                          g_object_unref,
                                          (GDestroyNotify) network_light_free);
 
-        if (!prepare_desc (&error)) {
+        if (!prepare_desc ()) {
                 return FALSE;
         }
 

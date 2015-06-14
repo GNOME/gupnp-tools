@@ -51,6 +51,8 @@ static GOptionEntry entries[] =
 
 static GUPnPContextManager *context_manager;
 
+void application_exit (void);
+
 static void
 dms_proxy_available_cb (GUPnPControlPoint *cp,
                         GUPnPDeviceProxy  *proxy)
@@ -89,7 +91,7 @@ on_rescan_button_clicked (GtkButton *button,
 }
 
 static void
-on_context_available (GUPnPContextManager *context_manager,
+on_context_available (GUPnPContextManager *cm,
                       GUPnPContext        *context,
                       gpointer             user_data)
 {

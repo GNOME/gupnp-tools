@@ -24,6 +24,7 @@
 #include <string.h>
 #include <stdlib.h>
 
+#include "container-search.h"
 #include "main.h"
 
 static void

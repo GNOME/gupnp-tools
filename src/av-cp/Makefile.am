@@ -9,7 +9,8 @@ AM_CFLAGS = $(LIBGUPNP_CFLAGS) \
 	    $(GTK_CFLAGS) \
 	    $(GTKSOURCEVIEW_CFLAGS) \
 	    -I$(top_srcdir) -DDATA_DIR='"$(shareddir)"' \
-	    -I$(top_srcdir)/src/common
+	    -I$(top_srcdir)/src/common \
+	    $(WARN_CFLAGS)
 
 bin_PROGRAMS = gupnp-av-cp
 
@@ -32,7 +33,7 @@ gupnp_av_cp_LDADD = ../common/libutil.a \
 		    $(LIBGUPNP_AV_LIBS) \
 		    $(GTK_LIBS) \
 		    $(GTKSOURCEVIEW_LIBS)
-gupnp_av_cp_LDFLAGS = -export-dynamic
+gupnp_av_cp_LDFLAGS = -export-dynamic $(WARN_LDFLAGS)
 
 if OS_WIN32
 av-cp.res: av-cp.rc

@@ -32,7 +32,7 @@
 GdkPixbuf *icons[ICON_LAST];
 
 /* For async downloads of icons */
-static SoupSession *session;
+static SoupSession *download_session;
 static GList       *pending_gets;
 
 typedef struct {
@@ -163,7 +163,7 @@ schedule_icon_update (GUPnPDeviceInfo            *info,
         data->callback = callback;
 
         pending_gets = g_list_prepend (pending_gets, data);
-        soup_session_queue_message (session,
+        soup_session_queue_message (download_session,
                                     data->message,
                                     (SoupSessionCallback) got_icon_url,
                                     data);
@@ -186,7 +186,7 @@ unschedule_icon_update (GUPnPDeviceInfo *info)
                 udn2 = gupnp_device_info_get_udn (data->info);
 
                 if (udn1 && udn2 && strcmp (udn1, udn2) == 0) {
-                        soup_session_cancel_message (session,
+                        soup_session_cancel_message (download_session,
                                                      data->message,
                                                      SOUP_STATUS_CANCELLED);
                         break;
@@ -261,7 +261,7 @@ void
 init_icons (void)
 {
         int   i, j;
-        char *file_names[] = {
+        const char *file_names[] = {
                 "pixmaps/upnp-device.png",          /* ICON_DEVICE         */
                 "pixmaps/upnp-service.png",         /* ICON_SERVICE        */
                 "pixmaps/upnp-state-variable.png",  /* ICON_VARIABLE       */
@@ -270,7 +270,7 @@ init_icons (void)
                 "pixmaps/media-renderer.png"        /* ICON_MEDIA_RENDERER */
         };
 
-        char *theme_names[] = {
+        const char *theme_names[] = {
                 "image-missing",               /* ICON_MISSING    */
                 "network-workgroup",           /* ICON_NETWORK    */
                 "system-run",                  /* ICON_ACTION     */
@@ -294,8 +294,8 @@ init_icons (void)
         }
 
 
-        session = soup_session_async_new ();
-        g_assert (session != NULL);
+        download_session = soup_session_async_new ();
+        g_assert (download_session != NULL);
 
         pending_gets = NULL;
 }
@@ -310,12 +310,12 @@ deinit_icons (void)
 
                 data = pending_gets->data;
 
-                soup_session_cancel_message (session,
+                soup_session_cancel_message (download_session,
                                              data->message,
                                              SOUP_STATUS_CANCELLED);
         }
 
-        g_object_unref (session);
+        g_object_unref (download_session);
 
         for (i = 0; i < ICON_LAST; i++) {
                 g_object_unref (icons[i]);

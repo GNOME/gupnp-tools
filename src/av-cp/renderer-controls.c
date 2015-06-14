@@ -42,6 +42,33 @@ GtkWidget *lenient_mode_menuitem;
 
 static guint timeout_id;
 
+void
+on_play_button_clicked (GtkButton *button,
+                        gpointer   user_data);
+void
+on_pause_button_clicked (GtkButton *button,
+                         gpointer   user_data);
+
+void
+on_stop_button_clicked (GtkButton *button,
+                        gpointer   user_data);
+
+void
+on_next_button_clicked (GtkButton *button,
+                        gpointer   user_data);
+
+void
+on_previous_button_clicked (GtkButton *button,
+                            gpointer   user_data);
+
+void
+on_clear_state_button_clicked (GtkButton *button,
+                               gpointer   user_data);
+
+gboolean
+on_position_scale_value_changed (GtkRange *range,
+                                 gpointer  user_data);
+
 typedef struct
 {
   GCallback callback;
@@ -142,7 +169,7 @@ create_av_transport_args (char **additional_args, GList **out_values)
 }
 
 void
-av_transport_send_action (char *action,
+av_transport_send_action (const char *action,
                           char *additional_args[])
 {
         GUPnPServiceProxy *av_transport;
@@ -169,9 +196,9 @@ av_transport_send_action (char *action,
 static void
 play (void)
 {
-        char *args[] = { "Speed", "1", NULL };
+        const char *args[] = { "Speed", "1", NULL };
 
-        av_transport_send_action ("Play", args);
+        av_transport_send_action ("Play", (char **) args);
 }
 
 static void
@@ -402,7 +429,7 @@ gboolean
 on_position_scale_value_changed (GtkRange *range,
                                  gpointer  user_data)
 {
-        char *args[] = { "Unit", "ABS_TIME", "Target", NULL, NULL };
+        char *args[] = { (char *) "Unit", (char *) "ABS_TIME", (char *)"Target", NULL, NULL };
         guint total_secs;
         guint hours;
         guint minutes;
@@ -419,7 +446,7 @@ on_position_scale_value_changed (GtkRange *range,
                                    seconds);
 
         if (args[3]) {
-                av_transport_send_action ("Seek", args);
+                av_transport_send_action ("Seek", (char **)args);
                 g_free (args[3]);
         }
 
@@ -606,6 +633,7 @@ prepare_controls_for_state (PlaybackState state)
 
                 break;
 
+       case PLAYBACK_STATE_UNKNOWN:
        default:
                 play_possible = TRUE;
                 pause_possible = TRUE;

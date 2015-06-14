@@ -32,6 +32,18 @@ static GtkWidget *treeview;
 static GtkWidget *copy_value_menuitem;
 static GtkWidget *popup;
 
+gboolean
+on_details_treeview_button_release (GtkWidget      *widget,
+                                    GdkEventButton *event,
+                                    gpointer        user_data);
+void
+on_details_treeview_row_activate (GtkMenuItem *menuitem,
+                                  gpointer     user_data);
+
+void
+on_copy_all_details_activate (GtkMenuItem *menuitem,
+                              gpointer     user_data);
+
 static gboolean
 get_selected_row (GtkTreeIter *iter)
 {

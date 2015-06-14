@@ -40,6 +40,30 @@ static GdkPixbuf  *on_pixbuf;
 static GdkPixbuf  *off_pixbuf;
 
 void
+on_light_status_menuitem_activate (GtkCheckMenuItem *menuitem,
+                                   gpointer          user_data);
+void
+on_about_menuitem_activate (GtkMenuItem *menuitem,
+                            gpointer     user_data);
+
+void
+on_increase_luminance_menuitem_activate (GtkMenuItem *menuitem,
+                                         gpointer     user_data);
+
+void
+on_decrease_luminance_menuitem_activate (GtkMenuItem *menuitem,
+                                         gpointer     user_data);
+gboolean
+on_main_window_button_event (GtkWidget      *widget,
+                             GdkEventButton *event,
+                             gpointer        user_data);
+
+gboolean
+on_delete_event (GtkWidget *widget,
+                 GdkEvent  *event,
+                 gpointer   user_data);
+
+void
 update_image (void)
 {
         GtkWidget *image;
@@ -102,7 +126,7 @@ on_decrease_luminance_menuitem_activate (GtkMenuItem *menuitem,
 }
 
 static void
-prepare_popup ()
+prepare_popup (void)
 {
         GtkWidget *status_menuitem;
 

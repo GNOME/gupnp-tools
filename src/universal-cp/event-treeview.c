@@ -35,6 +35,31 @@ static GtkWidget *popup;
 static GtkWidget *scrolled_window;
 static GtkWidget *copy_event_menuitem;
 
+gboolean
+on_event_treeview_button_release (GtkWidget      *widget,
+                                  GdkEventButton *event,
+                                  gpointer        user_data);
+
+void
+on_event_treeview_row_activate (GtkMenuItem *menuitem,
+                                gpointer     user_data);
+
+void
+on_copy_all_events_activate (GtkMenuItem *menuitem,
+                             gpointer     user_data);
+
+void
+on_clear_event_log_activate (GtkMenuItem *menuitem,
+                             gpointer     user_data);
+
+void
+on_event_log_activate (GtkCheckMenuItem *menuitem,
+                       gpointer          user_data);
+
+void
+on_subscribe_to_events_activate (GtkCheckMenuItem *menuitem,
+                                 gpointer          user_data);
+
 static gboolean
 on_query_tooltip (GtkWidget  *widget,
                   gint        x,
@@ -106,7 +131,7 @@ get_selected_row (GtkTreeIter *iter)
 }
 
 static void
-setup_event_popup (GtkWidget *popup)
+setup_event_popup (GtkWidget *widget)
 {
         /* Only show "Copy Value" menuitem when a row is selected */
         g_object_set (copy_event_menuitem,
@@ -271,10 +296,13 @@ static char *
 get_display_value (const char *value)
 {
         char         *display_value;
-        guint         size;
+        size_t        size;
 
         /* Don't let the value displayed in treeview, grow indefinitely */
-        size = CLAMP (strlen (value), 0, MAX_VALUE_SIZE);
+        size = strlen (value);
+        if (size > MAX_VALUE_SIZE)
+                size = MAX_VALUE_SIZE;
+
         display_value = g_memdup (value, size + 1);
         display_value[size] = '\0';
 

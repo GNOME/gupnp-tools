@@ -32,6 +32,8 @@
 #include "icons.h"
 #include "main.h"
 
+#include "action-dialog.h"
+
 #define DEFAULT_TEXTVIEW_HEIGHT 55
 
 static GtkWidget *dialog;
@@ -43,6 +45,10 @@ static GtkWidget *action_label;
 static GtkWidget *in_args_expander;
 static GtkWidget *out_args_expander;
 static GtkSizeGroup *label_container_group;
+
+void
+on_action_invocation (GtkButton *button,
+                      gpointer   user_data);
 
 static void
 on_expander_clicked (GObject    *expander,

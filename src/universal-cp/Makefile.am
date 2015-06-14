@@ -6,7 +6,8 @@ endif
 
 AM_CFLAGS = $(GTK_CFLAGS) $(LIBGUPNP_CFLAGS) \
 	    -I$(top_srcdir) -DDATA_DIR='"$(shareddir)"' \
-	    -I$(top_srcdir)/src/common
+	    -I$(top_srcdir)/src/common \
+	    $(WARN_CFLAGS)
 
 bin_PROGRAMS = gupnp-universal-cp
 
@@ -29,7 +30,7 @@ gupnp_universal_cp_LDADD = ../common/libutil.a \
 			   $(LIBXML_LIBS) \
 			   $(LIBGUPNP_LIBS)
 
-gupnp_universal_cp_LDFLAGS = -export-dynamic
+gupnp_universal_cp_LDFLAGS = -export-dynamic $(WARN_LDFLAGS)
 
 if OS_WIN32
 universal-cp.res: universal-cp.rc

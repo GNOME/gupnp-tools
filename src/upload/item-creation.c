@@ -24,6 +24,7 @@
 #include <string.h>
 #include <stdlib.h>
 
+#include "item-creation.h"
 #include "main.h"
 
 static const char *

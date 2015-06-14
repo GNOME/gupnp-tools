@@ -48,7 +48,7 @@ static GOptionEntry entries[] =
         { NULL }
 };
 
-gboolean
+static gboolean
 on_force_rescan_timeout (GSSDPDiscover *discover) {
         gssdp_resource_browser_set_active (discover->browser,
                                            FALSE);
@@ -57,7 +57,7 @@ on_force_rescan_timeout (GSSDPDiscover *discover) {
         return TRUE;
 }
 
-void
+static void
 on_resource_available (GSSDPResourceBrowser *browser,
                        const char           *usn,
                        GList                *locations)
@@ -72,7 +72,7 @@ on_resource_available (GSSDPResourceBrowser *browser,
                 g_print ("  Location: %s\n", (char *) l->data);
 }
 
-void
+static void
 on_resource_unavailable (GSSDPResourceBrowser *browser,
                          const char           *usn)
 {

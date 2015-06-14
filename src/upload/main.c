@@ -67,8 +67,7 @@ goto_next_file (void)
                 create_item ((char *) files->data,
                              title,
                              cds_proxy,
-                             dest_container,
-                             upnp_context);
+                             dest_container);
         } else {
                 /* Exit if there are no more files to upload */
                 application_exit ();
@@ -90,8 +89,7 @@ container_found (const char *container_id)
         create_item ((char *) files->data,
                      title,
                      cds_proxy,
-                     dest_container,
-                     upnp_context);
+                     dest_container);
 }
 
 void
@@ -131,10 +129,8 @@ gint
 main (gint   argc,
       gchar *argv[])
 {
-        GError *error;
+        GError *error = NULL;
         gint i;
-
-        error = NULL;
         GOptionContext *context;
 
 #if !GLIB_CHECK_VERSION(2, 35, 0)

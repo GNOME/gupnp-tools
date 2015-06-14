@@ -26,13 +26,7 @@
 
 #include "device-treeview.h"
 #include "details-treeview.h"
-
-void
-display_event      (const char       *notified_at,
-                    const char       *friendly_name,
-                    const char       *service_id,
-                    const char       *variable_name,
-                    const char       *value);
+#include "event-treeview.h"
 
 void
 setup_treeview     (GtkWidget    *treeview,

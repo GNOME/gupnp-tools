@@ -43,8 +43,24 @@ static GtkWidget *separator;
 
 static gboolean   expanded;
 
+gboolean
+on_device_treeview_button_release (GtkWidget      *widget,
+                                   GdkEventButton *event,
+                                   gpointer        user_data);
+
+void
+on_device_treeview_row_activate (GtkMenuItem *menuitem,
+                                 gpointer     user_data);
+
+void
+on_expand_devices_activate (GtkMenuItem *menuitem,
+                            gpointer     user_data);
+
+void
+on_collapse_devices_activate (GtkMenuItem *menuitem,
+                              gpointer     user_data);
 static void
-show_default_details ()
+show_default_details (void)
 {
         const char *details[32];
         int         i = 0;
@@ -137,7 +153,7 @@ get_service_device (GUPnPServiceInfo *service_info)
 }
 
 static void
-setup_device_popup (GtkWidget *popup)
+setup_device_popup (GtkWidget *widget)
 {
         GUPnPServiceProxy *proxy;
 
