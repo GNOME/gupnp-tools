@@ -123,7 +123,7 @@ int main (int argc, char *argv[]) {
         }
 
         if (message_type == NULL) {
-                message_type = "available";
+                message_type = g_strdup ("available");
         } else {
                 if (strncmp (message_type, "available", 9) != 0 &&
                     strncmp (message_type, "all", 3) != 0 &&
@@ -172,6 +172,10 @@ int main (int argc, char *argv[]) {
         g_main_loop_unref (discover.main_loop);
         g_object_unref (discover.browser);
         g_object_unref (discover.client);
+
+        g_free (interface);
+        g_free (target);
+        g_free (message_type);
 
         return 0;
 }
