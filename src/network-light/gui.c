@@ -246,6 +246,8 @@ init_ui (gint   *argc,
         g_object_unref (icon_pixbuf);
 
         gtk_builder_connect_signals (builder, NULL);
+        g_signal_connect (G_OBJECT (about_dialog), "delete-event",
+                          G_CALLBACK (gtk_widget_hide_on_delete), NULL);
 
         update_image ();
 
