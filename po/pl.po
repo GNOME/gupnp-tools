@@ -4,14 +4,14 @@
 # pomóc w jego rozwijaniu i pielęgnowaniu, napisz do nas:
 # gnomepl@aviary.pl
 # -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-# Piotr Drąg <piotrdrag@gmail.com>, 2012-2014.
-# Aviary.pl <gnomepl@aviary.pl>, 2012-2014.
+# Piotr Drąg <piotrdrag@gmail.com>, 2012-2015.
+# Aviary.pl <gnomepl@aviary.pl>, 2012-2015.
 msgid ""
 msgstr ""
 "Project-Id-Version: gupnp-tools\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-11 02:37+0200\n"
-"PO-Revision-Date: 2014-08-11 02:38+0200\n"
+"POT-Creation-Date: 2015-09-02 02:54+0200\n"
+"PO-Revision-Date: 2015-09-02 02:55+0200\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <gnomepl@aviary.pl>\n"
 "Language: pl\n"
@@ -30,7 +30,7 @@ msgstr "Punkt kontrolny UPnP AV"
 #: ../data/gupnp-av-cp.ui.in.h:1 ../data/gupnp-network-light.ui.h:1
 #: ../data/gupnp-universal-cp.ui.h:1
 msgid "Copyright (C) 2007 Zeeshan Ali (Khattak)"
-msgstr "Copyright (C) 2007 Zeeshan Ali (Khattak)"
+msgstr "Copyright © 2007 Zeeshan Ali (Khattak)"
 
 #: ../data/gupnp-av-cp.ui.in.h:2
 msgid ""
@@ -38,7 +38,7 @@ msgid ""
 "Inspired by Intel Tools for UPnP."
 msgstr ""
 "Punkt kontrolny UPnP AV oparty na strukturze GUPnP.\n"
-"Zainspirowane przez oprogramowanie Intel Tools for UPnP."
+"Zainspirowane przez oprogramowanie „Intel Tools for UPnP”."
 
 #: ../data/gupnp-av-cp.ui.in.h:4 ../data/gupnp-network-light.ui.h:4
 #: ../data/gupnp-universal-cp.ui.h:4
@@ -50,8 +50,8 @@ msgstr "Witryna GUPnP"
 #: ../data/gupnp-universal-cp.ui.h:6
 msgid "translator-credits"
 msgstr ""
-"Piotr Drąg <piotrdrag@gmail.com>, 2012-2014\n"
-"Aviary.pl <gnomepl@aviary.pl>, 2012-2014"
+"Piotr Drąg <piotrdrag@gmail.com>, 2012-2015\n"
+"Aviary.pl <gnomepl@aviary.pl>, 2012-2015"
 
 #: ../data/gupnp-av-cp.ui.in.h:7
 msgid "GUPnP AV Control Point"
@@ -124,7 +124,7 @@ msgstr "_Mechanizm wyświetlający: "
 
 #: ../data/gupnp-av-cp.ui.in.h:23
 msgid "GUPnP AV CP - Metadata View"
-msgstr "GUPnP AV CP - widok metadanych"
+msgstr "GUPnP AV CP — widok metadanych"
 
 #: ../data/gupnp-av-cp.ui.in.h:24
 msgid "Fetch the DIDL-Lite XML for this media object"
@@ -144,7 +144,7 @@ msgid ""
 "Inspired by Intel Tools for UPnP."
 msgstr ""
 "Wirtualna sieciowa żarówka oparta na strukturze GUPnP.\n"
-"Zainspirowane przez oprogramowanie Intel Tools for UPnP."
+"Zainspirowane przez oprogramowanie „Intel Tools for UPnP”."
 
 #: ../data/gupnp-network-light.ui.h:7
 msgid "GUPnP Network Light"
@@ -179,7 +179,7 @@ msgid ""
 "Inspired by Intel Tools for UPnP."
 msgstr ""
 "Uniwersalny punkt kontrolny oparty na strukturze GUPnP.\n"
-"Zainspirowane przez oprogramowanie Intel Tools for UPnP."
+"Zainspirowane przez oprogramowanie „Intel Tools for UPnP”."
 
 #: ../data/gupnp-universal-cp.ui.h:7
 msgid "Action Invocation"
@@ -203,11 +203,11 @@ msgstr "działanie"
 
 #: ../data/gupnp-universal-cp.ui.h:12
 msgid "'in' arguments"
-msgstr "parametry \"in\""
+msgstr "parametry „in”"
 
 #: ../data/gupnp-universal-cp.ui.h:13
 msgid "'out' arguments"
-msgstr "parametry \"out\""
+msgstr "parametry „out”"
 
 #: ../data/gupnp-universal-cp.ui.h:14
 msgid "Copy value"
@@ -276,18 +276,18 @@ msgstr "PORT sieciowy używany dla UPnP"
 msgid "Network interfaces to use for UPnP communication"
 msgstr "Interfejsy sieciowe używane do komunikacji UPnP"
 
-#: ../src/av-cp/main.c:196 ../src/network-light/main.c:100
-#: ../src/universal-cp/main.c:145
+#: ../src/av-cp/main.c:198 ../src/network-light/main.c:100
+#: ../src/universal-cp/main.c:149
 msgid "- UPnP AV control point"
-msgstr "- punkt kontrolny UPnP AV"
+msgstr "— punkt kontrolny UPnP AV"
 
-#: ../src/av-cp/main.c:201 ../src/network-light/main.c:105
-#: ../src/universal-cp/main.c:150
+#: ../src/av-cp/main.c:203 ../src/network-light/main.c:105
+#: ../src/universal-cp/main.c:154
 #, c-format
 msgid "Could not parse options: %s\n"
 msgstr "Nie można przetworzyć opcji: %s\n"
 
-#: ../src/universal-cp/action-dialog.c:680
+#: ../src/universal-cp/action-dialog.c:686
 #, c-format
 msgid ""
 "Action failed.\n"
@@ -298,185 +298,185 @@ msgstr ""
 "\n"
 "Błąd %d: %s"
 
-#: ../src/universal-cp/details-treeview.c:180
-#: ../src/universal-cp/details-treeview.c:208
-#: ../src/universal-cp/details-treeview.c:234
-#: ../src/universal-cp/details-treeview.c:413
+#: ../src/universal-cp/details-treeview.c:192
+#: ../src/universal-cp/details-treeview.c:220
+#: ../src/universal-cp/details-treeview.c:246
+#: ../src/universal-cp/details-treeview.c:425
 msgid "Name"
 msgstr "Nazwa"
 
-#: ../src/universal-cp/details-treeview.c:182
+#: ../src/universal-cp/details-treeview.c:194
 msgid "Direction"
 msgstr "Kierunek"
 
-#: ../src/universal-cp/details-treeview.c:187
+#: ../src/universal-cp/details-treeview.c:199
 msgid "Related State Variable"
 msgstr "Powiązana zmienna stanu"
 
-#: ../src/universal-cp/details-treeview.c:189
+#: ../src/universal-cp/details-treeview.c:201
 msgid "Is Return Value"
 msgstr "Jest wartością zwrotną"
 
-#: ../src/universal-cp/details-treeview.c:190
-#: ../src/universal-cp/details-treeview.c:237
+#: ../src/universal-cp/details-treeview.c:202
+#: ../src/universal-cp/details-treeview.c:249
 msgid "Yes"
 msgstr "Tak"
 
-#: ../src/universal-cp/details-treeview.c:190
-#: ../src/universal-cp/details-treeview.c:237
+#: ../src/universal-cp/details-treeview.c:202
+#: ../src/universal-cp/details-treeview.c:249
 msgid "No"
 msgstr "Nie"
 
-#: ../src/universal-cp/details-treeview.c:210
+#: ../src/universal-cp/details-treeview.c:222
 msgid "Number of Arguments"
 msgstr "Liczba parametrów"
 
-#: ../src/universal-cp/details-treeview.c:236
+#: ../src/universal-cp/details-treeview.c:248
 msgid "Send Events"
 msgstr "Wyślij zdarzenia"
 
-#: ../src/universal-cp/details-treeview.c:238
+#: ../src/universal-cp/details-treeview.c:250
 msgid "GType"
 msgstr "GType"
 
-#: ../src/universal-cp/details-treeview.c:241
+#: ../src/universal-cp/details-treeview.c:253
 msgid "Default Value"
 msgstr "Domyślna wartość"
 
-#: ../src/universal-cp/details-treeview.c:247
+#: ../src/universal-cp/details-treeview.c:259
 msgid "Minimum"
 msgstr "Minimalna"
 
-#: ../src/universal-cp/details-treeview.c:251
+#: ../src/universal-cp/details-treeview.c:263
 msgid "Maximum"
 msgstr "Maksymalna"
 
-#: ../src/universal-cp/details-treeview.c:255
+#: ../src/universal-cp/details-treeview.c:267
 msgid "Step"
 msgstr "Krok"
 
-#: ../src/universal-cp/details-treeview.c:275
+#: ../src/universal-cp/details-treeview.c:287
 msgid "Allowed Values"
 msgstr "Dozwolone wartości"
 
-#: ../src/universal-cp/details-treeview.c:299
-#: ../src/universal-cp/details-treeview.c:346
+#: ../src/universal-cp/details-treeview.c:311
+#: ../src/universal-cp/details-treeview.c:358
 msgid "Location"
 msgstr "Położenie"
 
-#: ../src/universal-cp/details-treeview.c:304
-#: ../src/universal-cp/details-treeview.c:351
+#: ../src/universal-cp/details-treeview.c:316
+#: ../src/universal-cp/details-treeview.c:363
 msgid "UDN"
 msgstr "UDN"
 
-#: ../src/universal-cp/details-treeview.c:309
-#: ../src/universal-cp/details-treeview.c:356
+#: ../src/universal-cp/details-treeview.c:321
+#: ../src/universal-cp/details-treeview.c:368
 msgid "Type"
 msgstr "Typ"
 
-#: ../src/universal-cp/details-treeview.c:314
-#: ../src/universal-cp/details-treeview.c:361
+#: ../src/universal-cp/details-treeview.c:326
+#: ../src/universal-cp/details-treeview.c:373
 msgid "Base URL"
 msgstr "Podstawowy adres URL"
 
-#: ../src/universal-cp/details-treeview.c:319
+#: ../src/universal-cp/details-treeview.c:331
 msgid "Service ID"
 msgstr "Identyfikator usługi"
 
-#: ../src/universal-cp/details-treeview.c:321
+#: ../src/universal-cp/details-treeview.c:333
 msgid "Service URL"
 msgstr "Adres URL usługi"
 
-#: ../src/universal-cp/details-treeview.c:323
+#: ../src/universal-cp/details-treeview.c:335
 msgid "Control URL"
 msgstr "Adres URL kontroli"
 
-#: ../src/universal-cp/details-treeview.c:325
+#: ../src/universal-cp/details-treeview.c:337
 msgid "Event Subscription URL"
 msgstr "Adres URL subskrypcji zdarzeń"
 
-#: ../src/universal-cp/details-treeview.c:366
+#: ../src/universal-cp/details-treeview.c:378
 msgid "Friendly Name"
 msgstr "Przyjazna nazwa"
 
-#: ../src/universal-cp/details-treeview.c:368
+#: ../src/universal-cp/details-treeview.c:380
 msgid "Manufacturer"
 msgstr "Producent"
 
-#: ../src/universal-cp/details-treeview.c:370
+#: ../src/universal-cp/details-treeview.c:382
 msgid "Manufacturer URL"
 msgstr "Adres URL producenta"
 
-#: ../src/universal-cp/details-treeview.c:372
+#: ../src/universal-cp/details-treeview.c:384
 msgid "Model Description"
 msgstr "Opis modelu"
 
-#: ../src/universal-cp/details-treeview.c:374
+#: ../src/universal-cp/details-treeview.c:386
 msgid "Model Name"
 msgstr "Nazwa modelu"
 
-#: ../src/universal-cp/details-treeview.c:376
+#: ../src/universal-cp/details-treeview.c:388
 msgid "Model Number"
 msgstr "Numer modelu"
 
-#: ../src/universal-cp/details-treeview.c:378
+#: ../src/universal-cp/details-treeview.c:390
 msgid "Model URL"
 msgstr "Adres URL modelu"
 
-#: ../src/universal-cp/details-treeview.c:380
+#: ../src/universal-cp/details-treeview.c:392
 msgid "Serial Number"
 msgstr "Numer seryjny"
 
-#: ../src/universal-cp/details-treeview.c:382
+#: ../src/universal-cp/details-treeview.c:394
 msgid "UPC"
 msgstr "UPC"
 
-#: ../src/universal-cp/details-treeview.c:384
+#: ../src/universal-cp/details-treeview.c:396
 msgid "Presentation URL"
 msgstr "Adres URL prezentacji"
 
-#: ../src/universal-cp/details-treeview.c:414
-#: ../src/universal-cp/event-treeview.c:376
+#: ../src/universal-cp/details-treeview.c:426
+#: ../src/universal-cp/event-treeview.c:404
 msgid "Value"
 msgstr "Wartość"
 
-#: ../src/universal-cp/device-treeview.c:52
+#: ../src/universal-cp/device-treeview.c:68
 msgid "Software"
 msgstr "Oprogramowanie"
 
-#: ../src/universal-cp/device-treeview.c:54
+#: ../src/universal-cp/device-treeview.c:70
 msgid "Version"
 msgstr "Wersja"
 
-#: ../src/universal-cp/device-treeview.c:56
+#: ../src/universal-cp/device-treeview.c:72
 msgid "Author"
 msgstr "Autor"
 
-#: ../src/universal-cp/device-treeview.c:462
+#: ../src/universal-cp/device-treeview.c:478
 msgid "State variables"
 msgstr "Zmienne stanu"
 
-#: ../src/universal-cp/device-treeview.c:503
+#: ../src/universal-cp/device-treeview.c:519
 msgid "Information not available"
 msgstr "Informacja jest niedostępna"
 
-#: ../src/universal-cp/device-treeview.c:681
+#: ../src/universal-cp/device-treeview.c:697
 msgid "UPnP Network"
 msgstr "Sieć UPnP"
 
-#: ../src/universal-cp/device-treeview.c:694
-#: ../src/universal-cp/event-treeview.c:373
+#: ../src/universal-cp/device-treeview.c:710
+#: ../src/universal-cp/event-treeview.c:401
 msgid "Device"
 msgstr "Urządzenie"
 
-#: ../src/universal-cp/event-treeview.c:372
+#: ../src/universal-cp/event-treeview.c:400
 msgid "Time"
 msgstr "Czas"
 
-#: ../src/universal-cp/event-treeview.c:374
+#: ../src/universal-cp/event-treeview.c:402
 msgid "Service"
 msgstr "Usługa"
 
-#: ../src/universal-cp/event-treeview.c:375
+#: ../src/universal-cp/event-treeview.c:403
 msgid "State Variable"
 msgstr "Zmienna stanu"
