@@ -1,3 +1,36 @@
+0.8.11
+======
+
+Changes since 0.8.10:
+
+- Remove gnome-common.
+
+Network light:
+ - Fix re-creation of about dialog.
+ - Use UUID functions from GUPnP.
+ - Fix a critical on shutdown after showing the about dialog.
+
+AV-CP:
+ - Fix default resolution on weird screens.
+ - Avoid a possible crash when clicking on rescan after contexts have been
+   changed.
+
+Discoverer:
+ - Free some strings.
+
+Bugs fixed in this release:
+ - https://bugzilla.gnome.org/show_bug.cgi?id=697315
+ - https://bugzilla.gnome.org/show_bug.cgi?id=697954
+
+All contributors to this release:
+ - Jens Georg <mail@jensge.org>
+ - Piotr Drąg <piotrdrag@gmail.com>
+ - Pedro Albuquerque <palbuquerque73@gmail.com>
+
+Added/updated translations
+ - pl, courtesy of Piotr Drąg
+ - pt, courtesy of Pedro Albuquerque
+
 0.8.10
 ======
 
