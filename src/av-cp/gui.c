@@ -90,6 +90,8 @@ init_ui (void)
 {
         gint window_width, window_height;
         GError *error = NULL;
+        double w = 0.0;
+        double h = 0.0;
 
         builder = gtk_builder_new ();
         g_assert (builder != NULL);
@@ -115,8 +117,18 @@ init_ui (void)
         g_assert (rescan_button != NULL);
 
         /* 40% of the screen but don't get bigger than 1000x800 */
-        window_width = CLAMP ((gdk_screen_width () * 40 / 100), 10, 1000);
-        window_height = CLAMP ((gdk_screen_height () * 40 / 100), 10, 800);
+        w = gdk_screen_width () * 0.4;
+        h = gdk_screen_height () * 0.4;
+
+        /* Keep 5/4 aspect */
+        if (w/h > 1.25) {
+                h = w / 1.25;
+        } else {
+                w = h * 1.25;
+        }
+
+        window_width = CLAMP ((int) w, 10, 1000);
+        window_height = CLAMP ((int) h, 10, 800);
         gtk_window_set_default_size (GTK_WINDOW (main_window),
                                      window_width,
                                      window_height);
