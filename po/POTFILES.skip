@@ -4,3 +4,7 @@ data/gupnp-av-cp.desktop.in
 data/gupnp-network-light.desktop.in
 data/gupnp-universal-cp.desktop.in
 data/gupnp-av-cp.ui
+sub/data/gupnp-av-cp.desktop.in
+sub/data/gupnp-network-light.desktop.in
+sub/data/gupnp-universal-cp.desktop.in
+sub/data/gupnp-av-cp.ui
