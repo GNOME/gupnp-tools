@@ -34,7 +34,7 @@ static GUPnPContext      *upnp_context;
 static GUPnPServiceProxy *cds_proxy;
 
 static GList *files = NULL;
-static char *udn;
+static char *udn = NULL;
 static char *interface = NULL;
 
 static const char *title = NULL;
@@ -55,6 +55,9 @@ static GOptionEntry entries[] =
         { "interface", 'e', 0,
           G_OPTION_ARG_STRING, &interface,
           "Network interface to search MediaServer on", "INTERFACE" },
+        { "udn", 'u', 0,
+          G_OPTION_ARG_STRING, &udn,
+          "UDN of the device to upload to", "UDN" },
         { NULL }
 };
 
@@ -137,7 +140,7 @@ main (gint   argc,
         g_type_init ();
 #endif
 
-        context = g_option_context_new ("- Upload file to UPnP MediaServer");
+        context = g_option_context_new ("- Upload files to UPnP MediaServer");
         g_option_context_add_main_entries (context, entries, GETTEXT_PACKAGE);
         if (!g_option_context_parse (context, &argc, &argv, &error))
         {
@@ -155,10 +158,8 @@ main (gint   argc,
                 return -4;
         }
 
-        udn = argv[1];
-
         /* Get the list of files to upload */
-        for (i = 2; i < argc; i++) {
+        for (i = 1; i < argc; i++) {
                 if (!g_file_test (argv[i],
                                   G_FILE_TEST_EXISTS |
                                   G_FILE_TEST_IS_REGULAR)) {
