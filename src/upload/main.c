@@ -146,7 +146,11 @@ main (gint   argc,
         }
 
         if (argc < 3) {
-                g_print ("Usage: %s UDN FILE_PATH...\n", argv[0]);
+                char *help = NULL;
+
+                help = g_option_context_get_help (context, TRUE, NULL);
+                g_print ("%s\n", help);
+                g_free (help);
 
                 return -4;
         }
