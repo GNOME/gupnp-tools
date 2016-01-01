@@ -1,7 +1,7 @@
 # German translation for gupnp-tools.
 # Copyright (C) 2013 gupnp-tools's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gupnp-tools package.
-# Mario Blättermann <mario.blaettermann@gmail.com>, 2013.
+# Mario Blättermann <mario.blaettermann@gmail.com>, 2013, 2016.
 # Christian Kirbach <christian.kirbach@gmail.com>, 2013.
 #
 msgid ""
@@ -9,16 +9,16 @@ msgstr ""
 "Project-Id-Version: gupnp-tools master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gupnp-"
 "tools&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-02-28 09:37+0000\n"
-"PO-Revision-Date: 2013-03-05 11:25+0100\n"
-"Last-Translator: Christian Kirbach <christian.kirbach@gmail.com>\n"
+"POT-Creation-Date: 2014-08-10 19:24+0000\n"
+"PO-Revision-Date: 2016-01-01 18:50+0100\n"
+"Last-Translator: Mario Blättermann <mario.blaettermann@gmail.com>\n"
 "Language-Team: Deutsch <gnome-de@gnome.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Gtranslator 2.91.6\n"
+"X-Generator: Poedit 1.8.6\n"
 
 #: ../data/gupnp-av-cp.desktop.in.in.h:1
 msgid "UPnP AV Control Point"
@@ -42,48 +42,67 @@ msgstr ""
 msgid "GUPnP homepage"
 msgstr "GUPnP-Homepage"
 
-#: ../data/gupnp-av-cp.ui.in.h:5 ../data/gupnp-network-light.ui.h:5
-#: ../data/gupnp-universal-cp.ui.h:5
-msgid "GPL"
-msgstr "GPL"
-
 #. TRANSLATORS: Replace this string with your names, one name per line.
-#: ../data/gupnp-av-cp.ui.in.h:7 ../data/gupnp-network-light.ui.h:7
-#: ../data/gupnp-universal-cp.ui.h:7
+#: ../data/gupnp-av-cp.ui.in.h:6 ../data/gupnp-network-light.ui.h:6
+#: ../data/gupnp-universal-cp.ui.h:6
 msgid "translator-credits"
 msgstr ""
 "Christian Kirbach <christian.kirbach@gmail.com>\n"
 "Mario Blättermann <mario.blaettermann@gmail.com>"
 
-#: ../data/gupnp-av-cp.ui.in.h:8
-msgid "GUPnP AV CP - Metadata View"
-msgstr "GUPnP AV CP - Metadaten-Ansicht"
-
-#: ../data/gupnp-av-cp.ui.in.h:9
+#: ../data/gupnp-av-cp.ui.in.h:7
 msgid "GUPnP AV Control Point"
 msgstr "GUPnP AV-Kontrollpunkt"
 
-#: ../data/gupnp-av-cp.ui.in.h:10 ../data/gupnp-universal-cp.ui.h:25
+#: ../data/gupnp-av-cp.ui.in.h:8 ../data/gupnp-universal-cp.ui.h:24
 msgid "_File"
 msgstr "_Datei"
 
-#: ../data/gupnp-av-cp.ui.in.h:11
+#: ../data/gupnp-av-cp.ui.in.h:9
+msgid "Close"
+msgstr "Schließen"
+
+#: ../data/gupnp-av-cp.ui.in.h:10
 msgid "_Tools"
 msgstr "_Werkzeuge"
 
-#: ../data/gupnp-av-cp.ui.in.h:12
+#: ../data/gupnp-av-cp.ui.in.h:11
 msgid "_Lenient Mode"
 msgstr "To_leranter Modus"
 
-#: ../data/gupnp-av-cp.ui.in.h:13 ../data/gupnp-universal-cp.ui.h:28
+#: ../data/gupnp-av-cp.ui.in.h:12 ../data/gupnp-universal-cp.ui.h:29
 msgid "_Help"
 msgstr "_Hilfe"
 
+#: ../data/gupnp-av-cp.ui.in.h:13 ../data/gupnp-universal-cp.ui.h:30
+msgid "About"
+msgstr "Info"
+
 #: ../data/gupnp-av-cp.ui.in.h:14
-msgid "_Renderer: "
-msgstr "_Darsteller: "
+msgid "_Play"
+msgstr "_Wiedergabe"
 
 #: ../data/gupnp-av-cp.ui.in.h:15
+msgid "P_ause"
+msgstr "P_ause"
+
+#: ../data/gupnp-av-cp.ui.in.h:16
+msgid "_Stop"
+msgstr "_Stopp"
+
+#: ../data/gupnp-av-cp.ui.in.h:17
+msgid "Pre_vious"
+msgstr "_Vorheriger"
+
+#: ../data/gupnp-av-cp.ui.in.h:18
+msgid "_Next"
+msgstr "_Nächster"
+
+#: ../data/gupnp-av-cp.ui.in.h:19
+msgid "Rescan"
+msgstr "Erneut einlesen"
+
+#: ../data/gupnp-av-cp.ui.in.h:20
 msgid ""
 "Clears the CP's idea of the state of the currently selected AV Renderer. "
 "Useful for dealing with AV Renderers that don't report state changes."
@@ -91,39 +110,23 @@ msgstr ""
 "Verwirft die Einschätzung des Kontrollpunktes über den aktuell gewählten AV-"
 "Renderer. Sinnvoll für AV-Renderer, die keine Statusänderungen berichten."
 
-#: ../data/gupnp-av-cp.ui.in.h:16
+#: ../data/gupnp-av-cp.ui.in.h:21
 msgid "_Clear state"
 msgstr "Zustand _löschen"
 
-#: ../data/gupnp-av-cp.ui.in.h:17
-msgid "_Play"
-msgstr "_Wiedergabe"
-
-#: ../data/gupnp-av-cp.ui.in.h:18
-msgid "P_ause"
-msgstr "P_ause"
-
-#: ../data/gupnp-av-cp.ui.in.h:19
-msgid "_Stop"
-msgstr "_Stopp"
-
-#: ../data/gupnp-av-cp.ui.in.h:20
-msgid "Pre_vious"
-msgstr "_Vorheriger"
-
-#: ../data/gupnp-av-cp.ui.in.h:21
-msgid "_Next"
-msgstr "_Nächster"
-
 #: ../data/gupnp-av-cp.ui.in.h:22
-msgid "Rescan"
-msgstr "Erneut einlesen"
+msgid "_Renderer: "
+msgstr "_Darsteller: "
 
 #: ../data/gupnp-av-cp.ui.in.h:23
+msgid "GUPnP AV CP - Metadata View"
+msgstr "GUPnP AV CP - Metadaten-Ansicht"
+
+#: ../data/gupnp-av-cp.ui.in.h:24
 msgid "Fetch the DIDL-Lite XML for this media object"
 msgstr "DIDL-Lite XML für dieses Medienobjekt"
 
-#: ../data/gupnp-av-cp.ui.in.h:24
+#: ../data/gupnp-av-cp.ui.in.h:25
 msgid "Fetch _DIDL-Lite"
 msgstr "_DIDL-Lite holen"
 
@@ -139,26 +142,26 @@ msgstr ""
 "Ein virtuelle Netzwerk-Glühbirne basierend auf dem GUPnP-Framework.\n"
 "Inspiriert durch die Intel-Tools für UPnP."
 
-#: ../data/gupnp-network-light.ui.h:8
+#: ../data/gupnp-network-light.ui.h:7
 msgid "GUPnP Network Light"
 msgstr "GUPnP Network Light"
 
-#: ../data/gupnp-network-light.ui.h:9
+#: ../data/gupnp-network-light.ui.h:8
 msgctxt "network-light"
 msgid "_On"
 msgstr "_An"
 
-#: ../data/gupnp-network-light.ui.h:11
+#: ../data/gupnp-network-light.ui.h:10
 #, no-c-format
 msgid "_Increase luminance by 20%"
 msgstr "Helligkeit um 20% _erhöhen"
 
-#: ../data/gupnp-network-light.ui.h:13
+#: ../data/gupnp-network-light.ui.h:12
 #, no-c-format
 msgid "_Decrease luminance by 20%"
 msgstr "Helligkeit um 20% se_nken"
 
-#: ../data/gupnp-network-light.ui.h:14
+#: ../data/gupnp-network-light.ui.h:13
 msgid "_About"
 msgstr "_Info"
 
@@ -174,84 +177,114 @@ msgstr ""
 "Ein allgemeiner Kontrollpunkt basierend auf dem GUPnP-Framework.\n"
 "Inspiriert durch die Intel-Tools für UPnP."
 
-#: ../data/gupnp-universal-cp.ui.h:8
+#: ../data/gupnp-universal-cp.ui.h:7
 msgid "Action Invocation"
 msgstr "Aktionsaufruf"
 
+#: ../data/gupnp-universal-cp.ui.h:8
+msgid "_Invoke"
+msgstr "_Aufrufen"
+
 #: ../data/gupnp-universal-cp.ui.h:9
-msgid "action"
-msgstr "Aktion"
+msgid "device"
+msgstr "Gerät"
 
 #: ../data/gupnp-universal-cp.ui.h:10
 msgid "service"
 msgstr "Dienst"
 
 #: ../data/gupnp-universal-cp.ui.h:11
-msgid "device"
-msgstr "Gerät"
+msgid "action"
+msgstr "Aktion"
 
 #: ../data/gupnp-universal-cp.ui.h:12
-msgid "_Invoke"
-msgstr "_Aufrufen"
+msgid "'in' arguments"
+msgstr "»Eingehende« Argumente"
 
 #: ../data/gupnp-universal-cp.ui.h:13
-msgid "<b>'in' arguments</b>"
-msgstr "<b>»Eingehende« Argumente</b>"
+msgid "'out' arguments"
+msgstr "»Ausgehende« Argumente"
 
 #: ../data/gupnp-universal-cp.ui.h:14
-msgid "<b>'out' arguments</b>"
-msgstr "<b>»Ausgehende« Argumente</b>"
-
-#: ../data/gupnp-universal-cp.ui.h:15
 msgid "Copy value"
 msgstr "Wert kopieren"
 
-#: ../data/gupnp-universal-cp.ui.h:16
+#: ../data/gupnp-universal-cp.ui.h:15
 msgid "Copy all details"
 msgstr "Alle Details kopieren"
 
-#: ../data/gupnp-universal-cp.ui.h:17
+#: ../data/gupnp-universal-cp.ui.h:16
 msgid "Invoke"
 msgstr "Aufrufen"
 
-#: ../data/gupnp-universal-cp.ui.h:18
+#: ../data/gupnp-universal-cp.ui.h:17
 msgid "Subscribe to events"
 msgstr "Ereignisse abonnieren"
 
-#: ../data/gupnp-universal-cp.ui.h:19
+#: ../data/gupnp-universal-cp.ui.h:18
 msgid "_Expand all devices"
 msgstr "Alle Geräte _aufklappen"
 
-#: ../data/gupnp-universal-cp.ui.h:20
+#: ../data/gupnp-universal-cp.ui.h:19
 msgid "_Collapse all devices"
 msgstr "Alle Geräte _einklappen"
 
-#: ../data/gupnp-universal-cp.ui.h:21
+#: ../data/gupnp-universal-cp.ui.h:20
 msgid "Copy event"
 msgstr "Ereignis kopieren"
 
-#: ../data/gupnp-universal-cp.ui.h:22
+#: ../data/gupnp-universal-cp.ui.h:21
 msgid "Copy all events"
 msgstr "Alle Ereignisse kopieren"
 
-#: ../data/gupnp-universal-cp.ui.h:23
+#: ../data/gupnp-universal-cp.ui.h:22
 msgid "_Clear event log"
 msgstr "Ereignismitschnitt _leeren"
 
 #. default details
-#: ../data/gupnp-universal-cp.ui.h:24 ../src/universal-cp/device-treeview.c:35
+#: ../data/gupnp-universal-cp.ui.h:23 ../src/universal-cp/device-treeview.c:35
 msgid "GUPnP Universal Control Point"
 msgstr "GUPnP universeller Kontrollpunkt"
 
+#: ../data/gupnp-universal-cp.ui.h:25
+msgid "Clear event log"
+msgstr "Ereignismitschnitt leeren"
+
 #: ../data/gupnp-universal-cp.ui.h:26
+msgid "Quit"
+msgstr "Beenden"
+
+#: ../data/gupnp-universal-cp.ui.h:27
 msgid "_View"
 msgstr "_Ansicht"
 
-#: ../data/gupnp-universal-cp.ui.h:27
+#: ../data/gupnp-universal-cp.ui.h:28
 msgid "Event _log"
 msgstr "_Ereignismitschnitt"
 
-#: ../src/universal-cp/action-dialog.c:714
+#: ../src/av-cp/main.c:47 ../src/network-light/main.c:46
+#: ../src/universal-cp/main.c:41
+msgid "Network PORT to use for UPnP"
+msgstr "Netzwerk-Port, der für UPnP-Kommunikation verwendet werden soll"
+
+#: ../src/av-cp/main.c:48 ../src/network-light/main.c:47
+#: ../src/universal-cp/main.c:42
+msgid "Network interfaces to use for UPnP communication"
+msgstr ""
+"Netzwerkschnittstellen, die für UPnP-Kommunikation verwendet werden sollen"
+
+#: ../src/av-cp/main.c:196 ../src/network-light/main.c:100
+#: ../src/universal-cp/main.c:145
+msgid "- UPnP AV control point"
+msgstr "- UPnP AV-Kontrollpunkt"
+
+#: ../src/av-cp/main.c:201 ../src/network-light/main.c:105
+#: ../src/universal-cp/main.c:150
+#, c-format
+msgid "Could not parse options: %s\n"
+msgstr "Optionen konnten nicht analysiert werden: %s\n"
+
+#: ../src/universal-cp/action-dialog.c:680
 #, c-format
 msgid ""
 "Action failed.\n"
@@ -417,19 +450,19 @@ msgstr "Version"
 msgid "Author"
 msgstr "Autor"
 
-#: ../src/universal-cp/device-treeview.c:459
+#: ../src/universal-cp/device-treeview.c:462
 msgid "State variables"
 msgstr "Zustandsvariablen"
 
-#: ../src/universal-cp/device-treeview.c:499
+#: ../src/universal-cp/device-treeview.c:503
 msgid "Information not available"
 msgstr "Information nicht verfügbar"
 
-#: ../src/universal-cp/device-treeview.c:676
+#: ../src/universal-cp/device-treeview.c:681
 msgid "UPnP Network"
 msgstr "UPnP-Netzwerk"
 
-#: ../src/universal-cp/device-treeview.c:689
+#: ../src/universal-cp/device-treeview.c:694
 #: ../src/universal-cp/event-treeview.c:373
 msgid "Device"
 msgstr "Gerät"
@@ -445,3 +478,6 @@ msgstr "Dienste"
 #: ../src/universal-cp/event-treeview.c:375
 msgid "State Variable"
 msgstr "Zustandsvariable"
+
+#~ msgid "GPL"
+#~ msgstr "GPL"
