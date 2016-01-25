@@ -30,7 +30,7 @@ gboolean
 init_ui            (gint             *argc,
                     gchar           **argv[],
                     gchar            *name,
-                    gboolean          only);
+                    gboolean          exclusive);
 
 void
 deinit_ui          (void);
