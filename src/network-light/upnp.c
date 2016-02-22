@@ -378,12 +378,33 @@ xml_util_get_element (xmlNode *node,
         return node;
 }
 
+static void init_friendly_name (gchar *name)
+{
+        xmlNode *fdn_node;
+
+        fdn_node = xml_util_get_element ((xmlNode *) doc->doc,
+                                          "root",
+                                          "device",
+                                          "friendlyName",
+                                          NULL);
+        if (fdn_node == NULL) {
+                g_warning ("Failed to find friendly name element"
+                            "in device description, "
+                            "using default value");
+
+                return;
+        }
+
+        xmlNodeSetContent (fdn_node, (unsigned char *) name);
+}
+
 static void init_uuid (void)
 {
         xmlNode *uuid_node;
         char *udn;
 
         uuid = gupnp_get_uuid ();
+
         uuid_node = xml_util_get_element ((xmlNode *) doc->doc,
                                           "root",
                                           "device",
@@ -609,7 +630,7 @@ init_server (GUPnPContext *context)
 }
 
 static gboolean
-prepare_desc (void)
+prepare_desc (gchar *name)
 {
         GError *error = NULL;
 
@@ -622,6 +643,11 @@ prepare_desc (void)
                 g_error_free (error);
 
                 return FALSE;
+        }
+
+        if (name && (strlen(name) > 0)) {
+                /* set the friendlyName in the xmlDoc */
+                init_friendly_name (name);
         }
 
         /* create and set the UUID in the xmlDoc */
@@ -705,7 +731,7 @@ context_equal (GUPnPContext *context1, GUPnPContext *context2)
 }
 
 gboolean
-init_upnp (gchar **interfaces, guint port)
+init_upnp (gchar **interfaces, guint port, gchar *name)
 {
         GUPnPWhiteList *white_list;
 
@@ -717,7 +743,7 @@ init_upnp (gchar **interfaces, guint port)
                                          g_object_unref,
                                          (GDestroyNotify) network_light_free);
 
-        if (!prepare_desc ()) {
+        if (!prepare_desc (name)) {
                 return FALSE;
         }
 

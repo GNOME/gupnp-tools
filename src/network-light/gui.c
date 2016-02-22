@@ -191,7 +191,8 @@ on_delete_event (GtkWidget *widget,
 
 gboolean
 init_ui (gint   *argc,
-         gchar **argv[])
+         gchar **argv[],
+         gchar *name)
 {
         GdkPixbuf *icon_pixbuf;
         GError *error = NULL;
@@ -214,6 +215,10 @@ init_ui (gint   *argc,
         main_window = GTK_WIDGET (gtk_builder_get_object (builder,
                                                           "main-window"));
         g_assert (main_window != NULL);
+
+        if (name && (strlen(name) > 0)) {
+            gtk_window_set_title (GTK_WINDOW (main_window), name);
+        }
 
         about_dialog = GTK_WIDGET (gtk_builder_get_object (builder,
                                                            "about-dialog"));
