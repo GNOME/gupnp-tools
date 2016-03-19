@@ -1,0 +1,476 @@
+# Simge Sezgin <simgesezgin88@gmail.com>, 2015.
+# Gökhan Gurbetoğlu <ggurbet@gmail.com>, 2016.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gupnp-tools master\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gupnp-"
+"tools&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2015-11-24 22:17+0000\n"
+"PO-Revision-Date: 2016-03-19 15:38+0200\n"
+"Last-Translator: Gökhan Gurbetoğlu <ggurbet@gmail.com>\n"
+"Language-Team: Türkçe <gnome-turk@gnome.org>\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Gtranslator 2.91.6\n"
+"X-POOTLE-MTIME: 1429370203.000000\n"
+
+#: ../data/gupnp-av-cp.desktop.in.in.h:1
+msgid "UPnP AV Control Point"
+msgstr "UPnP AV Denetim Noktası"
+
+#: ../data/gupnp-av-cp.ui.in.h:1 ../data/gupnp-network-light.ui.h:1
+#: ../data/gupnp-universal-cp.ui.h:1
+msgid "Copyright (C) 2007 Zeeshan Ali (Khattak)"
+msgstr "Telif Hakkı (C) 2007 Zeeshan Ali (Khattak)"
+
+#: ../data/gupnp-av-cp.ui.in.h:2
+msgid ""
+"An UPnP AV Control Point based on GUPnP framework.\n"
+"Inspired by Intel Tools for UPnP."
+msgstr ""
+"UPnP AV Denetim Nokatsı, GUPnP çatısı tabanlıdır.\n"
+"UPnP için Intel Araçları'ndan esinlenilmiştir."
+
+#: ../data/gupnp-av-cp.ui.in.h:4 ../data/gupnp-network-light.ui.h:4
+#: ../data/gupnp-universal-cp.ui.h:4
+msgid "GUPnP homepage"
+msgstr "GUPnP ana sayfa"
+
+#. TRANSLATORS: Replace this string with your names, one name per line.
+#: ../data/gupnp-av-cp.ui.in.h:6 ../data/gupnp-network-light.ui.h:6
+#: ../data/gupnp-universal-cp.ui.h:6
+msgid "translator-credits"
+msgstr "Kaan Özdinçer <kaanozdincer@gmail.com>"
+
+#: ../data/gupnp-av-cp.ui.in.h:7
+msgid "GUPnP AV Control Point"
+msgstr "GUPnP AV Denetim Noktası"
+
+#: ../data/gupnp-av-cp.ui.in.h:8 ../data/gupnp-universal-cp.ui.h:24
+msgid "_File"
+msgstr "_Dosya"
+
+#: ../data/gupnp-av-cp.ui.in.h:9
+msgid "Close"
+msgstr "Kapat"
+
+#: ../data/gupnp-av-cp.ui.in.h:10
+msgid "_Tools"
+msgstr "_Araçlar"
+
+#: ../data/gupnp-av-cp.ui.in.h:11
+msgid "_Lenient Mode"
+msgstr "_Hafif Kip"
+
+#: ../data/gupnp-av-cp.ui.in.h:12 ../data/gupnp-universal-cp.ui.h:29
+msgid "_Help"
+msgstr "_Yardım"
+
+#: ../data/gupnp-av-cp.ui.in.h:13 ../data/gupnp-universal-cp.ui.h:30
+msgid "About"
+msgstr "Hakkında"
+
+#: ../data/gupnp-av-cp.ui.in.h:14
+msgid "_Play"
+msgstr "_Oynat"
+
+#: ../data/gupnp-av-cp.ui.in.h:15
+msgid "P_ause"
+msgstr "Durakla_t"
+
+#: ../data/gupnp-av-cp.ui.in.h:16
+msgid "_Stop"
+msgstr "_Durdur"
+
+#: ../data/gupnp-av-cp.ui.in.h:17
+msgid "Pre_vious"
+msgstr "_Önceki"
+
+#: ../data/gupnp-av-cp.ui.in.h:18
+msgid "_Next"
+msgstr "_Sonraki"
+
+#: ../data/gupnp-av-cp.ui.in.h:19
+msgid "Rescan"
+msgstr "Yeniden Tara"
+
+#: ../data/gupnp-av-cp.ui.in.h:20
+msgid ""
+"Clears the CP's idea of the state of the currently selected AV Renderer. "
+"Useful for dealing with AV Renderers that don't report state changes."
+msgstr ""
+"Şuanda seçili AV Gerçekleştiricisinin durumunun CP fikrini temizler. Durum "
+"değişikliklerini bildirmeyen AV Gerçekleştiricileri ile başa çıkmak için "
+"kullanışlıdır."
+
+#: ../data/gupnp-av-cp.ui.in.h:21
+msgid "_Clear state"
+msgstr "Durumu _temizle"
+
+#: ../data/gupnp-av-cp.ui.in.h:22
+msgid "_Renderer: "
+msgstr "_Gerçekleyici: "
+
+#: ../data/gupnp-av-cp.ui.in.h:23
+msgid "GUPnP AV CP - Metadata View"
+msgstr "GUPnP AV CP - Üstveri Görünümü"
+
+#: ../data/gupnp-av-cp.ui.in.h:24
+msgid "Fetch the DIDL-Lite XML for this media object"
+msgstr "Bu ortam nesnesi için DIDL-Lite XML çek"
+
+#: ../data/gupnp-av-cp.ui.in.h:25
+msgid "Fetch _DIDL-Lite"
+msgstr "_DIDL-Lite Çek"
+
+#: ../data/gupnp-network-light.desktop.in.in.h:1
+msgid "UPnP Network Light"
+msgstr "UPnp Ağ Işığı"
+
+#: ../data/gupnp-network-light.ui.h:2
+msgid ""
+"A virtual network light bulb based on GUPnP framework.\n"
+"Inspired by Intel Tools for UPnP."
+msgstr ""
+"GUPnP çatısı tabanlı bir sanal ağ ışığı lambası.\n"
+"UPnP için Intel Araçları'ndan esinlenilmiştir."
+
+#: ../data/gupnp-network-light.ui.h:7
+msgid "GUPnP Network Light"
+msgstr "GUPnP Ağ Işığı"
+
+#: ../data/gupnp-network-light.ui.h:8
+msgctxt "network-light"
+msgid "_On"
+msgstr "_Açık"
+
+#: ../data/gupnp-network-light.ui.h:10
+#, no-c-format
+msgid "_Increase luminance by 20%"
+msgstr "Parlaklığı %20 _arttır"
+
+#: ../data/gupnp-network-light.ui.h:12
+#, no-c-format
+msgid "_Decrease luminance by 20%"
+msgstr "Parlaklığı %20 a_zalt"
+
+#: ../data/gupnp-network-light.ui.h:13
+msgid "_About"
+msgstr "_Hakkında"
+
+#: ../data/gupnp-universal-cp.desktop.in.in.h:1
+msgid "UPnP Universal Control Point"
+msgstr "UPnP Evrensel Denetim Noktası"
+
+#: ../data/gupnp-universal-cp.ui.h:2
+msgid ""
+"A Generic Control Point based on GUPnP framework.\n"
+"Inspired by Intel Tools for UPnP."
+msgstr ""
+"GUPnP çatısı tabanlı bir Genel Denetim Noktası.\n"
+"UPnP için Intel Araçları'ndan esinlenilmiştir."
+
+#: ../data/gupnp-universal-cp.ui.h:7
+msgid "Action Invocation"
+msgstr "Eylem Yürütme"
+
+#: ../data/gupnp-universal-cp.ui.h:8
+msgid "_Invoke"
+msgstr "_Yürüt"
+
+#: ../data/gupnp-universal-cp.ui.h:9
+msgid "device"
+msgstr "aygıt"
+
+#: ../data/gupnp-universal-cp.ui.h:10
+msgid "service"
+msgstr "hizmet"
+
+#: ../data/gupnp-universal-cp.ui.h:11
+msgid "action"
+msgstr "eylem"
+
+#: ../data/gupnp-universal-cp.ui.h:12
+msgid "'in' arguments"
+msgstr "'girdi' argümanları"
+
+#: ../data/gupnp-universal-cp.ui.h:13
+msgid "'out' arguments"
+msgstr "'çıktı' argümanları"
+
+#: ../data/gupnp-universal-cp.ui.h:14
+msgid "Copy value"
+msgstr "Değeri kopyala"
+
+#: ../data/gupnp-universal-cp.ui.h:15
+msgid "Copy all details"
+msgstr "Tüm detayları kopyala"
+
+#: ../data/gupnp-universal-cp.ui.h:16
+msgid "Invoke"
+msgstr "Yürüt"
+
+#: ../data/gupnp-universal-cp.ui.h:17
+msgid "Subscribe to events"
+msgstr "Olaylara abone ol"
+
+#: ../data/gupnp-universal-cp.ui.h:18
+msgid "_Expand all devices"
+msgstr "Tüm aygıtları _Genişlet"
+
+#: ../data/gupnp-universal-cp.ui.h:19
+msgid "_Collapse all devices"
+msgstr "Tüm aygıtları _Daralt"
+
+#: ../data/gupnp-universal-cp.ui.h:20
+msgid "Copy event"
+msgstr "Olayı kopyala"
+
+#: ../data/gupnp-universal-cp.ui.h:21
+msgid "Copy all events"
+msgstr "Tüm olayları kopyala"
+
+#: ../data/gupnp-universal-cp.ui.h:22
+msgid "_Clear event log"
+msgstr "Olay günlüğünü _temizle"
+
+#. default details
+#: ../data/gupnp-universal-cp.ui.h:23 ../src/universal-cp/device-treeview.c:35
+msgid "GUPnP Universal Control Point"
+msgstr "GUPnP Evrensel Denetim Noktası"
+
+#: ../data/gupnp-universal-cp.ui.h:25
+msgid "Clear event log"
+msgstr "Olay günlüğünü temizle"
+
+#: ../data/gupnp-universal-cp.ui.h:26
+msgid "Quit"
+msgstr "Çık"
+
+#: ../data/gupnp-universal-cp.ui.h:27
+msgid "_View"
+msgstr "_Görünüm"
+
+#: ../data/gupnp-universal-cp.ui.h:28
+msgid "Event _log"
+msgstr "Olay _günlüğü"
+
+#: ../src/av-cp/main.c:47 ../src/network-light/main.c:46
+#: ../src/universal-cp/main.c:41
+msgid "Network PORT to use for UPnP"
+msgstr "UPnp için kullanılacak ağ BAĞLANTI_NOKTASI"
+
+#: ../src/av-cp/main.c:48 ../src/network-light/main.c:47
+#: ../src/universal-cp/main.c:42
+msgid "Network interfaces to use for UPnP communication"
+msgstr "UPnP iletişimi için kullanılacak ağ arayüzleri"
+
+#: ../src/av-cp/main.c:197 ../src/network-light/main.c:100
+#: ../src/universal-cp/main.c:149
+msgid "- UPnP AV control point"
+msgstr "- UPnP AV denetim noktası"
+
+#: ../src/av-cp/main.c:202 ../src/network-light/main.c:105
+#: ../src/universal-cp/main.c:154
+#, c-format
+msgid "Could not parse options: %s\n"
+msgstr "Seçenekler ayrıştırılamadı: %s\n"
+
+#: ../src/universal-cp/action-dialog.c:686
+#, c-format
+msgid ""
+"Action failed.\n"
+"\n"
+"Error %d: %s"
+msgstr ""
+"Eylem başarısız.\n"
+"\n"
+"Hata %d: %s"
+
+#: ../src/universal-cp/details-treeview.c:192
+#: ../src/universal-cp/details-treeview.c:220
+#: ../src/universal-cp/details-treeview.c:246
+#: ../src/universal-cp/details-treeview.c:425
+msgid "Name"
+msgstr "İsim"
+
+#: ../src/universal-cp/details-treeview.c:194
+msgid "Direction"
+msgstr "Yön"
+
+#: ../src/universal-cp/details-treeview.c:199
+msgid "Related State Variable"
+msgstr "İlişkili Durum Değişkeni"
+
+#: ../src/universal-cp/details-treeview.c:201
+#, fuzzy
+msgid "Is Return Value"
+msgstr "Dönüş Değeri mi?"
+
+#: ../src/universal-cp/details-treeview.c:202
+#: ../src/universal-cp/details-treeview.c:249
+msgid "Yes"
+msgstr "Evet"
+
+#: ../src/universal-cp/details-treeview.c:202
+#: ../src/universal-cp/details-treeview.c:249
+msgid "No"
+msgstr "Hayır"
+
+#: ../src/universal-cp/details-treeview.c:222
+msgid "Number of Arguments"
+msgstr "Argüman Sayısı"
+
+#: ../src/universal-cp/details-treeview.c:248
+msgid "Send Events"
+msgstr "Olayları Gönder"
+
+#: ../src/universal-cp/details-treeview.c:250
+msgid "GType"
+msgstr "GType"
+
+#: ../src/universal-cp/details-treeview.c:253
+msgid "Default Value"
+msgstr "Öntanımlı Değer"
+
+#: ../src/universal-cp/details-treeview.c:259
+msgid "Minimum"
+msgstr "Asgari"
+
+#: ../src/universal-cp/details-treeview.c:263
+msgid "Maximum"
+msgstr "Azami"
+
+#: ../src/universal-cp/details-treeview.c:267
+msgid "Step"
+msgstr "Adım"
+
+#: ../src/universal-cp/details-treeview.c:287
+msgid "Allowed Values"
+msgstr "İzinli Değerler"
+
+#: ../src/universal-cp/details-treeview.c:311
+#: ../src/universal-cp/details-treeview.c:358
+msgid "Location"
+msgstr "Konum"
+
+#: ../src/universal-cp/details-treeview.c:316
+#: ../src/universal-cp/details-treeview.c:363
+msgid "UDN"
+msgstr "UDN"
+
+#: ../src/universal-cp/details-treeview.c:321
+#: ../src/universal-cp/details-treeview.c:368
+msgid "Type"
+msgstr "Tür"
+
+#: ../src/universal-cp/details-treeview.c:326
+#: ../src/universal-cp/details-treeview.c:373
+msgid "Base URL"
+msgstr "Taban URLsi"
+
+#: ../src/universal-cp/details-treeview.c:331
+msgid "Service ID"
+msgstr "Hizmet Kimliği"
+
+#: ../src/universal-cp/details-treeview.c:333
+msgid "Service URL"
+msgstr "Hizmet URLsi"
+
+#: ../src/universal-cp/details-treeview.c:335
+msgid "Control URL"
+msgstr "Denetim URLsi"
+
+#: ../src/universal-cp/details-treeview.c:337
+msgid "Event Subscription URL"
+msgstr "Olay Aboneliği URLsi"
+
+#: ../src/universal-cp/details-treeview.c:378
+msgid "Friendly Name"
+msgstr "Tanıdık Ad"
+
+#: ../src/universal-cp/details-treeview.c:380
+msgid "Manufacturer"
+msgstr "Üretici"
+
+#: ../src/universal-cp/details-treeview.c:382
+msgid "Manufacturer URL"
+msgstr "Üretici URLsi"
+
+#: ../src/universal-cp/details-treeview.c:384
+msgid "Model Description"
+msgstr "Model Tanımı"
+
+#: ../src/universal-cp/details-treeview.c:386
+msgid "Model Name"
+msgstr "Model Adı"
+
+#: ../src/universal-cp/details-treeview.c:388
+msgid "Model Number"
+msgstr "Model Numarası"
+
+#: ../src/universal-cp/details-treeview.c:390
+msgid "Model URL"
+msgstr "Model URLsi"
+
+#: ../src/universal-cp/details-treeview.c:392
+msgid "Serial Number"
+msgstr "Seri Numarası"
+
+#: ../src/universal-cp/details-treeview.c:394
+msgid "UPC"
+msgstr "UPC"
+
+#: ../src/universal-cp/details-treeview.c:396
+msgid "Presentation URL"
+msgstr "Sunum URLsi"
+
+#: ../src/universal-cp/details-treeview.c:426
+#: ../src/universal-cp/event-treeview.c:404
+msgid "Value"
+msgstr "Değer"
+
+#: ../src/universal-cp/device-treeview.c:68
+msgid "Software"
+msgstr "Yazılım"
+
+#: ../src/universal-cp/device-treeview.c:70
+msgid "Version"
+msgstr "Sürüm"
+
+#: ../src/universal-cp/device-treeview.c:72
+msgid "Author"
+msgstr "Yazar"
+
+#: ../src/universal-cp/device-treeview.c:478
+msgid "State variables"
+msgstr "Durum değişkenleri"
+
+#: ../src/universal-cp/device-treeview.c:519
+msgid "Information not available"
+msgstr "Bilgi mevcut değil"
+
+#: ../src/universal-cp/device-treeview.c:697
+msgid "UPnP Network"
+msgstr "UPnP Ağı"
+
+#: ../src/universal-cp/device-treeview.c:710
+#: ../src/universal-cp/event-treeview.c:401
+msgid "Device"
+msgstr "Aygıt"
+
+#: ../src/universal-cp/event-treeview.c:400
+msgid "Time"
+msgstr "Zaman"
+
+#: ../src/universal-cp/event-treeview.c:402
+msgid "Service"
+msgstr "Hizmet"
+
+#: ../src/universal-cp/event-treeview.c:403
+msgid "State Variable"
+msgstr "Durum Değişkeni"
