@@ -294,7 +294,7 @@ init_icons (void)
         }
 
 
-        download_session = soup_session_async_new ();
+        download_session = soup_session_new ();
         g_assert (download_session != NULL);
 
         pending_gets = NULL;
