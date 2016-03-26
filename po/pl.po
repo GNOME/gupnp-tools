@@ -4,14 +4,14 @@
 # pomóc w jego rozwijaniu i pielęgnowaniu, napisz do nas:
 # gnomepl@aviary.pl
 # -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-# Piotr Drąg <piotrdrag@gmail.com>, 2012-2015.
-# Aviary.pl <gnomepl@aviary.pl>, 2012-2015.
+# Piotr Drąg <piotrdrag@gmail.com>, 2012-2016.
+# Aviary.pl <gnomepl@aviary.pl>, 2012-2016.
 msgid ""
 msgstr ""
 "Project-Id-Version: gupnp-tools\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-02 02:54+0200\n"
-"PO-Revision-Date: 2015-09-02 02:55+0200\n"
+"POT-Creation-Date: 2016-03-27 00:02+0100\n"
+"PO-Revision-Date: 2016-03-27 00:03+0100\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <gnomepl@aviary.pl>\n"
 "Language: pl\n"
@@ -50,8 +50,8 @@ msgstr "Witryna GUPnP"
 #: ../data/gupnp-universal-cp.ui.h:6
 msgid "translator-credits"
 msgstr ""
-"Piotr Drąg <piotrdrag@gmail.com>, 2012-2015\n"
-"Aviary.pl <gnomepl@aviary.pl>, 2012-2015"
+"Piotr Drąg <piotrdrag@gmail.com>, 2012-2016\n"
+"Aviary.pl <gnomepl@aviary.pl>, 2012-2016"
 
 #: ../data/gupnp-av-cp.ui.in.h:7
 msgid "GUPnP AV Control Point"
@@ -266,26 +266,30 @@ msgstr "_Widok"
 msgid "Event _log"
 msgstr "_Dziennik zdarzeń"
 
-#: ../src/av-cp/main.c:47 ../src/network-light/main.c:46
+#: ../src/av-cp/main.c:47 ../src/network-light/main.c:47
 #: ../src/universal-cp/main.c:41
 msgid "Network PORT to use for UPnP"
 msgstr "PORT sieciowy używany dla UPnP"
 
-#: ../src/av-cp/main.c:48 ../src/network-light/main.c:47
+#: ../src/av-cp/main.c:48 ../src/network-light/main.c:48
 #: ../src/universal-cp/main.c:42
 msgid "Network interfaces to use for UPnP communication"
 msgstr "Interfejsy sieciowe używane do komunikacji UPnP"
 
-#: ../src/av-cp/main.c:198 ../src/network-light/main.c:100
+#: ../src/av-cp/main.c:197 ../src/network-light/main.c:102
 #: ../src/universal-cp/main.c:149
 msgid "- UPnP AV control point"
 msgstr "— punkt kontrolny UPnP AV"
 
-#: ../src/av-cp/main.c:203 ../src/network-light/main.c:105
+#: ../src/av-cp/main.c:202 ../src/network-light/main.c:107
 #: ../src/universal-cp/main.c:154
 #, c-format
 msgid "Could not parse options: %s\n"
 msgstr "Nie można przetworzyć opcji: %s\n"
+
+#: ../src/network-light/main.c:49
+msgid "Friendly name for this UPnP light"
+msgstr "Nazwa tego światła UPnP zrozumiała dla użytkownika"
 
 #: ../src/universal-cp/action-dialog.c:686
 #, c-format
@@ -397,7 +401,7 @@ msgstr "Adres URL subskrypcji zdarzeń"
 
 #: ../src/universal-cp/details-treeview.c:378
 msgid "Friendly Name"
-msgstr "Przyjazna nazwa"
+msgstr "Nazwa zrozumiała dla użytkownika"
 
 #: ../src/universal-cp/details-treeview.c:380
 msgid "Manufacturer"
