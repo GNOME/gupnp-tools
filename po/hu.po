@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: gupnp-tools master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gupnp-"
 "tools&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-12-23 10:22+0000\n"
-"PO-Revision-Date: 2014-12-23 18:44+0100\n"
+"POT-Creation-Date: 2016-03-26 16:46+0000\n"
+"PO-Revision-Date: 2016-03-27 12:18+0200\n"
 "Last-Translator: Balázs Úr <urbalazs@gmail.com>\n"
 "Language-Team: Hungarian <gnome-hu-list@gnome.org>\n"
 "Language: hu\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 1.2\n"
+"X-Generator: Poedit 1.8.7\n"
 
 #: ../data/gupnp-av-cp.desktop.in.in.h:1
 msgid "UPnP AV Control Point"
@@ -105,7 +105,8 @@ msgid ""
 "Useful for dealing with AV Renderers that don't report state changes."
 msgstr ""
 "Törli a jelenleg kijelölt AV megjelenítő állapotának CP gondolatát. Olyan AV "
-"megjelenítők kezelésekor hasznos, amelyek nem jelentik az állapotváltozásokat."
+"megjelenítők kezelésekor hasznos, amelyek nem jelentik az "
+"állapotváltozásokat."
 
 #: ../data/gupnp-av-cp.ui.in.h:21
 msgid "_Clear state"
@@ -259,28 +260,32 @@ msgstr "_Nézet"
 msgid "Event _log"
 msgstr "Esemény _napló"
 
-#: ../src/av-cp/main.c:47 ../src/network-light/main.c:46
+#: ../src/av-cp/main.c:47 ../src/network-light/main.c:47
 #: ../src/universal-cp/main.c:41
 msgid "Network PORT to use for UPnP"
 msgstr "Az UPnP-hez használt hálózati PORT"
 
-#: ../src/av-cp/main.c:48 ../src/network-light/main.c:47
+#: ../src/av-cp/main.c:48 ../src/network-light/main.c:48
 #: ../src/universal-cp/main.c:42
 msgid "Network interfaces to use for UPnP communication"
 msgstr "Az UPnP kommunikációhoz használt hálózati csatolók"
 
-#: ../src/av-cp/main.c:196 ../src/network-light/main.c:100
-#: ../src/universal-cp/main.c:145
+#: ../src/av-cp/main.c:197 ../src/network-light/main.c:102
+#: ../src/universal-cp/main.c:149
 msgid "- UPnP AV control point"
 msgstr "- UPnP AV vezérlőpont"
 
-#: ../src/av-cp/main.c:201 ../src/network-light/main.c:105
-#: ../src/universal-cp/main.c:150
+#: ../src/av-cp/main.c:202 ../src/network-light/main.c:107
+#: ../src/universal-cp/main.c:154
 #, c-format
 msgid "Could not parse options: %s\n"
 msgstr "Nem sikerült feldolgozni a kapcsolókat: %s\n"
 
-#: ../src/universal-cp/action-dialog.c:680
+#: ../src/network-light/main.c:49
+msgid "Friendly name for this UPnP light"
+msgstr "Barátságos név ehhez az UPnP fényhez"
+
+#: ../src/universal-cp/action-dialog.c:686
 #, c-format
 msgid ""
 "Action failed.\n"
@@ -291,186 +296,185 @@ msgstr ""
 "\n"
 "Hiba %d: %s"
 
-#: ../src/universal-cp/details-treeview.c:180
-#: ../src/universal-cp/details-treeview.c:208
-#: ../src/universal-cp/details-treeview.c:234
-#: ../src/universal-cp/details-treeview.c:413
+#: ../src/universal-cp/details-treeview.c:192
+#: ../src/universal-cp/details-treeview.c:220
+#: ../src/universal-cp/details-treeview.c:246
+#: ../src/universal-cp/details-treeview.c:425
 msgid "Name"
 msgstr "Név"
 
-#: ../src/universal-cp/details-treeview.c:182
+#: ../src/universal-cp/details-treeview.c:194
 msgid "Direction"
 msgstr "Irány"
 
-#: ../src/universal-cp/details-treeview.c:187
+#: ../src/universal-cp/details-treeview.c:199
 msgid "Related State Variable"
 msgstr "Kapcsolódó állapotváltozó"
 
-#: ../src/universal-cp/details-treeview.c:189
+#: ../src/universal-cp/details-treeview.c:201
 msgid "Is Return Value"
 msgstr "Van visszatérési érték"
 
-#: ../src/universal-cp/details-treeview.c:190
-#: ../src/universal-cp/details-treeview.c:237
+#: ../src/universal-cp/details-treeview.c:202
+#: ../src/universal-cp/details-treeview.c:249
 msgid "Yes"
 msgstr "Igen"
 
-#: ../src/universal-cp/details-treeview.c:190
-#: ../src/universal-cp/details-treeview.c:237
+#: ../src/universal-cp/details-treeview.c:202
+#: ../src/universal-cp/details-treeview.c:249
 msgid "No"
 msgstr "Nem"
 
-#: ../src/universal-cp/details-treeview.c:210
+#: ../src/universal-cp/details-treeview.c:222
 msgid "Number of Arguments"
 msgstr "Argumentumok száma"
 
-#: ../src/universal-cp/details-treeview.c:236
+#: ../src/universal-cp/details-treeview.c:248
 msgid "Send Events"
 msgstr "Események küldése"
 
-#: ../src/universal-cp/details-treeview.c:238
+#: ../src/universal-cp/details-treeview.c:250
 msgid "GType"
 msgstr "GType"
 
-#: ../src/universal-cp/details-treeview.c:241
+#: ../src/universal-cp/details-treeview.c:253
 msgid "Default Value"
 msgstr "Alapértelmezett érték"
 
-#: ../src/universal-cp/details-treeview.c:247
+#: ../src/universal-cp/details-treeview.c:259
 msgid "Minimum"
 msgstr "Minimum"
 
-#: ../src/universal-cp/details-treeview.c:251
+#: ../src/universal-cp/details-treeview.c:263
 msgid "Maximum"
 msgstr "Maximum"
 
-#: ../src/universal-cp/details-treeview.c:255
+#: ../src/universal-cp/details-treeview.c:267
 msgid "Step"
 msgstr "Lépés"
 
-#: ../src/universal-cp/details-treeview.c:275
+#: ../src/universal-cp/details-treeview.c:287
 msgid "Allowed Values"
 msgstr "Engedélyezett értékek"
 
-#: ../src/universal-cp/details-treeview.c:299
-#: ../src/universal-cp/details-treeview.c:346
+#: ../src/universal-cp/details-treeview.c:311
+#: ../src/universal-cp/details-treeview.c:358
 msgid "Location"
 msgstr "Hely"
 
-#: ../src/universal-cp/details-treeview.c:304
-#: ../src/universal-cp/details-treeview.c:351
+#: ../src/universal-cp/details-treeview.c:316
+#: ../src/universal-cp/details-treeview.c:363
 msgid "UDN"
 msgstr "UDN"
 
-#: ../src/universal-cp/details-treeview.c:309
-#: ../src/universal-cp/details-treeview.c:356
+#: ../src/universal-cp/details-treeview.c:321
+#: ../src/universal-cp/details-treeview.c:368
 msgid "Type"
 msgstr "Típus"
 
-#: ../src/universal-cp/details-treeview.c:314
-#: ../src/universal-cp/details-treeview.c:361
+#: ../src/universal-cp/details-treeview.c:326
+#: ../src/universal-cp/details-treeview.c:373
 msgid "Base URL"
 msgstr "Alap URL"
 
-#: ../src/universal-cp/details-treeview.c:319
+#: ../src/universal-cp/details-treeview.c:331
 msgid "Service ID"
 msgstr "Szolgáltatás azonosító"
 
-#: ../src/universal-cp/details-treeview.c:321
+#: ../src/universal-cp/details-treeview.c:333
 msgid "Service URL"
 msgstr "Szolgáltatás URL"
 
-#: ../src/universal-cp/details-treeview.c:323
+#: ../src/universal-cp/details-treeview.c:335
 msgid "Control URL"
 msgstr "Vezérlő URL"
 
-#: ../src/universal-cp/details-treeview.c:325
+#: ../src/universal-cp/details-treeview.c:337
 msgid "Event Subscription URL"
 msgstr "Esemény feliratkozási URL"
 
-#: ../src/universal-cp/details-treeview.c:366
+#: ../src/universal-cp/details-treeview.c:378
 msgid "Friendly Name"
 msgstr "Barátságos név"
 
-#: ../src/universal-cp/details-treeview.c:368
+#: ../src/universal-cp/details-treeview.c:380
 msgid "Manufacturer"
 msgstr "Gyártó"
 
-#: ../src/universal-cp/details-treeview.c:370
+#: ../src/universal-cp/details-treeview.c:382
 msgid "Manufacturer URL"
 msgstr "Gyártó URL"
 
-#: ../src/universal-cp/details-treeview.c:372
+#: ../src/universal-cp/details-treeview.c:384
 msgid "Model Description"
 msgstr "Modell leírása"
 
-#: ../src/universal-cp/details-treeview.c:374
+#: ../src/universal-cp/details-treeview.c:386
 msgid "Model Name"
 msgstr "Modellnév"
 
-#: ../src/universal-cp/details-treeview.c:376
+#: ../src/universal-cp/details-treeview.c:388
 msgid "Model Number"
 msgstr "Modellszám"
 
-#: ../src/universal-cp/details-treeview.c:378
+#: ../src/universal-cp/details-treeview.c:390
 msgid "Model URL"
 msgstr "Modell URL"
 
-#: ../src/universal-cp/details-treeview.c:380
+#: ../src/universal-cp/details-treeview.c:392
 msgid "Serial Number"
 msgstr "Sorozatszám"
 
-#: ../src/universal-cp/details-treeview.c:382
+#: ../src/universal-cp/details-treeview.c:394
 msgid "UPC"
 msgstr "UPC"
 
-#: ../src/universal-cp/details-treeview.c:384
+#: ../src/universal-cp/details-treeview.c:396
 msgid "Presentation URL"
 msgstr "Bemutató URL"
 
-#: ../src/universal-cp/details-treeview.c:414
-#: ../src/universal-cp/event-treeview.c:376
+#: ../src/universal-cp/details-treeview.c:426
+#: ../src/universal-cp/event-treeview.c:404
 msgid "Value"
 msgstr "Érték"
 
-#: ../src/universal-cp/device-treeview.c:52
+#: ../src/universal-cp/device-treeview.c:68
 msgid "Software"
 msgstr "Szoftver"
 
-#: ../src/universal-cp/device-treeview.c:54
+#: ../src/universal-cp/device-treeview.c:70
 msgid "Version"
 msgstr "Verzió"
 
-#: ../src/universal-cp/device-treeview.c:56
+#: ../src/universal-cp/device-treeview.c:72
 msgid "Author"
 msgstr "Szerző"
 
-#: ../src/universal-cp/device-treeview.c:462
+#: ../src/universal-cp/device-treeview.c:478
 msgid "State variables"
 msgstr "Állapotváltozók"
 
-#: ../src/universal-cp/device-treeview.c:503
+#: ../src/universal-cp/device-treeview.c:519
 msgid "Information not available"
 msgstr "Nem érhető el információ"
 
-#: ../src/universal-cp/device-treeview.c:681
+#: ../src/universal-cp/device-treeview.c:697
 msgid "UPnP Network"
 msgstr "UPnP hálózat"
 
-#: ../src/universal-cp/device-treeview.c:694
-#: ../src/universal-cp/event-treeview.c:373
+#: ../src/universal-cp/device-treeview.c:710
+#: ../src/universal-cp/event-treeview.c:401
 msgid "Device"
 msgstr "Eszköz"
 
-#: ../src/universal-cp/event-treeview.c:372
+#: ../src/universal-cp/event-treeview.c:400
 msgid "Time"
 msgstr "Idő"
 
-#: ../src/universal-cp/event-treeview.c:374
+#: ../src/universal-cp/event-treeview.c:402
 msgid "Service"
 msgstr "Szolgáltatás"
 
-#: ../src/universal-cp/event-treeview.c:375
+#: ../src/universal-cp/event-treeview.c:403
 msgid "State Variable"
 msgstr "Állapotváltozó"
-
