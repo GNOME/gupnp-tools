@@ -9,6 +9,8 @@ DISTCLEANFILES = \
 	intltool-merge \
 	intltool-update
 
+EXTRA_DIST = build-aux/config.rpath
+
 dist-hook:
 	@if test -d "$(srcdir)/.git"; \
 		then \

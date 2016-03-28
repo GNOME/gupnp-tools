@@ -10,6 +10,7 @@ AM_CFLAGS = $(LIBGUPNP_CFLAGS) \
 	    $(GTKSOURCEVIEW_CFLAGS) \
 	    -I$(top_srcdir) -DDATA_DIR='"$(shareddir)"' \
 	    -I$(top_srcdir)/src/common \
+	    -DLOCALEDIR='"$(localedir)"' \
 	    $(WARN_CFLAGS)
 
 bin_PROGRAMS = gupnp-av-cp

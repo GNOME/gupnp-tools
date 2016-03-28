@@ -1,12 +1,5 @@
 # List of source files containing translatable strings.
 # Please keep this file sorted alphabetically.
-[encoding: UTF-8]
-data/gupnp-av-cp.desktop.in.in
-[type: gettext/glade]data/gupnp-av-cp.ui.in
-data/gupnp-network-light.desktop.in.in
-[type: gettext/glade]data/gupnp-network-light.ui
-data/gupnp-universal-cp.desktop.in.in
-[type: gettext/glade]data/gupnp-universal-cp.ui
 src/av-cp/gui.c
 src/av-cp/gui.h
 src/av-cp/main.c

@@ -8,16 +8,23 @@ dist_shared_DATA = gupnp-universal-cp.ui \
 desktopdir = ${datadir}/applications
 desktop_in_files = gupnp-universal-cp.desktop.in \
 		   gupnp-network-light.desktop.in
-desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)
 
 if BUILD_AV
-shared_DATA = gupnp-av-cp.ui
+dist_shared_DATA += gupnp-av-cp.ui
 desktop_in_files += gupnp-av-cp.desktop.in
 endif
 
-@INTLTOOL_DESKTOP_RULE@
+desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)
+desktop_in_in_files = $(desktop_in_files:.desktop.in=.desktop.in.in)
 
-EXTRA_DIST = $(desktop_in_files:.desktop.in=.desktop.in.in) gupnp-av-cp.ui.in
+$(desktop_in_files): $(desktop_in_in_files)
+	$(AM_V_GEN) $(MSGFMT) --desktop --template $< -d $(top_srcdir)/po -o $@
+
+# Substitute variables in a Desktop Entry file.
+$(desktop_DATA): $(desktop_in_files)
+	$(AM_V_GEN) $(SED) -e 's|@VERSION[@]|$(VERSION)|g' $< > $@
+
+EXTRA_DIST = $(desktop_in_in_files) gupnp-av-cp.ui.in $(desktop_in_files)
 
 CLEANFILES = $(desktop_DATA)
 
