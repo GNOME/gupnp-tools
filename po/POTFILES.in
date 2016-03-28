@@ -1,5 +1,8 @@
 # List of source files containing translatable strings.
 # Please keep this file sorted alphabetically.
+data/gupnp-av-cp.ui
+data/gupnp-network-light.ui
+data/gupnp-universal-cp.ui
 src/av-cp/gui.c
 src/av-cp/gui.h
 src/av-cp/main.c
