@@ -1,23 +1,24 @@
 # Brazilian Portuguese translation for gupnp-tools.
-# Copyright (C) 2013 gupnp-tools's COPYRIGHT HOLDER
+# Copyright (C) 2016 gupnp-tools's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gupnp-tools package.
 # Enrico Nicoletto <liverig@gmail.com>, 2013.
-#
+# Rafael Fontenelle <rafaelff@gnome.org>, 2016.
 msgid ""
 msgstr ""
 "Project-Id-Version: gupnp-tools master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gupnp-"
 "tools&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-08-10 19:24+0000\n"
-"PO-Revision-Date: 2014-08-27 08:40-0300\n"
-"Last-Translator: Rafael Ferreira <rafael.f.f1@gmail.com>\n"
+"POT-Creation-Date: 2016-03-26 16:46+0000\n"
+"PO-Revision-Date: 2016-03-28 10:09-0200\n"
+"Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
 "Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 1.6.7\n"
+"X-Generator: Virtaal 0.7.1\n"
+"X-Project-Style: gnome\n"
 
 # GUPnP-AV is a collection of helpers for building AV (audio/video) applications using GUPnP.
 #: ../data/gupnp-av-cp.desktop.in.in.h:1
@@ -262,29 +263,33 @@ msgstr "_Visualizar"
 msgid "Event _log"
 msgstr "Re_gistro do evento"
 
-#: ../src/av-cp/main.c:47 ../src/network-light/main.c:46
+#: ../src/av-cp/main.c:47 ../src/network-light/main.c:47
 #: ../src/universal-cp/main.c:41
 msgid "Network PORT to use for UPnP"
 msgstr "PORTA de rede a ser usada para UPnp"
 
-#: ../src/av-cp/main.c:48 ../src/network-light/main.c:47
+#: ../src/av-cp/main.c:48 ../src/network-light/main.c:48
 #: ../src/universal-cp/main.c:42
 msgid "Network interfaces to use for UPnP communication"
 msgstr "Interfaces de rede a serem usadas para comunicação UPnP"
 
 # GUPnP-AV is a collection of helpers for building AV (audio/video) applications using GUPnP.
-#: ../src/av-cp/main.c:196 ../src/network-light/main.c:100
-#: ../src/universal-cp/main.c:145
+#: ../src/av-cp/main.c:197 ../src/network-light/main.c:102
+#: ../src/universal-cp/main.c:149
 msgid "- UPnP AV control point"
 msgstr "- Ponto de controle áudio/vídeo (AV) UPnP"
 
-#: ../src/av-cp/main.c:201 ../src/network-light/main.c:105
-#: ../src/universal-cp/main.c:150
+#: ../src/av-cp/main.c:202 ../src/network-light/main.c:107
+#: ../src/universal-cp/main.c:154
 #, c-format
 msgid "Could not parse options: %s\n"
 msgstr "Não foi possível analisar as opções: %s\n"
 
-#: ../src/universal-cp/action-dialog.c:680
+#: ../src/network-light/main.c:49
+msgid "Friendly name for this UPnP light"
+msgstr "Nome amigável para esta luz UPnP"
+
+#: ../src/universal-cp/action-dialog.c:686
 #, c-format
 msgid ""
 "Action failed.\n"
@@ -295,186 +300,186 @@ msgstr ""
 "\n"
 "Erro %d: %s"
 
-#: ../src/universal-cp/details-treeview.c:180
-#: ../src/universal-cp/details-treeview.c:208
-#: ../src/universal-cp/details-treeview.c:234
-#: ../src/universal-cp/details-treeview.c:413
+#: ../src/universal-cp/details-treeview.c:192
+#: ../src/universal-cp/details-treeview.c:220
+#: ../src/universal-cp/details-treeview.c:246
+#: ../src/universal-cp/details-treeview.c:425
 msgid "Name"
 msgstr "Nome"
 
-#: ../src/universal-cp/details-treeview.c:182
+#: ../src/universal-cp/details-treeview.c:194
 msgid "Direction"
 msgstr "Direção"
 
-#: ../src/universal-cp/details-treeview.c:187
+#: ../src/universal-cp/details-treeview.c:199
 msgid "Related State Variable"
 msgstr "Variável de estado relacionada"
 
-#: ../src/universal-cp/details-treeview.c:189
+#: ../src/universal-cp/details-treeview.c:201
 msgid "Is Return Value"
 msgstr "É valor de retorno"
 
-#: ../src/universal-cp/details-treeview.c:190
-#: ../src/universal-cp/details-treeview.c:237
+#: ../src/universal-cp/details-treeview.c:202
+#: ../src/universal-cp/details-treeview.c:249
 msgid "Yes"
 msgstr "Sim"
 
-#: ../src/universal-cp/details-treeview.c:190
-#: ../src/universal-cp/details-treeview.c:237
+#: ../src/universal-cp/details-treeview.c:202
+#: ../src/universal-cp/details-treeview.c:249
 msgid "No"
 msgstr "Não"
 
-#: ../src/universal-cp/details-treeview.c:210
+#: ../src/universal-cp/details-treeview.c:222
 msgid "Number of Arguments"
 msgstr "Número de argumentos"
 
-#: ../src/universal-cp/details-treeview.c:236
+#: ../src/universal-cp/details-treeview.c:248
 msgid "Send Events"
 msgstr "Enviar eventos"
 
-#: ../src/universal-cp/details-treeview.c:238
+#: ../src/universal-cp/details-treeview.c:250
 msgid "GType"
 msgstr "GType"
 
-#: ../src/universal-cp/details-treeview.c:241
+#: ../src/universal-cp/details-treeview.c:253
 msgid "Default Value"
 msgstr "Valor padrão"
 
-#: ../src/universal-cp/details-treeview.c:247
+#: ../src/universal-cp/details-treeview.c:259
 msgid "Minimum"
 msgstr "Mínimo"
 
-#: ../src/universal-cp/details-treeview.c:251
+#: ../src/universal-cp/details-treeview.c:263
 msgid "Maximum"
 msgstr "Máximo"
 
-#: ../src/universal-cp/details-treeview.c:255
+#: ../src/universal-cp/details-treeview.c:267
 msgid "Step"
 msgstr "Passo"
 
-#: ../src/universal-cp/details-treeview.c:275
+#: ../src/universal-cp/details-treeview.c:287
 msgid "Allowed Values"
 msgstr "Valores permitidos"
 
-#: ../src/universal-cp/details-treeview.c:299
-#: ../src/universal-cp/details-treeview.c:346
+#: ../src/universal-cp/details-treeview.c:311
+#: ../src/universal-cp/details-treeview.c:358
 msgid "Location"
 msgstr "Local"
 
-#: ../src/universal-cp/details-treeview.c:304
-#: ../src/universal-cp/details-treeview.c:351
+#: ../src/universal-cp/details-treeview.c:316
+#: ../src/universal-cp/details-treeview.c:363
 msgid "UDN"
 msgstr "UDN"
 
-#: ../src/universal-cp/details-treeview.c:309
-#: ../src/universal-cp/details-treeview.c:356
+#: ../src/universal-cp/details-treeview.c:321
+#: ../src/universal-cp/details-treeview.c:368
 msgid "Type"
 msgstr "Tipo"
 
-#: ../src/universal-cp/details-treeview.c:314
-#: ../src/universal-cp/details-treeview.c:361
+#: ../src/universal-cp/details-treeview.c:326
+#: ../src/universal-cp/details-treeview.c:373
 msgid "Base URL"
 msgstr "URL base"
 
-#: ../src/universal-cp/details-treeview.c:319
+#: ../src/universal-cp/details-treeview.c:331
 msgid "Service ID"
 msgstr "ID do serviço"
 
-#: ../src/universal-cp/details-treeview.c:321
+#: ../src/universal-cp/details-treeview.c:333
 msgid "Service URL"
 msgstr "URL do serviço"
 
-#: ../src/universal-cp/details-treeview.c:323
+#: ../src/universal-cp/details-treeview.c:335
 msgid "Control URL"
 msgstr "URL de controle"
 
-#: ../src/universal-cp/details-treeview.c:325
+#: ../src/universal-cp/details-treeview.c:337
 msgid "Event Subscription URL"
 msgstr "URL de inscrição do evento"
 
-#: ../src/universal-cp/details-treeview.c:366
+#: ../src/universal-cp/details-treeview.c:378
 msgid "Friendly Name"
 msgstr "Nome amigável"
 
-#: ../src/universal-cp/details-treeview.c:368
+#: ../src/universal-cp/details-treeview.c:380
 msgid "Manufacturer"
 msgstr "Fabricante"
 
-#: ../src/universal-cp/details-treeview.c:370
+#: ../src/universal-cp/details-treeview.c:382
 msgid "Manufacturer URL"
 msgstr "URL do fabricante"
 
-#: ../src/universal-cp/details-treeview.c:372
+#: ../src/universal-cp/details-treeview.c:384
 msgid "Model Description"
 msgstr "Descrição do modelo"
 
-#: ../src/universal-cp/details-treeview.c:374
+#: ../src/universal-cp/details-treeview.c:386
 msgid "Model Name"
 msgstr "Nome do modelo"
 
-#: ../src/universal-cp/details-treeview.c:376
+#: ../src/universal-cp/details-treeview.c:388
 msgid "Model Number"
 msgstr "Número do modelo"
 
-#: ../src/universal-cp/details-treeview.c:378
+#: ../src/universal-cp/details-treeview.c:390
 msgid "Model URL"
 msgstr "URL do modelo"
 
-#: ../src/universal-cp/details-treeview.c:380
+#: ../src/universal-cp/details-treeview.c:392
 msgid "Serial Number"
 msgstr "Número de série"
 
-#: ../src/universal-cp/details-treeview.c:382
+#: ../src/universal-cp/details-treeview.c:394
 msgid "UPC"
 msgstr "UPC"
 
-#: ../src/universal-cp/details-treeview.c:384
+#: ../src/universal-cp/details-treeview.c:396
 msgid "Presentation URL"
 msgstr "URL de apresentação"
 
-#: ../src/universal-cp/details-treeview.c:414
-#: ../src/universal-cp/event-treeview.c:376
+#: ../src/universal-cp/details-treeview.c:426
+#: ../src/universal-cp/event-treeview.c:404
 msgid "Value"
 msgstr "Valor"
 
-#: ../src/universal-cp/device-treeview.c:52
+#: ../src/universal-cp/device-treeview.c:68
 msgid "Software"
 msgstr "Software"
 
-#: ../src/universal-cp/device-treeview.c:54
+#: ../src/universal-cp/device-treeview.c:70
 msgid "Version"
 msgstr "Versão"
 
-#: ../src/universal-cp/device-treeview.c:56
+#: ../src/universal-cp/device-treeview.c:72
 msgid "Author"
 msgstr "Autor"
 
-#: ../src/universal-cp/device-treeview.c:462
+#: ../src/universal-cp/device-treeview.c:478
 msgid "State variables"
 msgstr "Variáveis de estado"
 
-#: ../src/universal-cp/device-treeview.c:503
+#: ../src/universal-cp/device-treeview.c:519
 msgid "Information not available"
 msgstr "Informação não disponível"
 
-#: ../src/universal-cp/device-treeview.c:681
+#: ../src/universal-cp/device-treeview.c:697
 msgid "UPnP Network"
 msgstr "Rede UPnP"
 
-#: ../src/universal-cp/device-treeview.c:694
-#: ../src/universal-cp/event-treeview.c:373
+#: ../src/universal-cp/device-treeview.c:710
+#: ../src/universal-cp/event-treeview.c:401
 msgid "Device"
 msgstr "Dispositivo"
 
-#: ../src/universal-cp/event-treeview.c:372
+#: ../src/universal-cp/event-treeview.c:400
 msgid "Time"
 msgstr "Hora"
 
-#: ../src/universal-cp/event-treeview.c:374
+#: ../src/universal-cp/event-treeview.c:402
 msgid "Service"
 msgstr "Serviço"
 
-#: ../src/universal-cp/event-treeview.c:375
+#: ../src/universal-cp/event-treeview.c:403
 msgid "State Variable"
 msgstr "Variável de estado"
 
