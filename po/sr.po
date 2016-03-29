@@ -7,28 +7,33 @@ msgstr ""
 "Project-Id-Version: gupnp-tools master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gupnp-"
 "tools&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-08-10 19:24+0000\n"
-"PO-Revision-Date: 2014-10-27 05:44+0200\n"
-"Last-Translator: Мирослав Николић <miroslavnikolic@rocketmail.com>\n"
+"POT-Creation-Date: 2016-03-29 12:03+0000\n"
+"PO-Revision-Date: 2016-03-29 18:29+0200\n"
+"Last-Translator: Марко М. Костић <marko.m.kostic@gmail.com>\n"
 "Language-Team: Serbian <gnom@prevod.org>\n"
 "Language: sr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=n==1? 3 : n%10==1 && n%100!=11 ? 0 : "
-"n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=4; plural=n==1? 3 : n%10==1 && n%100!=11 ? 0 : n"
+"%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Project-Style: gnome\n"
+"X-Generator: Poedit 1.8.7.1\n"
 
-#: ../data/gupnp-av-cp.desktop.in.in.h:1
+#: data/gupnp-av-cp.desktop.in.in:4
 msgid "UPnP AV Control Point"
 msgstr "УПнП АВ управљачка тачка"
 
-#: ../data/gupnp-av-cp.ui.in.h:1 ../data/gupnp-network-light.ui.h:1
-#: ../data/gupnp-universal-cp.ui.h:1
+#: data/gupnp-av-cp.desktop.in.in:7
+msgid "@PKGDATADIR@/pixmaps/av-cp.png"
+msgstr "@PKGDATADIR@/pixmaps/av-cp.png"
+
+#: data/gupnp-av-cp.ui.in:10 data/gupnp-network-light.ui:7
+#: data/gupnp-universal-cp.ui:8
 msgid "Copyright (C) 2007 Zeeshan Ali (Khattak)"
 msgstr "Ауторска права (C) 2007 Зишан Али (Khattak)"
 
-#: ../data/gupnp-av-cp.ui.in.h:2
+#: data/gupnp-av-cp.ui.in:11
 msgid ""
 "An UPnP AV Control Point based on GUPnP framework.\n"
 "Inspired by Intel Tools for UPnP."
@@ -36,74 +41,74 @@ msgstr ""
 "УПНП АВ управљачка тачка заснована на ГУПнП радном оквиру.\n"
 "Идеја је виђена у Интеловим алатима за УПнП."
 
-#: ../data/gupnp-av-cp.ui.in.h:4 ../data/gupnp-network-light.ui.h:4
-#: ../data/gupnp-universal-cp.ui.h:4
+#: data/gupnp-av-cp.ui.in:14 data/gupnp-network-light.ui:11
+#: data/gupnp-universal-cp.ui:12
 msgid "GUPnP homepage"
 msgstr "ГУПнП матична страница"
 
 #. TRANSLATORS: Replace this string with your names, one name per line.
-#: ../data/gupnp-av-cp.ui.in.h:6 ../data/gupnp-network-light.ui.h:6
-#: ../data/gupnp-universal-cp.ui.h:6
+#: data/gupnp-av-cp.ui.in:16 data/gupnp-network-light.ui:13
+#: data/gupnp-universal-cp.ui:14
 msgid "translator-credits"
 msgstr ""
-"  Мирослав Николић <miroslavnikolic@rocketmail.com>\n"
+"Мирослав Николић <miroslavnikolic@rocketmail.com>\n"
+"Марко М. Костић <marko.m.kostic@gmail.com>\n"
 "\n"
-"  http://prevod.org — превод на српски језик"
+"http://prevod.org — превод на српски језик"
 
-#: ../data/gupnp-av-cp.ui.in.h:7
+#: data/gupnp-av-cp.ui.in:52
 msgid "GUPnP AV Control Point"
 msgstr "ГУПнП АВ управљачка тачка"
 
-#: ../data/gupnp-av-cp.ui.in.h:8 ../data/gupnp-universal-cp.ui.h:24
+#: data/gupnp-av-cp.ui.in:66 data/gupnp-universal-cp.ui:423
 msgid "_File"
 msgstr "_Датотека"
 
-#: ../data/gupnp-av-cp.ui.in.h:9
+#: data/gupnp-av-cp.ui.in:75
 msgid "Close"
 msgstr "Затвори"
 
-#: ../data/gupnp-av-cp.ui.in.h:10
+#: data/gupnp-av-cp.ui.in:88
 msgid "_Tools"
 msgstr "_Алати"
 
-#: ../data/gupnp-av-cp.ui.in.h:11
+#: data/gupnp-av-cp.ui.in:98
 msgid "_Lenient Mode"
 msgstr "_Режим попустљивости"
 
-#: ../data/gupnp-av-cp.ui.in.h:12 ../data/gupnp-universal-cp.ui.h:29
+#: data/gupnp-av-cp.ui.in:110 data/gupnp-universal-cp.ui:505
 msgid "_Help"
 msgstr "По_моћ"
 
-#: ../data/gupnp-av-cp.ui.in.h:13 ../data/gupnp-universal-cp.ui.h:30
-#| msgid "_About"
+#: data/gupnp-av-cp.ui.in:119 data/gupnp-universal-cp.ui:514
 msgid "About"
 msgstr "О програму"
 
-#: ../data/gupnp-av-cp.ui.in.h:14
+#: data/gupnp-av-cp.ui.in:170 data/gupnp-av-cp.ui.in:698
 msgid "_Play"
 msgstr "_Пусти"
 
-#: ../data/gupnp-av-cp.ui.in.h:15
+#: data/gupnp-av-cp.ui.in:219
 msgid "P_ause"
 msgstr "_Застани"
 
-#: ../data/gupnp-av-cp.ui.in.h:16
+#: data/gupnp-av-cp.ui.in:268
 msgid "_Stop"
 msgstr "_Заустави"
 
-#: ../data/gupnp-av-cp.ui.in.h:17
+#: data/gupnp-av-cp.ui.in:317
 msgid "Pre_vious"
 msgstr "_Претходно"
 
-#: ../data/gupnp-av-cp.ui.in.h:18
+#: data/gupnp-av-cp.ui.in:380
 msgid "_Next"
 msgstr "_Следеће"
 
-#: ../data/gupnp-av-cp.ui.in.h:19
+#: data/gupnp-av-cp.ui.in:398
 msgid "Rescan"
 msgstr "Поново претражи"
 
-#: ../data/gupnp-av-cp.ui.in.h:20
+#: data/gupnp-av-cp.ui.in:442
 msgid ""
 "Clears the CP's idea of the state of the currently selected AV Renderer. "
 "Useful for dealing with AV Renderers that don't report state changes."
@@ -111,31 +116,35 @@ msgstr ""
 "Чисти идеје управљачких тачака стања тренутно изабраног АВ исцртавача. "
 "Корисно за руковање АВ исцртавачима који не извештавају о променама стања."
 
-#: ../data/gupnp-av-cp.ui.in.h:21
+#: data/gupnp-av-cp.ui.in:453
 msgid "_Clear state"
 msgstr "_Очисти стање"
 
-#: ../data/gupnp-av-cp.ui.in.h:22
+#: data/gupnp-av-cp.ui.in:496
 msgid "_Renderer: "
 msgstr "_Исцртавач: "
 
-#: ../data/gupnp-av-cp.ui.in.h:23
+#: data/gupnp-av-cp.ui.in:629
 msgid "GUPnP AV CP - Metadata View"
 msgstr "ГУПнП АВ ЦП — Преглед метаподатака"
 
-#: ../data/gupnp-av-cp.ui.in.h:24
+#: data/gupnp-av-cp.ui.in:707
 msgid "Fetch the DIDL-Lite XML for this media object"
 msgstr "Довуците ДИДЛ-Лајт ИксМЛ за овај објекат медија"
 
-#: ../data/gupnp-av-cp.ui.in.h:25
+#: data/gupnp-av-cp.ui.in:708
 msgid "Fetch _DIDL-Lite"
 msgstr "Довуци _ДИДЛ-Лајт"
 
-#: ../data/gupnp-network-light.desktop.in.in.h:1
+#: data/gupnp-network-light.desktop.in.in:4
 msgid "UPnP Network Light"
 msgstr "УПнП мрежно светло"
 
-#: ../data/gupnp-network-light.ui.h:2
+#: data/gupnp-network-light.desktop.in.in:7
+msgid "@PKGDATADIR@/pixmaps/network-light-256x256.png"
+msgstr "@PKGDATADIR@/pixmaps/network-light-256x256.png"
+
+#: data/gupnp-network-light.ui:8
 msgid ""
 "A virtual network light bulb based on GUPnP framework.\n"
 "Inspired by Intel Tools for UPnP."
@@ -143,34 +152,36 @@ msgstr ""
 "Лампица виртуелне мреже заснована на ГУПнП радном оквиру.\n"
 "Идеја је виђена у Интеловим алатима за УПнП."
 
-#: ../data/gupnp-network-light.ui.h:7
+#: data/gupnp-network-light.ui:38
 msgid "GUPnP Network Light"
 msgstr "ГУПнП мрежно светло"
 
-#: ../data/gupnp-network-light.ui.h:8
+#: data/gupnp-network-light.ui:63
 msgctxt "network-light"
 msgid "_On"
 msgstr "_Укљ."
 
-#: ../data/gupnp-network-light.ui.h:10
-#, no-c-format
+#: data/gupnp-network-light.ui:83
 msgid "_Increase luminance by 20%"
 msgstr "_Повећај осветљај за 20%"
 
-#: ../data/gupnp-network-light.ui.h:12
-#, no-c-format
+#: data/gupnp-network-light.ui:92
 msgid "_Decrease luminance by 20%"
 msgstr "_Умањи осветљај за 20%"
 
-#: ../data/gupnp-network-light.ui.h:13
+#: data/gupnp-network-light.ui:107
 msgid "_About"
 msgstr "_О програму"
 
-#: ../data/gupnp-universal-cp.desktop.in.in.h:1
+#: data/gupnp-universal-cp.desktop.in.in:4
 msgid "UPnP Universal Control Point"
 msgstr "УПнП свеопшта управљачка тачка"
 
-#: ../data/gupnp-universal-cp.ui.h:2
+#: data/gupnp-universal-cp.desktop.in.in:7
+msgid "@PKGDATADIR@/pixmaps/universal-cp.png"
+msgstr "@PKGDATADIR@/pixmaps/universal-cp.png"
+
+#: data/gupnp-universal-cp.ui:9
 msgid ""
 "A Generic Control Point based on GUPnP framework.\n"
 "Inspired by Intel Tools for UPnP."
@@ -178,116 +189,115 @@ msgstr ""
 "Општа управљачка тачка заснована на ГУПнП радном оквиру.\n"
 "Идеја је виђена у Интеловим алатима за УПнП."
 
-#: ../data/gupnp-universal-cp.ui.h:7
+#: data/gupnp-universal-cp.ui:41
 msgid "Action Invocation"
 msgstr "Призивање радње"
 
-#: ../data/gupnp-universal-cp.ui.h:8
+#: data/gupnp-universal-cp.ui:105
 msgid "_Invoke"
 msgstr "_Призови"
 
-#: ../data/gupnp-universal-cp.ui.h:9
+#: data/gupnp-universal-cp.ui:175
 msgid "device"
 msgstr "уређај"
 
-#: ../data/gupnp-universal-cp.ui.h:10
+#: data/gupnp-universal-cp.ui:188
 msgid "service"
 msgstr "услуга"
 
-#: ../data/gupnp-universal-cp.ui.h:11
+#: data/gupnp-universal-cp.ui:201
 msgid "action"
 msgstr "радња"
 
-#: ../data/gupnp-universal-cp.ui.h:12
-#| msgid "<b>'in' arguments</b>"
+#: data/gupnp-universal-cp.ui:244
 msgid "'in' arguments"
 msgstr "„улазни“ аргументи"
 
-#: ../data/gupnp-universal-cp.ui.h:13
-#| msgid "<b>'out' arguments</b>"
+#: data/gupnp-universal-cp.ui:277
 msgid "'out' arguments"
 msgstr "„излазни“ аргументи"
 
-#: ../data/gupnp-universal-cp.ui.h:14
+#: data/gupnp-universal-cp.ui:311
 msgid "Copy value"
 msgstr "Умножи вредност"
 
-#: ../data/gupnp-universal-cp.ui.h:15
+#: data/gupnp-universal-cp.ui:320
 msgid "Copy all details"
 msgstr "Умножи све појединости"
 
-#: ../data/gupnp-universal-cp.ui.h:16
+#: data/gupnp-universal-cp.ui:332
 msgid "Invoke"
 msgstr "Призови"
 
-#: ../data/gupnp-universal-cp.ui.h:17
+#: data/gupnp-universal-cp.ui:341
 msgid "Subscribe to events"
 msgstr "Претплатите се на догађаје"
 
-#: ../data/gupnp-universal-cp.ui.h:18
+#: data/gupnp-universal-cp.ui:356 data/gupnp-universal-cp.ui:467
 msgid "_Expand all devices"
 msgstr "_Рашири све уређаје"
 
-#: ../data/gupnp-universal-cp.ui.h:19
+#: data/gupnp-universal-cp.ui:365 data/gupnp-universal-cp.ui:476
 msgid "_Collapse all devices"
 msgstr "_Скупи све уређаје"
 
-#: ../data/gupnp-universal-cp.ui.h:20
+#: data/gupnp-universal-cp.ui:377
 msgid "Copy event"
 msgstr "Умножи догађај"
 
-#: ../data/gupnp-universal-cp.ui.h:21
+#: data/gupnp-universal-cp.ui:386
 msgid "Copy all events"
 msgstr "Умножи све догађаје"
 
-#: ../data/gupnp-universal-cp.ui.h:22
+#: data/gupnp-universal-cp.ui:401
 msgid "_Clear event log"
 msgstr "_Очисти дневник догађаја"
 
 #. default details
-#: ../data/gupnp-universal-cp.ui.h:23 ../src/universal-cp/device-treeview.c:35
+#: data/gupnp-universal-cp.ui:409 src/universal-cp/device-treeview.c:35
 msgid "GUPnP Universal Control Point"
 msgstr "ГУПнП свеопшта управљачка тачка"
 
-#: ../data/gupnp-universal-cp.ui.h:25
-#| msgid "_Clear event log"
+#: data/gupnp-universal-cp.ui:432
 msgid "Clear event log"
 msgstr "Очисти дневик догађаја"
 
-#: ../data/gupnp-universal-cp.ui.h:26
+#: data/gupnp-universal-cp.ui:446
 msgid "Quit"
 msgstr "Изађи"
 
-#: ../data/gupnp-universal-cp.ui.h:27
+#: data/gupnp-universal-cp.ui:458
 msgid "_View"
 msgstr "_Преглед"
 
-#: ../data/gupnp-universal-cp.ui.h:28
+#: data/gupnp-universal-cp.ui:491
 msgid "Event _log"
 msgstr "Дневник _догађаја"
 
-#: ../src/av-cp/main.c:47 ../src/network-light/main.c:46
-#: ../src/universal-cp/main.c:41
+#: src/av-cp/main.c:47 src/network-light/main.c:47 src/universal-cp/main.c:41
 msgid "Network PORT to use for UPnP"
 msgstr "Мрежни ПРИКЉУЧНИК за коришћење за УПнП"
 
-#: ../src/av-cp/main.c:48 ../src/network-light/main.c:47
-#: ../src/universal-cp/main.c:42
+#: src/av-cp/main.c:48 src/network-light/main.c:48 src/universal-cp/main.c:42
 msgid "Network interfaces to use for UPnP communication"
 msgstr "Мрежно сучеље које се користи за УПнП везе"
 
-#: ../src/av-cp/main.c:196 ../src/network-light/main.c:100
-#: ../src/universal-cp/main.c:145
+#: src/av-cp/main.c:197 src/network-light/main.c:102
+#: src/universal-cp/main.c:149
 msgid "- UPnP AV control point"
 msgstr "— УПнП АВ управљачка тачка"
 
-#: ../src/av-cp/main.c:201 ../src/network-light/main.c:105
-#: ../src/universal-cp/main.c:150
+#: src/av-cp/main.c:202 src/network-light/main.c:107
+#: src/universal-cp/main.c:154
 #, c-format
 msgid "Could not parse options: %s\n"
 msgstr "Не могу да обрадим могућности: %s\n"
 
-#: ../src/universal-cp/action-dialog.c:680
+#: src/network-light/main.c:49
+msgid "Friendly name for this UPnP light"
+msgstr "Пријатељско име за ово УПнП светло"
+
+#: src/universal-cp/action-dialog.c:686
 #, c-format
 msgid ""
 "Action failed.\n"
@@ -298,185 +308,184 @@ msgstr ""
 "\n"
 "Грешка %d: %s"
 
-#: ../src/universal-cp/details-treeview.c:180
-#: ../src/universal-cp/details-treeview.c:208
-#: ../src/universal-cp/details-treeview.c:234
-#: ../src/universal-cp/details-treeview.c:413
+#: src/universal-cp/details-treeview.c:192
+#: src/universal-cp/details-treeview.c:220
+#: src/universal-cp/details-treeview.c:246
+#: src/universal-cp/details-treeview.c:425
 msgid "Name"
 msgstr "Назив"
 
-#: ../src/universal-cp/details-treeview.c:182
+#: src/universal-cp/details-treeview.c:194
 msgid "Direction"
 msgstr "Усмерење"
 
-#: ../src/universal-cp/details-treeview.c:187
+#: src/universal-cp/details-treeview.c:199
 msgid "Related State Variable"
 msgstr "Променљива односног стања"
 
-#: ../src/universal-cp/details-treeview.c:189
+#: src/universal-cp/details-treeview.c:201
 msgid "Is Return Value"
 msgstr "Је вратила вредност"
 
-#: ../src/universal-cp/details-treeview.c:190
-#: ../src/universal-cp/details-treeview.c:237
+#: src/universal-cp/details-treeview.c:202
+#: src/universal-cp/details-treeview.c:249
 msgid "Yes"
 msgstr "Да"
 
-#: ../src/universal-cp/details-treeview.c:190
-#: ../src/universal-cp/details-treeview.c:237
+#: src/universal-cp/details-treeview.c:202
+#: src/universal-cp/details-treeview.c:249
 msgid "No"
 msgstr "Не"
 
-#: ../src/universal-cp/details-treeview.c:210
+#: src/universal-cp/details-treeview.c:222
 msgid "Number of Arguments"
 msgstr "Број аргумената"
 
-#: ../src/universal-cp/details-treeview.c:236
+#: src/universal-cp/details-treeview.c:248
 msgid "Send Events"
 msgstr "Догађаји слања"
 
-#: ../src/universal-cp/details-treeview.c:238
+#: src/universal-cp/details-treeview.c:250
 msgid "GType"
 msgstr "Гврста"
 
-#: ../src/universal-cp/details-treeview.c:241
+#: src/universal-cp/details-treeview.c:253
 msgid "Default Value"
 msgstr "Основна вредност"
 
-#: ../src/universal-cp/details-treeview.c:247
+#: src/universal-cp/details-treeview.c:259
 msgid "Minimum"
 msgstr "Најмање"
 
-#: ../src/universal-cp/details-treeview.c:251
+#: src/universal-cp/details-treeview.c:263
 msgid "Maximum"
 msgstr "Највише"
 
-#: ../src/universal-cp/details-treeview.c:255
+#: src/universal-cp/details-treeview.c:267
 msgid "Step"
 msgstr "Корак"
 
-#: ../src/universal-cp/details-treeview.c:275
+#: src/universal-cp/details-treeview.c:287
 msgid "Allowed Values"
 msgstr "Допуштене вредности"
 
-#: ../src/universal-cp/details-treeview.c:299
-#: ../src/universal-cp/details-treeview.c:346
+#: src/universal-cp/details-treeview.c:311
+#: src/universal-cp/details-treeview.c:358
 msgid "Location"
 msgstr "Место"
 
-#: ../src/universal-cp/details-treeview.c:304
-#: ../src/universal-cp/details-treeview.c:351
+#: src/universal-cp/details-treeview.c:316
+#: src/universal-cp/details-treeview.c:363
 msgid "UDN"
 msgstr "УДН"
 
-#: ../src/universal-cp/details-treeview.c:309
-#: ../src/universal-cp/details-treeview.c:356
+#: src/universal-cp/details-treeview.c:321
+#: src/universal-cp/details-treeview.c:368
 msgid "Type"
 msgstr "Врста"
 
-#: ../src/universal-cp/details-treeview.c:314
-#: ../src/universal-cp/details-treeview.c:361
+#: src/universal-cp/details-treeview.c:326
+#: src/universal-cp/details-treeview.c:373
 msgid "Base URL"
 msgstr "Основна адреса"
 
-#: ../src/universal-cp/details-treeview.c:319
+#: src/universal-cp/details-treeview.c:331
 msgid "Service ID"
 msgstr "ИБ услуге"
 
-#: ../src/universal-cp/details-treeview.c:321
+#: src/universal-cp/details-treeview.c:333
 msgid "Service URL"
 msgstr "Адреса услуге"
 
-#: ../src/universal-cp/details-treeview.c:323
+#: src/universal-cp/details-treeview.c:335
 msgid "Control URL"
 msgstr "Адреса управљања"
 
-#: ../src/universal-cp/details-treeview.c:325
+#: src/universal-cp/details-treeview.c:337
 msgid "Event Subscription URL"
 msgstr "Адреса претплате догађаја"
 
-#: ../src/universal-cp/details-treeview.c:366
+#: src/universal-cp/details-treeview.c:378
 msgid "Friendly Name"
 msgstr "Име за пријатеље"
 
-#: ../src/universal-cp/details-treeview.c:368
+#: src/universal-cp/details-treeview.c:380
 msgid "Manufacturer"
 msgstr "Произвођач"
 
-#: ../src/universal-cp/details-treeview.c:370
+#: src/universal-cp/details-treeview.c:382
 msgid "Manufacturer URL"
 msgstr "Адреса произвођача"
 
-#: ../src/universal-cp/details-treeview.c:372
+#: src/universal-cp/details-treeview.c:384
 msgid "Model Description"
 msgstr "Опис модела"
 
-#: ../src/universal-cp/details-treeview.c:374
+#: src/universal-cp/details-treeview.c:386
 msgid "Model Name"
 msgstr "Назив модела"
 
-#: ../src/universal-cp/details-treeview.c:376
+#: src/universal-cp/details-treeview.c:388
 msgid "Model Number"
 msgstr "Број модела"
 
-#: ../src/universal-cp/details-treeview.c:378
+#: src/universal-cp/details-treeview.c:390
 msgid "Model URL"
 msgstr "Адреса модела"
 
-#: ../src/universal-cp/details-treeview.c:380
+#: src/universal-cp/details-treeview.c:392
 msgid "Serial Number"
 msgstr "Серијски број"
 
-#: ../src/universal-cp/details-treeview.c:382
+#: src/universal-cp/details-treeview.c:394
 msgid "UPC"
 msgstr "УПЦ"
 
-#: ../src/universal-cp/details-treeview.c:384
+#: src/universal-cp/details-treeview.c:396
 msgid "Presentation URL"
 msgstr "Адреса излагања"
 
-#: ../src/universal-cp/details-treeview.c:414
-#: ../src/universal-cp/event-treeview.c:376
+#: src/universal-cp/details-treeview.c:426
+#: src/universal-cp/event-treeview.c:404
 msgid "Value"
 msgstr "Вредност"
 
-#: ../src/universal-cp/device-treeview.c:52
+#: src/universal-cp/device-treeview.c:68
 msgid "Software"
 msgstr "Софтвер"
 
-#: ../src/universal-cp/device-treeview.c:54
+#: src/universal-cp/device-treeview.c:70
 msgid "Version"
 msgstr "Издање"
 
-#: ../src/universal-cp/device-treeview.c:56
+#: src/universal-cp/device-treeview.c:72
 msgid "Author"
 msgstr "Аутор"
 
-#: ../src/universal-cp/device-treeview.c:462
+#: src/universal-cp/device-treeview.c:478
 msgid "State variables"
 msgstr "Променљиве стања"
 
-#: ../src/universal-cp/device-treeview.c:503
+#: src/universal-cp/device-treeview.c:519
 msgid "Information not available"
 msgstr "Подаци нису доступни"
 
-#: ../src/universal-cp/device-treeview.c:681
+#: src/universal-cp/device-treeview.c:697
 msgid "UPnP Network"
 msgstr "УПнП мрежа"
 
-#: ../src/universal-cp/device-treeview.c:694
-#: ../src/universal-cp/event-treeview.c:373
+#: src/universal-cp/device-treeview.c:710 src/universal-cp/event-treeview.c:401
 msgid "Device"
 msgstr "Уређај"
 
-#: ../src/universal-cp/event-treeview.c:372
+#: src/universal-cp/event-treeview.c:400
 msgid "Time"
 msgstr "Време"
 
-#: ../src/universal-cp/event-treeview.c:374
+#: src/universal-cp/event-treeview.c:402
 msgid "Service"
 msgstr "Услуга"
 
-#: ../src/universal-cp/event-treeview.c:375
+#: src/universal-cp/event-treeview.c:403
 msgid "State Variable"
 msgstr "Променљива стања"
