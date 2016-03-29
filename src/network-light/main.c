@@ -41,12 +41,14 @@ static gint     light_load_level;
 static int      upnp_port = 0;
 static char   **interfaces = NULL;
 static char    *name = NULL;
+static gboolean exclusive;
 
 static GOptionEntry entries[] =
 {
         { "port", 'p', 0, G_OPTION_ARG_INT, &upnp_port, N_("Network PORT to use for UPnP"), "PORT" },
         { "interface", 'i', 0, G_OPTION_ARG_STRING_ARRAY, &interfaces, N_("Network interfaces to use for UPnP communication"), "INTERFACE" },
         { "name", 'n', 0, G_OPTION_ARG_STRING, &name, N_("Friendly name for this UPnP light"), "NAME" },
+        { "exclusive", 'x', 0, G_OPTION_ARG_NONE, &exclusive, N_("Apply change exclusively to this UPnP light"), NULL },
         { NULL }
 };
 
@@ -109,7 +111,7 @@ main (int argc, char **argv)
                 return -4;
         }
 
-        if (!init_ui (&argc, &argv, name)) {
+        if (!init_ui (&argc, &argv, name, exclusive)) {
                 return -1;
         }
 

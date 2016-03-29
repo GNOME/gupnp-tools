@@ -29,7 +29,8 @@ update_image       (void);
 gboolean
 init_ui            (gint             *argc,
                     gchar           **argv[],
-                    gchar            *name);
+                    gchar            *name,
+                    gboolean          exclusive);
 
 void
 deinit_ui          (void);

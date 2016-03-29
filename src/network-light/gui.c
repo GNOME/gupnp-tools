@@ -38,6 +38,7 @@ static GtkWidget  *main_window;
 static GtkWidget  *about_dialog;
 static GdkPixbuf  *on_pixbuf;
 static GdkPixbuf  *off_pixbuf;
+static gboolean    change_all = TRUE; // ui changes apply to all devices
 
 void
 on_light_status_menuitem_activate (GtkCheckMenuItem *menuitem,
@@ -98,7 +99,11 @@ void
 on_light_status_menuitem_activate (GtkCheckMenuItem *menuitem,
                                    gpointer          user_data)
 {
-        set_all_status (gtk_check_menu_item_get_active (menuitem));
+        if (change_all) {
+                set_all_status (gtk_check_menu_item_get_active (menuitem));
+        } else {
+                set_status (gtk_check_menu_item_get_active (menuitem));
+        }
 }
 
 G_MODULE_EXPORT
@@ -114,7 +119,11 @@ void
 on_increase_luminance_menuitem_activate (GtkMenuItem *menuitem,
                                          gpointer     user_data)
 {
-        set_all_load_level (get_load_level () + 20);
+        if (change_all) {
+                set_all_load_level (get_load_level () + 20);
+        } else {
+                set_load_level (get_load_level () + 20);
+        }
 }
 
 G_MODULE_EXPORT
@@ -122,7 +131,11 @@ void
 on_decrease_luminance_menuitem_activate (GtkMenuItem *menuitem,
                                          gpointer     user_data)
 {
-        set_all_load_level (get_load_level () - 20);
+        if (change_all) {
+                set_all_load_level (get_load_level () - 20);
+        } else {
+                set_load_level (get_load_level () - 20);
+        }
 }
 
 static void
@@ -192,10 +205,13 @@ on_delete_event (GtkWidget *widget,
 gboolean
 init_ui (gint   *argc,
          gchar **argv[],
-         gchar *name)
+         gchar *name,
+         gboolean exclusive)
 {
         GdkPixbuf *icon_pixbuf;
         GError *error = NULL;
+
+        change_all = !exclusive;
 
         gtk_init (argc, argv);
 
