@@ -764,19 +764,6 @@ update_device_icon (GUPnPDeviceInfo *info)
         g_object_unref (icon);
 }
 
-static GUPnPServiceProxy *
-get_content_dir (GUPnPDeviceProxy *proxy)
-{
-        GUPnPDeviceInfo  *info;
-        GUPnPServiceInfo *content_dir;
-
-        info = GUPNP_DEVICE_INFO (proxy);
-
-        content_dir = gupnp_device_info_get_service (info, CONTENT_DIR);
-
-        return GUPNP_SERVICE_PROXY (content_dir);
-}
-
 static void
 on_proxy_ready (GObject *source_object,
                 GAsyncResult *res,
@@ -1047,13 +1034,14 @@ append_media_server (GUPnPDeviceProxy *proxy,
                      GtkTreeIter      *parent_iter)
 {
         GUPnPDeviceInfo   *info;
-        GUPnPServiceProxy *content_dir;
         char              *friendly_name;
+        GUPnPServiceProxy *content_dir;
 
         info = GUPNP_DEVICE_INFO (proxy);
 
-        content_dir = get_content_dir (proxy);
         friendly_name = gupnp_device_info_get_friendly_name (info);
+        content_dir = av_cp_media_server_get_content_directory
+                                (AV_CP_MEDIA_SERVER (info));
 
         if (G_LIKELY (friendly_name != NULL && content_dir != NULL)) {
                 GtkTreeIter device_iter;

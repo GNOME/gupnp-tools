@@ -74,6 +74,7 @@ struct _AVCPMediaServerPrivate {
         char *default_sort_order;
         GList *tasks;
         AVCPMediaServerInitState state;
+        GUPnPServiceProxy *content_directory;
 };
 
 enum
@@ -107,6 +108,7 @@ av_cp_media_server_dispose (GObject *object)
                               G_OBJECT_CLASS (av_cp_media_server_parent_class);
 
         g_clear_object (&self->priv->icon);
+        g_clear_object (&self->priv->content_directory);
 
         parent_class->dispose (object);
 }
@@ -221,18 +223,17 @@ av_cp_media_server_on_icon_updated (GUPnPDeviceInfo *info,
                                     GdkPixbuf       *icon)
 {
         AVCPMediaServer *self = AV_CP_MEDIA_SERVER (info);
-        GUPnPServiceInfo *proxy = NULL;
 
         self->priv->icon = icon;
-        proxy = gupnp_device_info_get_service (GUPNP_DEVICE_INFO (self),
-                                               CONTENT_DIR);
-        if (proxy != NULL) {
+        av_cp_media_server_get_content_directory (self);
+
+        if (self->priv->content_directory != NULL) {
                 gupnp_service_proxy_begin_action
-                                (GUPNP_SERVICE_PROXY (proxy),
-                                "GetSortCapabilities",
-                                av_cp_media_server_on_get_sort_caps,
-                                g_object_ref (self),
-                                NULL);
+                                (self->priv->content_directory,
+                                 "GetSortCapabilities",
+                                 av_cp_media_server_on_get_sort_caps,
+                                 g_object_ref (self),
+                                 NULL);
         } else {
                 g_debug ("Invalid MediaServer device without ContentDirectory");
                 self->priv->state = INIT_FAILED;
@@ -333,4 +334,18 @@ GQuark
 av_cp_media_server_error_quark (void)
 {
         return g_quark_from_static_string ("av-cp-media-server-error-quark");
+}
+
+
+GUPnPServiceProxy *
+av_cp_media_server_get_content_directory (AVCPMediaServer *self)
+{
+        if (self->priv->content_directory == NULL) {
+                GUPnPServiceInfo *info = gupnp_device_info_get_service
+                                (GUPNP_DEVICE_INFO (self),
+                                 CONTENT_DIR);
+                self->priv->content_directory =  GUPNP_SERVICE_PROXY (info);
+        }
+
+        return g_object_ref (self->priv->content_directory);
 }
