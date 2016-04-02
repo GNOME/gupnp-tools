@@ -469,3 +469,88 @@ av_cp_media_server_browse_finish (AVCPMediaServer  *self,
 
         return FALSE;
 }
+
+static void
+av_cp_media_server_on_browse_metadata (GUPnPServiceProxy       *content_dir,
+                                       GUPnPServiceProxyAction *action,
+                                       gpointer                 user_data)
+{
+        GTask   *task = G_TASK (user_data);
+        GError  *error = NULL;
+        char    *didl_xml = NULL;
+
+        gupnp_service_proxy_end_action (content_dir,
+                                        action,
+                                        &error,
+                                        /* OUT args */
+                                        "Result",
+                                        G_TYPE_STRING,
+                                        &didl_xml,
+                                        NULL);
+        if (error != NULL) {
+                g_task_return_error (task, error);
+        } else {
+                g_task_return_pointer (task, didl_xml, g_free);
+        }
+
+        g_object_unref (task);
+}
+
+void
+av_cp_media_server_browse_metadata_async (AVCPMediaServer     *self,
+                                          GCancellable        *cancellable,
+                                          GAsyncReadyCallback  callback,
+                                          const char          *id,
+                                          gpointer             user_data)
+{
+        GTask *task = g_task_new (self, cancellable, callback, user_data);
+
+        gupnp_service_proxy_begin_action
+                                (self->priv->content_directory,
+                                 "Browse",
+                                 av_cp_media_server_on_browse_metadata,
+                                 task,
+                                 /* IN args */
+                                 "ObjectID",
+                                 G_TYPE_STRING,
+                                 id,
+                                 "BrowseFlag",
+                                 G_TYPE_STRING,
+                                 "BrowseMetadata",
+                                 "Filter",
+                                 G_TYPE_STRING,
+                                 "*",
+                                 "StartingIndex",
+                                 G_TYPE_UINT,
+                                 0,
+                                 "RequestedCount",
+                                 G_TYPE_UINT, 0,
+                                 "SortCriteria",
+                                 G_TYPE_STRING,
+                                 "",
+                                 NULL);
+}
+
+gboolean
+av_cp_media_server_browse_metadata_finish (AVCPMediaServer  *self,
+                                           GAsyncResult     *result,
+                                           char            **didl_xml,
+                                           GError          **error)
+{
+        char *res;
+
+        g_return_val_if_fail (g_task_is_valid (result, self), FALSE);
+
+        res = g_task_propagate_pointer (G_TASK (result), error);
+        if (res != NULL) {
+                if (didl_xml != NULL) {
+                        *didl_xml = res;
+                } else {
+                        g_free (res);
+                }
+
+                return TRUE;
+        }
+
+        return FALSE;
+}

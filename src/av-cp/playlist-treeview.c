@@ -893,9 +893,9 @@ browse_cb (GObject *object,
 }
 
 static void
-browse_metadata_cb (GUPnPServiceProxy       *content_dir,
-                    GUPnPServiceProxyAction *action,
-                    gpointer                 user_data)
+browse_metadata_cb (GObject      *object,
+                    GAsyncResult *result,
+                    gpointer      user_data)
 {
         BrowseMetadataData *data;
         char               *metadata;
@@ -906,15 +906,12 @@ browse_metadata_cb (GUPnPServiceProxy       *content_dir,
         metadata = NULL;
         error = NULL;
 
-        gupnp_service_proxy_end_action (content_dir,
-                                        action,
-                                        &error,
-                                        /* OUT args */
-                                        "Result",
-                                        G_TYPE_STRING,
-                                        &metadata,
-                                        NULL);
-        if (metadata) {
+        av_cp_media_server_browse_metadata_finish (AV_CP_MEDIA_SERVER (object),
+                                                   result,
+                                                   &metadata,
+                                                   &error);
+
+        if (metadata != NULL) {
                 data->callback (metadata, data->user_data);
 
                 g_free (metadata);
@@ -927,7 +924,6 @@ browse_metadata_cb (GUPnPServiceProxy       *content_dir,
         }
 
         browse_metadata_data_free (data);
-        g_object_unref (content_dir);
 }
 
 static void
@@ -952,39 +948,20 @@ browse (AVCPMediaServer *server,
 }
 
 static void
-browse_metadata (GUPnPServiceProxy *content_dir,
-                 const char        *id,
-                 MetadataFunc       callback,
-                 gpointer           user_data)
+browse_metadata (AVCPMediaServer *server,
+                 const char      *id,
+                 MetadataFunc     callback,
+                 gpointer         user_data)
 {
         BrowseMetadataData *data;
 
         data = browse_metadata_data_new (callback, id, user_data);
 
-        gupnp_service_proxy_begin_action
-                                (g_object_ref (content_dir),
-                                 "Browse",
-                                 browse_metadata_cb,
-                                 data,
-                                 /* IN args */
-                                 "ObjectID",
-                                 G_TYPE_STRING,
-                                 data->id,
-                                 "BrowseFlag",
-                                 G_TYPE_STRING,
-                                 "BrowseMetadata",
-                                 "Filter",
-                                 G_TYPE_STRING,
-                                 "*",
-                                 "StartingIndex",
-                                 G_TYPE_UINT,
-                                 0,
-                                 "RequestedCount",
-                                 G_TYPE_UINT, 0,
-                                 "SortCriteria",
-                                 G_TYPE_STRING,
-                                 "",
-                                 NULL);
+        av_cp_media_server_browse_metadata_async (server,
+                                                  NULL,
+                                                  browse_metadata_cb,
+                                                  id,
+                                                  data);
 }
 
 static void
@@ -1104,12 +1081,12 @@ gboolean
 get_selected_object (MetadataFunc callback,
                      gpointer     user_data)
 {
-        GUPnPServiceProxy  *content_dir;
-        GtkTreeSelection   *selection;
-        GtkTreeModel       *model;
-        GtkTreeIter         iter;
-        char               *id = NULL;
-        gboolean            ret = FALSE;
+        AVCPMediaServer   *server;
+        GtkTreeSelection  *selection;
+        GtkTreeModel      *model;
+        GtkTreeIter        iter;
+        char              *id = NULL;
+        gboolean           ret = FALSE;
 
         selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (treeview));
         g_assert (selection != NULL);
@@ -1120,11 +1097,11 @@ get_selected_object (MetadataFunc callback,
 
         gtk_tree_model_get (model,
                             &iter,
-                            3, &content_dir,
+                            2, &server,
                             4, &id,
                             -1);
 
-        browse_metadata (g_object_ref (content_dir), id, callback, user_data);
+        browse_metadata (server, id, callback, user_data);
 
         ret = TRUE;
 
@@ -1132,7 +1109,7 @@ get_selected_object (MetadataFunc callback,
                 g_free (id);
         }
 
-        g_object_unref (content_dir);
+        g_object_unref (server);
 
 return_point:
         return ret;
