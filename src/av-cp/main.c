@@ -35,6 +35,7 @@
 #include "gui.h"
 #include "renderer-combo.h"
 #include "playlist-treeview.h"
+#include "server-device.h"
 
 #define MEDIA_RENDERER "urn:schemas-upnp-org:device:MediaRenderer:1"
 #define MEDIA_SERVER "urn:schemas-upnp-org:device:MediaServer:1"
@@ -137,10 +138,35 @@ init_upnp (int port)
 {
         GUPnPWhiteList *white_list;
         GtkButton *button;
+        GUPnPResourceFactory *factory;
 
 #if !GLIB_CHECK_VERSION(2, 35, 0)
         g_type_init ();
 #endif
+
+        factory = gupnp_resource_factory_get_default ();
+
+        /* Work-around bgo#764498 */
+
+        gupnp_resource_factory_register_resource_proxy_type (
+                factory,
+                "urn:schemas-upnp-org:device:MediaServer:1",
+                AV_CP_TYPE_MEDIA_SERVER);
+
+        gupnp_resource_factory_register_resource_proxy_type (
+                factory,
+                "urn:schemas-upnp-org:device:MediaServer:2",
+                AV_CP_TYPE_MEDIA_SERVER);
+
+        gupnp_resource_factory_register_resource_proxy_type (
+                factory,
+                "urn:schemas-upnp-org:device:MediaServer:3",
+                AV_CP_TYPE_MEDIA_SERVER);
+
+        gupnp_resource_factory_register_resource_proxy_type (
+                factory,
+                "urn:schemas-upnp-org:device:MediaServer:4",
+                AV_CP_TYPE_MEDIA_SERVER);
 
         context_manager = gupnp_context_manager_create (port);
         g_assert (context_manager != NULL);

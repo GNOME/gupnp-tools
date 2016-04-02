@@ -24,7 +24,9 @@ gupnp_av_cp_SOURCES = main.c \
 		      gui.h \
 		      playlist-treeview.h \
 		      renderer-combo.h \
-		      renderer-controls.h
+		      renderer-controls.h \
+			  server-device.c \
+			  server-device.h
 
 gupnp_av_cp_LDADD = ../common/libutil.a \
 		    $(LIBGSSDP_LIBS) \

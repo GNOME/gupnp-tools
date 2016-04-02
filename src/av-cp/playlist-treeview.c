@@ -33,6 +33,7 @@
 #include "icons.h"
 #include "pretty-print.h"
 #include "gui.h"
+#include "server-device.h"
 
 #define CONTENT_DIR "urn:schemas-upnp-org:service:ContentDirectory"
 
@@ -729,16 +730,21 @@ append_didl_object (GUPnPDIDLLiteObject *object,
 
 static void
 on_device_icon_available (GUPnPDeviceInfo *info,
-                          GdkPixbuf       *icon)
+                          GParamSpec      *spec,
+                          gpointer         user_data)
 {
         GtkTreeModel *model;
         GtkTreeIter   iter;
+        AVCPMediaServer *server;
         const char   *udn;
+        GdkPixbuf    *icon;
 
         model = gtk_tree_view_get_model (GTK_TREE_VIEW (treeview));
         g_assert (model != NULL);
 
         udn = gupnp_device_info_get_udn (info);
+        server = AV_CP_MEDIA_SERVER (info);
+        g_object_get (G_OBJECT (server), "icon", &icon, NULL);
 
         if (find_row (model,
                       NULL,
@@ -1043,7 +1049,10 @@ append_media_server (GUPnPDeviceProxy *proxy,
                         child = g_list_delete_link (child, child);
                 }
 
-                schedule_icon_update (info, on_device_icon_available);
+                g_signal_connect (proxy,
+                                  "notify::icon",
+                                  G_CALLBACK (on_device_icon_available),
+                                  NULL);
 
                 browse (content_dir, "0", 0, MAX_BROWSE);
                 gupnp_service_proxy_add_notify (content_dir,
