@@ -75,6 +75,11 @@ void
 on_didl_menuitem_activate (GtkMenuItem *menuitem,
                            gpointer     user_data);
 
+static void
+on_proxy_ready (GObject *source_object,
+                GAsyncResult *res,
+                gpointer user_data);
+
 typedef struct
 {
   GUPnPServiceProxy *content_dir;
@@ -729,9 +734,7 @@ append_didl_object (GUPnPDIDLLiteObject *object,
 }
 
 static void
-on_device_icon_available (GUPnPDeviceInfo *info,
-                          GParamSpec      *spec,
-                          gpointer         user_data)
+update_device_icon (GUPnPDeviceInfo *info)
 {
         GtkTreeModel *model;
         GtkTreeIter   iter;
@@ -773,6 +776,35 @@ get_content_dir (GUPnPDeviceProxy *proxy)
 
         return GUPNP_SERVICE_PROXY (content_dir);
 }
+
+static void
+on_proxy_ready (GObject *source_object,
+                GAsyncResult *res,
+                gpointer user_data)
+{
+        GError *error = NULL;
+        gboolean result = FALSE;
+
+        result = g_async_initable_init_finish (G_ASYNC_INITABLE (source_object),
+                                               res,
+                                               &error);
+
+        if (result == TRUE) {
+                GUPnPServiceProxy *content_dir = GUPNP_SERVICE_PROXY (user_data);
+                char *sort_order = NULL;
+
+                update_device_icon (GUPNP_DEVICE_INFO (source_object));
+
+                g_object_get (source_object,
+                              "sort-order",
+                              &sort_order,
+                              NULL);
+
+                browse (content_dir, "0", 0, MAX_BROWSE);
+                g_free (sort_order);
+        }
+}
+
 
 static void
 on_didl_object_available (GUPnPDIDLLiteParser *parser,
@@ -1039,6 +1071,12 @@ append_media_server (GUPnPDeviceProxy *proxy,
                                  -1);
                 g_free (friendly_name);
 
+                g_async_initable_init_async (G_ASYNC_INITABLE (proxy),
+                                             G_PRIORITY_DEFAULT,
+                                             NULL,
+                                             on_proxy_ready,
+                                             content_dir);
+
                 /* Append the embedded devices */
                 child = gupnp_device_info_list_devices (info);
                 while (child) {
@@ -1049,12 +1087,6 @@ append_media_server (GUPnPDeviceProxy *proxy,
                         child = g_list_delete_link (child, child);
                 }
 
-                g_signal_connect (proxy,
-                                  "notify::icon",
-                                  G_CALLBACK (on_device_icon_available),
-                                  NULL);
-
-                browse (content_dir, "0", 0, MAX_BROWSE);
                 gupnp_service_proxy_add_notify (content_dir,
                                                 "ContainerUpdateIDs",
                                                 G_TYPE_STRING,
