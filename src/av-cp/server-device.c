@@ -349,3 +349,123 @@ av_cp_media_server_get_content_directory (AVCPMediaServer *self)
 
         return g_object_ref (self->priv->content_directory);
 }
+
+typedef struct _BrowseReturn {
+        char    *didl_xml;
+        guint32  number_returned;
+        guint32  total_matches;
+} BrowseReturn;
+
+static void
+av_cp_media_server_on_browse (GUPnPServiceProxy       *content_dir,
+                              GUPnPServiceProxyAction *action,
+                              gpointer                 user_data)
+{
+        GTask   *task = G_TASK (user_data);
+        GError  *error = NULL;
+        char    *didl_xml = NULL;
+        guint32  number_returned;
+        guint32  total_matches;
+
+        gupnp_service_proxy_end_action (content_dir,
+                                        action,
+                                        &error,
+                                        /* OUT args */
+                                        "Result",
+                                        G_TYPE_STRING,
+                                        &didl_xml,
+                                        "NumberReturned",
+                                        G_TYPE_UINT,
+                                        &number_returned,
+                                        "TotalMatches",
+                                        G_TYPE_UINT,
+                                        &total_matches,
+                                        NULL);
+        if (error != NULL) {
+                g_task_return_error (task, error);
+        } else {
+                BrowseReturn *ret = g_new0 (BrowseReturn, 1);
+                ret->didl_xml = didl_xml;
+                ret->number_returned = number_returned;
+                ret->total_matches = total_matches;
+                g_task_return_pointer (task, ret, NULL);
+        }
+
+        g_object_unref (task);
+}
+
+void
+av_cp_media_server_browse_async (AVCPMediaServer     *self,
+                                 GCancellable        *cancellable,
+                                 GAsyncReadyCallback  callback,
+                                 const char          *container_id,
+                                 guint32              starting_index,
+                                 guint32              requested_count,
+                                 gpointer             user_data)
+{
+        GTask *task = g_task_new (self, cancellable, callback, user_data);
+        const char *sort_order =  self->priv->default_sort_order == NULL ?
+                                         "" :
+                                         self->priv->default_sort_order;
+
+        gupnp_service_proxy_begin_action (self->priv->content_directory,
+                                          "Browse",
+                                          av_cp_media_server_on_browse,
+                                          task,
+                                          /* IN args */
+                                          "ObjectID",
+                                          G_TYPE_STRING,
+                                          container_id,
+                                          "BrowseFlag",
+                                          G_TYPE_STRING,
+                                          "BrowseDirectChildren",
+                                          "Filter",
+                                          G_TYPE_STRING,
+                                          "@childCount",
+                                          "StartingIndex",
+                                          G_TYPE_UINT,
+                                          starting_index,
+                                          "RequestedCount",
+                                          G_TYPE_UINT,
+                                          requested_count,
+                                          "SortCriteria",
+                                          G_TYPE_STRING,
+                                          sort_order,
+                                          NULL);
+}
+
+gboolean
+av_cp_media_server_browse_finish (AVCPMediaServer  *self,
+                                  GAsyncResult     *result,
+                                  char            **didl_xml,
+                                  guint32          *total_matches,
+                                  guint32          *number_returned,
+                                  GError          **error)
+{
+        BrowseReturn *res;
+
+        g_return_val_if_fail (g_task_is_valid (result, self), FALSE);
+
+        res = g_task_propagate_pointer (G_TASK (result), error);
+        if (res != NULL) {
+                if (didl_xml != NULL) {
+                        *didl_xml = res->didl_xml;
+                } else {
+                        g_free (res->didl_xml);
+                }
+
+                if (total_matches != NULL) {
+                        *total_matches = res->total_matches;
+                }
+
+                if (number_returned != NULL) {
+                        *number_returned = res->number_returned;
+                }
+
+                g_free (res);
+
+                return TRUE;
+        }
+
+        return FALSE;
+}

@@ -61,8 +61,26 @@ struct _AVCPMediaServerClass {
         GUPnPDeviceProxyClass parent_class;
 };
 
+
+GUPnPServiceProxy *
+av_cp_media_server_get_content_directory (AVCPMediaServer *self);
+
+void
+av_cp_media_server_browse_async (AVCPMediaServer     *self,
+                                 GCancellable        *cancellable,
+                                 GAsyncReadyCallback  callback,
+                                 const char          *container_id,
+                                 guint32              starting_index,
+                                 guint32              requested_count,
+                                 gpointer             user_data);
+
 gboolean
-av_cp_media_server_ready (AVCPMediaServer *self);
+av_cp_media_server_browse_finish (AVCPMediaServer  *self,
+                                  GAsyncResult     *result,
+                                  char            **didl_xml,
+                                  guint32          *total_matches,
+                                  guint32          *number_returned,
+                                  GError          **error);
 
 G_END_DECLS
 

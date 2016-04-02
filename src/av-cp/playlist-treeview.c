@@ -82,11 +82,9 @@ on_proxy_ready (GObject *source_object,
 
 typedef struct
 {
-  GUPnPServiceProxy *content_dir;
-
-  gchar *id;
-
-  guint32 starting_index;
+        AVCPMediaServer *server;
+        gchar *id;
+        guint32 starting_index;
 } BrowseData;
 
 typedef struct
@@ -99,14 +97,14 @@ typedef struct
 } BrowseMetadataData;
 
 static BrowseData *
-browse_data_new (GUPnPServiceProxy *content_dir,
-                 const char        *id,
-                 guint32            starting_index)
+browse_data_new (AVCPMediaServer *server,
+                 const char      *id,
+                 guint32          starting_index)
 {
         BrowseData *data;
 
         data = g_slice_new (BrowseData);
-        data->content_dir = g_object_ref (content_dir);
+        data->server = g_object_ref (server);
         data->id = g_strdup (id);
         data->starting_index = starting_index;
 
@@ -117,7 +115,7 @@ static void
 browse_data_free (BrowseData *data)
 {
         g_free (data->id);
-        g_object_unref (data->content_dir);
+        g_object_unref (data->server);
         g_slice_free (BrowseData, data);
 }
 
@@ -144,10 +142,10 @@ browse_metadata_data_free (BrowseMetadataData *data)
 }
 
 static void
-browse (GUPnPServiceProxy *content_dir,
-        const char        *container_id,
-        guint32            starting_index,
-        guint32            requested_count);
+browse (AVCPMediaServer *content_dir,
+        const char      *container_id,
+        guint32          starting_index,
+        guint32          requested_count);
 
 G_MODULE_EXPORT
 gboolean
@@ -276,23 +274,23 @@ on_playlist_row_expanded (GtkTreeView *tree_view,
         }
 
         do {
-                GUPnPServiceProxy *content_dir;
-                gchar             *id;
-                gboolean           is_container;
-                gint              child_count;
+                AVCPMediaServer *server;
+                gchar           *id;
+                gboolean         is_container;
+                gint             child_count;
 
                 gtk_tree_model_get (model, &child_iter,
-                                    3, &content_dir,
+                                    2, &server,
                                     4, &id,
                                     5, &is_container,
                                     6, &child_count,
                                     -1);
 
                 if (is_container && child_count != 0) {
-                        browse (content_dir, id, 0, MAX_BROWSE);
+                        browse (server, id, 0, MAX_BROWSE);
                 }
 
-                g_object_unref (content_dir);
+                g_object_unref (server);
                 g_free (id);
         } while (gtk_tree_model_iter_next (model, &child_iter));
 }
@@ -567,7 +565,7 @@ get_item_icon (GUPnPDIDLLiteObject *object)
 }
 
 static gboolean
-find_container (GUPnPServiceProxy *content_dir,
+find_container (AVCPMediaServer   *server,
                 GtkTreeModel      *model,
                 GtkTreeIter       *container_iter,
                 const char        *container_id)
@@ -575,7 +573,7 @@ find_container (GUPnPServiceProxy *content_dir,
         GtkTreeIter server_iter;
         const char *udn;
 
-        udn = gupnp_service_info_get_udn (GUPNP_SERVICE_INFO (content_dir));
+        udn = gupnp_device_info_get_udn (GUPNP_DEVICE_INFO (server));
 
         if (!find_row (model,
                        NULL,
@@ -598,8 +596,8 @@ find_container (GUPnPServiceProxy *content_dir,
 }
 
 static void
-update_container (GUPnPServiceProxy *content_dir,
-                  const char        *container_id)
+update_container (AVCPMediaServer *server,
+                  const char      *container_id)
 {
         GtkTreeModel *model;
         GtkTreeIter   container_iter;
@@ -607,7 +605,7 @@ update_container (GUPnPServiceProxy *content_dir,
         model = gtk_tree_view_get_model (GTK_TREE_VIEW (treeview));
         g_assert (model != NULL);
 
-        if (find_container (content_dir,
+        if (find_container (server,
                             model,
                             &container_iter,
                             container_id)) {
@@ -617,13 +615,13 @@ update_container (GUPnPServiceProxy *content_dir,
                 }
 
                 /* Browse it again */
-                browse (content_dir, container_id, 0, MAX_BROWSE);
+                browse (server, container_id, 0, MAX_BROWSE);
         }
 }
 
 static void
-update_container_child_count (GUPnPServiceProxy *content_dir,
-                              const char        *container_id)
+update_container_child_count (AVCPMediaServer *server,
+                              const char      *container_id)
 {
         GtkTreeModel *model;
         GtkTreeIter   container_iter;
@@ -631,7 +629,7 @@ update_container_child_count (GUPnPServiceProxy *content_dir,
         model = gtk_tree_view_get_model (GTK_TREE_VIEW (treeview));
         g_assert (model != NULL);
 
-        if (find_container (content_dir,
+        if (find_container (server,
                             model,
                             &container_iter,
                             container_id)) {
@@ -654,6 +652,7 @@ on_container_update_ids (GUPnPServiceProxy *content_dir,
 {
         char **tokens;
         guint  i;
+        AVCPMediaServer *server = AV_CP_MEDIA_SERVER (user_data);
 
         /* Ignore initial event. It might have some old updates that happened
          * ages ago and cause duplicate entries in our list.
@@ -668,7 +667,7 @@ on_container_update_ids (GUPnPServiceProxy *content_dir,
         for (i = 0;
              tokens[i] != NULL && tokens[i+1] != NULL;
              i += 2) {
-                update_container (content_dir, tokens[i]);
+                update_container (server, tokens[i]);
         }
 
         g_strfreev (tokens);
@@ -687,7 +686,6 @@ append_didl_object (GUPnPDIDLLiteObject *object,
         gboolean    is_container;
         gint        child_count;
         GdkPixbuf  *icon;
-        gint        position;
 
         id = gupnp_didl_lite_object_get_id (object);
         title = gupnp_didl_lite_object_get_title (object);
@@ -699,14 +697,12 @@ append_didl_object (GUPnPDIDLLiteObject *object,
 
         if (is_container) {
                 GUPnPDIDLLiteContainer *container;
-                position = 0;
                 icon = get_icon_by_id (ICON_CONTAINER);
 
                 container = GUPNP_DIDL_LITE_CONTAINER (object);
                 child_count = gupnp_didl_lite_container_get_child_count
                                                                 (container);
         } else {
-                position = -1;
                 child_count = 0;
                 icon = get_item_icon (object);
         }
@@ -723,10 +719,10 @@ append_didl_object (GUPnPDIDLLiteObject *object,
                 return;
 
         gtk_tree_store_insert_with_values (GTK_TREE_STORE (model),
-                                           NULL, &parent_iter, position,
+                                           NULL, &parent_iter, -1,
                                            0, icon,
                                            1, title,
-                                           3, browse_data->content_dir,
+                                           2, browse_data->server,
                                            4, id,
                                            5, is_container,
                                            6, child_count,
@@ -777,18 +773,8 @@ on_proxy_ready (GObject *source_object,
                                                &error);
 
         if (result == TRUE) {
-                GUPnPServiceProxy *content_dir = GUPNP_SERVICE_PROXY (user_data);
-                char *sort_order = NULL;
-
                 update_device_icon (GUPNP_DEVICE_INFO (source_object));
-
-                g_object_get (source_object,
-                              "sort-order",
-                              &sort_order,
-                              NULL);
-
-                browse (content_dir, "0", 0, MAX_BROWSE);
-                g_free (sort_order);
+                browse (AV_CP_MEDIA_SERVER (source_object), "0", 0, MAX_BROWSE);
         }
 }
 
@@ -808,8 +794,8 @@ on_didl_object_available (GUPnPDIDLLiteParser *parser,
 
         browse_data = (BrowseData *) user_data;
 
-        udn = gupnp_service_info_get_udn
-                                (GUPNP_SERVICE_INFO (browse_data->content_dir));
+        udn = gupnp_device_info_get_udn
+                                (GUPNP_DEVICE_INFO (browse_data->server));
 
         if (find_row (model,
                        NULL,
@@ -827,9 +813,9 @@ on_didl_object_available (GUPnPDIDLLiteParser *parser,
 }
 
 static void
-browse_cb (GUPnPServiceProxy       *content_dir,
-           GUPnPServiceProxyAction *action,
-           gpointer                 user_data)
+browse_cb (GObject *object,
+           GAsyncResult *result,
+           gpointer user_data)
 {
         BrowseData *data;
         char       *didl_xml;
@@ -841,20 +827,13 @@ browse_cb (GUPnPServiceProxy       *content_dir,
         didl_xml = NULL;
         error = NULL;
 
-        gupnp_service_proxy_end_action (content_dir,
-                                        action,
-                                        &error,
-                                        /* OUT args */
-                                        "Result",
-                                        G_TYPE_STRING,
-                                        &didl_xml,
-                                        "NumberReturned",
-                                        G_TYPE_UINT,
-                                        &number_returned,
-                                        "TotalMatches",
-                                        G_TYPE_UINT,
-                                        &total_matches,
-                                        NULL);
+        av_cp_media_server_browse_finish (AV_CP_MEDIA_SERVER (object),
+                                          result,
+                                          &didl_xml,
+                                          &total_matches,
+                                          &number_returned,
+                                          &error);
+
         if (didl_xml) {
                 GUPnPDIDLLiteParser *parser;
                 gint32              remaining;
@@ -895,18 +874,16 @@ browse_cb (GUPnPServiceProxy       *content_dir,
                         else
                                 batch_size = MAX_BROWSE;
 
-                        browse (content_dir,
+                        browse (AV_CP_MEDIA_SERVER (object),
                                 data->id,
                                 data->starting_index,
                                 batch_size);
                 } else
-                        update_container_child_count (content_dir, data->id);
+                        update_container_child_count (AV_CP_MEDIA_SERVER (object),
+                                                      data->id);
         } else if (error) {
-                GUPnPServiceInfo *info;
-
-                info = GUPNP_SERVICE_INFO (content_dir);
                 g_warning ("Failed to browse '%s': %s",
-                           gupnp_service_info_get_location (info),
+                           gupnp_device_info_get_location (GUPNP_DEVICE_INFO (object)),
                            error->message);
 
                 g_error_free (error);
@@ -954,42 +931,24 @@ browse_metadata_cb (GUPnPServiceProxy       *content_dir,
 }
 
 static void
-browse (GUPnPServiceProxy *content_dir,
-        const char        *container_id,
-        guint32            starting_index,
-        guint32            requested_count)
+browse (AVCPMediaServer *server,
+        const char      *container_id,
+        guint32          starting_index,
+        guint32          requested_count)
 {
         BrowseData *data;
 
-        data = browse_data_new (content_dir,
+        data = browse_data_new (server,
                                 container_id,
                                 starting_index);
 
-        gupnp_service_proxy_begin_action
-                                (content_dir,
-                                 "Browse",
-                                 browse_cb,
-                                 data,
-                                 /* IN args */
-                                 "ObjectID",
-                                 G_TYPE_STRING,
-                                 container_id,
-                                 "BrowseFlag",
-                                 G_TYPE_STRING,
-                                 "BrowseDirectChildren",
-                                 "Filter",
-                                 G_TYPE_STRING,
-                                 "@childCount",
-                                 "StartingIndex",
-                                 G_TYPE_UINT,
-                                 starting_index,
-                                 "RequestedCount",
-                                 G_TYPE_UINT,
-                                 requested_count,
-                                 "SortCriteria",
-                                 G_TYPE_STRING,
-                                 "",
-                                 NULL);
+        av_cp_media_server_browse_async (server,
+                                         NULL,
+                                         browse_cb,
+                                         container_id,
+                                         starting_index,
+                                         requested_count,
+                                         data);
 }
 
 static void
