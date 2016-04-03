@@ -158,7 +158,7 @@ av_cp_media_server_on_get_sort_caps (GUPnPServiceProxy *proxy,
                 g_warning ("Failed to get sort caps from server: %s",
                            error->message);
                 g_error_free (error);
-        } else {
+        } else if (sort_caps != NULL) {
                 GString *default_sort_order = g_string_new (NULL);
                 if (strstr (sort_caps, "upnp:class") != NULL) {
                         g_string_append (default_sort_order, "+upnp:class,");
@@ -170,6 +170,8 @@ av_cp_media_server_on_get_sort_caps (GUPnPServiceProxy *proxy,
 
                 self->priv->default_sort_order =
                                 g_string_free (default_sort_order, FALSE);
+
+                g_free (sort_caps);
         }
 
         self->priv->state = INITIALIZED;
