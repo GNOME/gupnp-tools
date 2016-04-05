@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: gupnp-tools master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gupnp-"
 "tools&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-03-28 19:01+0000\n"
-"PO-Revision-Date: 2016-03-31 14:30-0200\n"
+"POT-Creation-Date: 2016-04-03 17:07+0000\n"
+"PO-Revision-Date: 2016-04-04 21:24-0200\n"
 "Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
 "Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
 "Language: pt_BR\n"
@@ -273,29 +273,34 @@ msgstr "_Visualizar"
 msgid "Event _log"
 msgstr "Re_gistro do evento"
 
-#: src/av-cp/main.c:47 src/network-light/main.c:47 src/universal-cp/main.c:41
+#: src/av-cp/main.c:47 src/network-light/main.c:48 src/universal-cp/main.c:41
 msgid "Network PORT to use for UPnP"
 msgstr "PORTA de rede a ser usada para UPnp"
 
-#: src/av-cp/main.c:48 src/network-light/main.c:48 src/universal-cp/main.c:42
+#: src/av-cp/main.c:48 src/network-light/main.c:49 src/universal-cp/main.c:42
 msgid "Network interfaces to use for UPnP communication"
 msgstr "Interfaces de rede a serem usadas para comunicação UPnP"
 
 # GUPnP-AV is a collection of helpers for building AV (audio/video) applications using GUPnP.
-#: src/av-cp/main.c:197 src/network-light/main.c:102
+#: src/av-cp/main.c:197 src/network-light/main.c:104
 #: src/universal-cp/main.c:149
 msgid "- UPnP AV control point"
 msgstr "- Ponto de controle áudio/vídeo (AV) UPnP"
 
-#: src/av-cp/main.c:202 src/network-light/main.c:107
+#: src/av-cp/main.c:202 src/network-light/main.c:109
 #: src/universal-cp/main.c:154
 #, c-format
 msgid "Could not parse options: %s\n"
 msgstr "Não foi possível analisar as opções: %s\n"
 
-#: src/network-light/main.c:49
+#: src/network-light/main.c:50
 msgid "Friendly name for this UPnP light"
 msgstr "Nome amigável para esta luz UPnP"
+
+#: src/network-light/main.c:51
+#| msgid "Friendly name for this UPnP light"
+msgid "Apply change exclusively to this UPnP light"
+msgstr "Aplicar alteração exclusivamente a esta luz UPnP"
 
 #: src/universal-cp/action-dialog.c:686
 #, c-format
