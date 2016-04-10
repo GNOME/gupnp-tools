@@ -1,15 +1,15 @@
 # Spanish translation for gupnp-tools.
 # Copyright (C) 2012 gupnp-tools's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gupnp-tools package.
-# Daniel Mustieles <daniel.mustieles@gmail.com>, 2012, 2013, 2014.
+# Daniel Mustieles <daniel.mustieles@gmail.com>, 2012, 2013, 2014, 2016.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gupnp-tools master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gupnp-"
 "tools&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-08-10 19:24+0000\n"
-"PO-Revision-Date: 2014-08-26 18:37+0200\n"
+"POT-Creation-Date: 2016-04-03 17:07+0000\n"
+"PO-Revision-Date: 2016-04-07 12:55+0200\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Español; Castellano <gnome-es-list@gnome.org>\n"
 "Language: es\n"
@@ -19,16 +19,20 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Gtranslator 2.91.6\n"
 
-#: ../data/gupnp-av-cp.desktop.in.in.h:1
+#: data/gupnp-av-cp.desktop.in.in:4
 msgid "UPnP AV Control Point"
 msgstr "Punto de control AV de UPnP"
 
-#: ../data/gupnp-av-cp.ui.in.h:1 ../data/gupnp-network-light.ui.h:1
-#: ../data/gupnp-universal-cp.ui.h:1
+#: data/gupnp-av-cp.desktop.in.in:7
+msgid "@PKGDATADIR@/pixmaps/av-cp.png"
+msgstr "@PKGDATADIR@/pixmaps/av-cp.png"
+
+#: data/gupnp-av-cp.ui.in:10 data/gupnp-network-light.ui:7
+#: data/gupnp-universal-cp.ui:8
 msgid "Copyright (C) 2007 Zeeshan Ali (Khattak)"
 msgstr "Copyright (C) 2007 Zeeshan Ali (Khattak)"
 
-#: ../data/gupnp-av-cp.ui.in.h:2
+#: data/gupnp-av-cp.ui.in:11
 msgid ""
 "An UPnP AV Control Point based on GUPnP framework.\n"
 "Inspired by Intel Tools for UPnP."
@@ -36,70 +40,70 @@ msgstr ""
 "Un punto de control AV de UPnP basado en el entorno de trabajo GUPnP.\n"
 "Inspirado en las herramientas de Intel para UPnP."
 
-#: ../data/gupnp-av-cp.ui.in.h:4 ../data/gupnp-network-light.ui.h:4
-#: ../data/gupnp-universal-cp.ui.h:4
+#: data/gupnp-av-cp.ui.in:14 data/gupnp-network-light.ui:11
+#: data/gupnp-universal-cp.ui:12
 msgid "GUPnP homepage"
 msgstr "Página principal de GUPnP"
 
 #. TRANSLATORS: Replace this string with your names, one name per line.
-#: ../data/gupnp-av-cp.ui.in.h:6 ../data/gupnp-network-light.ui.h:6
-#: ../data/gupnp-universal-cp.ui.h:6
+#: data/gupnp-av-cp.ui.in:16 data/gupnp-network-light.ui:13
+#: data/gupnp-universal-cp.ui:14
 msgid "translator-credits"
 msgstr "Daniel Mustieles <daniel.mustieles@gmail.com>, 2012, 2013"
 
-#: ../data/gupnp-av-cp.ui.in.h:7
+#: data/gupnp-av-cp.ui.in:52
 msgid "GUPnP AV Control Point"
 msgstr "Punto de control AV de GUPnP"
 
-#: ../data/gupnp-av-cp.ui.in.h:8 ../data/gupnp-universal-cp.ui.h:24
+#: data/gupnp-av-cp.ui.in:66 data/gupnp-universal-cp.ui:423
 msgid "_File"
 msgstr "_Archivo"
 
-#: ../data/gupnp-av-cp.ui.in.h:9
+#: data/gupnp-av-cp.ui.in:75
 msgid "Close"
 msgstr "Cerrar"
 
-#: ../data/gupnp-av-cp.ui.in.h:10
+#: data/gupnp-av-cp.ui.in:88
 msgid "_Tools"
 msgstr "Herramien_tas"
 
-#: ../data/gupnp-av-cp.ui.in.h:11
+#: data/gupnp-av-cp.ui.in:98
 msgid "_Lenient Mode"
 msgstr "Modo _indulgente"
 
-#: ../data/gupnp-av-cp.ui.in.h:12 ../data/gupnp-universal-cp.ui.h:29
+#: data/gupnp-av-cp.ui.in:110 data/gupnp-universal-cp.ui:505
 msgid "_Help"
 msgstr "Ay_uda"
 
-#: ../data/gupnp-av-cp.ui.in.h:13 ../data/gupnp-universal-cp.ui.h:30
+#: data/gupnp-av-cp.ui.in:119 data/gupnp-universal-cp.ui:514
 msgid "About"
 msgstr "Acerca de"
 
-#: ../data/gupnp-av-cp.ui.in.h:14
+#: data/gupnp-av-cp.ui.in:170 data/gupnp-av-cp.ui.in:698
 msgid "_Play"
 msgstr "_Reproducir"
 
-#: ../data/gupnp-av-cp.ui.in.h:15
+#: data/gupnp-av-cp.ui.in:219
 msgid "P_ause"
 msgstr "_Pausa"
 
-#: ../data/gupnp-av-cp.ui.in.h:16
+#: data/gupnp-av-cp.ui.in:268
 msgid "_Stop"
 msgstr "_Detener"
 
-#: ../data/gupnp-av-cp.ui.in.h:17
+#: data/gupnp-av-cp.ui.in:317
 msgid "Pre_vious"
 msgstr "_Anterior"
 
-#: ../data/gupnp-av-cp.ui.in.h:18
+#: data/gupnp-av-cp.ui.in:380
 msgid "_Next"
 msgstr "_Siguiente"
 
-#: ../data/gupnp-av-cp.ui.in.h:19
+#: data/gupnp-av-cp.ui.in:398
 msgid "Rescan"
 msgstr "Volver a analizar"
 
-#: ../data/gupnp-av-cp.ui.in.h:20
+#: data/gupnp-av-cp.ui.in:442
 msgid ""
 "Clears the CP's idea of the state of the currently selected AV Renderer. "
 "Useful for dealing with AV Renderers that don't report state changes."
@@ -108,31 +112,35 @@ msgstr ""
 "actualmente. Útil para trabajar con renderizadores AV que no informar de "
 "cambios de estado."
 
-#: ../data/gupnp-av-cp.ui.in.h:21
+#: data/gupnp-av-cp.ui.in:453
 msgid "_Clear state"
 msgstr "_Limpiar estado"
 
-#: ../data/gupnp-av-cp.ui.in.h:22
+#: data/gupnp-av-cp.ui.in:496
 msgid "_Renderer: "
 msgstr "_Renderizador: "
 
-#: ../data/gupnp-av-cp.ui.in.h:23
+#: data/gupnp-av-cp.ui.in:629
 msgid "GUPnP AV CP - Metadata View"
 msgstr "Punto de control AV de GUPnP; vista de metadatos"
 
-#: ../data/gupnp-av-cp.ui.in.h:24
+#: data/gupnp-av-cp.ui.in:707
 msgid "Fetch the DIDL-Lite XML for this media object"
 msgstr "Obtener el XML DIDL-Lite para este objeto multimedia"
 
-#: ../data/gupnp-av-cp.ui.in.h:25
+#: data/gupnp-av-cp.ui.in:708
 msgid "Fetch _DIDL-Lite"
 msgstr "Obtener _DIDL-Lite"
 
-#: ../data/gupnp-network-light.desktop.in.in.h:1
+#: data/gupnp-network-light.desktop.in.in:4
 msgid "UPnP Network Light"
 msgstr "Luz de red UPnP"
 
-#: ../data/gupnp-network-light.ui.h:2
+#: data/gupnp-network-light.desktop.in.in:7
+msgid "@PKGDATADIR@/pixmaps/network-light-256x256.png"
+msgstr "@PKGDATADIR@/pixmaps/network-light-256x256.png"
+
+#: data/gupnp-network-light.ui:8
 msgid ""
 "A virtual network light bulb based on GUPnP framework.\n"
 "Inspired by Intel Tools for UPnP."
@@ -140,34 +148,36 @@ msgstr ""
 "Una bombilla de red virtual basada en el entorno de trabajo GUPnP.\n"
 "Inspirada en las herramientas de Intel para UPnP."
 
-#: ../data/gupnp-network-light.ui.h:7
+#: data/gupnp-network-light.ui:38
 msgid "GUPnP Network Light"
 msgstr "Luz de red GUPnP"
 
-#: ../data/gupnp-network-light.ui.h:8
+#: data/gupnp-network-light.ui:63
 msgctxt "network-light"
 msgid "_On"
 msgstr "_Activada"
 
-#: ../data/gupnp-network-light.ui.h:10
-#, no-c-format
+#: data/gupnp-network-light.ui:83
 msgid "_Increase luminance by 20%"
 msgstr "_Aumentar la luminosidad un 20%"
 
-#: ../data/gupnp-network-light.ui.h:12
-#, no-c-format
+#: data/gupnp-network-light.ui:92
 msgid "_Decrease luminance by 20%"
 msgstr "_Reducir la luminosidad un 20%"
 
-#: ../data/gupnp-network-light.ui.h:13
+#: data/gupnp-network-light.ui:107
 msgid "_About"
 msgstr "A_cerca de"
 
-#: ../data/gupnp-universal-cp.desktop.in.in.h:1
+#: data/gupnp-universal-cp.desktop.in.in:4
 msgid "UPnP Universal Control Point"
 msgstr "Punto de control de UPnP universal"
 
-#: ../data/gupnp-universal-cp.ui.h:2
+#: data/gupnp-universal-cp.desktop.in.in:7
+msgid "@PKGDATADIR@/pixmaps/universal-cp.png"
+msgstr "@PKGDATADIR@/pixmaps/universal-cp.png"
+
+#: data/gupnp-universal-cp.ui:9
 msgid ""
 "A Generic Control Point based on GUPnP framework.\n"
 "Inspired by Intel Tools for UPnP."
@@ -175,113 +185,119 @@ msgstr ""
 "Un punto de control genérico basado en el entorno de trabajo GUPnP.\n"
 "Inspirado en las herramientas de Intel para UPnP."
 
-#: ../data/gupnp-universal-cp.ui.h:7
+#: data/gupnp-universal-cp.ui:41
 msgid "Action Invocation"
 msgstr "Invocación de la acción"
 
-#: ../data/gupnp-universal-cp.ui.h:8
+#: data/gupnp-universal-cp.ui:105
 msgid "_Invoke"
 msgstr "_Invocar"
 
-#: ../data/gupnp-universal-cp.ui.h:9
+#: data/gupnp-universal-cp.ui:175
 msgid "device"
 msgstr "dispositivo"
 
-#: ../data/gupnp-universal-cp.ui.h:10
+#: data/gupnp-universal-cp.ui:188
 msgid "service"
 msgstr "servicio"
 
-#: ../data/gupnp-universal-cp.ui.h:11
+#: data/gupnp-universal-cp.ui:201
 msgid "action"
 msgstr "acción"
 
-#: ../data/gupnp-universal-cp.ui.h:12
+#: data/gupnp-universal-cp.ui:244
 msgid "'in' arguments"
 msgstr "argumentos de entrada"
 
-#: ../data/gupnp-universal-cp.ui.h:13
+#: data/gupnp-universal-cp.ui:277
 msgid "'out' arguments"
 msgstr "argumentos de salida"
 
-#: ../data/gupnp-universal-cp.ui.h:14
+#: data/gupnp-universal-cp.ui:311
 msgid "Copy value"
 msgstr "Copiar valor"
 
-#: ../data/gupnp-universal-cp.ui.h:15
+#: data/gupnp-universal-cp.ui:320
 msgid "Copy all details"
 msgstr "Copiar todos los detalles"
 
-#: ../data/gupnp-universal-cp.ui.h:16
+#: data/gupnp-universal-cp.ui:332
 msgid "Invoke"
 msgstr "Invokar"
 
-#: ../data/gupnp-universal-cp.ui.h:17
+#: data/gupnp-universal-cp.ui:341
 msgid "Subscribe to events"
 msgstr "Suscribirse a todos los eventos"
 
-#: ../data/gupnp-universal-cp.ui.h:18
+#: data/gupnp-universal-cp.ui:356 data/gupnp-universal-cp.ui:467
 msgid "_Expand all devices"
 msgstr "_Expandir todos los dispositivos"
 
-#: ../data/gupnp-universal-cp.ui.h:19
+#: data/gupnp-universal-cp.ui:365 data/gupnp-universal-cp.ui:476
 msgid "_Collapse all devices"
 msgstr "_Contraer todos los dispositivos"
 
-#: ../data/gupnp-universal-cp.ui.h:20
+#: data/gupnp-universal-cp.ui:377
 msgid "Copy event"
 msgstr "Copiar evento"
 
-#: ../data/gupnp-universal-cp.ui.h:21
+#: data/gupnp-universal-cp.ui:386
 msgid "Copy all events"
 msgstr "Copiar todos los eventos"
 
-#: ../data/gupnp-universal-cp.ui.h:22
+#: data/gupnp-universal-cp.ui:401
 msgid "_Clear event log"
 msgstr "_Limpiar el registro de eventos"
 
 #. default details
-#: ../data/gupnp-universal-cp.ui.h:23 ../src/universal-cp/device-treeview.c:35
+#: data/gupnp-universal-cp.ui:409 src/universal-cp/device-treeview.c:35
 msgid "GUPnP Universal Control Point"
 msgstr "Punto de control de GUPnP universal"
 
-#: ../data/gupnp-universal-cp.ui.h:25
+#: data/gupnp-universal-cp.ui:432
 msgid "Clear event log"
 msgstr "Limpiar el registro de eventos"
 
-#: ../data/gupnp-universal-cp.ui.h:26
+#: data/gupnp-universal-cp.ui:446
 msgid "Quit"
 msgstr "Salir"
 
-#: ../data/gupnp-universal-cp.ui.h:27
+#: data/gupnp-universal-cp.ui:458
 msgid "_View"
 msgstr "_Ver"
 
-#: ../data/gupnp-universal-cp.ui.h:28
+#: data/gupnp-universal-cp.ui:491
 msgid "Event _log"
 msgstr "Registro de _eventos"
 
-#: ../src/av-cp/main.c:47 ../src/network-light/main.c:46
-#: ../src/universal-cp/main.c:41
+#: src/av-cp/main.c:47 src/network-light/main.c:48 src/universal-cp/main.c:41
 msgid "Network PORT to use for UPnP"
 msgstr "PUERTO de red que usar para UPnP"
 
-#: ../src/av-cp/main.c:48 ../src/network-light/main.c:47
-#: ../src/universal-cp/main.c:42
+#: src/av-cp/main.c:48 src/network-light/main.c:49 src/universal-cp/main.c:42
 msgid "Network interfaces to use for UPnP communication"
 msgstr "Interfaces de red que usar para comunicación UPnP"
 
-#: ../src/av-cp/main.c:196 ../src/network-light/main.c:100
-#: ../src/universal-cp/main.c:145
+#: src/av-cp/main.c:197 src/network-light/main.c:104
+#: src/universal-cp/main.c:149
 msgid "- UPnP AV control point"
 msgstr "- Punto de control AV de UPnP"
 
-#: ../src/av-cp/main.c:201 ../src/network-light/main.c:105
-#: ../src/universal-cp/main.c:150
+#: src/av-cp/main.c:202 src/network-light/main.c:109
+#: src/universal-cp/main.c:154
 #, c-format
 msgid "Could not parse options: %s\n"
 msgstr "No se pudieron analizar las opciones: %s\n"
 
-#: ../src/universal-cp/action-dialog.c:680
+#: src/network-light/main.c:50
+msgid "Friendly name for this UPnP light"
+msgstr "Nombre amigable para esta luz UPnP"
+
+#: src/network-light/main.c:51
+msgid "Apply change exclusively to this UPnP light"
+msgstr "Aplicar cambio exclusivamente para esta luz UPnP"
+
+#: src/universal-cp/action-dialog.c:686
 #, c-format
 msgid ""
 "Action failed.\n"
@@ -292,186 +308,186 @@ msgstr ""
 "\n"
 "Error: %d: %s"
 
-#: ../src/universal-cp/details-treeview.c:180
-#: ../src/universal-cp/details-treeview.c:208
-#: ../src/universal-cp/details-treeview.c:234
-#: ../src/universal-cp/details-treeview.c:413
+#: src/universal-cp/details-treeview.c:192
+#: src/universal-cp/details-treeview.c:220
+#: src/universal-cp/details-treeview.c:246
+#: src/universal-cp/details-treeview.c:425
 msgid "Name"
 msgstr "Nombre"
 
-#: ../src/universal-cp/details-treeview.c:182
+#: src/universal-cp/details-treeview.c:194
 msgid "Direction"
 msgstr "Dirección"
 
-#: ../src/universal-cp/details-treeview.c:187
+#: src/universal-cp/details-treeview.c:199
 msgid "Related State Variable"
 msgstr "Variable de estado relacionado"
 
-#: ../src/universal-cp/details-treeview.c:189
+#: src/universal-cp/details-treeview.c:201
 msgid "Is Return Value"
 msgstr "Es el valor de retorno"
 
-#: ../src/universal-cp/details-treeview.c:190
-#: ../src/universal-cp/details-treeview.c:237
+#: src/universal-cp/details-treeview.c:202
+#: src/universal-cp/details-treeview.c:249
 msgid "Yes"
 msgstr "Sí"
 
-#: ../src/universal-cp/details-treeview.c:190
-#: ../src/universal-cp/details-treeview.c:237
+#: src/universal-cp/details-treeview.c:202
+#: src/universal-cp/details-treeview.c:249
 msgid "No"
 msgstr "No"
 
-#: ../src/universal-cp/details-treeview.c:210
+#: src/universal-cp/details-treeview.c:222
 msgid "Number of Arguments"
 msgstr "Número de argumentos"
 
-#: ../src/universal-cp/details-treeview.c:236
+#: src/universal-cp/details-treeview.c:248
 msgid "Send Events"
 msgstr "Enviar eventos"
 
-#: ../src/universal-cp/details-treeview.c:238
+#: src/universal-cp/details-treeview.c:250
 msgid "GType"
 msgstr "GType"
 
-#: ../src/universal-cp/details-treeview.c:241
+#: src/universal-cp/details-treeview.c:253
 msgid "Default Value"
 msgstr "Valor predeterminado"
 
-#: ../src/universal-cp/details-treeview.c:247
+#: src/universal-cp/details-treeview.c:259
 msgid "Minimum"
 msgstr "Mínimo"
 
-#: ../src/universal-cp/details-treeview.c:251
+#: src/universal-cp/details-treeview.c:263
 msgid "Maximum"
 msgstr "Máximo"
 
-#: ../src/universal-cp/details-treeview.c:255
+#: src/universal-cp/details-treeview.c:267
 msgid "Step"
 msgstr "Paso"
 
-#: ../src/universal-cp/details-treeview.c:275
+#: src/universal-cp/details-treeview.c:287
 msgid "Allowed Values"
 msgstr "Valores permitidos"
 
-#: ../src/universal-cp/details-treeview.c:299
-#: ../src/universal-cp/details-treeview.c:346
+#: src/universal-cp/details-treeview.c:311
+#: src/universal-cp/details-treeview.c:358
 msgid "Location"
 msgstr "Lugar"
 
-#: ../src/universal-cp/details-treeview.c:304
-#: ../src/universal-cp/details-treeview.c:351
+#: src/universal-cp/details-treeview.c:316
+#: src/universal-cp/details-treeview.c:363
 msgid "UDN"
 msgstr "UDN"
 
-#: ../src/universal-cp/details-treeview.c:309
-#: ../src/universal-cp/details-treeview.c:356
+#: src/universal-cp/details-treeview.c:321
+#: src/universal-cp/details-treeview.c:368
 msgid "Type"
 msgstr "Tipo"
 
-#: ../src/universal-cp/details-treeview.c:314
-#: ../src/universal-cp/details-treeview.c:361
+#: src/universal-cp/details-treeview.c:326
+#: src/universal-cp/details-treeview.c:373
 msgid "Base URL"
 msgstr "URL base"
 
-#: ../src/universal-cp/details-treeview.c:319
+#: src/universal-cp/details-treeview.c:331
 msgid "Service ID"
 msgstr "ID del servicio"
 
-#: ../src/universal-cp/details-treeview.c:321
+#: src/universal-cp/details-treeview.c:333
 msgid "Service URL"
 msgstr "URL del servicio"
 
-#: ../src/universal-cp/details-treeview.c:323
+#: src/universal-cp/details-treeview.c:335
 msgid "Control URL"
 msgstr "URL de control"
 
-#: ../src/universal-cp/details-treeview.c:325
+#: src/universal-cp/details-treeview.c:337
 msgid "Event Subscription URL"
 msgstr "URL de suscripción del evento"
 
-#: ../src/universal-cp/details-treeview.c:366
+#: src/universal-cp/details-treeview.c:378
 msgid "Friendly Name"
 msgstr "Nombre amigable"
 
-#: ../src/universal-cp/details-treeview.c:368
+#: src/universal-cp/details-treeview.c:380
 msgid "Manufacturer"
 msgstr "Fabricante"
 
-#: ../src/universal-cp/details-treeview.c:370
+#: src/universal-cp/details-treeview.c:382
 msgid "Manufacturer URL"
 msgstr "URL del fabricante"
 
-#: ../src/universal-cp/details-treeview.c:372
+#: src/universal-cp/details-treeview.c:384
 msgid "Model Description"
 msgstr "Descripción del modelo"
 
-#: ../src/universal-cp/details-treeview.c:374
+#: src/universal-cp/details-treeview.c:386
 msgid "Model Name"
 msgstr "Nombre del modelo"
 
-#: ../src/universal-cp/details-treeview.c:376
+#: src/universal-cp/details-treeview.c:388
 msgid "Model Number"
 msgstr "Número del modelo"
 
-#: ../src/universal-cp/details-treeview.c:378
+#: src/universal-cp/details-treeview.c:390
 msgid "Model URL"
 msgstr "URL del modelo"
 
-#: ../src/universal-cp/details-treeview.c:380
+#: src/universal-cp/details-treeview.c:392
 msgid "Serial Number"
 msgstr "Número de serie"
 
-#: ../src/universal-cp/details-treeview.c:382
+#: src/universal-cp/details-treeview.c:394
 msgid "UPC"
 msgstr "UPC"
 
-#: ../src/universal-cp/details-treeview.c:384
+#: src/universal-cp/details-treeview.c:396
 msgid "Presentation URL"
 msgstr "URL de la presentación"
 
-#: ../src/universal-cp/details-treeview.c:414
-#: ../src/universal-cp/event-treeview.c:376
+#: src/universal-cp/details-treeview.c:426
+#: src/universal-cp/event-treeview.c:404
 msgid "Value"
 msgstr "Valor"
 
-#: ../src/universal-cp/device-treeview.c:52
+#: src/universal-cp/device-treeview.c:68
 msgid "Software"
 msgstr "Software"
 
-#: ../src/universal-cp/device-treeview.c:54
+#: src/universal-cp/device-treeview.c:70
 msgid "Version"
 msgstr "Versión"
 
-#: ../src/universal-cp/device-treeview.c:56
+#: src/universal-cp/device-treeview.c:72
 msgid "Author"
 msgstr "Autor"
 
-#: ../src/universal-cp/device-treeview.c:462
+#: src/universal-cp/device-treeview.c:478
 msgid "State variables"
 msgstr "Variables de estado"
 
-#: ../src/universal-cp/device-treeview.c:503
+#: src/universal-cp/device-treeview.c:519
 msgid "Information not available"
 msgstr "Información no disponible"
 
-#: ../src/universal-cp/device-treeview.c:681
+#: src/universal-cp/device-treeview.c:697
 msgid "UPnP Network"
 msgstr "Red UPnP"
 
-#: ../src/universal-cp/device-treeview.c:694
-#: ../src/universal-cp/event-treeview.c:373
+#: src/universal-cp/device-treeview.c:710
+#: src/universal-cp/event-treeview.c:401
 msgid "Device"
 msgstr "Dispositivo"
 
-#: ../src/universal-cp/event-treeview.c:372
+#: src/universal-cp/event-treeview.c:400
 msgid "Time"
 msgstr "Hora"
 
-#: ../src/universal-cp/event-treeview.c:374
+#: src/universal-cp/event-treeview.c:402
 msgid "Service"
 msgstr "Servicio"
 
-#: ../src/universal-cp/event-treeview.c:375
+#: src/universal-cp/event-treeview.c:403
 msgid "State Variable"
 msgstr "Variable de estado"
 
