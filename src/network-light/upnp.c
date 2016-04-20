@@ -216,7 +216,7 @@ on_set_target (GUPnPService       *service,
         gboolean status;
 
         gupnp_service_action_get (action,
-                                  "NewTargetValue",
+                                  "newTargetValue",
                                   G_TYPE_BOOLEAN,
                                   &status,
                                   NULL);
@@ -466,7 +466,7 @@ set_all_status (gboolean status)
                                                   action_name,
                                                   on_service_proxy_action_ret,
                                                   action_name,
-                                                  "NewTargetValue",
+                                                  "newTargetValue",
                                                   G_TYPE_BOOLEAN,
                                                   status,
                                                   NULL);
