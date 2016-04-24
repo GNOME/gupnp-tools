@@ -214,6 +214,8 @@ main (gint   argc,
 
         gtk_main ();
 
+        g_option_context_free (context);
+
         return 0;
 }
 

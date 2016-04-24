@@ -543,6 +543,7 @@ get_position_info_cb (GUPnPServiceProxy       *av_transport,
         }
 
         set_position_scale_position (position);
+        g_free (position);
 
 return_point:
         g_object_unref (av_transport);

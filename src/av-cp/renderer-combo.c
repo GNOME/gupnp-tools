@@ -588,6 +588,8 @@ get_protocol_info_cb (GUPnPServiceProxy       *cm,
                                             5, sink_protocol_info,
                                             -1);
                 }
+
+                g_free (sink_protocol_info);
         }
 
 return_point:
@@ -696,6 +698,7 @@ get_media_info_cb (GUPnPServiceProxy       *av_transport,
         }
 
         set_duration (udn, duration);
+        g_free (duration);
 
 return_point:
         g_object_unref (av_transport);
