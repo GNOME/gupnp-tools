@@ -86,6 +86,7 @@ get_icon_from_message (SoupMessage    *msg,
         }
 
         gdk_pixbuf_loader_close (loader, NULL);
+        g_object_unref (loader);
 
         return pixbuf;
 }
