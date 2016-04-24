@@ -331,8 +331,8 @@ run_action_dialog (GUPnPServiceActionInfo    *action_info,
                    GUPnPServiceProxy         *proxy,
                    GUPnPServiceIntrospection *introspection)
 {
-        GList *in_arguments;
-        GList *out_arguments;
+        GList *in_arguments = NULL;
+        GList *out_arguments = NULL;
 
         setup_action_dialog_labels (GUPNP_SERVICE_INFO (proxy), action_info);
 
@@ -361,6 +361,8 @@ run_action_dialog (GUPnPServiceActionInfo    *action_info,
         gtk_dialog_run (GTK_DIALOG (dialog));
         gtk_widget_hide (dialog);
 
+        g_list_free (in_arguments);
+        g_list_free (out_arguments);
 }
 
 static void
@@ -416,11 +418,11 @@ get_action_arg_widget_info (GtkWidget                 *arg_widget,
                                         introspection,
                                         arg_info->related_state_variable);
 
-        *value = g_slice_alloc0 (sizeof (GValue));
-        g_value_init (*value, variable_info->type);
-
         if (arg_info->direction == GUPNP_SERVICE_ACTION_ARG_DIRECTION_OUT)
                 return arg_info->name;
+
+        *value = g_slice_alloc0 (sizeof (GValue));
+        g_value_init (*value, variable_info->type);
 
         if (variable_info->is_numeric) {
                 GValue double_value;
@@ -623,6 +625,7 @@ display_action_out_arguments (GHashTable *out_args)
         GUPnPServiceIntrospection *introspection;
         GUPnPServiceActionInfo    *action_info;
         GList                     *arg_node;
+        GList                     *it;
 
         action_info = get_selected_action (NULL, &introspection);
         if (action_info == NULL)
@@ -630,12 +633,12 @@ display_action_out_arguments (GHashTable *out_args)
 
         arg_node = gtk_container_get_children (GTK_CONTAINER (out_args_grid));
 
-        for (; arg_node; arg_node = arg_node->next) {
+        for (it = arg_node; it; it = it->next) {
                 GtkWidget *arg_widget;
                 gchar     *name;
-                GValue    *value;
+                GValue    *value = NULL;
 
-                arg_widget = GTK_WIDGET (arg_node->data);
+                arg_widget = GTK_WIDGET (it->data);
 
                 name = get_action_arg_widget_info (arg_widget,
                                                    introspection,
@@ -652,6 +655,7 @@ display_action_out_arguments (GHashTable *out_args)
         }
 
         g_object_unref (introspection);
+        g_list_free (arg_node);
 }
 
 static void

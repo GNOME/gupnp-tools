@@ -390,14 +390,13 @@ on_device_icon_available (GUPnPDeviceInfo *info,
         if (!gtk_tree_model_get_iter_first (model, &root_iter))
                 return;
 
-        if (find_device (model, udn, &root_iter, &device_iter)) {
+        if (find_device (model, udn, &root_iter, &device_iter))
                 gtk_tree_store_set (GTK_TREE_STORE (model),
                                     &device_iter,
                                     0, icon,
                                     -1);
-        } else {
-                g_object_unref (icon);
-        }
+
+        g_object_unref (icon);
 }
 
 static void
@@ -675,6 +674,7 @@ append_device (GUPnPDeviceInfo *info)
                                         GTK_TREE_VIEW (treeview),
                                         first_row,
                                         FALSE);
+                        gtk_tree_path_free (first_row);
                 }
         }
 }
