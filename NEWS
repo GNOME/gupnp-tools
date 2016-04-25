@@ -1,3 +1,70 @@
+0.8.12
+======
+
+Build:
+ - Update and add missing m4 macros from autoconf archive
+ - Use upstream gettext
+ -
+
+Common:
+ - Remove use of deprecated libsoup API
+ - Do not leak the pixbuf loader
+
+Upload:
+ - Use help text from option context
+ - Make UDN a parameter
+
+Network light:
+ - Add commandline argument for friendly name
+ - Add commandline argument for exclusive change
+ - use "newTargetValue" instead of "NewTargetValue"
+
+Universal Control Point:
+ - Fix some memory leaks
+
+AV-CP:
+ - Fix some memory leaks
+ - Do some refactoring to use nice sort order from server
+
+Bugs fixed in this release:
+ - https://bugzilla.gnome.org/show_bug.cgi?id=730747
+ - https://bugzilla.gnome.org/show_bug.cgi?id=758779
+ - https://bugzilla.gnome.org/show_bug.cgi?id=761967
+ - https://bugzilla.gnome.org/show_bug.cgi?id=761968
+ - https://bugzilla.gnome.org/show_bug.cgi?id=764050
+
+All contributors to this release:
+ - Jens Georg <mail@jensge.org>
+ - Piotr Drąg <piotrdrag@gmail.com>
+ - Rafael Fontenelle <rafaelff@gnome.org>
+ - Balázs Meskó <meskobalazs@gmail.com>
+ - Mario Blättermann <mario.blaettermann@gmail.com>
+ - ljsachs <larry.j.sachs@intel.com>
+ - Мирослав Николић <miroslavnikolic@rocketmail.com>
+ - Марко М. Костић <marko.m.kostic@gmail.com>
+ - Марко Костић <marko.m.kostic@gmail.com>
+ - Yating Kuang <yatingkuang@ubuntukylin.com>
+ - Necdet Yücel <necdetyucel@gmail.com>
+ - Marek Černocký <marek@manet.cz>
+ - Dušan Kazik <prescott66@gmail.com>
+ - Daniel Mustieles <daniel.mustieles@gmail.com>
+
+Added/updated translations
+ - cs, courtesy of Marek Černocký
+ - de, courtesy of Mario Blättermann
+ - es, courtesy of Daniel Mustieles
+ - hu, courtesy of Balázs Úr
+ - pl, courtesy of Piotr Drąg
+ - pt_BR, courtesy of Rafael Fontenelle
+ - sk, courtesy of Dušan Kazik
+ - sr, courtesy of Марко М. Костић
+ - sr@latin, courtesy of Miroslav Nikolić
+ - tr, courtesy of Gökhan Gurbetoğlu
+ - zh_CN, courtesy of tuhaihe
+
+Updated/Changed dependencies:
+ - Minimal libsoup version changed to 2.42
+
 0.8.11
 ======
 
