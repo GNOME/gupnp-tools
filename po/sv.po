@@ -1,0 +1,498 @@
+# Swedish translation for gupnp-tools.
+# Copyright © 2016 gupnp-tools's COPYRIGHT HOLDER
+# This file is distributed under the same license as the gupnp-tools package.
+# Anders Jonsson <anders.jonsson@norsjovallen.se>, 2016.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gupnp-tools master\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gupnp-"
+"tools&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2016-05-05 12:28+0000\n"
+"PO-Revision-Date: 2016-05-22 21:28+0200\n"
+"Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
+"Language: sv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
+"X-Generator: Poedit 1.8.7.1\n"
+
+#: data/gupnp-av-cp.desktop.in.in:4
+msgid "UPnP AV Control Point"
+msgstr "UPnP AV-kontrollpunkt"
+
+#: data/gupnp-av-cp.desktop.in.in:7
+msgid "@PKGDATADIR@/pixmaps/av-cp.png"
+msgstr "@PKGDATADIR@/pixmaps/av-cp.png"
+
+#: data/gupnp-av-cp.ui.in:10 data/gupnp-network-light.ui:7
+#: data/gupnp-universal-cp.ui:8
+msgid "Copyright (C) 2007 Zeeshan Ali (Khattak)"
+msgstr "Copyright © 2007 Zeeshan Ali (Khattak)"
+
+# https://software.intel.com/en-us/articles/intel-software-for-upnp-technology-download-tools
+#: data/gupnp-av-cp.ui.in:11
+msgid ""
+"An UPnP AV Control Point based on GUPnP framework.\n"
+"Inspired by Intel Tools for UPnP."
+msgstr ""
+"En UPnP AV-kontrollpunkt baserad på GUPnP-ramverket.\n"
+"Inspirerad av Intel Tools for UPnP."
+
+#: data/gupnp-av-cp.ui.in:14 data/gupnp-network-light.ui:11
+#: data/gupnp-universal-cp.ui:12
+msgid "GUPnP homepage"
+msgstr "Webbplats för GUPnP"
+
+#. TRANSLATORS: Replace this string with your names, one name per line.
+#: data/gupnp-av-cp.ui.in:16 data/gupnp-network-light.ui:13
+#: data/gupnp-universal-cp.ui:14
+msgid "translator-credits"
+msgstr ""
+"Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
+"\n"
+"Skicka synpunkter på översättningen till\n"
+"<tp-sv@listor.tp-sv.se>."
+
+#: data/gupnp-av-cp.ui.in:52
+msgid "GUPnP AV Control Point"
+msgstr "GUPnP AV-kontrollpunkt"
+
+#: data/gupnp-av-cp.ui.in:66 data/gupnp-universal-cp.ui:423
+msgid "_File"
+msgstr "_Arkiv"
+
+#: data/gupnp-av-cp.ui.in:75
+msgid "Close"
+msgstr "Stäng"
+
+#: data/gupnp-av-cp.ui.in:88
+msgid "_Tools"
+msgstr "_Verktyg"
+
+#: data/gupnp-av-cp.ui.in:98
+msgid "_Lenient Mode"
+msgstr "Ti_llåtande läge"
+
+#: data/gupnp-av-cp.ui.in:110 data/gupnp-universal-cp.ui:505
+msgid "_Help"
+msgstr "_Hjälp"
+
+#: data/gupnp-av-cp.ui.in:119 data/gupnp-universal-cp.ui:514
+msgid "About"
+msgstr "Om"
+
+#: data/gupnp-av-cp.ui.in:170 data/gupnp-av-cp.ui.in:698
+msgid "_Play"
+msgstr "S_pela"
+
+#: data/gupnp-av-cp.ui.in:219
+msgid "P_ause"
+msgstr "Pa_usa"
+
+#: data/gupnp-av-cp.ui.in:268
+msgid "_Stop"
+msgstr "_Stoppa"
+
+#: data/gupnp-av-cp.ui.in:317
+msgid "Pre_vious"
+msgstr "_Föregående"
+
+#: data/gupnp-av-cp.ui.in:380
+msgid "_Next"
+msgstr "_Nästa"
+
+#: data/gupnp-av-cp.ui.in:398
+msgid "Rescan"
+msgstr "Sök av igen"
+
+#: data/gupnp-av-cp.ui.in:442
+msgid ""
+"Clears the CP's idea of the state of the currently selected AV Renderer. "
+"Useful for dealing with AV Renderers that don't report state changes."
+msgstr ""
+"Tömmer kontrollpanelens uppfattning om tillståndet för den aktuellt "
+"markerade AV-renderaren. Detta är användbart för att hantera AV-renderare "
+"som inte rapporterar tillståndsförändringar."
+
+#: data/gupnp-av-cp.ui.in:453
+msgid "_Clear state"
+msgstr "_Töm tillstånd"
+
+#: data/gupnp-av-cp.ui.in:496
+msgid "_Renderer: "
+msgstr "_Renderare: "
+
+#: data/gupnp-av-cp.ui.in:629
+msgid "GUPnP AV CP - Metadata View"
+msgstr "GUPnP AV-kontrollpunkt - Metadatavy"
+
+#: data/gupnp-av-cp.ui.in:707
+msgid "Fetch the DIDL-Lite XML for this media object"
+msgstr "Hämta DIDL-Lite-XML för detta mediaobjekt"
+
+#: data/gupnp-av-cp.ui.in:708
+msgid "Fetch _DIDL-Lite"
+msgstr "Hämta _DIDL-Lite"
+
+#: data/gupnp-network-light.desktop.in.in:4
+msgid "UPnP Network Light"
+msgstr "UPnP nätverkslampa"
+
+#: data/gupnp-network-light.desktop.in.in:7
+msgid "@PKGDATADIR@/pixmaps/network-light-256x256.png"
+msgstr "@PKGDATADIR@/pixmaps/network-light-256x256.png"
+
+#: data/gupnp-network-light.ui:8
+msgid ""
+"A virtual network light bulb based on GUPnP framework.\n"
+"Inspired by Intel Tools for UPnP."
+msgstr ""
+"En virtuell nätverksglödlampa baserad på GUPnP-ramverket.\n"
+"Inspirerad av Intel Tools for UPnP."
+
+#: data/gupnp-network-light.ui:38
+msgid "GUPnP Network Light"
+msgstr "GUPnP nätverkslampa"
+
+#: data/gupnp-network-light.ui:63
+msgctxt "network-light"
+msgid "_On"
+msgstr "_På"
+
+#: data/gupnp-network-light.ui:83
+msgid "_Increase luminance by 20%"
+msgstr "Ö_ka luminans med 20%"
+
+#: data/gupnp-network-light.ui:92
+msgid "_Decrease luminance by 20%"
+msgstr "_Minska luminans med 20%"
+
+#: data/gupnp-network-light.ui:107
+msgid "_About"
+msgstr "_Om"
+
+#: data/gupnp-universal-cp.desktop.in.in:4
+msgid "UPnP Universal Control Point"
+msgstr "UPnP universell kontrollpunkt"
+
+#: data/gupnp-universal-cp.desktop.in.in:7
+msgid "@PKGDATADIR@/pixmaps/universal-cp.png"
+msgstr "@PKGDATADIR@/pixmaps/universal-cp.png"
+
+#: data/gupnp-universal-cp.ui:9
+msgid ""
+"A Generic Control Point based on GUPnP framework.\n"
+"Inspired by Intel Tools for UPnP."
+msgstr ""
+"En generisk kontrollpunkt baserad på GUPnP-ramverket.\n"
+"Inspirerad av Intel Tools for UPnP."
+
+#: data/gupnp-universal-cp.ui:41
+msgid "Action Invocation"
+msgstr "Åtgärdsstart"
+
+#: data/gupnp-universal-cp.ui:105
+msgid "_Invoke"
+msgstr "_Starta"
+
+#: data/gupnp-universal-cp.ui:175
+msgid "device"
+msgstr "enhet"
+
+#: data/gupnp-universal-cp.ui:188
+msgid "service"
+msgstr "tjänst"
+
+#: data/gupnp-universal-cp.ui:201
+msgid "action"
+msgstr "åtgärd"
+
+#: data/gupnp-universal-cp.ui:244
+msgid "'in' arguments"
+msgstr "”in”-argument"
+
+#: data/gupnp-universal-cp.ui:277
+msgid "'out' arguments"
+msgstr "”ut”-argument"
+
+#: data/gupnp-universal-cp.ui:311
+msgid "Copy value"
+msgstr "Kopiera värde"
+
+#: data/gupnp-universal-cp.ui:320
+msgid "Copy all details"
+msgstr "Kopiera alla detaljer"
+
+#: data/gupnp-universal-cp.ui:332
+msgid "Invoke"
+msgstr "Starta"
+
+#: data/gupnp-universal-cp.ui:341
+msgid "Subscribe to events"
+msgstr "Prenumerera på händelser"
+
+#: data/gupnp-universal-cp.ui:356 data/gupnp-universal-cp.ui:467
+msgid "_Expand all devices"
+msgstr "_Expandera alla enheter"
+
+#: data/gupnp-universal-cp.ui:365 data/gupnp-universal-cp.ui:476
+msgid "_Collapse all devices"
+msgstr "_Fäll ihop alla enheter"
+
+#: data/gupnp-universal-cp.ui:377
+msgid "Copy event"
+msgstr "Kopiera händelse"
+
+#: data/gupnp-universal-cp.ui:386
+msgid "Copy all events"
+msgstr "Kopiera alla händelser"
+
+#: data/gupnp-universal-cp.ui:401
+msgid "_Clear event log"
+msgstr "_Töm händelselogg"
+
+#. default details
+#: data/gupnp-universal-cp.ui:409 src/universal-cp/device-treeview.c:35
+msgid "GUPnP Universal Control Point"
+msgstr "GUPnP universell kontrollpunkt"
+
+#: data/gupnp-universal-cp.ui:432
+msgid "Clear event log"
+msgstr "Töm händelselogg"
+
+#: data/gupnp-universal-cp.ui:446
+msgid "Quit"
+msgstr "Avsluta"
+
+#: data/gupnp-universal-cp.ui:458
+msgid "_View"
+msgstr "_Visa"
+
+#: data/gupnp-universal-cp.ui:491
+msgid "Event _log"
+msgstr "Händelse_logg"
+
+#: src/av-cp/main.c:48 src/network-light/main.c:48 src/universal-cp/main.c:41
+msgid "Network PORT to use for UPnP"
+msgstr "NätverksPORT att använda för UPnP"
+
+#: src/av-cp/main.c:49 src/network-light/main.c:49 src/universal-cp/main.c:42
+msgid "Network interfaces to use for UPnP communication"
+msgstr "Nätverksgränssnitt att använda för UPnP-kommunikation"
+
+#: src/av-cp/main.c:223 src/network-light/main.c:104
+#: src/universal-cp/main.c:149
+msgid "- UPnP AV control point"
+msgstr "- UPnP AV-kontrollpunkt"
+
+#: src/av-cp/main.c:228 src/network-light/main.c:109
+#: src/universal-cp/main.c:154
+#, c-format
+msgid "Could not parse options: %s\n"
+msgstr "Kunde inte tolka flaggor: %s\n"
+
+#: src/network-light/main.c:50
+msgid "Friendly name for this UPnP light"
+msgstr "Smeknamn för denna UPnP-lampa"
+
+#: src/network-light/main.c:51
+msgid "Apply change exclusively to this UPnP light"
+msgstr "Tillämpa ändring bara för denna UPnP-lampa"
+
+#: src/universal-cp/action-dialog.c:690
+#, c-format
+msgid ""
+"Action failed.\n"
+"\n"
+"Error %d: %s"
+msgstr ""
+"Åtgärd misslyckades.\n"
+"\n"
+"Fel %d: %s"
+
+#: src/universal-cp/details-treeview.c:192
+#: src/universal-cp/details-treeview.c:220
+#: src/universal-cp/details-treeview.c:246
+#: src/universal-cp/details-treeview.c:425
+msgid "Name"
+msgstr "Namn"
+
+#: src/universal-cp/details-treeview.c:194
+msgid "Direction"
+msgstr "Riktning"
+
+#: src/universal-cp/details-treeview.c:199
+msgid "Related State Variable"
+msgstr "Relaterad tillståndsvariabel"
+
+#: src/universal-cp/details-treeview.c:201
+msgid "Is Return Value"
+msgstr "Är returvärde"
+
+#: src/universal-cp/details-treeview.c:202
+#: src/universal-cp/details-treeview.c:249
+msgid "Yes"
+msgstr "Ja"
+
+#: src/universal-cp/details-treeview.c:202
+#: src/universal-cp/details-treeview.c:249
+msgid "No"
+msgstr "Nej"
+
+#: src/universal-cp/details-treeview.c:222
+msgid "Number of Arguments"
+msgstr "Antal argument"
+
+#: src/universal-cp/details-treeview.c:248
+msgid "Send Events"
+msgstr "Skicka händelser"
+
+#: src/universal-cp/details-treeview.c:250
+msgid "GType"
+msgstr "GType"
+
+#: src/universal-cp/details-treeview.c:253
+msgid "Default Value"
+msgstr "Standardvärde"
+
+#: src/universal-cp/details-treeview.c:259
+msgid "Minimum"
+msgstr "Minimum"
+
+#: src/universal-cp/details-treeview.c:263
+msgid "Maximum"
+msgstr "Maximum"
+
+#: src/universal-cp/details-treeview.c:267
+msgid "Step"
+msgstr "Steg"
+
+#: src/universal-cp/details-treeview.c:287
+msgid "Allowed Values"
+msgstr "Tillåtna värden"
+
+#: src/universal-cp/details-treeview.c:311
+#: src/universal-cp/details-treeview.c:358
+msgid "Location"
+msgstr "Plats"
+
+# Unique device name
+#: src/universal-cp/details-treeview.c:316
+#: src/universal-cp/details-treeview.c:363
+msgid "UDN"
+msgstr "UDN"
+
+#: src/universal-cp/details-treeview.c:321
+#: src/universal-cp/details-treeview.c:368
+msgid "Type"
+msgstr "Typ"
+
+#: src/universal-cp/details-treeview.c:326
+#: src/universal-cp/details-treeview.c:373
+msgid "Base URL"
+msgstr "Bas-URL"
+
+#: src/universal-cp/details-treeview.c:331
+msgid "Service ID"
+msgstr "Tjänste-ID"
+
+#: src/universal-cp/details-treeview.c:333
+msgid "Service URL"
+msgstr "Tjänste-URL"
+
+#: src/universal-cp/details-treeview.c:335
+msgid "Control URL"
+msgstr "Kontroll-URL"
+
+#: src/universal-cp/details-treeview.c:337
+msgid "Event Subscription URL"
+msgstr "Händelseprenumerations-URL"
+
+#: src/universal-cp/details-treeview.c:378
+msgid "Friendly Name"
+msgstr "Smeknamn"
+
+#: src/universal-cp/details-treeview.c:380
+msgid "Manufacturer"
+msgstr "Tillverkare"
+
+#: src/universal-cp/details-treeview.c:382
+msgid "Manufacturer URL"
+msgstr "Tillverkar-URL"
+
+#: src/universal-cp/details-treeview.c:384
+msgid "Model Description"
+msgstr "Modellbeskrivning"
+
+#: src/universal-cp/details-treeview.c:386
+msgid "Model Name"
+msgstr "Modellnamn"
+
+#: src/universal-cp/details-treeview.c:388
+msgid "Model Number"
+msgstr "Modellnummer"
+
+#: src/universal-cp/details-treeview.c:390
+msgid "Model URL"
+msgstr "Modell-URL"
+
+#: src/universal-cp/details-treeview.c:392
+msgid "Serial Number"
+msgstr "Serienummer"
+
+# Universal product code
+#: src/universal-cp/details-treeview.c:394
+msgid "UPC"
+msgstr "UPC"
+
+#: src/universal-cp/details-treeview.c:396
+msgid "Presentation URL"
+msgstr "Presentations-URL"
+
+#: src/universal-cp/details-treeview.c:426
+#: src/universal-cp/event-treeview.c:404
+msgid "Value"
+msgstr "Värde"
+
+#: src/universal-cp/device-treeview.c:68
+msgid "Software"
+msgstr "Programvara"
+
+#: src/universal-cp/device-treeview.c:70
+msgid "Version"
+msgstr "Version"
+
+#: src/universal-cp/device-treeview.c:72
+msgid "Author"
+msgstr "Upphovsman"
+
+#: src/universal-cp/device-treeview.c:477
+msgid "State variables"
+msgstr "Tillståndsvariabler"
+
+#: src/universal-cp/device-treeview.c:518
+msgid "Information not available"
+msgstr "Information inte tillgänglig"
+
+#: src/universal-cp/device-treeview.c:697
+msgid "UPnP Network"
+msgstr "UPnP-nätverk"
+
+#: src/universal-cp/device-treeview.c:710 src/universal-cp/event-treeview.c:401
+msgid "Device"
+msgstr "Enhet"
+
+#: src/universal-cp/event-treeview.c:400
+msgid "Time"
+msgstr "Tid"
+
+#: src/universal-cp/event-treeview.c:402
+msgid "Service"
+msgstr "Tjänst"
+
+#: src/universal-cp/event-treeview.c:403
+msgid "State Variable"
+msgstr "Tillståndsvariabel"
