@@ -60,6 +60,9 @@ on_playlist_treeview_button_release (GtkWidget      *widget,
                                      GdkEventButton *event,
                                      gpointer        user_data);
 void
+on_playlist_treeview_item_selected (GtkTreeSelection *selection,
+                                    gpointer          user_data);
+void
 on_playlist_row_expanded (GtkTreeView *tree_view,
                           GtkTreeIter *iter,
                           GtkTreePath *path,
@@ -179,9 +182,10 @@ on_playlist_treeview_button_release (GtkWidget      *widget,
         return TRUE;
 }
 
-static void
-on_item_selected (GtkTreeSelection *selection,
-                  gpointer          user_data)
+G_MODULE_EXPORT
+void
+on_playlist_treeview_item_selected (GtkTreeSelection *selection,
+                           gpointer          user_data)
 {
         PlaybackState state;
 
@@ -196,65 +200,6 @@ on_item_selected (GtkTreeSelection *selection,
        }
 }
 
-static GtkTreeModel *
-create_playlist_treemodel (void)
-{
-        GtkTreeStore *store;
-
-        store = gtk_tree_store_new (7,
-                                    /* Icon */
-                                    GDK_TYPE_PIXBUF,
-                                    /* Title */
-                                    G_TYPE_STRING,
-                                    /* MediaServer */
-                                    GUPNP_TYPE_DEVICE_PROXY,
-                                    /* Content Directory */
-                                    GUPNP_TYPE_SERVICE_PROXY,
-                                    /* Id */
-                                    G_TYPE_STRING,
-                                    /* Is container? */
-                                    G_TYPE_BOOLEAN,
-                                    /* childCount */
-                                    G_TYPE_INT);
-
-        return GTK_TREE_MODEL (store);
-}
-
-static void
-setup_treeview_columns (GtkWidget *tv)
-
-{
-        GtkTreeSelection  *selection;
-        GtkTreeViewColumn *column;
-        GtkCellRenderer   *renderers[2];
-        const char        *headers[] = { "Icon", "Title"};
-        const char        *attribs[] = { "pixbuf", "text"};
-        int                i;
-
-        selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (treeview));
-        g_assert (selection != NULL);
-
-        column = gtk_tree_view_column_new ();
-
-        renderers[0] = gtk_cell_renderer_pixbuf_new ();
-        renderers[1] = gtk_cell_renderer_text_new ();
-
-        for (i = 0; i < 2; i++) {
-                gtk_tree_view_column_pack_start (column, renderers[i], FALSE);
-                gtk_tree_view_column_set_title (column, headers[i]);
-                gtk_tree_view_column_add_attribute (column,
-                                                    renderers[i],
-                                                    attribs[i], i);
-                gtk_tree_view_column_set_sizing(column,
-                                                GTK_TREE_VIEW_COLUMN_AUTOSIZE);
-        }
-
-        gtk_tree_view_insert_column (GTK_TREE_VIEW (treeview),
-                                     column,
-                                     -1);
-
-        gtk_tree_selection_set_mode (selection, GTK_SELECTION_SINGLE);
-}
 
 G_MODULE_EXPORT
 void
@@ -361,9 +306,6 @@ on_didl_menuitem_activate (GtkMenuItem *menuitem,
 void
 setup_playlist_treeview (GtkBuilder *builder)
 {
-        GtkTreeModel      *model;
-        GtkTreeSelection  *selection;
-
         initial_notify = g_hash_table_new (g_direct_hash, g_direct_equal);
 
         treeview = GTK_WIDGET (gtk_builder_get_object (builder,
@@ -402,21 +344,6 @@ setup_playlist_treeview (GtkBuilder *builder)
                                           GTK_TEXT_BUFFER (buffer));
         }
 #endif
-
-        model = create_playlist_treemodel ();
-        g_assert (model != NULL);
-
-        gtk_tree_view_set_model (GTK_TREE_VIEW (treeview), model);
-        g_object_unref (model);
-
-        setup_treeview_columns (treeview);
-
-        selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (treeview));
-        g_assert (selection != NULL);
-        g_signal_connect (selection,
-                          "changed",
-                          G_CALLBACK (on_item_selected),
-                          NULL);
 
         expanded = FALSE;
 }
