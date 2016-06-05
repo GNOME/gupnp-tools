@@ -95,6 +95,23 @@ av_cp_media_server_browse_metadata_finish (AVCPMediaServer  *self,
                                            char            **didl_xml,
                                            GError          **error);
 
+void
+av_cp_media_server_search_async (AVCPMediaServer     *self,
+                                 GCancellable        *cancellable,
+                                 GAsyncReadyCallback  callback,
+                                 const char          *container_id,
+                                 const char          *search_criteria,
+                                 guint32              starting_index,
+                                 guint32              requested_count,
+                                 gpointer             user_data);
+gboolean
+av_cp_media_server_search_finish (AVCPMediaServer  *self,
+                                  GAsyncResult     *result,
+                                  char            **didl_xml,
+                                  guint32          *total_matches,
+                                  guint32          *number_returned,
+                                  GError          **error);
+
 G_END_DECLS
 
 #endif /* MEDIA_SERVER_H */

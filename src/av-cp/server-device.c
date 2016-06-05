@@ -556,3 +556,53 @@ av_cp_media_server_browse_metadata_finish (AVCPMediaServer  *self,
 
         return FALSE;
 }
+
+void
+av_cp_media_server_search_async (AVCPMediaServer     *self,
+                                 GCancellable        *cancellable,
+                                 GAsyncReadyCallback  callback,
+                                 const char          *container_id,
+                                 const char          *search_criteria,
+                                 guint32              starting_index,
+                                 guint32              requested_count,
+                                 gpointer             user_data)
+{
+        GTask *task = g_task_new (self, cancellable, callback, user_data);
+
+        gupnp_service_proxy_begin_action (self->priv->content_directory,
+                                          "Search",
+                                          av_cp_media_server_on_browse,
+                                          task,
+                                          /* IN args */
+                                          "ContainerID",
+                                          G_TYPE_STRING,
+                                          container_id,
+                                          "SearchCriteria",
+                                          G_TYPE_STRING,
+                                          search_criteria,
+                                          "Filter",
+                                          G_TYPE_STRING,
+                                          "*",
+                                          "StartingIndex",
+                                          G_TYPE_UINT,
+                                          starting_index,
+                                          "RequestedCount",
+                                          G_TYPE_UINT,
+                                          requested_count,
+                                          "SortCriteria",
+                                          G_TYPE_STRING,
+                                          "",
+                                          NULL);
+}
+
+gboolean
+av_cp_media_server_search_finish (AVCPMediaServer  *self,
+                                  GAsyncResult     *result,
+                                  char            **didl_xml,
+                                  guint32          *total_matches,
+                                  guint32          *number_returned,
+                                  GError          **error)
+{
+        return av_cp_media_server_browse_finish (self, result, didl_xml,
+                total_matches, number_returned, error);
+}
