@@ -798,62 +798,8 @@ remove_media_renderer (GUPnPDeviceProxy *proxy)
         }
 }
 
-static GtkTreeModel *
-create_renderer_treemodel (void)
-{
-        GtkListStore *store;
-
-        store = gtk_list_store_new (9,
-                                    GDK_TYPE_PIXBUF, /* Icon              */
-                                    G_TYPE_STRING,   /* Name              */
-                                    G_TYPE_OBJECT,   /* renderer proxy    */
-                                    G_TYPE_OBJECT,   /* AVTranport proxy  */
-                                    G_TYPE_OBJECT,   /* Rendering Control */
-                                                     /* proxy             */
-                                    G_TYPE_STRING,   /* SinkProtocolInfo  */
-                                    G_TYPE_UINT,     /* AVTranport state  */
-                                    G_TYPE_UINT,     /* Volume            */
-                                    G_TYPE_UINT);    /* Duration          */
-
-        return GTK_TREE_MODEL (store);
-}
-
-static void
-setup_renderer_combo_text_cell (GtkWidget *widget)
-{
-        GtkCellRenderer *renderer;
-
-        renderer = gtk_cell_renderer_text_new ();
-
-        g_object_set (renderer,
-                      "xalign", 0.0,
-                      "xpad", 6,
-                      NULL);
-        gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (renderer_combo),
-                                    renderer,
-                                    TRUE);
-        gtk_cell_layout_add_attribute (GTK_CELL_LAYOUT (renderer_combo),
-                                       renderer,
-                                       "text", 1);
-}
-
-static void
-setup_renderer_combo_pixbuf_cell (GtkWidget *widget)
-{
-        GtkCellRenderer *renderer;
-
-        renderer = gtk_cell_renderer_pixbuf_new ();
-        g_object_set (renderer, "xalign", 0.0, NULL);
-
-        gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (renderer_combo),
-                                    renderer,
-                                    FALSE);
-        gtk_cell_layout_add_attribute (GTK_CELL_LAYOUT (renderer_combo),
-                                       renderer,
-                                       "pixbuf", 0);
-}
-
-static void
+G_MODULE_EXPORT
+void
 on_renderer_combo_changed (GtkComboBox *widget,
                            gpointer     user_data)
 {
@@ -863,7 +809,7 @@ on_renderer_combo_changed (GtkComboBox *widget,
         PlaybackState state;
         guint         volume;
 
-        combo = GTK_COMBO_BOX (renderer_combo);
+        combo = GTK_COMBO_BOX (widget);
         model = gtk_combo_box_get_model (combo);
         g_assert (model != NULL);
 
@@ -883,26 +829,9 @@ on_renderer_combo_changed (GtkComboBox *widget,
 void
 setup_renderer_combo (GtkBuilder *builder)
 {
-        GtkTreeModel *model;
-
         lc_parser = gupnp_last_change_parser_new ();
         renderer_combo = GTK_WIDGET (gtk_builder_get_object (
                                                 builder,
                                                 "renderer-combobox"));
-        g_assert (renderer_combo != NULL);
-
-        model = create_renderer_treemodel ();
-        g_assert (model != NULL);
-
-        gtk_combo_box_set_model (GTK_COMBO_BOX (renderer_combo), model);
-        g_object_unref (model);
-
-        setup_renderer_combo_pixbuf_cell (renderer_combo);
-        setup_renderer_combo_text_cell (renderer_combo);
-
-        g_signal_connect (renderer_combo,
-                          "changed",
-                          G_CALLBACK (on_renderer_combo_changed),
-                          NULL);
 }
 
