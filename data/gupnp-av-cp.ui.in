@@ -632,7 +632,7 @@
                         <child>
                           <object class="GtkTreeViewColumn">
                             <property name="sizing">autosize</property>
-                            <property name="title" translatable="yes">column</property>
+                            <property name="title">column</property>
                             <child>
                               <object class="GtkCellRendererPixbuf"/>
                               <attributes>
