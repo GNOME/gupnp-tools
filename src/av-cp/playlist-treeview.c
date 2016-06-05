@@ -34,6 +34,7 @@
 #include "pretty-print.h"
 #include "gui.h"
 #include "server-device.h"
+#include "search-dialog.h"
 
 #define CONTENT_DIR "urn:schemas-upnp-org:service:ContentDirectory"
 
@@ -54,6 +55,7 @@ static GtkWidget *didl_dialog;
 static GtkWidget *didl_textview;
 static gboolean   expanded;
 static GHashTable *initial_notify;
+static GtkDialog *search_dialog;
 
 gboolean
 on_playlist_treeview_button_release (GtkWidget      *widget,
@@ -78,8 +80,9 @@ void
 on_didl_menuitem_activate (GtkMenuItem *menuitem,
                            gpointer     user_data);
 
-gboolean
-on_playlist_treeview_popup_menu (GtkWidget *widget, gpointer user_data);
+void
+on_search_menu_item_activated (GtkMenuItem *menuitem,
+                               gpointer     user_data);
 
 static void
 on_proxy_ready (GObject *source_object,
@@ -328,6 +331,40 @@ on_didl_menuitem_activate (GtkMenuItem *menuitem,
         get_selected_object (display_metadata, NULL);
 }
 
+G_MODULE_EXPORT
+void
+on_search_menu_item_activated (GtkMenuItem *menuitem,
+                               gpointer     user_data)
+{
+    AVCPMediaServer   *server;
+    GtkTreeSelection  *selection;
+    GtkTreeModel      *model;
+    GtkTreeIter        iter;
+    char              *id = NULL;
+
+    selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (treeview));
+    g_assert (selection != NULL);
+
+    if (!gtk_tree_selection_get_selected (selection, &model, &iter)) {
+        return;
+    }
+
+    gtk_tree_model_get (model,
+                        &iter,
+                        2, &server,
+                        4, &id,
+                        -1);
+
+    if (search_dialog == NULL) {
+        search_dialog = GTK_DIALOG (g_object_new (SEARCH_DIALOG_TYPE, NULL));
+    }
+
+    search_dialog_set_server (SEARCH_DIALOG (search_dialog), server);
+    search_dialog_set_container_id (SEARCH_DIALOG (search_dialog), id);
+
+    gtk_dialog_run (search_dialog);
+}
+
 void
 setup_playlist_treeview (GtkBuilder *builder)
 {
@@ -369,7 +406,6 @@ setup_playlist_treeview (GtkBuilder *builder)
                                           GTK_TEXT_BUFFER (buffer));
         }
 #endif
-
         expanded = FALSE;
 }
 

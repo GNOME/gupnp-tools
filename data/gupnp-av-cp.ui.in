@@ -35,6 +35,15 @@
         <signal name="activate" handler="on_didl_menuitem_activate" swapped="no"/>
       </object>
     </child>
+    <child>
+      <object class="GtkMenuItem" id="search-menuitem">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="label" translatable="yes">Search…</property>
+        <property name="use_underline">True</property>
+        <signal name="activate" handler="on_search_menu_item_activated" swapped="no"/>
+      </object>
+    </child>
   </object>
   <object class="GtkTreeStore" id="playlist-tree-store">
     <columns>

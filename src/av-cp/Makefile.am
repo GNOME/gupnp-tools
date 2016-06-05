@@ -40,7 +40,9 @@ gupnp_av_cp_SOURCES = main.c \
 		      renderer-combo.h \
 		      renderer-controls.h \
 			  server-device.c \
-			  server-device.h
+			  server-device.h \
+			  search-dialog.c \
+			  search-dialog.h
 
 gupnp_av_cp_LDADD = ../common/libutil.a \
 		    $(LIBGSSDP_LIBS) \

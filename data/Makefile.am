@@ -10,7 +10,7 @@ desktop_in_files = gupnp-universal-cp.desktop.in \
 		   gupnp-network-light.desktop.in
 
 if BUILD_AV
-dist_shared_DATA += gupnp-av-cp.ui
+dist_shared_DATA += gupnp-av-cp.ui search-dialog.ui
 desktop_in_files += gupnp-av-cp.desktop.in
 endif
 
