@@ -363,19 +363,11 @@ compare_media_server (GtkTreeModel *model,
         gtk_tree_model_get (model, iter,
                             2, &info, -1);
 
-        if (info) {
-                if (GUPNP_IS_DEVICE_PROXY (info)) {
-                        const char *device_udn;
-
-                        device_udn = gupnp_device_info_get_udn (info);
-
-                        if (device_udn && strcmp (device_udn, udn) == 0) {
-                                found = TRUE;
-                        }
-                }
-
-                g_object_unref (info);
+        if (info && GUPNP_IS_DEVICE_PROXY (info)) {
+                found = g_strcmp0 (gupnp_device_info_get_udn (info), udn) == 0;
         }
+
+        g_clear_object (&info);
 
         return found;
 }
@@ -445,14 +437,11 @@ compare_container (GtkTreeModel *model,
                 return found;
         }
 
-        if (container_id == NULL)
-                return found;
-
-        if (strcmp (container_id, id) == 0) {
+        if (g_strcmp0 (container_id, id) == 0) {
                 found = TRUE;
         }
 
-        g_free (container_id);
+        g_clear_pointer (&container_id, g_free);
 
         return found;
 }
