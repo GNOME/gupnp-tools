@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: gupnp-tools master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gupnp-"
 "tools&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-03-28 19:01+0000\n"
-"PO-Revision-Date: 2016-03-30 08:40+0200\n"
+"POT-Creation-Date: 2016-06-05 17:31+0000\n"
+"PO-Revision-Date: 2016-06-10 05:55+0200\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -27,83 +27,67 @@ msgstr "Řídící bod UPnP AV"
 msgid "@PKGDATADIR@/pixmaps/av-cp.png"
 msgstr "@PKGDATADIR@/pixmaps/av-cp.png"
 
-#: data/gupnp-av-cp.ui.in:10 data/gupnp-network-light.ui:7
-#: data/gupnp-universal-cp.ui:8
-msgid "Copyright (C) 2007 Zeeshan Ali (Khattak)"
-msgstr "Copyright © 2007 Zeeshan Ali (Khattak)"
-
-#: data/gupnp-av-cp.ui.in:11
-msgid ""
-"An UPnP AV Control Point based on GUPnP framework.\n"
-"Inspired by Intel Tools for UPnP."
-msgstr ""
-"Řídící bod UPnP AV založený na knihovně GUPnP.\n"
-"Inspirováno nástroji pro UPnP od firmy Intel."
-
-#: data/gupnp-av-cp.ui.in:14 data/gupnp-network-light.ui:11
-#: data/gupnp-universal-cp.ui:12
-msgid "GUPnP homepage"
-msgstr "Domovská stránka GUPnP"
-
-#. TRANSLATORS: Replace this string with your names, one name per line.
-#: data/gupnp-av-cp.ui.in:16 data/gupnp-network-light.ui:13
-#: data/gupnp-universal-cp.ui:14
-msgid "translator-credits"
-msgstr "Marek Černocký, <marek@manet.cz>"
-
-#: data/gupnp-av-cp.ui.in:52
-msgid "GUPnP AV Control Point"
-msgstr "Řídící bod GUPnP AV"
-
-#: data/gupnp-av-cp.ui.in:66 data/gupnp-universal-cp.ui:423
-msgid "_File"
-msgstr "_Soubor"
-
-#: data/gupnp-av-cp.ui.in:75
-msgid "Close"
-msgstr "Zavřít"
-
-#: data/gupnp-av-cp.ui.in:88
-msgid "_Tools"
-msgstr "Nás_troje"
-
-#: data/gupnp-av-cp.ui.in:98
-msgid "_Lenient Mode"
-msgstr "_Shovívavý režim"
-
-#: data/gupnp-av-cp.ui.in:110 data/gupnp-universal-cp.ui:505
-msgid "_Help"
-msgstr "_Nápověda"
-
-#: data/gupnp-av-cp.ui.in:119 data/gupnp-universal-cp.ui:514
-msgid "About"
-msgstr "O aplikaci"
-
-#: data/gupnp-av-cp.ui.in:170 data/gupnp-av-cp.ui.in:698
+#: data/gupnp-av-cp.ui.in:23 data/gupnp-av-cp.ui.in:200
 msgid "_Play"
 msgstr "_Přehrát"
 
-#: data/gupnp-av-cp.ui.in:219
+#: data/gupnp-av-cp.ui.in:32
+msgid "Fetch the DIDL-Lite XML for this media object"
+msgstr "Získat DIDL-Lite XML pro tento multimediální objekt"
+
+#: data/gupnp-av-cp.ui.in:33
+msgid "Fetch _DIDL-Lite"
+msgstr "Získat _DIDL-Lite"
+
+#: data/gupnp-av-cp.ui.in:81
+msgid "GUPnP AV Control Point"
+msgstr "Řídící bod GUPnP AV"
+
+#: data/gupnp-av-cp.ui.in:96 data/gupnp-universal-cp.ui:423
+msgid "_File"
+msgstr "_Soubor"
+
+#: data/gupnp-av-cp.ui.in:105
+msgid "Close"
+msgstr "Zavřít"
+
+#: data/gupnp-av-cp.ui.in:118
+msgid "_Tools"
+msgstr "Nás_troje"
+
+#: data/gupnp-av-cp.ui.in:128
+msgid "_Lenient Mode"
+msgstr "_Shovívavý režim"
+
+#: data/gupnp-av-cp.ui.in:140 data/gupnp-universal-cp.ui:505
+msgid "_Help"
+msgstr "_Nápověda"
+
+#: data/gupnp-av-cp.ui.in:149 data/gupnp-universal-cp.ui:514
+msgid "About"
+msgstr "O aplikaci"
+
+#: data/gupnp-av-cp.ui.in:249
 msgid "P_ause"
 msgstr "Poz_astavit"
 
-#: data/gupnp-av-cp.ui.in:268
+#: data/gupnp-av-cp.ui.in:298
 msgid "_Stop"
 msgstr "Za_stavit"
 
-#: data/gupnp-av-cp.ui.in:317
+#: data/gupnp-av-cp.ui.in:347
 msgid "Pre_vious"
 msgstr "Př_edchozí"
 
-#: data/gupnp-av-cp.ui.in:380
+#: data/gupnp-av-cp.ui.in:410
 msgid "_Next"
 msgstr "_Následující"
 
-#: data/gupnp-av-cp.ui.in:398
+#: data/gupnp-av-cp.ui.in:428
 msgid "Rescan"
 msgstr "Prohledat"
 
-#: data/gupnp-av-cp.ui.in:442
+#: data/gupnp-av-cp.ui.in:472
 msgid ""
 "Clears the CP's idea of the state of the currently selected AV Renderer. "
 "Useful for dealing with AV Renderers that don't report state changes."
@@ -112,25 +96,41 @@ msgstr ""
 "vykreslování AV. To je užitečné pro práci s vykreslovacími zařízeními AV, "
 "které neoznamují změny svého stavu."
 
-#: data/gupnp-av-cp.ui.in:453
+#: data/gupnp-av-cp.ui.in:483
 msgid "_Clear state"
 msgstr "_Vymazat stav"
 
-#: data/gupnp-av-cp.ui.in:496
+#: data/gupnp-av-cp.ui.in:545
 msgid "_Renderer: "
 msgstr "Vyk_reslovací zařízení: "
 
-#: data/gupnp-av-cp.ui.in:629
+#: data/gupnp-av-cp.ui.in:682 data/gupnp-network-light.ui:7
+#: data/gupnp-universal-cp.ui:8
+msgid "Copyright (C) 2007 Zeeshan Ali (Khattak)"
+msgstr "Copyright © 2007 Zeeshan Ali (Khattak)"
+
+#: data/gupnp-av-cp.ui.in:683
+msgid ""
+"An UPnP AV Control Point based on GUPnP framework.\n"
+"Inspired by Intel Tools for UPnP."
+msgstr ""
+"Řídící bod UPnP AV založený na knihovně GUPnP.\n"
+"Inspirováno nástroji pro UPnP od firmy Intel."
+
+#: data/gupnp-av-cp.ui.in:686 data/gupnp-network-light.ui:11
+#: data/gupnp-universal-cp.ui:12
+msgid "GUPnP homepage"
+msgstr "Domovská stránka GUPnP"
+
+#. TRANSLATORS: Replace this string with your names, one name per line.
+#: data/gupnp-av-cp.ui.in:688 data/gupnp-network-light.ui:13
+#: data/gupnp-universal-cp.ui:14
+msgid "translator-credits"
+msgstr "Marek Černocký, <marek@manet.cz>"
+
+#: data/gupnp-av-cp.ui.in:720
 msgid "GUPnP AV CP - Metadata View"
 msgstr "GUPnP AV CP – zobrazení metadat"
-
-#: data/gupnp-av-cp.ui.in:707
-msgid "Fetch the DIDL-Lite XML for this media object"
-msgstr "Získat DIDL-Lite XML pro tento multimediální objekt"
-
-#: data/gupnp-av-cp.ui.in:708
-msgid "Fetch _DIDL-Lite"
-msgstr "Získat _DIDL-Lite"
 
 #: data/gupnp-network-light.desktop.in.in:4
 msgid "UPnP Network Light"
@@ -270,30 +270,34 @@ msgstr "_Zobrazit"
 msgid "Event _log"
 msgstr "Záznam udá_lostí"
 
-#: src/av-cp/main.c:47 src/network-light/main.c:47 src/universal-cp/main.c:41
+#: src/av-cp/main.c:48 src/network-light/main.c:48 src/universal-cp/main.c:41
 msgid "Network PORT to use for UPnP"
 msgstr "Síťový PORT, který s má použít pro UPnP"
 
-#: src/av-cp/main.c:48 src/network-light/main.c:48 src/universal-cp/main.c:42
+#: src/av-cp/main.c:49 src/network-light/main.c:49 src/universal-cp/main.c:42
 msgid "Network interfaces to use for UPnP communication"
 msgstr "Síťové rozhraní, které s má použít pro komunikaci UPnP"
 
-#: src/av-cp/main.c:197 src/network-light/main.c:102
+#: src/av-cp/main.c:223 src/network-light/main.c:104
 #: src/universal-cp/main.c:149
 msgid "- UPnP AV control point"
 msgstr "– řídicí bod UPnP AV"
 
-#: src/av-cp/main.c:202 src/network-light/main.c:107
+#: src/av-cp/main.c:228 src/network-light/main.c:109
 #: src/universal-cp/main.c:154
 #, c-format
 msgid "Could not parse options: %s\n"
 msgstr "Nelze zpracovat volbu: %s\n"
 
-#: src/network-light/main.c:49
+#: src/network-light/main.c:50
 msgid "Friendly name for this UPnP light"
 msgstr "Přívětivý název pro tuto žárovku UPnP"
 
-#: src/universal-cp/action-dialog.c:686
+#: src/network-light/main.c:51
+msgid "Apply change exclusively to this UPnP light"
+msgstr "Použít změnu výhradně pro tuto žárovku UPnP"
+
+#: src/universal-cp/action-dialog.c:690
 #, c-format
 msgid ""
 "Action failed.\n"
@@ -458,11 +462,11 @@ msgstr "Verze"
 msgid "Author"
 msgstr "Autor"
 
-#: src/universal-cp/device-treeview.c:478
+#: src/universal-cp/device-treeview.c:477
 msgid "State variables"
 msgstr "Stavové proměnné"
 
-#: src/universal-cp/device-treeview.c:519
+#: src/universal-cp/device-treeview.c:518
 msgid "Information not available"
 msgstr "Informace není dostupná"
 
