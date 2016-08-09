@@ -3,6 +3,7 @@ Encoding=UTF-8
 Name=UPnP Universal Control Point
 Categories=GTK;Development;
 Exec=gupnp-universal-cp
+# Translators: Do NOT translate or transliterate this text (this is an icon file name)!
 Icon=@PKGDATADIR@/pixmaps/universal-cp.png
 Terminal=false
 Type=Application
