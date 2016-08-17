@@ -17,12 +17,13 @@ endif
 desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)
 desktop_in_in_files = $(desktop_in_files:.desktop.in=.desktop.in.in)
 
-$(desktop_in_files): $(desktop_in_in_files)
+%.desktop.in: %.desktop.in.in
 	$(AM_V_GEN) $(MSGFMT) --desktop --template $< -d $(top_srcdir)/po -o $@
 
 # Substitute variables in a Desktop Entry file.
-$(desktop_DATA): $(desktop_in_files)
-	$(AM_V_GEN) $(SED) -e 's|@VERSION[@]|$(VERSION)|g' $< > $@
+%.desktop : %.desktop.in
+	$(AM_V_GEN) $(SED) -e 's|@VERSION[@]|$(VERSION)|g' \
+					-e 's|@PKGDATADIR[@]|$(PKGDATADIR)|g' $< > $@
 
 EXTRA_DIST = $(desktop_in_in_files) gupnp-av-cp.ui.in $(desktop_in_files)
 
