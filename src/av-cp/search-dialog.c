@@ -143,7 +143,7 @@ search_dialog_on_search_done (GObject *source, GAsyncResult *res, gpointer user_
         SearchDialogPrivate *priv = search_dialog_get_instance_private (self);
 
         GError *error = NULL;
-        char *xml;
+        char *xml = NULL;
         guint32 total = 0;
         guint32 returned = 0;
         GUPnPDIDLLiteParser *parser;
@@ -155,8 +155,21 @@ search_dialog_on_search_done (GObject *source, GAsyncResult *res, gpointer user_
                                                &total,
                                                &returned,
                                                &error)) {
+                GtkWidget *dialog = NULL;
+
+                dialog = gtk_message_dialog_new (GTK_WINDOW (self),
+                                                 GTK_DIALOG_DESTROY_WITH_PARENT,
+                                                 GTK_MESSAGE_WARNING,
+                                                 GTK_BUTTONS_CLOSE,
+                                                 "Search failed: %s",
+                                                 error->message);
+                gtk_dialog_run (GTK_DIALOG (dialog));
+                gtk_widget_destroy (dialog);
+
                 g_critical ("Failed to search: %s", error->message),
                 g_error_free (error);
+
+                goto out;
         }
 
         parser = gupnp_didl_lite_parser_new ();
@@ -164,6 +177,9 @@ search_dialog_on_search_done (GObject *source, GAsyncResult *res, gpointer user_
                 G_CALLBACK (on_didl_object_available),
                 self);
         gupnp_didl_lite_parser_parse_didl (parser, xml, &error);
+        g_free (xml);
+
+out:
         g_source_remove (priv->pulse_timer);
         gtk_entry_set_progress_fraction (priv->search_dialog_entry, 0.0);
         gtk_widget_set_sensitive (GTK_WIDGET (priv->search_dialog_entry), TRUE);
