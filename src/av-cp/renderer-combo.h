@@ -59,4 +59,8 @@ remove_media_renderer           (GUPnPDeviceProxy *proxy);
 void
 setup_renderer_combo            (GtkBuilder       *builder);
 
+void
+on_renderer_combo_changed       (GtkComboBox *widget,
+                                 gpointer     user_data);
+
 #endif /* __RENDERERCOMBO_H__ */
