@@ -45,6 +45,8 @@ struct _SearchDialogPrivate {
         AVCPMediaServer *server;
         guint pulse_timer;
         SearchTask *task;
+        GUPnPSearchCriteriaParser *parser;
+        GRegex *position_re;
 };
 
 typedef struct _SearchDialogPrivate SearchDialogPrivate;
@@ -55,6 +57,9 @@ search_dialog_on_search_activate (SearchDialog *self, GtkEntry *entry);
 
 static void
 search_dialog_finalize (GObject *object);
+
+static void
+search_dialog_dispose (GObject *object);
 
 struct _SearchTask {
         AVCPMediaServer *server;
@@ -335,12 +340,42 @@ search_dialog_class_init (SearchDialogClass *klass)
                                                       search_dialog_entry);
 
         object_class->finalize = search_dialog_finalize;
+        object_class->dispose = search_dialog_dispose;
 }
 
 static void
 search_dialog_init (SearchDialog *self)
 {
+        SearchDialogPrivate *priv = NULL;
+
         gtk_widget_init_template (GTK_WIDGET (self));
+        priv = search_dialog_get_instance_private (self);
+
+        priv->parser = gupnp_search_criteria_parser_new ();
+}
+
+static void
+search_dialog_dispose (GObject *object)
+{
+        SearchDialog *self = SEARCH_DIALOG (object);
+        SearchDialogPrivate *priv = search_dialog_get_instance_private (self);
+        GObjectClass *parent_class =
+                              G_OBJECT_CLASS (search_dialog_parent_class);
+
+        if (priv->task != NULL) {
+                search_task_cancel (priv->task);
+        }
+
+        if (priv->pulse_timer != 0) {
+                g_source_remove (priv->pulse_timer);
+                priv->pulse_timer = 0;
+        }
+
+        g_clear_object (&priv->parser);
+
+        if (parent_class->dispose != NULL) {
+                parent_class->dispose (object);
+        }
 }
 
 static void
@@ -353,6 +388,8 @@ search_dialog_finalize (GObject *object)
 
         g_clear_pointer (&priv->id, g_free);
         g_clear_pointer (&priv->title, g_free);
+        g_clear_pointer (&priv->task, search_task_free);
+        g_clear_pointer (&priv->position_re, g_regex_unref);
 
         if (parent_class->finalize != NULL) {
                 parent_class->finalize (object);
@@ -477,19 +514,65 @@ G_MODULE_EXPORT
 void
 search_dialog_on_search_activate (SearchDialog *self, GtkEntry *entry)
 {
+        GError *error = NULL;
+        const char *text = gtk_entry_get_text (entry);
         SearchDialogPrivate *priv = search_dialog_get_instance_private (self);
-        gtk_list_store_clear (priv->search_dialog_liststore);
-        gtk_widget_set_sensitive (GTK_WIDGET (entry), FALSE);
-        priv->pulse_timer = g_timeout_add_seconds (1, pulse_timer, self);
 
-        g_clear_pointer (&priv->task, search_task_free);
+        gupnp_search_criteria_parser_parse_text (priv->parser, text, &error);
+        if (error == NULL) {
+                gtk_list_store_clear (priv->search_dialog_liststore);
+                gtk_widget_set_sensitive (GTK_WIDGET (entry), FALSE);
+                priv->pulse_timer = g_timeout_add_seconds (1, pulse_timer, self);
 
-        priv->task = search_task_new (priv->server,
-                                      priv->search_dialog_liststore,
-                                      priv->id,
-                                      gtk_entry_get_text (entry),
-                                      30,
-                                      search_dialog_on_search_task_done,
-                                      self);
-        search_task_run (priv->task);
+                g_clear_pointer (&priv->task, search_task_free);
+
+                priv->task = search_task_new (priv->server,
+                                              priv->search_dialog_liststore,
+                                              priv->id,
+                                              gtk_entry_get_text (entry),
+                                              30,
+                                              search_dialog_on_search_task_done,
+                                              self);
+                search_task_run (priv->task);
+        } else {
+                GtkWidget *dialog = NULL;
+                GMatchInfo *info = NULL;
+                char *position = NULL;
+
+                if (priv->position_re == NULL) {
+                        priv->position_re = g_regex_new ("([0-9]+)$", 0, 0, NULL);
+                }
+
+                if (!g_regex_match (priv->position_re, error->message, 0, &info)) {
+                        position = g_strdup ("-1");
+                } else {
+                        position = g_match_info_fetch (info, 0);
+                }
+
+                g_match_info_free (info);
+
+                dialog = gtk_message_dialog_new (GTK_WINDOW (self),
+                                                 GTK_DIALOG_DESTROY_WITH_PARENT,
+                                                 GTK_MESSAGE_WARNING,
+                                                 GTK_BUTTONS_CLOSE,
+                                                 "%s",
+                                                 _("Search failed"));
+
+                gtk_message_dialog_format_secondary_text
+                                    (GTK_MESSAGE_DIALOG (dialog),
+                                     _("Search criteria invalid: %s"),
+                                     error->message);
+                gtk_dialog_run (GTK_DIALOG (dialog));
+                gtk_widget_destroy (dialog);
+
+                g_error_free (error);
+                error = NULL;
+
+                gtk_editable_set_position (GTK_EDITABLE (entry),
+                                           atoi (position));
+                g_free (position);
+
+                return;
+        }
+
 }
