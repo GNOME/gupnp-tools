@@ -230,7 +230,7 @@ out:
                 g_debug ("Starting new slice %u/%u (total %u)",
                          task->start,
                          task->count,
-                         task->total);
+                         task->total == -1 ? 0 : task->total);
 
                 av_cp_media_server_search_async (task->server,
                                                  task->cancellable,
