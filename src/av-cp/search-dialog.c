@@ -50,6 +50,9 @@ G_DEFINE_TYPE_WITH_PRIVATE (SearchDialog, search_dialog, GTK_TYPE_DIALOG)
 void
 search_dialog_on_search_activate (SearchDialog *self, GtkEntry *entry);
 
+static void
+search_dialog_finalize (GObject *object);
+
 #define ITEM_CLASS_IMAGE "object.item.imageItem"
 #define ITEM_CLASS_AUDIO "object.item.audioItem"
 #define ITEM_CLASS_VIDEO "object.item.videoItem"
@@ -88,6 +91,7 @@ get_item_icon (GUPnPDIDLLiteObject *object)
 static void
 search_dialog_class_init (SearchDialogClass *klass)
 {
+        GObjectClass *object_class = G_OBJECT_CLASS (klass);
         GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
         GError *error = NULL;
         gchar *data = NULL;
@@ -112,12 +116,30 @@ search_dialog_class_init (SearchDialogClass *klass)
         gtk_widget_class_bind_template_child_private (widget_class,
                                                       SearchDialog,
                                                       search_dialog_entry);
+
+        object_class->finalize = search_dialog_finalize;
 }
 
 static void
 search_dialog_init (SearchDialog *self)
 {
         gtk_widget_init_template (GTK_WIDGET (self));
+}
+
+static void
+search_dialog_finalize (GObject *object)
+{
+        SearchDialog *self = SEARCH_DIALOG (object);
+        SearchDialogPrivate *priv = search_dialog_get_instance_private (self);
+        GObjectClass *parent_class =
+                              G_OBJECT_CLASS (search_dialog_parent_class);
+
+        g_clear_pointer (&priv->id, g_free);
+        g_clear_pointer (&priv->title, g_free);
+
+        if (parent_class->finalize != NULL) {
+                parent_class->finalize (object);
+        }
 }
 
 static void
