@@ -27,6 +27,13 @@
 #include "server-device.h"
 #include "icons.h"
 
+/* DLNA recommends something between 10 and 30, let's just use 30
+ * cf. 7.4.1.4.10.9 in the 2014 version of the architecture and protocols
+ * guideline
+ * dlna-guidelines-march-2014---part-1-1-architectures-and-protocols.pdf
+ */
+#define SEARCH_DIALOG_DEFAULT_SLICE 30
+
 typedef struct _SearchTask SearchTask;
 
 struct _SearchDialog {
@@ -530,7 +537,7 @@ search_dialog_on_search_activate (SearchDialog *self, GtkEntry *entry)
                                               priv->search_dialog_liststore,
                                               priv->id,
                                               gtk_entry_get_text (entry),
-                                              30,
+                                              SEARCH_DIALOG_DEFAULT_SLICE,
                                               search_dialog_on_search_task_done,
                                               self);
                 search_task_run (priv->task);
