@@ -204,6 +204,7 @@ search_dialog_on_search_done (GObject *source, GAsyncResult *res, gpointer user_
         g_free (xml);
 
 out:
+        g_clear_object (&parser);
         g_source_remove (priv->pulse_timer);
         gtk_entry_set_progress_fraction (priv->search_dialog_entry, 0.0);
         gtk_widget_set_sensitive (GTK_WIDGET (priv->search_dialog_entry), TRUE);
