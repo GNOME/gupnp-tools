@@ -271,6 +271,7 @@ search_task_run (SearchTask *task) {
 #define ITEM_CLASS_AUDIO "object.item.audioItem"
 #define ITEM_CLASS_VIDEO "object.item.videoItem"
 #define ITEM_CLASS_TEXT  "object.item.textItem"
+#define CONTAINER_CLASS "object.container"
 
 static GdkPixbuf *
 get_item_icon (GUPnPDIDLLiteObject *object)
@@ -285,15 +286,14 @@ get_item_icon (GUPnPDIDLLiteObject *object)
 
         if (g_str_has_prefix (class_name, ITEM_CLASS_IMAGE)) {
                 icon = get_icon_by_id (ICON_IMAGE_ITEM);
-        } else if (g_str_has_prefix (class_name,
-                                    ITEM_CLASS_AUDIO)) {
+        } else if (g_str_has_prefix (class_name, ITEM_CLASS_AUDIO)) {
                 icon = get_icon_by_id (ICON_AUDIO_ITEM);
-        } else if (g_str_has_prefix (class_name,
-                                     ITEM_CLASS_VIDEO)) {
+        } else if (g_str_has_prefix (class_name, ITEM_CLASS_VIDEO)) {
                 icon = get_icon_by_id (ICON_VIDEO_ITEM);
-        } else if (g_str_has_prefix (class_name,
-                                     ITEM_CLASS_TEXT)) {
+        } else if (g_str_has_prefix (class_name, ITEM_CLASS_TEXT)) {
                 icon = get_icon_by_id (ICON_TEXT_ITEM);
+        } else if (g_str_has_prefix (class_name, CONTAINER_CLASS) ){
+                icon = get_icon_by_id (ICON_CONTAINER);
         } else {
                 icon = get_icon_by_id (ICON_FILE);
         }
