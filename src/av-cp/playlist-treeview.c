@@ -365,8 +365,7 @@ on_search_menu_item_activated (GtkMenuItem *menuitem,
     search_dialog_set_container_id (SEARCH_DIALOG (search_dialog), id);
     search_dialog_set_container_title (SEARCH_DIALOG (search_dialog), title);
 
-    gtk_dialog_run (search_dialog);
-    gtk_widget_hide (GTK_WIDGET (search_dialog));
+    search_dialog_run (SEARCH_DIALOG (search_dialog));
 }
 
 void

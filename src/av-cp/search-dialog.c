@@ -69,6 +69,7 @@ struct _SearchTask {
         GError *error;
         GSourceFunc callback;
         gpointer user_data;
+        GCancellable *cancellable;
 };
 
 static void
@@ -98,6 +99,7 @@ search_task_new (AVCPMediaServer *server,
         task->error = NULL;
         task->callback = callback;
         task->user_data = user_data;
+        task->cancellable = g_cancellable_new ();
 
         g_signal_connect (G_OBJECT (task->parser),
                           "object-available",
@@ -118,6 +120,11 @@ search_task_free (SearchTask *task) {
                 g_error_free (task->error);
         }
         g_free (task);
+}
+
+static void
+search_task_cancel (SearchTask *task) {
+        g_cancellable_cancel (task->cancellable);
 }
 
 static gboolean
@@ -158,13 +165,19 @@ search_task_on_search_ready (GObject *source, GAsyncResult *res, gpointer user_d
                                                    &returned,
                                                    &error);
 
-        g_message ("Received search slice result for %s with expression %s, result is %s",
-                   task->container_id,
-                   task->search_expression,
-                   result ? "TRUE" : "FALSE");
+        g_debug ("Received search slice result for %s with expression %s, result is %s",
+                 task->container_id,
+                 task->search_expression,
+                 result ? "TRUE" : "FALSE");
 
 
         if (!result) {
+                finished = TRUE;
+
+                goto out;
+        }
+
+        if (g_cancellable_is_cancelled (task->cancellable)) {
                 finished = TRUE;
 
                 goto out;
@@ -198,23 +211,23 @@ search_task_on_search_ready (GObject *source, GAsyncResult *res, gpointer user_d
 out:
         g_clear_pointer (&didl_xml, g_free);
         if (finished) {
-            g_message ("Finished search, error: %s",
-                       error ? error->message : "none");
+                g_debug ("Finished search, error: %s",
+                         error ? error->message : "none");
                 search_task_set_finished (task, error);
         } else {
-            g_message ("Starting new slice %u/%u (total %u)",
-                       task->start,
-                       task->count,
-                       task->total);
+                g_debug ("Starting new slice %u/%u (total %u)",
+                         task->start,
+                         task->count,
+                         task->total);
 
-            av_cp_media_server_search_async (task->server,
-                                             NULL,
-                                             search_task_on_search_ready,
-                                             task->container_id,
-                                             task->search_expression,
-                                             task->start,
-                                             task->count,
-                                             task);
+                av_cp_media_server_search_async (task->server,
+                                                 task->cancellable,
+                                                 search_task_on_search_ready,
+                                                 task->container_id,
+                                                 task->search_expression,
+                                                 task->start,
+                                                 task->count,
+                                                 task);
         }
 }
 
@@ -226,9 +239,9 @@ search_task_run (SearchTask *task) {
                 return;
         }
 
-        g_message ("Starting search task for %s with expression %s",
-                   task->container_id,
-                   task->search_expression);
+        g_debug ("Starting search task for %s with expression %s",
+                 task->container_id,
+                 task->search_expression);
 
         task->running = TRUE;
 
@@ -356,7 +369,10 @@ search_dialog_on_search_task_done (gpointer user_data)
         gtk_entry_set_progress_fraction (priv->search_dialog_entry, 0);
         gtk_widget_set_sensitive (GTK_WIDGET (priv->search_dialog_entry), TRUE);
 
-        if (priv->task->error != NULL) {
+        /* Only show visible error if dialog is visible. If it's not visible,
+         * it's likely to be a cancelled error */
+        if (priv->task->error != NULL &&
+            gtk_widget_is_visible (GTK_WIDGET (self))) {
                 GtkWidget *dialog = NULL;
 
                 dialog = gtk_message_dialog_new (GTK_WINDOW (self),
@@ -424,6 +440,19 @@ search_dialog_set_container_title (SearchDialog *self, char *title)
 
         g_free (name);
         g_free (window_title);
+}
+
+void
+search_dialog_run (SearchDialog *self)
+{
+        SearchDialogPrivate *priv = search_dialog_get_instance_private (self);
+        gtk_dialog_run (GTK_DIALOG (self));
+        gtk_widget_hide (GTK_WIDGET (self));
+
+        if (priv->task != NULL &&
+            priv->task->running) {
+                search_task_cancel (priv->task);
+        }
 }
 
 static gboolean
