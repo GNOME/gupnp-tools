@@ -41,4 +41,7 @@ search_dialog_set_server (SearchDialog *self, AVCPMediaServer *server);
 void
 search_dialog_set_container_id (SearchDialog *self, char *id);
 
+void
+search_dialog_set_container_title (SearchDialog *self, char *title);
+
 #endif /* SEARCH_DIALOG_H */

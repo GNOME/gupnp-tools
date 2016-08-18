@@ -341,6 +341,7 @@ on_search_menu_item_activated (GtkMenuItem *menuitem,
     GtkTreeModel      *model;
     GtkTreeIter        iter;
     char              *id = NULL;
+    char              *title = NULL;
 
     selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (treeview));
     g_assert (selection != NULL);
@@ -351,6 +352,7 @@ on_search_menu_item_activated (GtkMenuItem *menuitem,
 
     gtk_tree_model_get (model,
                         &iter,
+                        1, &title,
                         2, &server,
                         4, &id,
                         -1);
@@ -361,6 +363,7 @@ on_search_menu_item_activated (GtkMenuItem *menuitem,
 
     search_dialog_set_server (SEARCH_DIALOG (search_dialog), server);
     search_dialog_set_container_id (SEARCH_DIALOG (search_dialog), id);
+    search_dialog_set_container_title (SEARCH_DIALOG (search_dialog), title);
 
     gtk_dialog_run (search_dialog);
 }

@@ -18,6 +18,7 @@
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  */
 
+#include <glib/gi18n.h>
 #include <libgupnp-av/gupnp-av.h>
 
 #include <string.h>
@@ -38,6 +39,7 @@ struct _SearchDialogPrivate {
         GtkListStore *search_dialog_liststore;
         GtkEntry *search_dialog_entry;
         char *id;
+        char *title;
         AVCPMediaServer *server;
         guint pulse_timer;
 };
@@ -197,8 +199,37 @@ void
 search_dialog_set_container_id (SearchDialog *self, char *id)
 {
         SearchDialogPrivate *priv = search_dialog_get_instance_private (self);
+        g_free (priv->id);
 
         priv->id = id;
+}
+
+void
+search_dialog_set_container_title (SearchDialog *self, char *title)
+{
+        char *name = NULL;
+        char *window_title = NULL;
+
+        SearchDialogPrivate *priv = search_dialog_get_instance_private (self);
+        g_free (priv->title);
+
+        priv->title = title;
+        name = gupnp_device_info_get_friendly_name
+                                (GUPNP_DEVICE_INFO (priv->server));
+
+        if (g_str_equal (priv->id, "0")) {
+                window_title = g_strdup_printf (_("Searching on %s"),
+                                         name);
+        } else {
+                window_title = g_strdup_printf (_("Searching in %s on %s"),
+                                         title,
+                                         name);
+        }
+
+        gtk_window_set_title (GTK_WINDOW (self), window_title);
+
+        g_free (name);
+        g_free (window_title);
 }
 
 static gboolean
