@@ -1,42 +1,116 @@
-# -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-# Aviary.pl
-# Jeśli masz jakiekolwiek uwagi odnoszące się do tłumaczenia lub chcesz
-# pomóc w jego rozwijaniu i pielęgnowaniu, napisz do nas:
-# gnomepl@aviary.pl
-# -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+# Polish translation for gupnp-tools.
+# Copyright © 2012-2016 the gupnp-tools authors.
+# This file is distributed under the same license as the gupnp-tools package.
 # Piotr Drąg <piotrdrag@gmail.com>, 2012-2016.
-# Aviary.pl <gnomepl@aviary.pl>, 2012-2016.
+# Aviary.pl <community-poland@mozilla.org>, 2012-2016.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: gupnp-tools\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-03 17:07+0000\n"
-"PO-Revision-Date: 2016-04-03 23:47+0200\n"
+"POT-Creation-Date: 2016-08-21 13:03+0000\n"
+"PO-Revision-Date: 2016-08-21 15:12+0200\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
-"Language-Team: Polish <gnomepl@aviary.pl>\n"
+"Language-Team: Polish <community-poland@mozilla.org>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
-"X-Poedit-Language: Polish\n"
-"X-Poedit-Country: Poland\n"
 
 #: data/gupnp-av-cp.desktop.in.in:4
 msgid "UPnP AV Control Point"
 msgstr "Punkt kontrolny UPnP AV"
 
-#: data/gupnp-av-cp.desktop.in.in:7
+#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
+#: data/gupnp-av-cp.desktop.in.in:8
 msgid "@PKGDATADIR@/pixmaps/av-cp.png"
 msgstr "@PKGDATADIR@/pixmaps/av-cp.png"
 
-#: data/gupnp-av-cp.ui.in:10 data/gupnp-network-light.ui:7
+#: data/gupnp-av-cp.ui.in:23 data/gupnp-av-cp.ui.in:200
+msgid "_Play"
+msgstr "_Odtwórz"
+
+#: data/gupnp-av-cp.ui.in:32
+msgid "Fetch the DIDL-Lite XML for this media object"
+msgstr "Pobiera kod XML DIDL-Lite dla tego obiektu multimedialnego"
+
+#: data/gupnp-av-cp.ui.in:33
+msgid "Fetch _DIDL-Lite"
+msgstr "Pobierz _DIDL-Lite"
+
+#: data/gupnp-av-cp.ui.in:81
+msgid "GUPnP AV Control Point"
+msgstr "Punkt kontrolny GUPnP AV"
+
+#: data/gupnp-av-cp.ui.in:96 data/gupnp-universal-cp.ui:423
+msgid "_File"
+msgstr "_Plik"
+
+#: data/gupnp-av-cp.ui.in:105
+msgid "Close"
+msgstr "Zamknij"
+
+#: data/gupnp-av-cp.ui.in:118
+msgid "_Tools"
+msgstr "_Narzędzia"
+
+#: data/gupnp-av-cp.ui.in:128
+msgid "_Lenient Mode"
+msgstr "_Tryb łagodny"
+
+#: data/gupnp-av-cp.ui.in:140 data/gupnp-universal-cp.ui:505
+msgid "_Help"
+msgstr "Pomo_c"
+
+#: data/gupnp-av-cp.ui.in:149 data/gupnp-universal-cp.ui:514
+msgid "About"
+msgstr "O programie"
+
+#: data/gupnp-av-cp.ui.in:249
+msgid "P_ause"
+msgstr "_Wstrzymaj"
+
+#: data/gupnp-av-cp.ui.in:298
+msgid "_Stop"
+msgstr "_Zatrzymaj"
+
+#: data/gupnp-av-cp.ui.in:347
+msgid "Pre_vious"
+msgstr "_Poprzedni"
+
+#: data/gupnp-av-cp.ui.in:410
+msgid "_Next"
+msgstr "_Następny"
+
+#: data/gupnp-av-cp.ui.in:428
+msgid "Rescan"
+msgstr "Skanuj ponownie"
+
+#: data/gupnp-av-cp.ui.in:472
+msgid ""
+"Clears the CP's idea of the state of the currently selected AV Renderer. "
+"Useful for dealing with AV Renderers that don't report state changes."
+msgstr ""
+"Czyści stan obecnie zaznaczonego mechanizmu wyświetlającego AV znany przez "
+"CP. Jest to przydatne podczas używania z mechanizmami AV, które nie "
+"zgłaszają zmian stanu."
+
+#: data/gupnp-av-cp.ui.in:483
+msgid "_Clear state"
+msgstr "Wy_czyść stan"
+
+#: data/gupnp-av-cp.ui.in:545
+msgid "_Renderer: "
+msgstr "_Mechanizm wyświetlający: "
+
+#: data/gupnp-av-cp.ui.in:682 data/gupnp-network-light.ui:7
 #: data/gupnp-universal-cp.ui:8
 msgid "Copyright (C) 2007 Zeeshan Ali (Khattak)"
 msgstr "Copyright © 2007 Zeeshan Ali (Khattak)"
 
-#: data/gupnp-av-cp.ui.in:11
+#: data/gupnp-av-cp.ui.in:683
 msgid ""
 "An UPnP AV Control Point based on GUPnP framework.\n"
 "Inspired by Intel Tools for UPnP."
@@ -44,105 +118,29 @@ msgstr ""
 "Punkt kontrolny UPnP AV oparty na strukturze GUPnP.\n"
 "Zainspirowane przez oprogramowanie „Intel Tools for UPnP”."
 
-#: data/gupnp-av-cp.ui.in:14 data/gupnp-network-light.ui:11
+#: data/gupnp-av-cp.ui.in:686 data/gupnp-network-light.ui:11
 #: data/gupnp-universal-cp.ui:12
 msgid "GUPnP homepage"
 msgstr "Witryna GUPnP"
 
 #. TRANSLATORS: Replace this string with your names, one name per line.
-#: data/gupnp-av-cp.ui.in:16 data/gupnp-network-light.ui:13
+#: data/gupnp-av-cp.ui.in:688 data/gupnp-network-light.ui:13
 #: data/gupnp-universal-cp.ui:14
 msgid "translator-credits"
 msgstr ""
 "Piotr Drąg <piotrdrag@gmail.com>, 2012-2016\n"
-"Aviary.pl <gnomepl@aviary.pl>, 2012-2016"
+"Aviary.pl <community-poland@mozilla.org>, 2012-2016"
 
-#: data/gupnp-av-cp.ui.in:52
-msgid "GUPnP AV Control Point"
-msgstr "Punkt kontrolny GUPnP AV"
-
-#: data/gupnp-av-cp.ui.in:66 data/gupnp-universal-cp.ui:423
-msgid "_File"
-msgstr "_Plik"
-
-#: data/gupnp-av-cp.ui.in:75
-msgid "Close"
-msgstr "Zamknij"
-
-#: data/gupnp-av-cp.ui.in:88
-msgid "_Tools"
-msgstr "_Narzędzia"
-
-#: data/gupnp-av-cp.ui.in:98
-msgid "_Lenient Mode"
-msgstr "_Tryb łagodny"
-
-#: data/gupnp-av-cp.ui.in:110 data/gupnp-universal-cp.ui:505
-msgid "_Help"
-msgstr "Pomo_c"
-
-#: data/gupnp-av-cp.ui.in:119 data/gupnp-universal-cp.ui:514
-msgid "About"
-msgstr "O programie"
-
-#: data/gupnp-av-cp.ui.in:170 data/gupnp-av-cp.ui.in:698
-msgid "_Play"
-msgstr "_Odtwórz"
-
-#: data/gupnp-av-cp.ui.in:219
-msgid "P_ause"
-msgstr "_Wstrzymaj"
-
-#: data/gupnp-av-cp.ui.in:268
-msgid "_Stop"
-msgstr "_Zatrzymaj"
-
-#: data/gupnp-av-cp.ui.in:317
-msgid "Pre_vious"
-msgstr "_Poprzedni"
-
-#: data/gupnp-av-cp.ui.in:380
-msgid "_Next"
-msgstr "_Następny"
-
-#: data/gupnp-av-cp.ui.in:398
-msgid "Rescan"
-msgstr "Skanuj ponownie"
-
-#: data/gupnp-av-cp.ui.in:442
-msgid ""
-"Clears the CP's idea of the state of the currently selected AV Renderer. "
-"Useful for dealing with AV Renderers that don't report state changes."
-msgstr ""
-"Czyści stan obecnie zaznaczonego mechanizmu wyświetlającego AV znany przez "
-"CP. Jest to przydatne podczas używania z mechanizmami AV, które nie "
-"zgłaszają zmian stanu."
-
-#: data/gupnp-av-cp.ui.in:453
-msgid "_Clear state"
-msgstr "Wy_czyść stan"
-
-#: data/gupnp-av-cp.ui.in:496
-msgid "_Renderer: "
-msgstr "_Mechanizm wyświetlający: "
-
-#: data/gupnp-av-cp.ui.in:629
+#: data/gupnp-av-cp.ui.in:720
 msgid "GUPnP AV CP - Metadata View"
 msgstr "GUPnP AV CP — widok metadanych"
-
-#: data/gupnp-av-cp.ui.in:707
-msgid "Fetch the DIDL-Lite XML for this media object"
-msgstr "Pobiera kod XML DIDL-Lite dla tego obiektu multimedialnego"
-
-#: data/gupnp-av-cp.ui.in:708
-msgid "Fetch _DIDL-Lite"
-msgstr "Pobierz _DIDL-Lite"
 
 #: data/gupnp-network-light.desktop.in.in:4
 msgid "UPnP Network Light"
 msgstr "Światło sieciowe UPnP"
 
-#: data/gupnp-network-light.desktop.in.in:7
+#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
+#: data/gupnp-network-light.desktop.in.in:8
 msgid "@PKGDATADIR@/pixmaps/network-light-256x256.png"
 msgstr "@PKGDATADIR@/pixmaps/network-light-256x256.png"
 
@@ -165,21 +163,22 @@ msgstr "_Włączone"
 
 #: data/gupnp-network-light.ui:83
 msgid "_Increase luminance by 20%"
-msgstr "_Zwiększ jasność o 20%"
+msgstr "_Zwiększ jasność o 20%"
 
 #: data/gupnp-network-light.ui:92
 msgid "_Decrease luminance by 20%"
-msgstr "Z_mniejsz jasność o 20%"
+msgstr "Z_mniejsz jasność o 20%"
 
 #: data/gupnp-network-light.ui:107
 msgid "_About"
-msgstr "_O programie"
+msgstr "_O programie"
 
 #: data/gupnp-universal-cp.desktop.in.in:4
 msgid "UPnP Universal Control Point"
 msgstr "Uniwersalny punkt kontrolny UPnP"
 
-#: data/gupnp-universal-cp.desktop.in.in:7
+#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
+#: data/gupnp-universal-cp.desktop.in.in:8
 msgid "@PKGDATADIR@/pixmaps/universal-cp.png"
 msgstr "@PKGDATADIR@/pixmaps/universal-cp.png"
 
@@ -276,20 +275,20 @@ msgstr "_Widok"
 msgid "Event _log"
 msgstr "_Dziennik zdarzeń"
 
-#: src/av-cp/main.c:47 src/network-light/main.c:48 src/universal-cp/main.c:41
+#: src/av-cp/main.c:48 src/network-light/main.c:48 src/universal-cp/main.c:41
 msgid "Network PORT to use for UPnP"
 msgstr "PORT sieciowy używany dla UPnP"
 
-#: src/av-cp/main.c:48 src/network-light/main.c:49 src/universal-cp/main.c:42
+#: src/av-cp/main.c:49 src/network-light/main.c:49 src/universal-cp/main.c:42
 msgid "Network interfaces to use for UPnP communication"
 msgstr "Interfejsy sieciowe używane do komunikacji UPnP"
 
-#: src/av-cp/main.c:197 src/network-light/main.c:104
+#: src/av-cp/main.c:223 src/network-light/main.c:104
 #: src/universal-cp/main.c:149
 msgid "- UPnP AV control point"
 msgstr "— punkt kontrolny UPnP AV"
 
-#: src/av-cp/main.c:202 src/network-light/main.c:109
+#: src/av-cp/main.c:228 src/network-light/main.c:109
 #: src/universal-cp/main.c:154
 #, c-format
 msgid "Could not parse options: %s\n"
@@ -303,7 +302,7 @@ msgstr "Nazwa tego światła UPnP zrozumiała dla użytkownika"
 msgid "Apply change exclusively to this UPnP light"
 msgstr "Zastosowuje zmianę tylko dla tego światła UPnP"
 
-#: src/universal-cp/action-dialog.c:686
+#: src/universal-cp/action-dialog.c:690
 #, c-format
 msgid ""
 "Action failed.\n"
@@ -468,11 +467,11 @@ msgstr "Wersja"
 msgid "Author"
 msgstr "Autor"
 
-#: src/universal-cp/device-treeview.c:478
+#: src/universal-cp/device-treeview.c:477
 msgid "State variables"
 msgstr "Zmienne stanu"
 
-#: src/universal-cp/device-treeview.c:519
+#: src/universal-cp/device-treeview.c:518
 msgid "Information not available"
 msgstr "Informacja jest niedostępna"
 
