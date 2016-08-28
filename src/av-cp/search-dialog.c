@@ -34,6 +34,8 @@
  */
 #define SEARCH_DIALOG_DEFAULT_SLICE 30
 
+#define DEFAULT_SEARCH_FILTER "upnp:class,dc:title"
+
 typedef struct _SearchTask SearchTask;
 
 struct _SearchDialog {
@@ -237,6 +239,7 @@ out:
                                                  search_task_on_search_ready,
                                                  task->container_id,
                                                  task->search_expression,
+                                                 DEFAULT_SEARCH_FILTER,
                                                  task->start,
                                                  task->count,
                                                  task);
@@ -262,6 +265,7 @@ search_task_run (SearchTask *task) {
                                          search_task_on_search_ready,
                                          task->container_id,
                                          task->search_expression,
+                                         DEFAULT_SEARCH_FILTER,
                                          task->start,
                                          task->count,
                                          task);

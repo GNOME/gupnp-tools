@@ -101,6 +101,7 @@ av_cp_media_server_search_async (AVCPMediaServer     *self,
                                  GAsyncReadyCallback  callback,
                                  const char          *container_id,
                                  const char          *search_criteria,
+                                 const char          *filter,
                                  guint32              starting_index,
                                  guint32              requested_count,
                                  gpointer             user_data);
