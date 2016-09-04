@@ -15,7 +15,21 @@ AM_CFLAGS = $(LIBGUPNP_CFLAGS) \
 
 bin_PROGRAMS = gupnp-av-cp
 
+RESOURCEFILE = $(top_srcdir)/data/org.gupnp.Tools.AV-CP.gresource.xml
+
+resource_depends = \
+	$(shell $(GLIB_COMPILE_RESOURCES) --generate-dependencies \
+		--sourcedir=$(top_srcdir)/data \
+		$(RESOURCEFILE))
+
+
+
+resource.c: $(RESOURCEFILE) $(resource_depends)
+	$(AM_V_GEN) $(GLIB_COMPILE_RESOURCES) --target=$@ --sourcedir=$(top_srcdir)/data --generate $(RESOURCEFILE)
+
+
 gupnp_av_cp_SOURCES = main.c \
+		      resource.c \
 		      gui.c \
 		      playlist-treeview.c \
 		      renderer-combo.c \

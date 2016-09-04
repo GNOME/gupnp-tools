@@ -30,7 +30,7 @@
 #include "main.h"
 #include "icons.h"
 
-#define UI_FILE DATA_DIR "/gupnp-av-cp.ui"
+#define UI_FILE "/org/gupnp/Tools/AV-CP/gupnp-av-cp.ui"
 #define ICON_FILE  "pixmaps/av-cp.png"
 
 static GtkBuilder  *builder;
@@ -97,7 +97,7 @@ init_ui (void)
         g_assert (builder != NULL);
         gtk_builder_set_translation_domain (builder, GETTEXT_PACKAGE);
 
-        if (!gtk_builder_add_from_file (builder, UI_FILE, &error)) {
+        if (!gtk_builder_add_from_resource (builder, UI_FILE, &error)) {
                 g_critical ("Unable to load the GUI file %s: %s",
                             UI_FILE,
                             error->message);
