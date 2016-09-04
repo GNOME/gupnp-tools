@@ -36,6 +36,8 @@
 
 #define DEFAULT_SEARCH_FILTER "upnp:class,dc:title"
 
+#define DIALOG_RESOURCE_PATH "/org/gupnp/Tools/AV-CP/search-dialog.ui"
+
 typedef struct _SearchTask SearchTask;
 
 struct _SearchDialog {
@@ -326,23 +328,9 @@ search_dialog_class_init (SearchDialogClass *klass)
 {
         GObjectClass *object_class = G_OBJECT_CLASS (klass);
         GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
-        GError *error = NULL;
-        gchar *data = NULL;
-        gsize size = -1;
-        GBytes *bytes;
 
-        g_file_get_contents (DATA_DIR "/search-dialog.ui", &data, &size, &error);
-        if (error != NULL) {
-                g_critical ("Failed to load ui file: %s", error->message);
-                g_error_free (error);
-
-                return;
-        }
-
-        bytes = g_bytes_new_take (data, size);
-        gtk_widget_class_set_template (widget_class, bytes);
-        g_bytes_unref (bytes);
-
+        gtk_widget_class_set_template_from_resource (widget_class,
+                                                     DIALOG_RESOURCE_PATH);
         gtk_widget_class_bind_template_child_private (widget_class,
                                                       SearchDialog,
                                                       search_dialog_liststore);
