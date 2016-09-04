@@ -23,10 +23,6 @@
 #include <config.h>
 #include <gmodule.h>
 
-#ifdef HAVE_GTK_SOURCEVIEW
-#include <gtksourceview/gtksource.h>
-#endif
-
 #include "playlist-treeview.h"
 #include "renderer-combo.h"
 #include "renderer-controls.h"
@@ -35,6 +31,7 @@
 #include "gui.h"
 #include "server-device.h"
 #include "search-dialog.h"
+#include "didl-dialog.h"
 
 #define CONTENT_DIR "urn:schemas-upnp-org:service:ContentDirectory"
 
@@ -52,7 +49,6 @@ typedef gboolean (* RowCompareFunc) (GtkTreeModel *model,
 static GtkWidget *treeview;
 static GtkWidget *popup;
 static GtkWidget *didl_dialog;
-static GtkWidget *didl_textview;
 static gboolean   expanded;
 static GHashTable *initial_notify;
 static GtkDialog *search_dialog;
@@ -309,18 +305,9 @@ on_playlist_row_collapsed (GtkTreeView *tree_view,
 static void display_metadata (const char *metadata,
                               gpointer    user_data)
 {
-        GtkTextBuffer *buffer;
-        char *formatted;
-
-        formatted = pretty_print_xml (metadata);
-
-        buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (didl_textview));
-        gtk_text_buffer_set_text (buffer, formatted, -1);
-        gtk_widget_show (GTK_WIDGET (didl_textview));
+        av_cp_didl_dialog_set_xml (AV_CP_DIDL_DIALOG (didl_dialog), metadata);
 
         gtk_dialog_run (GTK_DIALOG (didl_dialog));
-
-        g_free (formatted);
 }
 
 G_MODULE_EXPORT
@@ -384,31 +371,7 @@ setup_playlist_treeview (GtkBuilder *builder)
         popup = GTK_WIDGET (gtk_builder_get_object (builder, "playlist-popup"));
         g_assert (popup != NULL);
 
-        didl_dialog = GTK_WIDGET (gtk_builder_get_object (builder,
-                                                          "didl-dialog"));
-        g_signal_connect (didl_dialog, "delete-event",
-                          G_CALLBACK (gtk_widget_hide_on_delete), NULL);
-
-        didl_textview = GTK_WIDGET (gtk_builder_get_object (builder,
-                                                          "didl-textview"));
-#ifdef HAVE_GTK_SOURCEVIEW
-        {
-                GtkSourceLanguageManager *manager =
-                                gtk_source_language_manager_get_default ();
-                GtkSourceLanguage *language =
-                    gtk_source_language_manager_guess_language (manager,
-                                                                NULL,
-                                                                "text/xml");
-
-                GtkSourceBuffer *buffer = gtk_source_buffer_new_with_language (language);
-                gtk_source_buffer_set_highlight_syntax (buffer, TRUE);
-                gtk_source_view_set_show_line_numbers (GTK_SOURCE_VIEW (didl_textview),
-                                                       TRUE);
-
-                gtk_text_view_set_buffer (GTK_TEXT_VIEW (didl_textview),
-                                          GTK_TEXT_BUFFER (buffer));
-        }
-#endif
+        didl_dialog = GTK_WIDGET (av_cp_didl_dialog_new ());
         expanded = FALSE;
 }
 

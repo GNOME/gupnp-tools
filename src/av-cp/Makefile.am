@@ -42,7 +42,9 @@ gupnp_av_cp_SOURCES = main.c \
 			  server-device.c \
 			  server-device.h \
 			  search-dialog.c \
-			  search-dialog.h
+			  search-dialog.h \
+			  didl-dialog.h \
+			  didl-dialog.c
 
 gupnp_av_cp_LDADD = ../common/libutil.a \
 		    $(LIBGSSDP_LIBS) \

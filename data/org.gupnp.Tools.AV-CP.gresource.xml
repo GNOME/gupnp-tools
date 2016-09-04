@@ -2,6 +2,7 @@
 <gresources>
     <gresource prefix='/org/gupnp/Tools/AV-CP'>
         <file preprocess='xml-stripblanks'>search-dialog.ui</file>
+        <file preprocess='xml-stripblanks'>didl-lite-dialog.ui</file>
         <file preprocess='xml-stripblanks'>gupnp-av-cp.ui</file>
-    </gresource>
+   </gresource>
 </gresources>
