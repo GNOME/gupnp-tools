@@ -8,6 +8,8 @@
       <column type="GdkPixbuf"/>
       <!-- column-name title -->
       <column type="gchararray"/>
+      <!-- column-name didl-lite-object -->
+      <column type="GObject"/>
     </columns>
   </object>
   <template class="SearchDialog" parent="GtkDialog">

@@ -320,6 +320,7 @@ search_task_on_didl_object_available (GUPnPDIDLLiteParser *parser,
                                            -1,
                                            0, get_item_icon (object),
                                            1, gupnp_didl_lite_object_get_title (object),
+                                           2, g_object_ref (object),
                                            -1);
 }
 
