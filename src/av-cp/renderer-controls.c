@@ -597,7 +597,7 @@ prepare_controls_for_state (PlaybackState state)
         switch (state) {
         case PLAYBACK_STATE_STOPPED:
                 play_possible = TRUE;
-                pause_possible = TRUE;
+                pause_possible = FALSE;
                 stop_possible = FALSE;
 
                 remove_timeout ();
