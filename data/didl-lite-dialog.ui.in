@@ -50,7 +50,7 @@
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <child>
-              <object class="GtkSourceView" id="didl_textview">
+              <object class="@TEXT_VIEW@" id="didl_textview">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="editable">False</property>

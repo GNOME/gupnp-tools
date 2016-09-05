@@ -25,6 +25,7 @@
 
 #include "search-dialog.h"
 #include "server-device.h"
+#include "didl-dialog.h"
 #include "icons.h"
 
 /* DLNA recommends something between 10 and 30, let's just use 30
@@ -51,6 +52,7 @@ struct _SearchDialogClass {
 struct _SearchDialogPrivate {
         GtkListStore *search_dialog_liststore;
         GtkEntry *search_dialog_entry;
+        GtkTreeView *search_dialog_treeview;
         char *id;
         char *title;
         AVCPMediaServer *server;
@@ -58,6 +60,7 @@ struct _SearchDialogPrivate {
         SearchTask *task;
         GUPnPSearchCriteriaParser *parser;
         GRegex *position_re;
+        GtkWidget *popup_menu;
 };
 
 typedef struct _SearchDialogPrivate SearchDialogPrivate;
@@ -65,6 +68,14 @@ G_DEFINE_TYPE_WITH_PRIVATE (SearchDialog, search_dialog, GTK_TYPE_DIALOG)
 
 void
 search_dialog_on_search_activate (SearchDialog *self, GtkEntry *entry);
+
+gboolean
+search_dialog_on_listview_button_release (GtkWidget      *widget,
+                                          GdkEventButton *event,
+                                          gpointer        user_data);
+
+void
+search_dialog_on_didl_popup_activate (SearchDialog *self, gpointer user_data);
 
 static void
 search_dialog_finalize (GObject *object);
@@ -320,7 +331,7 @@ search_task_on_didl_object_available (GUPnPDIDLLiteParser *parser,
                                            -1,
                                            0, get_item_icon (object),
                                            1, gupnp_didl_lite_object_get_title (object),
-                                           2, g_object_ref (object),
+                                           3, gupnp_didl_lite_object_get_id (object),
                                            -1);
 }
 
@@ -338,6 +349,9 @@ search_dialog_class_init (SearchDialogClass *klass)
         gtk_widget_class_bind_template_child_private (widget_class,
                                                       SearchDialog,
                                                       search_dialog_entry);
+        gtk_widget_class_bind_template_child_private (widget_class,
+                                                      SearchDialog,
+                                                      search_dialog_treeview);
 
         object_class->finalize = search_dialog_finalize;
         object_class->dispose = search_dialog_dispose;
@@ -347,11 +361,16 @@ static void
 search_dialog_init (SearchDialog *self)
 {
         SearchDialogPrivate *priv = NULL;
+        GtkBuilder *builder = gtk_builder_new ();
 
         gtk_widget_init_template (GTK_WIDGET (self));
         priv = search_dialog_get_instance_private (self);
 
         priv->parser = gupnp_search_criteria_parser_new ();
+
+        gtk_builder_add_from_resource (builder, DIALOG_RESOURCE_PATH, NULL);
+        gtk_builder_connect_signals (builder, self);
+        priv->popup_menu = GTK_WIDGET (gtk_builder_get_object (builder, "popup-menu"));
 }
 
 static void
@@ -372,6 +391,7 @@ search_dialog_dispose (GObject *object)
         }
 
         g_clear_object (&priv->parser);
+        g_clear_object (&priv->popup_menu);
 
         if (parent_class->dispose != NULL) {
                 parent_class->dispose (object);
@@ -575,4 +595,172 @@ search_dialog_on_search_activate (SearchDialog *self, GtkEntry *entry)
                 return;
         }
 
+}
+
+static void
+do_popup_menu (GtkMenu *menu, GtkWidget *widget, GdkEventButton *event)
+{
+        int button = 0;
+        int event_time;
+        if (event) {
+                button = event->button;
+                event_time = event->time;
+        } else {
+                event_time = gtk_get_current_event_time ();
+        }
+
+        gtk_menu_popup (menu, NULL, NULL, NULL, NULL, button, event_time);
+}
+
+G_MODULE_EXPORT
+gboolean
+search_dialog_on_listview_button_release (GtkWidget      *widget,
+                                          GdkEventButton *event,
+                                          gpointer        user_data)
+{
+        SearchDialog *self = SEARCH_DIALOG (user_data);
+        SearchDialogPrivate *priv = search_dialog_get_instance_private (self);
+        GtkTreeSelection *selection = NULL;
+        GtkTreeModel *model = NULL;
+        GtkTreeIter iter;
+        GtkTreeView  *treeview = priv->search_dialog_treeview;
+
+        if (event->type != GDK_BUTTON_RELEASE || event->button != 3) {
+                return FALSE;
+        }
+
+        selection = gtk_tree_view_get_selection (treeview);
+        g_assert (selection != NULL);
+
+        /* Only show the popup menu when a row is selected */
+        if (!gtk_tree_selection_get_selected (selection, &model, &iter)) {
+                return FALSE;
+        }
+
+        do_popup_menu (GTK_MENU (priv->popup_menu),
+                       GTK_WIDGET (treeview),
+                       event);
+
+        return TRUE;
+}
+
+static void
+on_object (GUPnPDIDLLiteParser *parser,
+           GUPnPDIDLLiteObject *object,
+           gpointer user_data)
+{
+        GUPnPDIDLLiteObject **result = (GUPnPDIDLLiteObject **)user_data;
+        if (*result == NULL) {
+                *result = g_object_ref (object);
+        }
+}
+
+static void
+search_dialog_on_metadata_ready (GObject *source,
+                                 GAsyncResult *res,
+                                 gpointer user_data)
+{
+        SearchDialog *self = SEARCH_DIALOG (user_data);
+        SearchDialogPrivate *priv  = search_dialog_get_instance_private (self);
+        AVCPMediaServer *server = AV_CP_MEDIA_SERVER (source);
+        GtkTreeView  *treeview = priv->search_dialog_treeview;
+        GtkTreeModel *model = NULL;
+        GtkTreeSelection *selection = NULL;
+        char *xml;
+        GError *error = NULL;
+        GtkTreeIter iter;
+
+        if (!av_cp_media_server_browse_metadata_finish (server,
+                                                        res,
+                                                        &xml,
+                                                        &error)) {
+                GtkWidget *message = NULL;
+
+                message = gtk_message_dialog_new (GTK_WINDOW (self),
+                                                  GTK_DIALOG_MODAL,
+                                                  GTK_MESSAGE_WARNING,
+                                                  GTK_BUTTONS_CLOSE,
+                                                  _("Error fetching detailed information: %s"),
+                                                  error->message);
+                gtk_dialog_run (GTK_DIALOG (message));
+                gtk_widget_destroy (message);
+        } else {
+                selection = gtk_tree_view_get_selection (treeview);
+                if (gtk_tree_selection_get_selected (selection,
+                                                     &model,
+                                                     &iter)) {
+                        GUPnPDIDLLiteParser *parser = NULL;
+                        GUPnPDIDLLiteObject *didl_object = NULL;
+
+                        parser = gupnp_didl_lite_parser_new ();
+                        g_signal_connect (G_OBJECT (parser),
+                                          "object-available",
+                                          G_CALLBACK (on_object),
+                                          &didl_object);
+                        gupnp_didl_lite_parser_parse_didl (parser, xml, NULL);
+                        gtk_list_store_set (GTK_LIST_STORE (model),
+                                            &iter,
+                                            2, didl_object,
+                                            -1);
+                        g_object_unref (parser);
+                        g_object_unref (didl_object);
+                        {
+                            AVCPDidlDialog *dialog = av_cp_didl_dialog_new ();
+
+                            av_cp_didl_dialog_set_xml (dialog, xml);
+                            gtk_window_set_transient_for (GTK_WINDOW (dialog),
+                                                          GTK_WINDOW (self));
+                            gtk_dialog_run (GTK_DIALOG (dialog));
+                            gtk_widget_destroy (GTK_WIDGET (dialog));
+                        }
+                }
+                g_free (xml);
+        }
+}
+
+G_MODULE_EXPORT
+void
+search_dialog_on_didl_popup_activate (SearchDialog *self, gpointer user_data)
+{
+        SearchDialogPrivate *priv  = search_dialog_get_instance_private (self);
+        GtkTreeView  *treeview = priv->search_dialog_treeview;
+        GtkTreeModel *model = NULL;
+        GUPnPDIDLLiteObject *didl_object = NULL;
+        GtkTreeSelection *selection = NULL;
+        GtkTreeIter iter;
+        char *id = NULL;
+
+        selection = gtk_tree_view_get_selection (treeview);
+
+        /* Only show the popup menu when a row is selected */
+        if (!gtk_tree_selection_get_selected (selection, &model, &iter)) {
+                return;
+        }
+
+        gtk_tree_model_get (model,
+                            &iter,
+                            2, &didl_object,
+                            3, &id,
+                            -1);
+
+        if (didl_object != NULL) {
+                AVCPDidlDialog *dialog = av_cp_didl_dialog_new ();
+                char *xml = NULL;
+
+                g_free (id);
+                xml = gupnp_didl_lite_object_get_xml_string (didl_object);
+                av_cp_didl_dialog_set_xml (dialog, xml);
+                gtk_window_set_transient_for (GTK_WINDOW (dialog), GTK_WINDOW (self));
+                gtk_dialog_run (GTK_DIALOG (dialog));
+                gtk_widget_destroy (GTK_WIDGET (dialog));
+                g_free (xml);
+                g_object_unref (didl_object);
+        } else {
+                av_cp_media_server_browse_metadata_async (priv->server,
+                                                          NULL,
+                                                          search_dialog_on_metadata_ready,
+                                                          id,
+                                                          self);
+                g_free (id);
+        }
 }

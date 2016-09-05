@@ -138,7 +138,7 @@ src/network-light/Makefile
 src/universal-cp/Makefile
 src/upload/Makefile
 data/Makefile
-data/gupnp-av-cp.ui
+data/didl-lite-dialog.ui
 data/pixmaps/Makefile
 data/xml/Makefile
 po/Makefile.in
