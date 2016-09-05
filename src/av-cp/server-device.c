@@ -315,7 +315,7 @@ av_cp_media_server_introspect_finish (AVCPMediaServer *self)
         GList *l;
 
         for (l = self->priv->tasks; l != NULL; l = l->next) {
-                GTask *task = l->data;
+                GTask *task = (GTask *) l->data;
 
                 if (self->priv->state == INITIALIZED) {
                         g_task_return_boolean (task, TRUE);
@@ -349,7 +349,7 @@ av_cp_media_server_get_content_directory (AVCPMediaServer *self)
                 self->priv->content_directory =  GUPNP_SERVICE_PROXY (info);
         }
 
-        return g_object_ref (self->priv->content_directory);
+        return GUPNP_SERVICE_PROXY (g_object_ref (self->priv->content_directory));
 }
 
 typedef struct _BrowseReturn {
@@ -448,7 +448,7 @@ av_cp_media_server_browse_finish (AVCPMediaServer  *self,
 
         g_return_val_if_fail (g_task_is_valid (result, self), FALSE);
 
-        res = g_task_propagate_pointer (G_TASK (result), error);
+        res = (BrowseReturn *)g_task_propagate_pointer (G_TASK (result), error);
         if (res != NULL) {
                 if (didl_xml != NULL) {
                         *didl_xml = res->didl_xml;
@@ -543,7 +543,7 @@ av_cp_media_server_browse_metadata_finish (AVCPMediaServer  *self,
 
         g_return_val_if_fail (g_task_is_valid (result, self), FALSE);
 
-        res = g_task_propagate_pointer (G_TASK (result), error);
+        res = (char *)g_task_propagate_pointer (G_TASK (result), error);
         if (res != NULL) {
                 if (didl_xml != NULL) {
                         *didl_xml = res;

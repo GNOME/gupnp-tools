@@ -373,6 +373,7 @@ setup_playlist_treeview (GtkBuilder *builder)
 
         popup = GTK_WIDGET (gtk_builder_get_object (builder, "playlist-popup"));
         g_assert (popup != NULL);
+        gtk_menu_attach_to_widget (GTK_MENU (popup), treeview, NULL);
 
         didl_dialog = GTK_WIDGET (av_cp_didl_dialog_new ());
         expanded = FALSE;

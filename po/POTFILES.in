@@ -1,7 +1,9 @@
 # List of source files containing translatable strings.
 # Please keep this file sorted alphabetically.
 data/gupnp-av-cp.desktop.in.in
-data/gupnp-av-cp.ui.in
+data/didl-lite-dialog.ui
+data/search-dialog.ui
+data/gupnp-av-cp.ui
 data/gupnp-network-light.desktop.in.in
 data/gupnp-network-light.ui
 data/gupnp-universal-cp.desktop.in.in
