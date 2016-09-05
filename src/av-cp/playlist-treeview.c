@@ -80,6 +80,9 @@ void
 on_search_menu_item_activated (GtkMenuItem *menuitem,
                                gpointer     user_data);
 
+gboolean
+on_playlist_treeview_popup_menu (GtkWidget *widget, gpointer user_data);
+
 static void
 on_proxy_ready (GObject *source_object,
                 GAsyncResult *res,
