@@ -621,6 +621,7 @@
                         <property name="model">playlist-tree-store</property>
                         <property name="headers_visible">False</property>
                         <signal name="button-release-event" handler="on_playlist_treeview_button_release" swapped="no"/>
+                        <signal name="popup-menu" handler="on_playlist_treeview_popup_menu" swapped="no"/>
                         <signal name="row-activated" handler="on_play_button_clicked" swapped="no"/>
                         <signal name="row-collapsed" handler="on_playlist_row_collapsed" swapped="no"/>
                         <signal name="row-expanded" handler="on_playlist_row_expanded" swapped="no"/>

@@ -78,6 +78,9 @@ void
 on_didl_menuitem_activate (GtkMenuItem *menuitem,
                            gpointer     user_data);
 
+gboolean
+on_playlist_treeview_popup_menu (GtkWidget *widget, gpointer user_data);
+
 static void
 on_proxy_ready (GObject *source_object,
                 GAsyncResult *res,
@@ -150,6 +153,21 @@ browse (AVCPMediaServer *content_dir,
         guint32          starting_index,
         guint32          requested_count);
 
+static void
+do_popup_menu (GtkMenu *menu, GtkWidget *widget, GdkEventButton *event)
+{
+        int button = 0;
+        int event_time;
+        if (event) {
+                button = event->button;
+                event_time = event->time;
+        } else {
+                event_time = gtk_get_current_event_time ();
+        }
+
+        gtk_menu_popup (menu, NULL, NULL, NULL, NULL, button, event_time);
+}
+
 G_MODULE_EXPORT
 gboolean
 on_playlist_treeview_button_release (GtkWidget      *widget,
@@ -171,13 +189,16 @@ on_playlist_treeview_button_release (GtkWidget      *widget,
         if (!gtk_tree_selection_get_selected (selection, &model, &iter))
                 return FALSE;
 
-        gtk_menu_popup (GTK_MENU (popup),
-                        NULL,
-                        NULL,
-                        NULL,
-                        NULL,
-                        event->button,
-                        event->time);
+        do_popup_menu (GTK_MENU (popup), treeview, event);
+
+        return TRUE;
+}
+
+G_MODULE_EXPORT
+gboolean
+on_playlist_treeview_popup_menu (GtkWidget *widget, gpointer user_data)
+{
+        do_popup_menu (GTK_MENU (popup), treeview, NULL);
 
         return TRUE;
 }
