@@ -23,6 +23,8 @@
 
 #include <config.h>
 #include <gtk/gtk.h>
+
+#include <libgupnp/gupnp.h>
 #include <libgupnp-av/gupnp-av.h>
 
 typedef void (* MetadataFunc) (const char *metadata,
