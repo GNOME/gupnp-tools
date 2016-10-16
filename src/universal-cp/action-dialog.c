@@ -679,8 +679,8 @@ on_action_complete (GUPnPServiceProxy       *proxy,
 
         gupnp_service_proxy_end_action_hash (proxy,
                                              action,
-                                             &error,
-                                             out_args);
+                                             out_args,
+                                             &error);
         if (error) {
                 GtkWidget *error_dialog;
 

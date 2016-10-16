@@ -102,7 +102,7 @@ int main (int argc, char *argv[]) {
 
         g_option_context_free (context);
 
-        discover.client = gssdp_client_new (NULL, interface, &error);
+        discover.client = gssdp_client_new (interface, &error);
         if (error != NULL) {
                 g_warning ("Failed to create GSSDP client: %s", error->message);
                 g_error_free (error);

@@ -386,7 +386,8 @@ static void init_friendly_name (gchar *name)
 {
         xmlNode *fdn_node;
 
-        fdn_node = xml_util_get_element ((xmlNode *) doc->doc,
+        fdn_node = xml_util_get_element ((xmlNode *)
+                gupnp_xml_doc_get_doc (doc),
                                           "root",
                                           "device",
                                           "friendlyName",
@@ -409,7 +410,8 @@ static void init_uuid (void)
 
         uuid = gupnp_get_uuid ();
 
-        uuid_node = xml_util_get_element ((xmlNode *) doc->doc,
+        uuid_node = xml_util_get_element ((xmlNode *) doc,
+                gupnp_xml_doc_get_doc (doc),
                                           "root",
                                           "device",
                                           "UDN",
@@ -589,7 +591,15 @@ init_server (GUPnPContext *context)
                                           gupnp_resource_factory_get_default (),
                                           doc,
                                           desc_location,
-                                          DATA_DIR);
+                                          DATA_DIR,
+                                          &error);
+        if (error != NULL) {
+                g_warning ("Failed to create root device: %s",
+                           error->message);
+                g_error_free (error);
+
+                return FALSE;
+        }
 
         switch_power = gupnp_device_info_get_service (GUPNP_DEVICE_INFO (dev),
                                                       SWITCH_SERVICE);
@@ -663,7 +673,7 @@ prepare_desc (gchar *name)
                                          uuid);
         g_assert (desc_location != NULL);
 
-        if (xmlSaveFile (desc_location, doc->doc) < 0) {
+        if (xmlSaveFile (desc_location, (xmlDoc *) gupnp_xml_doc_get_doc (doc)) < 0) {
                 g_print ("Error saving description file to %s.\n",
                          desc_location);
 
