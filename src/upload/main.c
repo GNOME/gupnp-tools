@@ -176,7 +176,7 @@ main (gint   argc,
         }
 
         error = NULL;
-        upnp_context = gupnp_context_new (NULL, interface, 0, &error);
+        upnp_context = gupnp_context_new (interface, 0, &error);
         if (error) {
                 g_printerr ("Error creating the GUPnP context: %s\n",
 			    error->message);

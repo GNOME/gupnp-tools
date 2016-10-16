@@ -7,8 +7,8 @@ if host_machine.system() == 'windows'
     win = import('windows')
 endif
 
-gssdp = dependency('gssdp-1.0', version: '>= 0.13.3')
-gupnp = dependency('gupnp-1.0', version: '>= 0.20.14')
+gssdp = dependency('gssdp-1.2', version: '>= 1.1')
+gupnp = dependency('gupnp-1.2', version: '>= 1.1')
 soup = dependency('libsoup-2.4', version: '>= 2.42')
 gupnp_av = dependency('gupnp-av-1.0', version: '>= 0.5.5', required: false)
 gtk = dependency('gtk+-3.0', version: '>= 3.10')
