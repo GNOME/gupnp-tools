@@ -190,7 +190,7 @@ start_transfer (const char        *file_path,
         gupnp_context_host_path (context, file_path, file_path);
 
         source_uri = g_strdup_printf ("http://%s:%u%s",
-                                      gupnp_context_get_host_ip (context),
+                                      gssdp_client_get_host_ip (GSSDP_CLIENT (context)),
                                       gupnp_context_get_port (context),
                                       file_path);
 

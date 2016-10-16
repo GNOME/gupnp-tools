@@ -623,7 +623,7 @@ init_server (GUPnPContext *context)
         gupnp_root_device_set_available (dev, TRUE);
 
         g_print ("Attaching to IP/Host %s on port %d\n",
-                 gupnp_context_get_host_ip (context),
+                 gssdp_client_get_host_ip (GSSDP_CLIENT (context)),
                  gupnp_context_get_port (context));
 
         return TRUE;
@@ -717,7 +717,7 @@ on_context_unavailable (GUPnPContextManager *manager,
                         gpointer             user_data)
 {
         g_print ("Detaching from IP/Host %s and port %d\n",
-                 gupnp_context_get_host_ip (context),
+                 gssdp_client_get_host_ip (GSSDP_CLIENT (context)),
                  gupnp_context_get_port (context));
 
         g_hash_table_remove (nl_hash, context);
@@ -726,8 +726,8 @@ on_context_unavailable (GUPnPContextManager *manager,
 static gboolean
 context_equal (GUPnPContext *context1, GUPnPContext *context2)
 {
-        return g_ascii_strcasecmp (gupnp_context_get_host_ip (context1),
-                                   gupnp_context_get_host_ip (context2)) == 0;
+        return g_ascii_strcasecmp (gssdp_client_get_host_ip (GSSDP_CLIENT (context1)),
+                                   gssdp_client_get_host_ip (GSSDP_CLIENT (context2))) == 0;
 }
 
 gboolean
@@ -747,7 +747,7 @@ init_upnp (gchar **interfaces, guint port, gchar *name)
                 return FALSE;
         }
 
-        context_manager = gupnp_context_manager_new (NULL, port);
+        context_manager = gupnp_context_manager_create (port);
         g_assert (context_manager != NULL);
 
         if (interfaces != NULL) {

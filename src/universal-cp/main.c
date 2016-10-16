@@ -100,7 +100,7 @@ init_upnp (void)
         g_type_init ();
 #endif
 
-        context_manager = gupnp_context_manager_new (NULL, upnp_port);
+        context_manager = gupnp_context_manager_create (upnp_port);
         g_assert (context_manager != NULL);
 
         if (interfaces != NULL) {
