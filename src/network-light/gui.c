@@ -162,6 +162,9 @@ on_main_window_right_clicked (GdkEventButton *event)
 
         prepare_popup ();
 
+#if GTK_CHECK_VERSION(3,22,0)
+        gtk_menu_popup_at_pointer (GTK_MENU (popup), (GdkEvent *)event);
+#else
         gtk_menu_popup (GTK_MENU (popup),
                         NULL,
                         NULL,
@@ -169,6 +172,7 @@ on_main_window_right_clicked (GdkEventButton *event)
                         NULL,
                         event->button,
                         event->time);
+#endif
 }
 
 G_MODULE_EXPORT

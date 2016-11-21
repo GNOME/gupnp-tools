@@ -108,6 +108,7 @@ init_ui (gint   *argc,
         gint       window_width, window_height;
         gint       position;
         GError    *error = NULL;
+        double     w,h;
 
         gtk_init (argc, argv);
 
@@ -139,11 +140,30 @@ init_ui (gint   *argc,
         g_assert (vpaned != NULL);
 
         /* 80% of the screen but don't get bigger than 1000x800 */
-        window_width = CLAMP ((gdk_screen_width () * 80 / 100), 10, 1000);
-        window_height = CLAMP ((gdk_screen_height () * 80 / 100), 10, 800);
+        /* FIXME: Replace with proper functions */
+        G_GNUC_BEGIN_IGNORE_DEPRECATIONS
+        w = gdk_screen_width () * 0.8;
+        h = gdk_screen_height () * 0.8;
+        G_GNUC_END_IGNORE_DEPRECATIONS
+
+        /* Keep 5/4 aspect */
+        if (w/h > 1.25) {
+                h = w / 1.25;
+        } else {
+                w = h * 1.25;
+        }
+
+        window_width = CLAMP ((int) w, 10, 1000);
+        window_height = CLAMP ((int) h, 10, 800);
+
         gtk_window_set_default_size (GTK_WINDOW (main_window),
                                      window_width,
                                      window_height);
+
+        gtk_window_resize (GTK_WINDOW (main_window),
+                                     window_width,
+                                     window_height);
+
 
         icon_pixbuf = load_pixbuf_file (ICON_FILE);
         if (icon_pixbuf == NULL) {

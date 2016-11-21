@@ -210,6 +210,9 @@ on_device_treeview_button_release (GtkWidget      *widget,
 
         setup_device_popup (popup);
 
+#if GTK_CHECK_VERSION(3,22,0)
+        gtk_menu_popup_at_pointer (GTK_MENU (popup), (GdkEvent *)event);
+#else
         gtk_menu_popup (GTK_MENU (popup),
                         NULL,
                         NULL,
@@ -217,6 +220,7 @@ on_device_treeview_button_release (GtkWidget      *widget,
                         NULL,
                         event->button,
                         event->time);
+#endif
         return TRUE;
 }
 

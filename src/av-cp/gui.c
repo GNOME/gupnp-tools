@@ -116,9 +116,29 @@ init_ui (void)
                                                             "rescan-button"));
         g_assert (rescan_button != NULL);
 
+
+        gtk_about_dialog_set_version (GTK_ABOUT_DIALOG (about_dialog),
+                                      VERSION);
+
+        gtk_widget_realize (main_window);
         /* 40% of the screen but don't get bigger than 1000x800 */
+#if GTK_CHECK_VERSION(3,22,0)
+        {
+            GdkWindow *window = gtk_widget_get_window (main_window);
+            GdkDisplay *display = gdk_display_get_default ();
+            GdkMonitor *monitor = gdk_display_get_monitor_at_window (display,
+                                                                     window);
+            GdkRectangle rectangle;
+
+            gdk_monitor_get_geometry (monitor, &rectangle);
+            w = rectangle.width * 0.4;
+            h = rectangle.height * 0.4;
+        }
+
+#else
         w = gdk_screen_width () * 0.4;
         h = gdk_screen_height () * 0.4;
+#endif
 
         /* Keep 5/4 aspect */
         if (w/h > 1.25) {
@@ -133,15 +153,13 @@ init_ui (void)
                                      window_width,
                                      window_height);
 
-        gtk_about_dialog_set_version (GTK_ABOUT_DIALOG (about_dialog),
-                                      VERSION);
-
         gtk_builder_connect_signals (builder, NULL);
 
         setup_icons (builder);
         setup_playlist_treeview (builder);
         setup_renderer_controls (builder);
         setup_renderer_combo (builder);
+
 
         gtk_widget_show_all (main_window);
 
