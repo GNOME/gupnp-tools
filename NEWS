@@ -1,10 +1,46 @@
+0.8.13
+======
+
+Build:
+ - Fix desktop file generation
+
+All:
+ - Remove deprecated calls from GSSDP and GUPnP
+
+AV Controlpoint:
+ - Move some code into GtkBuilder files
+ - Some clean-ups
+ - Do not allow "Pause" when renderer is "Stopped"
+ - Fix icon for "Next" button
+ - Enable menu key on playlist
+ - Fix compiling with recent GUPnP-AV
+
+Translations:
+ - Update
+ - Build fixes
+
+Bugs fixed in this release:
+ - https://bugzilla.gnome.org/show_bug.cgi?id=770655
+
+All contributors to this release:
+ - Jens Georg <mail@jensge.org>
+ - Piotr Drąg <piotrdrag@gmail.com>
+ - Tiago Santos <tiagofsantos81@sapo.pt>
+ - Marek Černocký <marek@manet.cz>
+ - Anders Jonsson <anders.jonsson@norsjovallen.se>
+
+Added/updated translations
+ - cs, courtesy of Marek Černocký
+ - pl, courtesy of Piotr Drąg
+ - pt, courtesy of Tiago Santos
+ - sv, courtesy of Anders Jonsson
+
 0.8.12
 ======
 
 Build:
  - Update and add missing m4 macros from autoconf archive
  - Use upstream gettext
- -
 
 Common:
  - Remove use of deprecated libsoup API
