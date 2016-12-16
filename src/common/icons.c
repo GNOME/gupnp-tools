@@ -248,15 +248,18 @@ load_pixbuf_file (const char *file_name)
         GdkPixbuf *pixbuf;
         char *path;
 
-        path = g_build_filename (DATA_DIR, file_name, NULL);
-        pixbuf = gdk_pixbuf_new_from_file (path, NULL);
+        path = g_build_path ("/", "/org/gupnp/Tools/Common", file_name, NULL);
+        pixbuf = gdk_pixbuf_new_from_resource (path, NULL);
         if (pixbuf == NULL)
-                g_critical ("failed to get image %s\n", file_name);
+                g_critical ("failed to get image %s\n", path);
 
         g_free (path);
 
         return pixbuf;
 }
+
+extern void gupnp_tools_common_unregister_resource (void);
+extern void gupnp_tools_common_register_resource (void);
 
 void
 init_icons (void)
@@ -285,6 +288,7 @@ init_icons (void)
                 "image-x-generic",             /* ICON_IMAGE_ITEM */
                 "text-x-generic",              /* ICON_TEXT_ITEM */
         };
+        gupnp_tools_common_register_resource ();
 
         for (i = 0; i < ICON_MISSING; i++) {
                 icons[i] = load_pixbuf_file (file_names[i]);
@@ -321,5 +325,6 @@ deinit_icons (void)
         for (i = 0; i < ICON_LAST; i++) {
                 g_object_unref (icons[i]);
         }
+        gupnp_tools_common_unregister_resource ();
 }
 

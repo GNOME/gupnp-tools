@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gresources>
+    <gresource prefix='/org/gupnp/Tools/Common'>
+        <file>pixmaps/av-cp.png</file>
+        <file>pixmaps/upnp-device.png</file>
+        <file>pixmaps/upnp-service.png</file>
+        <file>pixmaps/upnp-state-variable.png</file>
+        <file>pixmaps/upnp-action-arg-in.png</file>
+        <file>pixmaps/upnp-action-arg-out.png</file>
+        <file>pixmaps/media-renderer.png</file>
+   </gresource>
+</gresources>
