@@ -1,13 +1,14 @@
 # List of source files containing translatable strings.
 # Please keep this file sorted alphabetically.
+data/didl-lite-dialog.ui.in
 data/gupnp-av-cp.desktop.in.in
-data/didl-lite-dialog.ui
-data/search-dialog.ui
 data/gupnp-av-cp.ui
 data/gupnp-network-light.desktop.in.in
 data/gupnp-network-light.ui
 data/gupnp-universal-cp.desktop.in.in
 data/gupnp-universal-cp.ui
+data/search-dialog-context.ui
+data/search-dialog.ui
 src/av-cp/gui.c
 src/av-cp/gui.h
 src/av-cp/main.c
@@ -18,6 +19,8 @@ src/av-cp/renderer-combo.c
 src/av-cp/renderer-combo.h
 src/av-cp/renderer-controls.c
 src/av-cp/renderer-controls.h
+src/av-cp/search-dialog.c
+src/av-cp/search-dialog.h
 src/common/icons.c
 src/common/icons.h
 src/common/pretty-print.c
