@@ -6,12 +6,12 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gupnp-tools master\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gupnp-"
-"tools&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-06-05 17:31+0000\n"
-"PO-Revision-Date: 2016-06-10 05:55+0200\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=GUPnP&keywords=I18N+L10N&component=gupnp-tools\n"
+"POT-Creation-Date: 2016-12-17 15:07+0000\n"
+"PO-Revision-Date: 2016-12-20 11:03+0100\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
-"Language-Team: Czech <gnome-cs-list@gnome.org>\n"
+"Language-Team: čeština <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,75 +19,84 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 "X-Generator: Gtranslator 2.91.7\n"
 
+#: data/didl-lite-dialog.ui.in:9
+msgid "GUPnP AV CP - Metadata View"
+msgstr "GUPnP AV CP – zobrazení metadat"
+
 #: data/gupnp-av-cp.desktop.in.in:4
 msgid "UPnP AV Control Point"
 msgstr "Řídící bod UPnP AV"
 
-#: data/gupnp-av-cp.desktop.in.in:7
+#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
+#: data/gupnp-av-cp.desktop.in.in:8
 msgid "@PKGDATADIR@/pixmaps/av-cp.png"
 msgstr "@PKGDATADIR@/pixmaps/av-cp.png"
 
-#: data/gupnp-av-cp.ui.in:23 data/gupnp-av-cp.ui.in:200
+#: data/gupnp-av-cp.ui:23 data/gupnp-av-cp.ui:209
 msgid "_Play"
 msgstr "_Přehrát"
 
-#: data/gupnp-av-cp.ui.in:32
+#: data/gupnp-av-cp.ui:32
 msgid "Fetch the DIDL-Lite XML for this media object"
 msgstr "Získat DIDL-Lite XML pro tento multimediální objekt"
 
-#: data/gupnp-av-cp.ui.in:33
+#: data/gupnp-av-cp.ui:33
 msgid "Fetch _DIDL-Lite"
 msgstr "Získat _DIDL-Lite"
 
-#: data/gupnp-av-cp.ui.in:81
+#: data/gupnp-av-cp.ui:42
+msgid "Search…"
+msgstr "Hledat…"
+
+#: data/gupnp-av-cp.ui:90
 msgid "GUPnP AV Control Point"
 msgstr "Řídící bod GUPnP AV"
 
-#: data/gupnp-av-cp.ui.in:96 data/gupnp-universal-cp.ui:423
+#: data/gupnp-av-cp.ui:105 data/gupnp-universal-cp.ui:423
 msgid "_File"
 msgstr "_Soubor"
 
-#: data/gupnp-av-cp.ui.in:105
+#: data/gupnp-av-cp.ui:114
 msgid "Close"
 msgstr "Zavřít"
 
-#: data/gupnp-av-cp.ui.in:118
+#: data/gupnp-av-cp.ui:127
 msgid "_Tools"
 msgstr "Nás_troje"
 
-#: data/gupnp-av-cp.ui.in:128
+#: data/gupnp-av-cp.ui:137
 msgid "_Lenient Mode"
 msgstr "_Shovívavý režim"
 
-#: data/gupnp-av-cp.ui.in:140 data/gupnp-universal-cp.ui:505
+#: data/gupnp-av-cp.ui:149 data/gupnp-universal-cp.ui:505
 msgid "_Help"
 msgstr "_Nápověda"
 
-#: data/gupnp-av-cp.ui.in:149 data/gupnp-universal-cp.ui:514
+#: data/gupnp-av-cp.ui:158 data/gupnp-universal-cp.ui:514
 msgid "About"
 msgstr "O aplikaci"
 
-#: data/gupnp-av-cp.ui.in:249
+#: data/gupnp-av-cp.ui:258
 msgid "P_ause"
 msgstr "Poz_astavit"
 
-#: data/gupnp-av-cp.ui.in:298
+#: data/gupnp-av-cp.ui:307
 msgid "_Stop"
 msgstr "Za_stavit"
 
-#: data/gupnp-av-cp.ui.in:347
+#: data/gupnp-av-cp.ui:356
 msgid "Pre_vious"
 msgstr "Př_edchozí"
 
-#: data/gupnp-av-cp.ui.in:410
+#: data/gupnp-av-cp.ui:419
 msgid "_Next"
 msgstr "_Následující"
 
-#: data/gupnp-av-cp.ui.in:428
+#: data/gupnp-av-cp.ui:437
 msgid "Rescan"
 msgstr "Prohledat"
 
-#: data/gupnp-av-cp.ui.in:472
+#: data/gupnp-av-cp.ui:481
 msgid ""
 "Clears the CP's idea of the state of the currently selected AV Renderer. "
 "Useful for dealing with AV Renderers that don't report state changes."
@@ -96,20 +105,20 @@ msgstr ""
 "vykreslování AV. To je užitečné pro práci s vykreslovacími zařízeními AV, "
 "které neoznamují změny svého stavu."
 
-#: data/gupnp-av-cp.ui.in:483
+#: data/gupnp-av-cp.ui:492
 msgid "_Clear state"
 msgstr "_Vymazat stav"
 
-#: data/gupnp-av-cp.ui.in:545
+#: data/gupnp-av-cp.ui:554
 msgid "_Renderer: "
 msgstr "Vyk_reslovací zařízení: "
 
-#: data/gupnp-av-cp.ui.in:682 data/gupnp-network-light.ui:7
+#: data/gupnp-av-cp.ui:692 data/gupnp-network-light.ui:7
 #: data/gupnp-universal-cp.ui:8
 msgid "Copyright (C) 2007 Zeeshan Ali (Khattak)"
 msgstr "Copyright © 2007 Zeeshan Ali (Khattak)"
 
-#: data/gupnp-av-cp.ui.in:683
+#: data/gupnp-av-cp.ui:693
 msgid ""
 "An UPnP AV Control Point based on GUPnP framework.\n"
 "Inspired by Intel Tools for UPnP."
@@ -117,26 +126,23 @@ msgstr ""
 "Řídící bod UPnP AV založený na knihovně GUPnP.\n"
 "Inspirováno nástroji pro UPnP od firmy Intel."
 
-#: data/gupnp-av-cp.ui.in:686 data/gupnp-network-light.ui:11
+#: data/gupnp-av-cp.ui:696 data/gupnp-network-light.ui:11
 #: data/gupnp-universal-cp.ui:12
 msgid "GUPnP homepage"
 msgstr "Domovská stránka GUPnP"
 
 #. TRANSLATORS: Replace this string with your names, one name per line.
-#: data/gupnp-av-cp.ui.in:688 data/gupnp-network-light.ui:13
+#: data/gupnp-av-cp.ui:698 data/gupnp-network-light.ui:13
 #: data/gupnp-universal-cp.ui:14
 msgid "translator-credits"
 msgstr "Marek Černocký, <marek@manet.cz>"
-
-#: data/gupnp-av-cp.ui.in:720
-msgid "GUPnP AV CP - Metadata View"
-msgstr "GUPnP AV CP – zobrazení metadat"
 
 #: data/gupnp-network-light.desktop.in.in:4
 msgid "UPnP Network Light"
 msgstr "Síťové světlo UPnP"
 
-#: data/gupnp-network-light.desktop.in.in:7
+#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
+#: data/gupnp-network-light.desktop.in.in:8
 msgid "@PKGDATADIR@/pixmaps/network-light-256x256.png"
 msgstr "@PKGDATADIR@/pixmaps/network-light-256x256.png"
 
@@ -173,7 +179,8 @@ msgstr "O _aplikaci"
 msgid "UPnP Universal Control Point"
 msgstr "Univerzální řídící bod UPnP"
 
-#: data/gupnp-universal-cp.desktop.in.in:7
+#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
+#: data/gupnp-universal-cp.desktop.in.in:8
 msgid "@PKGDATADIR@/pixmaps/universal-cp.png"
 msgstr "@PKGDATADIR@/pixmaps/universal-cp.png"
 
@@ -270,6 +277,22 @@ msgstr "_Zobrazit"
 msgid "Event _log"
 msgstr "Záznam udá_lostí"
 
+#: data/search-dialog.ui:12
+msgid "Show _DIDL…"
+msgstr "Zobrazit _DIDL…"
+
+#: data/search-dialog.ui:49
+msgid "_Close"
+msgstr "_Zavřít"
+
+#: data/search-dialog.ui:81
+msgid "UPnP search expression"
+msgstr "Vyhledávací výraz UPnP"
+
+#: data/search-dialog.ui:107
+msgid "column"
+msgstr "sloupec"
+
 #: src/av-cp/main.c:48 src/network-light/main.c:48 src/universal-cp/main.c:41
 msgid "Network PORT to use for UPnP"
 msgstr "Síťový PORT, který s má použít pro UPnP"
@@ -288,6 +311,35 @@ msgstr "– řídicí bod UPnP AV"
 #, c-format
 msgid "Could not parse options: %s\n"
 msgstr "Nelze zpracovat volbu: %s\n"
+
+#: src/av-cp/search-dialog.c:440 src/av-cp/search-dialog.c:579
+msgid "Search failed"
+msgstr "Hledání selhalo"
+
+#: src/av-cp/search-dialog.c:444
+#, c-format
+msgid "Error message was: %s"
+msgstr "Chybová zpráva byla: %s"
+
+#: src/av-cp/search-dialog.c:488
+#, c-format
+msgid "Searching on %s"
+msgstr "Vyhledává se na %s"
+
+#: src/av-cp/search-dialog.c:491
+#, c-format
+msgid "Searching in %s on %s"
+msgstr "Vyhledává se v %s na %s"
+
+#: src/av-cp/search-dialog.c:583
+#, c-format
+msgid "Search criteria invalid: %s"
+msgstr "Kritérium hledání není platné: %s"
+
+#: src/av-cp/search-dialog.c:683
+#, c-format
+msgid "Error fetching detailed information: %s"
+msgstr "Chyba při získávání podrobných informací: %s"
 
 #: src/network-light/main.c:50
 msgid "Friendly name for this UPnP light"
@@ -308,145 +360,145 @@ msgstr ""
 "\n"
 "Chyba %d: %s"
 
-#: src/universal-cp/details-treeview.c:192
-#: src/universal-cp/details-treeview.c:220
-#: src/universal-cp/details-treeview.c:246
-#: src/universal-cp/details-treeview.c:425
+#: src/universal-cp/details-treeview.c:196
+#: src/universal-cp/details-treeview.c:224
+#: src/universal-cp/details-treeview.c:250
+#: src/universal-cp/details-treeview.c:429
 msgid "Name"
 msgstr "Název"
 
-#: src/universal-cp/details-treeview.c:194
+#: src/universal-cp/details-treeview.c:198
 msgid "Direction"
 msgstr "Směr"
 
-#: src/universal-cp/details-treeview.c:199
+#: src/universal-cp/details-treeview.c:203
 msgid "Related State Variable"
 msgstr "Příslušná stavová proměnná"
 
-#: src/universal-cp/details-treeview.c:201
+#: src/universal-cp/details-treeview.c:205
 msgid "Is Return Value"
 msgstr "Je návratovou hodnotou"
 
-#: src/universal-cp/details-treeview.c:202
-#: src/universal-cp/details-treeview.c:249
+#: src/universal-cp/details-treeview.c:206
+#: src/universal-cp/details-treeview.c:253
 msgid "Yes"
 msgstr "Ano"
 
-#: src/universal-cp/details-treeview.c:202
-#: src/universal-cp/details-treeview.c:249
+#: src/universal-cp/details-treeview.c:206
+#: src/universal-cp/details-treeview.c:253
 msgid "No"
 msgstr "Ne"
 
-#: src/universal-cp/details-treeview.c:222
+#: src/universal-cp/details-treeview.c:226
 msgid "Number of Arguments"
 msgstr "Počet parametrů"
 
-#: src/universal-cp/details-treeview.c:248
+#: src/universal-cp/details-treeview.c:252
 msgid "Send Events"
 msgstr "Posílat události"
 
-#: src/universal-cp/details-treeview.c:250
+#: src/universal-cp/details-treeview.c:254
 msgid "GType"
 msgstr "GType"
 
-#: src/universal-cp/details-treeview.c:253
+#: src/universal-cp/details-treeview.c:257
 msgid "Default Value"
 msgstr "Výchozí hodnota"
 
-#: src/universal-cp/details-treeview.c:259
+#: src/universal-cp/details-treeview.c:263
 msgid "Minimum"
 msgstr "Minimum"
 
-#: src/universal-cp/details-treeview.c:263
+#: src/universal-cp/details-treeview.c:267
 msgid "Maximum"
 msgstr "Maximum"
 
-#: src/universal-cp/details-treeview.c:267
+#: src/universal-cp/details-treeview.c:271
 msgid "Step"
 msgstr "Krok"
 
-#: src/universal-cp/details-treeview.c:287
+#: src/universal-cp/details-treeview.c:291
 msgid "Allowed Values"
 msgstr "Dovolené hodnoty"
 
-#: src/universal-cp/details-treeview.c:311
-#: src/universal-cp/details-treeview.c:358
+#: src/universal-cp/details-treeview.c:315
+#: src/universal-cp/details-treeview.c:362
 msgid "Location"
 msgstr "Umístění"
 
-#: src/universal-cp/details-treeview.c:316
-#: src/universal-cp/details-treeview.c:363
+#: src/universal-cp/details-treeview.c:320
+#: src/universal-cp/details-treeview.c:367
 msgid "UDN"
 msgstr "UDN"
 
-#: src/universal-cp/details-treeview.c:321
-#: src/universal-cp/details-treeview.c:368
+#: src/universal-cp/details-treeview.c:325
+#: src/universal-cp/details-treeview.c:372
 msgid "Type"
 msgstr "Typ"
 
-#: src/universal-cp/details-treeview.c:326
-#: src/universal-cp/details-treeview.c:373
+#: src/universal-cp/details-treeview.c:330
+#: src/universal-cp/details-treeview.c:377
 msgid "Base URL"
 msgstr "Základní adresa URL"
 
-#: src/universal-cp/details-treeview.c:331
+#: src/universal-cp/details-treeview.c:335
 msgid "Service ID"
 msgstr "ID služby"
 
-#: src/universal-cp/details-treeview.c:333
+#: src/universal-cp/details-treeview.c:337
 msgid "Service URL"
 msgstr "Adresa URL služby"
 
-#: src/universal-cp/details-treeview.c:335
+#: src/universal-cp/details-treeview.c:339
 msgid "Control URL"
 msgstr "Adresa URL řízení"
 
-#: src/universal-cp/details-treeview.c:337
+#: src/universal-cp/details-treeview.c:341
 msgid "Event Subscription URL"
 msgstr "Adresa URL odběru událostí"
 
-#: src/universal-cp/details-treeview.c:378
+#: src/universal-cp/details-treeview.c:382
 msgid "Friendly Name"
 msgstr "Přátelský název"
 
-#: src/universal-cp/details-treeview.c:380
+#: src/universal-cp/details-treeview.c:384
 msgid "Manufacturer"
 msgstr "Výrobce"
 
-#: src/universal-cp/details-treeview.c:382
+#: src/universal-cp/details-treeview.c:386
 msgid "Manufacturer URL"
 msgstr "Adresa URL výrobce"
 
-#: src/universal-cp/details-treeview.c:384
+#: src/universal-cp/details-treeview.c:388
 msgid "Model Description"
 msgstr "Popis modelu"
 
-#: src/universal-cp/details-treeview.c:386
+#: src/universal-cp/details-treeview.c:390
 msgid "Model Name"
 msgstr "Název modelu"
 
-#: src/universal-cp/details-treeview.c:388
+#: src/universal-cp/details-treeview.c:392
 msgid "Model Number"
 msgstr "Číslo modelu"
 
-#: src/universal-cp/details-treeview.c:390
+#: src/universal-cp/details-treeview.c:394
 msgid "Model URL"
 msgstr "Adresa URL modelu"
 
-#: src/universal-cp/details-treeview.c:392
+#: src/universal-cp/details-treeview.c:396
 msgid "Serial Number"
 msgstr "Sériové číslo"
 
-#: src/universal-cp/details-treeview.c:394
+#: src/universal-cp/details-treeview.c:398
 msgid "UPC"
 msgstr "UPC"
 
-#: src/universal-cp/details-treeview.c:396
+#: src/universal-cp/details-treeview.c:400
 msgid "Presentation URL"
 msgstr "Adresa URL prezentace"
 
-#: src/universal-cp/details-treeview.c:426
-#: src/universal-cp/event-treeview.c:404
+#: src/universal-cp/details-treeview.c:430
+#: src/universal-cp/event-treeview.c:408
 msgid "Value"
 msgstr "Hodnota"
 
@@ -462,30 +514,30 @@ msgstr "Verze"
 msgid "Author"
 msgstr "Autor"
 
-#: src/universal-cp/device-treeview.c:477
+#: src/universal-cp/device-treeview.c:481
 msgid "State variables"
 msgstr "Stavové proměnné"
 
-#: src/universal-cp/device-treeview.c:518
+#: src/universal-cp/device-treeview.c:522
 msgid "Information not available"
 msgstr "Informace není dostupná"
 
-#: src/universal-cp/device-treeview.c:697
+#: src/universal-cp/device-treeview.c:701
 msgid "UPnP Network"
 msgstr "Síť UPnP"
 
-#: src/universal-cp/device-treeview.c:710 src/universal-cp/event-treeview.c:401
+#: src/universal-cp/device-treeview.c:714 src/universal-cp/event-treeview.c:405
 msgid "Device"
 msgstr "Zařízení"
 
-#: src/universal-cp/event-treeview.c:400
+#: src/universal-cp/event-treeview.c:404
 msgid "Time"
 msgstr "Čas"
 
-#: src/universal-cp/event-treeview.c:402
+#: src/universal-cp/event-treeview.c:406
 msgid "Service"
 msgstr "Služba"
 
-#: src/universal-cp/event-treeview.c:403
+#: src/universal-cp/event-treeview.c:407
 msgid "State Variable"
 msgstr "Stavová proměnná"
