@@ -6,109 +6,97 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gupnp-tools master\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gupnp-"
-"tools&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-05-05 12:28+0000\n"
-"PO-Revision-Date: 2016-05-22 21:28+0200\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=GUPnP&keywords=I18N+L10N&component=gupnp-tools\n"
+"POT-Creation-Date: 2016-12-20 10:05+0000\n"
+"PO-Revision-Date: 2016-12-21 22:52+0100\n"
+"Last-Translator: Josef Andersson <josef.andersson@fripost.org>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
-"X-Generator: Poedit 1.8.7.1\n"
+"X-Generator: Poedit 1.8.9\n"
+
+#: data/didl-lite-dialog.ui.in:9
+msgid "GUPnP AV CP - Metadata View"
+msgstr "GUPnP AV-kontrollpunkt - Metadatavy"
 
 #: data/gupnp-av-cp.desktop.in.in:4
 msgid "UPnP AV Control Point"
 msgstr "UPnP AV-kontrollpunkt"
 
-#: data/gupnp-av-cp.desktop.in.in:7
+#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
+#: data/gupnp-av-cp.desktop.in.in:8
 msgid "@PKGDATADIR@/pixmaps/av-cp.png"
 msgstr "@PKGDATADIR@/pixmaps/av-cp.png"
 
-#: data/gupnp-av-cp.ui.in:10 data/gupnp-network-light.ui:7
-#: data/gupnp-universal-cp.ui:8
-msgid "Copyright (C) 2007 Zeeshan Ali (Khattak)"
-msgstr "Copyright © 2007 Zeeshan Ali (Khattak)"
-
-# https://software.intel.com/en-us/articles/intel-software-for-upnp-technology-download-tools
-#: data/gupnp-av-cp.ui.in:11
-msgid ""
-"An UPnP AV Control Point based on GUPnP framework.\n"
-"Inspired by Intel Tools for UPnP."
-msgstr ""
-"En UPnP AV-kontrollpunkt baserad på GUPnP-ramverket.\n"
-"Inspirerad av Intel Tools for UPnP."
-
-#: data/gupnp-av-cp.ui.in:14 data/gupnp-network-light.ui:11
-#: data/gupnp-universal-cp.ui:12
-msgid "GUPnP homepage"
-msgstr "Webbplats för GUPnP"
-
-#. TRANSLATORS: Replace this string with your names, one name per line.
-#: data/gupnp-av-cp.ui.in:16 data/gupnp-network-light.ui:13
-#: data/gupnp-universal-cp.ui:14
-msgid "translator-credits"
-msgstr ""
-"Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
-"\n"
-"Skicka synpunkter på översättningen till\n"
-"<tp-sv@listor.tp-sv.se>."
-
-#: data/gupnp-av-cp.ui.in:52
-msgid "GUPnP AV Control Point"
-msgstr "GUPnP AV-kontrollpunkt"
-
-#: data/gupnp-av-cp.ui.in:66 data/gupnp-universal-cp.ui:423
-msgid "_File"
-msgstr "_Arkiv"
-
-#: data/gupnp-av-cp.ui.in:75
-msgid "Close"
-msgstr "Stäng"
-
-#: data/gupnp-av-cp.ui.in:88
-msgid "_Tools"
-msgstr "_Verktyg"
-
-#: data/gupnp-av-cp.ui.in:98
-msgid "_Lenient Mode"
-msgstr "Ti_llåtande läge"
-
-#: data/gupnp-av-cp.ui.in:110 data/gupnp-universal-cp.ui:505
-msgid "_Help"
-msgstr "_Hjälp"
-
-#: data/gupnp-av-cp.ui.in:119 data/gupnp-universal-cp.ui:514
-msgid "About"
-msgstr "Om"
-
-#: data/gupnp-av-cp.ui.in:170 data/gupnp-av-cp.ui.in:698
+#: data/gupnp-av-cp.ui:23 data/gupnp-av-cp.ui:209
 msgid "_Play"
 msgstr "S_pela"
 
-#: data/gupnp-av-cp.ui.in:219
+#: data/gupnp-av-cp.ui:32
+msgid "Fetch the DIDL-Lite XML for this media object"
+msgstr "Hämta DIDL-Lite-XML för detta mediaobjekt"
+
+#: data/gupnp-av-cp.ui:33
+msgid "Fetch _DIDL-Lite"
+msgstr "Hämta _DIDL-Lite"
+
+#: data/gupnp-av-cp.ui:42
+msgid "Search…"
+msgstr "Sök…"
+
+#: data/gupnp-av-cp.ui:90
+msgid "GUPnP AV Control Point"
+msgstr "GUPnP AV-kontrollpunkt"
+
+#: data/gupnp-av-cp.ui:105 data/gupnp-universal-cp.ui:423
+msgid "_File"
+msgstr "_Arkiv"
+
+#: data/gupnp-av-cp.ui:114
+msgid "Close"
+msgstr "Stäng"
+
+#: data/gupnp-av-cp.ui:127
+msgid "_Tools"
+msgstr "_Verktyg"
+
+#: data/gupnp-av-cp.ui:137
+msgid "_Lenient Mode"
+msgstr "Ti_llåtande läge"
+
+#: data/gupnp-av-cp.ui:149 data/gupnp-universal-cp.ui:505
+msgid "_Help"
+msgstr "_Hjälp"
+
+#: data/gupnp-av-cp.ui:158 data/gupnp-universal-cp.ui:514
+msgid "About"
+msgstr "Om"
+
+#: data/gupnp-av-cp.ui:258
 msgid "P_ause"
 msgstr "Pa_usa"
 
-#: data/gupnp-av-cp.ui.in:268
+#: data/gupnp-av-cp.ui:307
 msgid "_Stop"
 msgstr "_Stoppa"
 
-#: data/gupnp-av-cp.ui.in:317
+#: data/gupnp-av-cp.ui:356
 msgid "Pre_vious"
 msgstr "_Föregående"
 
-#: data/gupnp-av-cp.ui.in:380
+#: data/gupnp-av-cp.ui:419
 msgid "_Next"
 msgstr "_Nästa"
 
-#: data/gupnp-av-cp.ui.in:398
+#: data/gupnp-av-cp.ui:437
 msgid "Rescan"
 msgstr "Sök av igen"
 
-#: data/gupnp-av-cp.ui.in:442
+#: data/gupnp-av-cp.ui:481
 msgid ""
 "Clears the CP's idea of the state of the currently selected AV Renderer. "
 "Useful for dealing with AV Renderers that don't report state changes."
@@ -117,31 +105,49 @@ msgstr ""
 "markerade AV-renderaren. Detta är användbart för att hantera AV-renderare "
 "som inte rapporterar tillståndsförändringar."
 
-#: data/gupnp-av-cp.ui.in:453
+#: data/gupnp-av-cp.ui:492
 msgid "_Clear state"
 msgstr "_Töm tillstånd"
 
-#: data/gupnp-av-cp.ui.in:496
+#: data/gupnp-av-cp.ui:554
 msgid "_Renderer: "
 msgstr "_Renderare: "
 
-#: data/gupnp-av-cp.ui.in:629
-msgid "GUPnP AV CP - Metadata View"
-msgstr "GUPnP AV-kontrollpunkt - Metadatavy"
+#: data/gupnp-av-cp.ui:692 data/gupnp-network-light.ui:7
+#: data/gupnp-universal-cp.ui:8
+msgid "Copyright (C) 2007 Zeeshan Ali (Khattak)"
+msgstr "Copyright © 2007 Zeeshan Ali (Khattak)"
 
-#: data/gupnp-av-cp.ui.in:707
-msgid "Fetch the DIDL-Lite XML for this media object"
-msgstr "Hämta DIDL-Lite-XML för detta mediaobjekt"
+# https://software.intel.com/en-us/articles/intel-software-for-upnp-technology-download-tools
+#: data/gupnp-av-cp.ui:693
+msgid ""
+"An UPnP AV Control Point based on GUPnP framework.\n"
+"Inspired by Intel Tools for UPnP."
+msgstr ""
+"En UPnP AV-kontrollpunkt baserad på GUPnP-ramverket.\n"
+"Inspirerad av Intel Tools for UPnP."
 
-#: data/gupnp-av-cp.ui.in:708
-msgid "Fetch _DIDL-Lite"
-msgstr "Hämta _DIDL-Lite"
+#: data/gupnp-av-cp.ui:696 data/gupnp-network-light.ui:11
+#: data/gupnp-universal-cp.ui:12
+msgid "GUPnP homepage"
+msgstr "Webbplats för GUPnP"
+
+#. TRANSLATORS: Replace this string with your names, one name per line.
+#: data/gupnp-av-cp.ui:698 data/gupnp-network-light.ui:13
+#: data/gupnp-universal-cp.ui:14
+msgid "translator-credits"
+msgstr ""
+"Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
+"\n"
+"Skicka synpunkter på översättningen till\n"
+"<tp-sv@listor.tp-sv.se>."
 
 #: data/gupnp-network-light.desktop.in.in:4
 msgid "UPnP Network Light"
 msgstr "UPnP nätverkslampa"
 
-#: data/gupnp-network-light.desktop.in.in:7
+#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
+#: data/gupnp-network-light.desktop.in.in:8
 msgid "@PKGDATADIR@/pixmaps/network-light-256x256.png"
 msgstr "@PKGDATADIR@/pixmaps/network-light-256x256.png"
 
@@ -178,7 +184,8 @@ msgstr "_Om"
 msgid "UPnP Universal Control Point"
 msgstr "UPnP universell kontrollpunkt"
 
-#: data/gupnp-universal-cp.desktop.in.in:7
+#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
+#: data/gupnp-universal-cp.desktop.in.in:8
 msgid "@PKGDATADIR@/pixmaps/universal-cp.png"
 msgstr "@PKGDATADIR@/pixmaps/universal-cp.png"
 
@@ -275,6 +282,22 @@ msgstr "_Visa"
 msgid "Event _log"
 msgstr "Händelse_logg"
 
+#: data/search-dialog.ui:12
+msgid "Show _DIDL…"
+msgstr "Visa _DIDL…"
+
+#: data/search-dialog.ui:49
+msgid "_Close"
+msgstr "_Stäng"
+
+#: data/search-dialog.ui:81
+msgid "UPnP search expression"
+msgstr "UPnP-sökuttryck"
+
+#: data/search-dialog.ui:107
+msgid "column"
+msgstr "kolumn"
+
 #: src/av-cp/main.c:48 src/network-light/main.c:48 src/universal-cp/main.c:41
 msgid "Network PORT to use for UPnP"
 msgstr "NätverksPORT att använda för UPnP"
@@ -293,6 +316,35 @@ msgstr "- UPnP AV-kontrollpunkt"
 #, c-format
 msgid "Could not parse options: %s\n"
 msgstr "Kunde inte tolka flaggor: %s\n"
+
+#: src/av-cp/search-dialog.c:440 src/av-cp/search-dialog.c:579
+msgid "Search failed"
+msgstr "Misslyckades med sökning"
+
+#: src/av-cp/search-dialog.c:444
+#, c-format
+msgid "Error message was: %s"
+msgstr "Felmeddelandet var: %s"
+
+#: src/av-cp/search-dialog.c:488
+#, c-format
+msgid "Searching on %s"
+msgstr "Söker på %s"
+
+#: src/av-cp/search-dialog.c:491
+#, c-format
+msgid "Searching in %s on %s"
+msgstr "Söker i %s på %s"
+
+#: src/av-cp/search-dialog.c:583
+#, c-format
+msgid "Search criteria invalid: %s"
+msgstr "Sökkriterier ogiltiga: %s"
+
+#: src/av-cp/search-dialog.c:683
+#, c-format
+msgid "Error fetching detailed information: %s"
+msgstr "Fel vid hämtning av detaljerad information: %s"
 
 #: src/network-light/main.c:50
 msgid "Friendly name for this UPnP light"
@@ -313,147 +365,147 @@ msgstr ""
 "\n"
 "Fel %d: %s"
 
-#: src/universal-cp/details-treeview.c:192
-#: src/universal-cp/details-treeview.c:220
-#: src/universal-cp/details-treeview.c:246
-#: src/universal-cp/details-treeview.c:425
+#: src/universal-cp/details-treeview.c:196
+#: src/universal-cp/details-treeview.c:224
+#: src/universal-cp/details-treeview.c:250
+#: src/universal-cp/details-treeview.c:429
 msgid "Name"
 msgstr "Namn"
 
-#: src/universal-cp/details-treeview.c:194
+#: src/universal-cp/details-treeview.c:198
 msgid "Direction"
 msgstr "Riktning"
 
-#: src/universal-cp/details-treeview.c:199
+#: src/universal-cp/details-treeview.c:203
 msgid "Related State Variable"
 msgstr "Relaterad tillståndsvariabel"
 
-#: src/universal-cp/details-treeview.c:201
+#: src/universal-cp/details-treeview.c:205
 msgid "Is Return Value"
 msgstr "Är returvärde"
 
-#: src/universal-cp/details-treeview.c:202
-#: src/universal-cp/details-treeview.c:249
+#: src/universal-cp/details-treeview.c:206
+#: src/universal-cp/details-treeview.c:253
 msgid "Yes"
 msgstr "Ja"
 
-#: src/universal-cp/details-treeview.c:202
-#: src/universal-cp/details-treeview.c:249
+#: src/universal-cp/details-treeview.c:206
+#: src/universal-cp/details-treeview.c:253
 msgid "No"
 msgstr "Nej"
 
-#: src/universal-cp/details-treeview.c:222
+#: src/universal-cp/details-treeview.c:226
 msgid "Number of Arguments"
 msgstr "Antal argument"
 
-#: src/universal-cp/details-treeview.c:248
+#: src/universal-cp/details-treeview.c:252
 msgid "Send Events"
 msgstr "Skicka händelser"
 
-#: src/universal-cp/details-treeview.c:250
+#: src/universal-cp/details-treeview.c:254
 msgid "GType"
 msgstr "GType"
 
-#: src/universal-cp/details-treeview.c:253
+#: src/universal-cp/details-treeview.c:257
 msgid "Default Value"
 msgstr "Standardvärde"
 
-#: src/universal-cp/details-treeview.c:259
+#: src/universal-cp/details-treeview.c:263
 msgid "Minimum"
 msgstr "Minimum"
 
-#: src/universal-cp/details-treeview.c:263
+#: src/universal-cp/details-treeview.c:267
 msgid "Maximum"
 msgstr "Maximum"
 
-#: src/universal-cp/details-treeview.c:267
+#: src/universal-cp/details-treeview.c:271
 msgid "Step"
 msgstr "Steg"
 
-#: src/universal-cp/details-treeview.c:287
+#: src/universal-cp/details-treeview.c:291
 msgid "Allowed Values"
 msgstr "Tillåtna värden"
 
-#: src/universal-cp/details-treeview.c:311
-#: src/universal-cp/details-treeview.c:358
+#: src/universal-cp/details-treeview.c:315
+#: src/universal-cp/details-treeview.c:362
 msgid "Location"
 msgstr "Plats"
 
 # Unique device name
-#: src/universal-cp/details-treeview.c:316
-#: src/universal-cp/details-treeview.c:363
+#: src/universal-cp/details-treeview.c:320
+#: src/universal-cp/details-treeview.c:367
 msgid "UDN"
 msgstr "UDN"
 
-#: src/universal-cp/details-treeview.c:321
-#: src/universal-cp/details-treeview.c:368
+#: src/universal-cp/details-treeview.c:325
+#: src/universal-cp/details-treeview.c:372
 msgid "Type"
 msgstr "Typ"
 
-#: src/universal-cp/details-treeview.c:326
-#: src/universal-cp/details-treeview.c:373
+#: src/universal-cp/details-treeview.c:330
+#: src/universal-cp/details-treeview.c:377
 msgid "Base URL"
 msgstr "Bas-URL"
 
-#: src/universal-cp/details-treeview.c:331
+#: src/universal-cp/details-treeview.c:335
 msgid "Service ID"
 msgstr "Tjänste-ID"
 
-#: src/universal-cp/details-treeview.c:333
+#: src/universal-cp/details-treeview.c:337
 msgid "Service URL"
 msgstr "Tjänste-URL"
 
-#: src/universal-cp/details-treeview.c:335
+#: src/universal-cp/details-treeview.c:339
 msgid "Control URL"
 msgstr "Kontroll-URL"
 
-#: src/universal-cp/details-treeview.c:337
+#: src/universal-cp/details-treeview.c:341
 msgid "Event Subscription URL"
 msgstr "Händelseprenumerations-URL"
 
-#: src/universal-cp/details-treeview.c:378
+#: src/universal-cp/details-treeview.c:382
 msgid "Friendly Name"
 msgstr "Smeknamn"
 
-#: src/universal-cp/details-treeview.c:380
+#: src/universal-cp/details-treeview.c:384
 msgid "Manufacturer"
 msgstr "Tillverkare"
 
-#: src/universal-cp/details-treeview.c:382
+#: src/universal-cp/details-treeview.c:386
 msgid "Manufacturer URL"
 msgstr "Tillverkar-URL"
 
-#: src/universal-cp/details-treeview.c:384
+#: src/universal-cp/details-treeview.c:388
 msgid "Model Description"
 msgstr "Modellbeskrivning"
 
-#: src/universal-cp/details-treeview.c:386
+#: src/universal-cp/details-treeview.c:390
 msgid "Model Name"
 msgstr "Modellnamn"
 
-#: src/universal-cp/details-treeview.c:388
+#: src/universal-cp/details-treeview.c:392
 msgid "Model Number"
 msgstr "Modellnummer"
 
-#: src/universal-cp/details-treeview.c:390
+#: src/universal-cp/details-treeview.c:394
 msgid "Model URL"
 msgstr "Modell-URL"
 
-#: src/universal-cp/details-treeview.c:392
+#: src/universal-cp/details-treeview.c:396
 msgid "Serial Number"
 msgstr "Serienummer"
 
 # Universal product code
-#: src/universal-cp/details-treeview.c:394
+#: src/universal-cp/details-treeview.c:398
 msgid "UPC"
 msgstr "UPC"
 
-#: src/universal-cp/details-treeview.c:396
+#: src/universal-cp/details-treeview.c:400
 msgid "Presentation URL"
 msgstr "Presentations-URL"
 
-#: src/universal-cp/details-treeview.c:426
-#: src/universal-cp/event-treeview.c:404
+#: src/universal-cp/details-treeview.c:430
+#: src/universal-cp/event-treeview.c:408
 msgid "Value"
 msgstr "Värde"
 
@@ -469,30 +521,30 @@ msgstr "Version"
 msgid "Author"
 msgstr "Upphovsman"
 
-#: src/universal-cp/device-treeview.c:477
+#: src/universal-cp/device-treeview.c:481
 msgid "State variables"
 msgstr "Tillståndsvariabler"
 
-#: src/universal-cp/device-treeview.c:518
+#: src/universal-cp/device-treeview.c:522
 msgid "Information not available"
 msgstr "Information inte tillgänglig"
 
-#: src/universal-cp/device-treeview.c:697
+#: src/universal-cp/device-treeview.c:701
 msgid "UPnP Network"
 msgstr "UPnP-nätverk"
 
-#: src/universal-cp/device-treeview.c:710 src/universal-cp/event-treeview.c:401
+#: src/universal-cp/device-treeview.c:714 src/universal-cp/event-treeview.c:405
 msgid "Device"
 msgstr "Enhet"
 
-#: src/universal-cp/event-treeview.c:400
+#: src/universal-cp/event-treeview.c:404
 msgid "Time"
 msgstr "Tid"
 
-#: src/universal-cp/event-treeview.c:402
+#: src/universal-cp/event-treeview.c:406
 msgid "Service"
 msgstr "Tjänst"
 
-#: src/universal-cp/event-treeview.c:403
+#: src/universal-cp/event-treeview.c:407
 msgid "State Variable"
 msgstr "Tillståndsvariabel"
