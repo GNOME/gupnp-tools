@@ -6,12 +6,12 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gupnp-tools master\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gupnp-"
-"tools&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-04-03 17:07+0000\n"
-"PO-Revision-Date: 2016-04-07 12:55+0200\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=GUPnP&keywords=I18N+L10N&component=gupnp-tools\n"
+"POT-Creation-Date: 2016-12-17 15:07+0000\n"
+"PO-Revision-Date: 2016-12-22 12:55+0100\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
-"Language-Team: Español; Castellano <gnome-es-list@gnome.org>\n"
+"Language-Team: es <gnome-es-list@gnome.org>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,91 +19,84 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Gtranslator 2.91.6\n"
 
+#: data/didl-lite-dialog.ui.in:9
+msgid "GUPnP AV CP - Metadata View"
+msgstr "Punto de control AV de GUPnP; vista de metadatos"
+
 #: data/gupnp-av-cp.desktop.in.in:4
 msgid "UPnP AV Control Point"
 msgstr "Punto de control AV de UPnP"
 
-#: data/gupnp-av-cp.desktop.in.in:7
+#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
+#: data/gupnp-av-cp.desktop.in.in:8
 msgid "@PKGDATADIR@/pixmaps/av-cp.png"
 msgstr "@PKGDATADIR@/pixmaps/av-cp.png"
 
-#: data/gupnp-av-cp.ui.in:10 data/gupnp-network-light.ui:7
-#: data/gupnp-universal-cp.ui:8
-msgid "Copyright (C) 2007 Zeeshan Ali (Khattak)"
-msgstr "Copyright (C) 2007 Zeeshan Ali (Khattak)"
-
-#: data/gupnp-av-cp.ui.in:11
-msgid ""
-"An UPnP AV Control Point based on GUPnP framework.\n"
-"Inspired by Intel Tools for UPnP."
-msgstr ""
-"Un punto de control AV de UPnP basado en el entorno de trabajo GUPnP.\n"
-"Inspirado en las herramientas de Intel para UPnP."
-
-#: data/gupnp-av-cp.ui.in:14 data/gupnp-network-light.ui:11
-#: data/gupnp-universal-cp.ui:12
-msgid "GUPnP homepage"
-msgstr "Página principal de GUPnP"
-
-#. TRANSLATORS: Replace this string with your names, one name per line.
-#: data/gupnp-av-cp.ui.in:16 data/gupnp-network-light.ui:13
-#: data/gupnp-universal-cp.ui:14
-msgid "translator-credits"
-msgstr "Daniel Mustieles <daniel.mustieles@gmail.com>, 2012, 2013"
-
-#: data/gupnp-av-cp.ui.in:52
-msgid "GUPnP AV Control Point"
-msgstr "Punto de control AV de GUPnP"
-
-#: data/gupnp-av-cp.ui.in:66 data/gupnp-universal-cp.ui:423
-msgid "_File"
-msgstr "_Archivo"
-
-#: data/gupnp-av-cp.ui.in:75
-msgid "Close"
-msgstr "Cerrar"
-
-#: data/gupnp-av-cp.ui.in:88
-msgid "_Tools"
-msgstr "Herramien_tas"
-
-#: data/gupnp-av-cp.ui.in:98
-msgid "_Lenient Mode"
-msgstr "Modo _indulgente"
-
-#: data/gupnp-av-cp.ui.in:110 data/gupnp-universal-cp.ui:505
-msgid "_Help"
-msgstr "Ay_uda"
-
-#: data/gupnp-av-cp.ui.in:119 data/gupnp-universal-cp.ui:514
-msgid "About"
-msgstr "Acerca de"
-
-#: data/gupnp-av-cp.ui.in:170 data/gupnp-av-cp.ui.in:698
+#: data/gupnp-av-cp.ui:23 data/gupnp-av-cp.ui:209
 msgid "_Play"
 msgstr "_Reproducir"
 
-#: data/gupnp-av-cp.ui.in:219
+#: data/gupnp-av-cp.ui:32
+msgid "Fetch the DIDL-Lite XML for this media object"
+msgstr "Obtener el XML DIDL-Lite para este objeto multimedia"
+
+#: data/gupnp-av-cp.ui:33
+msgid "Fetch _DIDL-Lite"
+msgstr "Obtener _DIDL-Lite"
+
+#: data/gupnp-av-cp.ui:42
+msgid "Search…"
+msgstr "Buscar…"
+
+#: data/gupnp-av-cp.ui:90
+msgid "GUPnP AV Control Point"
+msgstr "Punto de control AV de GUPnP"
+
+#: data/gupnp-av-cp.ui:105 data/gupnp-universal-cp.ui:423
+msgid "_File"
+msgstr "_Archivo"
+
+#: data/gupnp-av-cp.ui:114
+msgid "Close"
+msgstr "Cerrar"
+
+#: data/gupnp-av-cp.ui:127
+msgid "_Tools"
+msgstr "Herramien_tas"
+
+#: data/gupnp-av-cp.ui:137
+msgid "_Lenient Mode"
+msgstr "Modo _indulgente"
+
+#: data/gupnp-av-cp.ui:149 data/gupnp-universal-cp.ui:505
+msgid "_Help"
+msgstr "Ay_uda"
+
+#: data/gupnp-av-cp.ui:158 data/gupnp-universal-cp.ui:514
+msgid "About"
+msgstr "Acerca de"
+
+#: data/gupnp-av-cp.ui:258
 msgid "P_ause"
 msgstr "_Pausa"
 
-#: data/gupnp-av-cp.ui.in:268
+#: data/gupnp-av-cp.ui:307
 msgid "_Stop"
 msgstr "_Detener"
 
-#: data/gupnp-av-cp.ui.in:317
+#: data/gupnp-av-cp.ui:356
 msgid "Pre_vious"
 msgstr "_Anterior"
 
-#: data/gupnp-av-cp.ui.in:380
+#: data/gupnp-av-cp.ui:419
 msgid "_Next"
 msgstr "_Siguiente"
 
-#: data/gupnp-av-cp.ui.in:398
+#: data/gupnp-av-cp.ui:437
 msgid "Rescan"
 msgstr "Volver a analizar"
 
-#: data/gupnp-av-cp.ui.in:442
+#: data/gupnp-av-cp.ui:481
 msgid ""
 "Clears the CP's idea of the state of the currently selected AV Renderer. "
 "Useful for dealing with AV Renderers that don't report state changes."
@@ -112,31 +105,44 @@ msgstr ""
 "actualmente. Útil para trabajar con renderizadores AV que no informar de "
 "cambios de estado."
 
-#: data/gupnp-av-cp.ui.in:453
+#: data/gupnp-av-cp.ui:492
 msgid "_Clear state"
 msgstr "_Limpiar estado"
 
-#: data/gupnp-av-cp.ui.in:496
+#: data/gupnp-av-cp.ui:554
 msgid "_Renderer: "
 msgstr "_Renderizador: "
 
-#: data/gupnp-av-cp.ui.in:629
-msgid "GUPnP AV CP - Metadata View"
-msgstr "Punto de control AV de GUPnP; vista de metadatos"
+#: data/gupnp-av-cp.ui:692 data/gupnp-network-light.ui:7
+#: data/gupnp-universal-cp.ui:8
+msgid "Copyright (C) 2007 Zeeshan Ali (Khattak)"
+msgstr "Copyright (C) 2007 Zeeshan Ali (Khattak)"
 
-#: data/gupnp-av-cp.ui.in:707
-msgid "Fetch the DIDL-Lite XML for this media object"
-msgstr "Obtener el XML DIDL-Lite para este objeto multimedia"
+#: data/gupnp-av-cp.ui:693
+msgid ""
+"An UPnP AV Control Point based on GUPnP framework.\n"
+"Inspired by Intel Tools for UPnP."
+msgstr ""
+"Un punto de control AV de UPnP basado en el entorno de trabajo GUPnP.\n"
+"Inspirado en las herramientas de Intel para UPnP."
 
-#: data/gupnp-av-cp.ui.in:708
-msgid "Fetch _DIDL-Lite"
-msgstr "Obtener _DIDL-Lite"
+#: data/gupnp-av-cp.ui:696 data/gupnp-network-light.ui:11
+#: data/gupnp-universal-cp.ui:12
+msgid "GUPnP homepage"
+msgstr "Página principal de GUPnP"
+
+#. TRANSLATORS: Replace this string with your names, one name per line.
+#: data/gupnp-av-cp.ui:698 data/gupnp-network-light.ui:13
+#: data/gupnp-universal-cp.ui:14
+msgid "translator-credits"
+msgstr "Daniel Mustieles <daniel.mustieles@gmail.com>, 2012, 2013"
 
 #: data/gupnp-network-light.desktop.in.in:4
 msgid "UPnP Network Light"
 msgstr "Luz de red UPnP"
 
-#: data/gupnp-network-light.desktop.in.in:7
+#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
+#: data/gupnp-network-light.desktop.in.in:8
 msgid "@PKGDATADIR@/pixmaps/network-light-256x256.png"
 msgstr "@PKGDATADIR@/pixmaps/network-light-256x256.png"
 
@@ -173,7 +179,8 @@ msgstr "A_cerca de"
 msgid "UPnP Universal Control Point"
 msgstr "Punto de control de UPnP universal"
 
-#: data/gupnp-universal-cp.desktop.in.in:7
+#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
+#: data/gupnp-universal-cp.desktop.in.in:8
 msgid "@PKGDATADIR@/pixmaps/universal-cp.png"
 msgstr "@PKGDATADIR@/pixmaps/universal-cp.png"
 
@@ -270,24 +277,70 @@ msgstr "_Ver"
 msgid "Event _log"
 msgstr "Registro de _eventos"
 
-#: src/av-cp/main.c:47 src/network-light/main.c:48 src/universal-cp/main.c:41
+#: data/search-dialog.ui:12
+msgid "Show _DIDL…"
+msgstr "Mostrar _DIDL…"
+
+#: data/search-dialog.ui:49
+#| msgid "Close"
+msgid "_Close"
+msgstr "_Cerrar"
+
+#: data/search-dialog.ui:81
+msgid "UPnP search expression"
+msgstr "Expresión de búsqueda UPnP"
+
+#: data/search-dialog.ui:107
+msgid "column"
+msgstr "columna"
+
+#: src/av-cp/main.c:48 src/network-light/main.c:48 src/universal-cp/main.c:41
 msgid "Network PORT to use for UPnP"
 msgstr "PUERTO de red que usar para UPnP"
 
-#: src/av-cp/main.c:48 src/network-light/main.c:49 src/universal-cp/main.c:42
+#: src/av-cp/main.c:49 src/network-light/main.c:49 src/universal-cp/main.c:42
 msgid "Network interfaces to use for UPnP communication"
 msgstr "Interfaces de red que usar para comunicación UPnP"
 
-#: src/av-cp/main.c:197 src/network-light/main.c:104
+#: src/av-cp/main.c:223 src/network-light/main.c:104
 #: src/universal-cp/main.c:149
 msgid "- UPnP AV control point"
 msgstr "- Punto de control AV de UPnP"
 
-#: src/av-cp/main.c:202 src/network-light/main.c:109
+#: src/av-cp/main.c:228 src/network-light/main.c:109
 #: src/universal-cp/main.c:154
 #, c-format
 msgid "Could not parse options: %s\n"
 msgstr "No se pudieron analizar las opciones: %s\n"
+
+#: src/av-cp/search-dialog.c:440 src/av-cp/search-dialog.c:579
+msgid "Search failed"
+msgstr "Falló al buscar"
+
+#: src/av-cp/search-dialog.c:444
+#, c-format
+msgid "Error message was: %s"
+msgstr "El mensaje de error es: %s"
+
+#: src/av-cp/search-dialog.c:488
+#, c-format
+msgid "Searching on %s"
+msgstr "Buscando en %s"
+
+#: src/av-cp/search-dialog.c:491
+#, c-format
+msgid "Searching in %s on %s"
+msgstr "Buscando en %s en %s"
+
+#: src/av-cp/search-dialog.c:583
+#, c-format
+msgid "Search criteria invalid: %s"
+msgstr "Criterio de búsqueda no válido: %s"
+
+#: src/av-cp/search-dialog.c:683
+#, c-format
+msgid "Error fetching detailed information: %s"
+msgstr "Error al obtener la información detallada: %s"
 
 #: src/network-light/main.c:50
 msgid "Friendly name for this UPnP light"
@@ -297,7 +350,7 @@ msgstr "Nombre amigable para esta luz UPnP"
 msgid "Apply change exclusively to this UPnP light"
 msgstr "Aplicar cambio exclusivamente para esta luz UPnP"
 
-#: src/universal-cp/action-dialog.c:686
+#: src/universal-cp/action-dialog.c:690
 #, c-format
 msgid ""
 "Action failed.\n"
@@ -308,145 +361,145 @@ msgstr ""
 "\n"
 "Error: %d: %s"
 
-#: src/universal-cp/details-treeview.c:192
-#: src/universal-cp/details-treeview.c:220
-#: src/universal-cp/details-treeview.c:246
-#: src/universal-cp/details-treeview.c:425
+#: src/universal-cp/details-treeview.c:196
+#: src/universal-cp/details-treeview.c:224
+#: src/universal-cp/details-treeview.c:250
+#: src/universal-cp/details-treeview.c:429
 msgid "Name"
 msgstr "Nombre"
 
-#: src/universal-cp/details-treeview.c:194
+#: src/universal-cp/details-treeview.c:198
 msgid "Direction"
 msgstr "Dirección"
 
-#: src/universal-cp/details-treeview.c:199
+#: src/universal-cp/details-treeview.c:203
 msgid "Related State Variable"
 msgstr "Variable de estado relacionado"
 
-#: src/universal-cp/details-treeview.c:201
+#: src/universal-cp/details-treeview.c:205
 msgid "Is Return Value"
 msgstr "Es el valor de retorno"
 
-#: src/universal-cp/details-treeview.c:202
-#: src/universal-cp/details-treeview.c:249
+#: src/universal-cp/details-treeview.c:206
+#: src/universal-cp/details-treeview.c:253
 msgid "Yes"
 msgstr "Sí"
 
-#: src/universal-cp/details-treeview.c:202
-#: src/universal-cp/details-treeview.c:249
+#: src/universal-cp/details-treeview.c:206
+#: src/universal-cp/details-treeview.c:253
 msgid "No"
 msgstr "No"
 
-#: src/universal-cp/details-treeview.c:222
+#: src/universal-cp/details-treeview.c:226
 msgid "Number of Arguments"
 msgstr "Número de argumentos"
 
-#: src/universal-cp/details-treeview.c:248
+#: src/universal-cp/details-treeview.c:252
 msgid "Send Events"
 msgstr "Enviar eventos"
 
-#: src/universal-cp/details-treeview.c:250
+#: src/universal-cp/details-treeview.c:254
 msgid "GType"
 msgstr "GType"
 
-#: src/universal-cp/details-treeview.c:253
+#: src/universal-cp/details-treeview.c:257
 msgid "Default Value"
 msgstr "Valor predeterminado"
 
-#: src/universal-cp/details-treeview.c:259
+#: src/universal-cp/details-treeview.c:263
 msgid "Minimum"
 msgstr "Mínimo"
 
-#: src/universal-cp/details-treeview.c:263
+#: src/universal-cp/details-treeview.c:267
 msgid "Maximum"
 msgstr "Máximo"
 
-#: src/universal-cp/details-treeview.c:267
+#: src/universal-cp/details-treeview.c:271
 msgid "Step"
 msgstr "Paso"
 
-#: src/universal-cp/details-treeview.c:287
+#: src/universal-cp/details-treeview.c:291
 msgid "Allowed Values"
 msgstr "Valores permitidos"
 
-#: src/universal-cp/details-treeview.c:311
-#: src/universal-cp/details-treeview.c:358
+#: src/universal-cp/details-treeview.c:315
+#: src/universal-cp/details-treeview.c:362
 msgid "Location"
 msgstr "Lugar"
 
-#: src/universal-cp/details-treeview.c:316
-#: src/universal-cp/details-treeview.c:363
+#: src/universal-cp/details-treeview.c:320
+#: src/universal-cp/details-treeview.c:367
 msgid "UDN"
 msgstr "UDN"
 
-#: src/universal-cp/details-treeview.c:321
-#: src/universal-cp/details-treeview.c:368
+#: src/universal-cp/details-treeview.c:325
+#: src/universal-cp/details-treeview.c:372
 msgid "Type"
 msgstr "Tipo"
 
-#: src/universal-cp/details-treeview.c:326
-#: src/universal-cp/details-treeview.c:373
+#: src/universal-cp/details-treeview.c:330
+#: src/universal-cp/details-treeview.c:377
 msgid "Base URL"
 msgstr "URL base"
 
-#: src/universal-cp/details-treeview.c:331
+#: src/universal-cp/details-treeview.c:335
 msgid "Service ID"
 msgstr "ID del servicio"
 
-#: src/universal-cp/details-treeview.c:333
+#: src/universal-cp/details-treeview.c:337
 msgid "Service URL"
 msgstr "URL del servicio"
 
-#: src/universal-cp/details-treeview.c:335
+#: src/universal-cp/details-treeview.c:339
 msgid "Control URL"
 msgstr "URL de control"
 
-#: src/universal-cp/details-treeview.c:337
+#: src/universal-cp/details-treeview.c:341
 msgid "Event Subscription URL"
 msgstr "URL de suscripción del evento"
 
-#: src/universal-cp/details-treeview.c:378
+#: src/universal-cp/details-treeview.c:382
 msgid "Friendly Name"
 msgstr "Nombre amigable"
 
-#: src/universal-cp/details-treeview.c:380
+#: src/universal-cp/details-treeview.c:384
 msgid "Manufacturer"
 msgstr "Fabricante"
 
-#: src/universal-cp/details-treeview.c:382
+#: src/universal-cp/details-treeview.c:386
 msgid "Manufacturer URL"
 msgstr "URL del fabricante"
 
-#: src/universal-cp/details-treeview.c:384
+#: src/universal-cp/details-treeview.c:388
 msgid "Model Description"
 msgstr "Descripción del modelo"
 
-#: src/universal-cp/details-treeview.c:386
+#: src/universal-cp/details-treeview.c:390
 msgid "Model Name"
 msgstr "Nombre del modelo"
 
-#: src/universal-cp/details-treeview.c:388
+#: src/universal-cp/details-treeview.c:392
 msgid "Model Number"
 msgstr "Número del modelo"
 
-#: src/universal-cp/details-treeview.c:390
+#: src/universal-cp/details-treeview.c:394
 msgid "Model URL"
 msgstr "URL del modelo"
 
-#: src/universal-cp/details-treeview.c:392
+#: src/universal-cp/details-treeview.c:396
 msgid "Serial Number"
 msgstr "Número de serie"
 
-#: src/universal-cp/details-treeview.c:394
+#: src/universal-cp/details-treeview.c:398
 msgid "UPC"
 msgstr "UPC"
 
-#: src/universal-cp/details-treeview.c:396
+#: src/universal-cp/details-treeview.c:400
 msgid "Presentation URL"
 msgstr "URL de la presentación"
 
-#: src/universal-cp/details-treeview.c:426
-#: src/universal-cp/event-treeview.c:404
+#: src/universal-cp/details-treeview.c:430
+#: src/universal-cp/event-treeview.c:408
 msgid "Value"
 msgstr "Valor"
 
@@ -462,32 +515,32 @@ msgstr "Versión"
 msgid "Author"
 msgstr "Autor"
 
-#: src/universal-cp/device-treeview.c:478
+#: src/universal-cp/device-treeview.c:481
 msgid "State variables"
 msgstr "Variables de estado"
 
-#: src/universal-cp/device-treeview.c:519
+#: src/universal-cp/device-treeview.c:522
 msgid "Information not available"
 msgstr "Información no disponible"
 
-#: src/universal-cp/device-treeview.c:697
+#: src/universal-cp/device-treeview.c:701
 msgid "UPnP Network"
 msgstr "Red UPnP"
 
-#: src/universal-cp/device-treeview.c:710
-#: src/universal-cp/event-treeview.c:401
+#: src/universal-cp/device-treeview.c:714
+#: src/universal-cp/event-treeview.c:405
 msgid "Device"
 msgstr "Dispositivo"
 
-#: src/universal-cp/event-treeview.c:400
+#: src/universal-cp/event-treeview.c:404
 msgid "Time"
 msgstr "Hora"
 
-#: src/universal-cp/event-treeview.c:402
+#: src/universal-cp/event-treeview.c:406
 msgid "Service"
 msgstr "Servicio"
 
-#: src/universal-cp/event-treeview.c:403
+#: src/universal-cp/event-treeview.c:407
 msgid "State Variable"
 msgstr "Variable de estado"
 
