@@ -1,0 +1,534 @@
+# Indonesian translation for gupnp-tools.
+# Copyright (C) 2017 gupnp-tools's COPYRIGHT HOLDER
+# This file is distributed under the same license as the gupnp-tools package.
+# Andika Triwidada <atriwidada@gnome.org>, 2017.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gupnp-tools master\n"
+"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
+"product=GUPnP&keywords=I18N+L10N&component=gupnp-tools\n"
+"POT-Creation-Date: 2017-04-14 07:57+0000\n"
+"PO-Revision-Date: 2017-04-14 21:04+0000\n"
+"Language-Team: Indonesian <gnome-l10n-id@googlegroups.com>\n"
+"Language: id\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Last-Translator: Andika Triwidada <andika@gmail.com>\n"
+"X-Generator: Poedit 2.0.1\n"
+
+#: data/didl-lite-dialog.ui.in:9
+msgid "GUPnP AV CP - Metadata View"
+msgstr "GUPnP AV CP - Tilikan Metadata"
+
+#: data/gupnp-av-cp.desktop.in.in:4
+msgid "UPnP AV Control Point"
+msgstr "Titik Kendali AV UPnP"
+
+#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
+#: data/gupnp-av-cp.desktop.in.in:8
+msgid "@PKGDATADIR@/pixmaps/av-cp.png"
+msgstr "@PKGDATADIR@/pixmaps/av-cp.png"
+
+#: data/gupnp-av-cp.ui:23 data/gupnp-av-cp.ui:209
+msgid "_Play"
+msgstr "_Mainkan"
+
+#: data/gupnp-av-cp.ui:32
+msgid "Fetch the DIDL-Lite XML for this media object"
+msgstr "Ambil XML DIDL-Lite bagi objek media ini"
+
+#: data/gupnp-av-cp.ui:33
+msgid "Fetch _DIDL-Lite"
+msgstr "Ambil _DIDL-Lite"
+
+#: data/gupnp-av-cp.ui:42
+msgid "Search…"
+msgstr "Cari…"
+
+#: data/gupnp-av-cp.ui:90
+msgid "GUPnP AV Control Point"
+msgstr "Titik Kendali AV GUPnP"
+
+#: data/gupnp-av-cp.ui:105 data/gupnp-universal-cp.ui:423
+msgid "_File"
+msgstr "_Berkas"
+
+#: data/gupnp-av-cp.ui:114
+msgid "Close"
+msgstr "Tutup"
+
+#: data/gupnp-av-cp.ui:127
+msgid "_Tools"
+msgstr "_Perkakas"
+
+#: data/gupnp-av-cp.ui:137
+msgid "_Lenient Mode"
+msgstr "Mode _Lunak"
+
+#: data/gupnp-av-cp.ui:149 data/gupnp-universal-cp.ui:505
+msgid "_Help"
+msgstr "_Bantuan"
+
+#: data/gupnp-av-cp.ui:158 data/gupnp-universal-cp.ui:514
+msgid "About"
+msgstr "Tentang"
+
+#: data/gupnp-av-cp.ui:258
+msgid "P_ause"
+msgstr "Jed_a"
+
+#: data/gupnp-av-cp.ui:307
+msgid "_Stop"
+msgstr "Ber_henti"
+
+#: data/gupnp-av-cp.ui:356
+msgid "Pre_vious"
+msgstr "Se_belumnya"
+
+#: data/gupnp-av-cp.ui:419
+msgid "_Next"
+msgstr "Sela_njutnya"
+
+#: data/gupnp-av-cp.ui:437
+msgid "Rescan"
+msgstr "Pindai Ulang"
+
+#: data/gupnp-av-cp.ui:481
+msgid ""
+"Clears the CP's idea of the state of the currently selected AV Renderer. "
+"Useful for dealing with AV Renderers that don't report state changes."
+msgstr ""
+
+#: data/gupnp-av-cp.ui:492
+msgid "_Clear state"
+msgstr "_Bersihkan Keadaan"
+
+#: data/gupnp-av-cp.ui:554
+msgid "_Renderer: "
+msgstr "Pe_render: "
+
+#: data/gupnp-av-cp.ui:692 data/gupnp-network-light.ui:7
+#: data/gupnp-universal-cp.ui:8
+msgid "Copyright (C) 2007 Zeeshan Ali (Khattak)"
+msgstr "Hak Cipta (C) 2007 Zeeshan Ali (Khattak)"
+
+#: data/gupnp-av-cp.ui:693
+msgid ""
+"An UPnP AV Control Point based on GUPnP framework.\n"
+"Inspired by Intel Tools for UPnP."
+msgstr ""
+
+#: data/gupnp-av-cp.ui:696 data/gupnp-network-light.ui:11
+#: data/gupnp-universal-cp.ui:12
+msgid "GUPnP homepage"
+msgstr "Laman web GUPnP"
+
+#. TRANSLATORS: Replace this string with your names, one name per line.
+#: data/gupnp-av-cp.ui:698 data/gupnp-network-light.ui:13
+#: data/gupnp-universal-cp.ui:14
+msgid "translator-credits"
+msgstr "Andika Triwidada <andika@gmail.com>, 2017"
+
+#: data/gupnp-network-light.desktop.in.in:4
+msgid "UPnP Network Light"
+msgstr "Cahaya Jaringan UPnP"
+
+#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
+#: data/gupnp-network-light.desktop.in.in:8
+msgid "@PKGDATADIR@/pixmaps/network-light-256x256.png"
+msgstr "@PKGDATADIR@/pixmaps/network-light-256x256.png"
+
+#: data/gupnp-network-light.ui:8
+msgid ""
+"A virtual network light bulb based on GUPnP framework.\n"
+"Inspired by Intel Tools for UPnP."
+msgstr ""
+
+#: data/gupnp-network-light.ui:38
+msgid "GUPnP Network Light"
+msgstr "Cahaya Jaringan GUPnP"
+
+#: data/gupnp-network-light.ui:63
+msgctxt "network-light"
+msgid "_On"
+msgstr "_Nyala"
+
+#: data/gupnp-network-light.ui:83
+msgid "_Increase luminance by 20%"
+msgstr "T_ingkatkan luminansi 20%"
+
+#: data/gupnp-network-light.ui:92
+msgid "_Decrease luminance by 20%"
+msgstr "T_urunkan luminansi 20%"
+
+#: data/gupnp-network-light.ui:107
+msgid "_About"
+msgstr "Tent_ang"
+
+#: data/gupnp-universal-cp.desktop.in.in:4
+msgid "UPnP Universal Control Point"
+msgstr "Titik Kendali Universal UPnP"
+
+#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
+#: data/gupnp-universal-cp.desktop.in.in:8
+msgid "@PKGDATADIR@/pixmaps/universal-cp.png"
+msgstr "@PKGDATADIR@/pixmaps/universal-cp.png"
+
+#: data/gupnp-universal-cp.ui:9
+msgid ""
+"A Generic Control Point based on GUPnP framework.\n"
+"Inspired by Intel Tools for UPnP."
+msgstr ""
+
+#: data/gupnp-universal-cp.ui:41
+msgid "Action Invocation"
+msgstr "Invokasi Aksi"
+
+#: data/gupnp-universal-cp.ui:105
+msgid "_Invoke"
+msgstr ""
+
+#: data/gupnp-universal-cp.ui:175
+msgid "device"
+msgstr "perangkat"
+
+#: data/gupnp-universal-cp.ui:188
+msgid "service"
+msgstr "layanan"
+
+#: data/gupnp-universal-cp.ui:201
+msgid "action"
+msgstr "aksi"
+
+#: data/gupnp-universal-cp.ui:244
+msgid "'in' arguments"
+msgstr "argumen 'masuk'"
+
+#: data/gupnp-universal-cp.ui:277
+msgid "'out' arguments"
+msgstr "argumen 'keluar'"
+
+#: data/gupnp-universal-cp.ui:311
+msgid "Copy value"
+msgstr "Salin nilai"
+
+#: data/gupnp-universal-cp.ui:320
+msgid "Copy all details"
+msgstr "Salin semua rincian"
+
+#: data/gupnp-universal-cp.ui:332
+msgid "Invoke"
+msgstr ""
+
+#: data/gupnp-universal-cp.ui:341
+msgid "Subscribe to events"
+msgstr "Berlangganan ke kejadian"
+
+#: data/gupnp-universal-cp.ui:356 data/gupnp-universal-cp.ui:467
+msgid "_Expand all devices"
+msgstr "_Ekspansi semua perangkat"
+
+#: data/gupnp-universal-cp.ui:365 data/gupnp-universal-cp.ui:476
+#, fuzzy
+msgid "_Collapse all devices"
+msgstr "Lipat semua perangkat"
+
+#: data/gupnp-universal-cp.ui:377
+msgid "Copy event"
+msgstr "Salin kejadian"
+
+#: data/gupnp-universal-cp.ui:386
+msgid "Copy all events"
+msgstr "Salin semua kejadian"
+
+#: data/gupnp-universal-cp.ui:401
+msgid "_Clear event log"
+msgstr "_Bersihkan log kejadian"
+
+#. default details
+#: data/gupnp-universal-cp.ui:409 src/universal-cp/device-treeview.c:35
+msgid "GUPnP Universal Control Point"
+msgstr "Titik Kendali Universal GUPnP"
+
+#: data/gupnp-universal-cp.ui:432
+msgid "Clear event log"
+msgstr "Bersihkan log kejadian"
+
+#: data/gupnp-universal-cp.ui:446
+msgid "Quit"
+msgstr "Keluar"
+
+#: data/gupnp-universal-cp.ui:458
+msgid "_View"
+msgstr "_Tilik"
+
+#: data/gupnp-universal-cp.ui:491
+msgid "Event _log"
+msgstr "_Log kejadian"
+
+#: data/search-dialog.ui:12
+msgid "Show _DIDL…"
+msgstr "Tunjukkan _DIDL…"
+
+#: data/search-dialog.ui:49
+msgid "_Close"
+msgstr "_Tutup"
+
+#: data/search-dialog.ui:81
+msgid "UPnP search expression"
+msgstr "Ekspresi pencarian UPnP"
+
+#: data/search-dialog.ui:107
+msgid "column"
+msgstr "kolom"
+
+#: src/av-cp/main.c:48 src/network-light/main.c:48 src/universal-cp/main.c:41
+msgid "Network PORT to use for UPnP"
+msgstr "PORT jaringan yang dipakai untuk UPnP"
+
+#: src/av-cp/main.c:49 src/network-light/main.c:49 src/universal-cp/main.c:42
+msgid "Network interfaces to use for UPnP communication"
+msgstr "Antarmuka jaringan yang dipakai untuk komunikasi UPnP"
+
+#: src/av-cp/main.c:223 src/network-light/main.c:104
+#: src/universal-cp/main.c:149
+msgid "- UPnP AV control point"
+msgstr "- Titik kendali AV UPnP"
+
+#: src/av-cp/main.c:228 src/network-light/main.c:109
+#: src/universal-cp/main.c:154
+#, c-format
+msgid "Could not parse options: %s\n"
+msgstr "Tidak dapat mengurai opsi: %s\n"
+
+#: src/av-cp/search-dialog.c:440 src/av-cp/search-dialog.c:579
+msgid "Search failed"
+msgstr "Pencarian gagal"
+
+#: src/av-cp/search-dialog.c:444
+#, c-format
+msgid "Error message was: %s"
+msgstr "Pesan kesalahannya: %s"
+
+#: src/av-cp/search-dialog.c:488
+#, c-format
+msgid "Searching on %s"
+msgstr "Mencari pada %s"
+
+#: src/av-cp/search-dialog.c:491
+#, c-format
+msgid "Searching in %s on %s"
+msgstr "Mencari dalam %s pada %s"
+
+#: src/av-cp/search-dialog.c:583
+#, c-format
+msgid "Search criteria invalid: %s"
+msgstr "Kriteria pencarian tidak valid: %s"
+
+#: src/av-cp/search-dialog.c:683
+#, c-format
+msgid "Error fetching detailed information: %s"
+msgstr "Kesalahan saat mengambil informasi terrinci: %s"
+
+#: src/network-light/main.c:50
+msgid "Friendly name for this UPnP light"
+msgstr "Nama akrab bagi cahaya UPnP ini"
+
+#: src/network-light/main.c:51
+msgid "Apply change exclusively to this UPnP light"
+msgstr "Terapkan perubahan secara eksklusif ke cahaya UPnP ini"
+
+#: src/universal-cp/action-dialog.c:690
+#, c-format
+msgid ""
+"Action failed.\n"
+"\n"
+"Error %d: %s"
+msgstr ""
+"Aksi gagal.\n"
+"\n"
+"Kesalahan %d: %s"
+
+#: src/universal-cp/details-treeview.c:196
+#: src/universal-cp/details-treeview.c:224
+#: src/universal-cp/details-treeview.c:250
+#: src/universal-cp/details-treeview.c:429
+msgid "Name"
+msgstr "Nama"
+
+#: src/universal-cp/details-treeview.c:198
+msgid "Direction"
+msgstr "Arah"
+
+#: src/universal-cp/details-treeview.c:203
+msgid "Related State Variable"
+msgstr "Variabel Keadaan Terkait"
+
+#: src/universal-cp/details-treeview.c:205
+msgid "Is Return Value"
+msgstr "Apakah Nilai Balikan"
+
+#: src/universal-cp/details-treeview.c:206
+#: src/universal-cp/details-treeview.c:253
+msgid "Yes"
+msgstr "Ya"
+
+#: src/universal-cp/details-treeview.c:206
+#: src/universal-cp/details-treeview.c:253
+msgid "No"
+msgstr "Tidak"
+
+#: src/universal-cp/details-treeview.c:226
+msgid "Number of Arguments"
+msgstr "Banyaknya Argumen"
+
+#: src/universal-cp/details-treeview.c:252
+msgid "Send Events"
+msgstr "Kirim Kejadian"
+
+#: src/universal-cp/details-treeview.c:254
+msgid "GType"
+msgstr "GType"
+
+#: src/universal-cp/details-treeview.c:257
+msgid "Default Value"
+msgstr "Nilai Bawaan"
+
+#: src/universal-cp/details-treeview.c:263
+msgid "Minimum"
+msgstr "Minimal"
+
+#: src/universal-cp/details-treeview.c:267
+msgid "Maximum"
+msgstr "Maksimal"
+
+#: src/universal-cp/details-treeview.c:271
+msgid "Step"
+msgstr "Langkah"
+
+#: src/universal-cp/details-treeview.c:291
+msgid "Allowed Values"
+msgstr "Nilai Yang Diizinkan"
+
+#: src/universal-cp/details-treeview.c:315
+#: src/universal-cp/details-treeview.c:362
+msgid "Location"
+msgstr "Lokasi"
+
+#: src/universal-cp/details-treeview.c:320
+#: src/universal-cp/details-treeview.c:367
+msgid "UDN"
+msgstr "UDN"
+
+#: src/universal-cp/details-treeview.c:325
+#: src/universal-cp/details-treeview.c:372
+msgid "Type"
+msgstr "Tipe"
+
+#: src/universal-cp/details-treeview.c:330
+#: src/universal-cp/details-treeview.c:377
+msgid "Base URL"
+msgstr "URL Basis"
+
+#: src/universal-cp/details-treeview.c:335
+msgid "Service ID"
+msgstr "ID Layanan"
+
+#: src/universal-cp/details-treeview.c:337
+msgid "Service URL"
+msgstr "URL Layanan"
+
+#: src/universal-cp/details-treeview.c:339
+msgid "Control URL"
+msgstr "URL Kendali"
+
+#: src/universal-cp/details-treeview.c:341
+msgid "Event Subscription URL"
+msgstr "URL Berlangganan Kejadian"
+
+#: src/universal-cp/details-treeview.c:382
+msgid "Friendly Name"
+msgstr "Nama Akrab"
+
+#: src/universal-cp/details-treeview.c:384
+msgid "Manufacturer"
+msgstr "Pabrikan"
+
+#: src/universal-cp/details-treeview.c:386
+msgid "Manufacturer URL"
+msgstr "URL Pabrikan"
+
+#: src/universal-cp/details-treeview.c:388
+msgid "Model Description"
+msgstr "Deskripsi Model"
+
+#: src/universal-cp/details-treeview.c:390
+msgid "Model Name"
+msgstr "Nama Model"
+
+#: src/universal-cp/details-treeview.c:392
+msgid "Model Number"
+msgstr "Nomor Model"
+
+#: src/universal-cp/details-treeview.c:394
+msgid "Model URL"
+msgstr "URL Model"
+
+#: src/universal-cp/details-treeview.c:396
+msgid "Serial Number"
+msgstr "Nomor Seri"
+
+#: src/universal-cp/details-treeview.c:398
+msgid "UPC"
+msgstr "UPC"
+
+#: src/universal-cp/details-treeview.c:400
+msgid "Presentation URL"
+msgstr "URL Presentasi"
+
+#: src/universal-cp/details-treeview.c:430
+#: src/universal-cp/event-treeview.c:408
+msgid "Value"
+msgstr "Nilai"
+
+#: src/universal-cp/device-treeview.c:68
+msgid "Software"
+msgstr "Perangkat Lunak"
+
+#: src/universal-cp/device-treeview.c:70
+msgid "Version"
+msgstr "Versi"
+
+#: src/universal-cp/device-treeview.c:72
+msgid "Author"
+msgstr "Pengarang"
+
+#: src/universal-cp/device-treeview.c:481
+msgid "State variables"
+msgstr "Variabel keadaan"
+
+#: src/universal-cp/device-treeview.c:522
+msgid "Information not available"
+msgstr "Informasi tidak tersedia"
+
+#: src/universal-cp/device-treeview.c:701
+msgid "UPnP Network"
+msgstr "Jaringan UPnP"
+
+#: src/universal-cp/device-treeview.c:714 src/universal-cp/event-treeview.c:405
+msgid "Device"
+msgstr "Perangkat"
+
+#: src/universal-cp/event-treeview.c:404
+msgid "Time"
+msgstr "Waktu"
+
+#: src/universal-cp/event-treeview.c:406
+msgid "Service"
+msgstr "Layanan"
+
+#: src/universal-cp/event-treeview.c:407
+msgid "State Variable"
+msgstr "Variabel Keadaan"
