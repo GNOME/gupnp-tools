@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: gupnp-tools master\n"
 "Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
 "product=GUPnP&keywords=I18N+L10N&component=gupnp-tools\n"
-"POT-Creation-Date: 2017-04-14 07:57+0000\n"
-"PO-Revision-Date: 2017-04-14 21:04+0000\n"
+"POT-Creation-Date: 2017-04-14 14:07+0000\n"
+"PO-Revision-Date: 2017-04-19 21:51+0700\n"
+"Last-Translator: Kukuh Syafaat <syafaatkukuh@gmail.com>\n"
 "Language-Team: Indonesian <gnome-l10n-id@googlegroups.com>\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Last-Translator: Andika Triwidada <andika@gmail.com>\n"
-"X-Generator: Poedit 2.0.1\n"
+"X-Generator: Poedit 1.8.11\n"
 
 #: data/didl-lite-dialog.ui.in:9
 msgid "GUPnP AV CP - Metadata View"
@@ -100,6 +100,9 @@ msgid ""
 "Clears the CP's idea of the state of the currently selected AV Renderer. "
 "Useful for dealing with AV Renderers that don't report state changes."
 msgstr ""
+"Menghapus gagasan CP tentang keadaan AV Perender yang saat ini dipilih. "
+"Berguna untuk berurusan dengan AV Perender yang tidak melaporkan perubahan "
+"keadaan."
 
 #: data/gupnp-av-cp.ui:492
 msgid "_Clear state"
@@ -119,6 +122,8 @@ msgid ""
 "An UPnP AV Control Point based on GUPnP framework.\n"
 "Inspired by Intel Tools for UPnP."
 msgstr ""
+"Titik Kendali UPnP AV berdasarkan kerangka kerja GUPnP.\n"
+"Terinspirasi oleh Intel Tools untuk UPnP."
 
 #: data/gupnp-av-cp.ui:696 data/gupnp-network-light.ui:11
 #: data/gupnp-universal-cp.ui:12
@@ -129,7 +134,9 @@ msgstr "Laman web GUPnP"
 #: data/gupnp-av-cp.ui:698 data/gupnp-network-light.ui:13
 #: data/gupnp-universal-cp.ui:14
 msgid "translator-credits"
-msgstr "Andika Triwidada <andika@gmail.com>, 2017"
+msgstr ""
+"Andika Triwidada <andika@gmail.com>, 2017.\n"
+"Kukuh Syafaat <syafaatkukuh@gmail.com>, 2017."
 
 #: data/gupnp-network-light.desktop.in.in:4
 msgid "UPnP Network Light"
@@ -145,6 +152,8 @@ msgid ""
 "A virtual network light bulb based on GUPnP framework.\n"
 "Inspired by Intel Tools for UPnP."
 msgstr ""
+"Sebuah bohlam cahaya jaringan virtual berdasarkan kerangka kerja GUPnP.\n"
+"Terinspirasi oleh Intel Tools untuk UPnP."
 
 #: data/gupnp-network-light.ui:38
 msgid "GUPnP Network Light"
@@ -181,6 +190,8 @@ msgid ""
 "A Generic Control Point based on GUPnP framework.\n"
 "Inspired by Intel Tools for UPnP."
 msgstr ""
+"Titik Kendali Generik berdasarkan kerangka kerja GUPnP.\n"
+"Terinspirasi oleh Intel Tools untuk UPnP."
 
 #: data/gupnp-universal-cp.ui:41
 msgid "Action Invocation"
@@ -188,7 +199,7 @@ msgstr "Invokasi Aksi"
 
 #: data/gupnp-universal-cp.ui:105
 msgid "_Invoke"
-msgstr ""
+msgstr "_Memohon"
 
 #: data/gupnp-universal-cp.ui:175
 msgid "device"
@@ -220,7 +231,7 @@ msgstr "Salin semua rincian"
 
 #: data/gupnp-universal-cp.ui:332
 msgid "Invoke"
-msgstr ""
+msgstr "Memohon"
 
 #: data/gupnp-universal-cp.ui:341
 msgid "Subscribe to events"
@@ -231,9 +242,8 @@ msgid "_Expand all devices"
 msgstr "_Ekspansi semua perangkat"
 
 #: data/gupnp-universal-cp.ui:365 data/gupnp-universal-cp.ui:476
-#, fuzzy
 msgid "_Collapse all devices"
-msgstr "Lipat semua perangkat"
+msgstr "_Lipat semua perangkat"
 
 #: data/gupnp-universal-cp.ui:377
 msgid "Copy event"
