@@ -38,8 +38,6 @@ typedef enum
         ICON_ACTION,
         ICON_VARIABLES,
         ICON_FILE,
-        ICON_MIN_VOLUME,
-        ICON_MAX_VOLUME,
         ICON_CONTAINER,
         ICON_AUDIO_ITEM,
         ICON_VIDEO_ITEM,

@@ -280,8 +280,6 @@ init_icons (void)
                 "system-run",                  /* ICON_ACTION     */
                 "folder",                      /* ICON_VARIABLES  */
                 "text-x-generic",              /* ICON_FILE       */
-                "audio-volume-muted",          /* ICON_MIN_VOLUME */
-                "audio-volume-high",           /* ICON_MAX_VOLUME */
                 "folder-remote",               /* ICON_CONTAINER  */
                 "audio-x-generic",             /* ICON_AUDIO_ITEM */
                 "video-x-generic",             /* ICON_VIDEO_ITEM */

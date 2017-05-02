@@ -58,8 +58,6 @@ static void
 setup_icons (GtkBuilder *object)
 {
         GdkPixbuf *icon_pixbuf;
-        GtkWidget *volume_min;
-        GtkWidget *volume_max;
 
         init_icons ();
 
@@ -71,18 +69,6 @@ setup_icons (GtkBuilder *object)
         gtk_about_dialog_set_logo (GTK_ABOUT_DIALOG (about_dialog),
                                    icon_pixbuf);
         g_object_unref (icon_pixbuf);
-
-        volume_min = GTK_WIDGET (gtk_builder_get_object (builder,
-                                                         "volume-min-image"));
-        g_assert (volume_min != NULL);
-        volume_max = GTK_WIDGET (gtk_builder_get_object (builder,
-                                                         "volume-max-image"));
-        g_assert (volume_max != NULL);
-
-        gtk_image_set_from_pixbuf (GTK_IMAGE (volume_min),
-                                   get_icon_by_id (ICON_MIN_VOLUME));
-        gtk_image_set_from_pixbuf (GTK_IMAGE (volume_max),
-                                   get_icon_by_id (ICON_MAX_VOLUME));
 }
 
 gboolean
