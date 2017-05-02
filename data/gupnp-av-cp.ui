@@ -218,7 +218,7 @@
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="valign">baseline</property>
-                            <property name="icon_name">media-playback-start</property>
+                            <property name="icon_name">media-playback-start-symbolic</property>
                           </object>
                           <packing>
                             <property name="left_attach">0</property>
@@ -268,7 +268,7 @@
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="valign">baseline</property>
-                            <property name="icon_name">media-playback-pause</property>
+                            <property name="icon_name">media-playback-pause-symbolic</property>
                           </object>
                           <packing>
                             <property name="left_attach">0</property>
@@ -316,7 +316,7 @@
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="valign">baseline</property>
-                            <property name="icon_name">media-playback-stop</property>
+                            <property name="icon_name">media-playback-stop-symbolic</property>
                           </object>
                           <packing>
                             <property name="left_attach">0</property>
@@ -365,7 +365,7 @@
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="valign">baseline</property>
-                            <property name="icon_name">media-skip-backward</property>
+                            <property name="icon_name">media-skip-backward-symbolic</property>
                           </object>
                           <packing>
                             <property name="left_attach">0</property>
@@ -403,7 +403,7 @@
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="valign">baseline</property>
-                            <property name="icon_name">media-skip-forward</property>
+                            <property name="icon_name">media-skip-forward-symbolic</property>
                           </object>
                           <packing>
                             <property name="left_attach">0</property>
@@ -433,13 +433,47 @@
                 </child>
                 <child>
                   <object class="GtkButton" id="rescan-button">
-                    <property name="label" translatable="yes">Rescan</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="can_default">True</property>
                     <property name="receives_default">False</property>
                     <property name="halign">center</property>
                     <property name="hexpand">True</property>
+                    <child>
+                      <object class="GtkGrid" id="grid12">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+                        <property name="hexpand">True</property>
+                        <property name="column_spacing">2</property>
+                        <child>
+                          <object class="GtkImage" id="image1">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="valign">baseline</property>
+                            <property name="icon_name">view-refresh-symbolic</property>
+                          </object>
+                          <packing>
+                            <property name="left_attach">0</property>
+                            <property name="top_attach">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkLabel" id="label1">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="valign">baseline</property>
+                            <property name="label" translatable="yes">_Rescan</property>
+                            <property name="use_underline">True</property>
+                          </object>
+                          <packing>
+                            <property name="left_attach">1</property>
+                            <property name="top_attach">0</property>
+                          </packing>
+                        </child>
+                      </object>
+                    </child>
                   </object>
                   <packing>
                     <property name="left_attach">5</property>
@@ -729,6 +763,23 @@ Vinicius Depizzol &lt;vdepizzol@gmail.com&gt;</property>
       <widget name="previous-button"/>
       <widget name="next-button"/>
       <widget name="rescan-button"/>
+    </widgets>
+  </object>
+  <object class="GtkSizeGroup" id="sizegroup1">
+    <property name="mode">vertical</property>
+    <widgets>
+      <widget name="label8"/>
+      <widget name="image16"/>
+      <widget name="label9"/>
+      <widget name="image17"/>
+      <widget name="label10"/>
+      <widget name="image18"/>
+      <widget name="label11"/>
+      <widget name="image19"/>
+      <widget name="image20"/>
+      <widget name="label12"/>
+      <widget name="label13"/>
+      <widget name="image21"/>
     </widgets>
   </object>
 </interface>
