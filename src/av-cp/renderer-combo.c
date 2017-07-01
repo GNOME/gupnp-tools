@@ -345,6 +345,9 @@ on_device_icon_available (GUPnPDeviceInfo *info,
         GtkTreeIter   iter;
         const char   *udn;
 
+        if (icon == NULL)
+                return;
+
         model = gtk_combo_box_get_model (GTK_COMBO_BOX (renderer_combo));
         g_assert (model != NULL);
 

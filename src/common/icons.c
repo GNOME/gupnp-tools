@@ -99,11 +99,11 @@ got_icon_url (SoupSession    *session,
               SoupMessage    *msg,
               GetIconURLData *data)
 {
-        if (SOUP_STATUS_IS_SUCCESSFUL (msg->status_code)) {
-                GdkPixbuf *pixbuf;
-                GError    *error;
+        GdkPixbuf *pixbuf = NULL;
 
-                error = NULL;
+        if (SOUP_STATUS_IS_SUCCESSFUL (msg->status_code)) {
+                GError *error = NULL;
+
                 pixbuf = get_icon_from_message (msg, data, &error);
 
                 if (error) {
@@ -111,16 +111,28 @@ got_icon_url (SoupSession    *session,
                                    gupnp_device_info_get_udn (data->info),
                                    error->message);
                         g_error_free (error);
-                } else if (pixbuf) {
-                        data->callback (data->info, pixbuf);
-                } else {
+                } else if (!pixbuf) {
                         g_warning ("Failed to create icon for '%s'",
                                    gupnp_device_info_get_udn (data->info));
                 }
         }
 
+        data->callback (data->info, pixbuf);
+
         pending_gets = g_list_remove (pending_gets, data);
         get_icon_url_data_free (data);
+}
+
+static gboolean
+on_icon_schedule_error (gpointer user_data)
+{
+        GetIconURLData *data = (GetIconURLData *) user_data;
+
+        data->callback (data->info, NULL);
+        g_object_unref (data->info);
+        g_slice_free (GetIconURLData, data);
+
+        return FALSE;
 }
 
 void
@@ -131,6 +143,9 @@ schedule_icon_update (GUPnPDeviceInfo            *info,
         char           *icon_url;
 
         data = g_slice_new0 (GetIconURLData);
+        data->info = g_object_ref (info);
+        data->callback = callback;
+
         icon_url = gupnp_device_info_get_icon_url
                         (info,
                          NULL,
@@ -144,8 +159,8 @@ schedule_icon_update (GUPnPDeviceInfo            *info,
                          &data->height);
         if (icon_url == NULL) {
                 g_free (data->mime_type);
-                g_slice_free (GetIconURLData, data);
 
+                g_idle_add (on_icon_schedule_error, data);
                 return;
         }
 
@@ -158,13 +173,10 @@ schedule_icon_update (GUPnPDeviceInfo            *info,
 
                 g_free (icon_url);
                 g_free (data->mime_type);
-                g_slice_free (GetIconURLData, data);
+                g_idle_add (on_icon_schedule_error, data);
 
                 return;
         }
-
-        data->info = g_object_ref (info);
-        data->callback = callback;
 
         pending_gets = g_list_prepend (pending_gets, data);
         soup_session_queue_message (download_session,

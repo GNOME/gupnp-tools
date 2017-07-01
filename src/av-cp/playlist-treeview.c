@@ -692,6 +692,9 @@ update_device_icon (GUPnPDeviceInfo *info)
         server = AV_CP_MEDIA_SERVER (info);
         g_object_get (G_OBJECT (server), "icon", &icon, NULL);
 
+        if (icon == NULL)
+                return;
+
         if (find_row (model,
                       NULL,
                       &iter,
