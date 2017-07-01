@@ -130,8 +130,7 @@ schedule_icon_update (GUPnPDeviceInfo            *info,
         GetIconURLData *data;
         char           *icon_url;
 
-        data = g_slice_new (GetIconURLData);
-
+        data = g_slice_new0 (GetIconURLData);
         icon_url = gupnp_device_info_get_icon_url
                         (info,
                          NULL,
@@ -143,8 +142,12 @@ schedule_icon_update (GUPnPDeviceInfo            *info,
                          NULL,
                          &data->width,
                          &data->height);
-        if (icon_url == NULL)
+        if (icon_url == NULL) {
+                g_free (data->mime_type);
+                g_slice_free (GetIconURLData, data);
+
                 return;
+        }
 
         data->message = soup_message_new (SOUP_METHOD_GET, icon_url);
 
