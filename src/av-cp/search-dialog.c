@@ -600,6 +600,11 @@ search_dialog_on_search_activate (SearchDialog *self, GtkEntry *entry)
 static void
 do_popup_menu (GtkMenu *menu, GtkWidget *widget, GdkEventButton *event)
 {
+#if GTK_CHECK_VERSION(3,22,0)
+    gtk_menu_popup_at_pointer (menu,
+                               event != NULL ? (GdkEvent *) event
+                                             : gtk_get_current_event ());
+#else
         int button = 0;
         int event_time;
         if (event) {
@@ -610,6 +615,7 @@ do_popup_menu (GtkMenu *menu, GtkWidget *widget, GdkEventButton *event)
         }
 
         gtk_menu_popup (menu, NULL, NULL, NULL, NULL, button, event_time);
+#endif
 }
 
 G_MODULE_EXPORT
