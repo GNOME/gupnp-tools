@@ -1,15 +1,15 @@
 # Czech translation for gupnp-tools.
 # Copyright (C) 2013 gupnp-tools's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gupnp-tools package.
-# Marek Černocký <marek@manet.cz>, 2013, 2014, 2016.
+# Marek Černocký <marek@manet.cz>, 2013, 2014, 2016, 2017.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gupnp-tools master\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
 "product=GUPnP&keywords=I18N+L10N&component=gupnp-tools\n"
-"POT-Creation-Date: 2016-12-17 15:07+0000\n"
-"PO-Revision-Date: 2016-12-20 11:03+0100\n"
+"POT-Creation-Date: 2017-07-01 12:25+0000\n"
+"PO-Revision-Date: 2017-07-07 10:35+0200\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: čeština <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -32,71 +32,71 @@ msgstr "Řídící bod UPnP AV"
 msgid "@PKGDATADIR@/pixmaps/av-cp.png"
 msgstr "@PKGDATADIR@/pixmaps/av-cp.png"
 
-#: data/gupnp-av-cp.ui:23 data/gupnp-av-cp.ui:209
+#: data/gupnp-av-cp.ui:22 data/gupnp-av-cp.ui:208
 msgid "_Play"
 msgstr "_Přehrát"
 
-#: data/gupnp-av-cp.ui:32
+#: data/gupnp-av-cp.ui:31
 msgid "Fetch the DIDL-Lite XML for this media object"
 msgstr "Získat DIDL-Lite XML pro tento multimediální objekt"
 
-#: data/gupnp-av-cp.ui:33
+#: data/gupnp-av-cp.ui:32
 msgid "Fetch _DIDL-Lite"
 msgstr "Získat _DIDL-Lite"
 
-#: data/gupnp-av-cp.ui:42
+#: data/gupnp-av-cp.ui:41
 msgid "Search…"
 msgstr "Hledat…"
 
-#: data/gupnp-av-cp.ui:90
+#: data/gupnp-av-cp.ui:89
 msgid "GUPnP AV Control Point"
 msgstr "Řídící bod GUPnP AV"
 
-#: data/gupnp-av-cp.ui:105 data/gupnp-universal-cp.ui:423
+#: data/gupnp-av-cp.ui:104 data/gupnp-universal-cp.ui:423
 msgid "_File"
 msgstr "_Soubor"
 
-#: data/gupnp-av-cp.ui:114
+#: data/gupnp-av-cp.ui:113
 msgid "Close"
 msgstr "Zavřít"
 
-#: data/gupnp-av-cp.ui:127
+#: data/gupnp-av-cp.ui:126
 msgid "_Tools"
 msgstr "Nás_troje"
 
-#: data/gupnp-av-cp.ui:137
+#: data/gupnp-av-cp.ui:136
 msgid "_Lenient Mode"
 msgstr "_Shovívavý režim"
 
-#: data/gupnp-av-cp.ui:149 data/gupnp-universal-cp.ui:505
+#: data/gupnp-av-cp.ui:148 data/gupnp-universal-cp.ui:505
 msgid "_Help"
 msgstr "_Nápověda"
 
-#: data/gupnp-av-cp.ui:158 data/gupnp-universal-cp.ui:514
+#: data/gupnp-av-cp.ui:157 data/gupnp-universal-cp.ui:514
 msgid "About"
 msgstr "O aplikaci"
 
-#: data/gupnp-av-cp.ui:258
+#: data/gupnp-av-cp.ui:257
 msgid "P_ause"
 msgstr "Poz_astavit"
 
-#: data/gupnp-av-cp.ui:307
+#: data/gupnp-av-cp.ui:306
 msgid "_Stop"
 msgstr "Za_stavit"
 
-#: data/gupnp-av-cp.ui:356
+#: data/gupnp-av-cp.ui:355
 msgid "Pre_vious"
 msgstr "Př_edchozí"
 
-#: data/gupnp-av-cp.ui:419
+#: data/gupnp-av-cp.ui:418
 msgid "_Next"
 msgstr "_Následující"
 
-#: data/gupnp-av-cp.ui:437
-msgid "Rescan"
-msgstr "Prohledat"
+#: data/gupnp-av-cp.ui:467
+msgid "_Rescan"
+msgstr "Znovu p_rohledat"
 
-#: data/gupnp-av-cp.ui:481
+#: data/gupnp-av-cp.ui:514
 msgid ""
 "Clears the CP's idea of the state of the currently selected AV Renderer. "
 "Useful for dealing with AV Renderers that don't report state changes."
@@ -105,20 +105,20 @@ msgstr ""
 "vykreslování AV. To je užitečné pro práci s vykreslovacími zařízeními AV, "
 "které neoznamují změny svého stavu."
 
-#: data/gupnp-av-cp.ui:492
+#: data/gupnp-av-cp.ui:525
 msgid "_Clear state"
 msgstr "_Vymazat stav"
 
-#: data/gupnp-av-cp.ui:554
+#: data/gupnp-av-cp.ui:587
 msgid "_Renderer: "
 msgstr "Vyk_reslovací zařízení: "
 
-#: data/gupnp-av-cp.ui:692 data/gupnp-network-light.ui:7
+#: data/gupnp-av-cp.ui:725 data/gupnp-network-light.ui:7
 #: data/gupnp-universal-cp.ui:8
 msgid "Copyright (C) 2007 Zeeshan Ali (Khattak)"
 msgstr "Copyright © 2007 Zeeshan Ali (Khattak)"
 
-#: data/gupnp-av-cp.ui:693
+#: data/gupnp-av-cp.ui:726
 msgid ""
 "An UPnP AV Control Point based on GUPnP framework.\n"
 "Inspired by Intel Tools for UPnP."
@@ -126,13 +126,13 @@ msgstr ""
 "Řídící bod UPnP AV založený na knihovně GUPnP.\n"
 "Inspirováno nástroji pro UPnP od firmy Intel."
 
-#: data/gupnp-av-cp.ui:696 data/gupnp-network-light.ui:11
+#: data/gupnp-av-cp.ui:729 data/gupnp-network-light.ui:11
 #: data/gupnp-universal-cp.ui:12
 msgid "GUPnP homepage"
 msgstr "Domovská stránka GUPnP"
 
 #. TRANSLATORS: Replace this string with your names, one name per line.
-#: data/gupnp-av-cp.ui:698 data/gupnp-network-light.ui:13
+#: data/gupnp-av-cp.ui:731 data/gupnp-network-light.ui:13
 #: data/gupnp-universal-cp.ui:14
 msgid "translator-credits"
 msgstr "Marek Černocký, <marek@manet.cz>"
@@ -336,7 +336,7 @@ msgstr "Vyhledává se v %s na %s"
 msgid "Search criteria invalid: %s"
 msgstr "Kritérium hledání není platné: %s"
 
-#: src/av-cp/search-dialog.c:683
+#: src/av-cp/search-dialog.c:689
 #, c-format
 msgid "Error fetching detailed information: %s"
 msgstr "Chyba při získávání podrobných informací: %s"
