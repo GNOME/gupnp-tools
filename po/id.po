@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: gupnp-tools master\n"
 "Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
 "product=GUPnP&keywords=I18N+L10N&component=gupnp-tools\n"
-"POT-Creation-Date: 2017-04-14 14:07+0000\n"
-"PO-Revision-Date: 2017-04-19 21:51+0700\n"
+"POT-Creation-Date: 2017-07-01 12:25+0000\n"
+"PO-Revision-Date: 2017-07-11 10:04+0700\n"
 "Last-Translator: Kukuh Syafaat <syafaatkukuh@gmail.com>\n"
 "Language-Team: Indonesian <gnome-l10n-id@googlegroups.com>\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.11\n"
+"X-Generator: Poedit 2.0.2\n"
 
 #: data/didl-lite-dialog.ui.in:9
 msgid "GUPnP AV CP - Metadata View"
@@ -31,71 +31,71 @@ msgstr "Titik Kendali AV UPnP"
 msgid "@PKGDATADIR@/pixmaps/av-cp.png"
 msgstr "@PKGDATADIR@/pixmaps/av-cp.png"
 
-#: data/gupnp-av-cp.ui:23 data/gupnp-av-cp.ui:209
+#: data/gupnp-av-cp.ui:22 data/gupnp-av-cp.ui:208
 msgid "_Play"
 msgstr "_Mainkan"
 
-#: data/gupnp-av-cp.ui:32
+#: data/gupnp-av-cp.ui:31
 msgid "Fetch the DIDL-Lite XML for this media object"
 msgstr "Ambil XML DIDL-Lite bagi objek media ini"
 
-#: data/gupnp-av-cp.ui:33
+#: data/gupnp-av-cp.ui:32
 msgid "Fetch _DIDL-Lite"
 msgstr "Ambil _DIDL-Lite"
 
-#: data/gupnp-av-cp.ui:42
+#: data/gupnp-av-cp.ui:41
 msgid "Search…"
 msgstr "Cari…"
 
-#: data/gupnp-av-cp.ui:90
+#: data/gupnp-av-cp.ui:89
 msgid "GUPnP AV Control Point"
 msgstr "Titik Kendali AV GUPnP"
 
-#: data/gupnp-av-cp.ui:105 data/gupnp-universal-cp.ui:423
+#: data/gupnp-av-cp.ui:104 data/gupnp-universal-cp.ui:423
 msgid "_File"
 msgstr "_Berkas"
 
-#: data/gupnp-av-cp.ui:114
+#: data/gupnp-av-cp.ui:113
 msgid "Close"
 msgstr "Tutup"
 
-#: data/gupnp-av-cp.ui:127
+#: data/gupnp-av-cp.ui:126
 msgid "_Tools"
 msgstr "_Perkakas"
 
-#: data/gupnp-av-cp.ui:137
+#: data/gupnp-av-cp.ui:136
 msgid "_Lenient Mode"
 msgstr "Mode _Lunak"
 
-#: data/gupnp-av-cp.ui:149 data/gupnp-universal-cp.ui:505
+#: data/gupnp-av-cp.ui:148 data/gupnp-universal-cp.ui:505
 msgid "_Help"
 msgstr "_Bantuan"
 
-#: data/gupnp-av-cp.ui:158 data/gupnp-universal-cp.ui:514
+#: data/gupnp-av-cp.ui:157 data/gupnp-universal-cp.ui:514
 msgid "About"
 msgstr "Tentang"
 
-#: data/gupnp-av-cp.ui:258
+#: data/gupnp-av-cp.ui:257
 msgid "P_ause"
 msgstr "Jed_a"
 
-#: data/gupnp-av-cp.ui:307
+#: data/gupnp-av-cp.ui:306
 msgid "_Stop"
 msgstr "Ber_henti"
 
-#: data/gupnp-av-cp.ui:356
+#: data/gupnp-av-cp.ui:355
 msgid "Pre_vious"
 msgstr "Se_belumnya"
 
-#: data/gupnp-av-cp.ui:419
+#: data/gupnp-av-cp.ui:418
 msgid "_Next"
 msgstr "Sela_njutnya"
 
-#: data/gupnp-av-cp.ui:437
-msgid "Rescan"
-msgstr "Pindai Ulang"
+#: data/gupnp-av-cp.ui:467
+msgid "_Rescan"
+msgstr "_Pindai Ulang"
 
-#: data/gupnp-av-cp.ui:481
+#: data/gupnp-av-cp.ui:514
 msgid ""
 "Clears the CP's idea of the state of the currently selected AV Renderer. "
 "Useful for dealing with AV Renderers that don't report state changes."
@@ -104,20 +104,20 @@ msgstr ""
 "Berguna untuk berurusan dengan AV Perender yang tidak melaporkan perubahan "
 "keadaan."
 
-#: data/gupnp-av-cp.ui:492
+#: data/gupnp-av-cp.ui:525
 msgid "_Clear state"
 msgstr "_Bersihkan Keadaan"
 
-#: data/gupnp-av-cp.ui:554
+#: data/gupnp-av-cp.ui:587
 msgid "_Renderer: "
 msgstr "Pe_render: "
 
-#: data/gupnp-av-cp.ui:692 data/gupnp-network-light.ui:7
+#: data/gupnp-av-cp.ui:725 data/gupnp-network-light.ui:7
 #: data/gupnp-universal-cp.ui:8
 msgid "Copyright (C) 2007 Zeeshan Ali (Khattak)"
 msgstr "Hak Cipta (C) 2007 Zeeshan Ali (Khattak)"
 
-#: data/gupnp-av-cp.ui:693
+#: data/gupnp-av-cp.ui:726
 msgid ""
 "An UPnP AV Control Point based on GUPnP framework.\n"
 "Inspired by Intel Tools for UPnP."
@@ -125,13 +125,13 @@ msgstr ""
 "Titik Kendali UPnP AV berdasarkan kerangka kerja GUPnP.\n"
 "Terinspirasi oleh Intel Tools untuk UPnP."
 
-#: data/gupnp-av-cp.ui:696 data/gupnp-network-light.ui:11
+#: data/gupnp-av-cp.ui:729 data/gupnp-network-light.ui:11
 #: data/gupnp-universal-cp.ui:12
 msgid "GUPnP homepage"
 msgstr "Laman web GUPnP"
 
 #. TRANSLATORS: Replace this string with your names, one name per line.
-#: data/gupnp-av-cp.ui:698 data/gupnp-network-light.ui:13
+#: data/gupnp-av-cp.ui:731 data/gupnp-network-light.ui:13
 #: data/gupnp-universal-cp.ui:14
 msgid "translator-credits"
 msgstr ""
@@ -337,7 +337,7 @@ msgstr "Mencari dalam %s pada %s"
 msgid "Search criteria invalid: %s"
 msgstr "Kriteria pencarian tidak valid: %s"
 
-#: src/av-cp/search-dialog.c:683
+#: src/av-cp/search-dialog.c:689
 #, c-format
 msgid "Error fetching detailed information: %s"
 msgstr "Kesalahan saat mengambil informasi terrinci: %s"
