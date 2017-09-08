@@ -400,7 +400,7 @@ on_device_icon_available (GUPnPDeviceInfo *info,
                                     0, icon,
                                     -1);
 
-        g_object_unref (icon);
+        g_clear_object (&icon);
 }
 
 static void
