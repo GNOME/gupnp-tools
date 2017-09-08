@@ -218,6 +218,7 @@ init_ui (gint   *argc,
         change_all = !exclusive;
 
         gtk_init (argc, argv);
+        init_icons ();
 
         builder = gtk_builder_new ();
         g_assert (builder != NULL);
@@ -289,5 +290,6 @@ deinit_ui (void)
         gtk_widget_destroy (about_dialog);
         g_object_unref (on_pixbuf);
         g_object_unref (off_pixbuf);
+        deinit_icons ();
 }
 

@@ -165,6 +165,8 @@ init_ui (gint   *argc,
                                      window_height);
 
 
+        init_icons ();
+
         icon_pixbuf = load_pixbuf_file (ICON_FILE);
         if (icon_pixbuf == NULL) {
                 return FALSE;
@@ -181,7 +183,6 @@ init_ui (gint   *argc,
 
         gtk_builder_connect_signals (builder, NULL);
 
-        init_icons ();
         setup_treeviews ();
         init_action_dialog (builder);
 

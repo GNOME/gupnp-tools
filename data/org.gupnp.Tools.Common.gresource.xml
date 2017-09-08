@@ -2,11 +2,16 @@
 <gresources>
     <gresource prefix='/org/gupnp/Tools/Common'>
         <file>pixmaps/av-cp.png</file>
+        <file>pixmaps/media-renderer.png</file>
+        <file>pixmaps/network-light-22x22.png</file>
+        <file>pixmaps/network-light-256x256.png</file>
+        <file>pixmaps/network-light-off.png</file>
+        <file>pixmaps/network-light-on.png</file>
+        <file>pixmaps/universal-cp.png</file>
+        <file>pixmaps/upnp-action-arg-in.png</file>
+        <file>pixmaps/upnp-action-arg-out.png</file>
         <file>pixmaps/upnp-device.png</file>
         <file>pixmaps/upnp-service.png</file>
         <file>pixmaps/upnp-state-variable.png</file>
-        <file>pixmaps/upnp-action-arg-in.png</file>
-        <file>pixmaps/upnp-action-arg-out.png</file>
-        <file>pixmaps/media-renderer.png</file>
-   </gresource>
+    </gresource>
 </gresources>
