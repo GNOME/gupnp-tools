@@ -1,3 +1,48 @@
+0.8.14
+======
+
+All:
+ - Lots of translation updates
+
+AV Controlpoint:
+ - Add possibility to run searches on the server
+ - Fix issue with browsing servers that do not have an icon
+
+Universal Controlpoint:
+ - Fix issue with sub-devices that don't have an icon
+
+All contributors to this release:
+ - Jens Georg <mail@jensge.org>
+ - Piotr Drąg <piotrdrag@gmail.com>
+ - Jens Georg <jgeorg@de.adit-jv.com>
+ - Мирослав Николић <miroslavnikolic@rocketmail.com>
+ - Kukuh Syafaat <syafaatkukuh@gmail.com>
+ - Balázs Úr <urbalazs@gmail.com>
+ - Rafael Fontenelle <rafaelff@gnome.org>
+ - Mario Blättermann <mario.blaettermann@gmail.com>
+ - Marek Černocký <marek@manet.cz>
+ - Marek Cernocky <marek_cernocky@conel.cz>
+ - Josef Andersson <josef.andersson@gmail.com>
+ - Fabio Tomat <f.t.public@gmail.com>
+ - Dušan Kazik <prescott66@gmail.com>
+ - Daniel Mustieles <daniel.mustieles@gmail.com>
+ - Andika Triwidada <atriwidada@gnome.org>
+ - Anders Jonsson <anders.jonsson@norsjovallen.se>
+
+Added/updated translations
+ - cs, courtesy of Marek Černocký
+ - de, courtesy of Mario Blättermann
+ - es, courtesy of Daniel Mustieles
+ - fur, courtesy of Fabio Tomat
+ - hu, courtesy of Balázs Úr
+ - id, courtesy of Kukuh Syafaat
+ - pl, courtesy of Piotr Drąg
+ - pt_BR, courtesy of Rafael Fontenelle
+ - sk, courtesy of Dušan Kazik
+ - sr, courtesy of Мирослав Николић
+ - sr@latin, courtesy of Miroslav Nikolić
+ - sv, courtesy of Anders Jonsson
+
 0.8.13
 ======
 
