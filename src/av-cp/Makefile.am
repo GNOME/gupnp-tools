@@ -19,17 +19,19 @@ RESOURCEFILE = $(top_srcdir)/data/org.gupnp.Tools.AV-CP.gresource.xml
 
 resource_depends = \
 	$(shell $(GLIB_COMPILE_RESOURCES) --generate-dependencies \
-		--sourcedir=$(top_srcdir)/data \
+		--sourcedir=$(top_srcdir)/data --sourcedir=$(abs_top_builddir)/data \
 		$(RESOURCEFILE))
 
 
+BUILT_SOURCES = resource.c
+CLEANFILES = resource.c
+nodist_gupnp_av_cp_SOURCES = resource.c
 
 resource.c: $(RESOURCEFILE) $(resource_depends)
-	$(AM_V_GEN) $(GLIB_COMPILE_RESOURCES) --target=$@ --sourcedir=$(top_srcdir)/data --generate $(RESOURCEFILE)
+	$(AM_V_GEN) $(GLIB_COMPILE_RESOURCES) --target=$@ --sourcedir=$(abs_top_srcdir)/data --sourcedir=$(abs_top_builddir)/data --generate $(RESOURCEFILE)
 
 
 gupnp_av_cp_SOURCES = main.c \
-		      resource.c \
 		      gui.c \
 		      playlist-treeview.c \
 		      renderer-combo.c \
@@ -60,8 +62,8 @@ if OS_WIN32
 av-cp.res: av-cp.rc
 	$(WINDRES) -i av-cp.rc --input-format=rc -o av-cp.res -O coff
 gupnp_av_cp_LDADD += av-cp.res
-BUILT_SOURCES=av-cp.res
-CLEAN_FILES=av-cp.res
+BUILT_SOURCES += av-cp.res
+CLEANFILES += av-cp.res
 gupnp_av_cp_LDFLAGS += -Wl,-subsystem,windows
 endif
 

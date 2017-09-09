@@ -2,15 +2,16 @@ SUBDIRS = pixmaps xml
 
 shareddir = $(datadir)/gupnp-tools
 
-dist_shared_DATA = gupnp-universal-cp.ui \
-		   gupnp-network-light.ui
+dist_shared_DATA = \
+	gupnp-universal-cp.ui \
+	gupnp-network-light.ui
 
 desktopdir = ${datadir}/applications
-desktop_in_files = gupnp-universal-cp.desktop.in \
-		   gupnp-network-light.desktop.in
+desktop_in_files = \
+	gupnp-universal-cp.desktop.in \
+	gupnp-network-light.desktop.in
 
 if BUILD_AV
-dist_shared_DATA += gupnp-av-cp.ui search-dialog.ui didl-lite-dialog.ui
 desktop_in_files += gupnp-av-cp.desktop.in
 endif
 
@@ -25,7 +26,16 @@ desktop_in_in_files = $(desktop_in_files:.desktop.in=.desktop.in.in)
 	$(AM_V_GEN) $(SED) -e 's|@VERSION[@]|$(VERSION)|g' \
 					-e 's|@PKGDATADIR[@]|$(PKGDATADIR)|g' $< > $@
 
-EXTRA_DIST = $(desktop_in_in_files) didl-lite-dialog.ui.in $(desktop_in_files)
+EXTRA_DIST = \
+	$(desktop_in_in_files) \
+	didl-lite-dialog.ui.in \
+	gupnp-av-cp.ui \
+	search-dialog-context.ui \
+	search-dialog.ui \
+	didl-lite-dialog.ui.in \
+	$(desktop_in_files) \
+	org.gupnp.Tools.AV-CP.gresource.xml \
+	org.gupnp.Tools.Common.gresource.xml
 
 CLEANFILES = $(desktop_DATA)
 
