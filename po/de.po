@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: gupnp-tools master\n"
 "Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
 "product=GUPnP&keywords=I18N+L10N&component=gupnp-tools\n"
-"POT-Creation-Date: 2017-02-26 08:14+0000\n"
-"PO-Revision-Date: 2017-03-16 11:25+0100\n"
+"POT-Creation-Date: 2017-07-01 12:25+0000\n"
+"PO-Revision-Date: 2017-10-02 10:42+0200\n"
 "Last-Translator: Mario Blättermann <mario.blaettermann@gmail.com>\n"
 "Language-Team: Deutsch <gnome-de@gnome.org>\n"
 "Language: de\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.12\n"
+"X-Generator: Poedit 2.0.3\n"
 
 #: data/didl-lite-dialog.ui.in:9
 msgid "GUPnP AV CP - Metadata View"
@@ -33,71 +33,71 @@ msgstr "UPnP AV-Kontrollpunkt"
 msgid "@PKGDATADIR@/pixmaps/av-cp.png"
 msgstr "@PKGDATADIR@/pixmaps/av-cp.png"
 
-#: data/gupnp-av-cp.ui:23 data/gupnp-av-cp.ui:209
+#: data/gupnp-av-cp.ui:22 data/gupnp-av-cp.ui:208
 msgid "_Play"
 msgstr "_Wiedergabe"
 
-#: data/gupnp-av-cp.ui:32
+#: data/gupnp-av-cp.ui:31
 msgid "Fetch the DIDL-Lite XML for this media object"
 msgstr "DIDL-Lite XML für dieses Medienobjekt"
 
-#: data/gupnp-av-cp.ui:33
+#: data/gupnp-av-cp.ui:32
 msgid "Fetch _DIDL-Lite"
 msgstr "_DIDL-Lite holen"
 
-#: data/gupnp-av-cp.ui:42
+#: data/gupnp-av-cp.ui:41
 msgid "Search…"
 msgstr "Suchen …"
 
-#: data/gupnp-av-cp.ui:90
+#: data/gupnp-av-cp.ui:89
 msgid "GUPnP AV Control Point"
 msgstr "GUPnP AV-Kontrollpunkt"
 
-#: data/gupnp-av-cp.ui:105 data/gupnp-universal-cp.ui:423
+#: data/gupnp-av-cp.ui:104 data/gupnp-universal-cp.ui:423
 msgid "_File"
 msgstr "_Datei"
 
-#: data/gupnp-av-cp.ui:114
+#: data/gupnp-av-cp.ui:113
 msgid "Close"
 msgstr "Schließen"
 
-#: data/gupnp-av-cp.ui:127
+#: data/gupnp-av-cp.ui:126
 msgid "_Tools"
 msgstr "_Werkzeuge"
 
-#: data/gupnp-av-cp.ui:137
+#: data/gupnp-av-cp.ui:136
 msgid "_Lenient Mode"
 msgstr "To_leranter Modus"
 
-#: data/gupnp-av-cp.ui:149 data/gupnp-universal-cp.ui:505
+#: data/gupnp-av-cp.ui:148 data/gupnp-universal-cp.ui:505
 msgid "_Help"
 msgstr "_Hilfe"
 
-#: data/gupnp-av-cp.ui:158 data/gupnp-universal-cp.ui:514
+#: data/gupnp-av-cp.ui:157 data/gupnp-universal-cp.ui:514
 msgid "About"
 msgstr "Info"
 
-#: data/gupnp-av-cp.ui:258
+#: data/gupnp-av-cp.ui:257
 msgid "P_ause"
 msgstr "P_ause"
 
-#: data/gupnp-av-cp.ui:307
+#: data/gupnp-av-cp.ui:306
 msgid "_Stop"
 msgstr "_Stopp"
 
-#: data/gupnp-av-cp.ui:356
+#: data/gupnp-av-cp.ui:355
 msgid "Pre_vious"
 msgstr "_Vorheriger"
 
-#: data/gupnp-av-cp.ui:419
+#: data/gupnp-av-cp.ui:418
 msgid "_Next"
 msgstr "_Nächster"
 
-#: data/gupnp-av-cp.ui:437
-msgid "Rescan"
-msgstr "Erneut einlesen"
+#: data/gupnp-av-cp.ui:467
+msgid "_Rescan"
+msgstr "E_rneut einlesen"
 
-#: data/gupnp-av-cp.ui:481
+#: data/gupnp-av-cp.ui:514
 msgid ""
 "Clears the CP's idea of the state of the currently selected AV Renderer. "
 "Useful for dealing with AV Renderers that don't report state changes."
@@ -105,34 +105,34 @@ msgstr ""
 "Verwirft die Einschätzung des Kontrollpunktes über den aktuell gewählten AV-"
 "Renderer. Sinnvoll für AV-Renderer, die keine Statusänderungen berichten."
 
-#: data/gupnp-av-cp.ui:492
+#: data/gupnp-av-cp.ui:525
 msgid "_Clear state"
 msgstr "Zustand _löschen"
 
-#: data/gupnp-av-cp.ui:554
+#: data/gupnp-av-cp.ui:587
 msgid "_Renderer: "
 msgstr "_Darsteller: "
 
-#: data/gupnp-av-cp.ui:692 data/gupnp-network-light.ui:7
+#: data/gupnp-av-cp.ui:725 data/gupnp-network-light.ui:7
 #: data/gupnp-universal-cp.ui:8
 msgid "Copyright (C) 2007 Zeeshan Ali (Khattak)"
 msgstr "Copyright (C) 2007 Zeeshan Ali (Khattak)"
 
-#: data/gupnp-av-cp.ui:693
+#: data/gupnp-av-cp.ui:726
 msgid ""
 "An UPnP AV Control Point based on GUPnP framework.\n"
 "Inspired by Intel Tools for UPnP."
 msgstr ""
-"Ein UPnP AV-Kontrollpunkt basierend auf dem GUPnP Framework.\n"
+"Ein UPnP AV-Kontrollpunkt basierend auf dem GUPnP-Framework.\n"
 "Inspiriert durch die Intel-Tools für UPnP."
 
-#: data/gupnp-av-cp.ui:696 data/gupnp-network-light.ui:11
+#: data/gupnp-av-cp.ui:729 data/gupnp-network-light.ui:11
 #: data/gupnp-universal-cp.ui:12
 msgid "GUPnP homepage"
 msgstr "GUPnP-Homepage"
 
 #. TRANSLATORS: Replace this string with your names, one name per line.
-#: data/gupnp-av-cp.ui:698 data/gupnp-network-light.ui:13
+#: data/gupnp-av-cp.ui:731 data/gupnp-network-light.ui:13
 #: data/gupnp-universal-cp.ui:14
 msgid "translator-credits"
 msgstr ""
@@ -153,7 +153,7 @@ msgid ""
 "A virtual network light bulb based on GUPnP framework.\n"
 "Inspired by Intel Tools for UPnP."
 msgstr ""
-"Ein virtuelle Netzwerk-Glühbirne basierend auf dem GUPnP-Framework.\n"
+"Eine virtuelle Netzwerk-Glühbirne basierend auf dem GUPnP-Framework.\n"
 "Inspiriert durch die Intel-Tools für UPnP."
 
 #: data/gupnp-network-light.ui:38
@@ -339,7 +339,7 @@ msgstr "Suchen in »%s« auf »%s«"
 msgid "Search criteria invalid: %s"
 msgstr "Ungültige Suchkriterien angegeben: %s"
 
-#: src/av-cp/search-dialog.c:683
+#: src/av-cp/search-dialog.c:689
 #, c-format
 msgid "Error fetching detailed information: %s"
 msgstr "Fehler beim Holen detaillierter Informationen: %s"
@@ -545,4 +545,3 @@ msgstr "Dienste"
 #: src/universal-cp/event-treeview.c:407
 msgid "State Variable"
 msgstr "Zustandsvariable"
-
