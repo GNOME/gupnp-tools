@@ -6,18 +6,18 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gupnp-tools master\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
 "product=GUPnP&keywords=I18N+L10N&component=gupnp-tools\n"
-"POT-Creation-Date: 2016-12-17 15:07+0000\n"
-"PO-Revision-Date: 2016-12-28 15:12-0200\n"
-"Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
+"POT-Creation-Date: 2017-07-01 12:25+0000\n"
+"PO-Revision-Date: 2017-10-11 16:46-0300\n"
+"Last-Translator: Isaac Ferreira Filho <isaacmob@riseup.net>\n"
 "Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Virtaal 1.0.0-beta1\n"
+"X-Generator: Poedit 2.0.4\n"
 "X-Project-Style: gnome\n"
 
 #: data/didl-lite-dialog.ui.in:9
@@ -34,72 +34,73 @@ msgstr "Ponto de controle áudio/vídeo (AV) UPnP"
 msgid "@PKGDATADIR@/pixmaps/av-cp.png"
 msgstr "@PKGDATADIR@/pixmaps/av-cp.png"
 
-#: data/gupnp-av-cp.ui:23 data/gupnp-av-cp.ui:209
+#: data/gupnp-av-cp.ui:22 data/gupnp-av-cp.ui:208
 msgid "_Play"
 msgstr "_Reproduzir"
 
-#: data/gupnp-av-cp.ui:32
+#: data/gupnp-av-cp.ui:31
 msgid "Fetch the DIDL-Lite XML for this media object"
 msgstr "Traz o XML DIDL-Lite para este objeto de mídia"
 
-#: data/gupnp-av-cp.ui:33
+#: data/gupnp-av-cp.ui:32
 msgid "Fetch _DIDL-Lite"
 msgstr "Trazer _DIDL-Lite"
 
-#: data/gupnp-av-cp.ui:42
+#: data/gupnp-av-cp.ui:41
 msgid "Search…"
 msgstr "Pesquisar…"
 
 # GUPnP-AV is a collection of helpers for building AV (audio/video) applications using GUPnP.
-#: data/gupnp-av-cp.ui:90
+#: data/gupnp-av-cp.ui:89
 msgid "GUPnP AV Control Point"
 msgstr "Ponto de controle áudio/vídeo (AV) UPnP"
 
-#: data/gupnp-av-cp.ui:105 data/gupnp-universal-cp.ui:423
+#: data/gupnp-av-cp.ui:104 data/gupnp-universal-cp.ui:423
 msgid "_File"
 msgstr "_Arquivo"
 
-#: data/gupnp-av-cp.ui:114
+#: data/gupnp-av-cp.ui:113
 msgid "Close"
 msgstr "Fechar"
 
-#: data/gupnp-av-cp.ui:127
+#: data/gupnp-av-cp.ui:126
 msgid "_Tools"
 msgstr "_Ferramentas"
 
-#: data/gupnp-av-cp.ui:137
+#: data/gupnp-av-cp.ui:136
 msgid "_Lenient Mode"
 msgstr "Modo _condescendente"
 
-#: data/gupnp-av-cp.ui:149 data/gupnp-universal-cp.ui:505
+#: data/gupnp-av-cp.ui:148 data/gupnp-universal-cp.ui:505
 msgid "_Help"
 msgstr "A_juda"
 
-#: data/gupnp-av-cp.ui:158 data/gupnp-universal-cp.ui:514
+#: data/gupnp-av-cp.ui:157 data/gupnp-universal-cp.ui:514
 msgid "About"
 msgstr "Sobre"
 
-#: data/gupnp-av-cp.ui:258
+#: data/gupnp-av-cp.ui:257
 msgid "P_ause"
 msgstr "_Pausar"
 
-#: data/gupnp-av-cp.ui:307
+#: data/gupnp-av-cp.ui:306
 msgid "_Stop"
 msgstr "P_arar"
 
-#: data/gupnp-av-cp.ui:356
+#: data/gupnp-av-cp.ui:355
 msgid "Pre_vious"
 msgstr "A_nterior"
 
-#: data/gupnp-av-cp.ui:419
+#: data/gupnp-av-cp.ui:418
 msgid "_Next"
 msgstr "P_róximo"
 
-#: data/gupnp-av-cp.ui:437
-msgid "Rescan"
-msgstr "Buscar novamente"
+# Coloquei o "_o" porque as letras anteriores já estavam sendo usadas.
+#: data/gupnp-av-cp.ui:467
+msgid "_Rescan"
+msgstr "Verificar n_ovamente"
 
-#: data/gupnp-av-cp.ui:481
+#: data/gupnp-av-cp.ui:514
 msgid ""
 "Clears the CP's idea of the state of the currently selected AV Renderer. "
 "Useful for dealing with AV Renderers that don't report state changes."
@@ -108,20 +109,20 @@ msgstr ""
 "áudio/vídeo atualmente selecionado. Útil para lidar com renderizadores AV "
 "que não informam mudanças de estado."
 
-#: data/gupnp-av-cp.ui:492
+#: data/gupnp-av-cp.ui:525
 msgid "_Clear state"
 msgstr "_Limpar estado"
 
-#: data/gupnp-av-cp.ui:554
+#: data/gupnp-av-cp.ui:587
 msgid "_Renderer: "
 msgstr "R_enderizador: "
 
-#: data/gupnp-av-cp.ui:692 data/gupnp-network-light.ui:7
+#: data/gupnp-av-cp.ui:725 data/gupnp-network-light.ui:7
 #: data/gupnp-universal-cp.ui:8
 msgid "Copyright (C) 2007 Zeeshan Ali (Khattak)"
 msgstr "Copyright (C) 2007 Zeeshan Ali (Khattak)"
 
-#: data/gupnp-av-cp.ui:693
+#: data/gupnp-av-cp.ui:726
 msgid ""
 "An UPnP AV Control Point based on GUPnP framework.\n"
 "Inspired by Intel Tools for UPnP."
@@ -129,13 +130,13 @@ msgstr ""
 "Um ponto de controle UPnP áudio/vídeo (AV) baseado no framework GUPnP.\n"
 "Inspirado pelas ferramentas da Intel para UPnP."
 
-#: data/gupnp-av-cp.ui:696 data/gupnp-network-light.ui:11
+#: data/gupnp-av-cp.ui:729 data/gupnp-network-light.ui:11
 #: data/gupnp-universal-cp.ui:12
 msgid "GUPnP homepage"
 msgstr "Página inicial do GUPnP"
 
 #. TRANSLATORS: Replace this string with your names, one name per line.
-#: data/gupnp-av-cp.ui:698 data/gupnp-network-light.ui:13
+#: data/gupnp-av-cp.ui:731 data/gupnp-network-light.ui:13
 #: data/gupnp-universal-cp.ui:14
 msgid "translator-credits"
 msgstr "Enrico Nicoletto <liverig@gmail.com>, 2013."
@@ -285,7 +286,6 @@ msgid "Show _DIDL…"
 msgstr "Mostrar _DIDL…"
 
 #: data/search-dialog.ui:49
-#| msgid "Close"
 msgid "_Close"
 msgstr "_Fechar"
 
@@ -341,7 +341,7 @@ msgstr "Pesquisando em %s em %s"
 msgid "Search criteria invalid: %s"
 msgstr "Critérios de pesquisa inválida: %s"
 
-#: src/av-cp/search-dialog.c:683
+#: src/av-cp/search-dialog.c:689
 #, c-format
 msgid "Error fetching detailed information: %s"
 msgstr "Erro ao obter informações detalhadas: %s"
