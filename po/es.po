@@ -1,15 +1,15 @@
 # Spanish translation for gupnp-tools.
 # Copyright (C) 2012 gupnp-tools's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gupnp-tools package.
-# Daniel Mustieles <daniel.mustieles@gmail.com>, 2012, 2013, 2014, 2016.
+# Daniel Mustieles <daniel.mustieles@gmail.com>, 2012, 2013, 2014, 2016, 2017.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gupnp-tools master\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
 "product=GUPnP&keywords=I18N+L10N&component=gupnp-tools\n"
-"POT-Creation-Date: 2016-12-17 15:07+0000\n"
-"PO-Revision-Date: 2016-12-22 12:55+0100\n"
+"POT-Creation-Date: 2017-07-01 12:25+0000\n"
+"PO-Revision-Date: 2017-12-14 13:20+0100\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: es <gnome-es-list@gnome.org>\n"
 "Language: es\n"
@@ -32,71 +32,72 @@ msgstr "Punto de control AV de UPnP"
 msgid "@PKGDATADIR@/pixmaps/av-cp.png"
 msgstr "@PKGDATADIR@/pixmaps/av-cp.png"
 
-#: data/gupnp-av-cp.ui:23 data/gupnp-av-cp.ui:209
+#: data/gupnp-av-cp.ui:22 data/gupnp-av-cp.ui:208
 msgid "_Play"
 msgstr "_Reproducir"
 
-#: data/gupnp-av-cp.ui:32
+#: data/gupnp-av-cp.ui:31
 msgid "Fetch the DIDL-Lite XML for this media object"
 msgstr "Obtener el XML DIDL-Lite para este objeto multimedia"
 
-#: data/gupnp-av-cp.ui:33
+#: data/gupnp-av-cp.ui:32
 msgid "Fetch _DIDL-Lite"
 msgstr "Obtener _DIDL-Lite"
 
-#: data/gupnp-av-cp.ui:42
+#: data/gupnp-av-cp.ui:41
 msgid "Search…"
 msgstr "Buscar…"
 
-#: data/gupnp-av-cp.ui:90
+#: data/gupnp-av-cp.ui:89
 msgid "GUPnP AV Control Point"
 msgstr "Punto de control AV de GUPnP"
 
-#: data/gupnp-av-cp.ui:105 data/gupnp-universal-cp.ui:423
+#: data/gupnp-av-cp.ui:104 data/gupnp-universal-cp.ui:423
 msgid "_File"
 msgstr "_Archivo"
 
-#: data/gupnp-av-cp.ui:114
+#: data/gupnp-av-cp.ui:113
 msgid "Close"
 msgstr "Cerrar"
 
-#: data/gupnp-av-cp.ui:127
+#: data/gupnp-av-cp.ui:126
 msgid "_Tools"
 msgstr "Herramien_tas"
 
-#: data/gupnp-av-cp.ui:137
+#: data/gupnp-av-cp.ui:136
 msgid "_Lenient Mode"
 msgstr "Modo _indulgente"
 
-#: data/gupnp-av-cp.ui:149 data/gupnp-universal-cp.ui:505
+#: data/gupnp-av-cp.ui:148 data/gupnp-universal-cp.ui:505
 msgid "_Help"
 msgstr "Ay_uda"
 
-#: data/gupnp-av-cp.ui:158 data/gupnp-universal-cp.ui:514
+#: data/gupnp-av-cp.ui:157 data/gupnp-universal-cp.ui:514
 msgid "About"
 msgstr "Acerca de"
 
-#: data/gupnp-av-cp.ui:258
+#: data/gupnp-av-cp.ui:257
 msgid "P_ause"
 msgstr "_Pausa"
 
-#: data/gupnp-av-cp.ui:307
+#: data/gupnp-av-cp.ui:306
 msgid "_Stop"
 msgstr "_Detener"
 
-#: data/gupnp-av-cp.ui:356
+#: data/gupnp-av-cp.ui:355
 msgid "Pre_vious"
 msgstr "_Anterior"
 
-#: data/gupnp-av-cp.ui:419
+#: data/gupnp-av-cp.ui:418
 msgid "_Next"
 msgstr "_Siguiente"
 
-#: data/gupnp-av-cp.ui:437
-msgid "Rescan"
-msgstr "Volver a analizar"
+#: data/gupnp-av-cp.ui:467
+#| msgid "Rescan"
+msgid "_Rescan"
+msgstr "_Volver a analizar"
 
-#: data/gupnp-av-cp.ui:481
+#: data/gupnp-av-cp.ui:514
 msgid ""
 "Clears the CP's idea of the state of the currently selected AV Renderer. "
 "Useful for dealing with AV Renderers that don't report state changes."
@@ -105,20 +106,20 @@ msgstr ""
 "actualmente. Útil para trabajar con renderizadores AV que no informar de "
 "cambios de estado."
 
-#: data/gupnp-av-cp.ui:492
+#: data/gupnp-av-cp.ui:525
 msgid "_Clear state"
 msgstr "_Limpiar estado"
 
-#: data/gupnp-av-cp.ui:554
+#: data/gupnp-av-cp.ui:587
 msgid "_Renderer: "
 msgstr "_Renderizador: "
 
-#: data/gupnp-av-cp.ui:692 data/gupnp-network-light.ui:7
+#: data/gupnp-av-cp.ui:725 data/gupnp-network-light.ui:7
 #: data/gupnp-universal-cp.ui:8
 msgid "Copyright (C) 2007 Zeeshan Ali (Khattak)"
 msgstr "Copyright (C) 2007 Zeeshan Ali (Khattak)"
 
-#: data/gupnp-av-cp.ui:693
+#: data/gupnp-av-cp.ui:726
 msgid ""
 "An UPnP AV Control Point based on GUPnP framework.\n"
 "Inspired by Intel Tools for UPnP."
@@ -126,13 +127,13 @@ msgstr ""
 "Un punto de control AV de UPnP basado en el entorno de trabajo GUPnP.\n"
 "Inspirado en las herramientas de Intel para UPnP."
 
-#: data/gupnp-av-cp.ui:696 data/gupnp-network-light.ui:11
+#: data/gupnp-av-cp.ui:729 data/gupnp-network-light.ui:11
 #: data/gupnp-universal-cp.ui:12
 msgid "GUPnP homepage"
 msgstr "Página principal de GUPnP"
 
 #. TRANSLATORS: Replace this string with your names, one name per line.
-#: data/gupnp-av-cp.ui:698 data/gupnp-network-light.ui:13
+#: data/gupnp-av-cp.ui:731 data/gupnp-network-light.ui:13
 #: data/gupnp-universal-cp.ui:14
 msgid "translator-credits"
 msgstr "Daniel Mustieles <daniel.mustieles@gmail.com>, 2012, 2013"
@@ -282,7 +283,6 @@ msgid "Show _DIDL…"
 msgstr "Mostrar _DIDL…"
 
 #: data/search-dialog.ui:49
-#| msgid "Close"
 msgid "_Close"
 msgstr "_Cerrar"
 
@@ -337,7 +337,7 @@ msgstr "Buscando en %s en %s"
 msgid "Search criteria invalid: %s"
 msgstr "Criterio de búsqueda no válido: %s"
 
-#: src/av-cp/search-dialog.c:683
+#: src/av-cp/search-dialog.c:689
 #, c-format
 msgid "Error fetching detailed information: %s"
 msgstr "Error al obtener la información detallada: %s"
