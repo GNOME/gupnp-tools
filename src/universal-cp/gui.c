@@ -20,7 +20,9 @@
 
 #include <string.h>
 #include <stdlib.h>
+#ifdef HAVE_CONFIG_H
 #include <config.h>
+#endif
 
 #include <gmodule.h>
 
@@ -31,8 +33,8 @@
 #include "icons.h"
 #include "main.h"
 
-#define UI_FILE DATA_DIR "/gupnp-universal-cp.ui"
-#define ICON_FILE  "pixmaps/universal-cp.png"
+#define UI_FILE "/org/gupnp/Tools/Universal-CP/gupnp-universal-cp.ui"
+#define ICON_FILE  "/org/gupnp/Tools/Universal-CP/pixmaps/universal-cp.png"
 
 GtkBuilder *builder;
 static GtkWidget *main_window;
@@ -116,7 +118,7 @@ init_ui (gint   *argc,
         g_assert (builder != NULL);
         gtk_builder_set_translation_domain (builder, GETTEXT_PACKAGE);
 
-        if (!gtk_builder_add_from_file (builder, UI_FILE, &error)) {
+        if (!gtk_builder_add_from_resource (builder, UI_FILE, &error)) {
                 g_critical ("Unable to load the GUI file %s: %s",
                             UI_FILE,
                             error->message);
@@ -167,7 +169,7 @@ init_ui (gint   *argc,
 
         init_icons ();
 
-        icon_pixbuf = load_pixbuf_file (ICON_FILE);
+        icon_pixbuf = gdk_pixbuf_new_from_resource (ICON_FILE, NULL);
         if (icon_pixbuf == NULL) {
                 return FALSE;
         }

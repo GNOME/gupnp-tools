@@ -21,7 +21,9 @@
 #ifndef __PLAYLISTTREEVIEW_H__
 #define __PLAYLISTTREEVIEW_H__
 
+#ifdef HAVE_CONFIG_H
 #include <config.h>
+#endif
 #include <gtk/gtk.h>
 
 #include <libgupnp/gupnp.h>

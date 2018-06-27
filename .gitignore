@@ -12,7 +12,6 @@ src/discover/gssdp-discover
 Makefile
 Makefile.in
 data/*.desktop
-data/*.desktop.in
 data/gupnp-av-cp.ui
 
 aclocal.m4

@@ -21,7 +21,9 @@
 #include <libgupnp/gupnp.h>
 #include <string.h>
 #include <stdlib.h>
+#ifdef HAVE_CONFIG_H
 #include <config.h>
+#endif
 
 #include "control_point.h"
 #include "item-creation.h"

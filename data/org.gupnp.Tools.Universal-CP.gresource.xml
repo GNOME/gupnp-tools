@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gresources>
+    <gresource prefix='/org/gupnp/Tools/Universal-CP'>
+        <file preprocess='xml-stripblanks'>gupnp-universal-cp.ui</file>
+        <file>pixmaps/universal-cp.png</file>
+   </gresource>
+</gresources>

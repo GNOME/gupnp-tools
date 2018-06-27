@@ -71,8 +71,6 @@ av_cp_didl_dialog_init (AVCPDidlDialog *self)
 static void
 av_cp_didl_dialog_constructed (GObject *object)
 {
-        AVCPDidlDialog *self = AV_CP_DIDL_DIALOG (object);
-        AVCPDidlDialogPrivate *priv;
         GObjectClass *parent_class = NULL;
 
         parent_class = G_OBJECT_CLASS (av_cp_didl_dialog_parent_class);
@@ -80,13 +78,16 @@ av_cp_didl_dialog_constructed (GObject *object)
             parent_class->constructed (object);
         }
 
-        priv = av_cp_didl_dialog_get_instance_private (self);
-
         g_signal_connect (object, "delete-event",
                           G_CALLBACK (gtk_widget_hide_on_delete), NULL);
 
 #ifdef HAVE_GTK_SOURCEVIEW
         {
+                AVCPDidlDialog *self = AV_CP_DIDL_DIALOG (object);
+                AVCPDidlDialogPrivate *priv;
+
+                priv = av_cp_didl_dialog_get_instance_private (self);
+
                 GtkSourceLanguageManager *manager =
                                 gtk_source_language_manager_get_default ();
                 GtkSourceLanguage *language =

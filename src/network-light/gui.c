@@ -20,7 +20,9 @@
 
 #include <string.h>
 #include <stdlib.h>
+#ifdef HAVE_CONFIG_H
 #include <config.h>
+#endif
 #include <gmodule.h>
 
 #include "gui.h"
@@ -28,10 +30,10 @@
 #include "upnp.h"
 #include "main.h"
 
-#define UI_FILE DATA_DIR "/gupnp-network-light.ui"
-#define ICON_FILE        "pixmaps/network-light-256x256.png"
-#define OFF_FILE         "pixmaps/network-light-off.png"
-#define ON_FILE          "pixmaps/network-light-on.png"
+#define UI_FILE   "/org/gupnp/Tools/Network-Light/gupnp-network-light.ui"
+#define ICON_FILE "/org/gupnp/Tools/Network-Light/pixmaps/network-light-256x256.png"
+#define OFF_FILE  "/org/gupnp/Tools/Network-Light/pixmaps/network-light-off.png"
+#define ON_FILE   "/org/gupnp/Tools/Network-Light/pixmaps/network-light-on.png"
 
 static GtkBuilder *builder;
 static GtkWidget  *main_window;
@@ -224,7 +226,7 @@ init_ui (gint   *argc,
         g_assert (builder != NULL);
         gtk_builder_set_translation_domain(builder, GETTEXT_PACKAGE);
 
-        if (!gtk_builder_add_from_file (builder, UI_FILE, &error)) {
+        if (!gtk_builder_add_from_resource (builder, UI_FILE, &error)) {
                 g_critical ("Unable to load the GUI file %s: %s",
                             UI_FILE,
                             error->message);
@@ -245,17 +247,17 @@ init_ui (gint   *argc,
                                                            "about-dialog"));
         g_assert (about_dialog != NULL);
 
-        on_pixbuf = load_pixbuf_file (ON_FILE);
+        on_pixbuf = gdk_pixbuf_new_from_resource (ON_FILE, NULL);
         if (on_pixbuf == NULL)
                 return FALSE;
 
-        off_pixbuf = load_pixbuf_file (OFF_FILE);
+        off_pixbuf = gdk_pixbuf_new_from_resource (OFF_FILE, NULL);
         if (off_pixbuf == NULL) {
                 g_object_unref (on_pixbuf);
                 return FALSE;
         }
 
-        icon_pixbuf = load_pixbuf_file (ICON_FILE);
+        icon_pixbuf = gdk_pixbuf_new_from_resource (ICON_FILE, NULL);
         if (icon_pixbuf == NULL) {
                 g_object_unref (on_pixbuf);
                 g_object_unref (off_pixbuf);

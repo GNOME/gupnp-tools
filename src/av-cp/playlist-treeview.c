@@ -20,7 +20,9 @@
 
 #include <string.h>
 #include <stdlib.h>
+#ifdef HAVE_CONFIG_H
 #include <config.h>
+#endif
 #include <gmodule.h>
 
 #include "playlist-treeview.h"
