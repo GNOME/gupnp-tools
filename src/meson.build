@@ -3,7 +3,7 @@ subdir('common')
 #    subdir('av-cp')
 #endif
 
-#subdir('discover')
-#subdir('network-light')
+subdir('discover')
+subdir('network-light')
 subdir('universal-cp')
 #subdir('upload')

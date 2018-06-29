@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gresources>
+    <gresource prefix='/org/gupnp/Tools/Network-Light'>
+        <file preprocess='xml-stripblanks'>gupnp-network-light.ui</file>
+        <file>pixmaps/network-light-256x256.png</file>
+        <file>pixmaps/network-light-on.png</file>
+        <file>pixmaps/network-light-off.png</file>
+        <file>xml/network-light-desc.xml</file>
+   </gresource>
+</gresources>

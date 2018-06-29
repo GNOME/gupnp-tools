@@ -32,7 +32,7 @@
 #include "upnp.h"
 #include "main.h"
 
-#define DESCRIPTION_DOC "xml/network-light-desc.xml"
+#define DESCRIPTION_DOC "/org/gupnp/Tools/Network-Light/xml/network-light-desc.xml"
 #define DIMMING_SERVICE "urn:schemas-upnp-org:service:Dimming:1"
 #define SWITCH_SERVICE "urn:schemas-upnp-org:service:SwitchPower:1"
 #define NETWORK_LIGHT "urn:schemas-upnp-org:device:DimmableLight:1"
@@ -633,9 +633,22 @@ static gboolean
 prepare_desc (gchar *name)
 {
         GError *error = NULL;
+        GBytes *data = NULL;
+        xmlDoc *xml = NULL;
 
-        doc = gupnp_xml_doc_new_from_path (DATA_DIR "/" DESCRIPTION_DOC,
-                                           &error);
+        data = g_resources_lookup_data (DESCRIPTION_DOC, G_RESOURCE_LOOKUP_FLAGS_NONE, &error);
+
+        if (data == NULL) {
+                g_critical ("Unable to load the XML description: %s", error->message);
+
+                g_error_free (error);
+
+                return FALSE;
+        }
+
+        xml = xmlParseMemory(g_bytes_get_data (data, NULL), g_bytes_get_size (data));
+
+        doc = gupnp_xml_doc_new (xml);
         if (doc == NULL) {
                 g_critical ("Unable to load the XML description file: %s",
                             error->message);
