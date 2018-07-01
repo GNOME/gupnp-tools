@@ -8,7 +8,6 @@ didl_dialog_ui = configure_file(input: 'didl-lite-dialog.ui.in', output: 'didl-l
 
 install_data(['xml/Dimming-scpd.xml', 'xml/network-light-desc.xml', 'xml/SwitchPower-scpd.xml'], install_dir : join_paths(shareddir, 'xml'))
 install_data(['pixmaps/av-cp.png',
-              'pixmaps/Makefile.am',
               'pixmaps/media-renderer.png',
               'pixmaps/network-light-22x22.png',
               'pixmaps/network-light-256x256.png',
