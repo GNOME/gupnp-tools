@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gupnp-tools\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gupnp-tools/issues\n"
-"POT-Creation-Date: 2018-07-01 16:42+0000\n"
-"PO-Revision-Date: 2018-07-01 19:10+0200\n"
+"POT-Creation-Date: 2018-07-02 10:53+0000\n"
+"PO-Revision-Date: 2018-07-02 17:12+0200\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <community-poland@mozilla.org>\n"
 "Language: pl\n"
@@ -27,8 +27,12 @@ msgstr "GUPnP AV CP — widok metadanych"
 msgid "UPnP AV Control Point"
 msgstr "Punkt kontrolny UPnP AV"
 
+#: data/gupnp-av-cp.desktop.in:5
+msgid "Browse and control UPnP multimedia devices"
+msgstr "Przeglądanie i sterowanie urządzeniami multimedialnymi UPnP"
+
 #. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: data/gupnp-av-cp.desktop.in:8
+#: data/gupnp-av-cp.desktop.in:9
 msgid "av-cp"
 msgstr "av-cp"
 
@@ -143,8 +147,12 @@ msgstr ""
 msgid "UPnP Network Light"
 msgstr "Światło sieciowe UPnP"
 
+#: data/gupnp-network-light.desktop.in:5
+msgid "Sample UPnP application for controlling lights"
+msgstr "Prosty program UPnP do sterowania światłami"
+
 #. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: data/gupnp-network-light.desktop.in:8
+#: data/gupnp-network-light.desktop.in:9
 msgid "network-light-256x256"
 msgstr "network-light-256x256"
 
@@ -181,8 +189,12 @@ msgstr "_O programie"
 msgid "UPnP Universal Control Point"
 msgstr "Uniwersalny punkt kontrolny UPnP"
 
+#: data/gupnp-universal-cp.desktop.in:5
+msgid "Inspect and control UPnP devices across your local network"
+msgstr "Badanie i sterowanie urządzeniami UPnP w sieci lokalnej"
+
 #. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: data/gupnp-universal-cp.desktop.in:8
+#: data/gupnp-universal-cp.desktop.in:9
 msgid "universal-cp"
 msgstr "universal-cp"
 
