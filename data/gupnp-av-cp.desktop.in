@@ -1,6 +1,7 @@
 [Desktop Entry]
 Encoding=UTF-8
 Name=UPnP AV Control Point
+Comment=Browse and control UPnP multimedia devices
 Categories=GTK;Development;
 Exec=gupnp-av-cp
 # Translators: Do NOT translate or transliterate this text (this is an icon file name)!

@@ -1,6 +1,7 @@
 [Desktop Entry]
 Encoding=UTF-8
 Name=UPnP Universal Control Point
+Comment=Inspect and control UPnP devices across your local network
 Categories=GTK;Development;
 Exec=gupnp-universal-cp
 # Translators: Do NOT translate or transliterate this text (this is an icon file name)!
