@@ -1,15 +1,14 @@
 # Czech translation for gupnp-tools.
 # Copyright (C) 2013 gupnp-tools's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gupnp-tools package.
-# Marek Černocký <marek@manet.cz>, 2013, 2014, 2016, 2017.
+# Marek Černocký <marek@manet.cz>, 2013, 2014, 2016, 2017, 2018.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gupnp-tools master\n"
-"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
-"product=GUPnP&keywords=I18N+L10N&component=gupnp-tools\n"
-"POT-Creation-Date: 2017-07-01 12:25+0000\n"
-"PO-Revision-Date: 2017-07-07 10:35+0200\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gupnp-tools/issues\n"
+"POT-Creation-Date: 2018-07-02 10:53+0000\n"
+"PO-Revision-Date: 2018-07-11 10:06+0200\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: čeština <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -23,14 +22,18 @@ msgstr ""
 msgid "GUPnP AV CP - Metadata View"
 msgstr "GUPnP AV CP – zobrazení metadat"
 
-#: data/gupnp-av-cp.desktop.in.in:4
+#: data/gupnp-av-cp.desktop.in:4
 msgid "UPnP AV Control Point"
 msgstr "Řídící bod UPnP AV"
 
+#: data/gupnp-av-cp.desktop.in:5
+msgid "Browse and control UPnP multimedia devices"
+msgstr "Procházejte si a ovládejte multimediální zařízení UPnP"
+
 #. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: data/gupnp-av-cp.desktop.in.in:8
-msgid "@PKGDATADIR@/pixmaps/av-cp.png"
-msgstr "@PKGDATADIR@/pixmaps/av-cp.png"
+#: data/gupnp-av-cp.desktop.in:9
+msgid "av-cp"
+msgstr "av-cp"
 
 #: data/gupnp-av-cp.ui:22 data/gupnp-av-cp.ui:208
 msgid "_Play"
@@ -137,14 +140,18 @@ msgstr "Domovská stránka GUPnP"
 msgid "translator-credits"
 msgstr "Marek Černocký, <marek@manet.cz>"
 
-#: data/gupnp-network-light.desktop.in.in:4
+#: data/gupnp-network-light.desktop.in:4
 msgid "UPnP Network Light"
 msgstr "Síťové světlo UPnP"
 
+#: data/gupnp-network-light.desktop.in:5
+msgid "Sample UPnP application for controlling lights"
+msgstr "Ukázková aplikace UPnP pro ovládání světel"
+
 #. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: data/gupnp-network-light.desktop.in.in:8
-msgid "@PKGDATADIR@/pixmaps/network-light-256x256.png"
-msgstr "@PKGDATADIR@/pixmaps/network-light-256x256.png"
+#: data/gupnp-network-light.desktop.in:9
+msgid "network-light-256x256"
+msgstr "network-light-256x256"
 
 #: data/gupnp-network-light.ui:8
 msgid ""
@@ -175,14 +182,18 @@ msgstr "Sníži_t jas o 20 %"
 msgid "_About"
 msgstr "O _aplikaci"
 
-#: data/gupnp-universal-cp.desktop.in.in:4
+#: data/gupnp-universal-cp.desktop.in:4
 msgid "UPnP Universal Control Point"
 msgstr "Univerzální řídící bod UPnP"
 
+#: data/gupnp-universal-cp.desktop.in:5
+msgid "Inspect and control UPnP devices across your local network"
+msgstr "Kontrolujte si a ovládejte zařízení UPnP ve své místní síti"
+
 #. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: data/gupnp-universal-cp.desktop.in.in:8
-msgid "@PKGDATADIR@/pixmaps/universal-cp.png"
-msgstr "@PKGDATADIR@/pixmaps/universal-cp.png"
+#: data/gupnp-universal-cp.desktop.in:9
+msgid "universal-cp"
+msgstr "universal-cp"
 
 #: data/gupnp-universal-cp.ui:9
 msgid ""
@@ -257,7 +268,7 @@ msgid "_Clear event log"
 msgstr "_Vymazat záznam událostí"
 
 #. default details
-#: data/gupnp-universal-cp.ui:409 src/universal-cp/device-treeview.c:35
+#: data/gupnp-universal-cp.ui:409 src/universal-cp/device-treeview.c:37
 msgid "GUPnP Universal Control Point"
 msgstr "Univerzální řídící bod GUPnP"
 
@@ -349,7 +360,7 @@ msgstr "Přívětivý název pro tuto žárovku UPnP"
 msgid "Apply change exclusively to this UPnP light"
 msgstr "Použít změnu výhradně pro tuto žárovku UPnP"
 
-#: src/universal-cp/action-dialog.c:690
+#: src/universal-cp/action-dialog.c:693
 #, c-format
 msgid ""
 "Action failed.\n"
@@ -360,184 +371,184 @@ msgstr ""
 "\n"
 "Chyba %d: %s"
 
-#: src/universal-cp/details-treeview.c:196
-#: src/universal-cp/details-treeview.c:224
-#: src/universal-cp/details-treeview.c:250
-#: src/universal-cp/details-treeview.c:429
+#: src/universal-cp/details-treeview.c:198
+#: src/universal-cp/details-treeview.c:226
+#: src/universal-cp/details-treeview.c:252
+#: src/universal-cp/details-treeview.c:431
 msgid "Name"
 msgstr "Název"
 
-#: src/universal-cp/details-treeview.c:198
+#: src/universal-cp/details-treeview.c:200
 msgid "Direction"
 msgstr "Směr"
 
-#: src/universal-cp/details-treeview.c:203
+#: src/universal-cp/details-treeview.c:205
 msgid "Related State Variable"
 msgstr "Příslušná stavová proměnná"
 
-#: src/universal-cp/details-treeview.c:205
+#: src/universal-cp/details-treeview.c:207
 msgid "Is Return Value"
 msgstr "Je návratovou hodnotou"
 
-#: src/universal-cp/details-treeview.c:206
-#: src/universal-cp/details-treeview.c:253
+#: src/universal-cp/details-treeview.c:208
+#: src/universal-cp/details-treeview.c:255
 msgid "Yes"
 msgstr "Ano"
 
-#: src/universal-cp/details-treeview.c:206
-#: src/universal-cp/details-treeview.c:253
+#: src/universal-cp/details-treeview.c:208
+#: src/universal-cp/details-treeview.c:255
 msgid "No"
 msgstr "Ne"
 
-#: src/universal-cp/details-treeview.c:226
+#: src/universal-cp/details-treeview.c:228
 msgid "Number of Arguments"
 msgstr "Počet parametrů"
 
-#: src/universal-cp/details-treeview.c:252
+#: src/universal-cp/details-treeview.c:254
 msgid "Send Events"
 msgstr "Posílat události"
 
-#: src/universal-cp/details-treeview.c:254
+#: src/universal-cp/details-treeview.c:256
 msgid "GType"
 msgstr "GType"
 
-#: src/universal-cp/details-treeview.c:257
+#: src/universal-cp/details-treeview.c:259
 msgid "Default Value"
 msgstr "Výchozí hodnota"
 
-#: src/universal-cp/details-treeview.c:263
+#: src/universal-cp/details-treeview.c:265
 msgid "Minimum"
 msgstr "Minimum"
 
-#: src/universal-cp/details-treeview.c:267
+#: src/universal-cp/details-treeview.c:269
 msgid "Maximum"
 msgstr "Maximum"
 
-#: src/universal-cp/details-treeview.c:271
+#: src/universal-cp/details-treeview.c:273
 msgid "Step"
 msgstr "Krok"
 
-#: src/universal-cp/details-treeview.c:291
+#: src/universal-cp/details-treeview.c:293
 msgid "Allowed Values"
 msgstr "Dovolené hodnoty"
 
-#: src/universal-cp/details-treeview.c:315
-#: src/universal-cp/details-treeview.c:362
+#: src/universal-cp/details-treeview.c:317
+#: src/universal-cp/details-treeview.c:364
 msgid "Location"
 msgstr "Umístění"
 
-#: src/universal-cp/details-treeview.c:320
-#: src/universal-cp/details-treeview.c:367
+#: src/universal-cp/details-treeview.c:322
+#: src/universal-cp/details-treeview.c:369
 msgid "UDN"
 msgstr "UDN"
 
-#: src/universal-cp/details-treeview.c:325
-#: src/universal-cp/details-treeview.c:372
+#: src/universal-cp/details-treeview.c:327
+#: src/universal-cp/details-treeview.c:374
 msgid "Type"
 msgstr "Typ"
 
-#: src/universal-cp/details-treeview.c:330
-#: src/universal-cp/details-treeview.c:377
+#: src/universal-cp/details-treeview.c:332
+#: src/universal-cp/details-treeview.c:379
 msgid "Base URL"
 msgstr "Základní adresa URL"
 
-#: src/universal-cp/details-treeview.c:335
+#: src/universal-cp/details-treeview.c:337
 msgid "Service ID"
 msgstr "ID služby"
 
-#: src/universal-cp/details-treeview.c:337
+#: src/universal-cp/details-treeview.c:339
 msgid "Service URL"
 msgstr "Adresa URL služby"
 
-#: src/universal-cp/details-treeview.c:339
+#: src/universal-cp/details-treeview.c:341
 msgid "Control URL"
 msgstr "Adresa URL řízení"
 
-#: src/universal-cp/details-treeview.c:341
+#: src/universal-cp/details-treeview.c:343
 msgid "Event Subscription URL"
 msgstr "Adresa URL odběru událostí"
 
-#: src/universal-cp/details-treeview.c:382
+#: src/universal-cp/details-treeview.c:384
 msgid "Friendly Name"
 msgstr "Přátelský název"
 
-#: src/universal-cp/details-treeview.c:384
+#: src/universal-cp/details-treeview.c:386
 msgid "Manufacturer"
 msgstr "Výrobce"
 
-#: src/universal-cp/details-treeview.c:386
+#: src/universal-cp/details-treeview.c:388
 msgid "Manufacturer URL"
 msgstr "Adresa URL výrobce"
 
-#: src/universal-cp/details-treeview.c:388
+#: src/universal-cp/details-treeview.c:390
 msgid "Model Description"
 msgstr "Popis modelu"
 
-#: src/universal-cp/details-treeview.c:390
+#: src/universal-cp/details-treeview.c:392
 msgid "Model Name"
 msgstr "Název modelu"
 
-#: src/universal-cp/details-treeview.c:392
+#: src/universal-cp/details-treeview.c:394
 msgid "Model Number"
 msgstr "Číslo modelu"
 
-#: src/universal-cp/details-treeview.c:394
+#: src/universal-cp/details-treeview.c:396
 msgid "Model URL"
 msgstr "Adresa URL modelu"
 
-#: src/universal-cp/details-treeview.c:396
+#: src/universal-cp/details-treeview.c:398
 msgid "Serial Number"
 msgstr "Sériové číslo"
 
-#: src/universal-cp/details-treeview.c:398
+#: src/universal-cp/details-treeview.c:400
 msgid "UPC"
 msgstr "UPC"
 
-#: src/universal-cp/details-treeview.c:400
+#: src/universal-cp/details-treeview.c:402
 msgid "Presentation URL"
 msgstr "Adresa URL prezentace"
 
-#: src/universal-cp/details-treeview.c:430
-#: src/universal-cp/event-treeview.c:408
+#: src/universal-cp/details-treeview.c:432
+#: src/universal-cp/event-treeview.c:410
 msgid "Value"
 msgstr "Hodnota"
 
-#: src/universal-cp/device-treeview.c:68
+#: src/universal-cp/device-treeview.c:70
 msgid "Software"
 msgstr "Software"
 
-#: src/universal-cp/device-treeview.c:70
+#: src/universal-cp/device-treeview.c:72
 msgid "Version"
 msgstr "Verze"
 
-#: src/universal-cp/device-treeview.c:72
+#: src/universal-cp/device-treeview.c:74
 msgid "Author"
 msgstr "Autor"
 
-#: src/universal-cp/device-treeview.c:481
+#: src/universal-cp/device-treeview.c:483
 msgid "State variables"
 msgstr "Stavové proměnné"
 
-#: src/universal-cp/device-treeview.c:522
+#: src/universal-cp/device-treeview.c:524
 msgid "Information not available"
 msgstr "Informace není dostupná"
 
-#: src/universal-cp/device-treeview.c:701
+#: src/universal-cp/device-treeview.c:703
 msgid "UPnP Network"
 msgstr "Síť UPnP"
 
-#: src/universal-cp/device-treeview.c:714 src/universal-cp/event-treeview.c:405
+#: src/universal-cp/device-treeview.c:716 src/universal-cp/event-treeview.c:407
 msgid "Device"
 msgstr "Zařízení"
 
-#: src/universal-cp/event-treeview.c:404
+#: src/universal-cp/event-treeview.c:406
 msgid "Time"
 msgstr "Čas"
 
-#: src/universal-cp/event-treeview.c:406
+#: src/universal-cp/event-treeview.c:408
 msgid "Service"
 msgstr "Služba"
 
-#: src/universal-cp/event-treeview.c:407
+#: src/universal-cp/event-treeview.c:409
 msgid "State Variable"
 msgstr "Stavová proměnná"
