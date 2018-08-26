@@ -1,37 +1,40 @@
 # German translation for gupnp-tools.
 # Copyright (C) 2013 gupnp-tools's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gupnp-tools package.
-# Mario Blättermann <mario.blaettermann@gmail.com>, 2013, 2016-2017.
+# Mario Blättermann <mario.blaettermann@gmail.com>, 2013, 2016-2018.
 # Christian Kirbach <christian.kirbach@gmail.com>, 2013.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gupnp-tools master\n"
-"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
-"product=GUPnP&keywords=I18N+L10N&component=gupnp-tools\n"
-"POT-Creation-Date: 2017-07-01 12:25+0000\n"
-"PO-Revision-Date: 2017-10-02 10:42+0200\n"
-"Last-Translator: Mario Blättermann <mario.blaettermann@gmail.com>\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gupnp-tools/issues\n"
+"POT-Creation-Date: 2018-08-19 11:23+0000\n"
+"PO-Revision-Date: 2018-08-26 17:16+0200\n"
+"Last-Translator: Tim Sabsch <tim@sabsch.com>\n"
 "Language-Team: Deutsch <gnome-de@gnome.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.3\n"
+"X-Generator: Poedit 2.1.1\n"
 
 #: data/didl-lite-dialog.ui.in:9
 msgid "GUPnP AV CP - Metadata View"
 msgstr "GUPnP AV CP - Metadaten-Ansicht"
 
-#: data/gupnp-av-cp.desktop.in.in:4
+#: data/gupnp-av-cp.desktop.in:4
 msgid "UPnP AV Control Point"
 msgstr "UPnP AV-Kontrollpunkt"
 
+#: data/gupnp-av-cp.desktop.in:5
+msgid "Browse and control UPnP multimedia devices"
+msgstr "UPnP-Multimediageräte durchsuchen und steuern"
+
 #. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: data/gupnp-av-cp.desktop.in.in:8
-msgid "@PKGDATADIR@/pixmaps/av-cp.png"
-msgstr "@PKGDATADIR@/pixmaps/av-cp.png"
+#: data/gupnp-av-cp.desktop.in:9
+msgid "av-cp"
+msgstr "av-cp"
 
 #: data/gupnp-av-cp.ui:22 data/gupnp-av-cp.ui:208
 msgid "_Play"
@@ -139,14 +142,18 @@ msgstr ""
 "Christian Kirbach <christian.kirbach@gmail.com>\n"
 "Mario Blättermann <mario.blaettermann@gmail.com>"
 
-#: data/gupnp-network-light.desktop.in.in:4
+#: data/gupnp-network-light.desktop.in:4
 msgid "UPnP Network Light"
 msgstr "UPnP Network Light"
 
+#: data/gupnp-network-light.desktop.in:5
+msgid "Sample UPnP application for controlling lights"
+msgstr "UPnP-Beispielanwendung zur Lichtsteuerung"
+
 #. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: data/gupnp-network-light.desktop.in.in:8
-msgid "@PKGDATADIR@/pixmaps/network-light-256x256.png"
-msgstr "@PKGDATADIR@/pixmaps/network-light-256x256.png"
+#: data/gupnp-network-light.desktop.in:9
+msgid "network-light-256x256"
+msgstr "network-light-256x256"
 
 #: data/gupnp-network-light.ui:8
 msgid ""
@@ -177,14 +184,19 @@ msgstr "Helligkeit um 20% se_nken"
 msgid "_About"
 msgstr "_Info"
 
-#: data/gupnp-universal-cp.desktop.in.in:4
+#: data/gupnp-universal-cp.desktop.in:4
 msgid "UPnP Universal Control Point"
 msgstr "UPnP Universeller Kontrollpunkt"
 
+#: data/gupnp-universal-cp.desktop.in:5
+msgid "Inspect and control UPnP devices across your local network"
+msgstr ""
+"UPnP-Multimediageräte in Ihrem lokalen Netzwerk untersuchen und steuern"
+
 #. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: data/gupnp-universal-cp.desktop.in.in:8
-msgid "@PKGDATADIR@/pixmaps/universal-cp.png"
-msgstr "@PKGDATADIR@/pixmaps/universal-cp.png"
+#: data/gupnp-universal-cp.desktop.in:9
+msgid "universal-cp"
+msgstr "universal-cp"
 
 #: data/gupnp-universal-cp.ui:9
 msgid ""
@@ -259,7 +271,7 @@ msgid "_Clear event log"
 msgstr "Ereignismitschnitt _leeren"
 
 #. default details
-#: data/gupnp-universal-cp.ui:409 src/universal-cp/device-treeview.c:35
+#: data/gupnp-universal-cp.ui:409 src/universal-cp/device-treeview.c:37
 msgid "GUPnP Universal Control Point"
 msgstr "GUPnP universeller Kontrollpunkt"
 
@@ -352,7 +364,7 @@ msgstr "Freundlicher Name für dieses UPnP-Light"
 msgid "Apply change exclusively to this UPnP light"
 msgstr "Änderung exklusiv auf dieses UPnP-Light anwenden"
 
-#: src/universal-cp/action-dialog.c:690
+#: src/universal-cp/action-dialog.c:693
 #, c-format
 msgid ""
 "Action failed.\n"
@@ -363,185 +375,185 @@ msgstr ""
 "\n"
 "Fehler: %d: %s"
 
-#: src/universal-cp/details-treeview.c:196
-#: src/universal-cp/details-treeview.c:224
-#: src/universal-cp/details-treeview.c:250
-#: src/universal-cp/details-treeview.c:429
+#: src/universal-cp/details-treeview.c:198
+#: src/universal-cp/details-treeview.c:226
+#: src/universal-cp/details-treeview.c:252
+#: src/universal-cp/details-treeview.c:431
 msgid "Name"
 msgstr "Name"
 
-#: src/universal-cp/details-treeview.c:198
+#: src/universal-cp/details-treeview.c:200
 msgid "Direction"
 msgstr "Richtung"
 
-#: src/universal-cp/details-treeview.c:203
+#: src/universal-cp/details-treeview.c:205
 msgid "Related State Variable"
 msgstr "Verwandte Statusvariable"
 
-#: src/universal-cp/details-treeview.c:205
+#: src/universal-cp/details-treeview.c:207
 msgid "Is Return Value"
 msgstr "Ist ein Rückgabewert"
 
-#: src/universal-cp/details-treeview.c:206
-#: src/universal-cp/details-treeview.c:253
+#: src/universal-cp/details-treeview.c:208
+#: src/universal-cp/details-treeview.c:255
 msgid "Yes"
 msgstr "Ja"
 
-#: src/universal-cp/details-treeview.c:206
-#: src/universal-cp/details-treeview.c:253
+#: src/universal-cp/details-treeview.c:208
+#: src/universal-cp/details-treeview.c:255
 msgid "No"
 msgstr "Nein"
 
-#: src/universal-cp/details-treeview.c:226
+#: src/universal-cp/details-treeview.c:228
 msgid "Number of Arguments"
 msgstr "Anzahl der Argumente"
 
-#: src/universal-cp/details-treeview.c:252
+#: src/universal-cp/details-treeview.c:254
 msgid "Send Events"
 msgstr "Ereignisse senden"
 
-#: src/universal-cp/details-treeview.c:254
+#: src/universal-cp/details-treeview.c:256
 msgid "GType"
 msgstr "GType"
 
-#: src/universal-cp/details-treeview.c:257
+#: src/universal-cp/details-treeview.c:259
 msgid "Default Value"
 msgstr "Vorgabe-Wert"
 
-#: src/universal-cp/details-treeview.c:263
+#: src/universal-cp/details-treeview.c:265
 msgid "Minimum"
 msgstr "Minimum"
 
-#: src/universal-cp/details-treeview.c:267
+#: src/universal-cp/details-treeview.c:269
 msgid "Maximum"
 msgstr "Maximum"
 
-#: src/universal-cp/details-treeview.c:271
+#: src/universal-cp/details-treeview.c:273
 msgid "Step"
 msgstr "Schritt"
 
-#: src/universal-cp/details-treeview.c:291
+#: src/universal-cp/details-treeview.c:293
 msgid "Allowed Values"
 msgstr "Erlaubte Werte"
 
-#: src/universal-cp/details-treeview.c:315
-#: src/universal-cp/details-treeview.c:362
+#: src/universal-cp/details-treeview.c:317
+#: src/universal-cp/details-treeview.c:364
 msgid "Location"
 msgstr "Ort"
 
-#: src/universal-cp/details-treeview.c:320
-#: src/universal-cp/details-treeview.c:367
+#: src/universal-cp/details-treeview.c:322
+#: src/universal-cp/details-treeview.c:369
 msgid "UDN"
 msgstr "UDN"
 
-#: src/universal-cp/details-treeview.c:325
-#: src/universal-cp/details-treeview.c:372
+#: src/universal-cp/details-treeview.c:327
+#: src/universal-cp/details-treeview.c:374
 msgid "Type"
 msgstr "Typ"
 
-#: src/universal-cp/details-treeview.c:330
-#: src/universal-cp/details-treeview.c:377
+#: src/universal-cp/details-treeview.c:332
+#: src/universal-cp/details-treeview.c:379
 msgid "Base URL"
 msgstr "Basisadresse"
 
-#: src/universal-cp/details-treeview.c:335
+#: src/universal-cp/details-treeview.c:337
 msgid "Service ID"
 msgstr "Dienstkennung"
 
-#: src/universal-cp/details-treeview.c:337
+#: src/universal-cp/details-treeview.c:339
 msgid "Service URL"
 msgstr "Dienst-Adresse"
 
-#: src/universal-cp/details-treeview.c:339
+#: src/universal-cp/details-treeview.c:341
 msgid "Control URL"
 msgstr "Steuerungs-Adresse"
 
-#: src/universal-cp/details-treeview.c:341
+#: src/universal-cp/details-treeview.c:343
 msgid "Event Subscription URL"
 msgstr "Adresse der Ereignisabonnierung"
 
 # So heißt es in gnome-bluetooth
-#: src/universal-cp/details-treeview.c:382
+#: src/universal-cp/details-treeview.c:384
 msgid "Friendly Name"
 msgstr "Benutzerdefinierter Name"
 
-#: src/universal-cp/details-treeview.c:384
+#: src/universal-cp/details-treeview.c:386
 msgid "Manufacturer"
 msgstr "Hersteller"
 
-#: src/universal-cp/details-treeview.c:386
+#: src/universal-cp/details-treeview.c:388
 msgid "Manufacturer URL"
 msgstr "Hersteller-Adresse"
 
-#: src/universal-cp/details-treeview.c:388
+#: src/universal-cp/details-treeview.c:390
 msgid "Model Description"
 msgstr "Modellbeschreibung"
 
-#: src/universal-cp/details-treeview.c:390
+#: src/universal-cp/details-treeview.c:392
 msgid "Model Name"
 msgstr "Modellname"
 
-#: src/universal-cp/details-treeview.c:392
+#: src/universal-cp/details-treeview.c:394
 msgid "Model Number"
 msgstr "Modellnummer"
 
-#: src/universal-cp/details-treeview.c:394
+#: src/universal-cp/details-treeview.c:396
 msgid "Model URL"
 msgstr "Modell-Adresse"
 
-#: src/universal-cp/details-treeview.c:396
+#: src/universal-cp/details-treeview.c:398
 msgid "Serial Number"
 msgstr "Seriennummer"
 
-#: src/universal-cp/details-treeview.c:398
+#: src/universal-cp/details-treeview.c:400
 msgid "UPC"
 msgstr "UPC"
 
-#: src/universal-cp/details-treeview.c:400
+#: src/universal-cp/details-treeview.c:402
 msgid "Presentation URL"
 msgstr "Anzeigeadresse"
 
-#: src/universal-cp/details-treeview.c:430
-#: src/universal-cp/event-treeview.c:408
+#: src/universal-cp/details-treeview.c:432
+#: src/universal-cp/event-treeview.c:410
 msgid "Value"
 msgstr "Wert"
 
-#: src/universal-cp/device-treeview.c:68
+#: src/universal-cp/device-treeview.c:70
 msgid "Software"
 msgstr "Software"
 
-#: src/universal-cp/device-treeview.c:70
+#: src/universal-cp/device-treeview.c:72
 msgid "Version"
 msgstr "Version"
 
-#: src/universal-cp/device-treeview.c:72
+#: src/universal-cp/device-treeview.c:74
 msgid "Author"
 msgstr "Autor"
 
-#: src/universal-cp/device-treeview.c:481
+#: src/universal-cp/device-treeview.c:483
 msgid "State variables"
 msgstr "Zustandsvariablen"
 
-#: src/universal-cp/device-treeview.c:522
+#: src/universal-cp/device-treeview.c:524
 msgid "Information not available"
 msgstr "Information nicht verfügbar"
 
-#: src/universal-cp/device-treeview.c:701
+#: src/universal-cp/device-treeview.c:703
 msgid "UPnP Network"
 msgstr "UPnP-Netzwerk"
 
-#: src/universal-cp/device-treeview.c:714 src/universal-cp/event-treeview.c:405
+#: src/universal-cp/device-treeview.c:716 src/universal-cp/event-treeview.c:407
 msgid "Device"
 msgstr "Gerät"
 
-#: src/universal-cp/event-treeview.c:404
+#: src/universal-cp/event-treeview.c:406
 msgid "Time"
 msgstr "Zeit"
 
-#: src/universal-cp/event-treeview.c:406
+#: src/universal-cp/event-treeview.c:408
 msgid "Service"
 msgstr "Dienste"
 
-#: src/universal-cp/event-treeview.c:407
+#: src/universal-cp/event-treeview.c:409
 msgid "State Variable"
 msgstr "Zustandsvariable"
