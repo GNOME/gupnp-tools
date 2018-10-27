@@ -42,11 +42,13 @@
 
 static int upnp_port = 0;
 static char **interfaces = NULL;
+static char *user_agent = NULL;
 
 static GOptionEntry entries[] =
 {
         { "port", 'p', 0, G_OPTION_ARG_INT, &upnp_port, N_("Network PORT to use for UPnP"), "PORT" },
         { "interface", 'i', 0, G_OPTION_ARG_STRING_ARRAY, &interfaces, N_("Network interfaces to use for UPnP communication"), "INTERFACE" },
+        { "user-agent", 'u', 0, G_OPTION_ARG_STRING, &user_agent, N_("Application part of the User-Agent header to use for UPnP communication"), "USER-AGENT" },
         { NULL }
 };
 
@@ -228,6 +230,10 @@ main (gint   argc,
                 g_print (_("Could not parse options: %s\n"), error->message);
 
                 return -4;
+        }
+
+        if (user_agent != NULL) {
+                g_set_prgname (user_agent);
         }
 
         if (!init_ui ()) {
