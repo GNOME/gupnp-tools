@@ -14,7 +14,7 @@ libxml = dependency('libxml-2.0', version: '>= 2.0')
 gobject = dependency('gobject-2.0', version: '>= 2.24')
 
 # Check for gtksourceview (used for XML syntax highlighting)
-gtksourceview = dependency('gtksourceview-4.0', required: false)
+gtksourceview = dependency('gtksourceview-4', required: false)
 if not gtksourceview.found()
     gtksourceview = dependency('gtksourceview-3.0', version: '>= 3.2.0', required: false)
 endif
