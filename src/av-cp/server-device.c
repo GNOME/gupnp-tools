@@ -54,19 +54,12 @@ av_cp_media_server_introspect (AVCPMediaServer *self);
 static void
 av_cp_media_server_introspect_finish (AVCPMediaServer *self);
 
-G_DEFINE_TYPE_WITH_CODE (AVCPMediaServer,
-                         av_cp_media_server,
-                         GUPNP_TYPE_DEVICE_PROXY,
-                         G_IMPLEMENT_INTERFACE (G_TYPE_ASYNC_INITABLE,
-                                                av_cp_media_server_async_intable_init))
-
 enum _AVCPMediaServerInitState {
         NONE = 0,
         INITIALIZED,
         INIT_FAILED,
         INITIALIZING
 };
-
 typedef enum _AVCPMediaServerInitState AVCPMediaServerInitState;
 
 struct _AVCPMediaServerPrivate {
@@ -76,6 +69,14 @@ struct _AVCPMediaServerPrivate {
         AVCPMediaServerInitState state;
         GUPnPServiceProxy *content_directory;
 };
+typedef struct _AVCPMediaServerPrivate AVCPMediaServerPrivate;
+
+G_DEFINE_TYPE_WITH_CODE (AVCPMediaServer,
+                         av_cp_media_server,
+                         GUPNP_TYPE_DEVICE_PROXY,
+                         G_ADD_PRIVATE (AVCPMediaServer)
+                         G_IMPLEMENT_INTERFACE (G_TYPE_ASYNC_INITABLE,
+                                                av_cp_media_server_async_intable_init))
 
 enum
 {
@@ -92,10 +93,11 @@ static void
 av_cp_media_server_finalize (GObject *object)
 {
         AVCPMediaServer *self = AV_CP_MEDIA_SERVER (object);
+        AVCPMediaServerPrivate *priv = av_cp_media_server_get_instance_private (self);
         GObjectClass *parent_class =
                               G_OBJECT_CLASS (av_cp_media_server_parent_class);
 
-        g_clear_pointer (&self->priv->default_sort_order, g_free);
+        g_clear_pointer (&priv->default_sort_order, g_free);
 
         parent_class->finalize (object);
 }
@@ -104,11 +106,12 @@ static void
 av_cp_media_server_dispose (GObject *object)
 {
         AVCPMediaServer *self = AV_CP_MEDIA_SERVER (object);
+        AVCPMediaServerPrivate *priv = av_cp_media_server_get_instance_private (self);
         GObjectClass *parent_class =
                               G_OBJECT_CLASS (av_cp_media_server_parent_class);
 
-        g_clear_object (&self->priv->icon);
-        g_clear_object (&self->priv->content_directory);
+        g_clear_object (&priv->icon);
+        g_clear_object (&priv->content_directory);
 
         parent_class->dispose (object);
 }
@@ -120,13 +123,14 @@ av_cp_media_server_get_property (GObject    *obj,
                                  GParamSpec *spec)
 {
         AVCPMediaServer *self = AV_CP_MEDIA_SERVER (obj);
+        AVCPMediaServerPrivate *priv = av_cp_media_server_get_instance_private (self);
 
         switch (property_id) {
         case PROP_ICON:
-                g_value_set_object (value, self->priv->icon);
+                g_value_set_object (value, priv->icon);
                 break;
         case PROP_SORT_ORDER:
-                g_value_set_string (value, self->priv->default_sort_order);
+                g_value_set_string (value, priv->default_sort_order);
                 break;
         default:
                 G_OBJECT_WARN_INVALID_PROPERTY_ID (obj, property_id, spec);
@@ -144,6 +148,9 @@ av_cp_media_server_on_get_sort_caps (GUPnPServiceProxy *proxy,
                                      gpointer user_data)
 {
         AVCPMediaServer *self = AV_CP_MEDIA_SERVER (user_data);
+        AVCPMediaServerPrivate *priv = av_cp_media_server_get_instance_private (self);
+
+
         GError *error = NULL;
         char *sort_caps = NULL;
 
@@ -168,13 +175,13 @@ av_cp_media_server_on_get_sort_caps (GUPnPServiceProxy *proxy,
                         g_string_append (default_sort_order, "+dc:title");
                 }
 
-                self->priv->default_sort_order =
+                priv->default_sort_order =
                                 g_string_free (default_sort_order, FALSE);
 
                 g_free (sort_caps);
         }
 
-        self->priv->state = INITIALIZED;
+        priv->state = INITIALIZED;
         av_cp_media_server_introspect_finish (self);
         g_object_notify (G_OBJECT (self), "sort-order");
         g_object_unref (self);
@@ -188,8 +195,6 @@ av_cp_media_server_class_init (AVCPMediaServerClass *klass)
         obj_class->get_property = av_cp_media_server_get_property;
         obj_class->dispose = av_cp_media_server_dispose;
         obj_class->finalize = av_cp_media_server_finalize;
-
-        g_type_class_add_private (klass, sizeof (AVCPMediaServerPrivate));
 
         av_cp_media_server_properties[PROP_ICON] =
                 g_param_spec_object ("icon",
@@ -215,9 +220,6 @@ av_cp_media_server_class_init (AVCPMediaServerClass *klass)
 static void
 av_cp_media_server_init (AVCPMediaServer *self)
 {
-        self->priv = G_TYPE_INSTANCE_GET_PRIVATE (self,
-                                                  AV_CP_TYPE_MEDIA_SERVER,
-                                                  AVCPMediaServerPrivate);
 }
 
 static void
@@ -225,20 +227,21 @@ av_cp_media_server_on_icon_updated (GUPnPDeviceInfo *info,
                                     GdkPixbuf       *icon)
 {
         AVCPMediaServer *self = AV_CP_MEDIA_SERVER (info);
+        AVCPMediaServerPrivate *priv = av_cp_media_server_get_instance_private (self);
 
-        self->priv->icon = icon;
+        priv->icon = icon;
         av_cp_media_server_get_content_directory (self);
 
-        if (self->priv->content_directory != NULL) {
+        if (priv->content_directory != NULL) {
                 gupnp_service_proxy_begin_action
-                                (self->priv->content_directory,
+                                (priv->content_directory,
                                  "GetSortCapabilities",
                                  av_cp_media_server_on_get_sort_caps,
                                  g_object_ref (self),
                                  NULL);
         } else {
                 g_debug ("Invalid MediaServer device without ContentDirectory");
-                self->priv->state = INIT_FAILED;
+                priv->state = INIT_FAILED;
                 av_cp_media_server_introspect_finish (self);
         }
 }
@@ -260,10 +263,11 @@ av_cp_media_server_init_async (GAsyncInitable      *initable,
                                gpointer             user_data)
 {
         AVCPMediaServer *self = AV_CP_MEDIA_SERVER (initable);
-        GTask *task;
+        AVCPMediaServerPrivate *priv = av_cp_media_server_get_instance_private (self);
+        GTask *task = NULL;
 
         task = g_task_new (initable, cancellable, callback, user_data);
-        switch (self->priv->state) {
+        switch (priv->state) {
                 case INITIALIZED:
                         g_task_return_boolean (task, TRUE);
                         g_object_unref (task);
@@ -277,13 +281,13 @@ av_cp_media_server_init_async (GAsyncInitable      *initable,
                         g_object_unref (task);
                         break;
                 case NONE:
-                        self->priv->state = INITIALIZING;
-                        self->priv->tasks = g_list_prepend (self->priv->tasks,
+                        priv->state = INITIALIZING;
+                        priv->tasks = g_list_prepend (priv->tasks,
                                                             task);
                         av_cp_media_server_introspect (self);
                         break;
                 case INITIALIZING:
-                        self->priv->tasks = g_list_prepend (self->priv->tasks,
+                        priv->tasks = g_list_prepend (priv->tasks,
                                                             task);
                         break;
                 default:
@@ -313,11 +317,12 @@ static void
 av_cp_media_server_introspect_finish (AVCPMediaServer *self)
 {
         GList *l;
+        AVCPMediaServerPrivate *priv = av_cp_media_server_get_instance_private (self);
 
-        for (l = self->priv->tasks; l != NULL; l = l->next) {
+        for (l = priv->tasks; l != NULL; l = l->next) {
                 GTask *task = (GTask *) l->data;
 
-                if (self->priv->state == INITIALIZED) {
+                if (priv->state == INITIALIZED) {
                         g_task_return_boolean (task, TRUE);
                 } else {
                         g_task_return_new_error (task,
@@ -329,7 +334,7 @@ av_cp_media_server_introspect_finish (AVCPMediaServer *self)
                 g_object_unref (task);
         }
 
-        g_clear_pointer (&self->priv->tasks, g_list_free);
+        g_clear_pointer (&priv->tasks, g_list_free);
 }
 
 GQuark
@@ -342,14 +347,15 @@ av_cp_media_server_error_quark (void)
 GUPnPServiceProxy *
 av_cp_media_server_get_content_directory (AVCPMediaServer *self)
 {
-        if (self->priv->content_directory == NULL) {
+        AVCPMediaServerPrivate *priv = av_cp_media_server_get_instance_private (self);
+        if (priv->content_directory == NULL) {
                 GUPnPServiceInfo *info = gupnp_device_info_get_service
                                 (GUPNP_DEVICE_INFO (self),
                                  CONTENT_DIR);
-                self->priv->content_directory =  GUPNP_SERVICE_PROXY (info);
+                priv->content_directory =  GUPNP_SERVICE_PROXY (info);
         }
 
-        return GUPNP_SERVICE_PROXY (g_object_ref (self->priv->content_directory));
+        return GUPNP_SERVICE_PROXY (g_object_ref (priv->content_directory));
 }
 
 typedef struct _BrowseReturn {
@@ -406,11 +412,12 @@ av_cp_media_server_browse_async (AVCPMediaServer     *self,
                                  gpointer             user_data)
 {
         GTask *task = g_task_new (self, cancellable, callback, user_data);
-        const char *sort_order =  self->priv->default_sort_order == NULL ?
+        AVCPMediaServerPrivate *priv = av_cp_media_server_get_instance_private (self);
+        const char *sort_order =  priv->default_sort_order == NULL ?
                                          "" :
-                                         self->priv->default_sort_order;
+                                         priv->default_sort_order;
 
-        gupnp_service_proxy_begin_action (self->priv->content_directory,
+        gupnp_service_proxy_begin_action (priv->content_directory,
                                           "Browse",
                                           av_cp_media_server_on_browse,
                                           task,
@@ -506,9 +513,10 @@ av_cp_media_server_browse_metadata_async (AVCPMediaServer     *self,
                                           gpointer             user_data)
 {
         GTask *task = g_task_new (self, cancellable, callback, user_data);
+        AVCPMediaServerPrivate *priv = av_cp_media_server_get_instance_private (self);
 
         gupnp_service_proxy_begin_action
-                                (self->priv->content_directory,
+                                (priv->content_directory,
                                  "Browse",
                                  av_cp_media_server_on_browse_metadata,
                                  task,
@@ -569,8 +577,9 @@ av_cp_media_server_search_async (AVCPMediaServer     *self,
                                  gpointer             user_data)
 {
         GTask *task = g_task_new (self, cancellable, callback, user_data);
+        AVCPMediaServerPrivate *priv = av_cp_media_server_get_instance_private (self);
 
-        gupnp_service_proxy_begin_action (self->priv->content_directory,
+        gupnp_service_proxy_begin_action (priv->content_directory,
                                           "Search",
                                           av_cp_media_server_on_browse,
                                           task,
