@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gupnp-tools master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gupnp-tools/issues\n"
-"POT-Creation-Date: 2018-07-02 10:53+0000\n"
-"PO-Revision-Date: 2018-07-11 10:06+0200\n"
+"POT-Creation-Date: 2018-10-27 18:47+0000\n"
+"PO-Revision-Date: 2018-01-01 21:02+0100\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: čeština <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -304,20 +304,25 @@ msgstr "Vyhledávací výraz UPnP"
 msgid "column"
 msgstr "sloupec"
 
-#: src/av-cp/main.c:48 src/network-light/main.c:48 src/universal-cp/main.c:41
+#: src/av-cp/main.c:49 src/network-light/main.c:48 src/universal-cp/main.c:41
 msgid "Network PORT to use for UPnP"
 msgstr "Síťový PORT, který s má použít pro UPnP"
 
-#: src/av-cp/main.c:49 src/network-light/main.c:49 src/universal-cp/main.c:42
+#: src/av-cp/main.c:50 src/network-light/main.c:49 src/universal-cp/main.c:42
 msgid "Network interfaces to use for UPnP communication"
 msgstr "Síťové rozhraní, které s má použít pro komunikaci UPnP"
 
-#: src/av-cp/main.c:223 src/network-light/main.c:104
+#: src/av-cp/main.c:51
+msgid "Application part of the User-Agent header to use for UPnP communication"
+msgstr ""
+"Aplikační část hlavičky User-Agent, které s má použít pro komunikaci UPnP"
+
+#: src/av-cp/main.c:225 src/network-light/main.c:104
 #: src/universal-cp/main.c:149
 msgid "- UPnP AV control point"
 msgstr "– řídicí bod UPnP AV"
 
-#: src/av-cp/main.c:228 src/network-light/main.c:109
+#: src/av-cp/main.c:230 src/network-light/main.c:109
 #: src/universal-cp/main.c:154
 #, c-format
 msgid "Could not parse options: %s\n"
