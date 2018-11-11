@@ -3,6 +3,10 @@ project('gupnp-tools', ['c'], version: '0.8.15')
 gnome = import('gnome')
 i18n = import('i18n')
 
+if host_machine.system() == 'windows'
+    win = import('windows')
+endif
+
 gssdp = dependency('gssdp-1.2', version: '>= 1.1')
 gupnp = dependency('gupnp-1.2', version: '>= 1.1')
 soup = dependency('libsoup-2.4', version: '>= 2.42')
