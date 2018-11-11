@@ -1,3 +1,9 @@
+if host_machine.system() == 'windows'
+    av_cp_win_resources = win.compile_resources('av-cp.rc')
+else
+    av_cp_win_resources = []
+endif
+
 av_cp_resources = gnome.compile_resources('av-cp-resource',
     join_paths(resource_data, 'org.gupnp.Tools.AV-CP.gresource.xml'),
     source_dir : resource_data,
@@ -19,7 +25,9 @@ executable('gupnp-av-cp',
             'search-dialog.c',
             'search-dialog.h',
             'server-device.c',
-            'server-device.h'] + av_cp_resources,
+            'server-device.h'] + av_cp_resources + av_cp_win_resources,
            dependencies : [gupnp, gssdp, gupnp_av, gtk, util, gtksourceview, config_header],
            export_dynamic : true,
-           install : true)
+           install : true,
+           gui_app : true
+       )
