@@ -1,0 +1,7 @@
+#pragma once
+
+#mesondefine HAVE_GTK_SOURCEVIEW
+#mesondefine VERSION
+#mesondefine DATA_DIR
+#mesondefine GETTEXT_PACKAGE
+#mesondefine LOCALEDIR
