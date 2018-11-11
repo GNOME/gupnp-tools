@@ -734,6 +734,7 @@ Vinicius Depizzol &lt;vdepizzol@gmail.com&gt;</property>
     <property name="logo_icon_name">image-missing</property>
     <property name="license_type">gpl-2-0</property>
     <signal name="delete-event" handler="gtk_widget_hide_on_delete" swapped="no"/>
+    <signal name="response" handler="gtk_widget_hide" swapped="no"/>
     <child internal-child="vbox">
       <object class="GtkBox" id="dialog-vbox1">
         <property name="can_focus">False</property>
