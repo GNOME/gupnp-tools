@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gupnp-tools master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gupnp-tools/issues\n"
-"POT-Creation-Date: 2018-10-27 18:47+0000\n"
-"PO-Revision-Date: 2018-10-31 16:35+0100\n"
+"POT-Creation-Date: 2018-11-02 11:52+0000\n"
+"PO-Revision-Date: 2018-11-15 12:12+0100\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: es <gnome-es-list@gnome.org>\n"
 "Language: es\n"
@@ -150,7 +150,6 @@ msgstr "Sencilla aplicación UPnP para controlar luces"
 
 #. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
 #: data/gupnp-network-light.desktop.in:9
-#| msgid "@PKGDATADIR@/pixmaps/network-light-256x256.png"
 msgid "network-light-256x256"
 msgstr "network-light-256x256"
 
@@ -314,10 +313,10 @@ msgid "Network interfaces to use for UPnP communication"
 msgstr "Interfaces de red que usar para comunicación UPnP"
 
 #: src/av-cp/main.c:51
-#, fuzzy
 #| msgid "Network interfaces to use for UPnP communication"
 msgid "Application part of the User-Agent header to use for UPnP communication"
-msgstr "Interfaces de red que usar para comunicación UPnP"
+msgstr ""
+"Aplicación parte de la cabecera User-Agent que usar para la comunicación UPnP"
 
 #: src/av-cp/main.c:225 src/network-light/main.c:104
 #: src/universal-cp/main.c:149
