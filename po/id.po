@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gupnp-tools master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gupnp-tools/issues\n"
-"POT-Creation-Date: 2018-07-02 10:53+0000\n"
-"PO-Revision-Date: 2018-07-06 14:01+0700\n"
+"POT-Creation-Date: 2018-10-27 18:47+0000\n"
+"PO-Revision-Date: 2018-11-15 23:38+0700\n"
 "Last-Translator: Kukuh Syafaat <kukuhsyafaat@gnome.org>\n"
 "Language-Team: Indonesian <gnome-l10n-id@googlegroups.com>\n"
 "Language: id\n"
@@ -305,20 +305,26 @@ msgstr "Ekspresi pencarian UPnP"
 msgid "column"
 msgstr "kolom"
 
-#: src/av-cp/main.c:48 src/network-light/main.c:48 src/universal-cp/main.c:41
+#: src/av-cp/main.c:49 src/network-light/main.c:48 src/universal-cp/main.c:41
 msgid "Network PORT to use for UPnP"
 msgstr "PORT jaringan yang dipakai untuk UPnP"
 
-#: src/av-cp/main.c:49 src/network-light/main.c:49 src/universal-cp/main.c:42
+#: src/av-cp/main.c:50 src/network-light/main.c:49 src/universal-cp/main.c:42
 msgid "Network interfaces to use for UPnP communication"
 msgstr "Antarmuka jaringan yang dipakai untuk komunikasi UPnP"
 
-#: src/av-cp/main.c:223 src/network-light/main.c:104
+#: src/av-cp/main.c:51
+msgid "Application part of the User-Agent header to use for UPnP communication"
+msgstr ""
+"Bagian aplikasi dari header User-Agent yang akan digunakan untuk komunikasi "
+"UPnP"
+
+#: src/av-cp/main.c:225 src/network-light/main.c:104
 #: src/universal-cp/main.c:149
 msgid "- UPnP AV control point"
 msgstr "- Titik kendali AV UPnP"
 
-#: src/av-cp/main.c:228 src/network-light/main.c:109
+#: src/av-cp/main.c:230 src/network-light/main.c:109
 #: src/universal-cp/main.c:154
 #, c-format
 msgid "Could not parse options: %s\n"
