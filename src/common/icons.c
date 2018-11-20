@@ -167,14 +167,17 @@ schedule_icon_update (GUPnPDeviceInfo            *info,
                 return;
         }
 
-        data->message = soup_message_new (SOUP_METHOD_GET, icon_url);
+        char *new_uri = gupnp_context_rewrite_uri (gupnp_device_info_get_context (info), icon_url);
+        g_free (icon_url);
+
+        data->message = soup_message_new (SOUP_METHOD_GET, new_uri);
 
         if (data->message == NULL) {
                 g_warning ("Invalid URL icon for device '%s': %s",
                            gupnp_device_info_get_udn (info),
-                           icon_url);
+                           new_uri);
 
-                g_free (icon_url);
+                g_free (new_uri);
                 g_free (data->mime_type);
                 g_idle_add (on_icon_schedule_error, data);
 
@@ -187,7 +190,7 @@ schedule_icon_update (GUPnPDeviceInfo            *info,
                                     (SoupSessionCallback) got_icon_url,
                                     data);
 
-        g_free (icon_url);
+        g_free (new_uri);
 }
 
 void
