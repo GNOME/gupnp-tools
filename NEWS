@@ -1,3 +1,46 @@
+0.8.15
+======
+
+All:
+ - Improve desktop files
+ - Translation updates
+
+Build:
+ - Port to meson
+
+AV Controlpoint:
+ - Fix building against GtkSourceVIew 4
+ - Make it possible to change the UserAgent
+ - Remove g_type_class_add_private
+ - Fix closing the about dialog
+
+Universal Controlpoint:
+ - Fix closing the about dialog
+
+All contributors to this release:
+ - Jens Georg <mail@jensge.org>
+ - Piotr Drąg <piotrdrag@gmail.com>
+ - Rafael Fontenelle <rafaelff@gnome.org>
+ - Marek Cernocky <marek_cernocky@conel.cz>
+ - Kukuh Syafaat <kukuhsyafaat@gnome.org>
+ - Daniel Mustieles <daniel.mustieles.contractor@bbva.com>
+ - Tim Sabsch <tim@sabsch.com>
+ - Mario Blättermann <mario.blaettermann@gmail.com>
+ - Isaac F. Ferreira Filho <isaacmob@riseup.net>
+ - Dušan Kazik <prescott66@gmail.com>
+ - Daniel Mustieles <daniel.mustieles@gmail.com>
+ - Anders Jonsson <anders.jonsson@norsjovallen.se>
+
+Added/updated translations
+ - cs, courtesy of Marek Černocký
+ - de, courtesy of Tim Sabsch
+ - es, courtesy of Daniel Mustieles
+ - id, courtesy of Kukuh Syafaat
+ - pl, courtesy of Piotr Drąg
+ - pt_BR, courtesy of Rafael Fontenelle
+ - sk, courtesy of Dušan Kazik
+ - sv, courtesy of Anders Jonsson
+
 0.8.14
 ======
 
