@@ -23,21 +23,25 @@ if not gtksourceview.found()
     gtksourceview = dependency('gtksourceview-3.0', version: '>= 3.2.0', required: false)
 endif
 
+prefix = get_option('prefix')
+datadir = join_paths(prefix, get_option('datadir'))
+localedir = join_paths(prefix, get_option('localedir'))
+
 resource_data = join_paths(meson.source_root(), 'data')
 if get_option('uninstalled')
     shareddir = resource_data
 else
-    shareddir = join_paths(get_option('datadir'), meson.project_name())
+    shareddir = join_paths(datadir, meson.project_name())
 endif
 
-desktopdir = join_paths(get_option('datadir'), 'applications')
+desktopdir = join_paths(datadir, 'applications')
 
 conf = configuration_data()
 conf.set('VERSION', '"@0@"'.format(meson.project_version()))
 conf.set('DATA_DIR', '"@0@"'.format(shareddir))
 conf.set('HAVE_GTK_SOURCEVIEW', gtksourceview.found())
 conf.set('GETTEXT_PACKAGE', '"@0@"'.format(meson.project_name()))
-conf.set('LOCALEDIR', '"@0@"'.format(join_paths(get_option('prefix'), get_option('localedir'))))
+conf.set('LOCALEDIR', '"@0@"'.format(localedir))
 
 configure_file(input: 'config.h.meson', output: 'config.h', configuration: conf)
 config_header = declare_dependency(compile_args : '-DHAVE_CONFIG_H=1', include_directories : include_directories('.'))
