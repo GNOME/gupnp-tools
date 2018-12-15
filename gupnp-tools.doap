@@ -41,7 +41,7 @@ test and debug one's UPnP devices and control points:
   <download-page
   rdf:resource="http://download.gnome.org/sources/gupnp-tools/" />
   <bug-database
-  rdf:resource="https://bugzilla.gnome.org/browse.cgi?product=GUPnP&amp;component=gupnp-tools" />
+  rdf:resource="https://gitlab.gnome.org/GNOME/gupnp-tools/issues/" />
 
   <maintainer>
     <foaf:Person>
