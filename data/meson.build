@@ -24,7 +24,7 @@ install_data([
               'pixmaps/network-light-256x256.png',
               'pixmaps/universal-cp.png',
               'pixmaps/av-cp.png'],
-              install_dir : join_paths(get_option('datadir'), 'icons', 'hicolor', '256x256'))
+              install_dir : join_paths(get_option('datadir'), 'icons', 'hicolor', '256x256', 'apps'))
 
 
 desktop_conf = configuration_data()
