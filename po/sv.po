@@ -1,15 +1,15 @@
 # Swedish translation for gupnp-tools.
-# Copyright © 2016, 2017, 2018 gupnp-tools's COPYRIGHT HOLDER
+# Copyright © 2016-2019 gupnp-tools's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gupnp-tools package.
-# Anders Jonsson <anders.jonsson@norsjovallen.se>, 2016, 2018.
+# Anders Jonsson <anders.jonsson@norsjovallen.se>, 2016, 2018, 2019.
 # Josef Andersson <josef.andersson@fripost.org>, 2017.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gupnp-tools master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gupnp-tools/issues\n"
-"POT-Creation-Date: 2018-07-02 10:53+0000\n"
-"PO-Revision-Date: 2018-09-06 01:03+0200\n"
+"POT-Creation-Date: 2018-12-02 11:50+0000\n"
+"PO-Revision-Date: 2019-01-08 00:15+0100\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.1.1\n"
+"X-Generator: Poedit 2.2\n"
 
 #: data/didl-lite-dialog.ui.in:9
 msgid "GUPnP AV CP - Metadata View"
@@ -56,7 +56,7 @@ msgstr "Sök…"
 msgid "GUPnP AV Control Point"
 msgstr "GUPnP AV-kontrollpunkt"
 
-#: data/gupnp-av-cp.ui:104 data/gupnp-universal-cp.ui:423
+#: data/gupnp-av-cp.ui:104 data/gupnp-universal-cp.ui:424
 msgid "_File"
 msgstr "_Arkiv"
 
@@ -72,11 +72,11 @@ msgstr "_Verktyg"
 msgid "_Lenient Mode"
 msgstr "Ti_llåtande läge"
 
-#: data/gupnp-av-cp.ui:148 data/gupnp-universal-cp.ui:505
+#: data/gupnp-av-cp.ui:148 data/gupnp-universal-cp.ui:506
 msgid "_Help"
 msgstr "_Hjälp"
 
-#: data/gupnp-av-cp.ui:157 data/gupnp-universal-cp.ui:514
+#: data/gupnp-av-cp.ui:157 data/gupnp-universal-cp.ui:515
 msgid "About"
 msgstr "Om"
 
@@ -156,7 +156,6 @@ msgstr "UPnP-exempelprogram för att styra lampor"
 
 #. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
 #: data/gupnp-network-light.desktop.in:9
-#| msgid "@PKGDATADIR@/pixmaps/network-light-256x256.png"
 msgid "network-light-256x256"
 msgstr "network-light-256x256"
 
@@ -210,88 +209,88 @@ msgstr ""
 "En generisk kontrollpunkt baserad på GUPnP-ramverket.\n"
 "Inspirerad av Intel Tools for UPnP."
 
-#: data/gupnp-universal-cp.ui:41
+#: data/gupnp-universal-cp.ui:42
 msgid "Action Invocation"
 msgstr "Åtgärdsstart"
 
-#: data/gupnp-universal-cp.ui:105
+#: data/gupnp-universal-cp.ui:106
 msgid "_Invoke"
 msgstr "_Starta"
 
-#: data/gupnp-universal-cp.ui:175
+#: data/gupnp-universal-cp.ui:176
 msgid "device"
 msgstr "enhet"
 
-#: data/gupnp-universal-cp.ui:188
+#: data/gupnp-universal-cp.ui:189
 msgid "service"
 msgstr "tjänst"
 
-#: data/gupnp-universal-cp.ui:201
+#: data/gupnp-universal-cp.ui:202
 msgid "action"
 msgstr "åtgärd"
 
-#: data/gupnp-universal-cp.ui:244
+#: data/gupnp-universal-cp.ui:245
 msgid "'in' arguments"
 msgstr "”in”-argument"
 
-#: data/gupnp-universal-cp.ui:277
+#: data/gupnp-universal-cp.ui:278
 msgid "'out' arguments"
 msgstr "”ut”-argument"
 
-#: data/gupnp-universal-cp.ui:311
+#: data/gupnp-universal-cp.ui:312
 msgid "Copy value"
 msgstr "Kopiera värde"
 
-#: data/gupnp-universal-cp.ui:320
+#: data/gupnp-universal-cp.ui:321
 msgid "Copy all details"
 msgstr "Kopiera alla detaljer"
 
-#: data/gupnp-universal-cp.ui:332
+#: data/gupnp-universal-cp.ui:333
 msgid "Invoke"
 msgstr "Starta"
 
-#: data/gupnp-universal-cp.ui:341
+#: data/gupnp-universal-cp.ui:342
 msgid "Subscribe to events"
 msgstr "Prenumerera på händelser"
 
-#: data/gupnp-universal-cp.ui:356 data/gupnp-universal-cp.ui:467
+#: data/gupnp-universal-cp.ui:357 data/gupnp-universal-cp.ui:468
 msgid "_Expand all devices"
 msgstr "_Expandera alla enheter"
 
-#: data/gupnp-universal-cp.ui:365 data/gupnp-universal-cp.ui:476
+#: data/gupnp-universal-cp.ui:366 data/gupnp-universal-cp.ui:477
 msgid "_Collapse all devices"
 msgstr "_Fäll ihop alla enheter"
 
-#: data/gupnp-universal-cp.ui:377
+#: data/gupnp-universal-cp.ui:378
 msgid "Copy event"
 msgstr "Kopiera händelse"
 
-#: data/gupnp-universal-cp.ui:386
+#: data/gupnp-universal-cp.ui:387
 msgid "Copy all events"
 msgstr "Kopiera alla händelser"
 
-#: data/gupnp-universal-cp.ui:401
+#: data/gupnp-universal-cp.ui:402
 msgid "_Clear event log"
 msgstr "_Töm händelselogg"
 
 #. default details
-#: data/gupnp-universal-cp.ui:409 src/universal-cp/device-treeview.c:37
+#: data/gupnp-universal-cp.ui:410 src/universal-cp/device-treeview.c:37
 msgid "GUPnP Universal Control Point"
 msgstr "GUPnP universell kontrollpunkt"
 
-#: data/gupnp-universal-cp.ui:432
+#: data/gupnp-universal-cp.ui:433
 msgid "Clear event log"
 msgstr "Töm händelselogg"
 
-#: data/gupnp-universal-cp.ui:446
+#: data/gupnp-universal-cp.ui:447
 msgid "Quit"
 msgstr "Avsluta"
 
-#: data/gupnp-universal-cp.ui:458
+#: data/gupnp-universal-cp.ui:459
 msgid "_View"
 msgstr "_Visa"
 
-#: data/gupnp-universal-cp.ui:491
+#: data/gupnp-universal-cp.ui:492
 msgid "Event _log"
 msgstr "Händelse_logg"
 
@@ -311,20 +310,24 @@ msgstr "UPnP-sökuttryck"
 msgid "column"
 msgstr "kolumn"
 
-#: src/av-cp/main.c:48 src/network-light/main.c:48 src/universal-cp/main.c:41
+#: src/av-cp/main.c:49 src/network-light/main.c:48 src/universal-cp/main.c:41
 msgid "Network PORT to use for UPnP"
 msgstr "NätverksPORT att använda för UPnP"
 
-#: src/av-cp/main.c:49 src/network-light/main.c:49 src/universal-cp/main.c:42
+#: src/av-cp/main.c:50 src/network-light/main.c:49 src/universal-cp/main.c:42
 msgid "Network interfaces to use for UPnP communication"
 msgstr "Nätverksgränssnitt att använda för UPnP-kommunikation"
 
-#: src/av-cp/main.c:223 src/network-light/main.c:104
+#: src/av-cp/main.c:51
+msgid "Application part of the User-Agent header to use for UPnP communication"
+msgstr "Programdel av User-Agent-rubriken att använda för UPnP-kommunikation"
+
+#: src/av-cp/main.c:225 src/network-light/main.c:104
 #: src/universal-cp/main.c:149
 msgid "- UPnP AV control point"
 msgstr "- UPnP AV-kontrollpunkt"
 
-#: src/av-cp/main.c:228 src/network-light/main.c:109
+#: src/av-cp/main.c:230 src/network-light/main.c:109
 #: src/universal-cp/main.c:154
 #, c-format
 msgid "Could not parse options: %s\n"
