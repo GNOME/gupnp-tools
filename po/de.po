@@ -8,16 +8,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gupnp-tools master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gupnp-tools/issues\n"
-"POT-Creation-Date: 2018-08-19 11:23+0000\n"
-"PO-Revision-Date: 2018-08-26 17:16+0200\n"
-"Last-Translator: Tim Sabsch <tim@sabsch.com>\n"
+"POT-Creation-Date: 2018-12-02 11:50+0000\n"
+"PO-Revision-Date: 2019-03-02 21:19+0100\n"
+"Last-Translator: Bernd Homuth <dev@hmt.im>\n"
 "Language-Team: Deutsch <gnome-de@gnome.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.1.1\n"
+"X-Generator: Poedit 2.2.1\n"
 
 #: data/didl-lite-dialog.ui.in:9
 msgid "GUPnP AV CP - Metadata View"
@@ -56,7 +56,7 @@ msgstr "Suchen …"
 msgid "GUPnP AV Control Point"
 msgstr "GUPnP AV-Kontrollpunkt"
 
-#: data/gupnp-av-cp.ui:104 data/gupnp-universal-cp.ui:423
+#: data/gupnp-av-cp.ui:104 data/gupnp-universal-cp.ui:424
 msgid "_File"
 msgstr "_Datei"
 
@@ -72,11 +72,11 @@ msgstr "_Werkzeuge"
 msgid "_Lenient Mode"
 msgstr "To_leranter Modus"
 
-#: data/gupnp-av-cp.ui:148 data/gupnp-universal-cp.ui:505
+#: data/gupnp-av-cp.ui:148 data/gupnp-universal-cp.ui:506
 msgid "_Help"
 msgstr "_Hilfe"
 
-#: data/gupnp-av-cp.ui:157 data/gupnp-universal-cp.ui:514
+#: data/gupnp-av-cp.ui:157 data/gupnp-universal-cp.ui:515
 msgid "About"
 msgstr "Info"
 
@@ -206,88 +206,88 @@ msgstr ""
 "Ein allgemeiner Kontrollpunkt basierend auf dem GUPnP-Framework.\n"
 "Inspiriert durch die Intel-Tools für UPnP."
 
-#: data/gupnp-universal-cp.ui:41
+#: data/gupnp-universal-cp.ui:42
 msgid "Action Invocation"
 msgstr "Aktionsaufruf"
 
-#: data/gupnp-universal-cp.ui:105
+#: data/gupnp-universal-cp.ui:106
 msgid "_Invoke"
 msgstr "_Aufrufen"
 
-#: data/gupnp-universal-cp.ui:175
+#: data/gupnp-universal-cp.ui:176
 msgid "device"
 msgstr "Gerät"
 
-#: data/gupnp-universal-cp.ui:188
+#: data/gupnp-universal-cp.ui:189
 msgid "service"
 msgstr "Dienst"
 
-#: data/gupnp-universal-cp.ui:201
+#: data/gupnp-universal-cp.ui:202
 msgid "action"
 msgstr "Aktion"
 
-#: data/gupnp-universal-cp.ui:244
+#: data/gupnp-universal-cp.ui:245
 msgid "'in' arguments"
 msgstr "»Eingehende« Argumente"
 
-#: data/gupnp-universal-cp.ui:277
+#: data/gupnp-universal-cp.ui:278
 msgid "'out' arguments"
 msgstr "»Ausgehende« Argumente"
 
-#: data/gupnp-universal-cp.ui:311
+#: data/gupnp-universal-cp.ui:312
 msgid "Copy value"
 msgstr "Wert kopieren"
 
-#: data/gupnp-universal-cp.ui:320
+#: data/gupnp-universal-cp.ui:321
 msgid "Copy all details"
 msgstr "Alle Details kopieren"
 
-#: data/gupnp-universal-cp.ui:332
+#: data/gupnp-universal-cp.ui:333
 msgid "Invoke"
 msgstr "Aufrufen"
 
-#: data/gupnp-universal-cp.ui:341
+#: data/gupnp-universal-cp.ui:342
 msgid "Subscribe to events"
 msgstr "Ereignisse abonnieren"
 
-#: data/gupnp-universal-cp.ui:356 data/gupnp-universal-cp.ui:467
+#: data/gupnp-universal-cp.ui:357 data/gupnp-universal-cp.ui:468
 msgid "_Expand all devices"
 msgstr "Alle Geräte _aufklappen"
 
-#: data/gupnp-universal-cp.ui:365 data/gupnp-universal-cp.ui:476
+#: data/gupnp-universal-cp.ui:366 data/gupnp-universal-cp.ui:477
 msgid "_Collapse all devices"
 msgstr "Alle Geräte _einklappen"
 
-#: data/gupnp-universal-cp.ui:377
+#: data/gupnp-universal-cp.ui:378
 msgid "Copy event"
 msgstr "Ereignis kopieren"
 
-#: data/gupnp-universal-cp.ui:386
+#: data/gupnp-universal-cp.ui:387
 msgid "Copy all events"
 msgstr "Alle Ereignisse kopieren"
 
-#: data/gupnp-universal-cp.ui:401
+#: data/gupnp-universal-cp.ui:402
 msgid "_Clear event log"
 msgstr "Ereignismitschnitt _leeren"
 
 #. default details
-#: data/gupnp-universal-cp.ui:409 src/universal-cp/device-treeview.c:37
+#: data/gupnp-universal-cp.ui:410 src/universal-cp/device-treeview.c:37
 msgid "GUPnP Universal Control Point"
 msgstr "GUPnP universeller Kontrollpunkt"
 
-#: data/gupnp-universal-cp.ui:432
+#: data/gupnp-universal-cp.ui:433
 msgid "Clear event log"
 msgstr "Ereignismitschnitt leeren"
 
-#: data/gupnp-universal-cp.ui:446
+#: data/gupnp-universal-cp.ui:447
 msgid "Quit"
 msgstr "Beenden"
 
-#: data/gupnp-universal-cp.ui:458
+#: data/gupnp-universal-cp.ui:459
 msgid "_View"
 msgstr "_Ansicht"
 
-#: data/gupnp-universal-cp.ui:491
+#: data/gupnp-universal-cp.ui:492
 msgid "Event _log"
 msgstr "_Ereignismitschnitt"
 
@@ -307,21 +307,27 @@ msgstr "UPnP-Suchausdruck"
 msgid "column"
 msgstr "Spalte"
 
-#: src/av-cp/main.c:48 src/network-light/main.c:48 src/universal-cp/main.c:41
+#: src/av-cp/main.c:49 src/network-light/main.c:48 src/universal-cp/main.c:41
 msgid "Network PORT to use for UPnP"
 msgstr "Netzwerk-Port, der für UPnP-Kommunikation verwendet werden soll"
 
-#: src/av-cp/main.c:49 src/network-light/main.c:49 src/universal-cp/main.c:42
+#: src/av-cp/main.c:50 src/network-light/main.c:49 src/universal-cp/main.c:42
 msgid "Network interfaces to use for UPnP communication"
 msgstr ""
 "Netzwerkschnittstellen, die für UPnP-Kommunikation verwendet werden sollen"
 
-#: src/av-cp/main.c:223 src/network-light/main.c:104
+#: src/av-cp/main.c:51
+msgid "Application part of the User-Agent header to use for UPnP communication"
+msgstr ""
+"Anwendungsbezeichnung im Kopf des User-Agents, die für UPnP-Kommunikation "
+"verwendet werden soll"
+
+#: src/av-cp/main.c:225 src/network-light/main.c:104
 #: src/universal-cp/main.c:149
 msgid "- UPnP AV control point"
 msgstr "- UPnP AV-Kontrollpunkt"
 
-#: src/av-cp/main.c:228 src/network-light/main.c:109
+#: src/av-cp/main.c:230 src/network-light/main.c:109
 #: src/universal-cp/main.c:154
 #, c-format
 msgid "Could not parse options: %s\n"
