@@ -1,3 +1,31 @@
+0.10.0
+======
+
+All:
+ - Port to GUPnP 1.2
+ - Various Meson fixes
+ - Translation updates
+
+Merge requests included in this release:
+ - https://gitlab.gnome.org/GNOME/gupnp-tools/merge_requests/2
+ - https://gitlab.gnome.org/GNOME/gupnp-tools/merge_requests/1
+
+All contributors to this release:
+ - Jens Georg <mail@jensge.org>
+ - Марко Костић <marko.m.kostic@gmail.com>
+ - Bernd Homuth <dev@hmt.im>
+ - Anders Jonsson <anders.jonsson@norsjovallen.se>
+ - Balló György <ballogyor@gmail.com>
+ - Balázs Meskó <meskobalazs@fedoraproject.org>
+ - Andre Klapper <a9016009@gmx.de>
+ - Jan Tojnar <jtojnar@gmail.com>
+
+Added/updated translations:
+ - de.po, courtesy of Bernd Homuth
+ - hu.po, courtesy of Meskó Balázs
+ - sr.po, courtesy of Марко М. Костић
+ - sv.po, courtesy of Anders Jonsson
+
 0.8.15
 ======
 
