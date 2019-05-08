@@ -1,0 +1,545 @@
+# Danish translation for gupnp-tools.
+# Copyright (C) 2019 gupnp-tools's COPYRIGHT HOLDER
+# This file is distributed under the same license as the gupnp-tools package.
+# scootergrisen, 2019.
+msgid ""
+msgstr ""
+"Project-Id-Version: gupnp-tools master\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gupnp-tools/issues\n"
+"POT-Creation-Date: 2019-04-04 18:29+0000\n"
+"PO-Revision-Date: 2019-04-24 00:00+0200\n"
+"Last-Translator: scootergrisen\n"
+"Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
+"Language: da\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: data/didl-lite-dialog.ui.in:9
+msgid "GUPnP AV CP - Metadata View"
+msgstr "AV-SP for GUPnP - Metadatavisning"
+
+#: data/gupnp-av-cp.desktop.in:4
+msgid "UPnP AV Control Point"
+msgstr "AV-styrepunkt for UPnP"
+
+#: data/gupnp-av-cp.desktop.in:5
+msgid "Browse and control UPnP multimedia devices"
+msgstr "Gennemse og styr UPnP-multimedieenheder"
+
+#: data/gupnp-av-cp.ui:22 data/gupnp-av-cp.ui:208
+msgid "_Play"
+msgstr "_Afspil"
+
+#: data/gupnp-av-cp.ui:31
+msgid "Fetch the DIDL-Lite XML for this media object"
+msgstr "Indhent DIDL-Lite XML'en til medieobjektet"
+
+#: data/gupnp-av-cp.ui:32
+msgid "Fetch _DIDL-Lite"
+msgstr "Indhent _DIDL-Lite"
+
+#: data/gupnp-av-cp.ui:41
+msgid "Search…"
+msgstr "Søg …"
+
+#: data/gupnp-av-cp.ui:89
+msgid "GUPnP AV Control Point"
+msgstr "AV-styrepunkt for GUPnP"
+
+#: data/gupnp-av-cp.ui:104 data/gupnp-universal-cp.ui:424
+msgid "_File"
+msgstr "_Fil"
+
+#: data/gupnp-av-cp.ui:113
+msgid "Close"
+msgstr "Luk"
+
+#: data/gupnp-av-cp.ui:126
+msgid "_Tools"
+msgstr "_Værktøjer"
+
+#: data/gupnp-av-cp.ui:136
+msgid "_Lenient Mode"
+msgstr "_Afslappet tilstand"
+
+#: data/gupnp-av-cp.ui:148 data/gupnp-universal-cp.ui:506
+msgid "_Help"
+msgstr "_Hjælp"
+
+#: data/gupnp-av-cp.ui:157 data/gupnp-universal-cp.ui:515
+msgid "About"
+msgstr "Om"
+
+#: data/gupnp-av-cp.ui:257
+msgid "P_ause"
+msgstr "_Pause"
+
+#: data/gupnp-av-cp.ui:306
+msgid "_Stop"
+msgstr "_Stop"
+
+#: data/gupnp-av-cp.ui:355
+msgid "Pre_vious"
+msgstr "F_orrige"
+
+#: data/gupnp-av-cp.ui:418
+msgid "_Next"
+msgstr "_Næste"
+
+#: data/gupnp-av-cp.ui:467
+msgid "_Rescan"
+msgstr "_Genskan"
+
+#: data/gupnp-av-cp.ui:514
+msgid ""
+"Clears the CP's idea of the state of the currently selected AV Renderer. "
+"Useful for dealing with AV Renderers that don't report state changes."
+msgstr ""
+"Rydder styrepunkternes ide om tilstanden for den valgte AV-gengiver. Nyttig "
+"til AV-gengivere som ikke rapporterer når tilstanden ændres."
+
+#: data/gupnp-av-cp.ui:525
+msgid "_Clear state"
+msgstr "_Ryd tilstand"
+
+#: data/gupnp-av-cp.ui:587
+msgid "_Renderer: "
+msgstr "G_engiver: "
+
+#: data/gupnp-av-cp.ui:725 data/gupnp-network-light.ui:7
+#: data/gupnp-universal-cp.ui:8
+msgid "Copyright (C) 2007 Zeeshan Ali (Khattak)"
+msgstr "Ophavsret (C) 2007 Zeeshan Ali (Khattak)"
+
+#: data/gupnp-av-cp.ui:726
+msgid ""
+"An UPnP AV Control Point based on GUPnP framework.\n"
+"Inspired by Intel Tools for UPnP."
+msgstr ""
+"Et AV-styrepunkt for UPnP baseret på GUPnP-framework.\n"
+"Inspireret af Intel Tools for UPnP."
+
+#: data/gupnp-av-cp.ui:729 data/gupnp-network-light.ui:11
+#: data/gupnp-universal-cp.ui:12
+msgid "GUPnP homepage"
+msgstr "GUPnPs hjemmeside"
+
+#. TRANSLATORS: Replace this string with your names, one name per line.
+#: data/gupnp-av-cp.ui:731 data/gupnp-network-light.ui:13
+#: data/gupnp-universal-cp.ui:14
+msgid "translator-credits"
+msgstr "scootergrisen"
+"\n"
+"Dansk-gruppen\n"
+"Websted http://dansk-gruppen.dk\n"
+"E-mail <dansk@dansk-gruppen.dk>"
+
+#: data/gupnp-network-light.desktop.in:4
+msgid "UPnP Network Light"
+msgstr "UPnP-netværkslys"
+
+#: data/gupnp-network-light.desktop.in:5
+msgid "Sample UPnP application for controlling lights"
+msgstr "UPnP-prøveprogram til at styre lys"
+
+#: data/gupnp-network-light.ui:8
+msgid ""
+"A virtual network light bulb based on GUPnP framework.\n"
+"Inspired by Intel Tools for UPnP."
+msgstr ""
+"En virtuel netværkspære baseret på GUPnP-framework.\n"
+"Inspireret af Intel Tools for UPnP."
+
+#: data/gupnp-network-light.ui:38
+msgid "GUPnP Network Light"
+msgstr "GUPnP-netværkslys"
+
+#: data/gupnp-network-light.ui:63
+msgctxt "network-light"
+msgid "_On"
+msgstr "_Tændt"
+
+#: data/gupnp-network-light.ui:83
+msgid "_Increase luminance by 20%"
+msgstr "Skru 20% _op for lysstyrken"
+
+#: data/gupnp-network-light.ui:92
+msgid "_Decrease luminance by 20%"
+msgstr "Skru 20% _ned for lysstyrken"
+
+#: data/gupnp-network-light.ui:107
+msgid "_About"
+msgstr "_Om"
+
+#: data/gupnp-universal-cp.desktop.in:4
+msgid "UPnP Universal Control Point"
+msgstr "Universelt styrepunkt for UPnP"
+
+#: data/gupnp-universal-cp.desktop.in:5
+msgid "Inspect and control UPnP devices across your local network"
+msgstr "Inspicer og styr UPnP-enheder på dit lokale netværk"
+
+#: data/gupnp-universal-cp.ui:9
+msgid ""
+"A Generic Control Point based on GUPnP framework.\n"
+"Inspired by Intel Tools for UPnP."
+msgstr ""
+"Et generisk styrepunkt baseret på GUPnP-framework.\n"
+"Inspireret af Intel Tools for UPnP."
+
+#: data/gupnp-universal-cp.ui:42
+msgid "Action Invocation"
+msgstr "Udførsel af handling"
+
+#: data/gupnp-universal-cp.ui:106
+msgid "_Invoke"
+msgstr "_Udfør"
+
+#: data/gupnp-universal-cp.ui:176
+msgid "device"
+msgstr "enhed"
+
+#: data/gupnp-universal-cp.ui:189
+msgid "service"
+msgstr "tjeneste"
+
+#: data/gupnp-universal-cp.ui:202
+msgid "action"
+msgstr "handling"
+
+#: data/gupnp-universal-cp.ui:245
+msgid "'in' arguments"
+msgstr "“in”-argumenter"
+
+#: data/gupnp-universal-cp.ui:278
+msgid "'out' arguments"
+msgstr "“out”-argumenter"
+
+#: data/gupnp-universal-cp.ui:312
+msgid "Copy value"
+msgstr "Kopiér værdi"
+
+#: data/gupnp-universal-cp.ui:321
+msgid "Copy all details"
+msgstr "Kopiér alle detaljer"
+
+#: data/gupnp-universal-cp.ui:333
+msgid "Invoke"
+msgstr "Udfør"
+
+#: data/gupnp-universal-cp.ui:342
+msgid "Subscribe to events"
+msgstr "Abonner på hændelser"
+
+#: data/gupnp-universal-cp.ui:357 data/gupnp-universal-cp.ui:468
+msgid "_Expand all devices"
+msgstr "_Udfold alle enheder"
+
+#: data/gupnp-universal-cp.ui:366 data/gupnp-universal-cp.ui:477
+msgid "_Collapse all devices"
+msgstr "_Sammenfold alle enheder"
+
+#: data/gupnp-universal-cp.ui:378
+msgid "Copy event"
+msgstr "Kopiér hændelse"
+
+#: data/gupnp-universal-cp.ui:387
+msgid "Copy all events"
+msgstr "Kopiér alle hændelser"
+
+#: data/gupnp-universal-cp.ui:402
+msgid "_Clear event log"
+msgstr "_Ryd hændelseslog"
+
+#. default details
+#: data/gupnp-universal-cp.ui:410 src/universal-cp/device-treeview.c:37
+msgid "GUPnP Universal Control Point"
+msgstr "Universelt styrepunkt for GUPnP"
+
+#: data/gupnp-universal-cp.ui:433
+msgid "Clear event log"
+msgstr "Ryd hændelseslog"
+
+#: data/gupnp-universal-cp.ui:447
+msgid "Quit"
+msgstr "Afslut"
+
+#: data/gupnp-universal-cp.ui:459
+msgid "_View"
+msgstr "_Vis"
+
+#: data/gupnp-universal-cp.ui:492
+msgid "Event _log"
+msgstr "Hændelses_log"
+
+#: data/search-dialog.ui:12
+msgid "Show _DIDL…"
+msgstr "Vis _DIDL …"
+
+#: data/search-dialog.ui:49
+msgid "_Close"
+msgstr "_Luk"
+
+#: data/search-dialog.ui:81
+msgid "UPnP search expression"
+msgstr "UPnP-søgeudtryk"
+
+#: data/search-dialog.ui:107
+msgid "column"
+msgstr "kolonne"
+
+#: src/av-cp/main.c:49 src/network-light/main.c:48 src/universal-cp/main.c:41
+msgid "Network PORT to use for UPnP"
+msgstr "NetværksPORT som skal bruges til UPnP"
+
+#: src/av-cp/main.c:50 src/network-light/main.c:49 src/universal-cp/main.c:42
+msgid "Network interfaces to use for UPnP communication"
+msgstr "Netværksgrænseflader som skal bruges til UPnP-kommunikation"
+
+#: src/av-cp/main.c:51
+msgid "Application part of the User-Agent header to use for UPnP communication"
+msgstr ""
+"Programdel af User-Agent-headeren som skal bruges til UPnP-kommunikation"
+
+#: src/av-cp/main.c:225 src/network-light/main.c:104
+#: src/universal-cp/main.c:149
+msgid "- UPnP AV control point"
+msgstr "- AV-styrepunkt for UPnP"
+
+#: src/av-cp/main.c:230 src/network-light/main.c:109
+#: src/universal-cp/main.c:154
+#, c-format
+msgid "Could not parse options: %s\n"
+msgstr "Kunne ikke fortolke tilvalg: %s\n"
+
+#: src/av-cp/search-dialog.c:440 src/av-cp/search-dialog.c:579
+msgid "Search failed"
+msgstr "Søgning mislykkedes"
+
+#: src/av-cp/search-dialog.c:444
+#, c-format
+msgid "Error message was: %s"
+msgstr "Fejlmeddelelsen var: %s"
+
+#: src/av-cp/search-dialog.c:488
+#, c-format
+msgid "Searching on %s"
+msgstr "Søger på %s"
+
+#: src/av-cp/search-dialog.c:491
+#, c-format
+msgid "Searching in %s on %s"
+msgstr "Søger i %s på %s"
+
+#: src/av-cp/search-dialog.c:583
+#, c-format
+msgid "Search criteria invalid: %s"
+msgstr "Ugyldigt søgekriterium: %s"
+
+#: src/av-cp/search-dialog.c:689
+#, c-format
+msgid "Error fetching detailed information: %s"
+msgstr "Fejl ved indhentning af detaljeret information: %s"
+
+#: src/network-light/main.c:50
+msgid "Friendly name for this UPnP light"
+msgstr "Kaldenavn til UPnP-lyset"
+
+#: src/network-light/main.c:51
+msgid "Apply change exclusively to this UPnP light"
+msgstr "Anvend kun ændringen på dette UPnP-lys"
+
+#: src/universal-cp/action-dialog.c:693
+#, c-format
+msgid ""
+"Action failed.\n"
+"\n"
+"Error %d: %s"
+msgstr ""
+"Handling mislykkedes.\n"
+"\n"
+"Fejl %d: %s"
+
+#: src/universal-cp/details-treeview.c:198
+#: src/universal-cp/details-treeview.c:226
+#: src/universal-cp/details-treeview.c:252
+#: src/universal-cp/details-treeview.c:431
+msgid "Name"
+msgstr "Navn"
+
+#: src/universal-cp/details-treeview.c:200
+msgid "Direction"
+msgstr "Retning"
+
+#: src/universal-cp/details-treeview.c:205
+msgid "Related State Variable"
+msgstr "Relateret tilstandsvariabel"
+
+#: src/universal-cp/details-treeview.c:207
+msgid "Is Return Value"
+msgstr "Er returværdi"
+
+#: src/universal-cp/details-treeview.c:208
+#: src/universal-cp/details-treeview.c:255
+msgid "Yes"
+msgstr "Ja"
+
+#: src/universal-cp/details-treeview.c:208
+#: src/universal-cp/details-treeview.c:255
+msgid "No"
+msgstr "Nej"
+
+#: src/universal-cp/details-treeview.c:228
+msgid "Number of Arguments"
+msgstr "Antal argumenter"
+
+#: src/universal-cp/details-treeview.c:254
+msgid "Send Events"
+msgstr "Send hændelser"
+
+#: src/universal-cp/details-treeview.c:256
+msgid "GType"
+msgstr "GType"
+
+#: src/universal-cp/details-treeview.c:259
+msgid "Default Value"
+msgstr "Standardværdi"
+
+#: src/universal-cp/details-treeview.c:265
+msgid "Minimum"
+msgstr "Laveste"
+
+#: src/universal-cp/details-treeview.c:269
+msgid "Maximum"
+msgstr "Højeste"
+
+#: src/universal-cp/details-treeview.c:273
+msgid "Step"
+msgstr "Trin"
+
+#: src/universal-cp/details-treeview.c:293
+msgid "Allowed Values"
+msgstr "Tilladte værdier"
+
+#: src/universal-cp/details-treeview.c:317
+#: src/universal-cp/details-treeview.c:364
+msgid "Location"
+msgstr "Placering"
+
+#: src/universal-cp/details-treeview.c:322
+#: src/universal-cp/details-treeview.c:369
+msgid "UDN"
+msgstr "UDN"
+
+#: src/universal-cp/details-treeview.c:327
+#: src/universal-cp/details-treeview.c:374
+msgid "Type"
+msgstr "Type"
+
+#: src/universal-cp/details-treeview.c:332
+#: src/universal-cp/details-treeview.c:379
+msgid "Base URL"
+msgstr "Grund-URL"
+
+#: src/universal-cp/details-treeview.c:337
+msgid "Service ID"
+msgstr "Tjeneste-id"
+
+#: src/universal-cp/details-treeview.c:339
+msgid "Service URL"
+msgstr "Tjeneste-URL"
+
+#: src/universal-cp/details-treeview.c:341
+msgid "Control URL"
+msgstr "Styre-URL"
+
+#: src/universal-cp/details-treeview.c:343
+msgid "Event Subscription URL"
+msgstr "Hændelsesabonnerings-URL"
+
+#: src/universal-cp/details-treeview.c:384
+msgid "Friendly Name"
+msgstr "Kaldenavn"
+
+#: src/universal-cp/details-treeview.c:386
+msgid "Manufacturer"
+msgstr "Producent"
+
+#: src/universal-cp/details-treeview.c:388
+msgid "Manufacturer URL"
+msgstr "Producent-URL"
+
+#: src/universal-cp/details-treeview.c:390
+msgid "Model Description"
+msgstr "Modelbeskrivelse"
+
+#: src/universal-cp/details-treeview.c:392
+msgid "Model Name"
+msgstr "Modelnavn"
+
+#: src/universal-cp/details-treeview.c:394
+msgid "Model Number"
+msgstr "Modelnummer"
+
+#: src/universal-cp/details-treeview.c:396
+msgid "Model URL"
+msgstr "Model-URL"
+
+#: src/universal-cp/details-treeview.c:398
+msgid "Serial Number"
+msgstr "Serienummer"
+
+#: src/universal-cp/details-treeview.c:400
+msgid "UPC"
+msgstr "UPC"
+
+#: src/universal-cp/details-treeview.c:402
+msgid "Presentation URL"
+msgstr "Præsentations-URL"
+
+#: src/universal-cp/details-treeview.c:432
+#: src/universal-cp/event-treeview.c:410
+msgid "Value"
+msgstr "Værdi"
+
+#: src/universal-cp/device-treeview.c:70
+msgid "Software"
+msgstr "Software"
+
+#: src/universal-cp/device-treeview.c:72
+msgid "Version"
+msgstr "Version"
+
+#: src/universal-cp/device-treeview.c:74
+msgid "Author"
+msgstr "Forfatter"
+
+#: src/universal-cp/device-treeview.c:483
+msgid "State variables"
+msgstr "Tilstandsvariabler"
+
+#: src/universal-cp/device-treeview.c:524
+msgid "Information not available"
+msgstr "Information ikke tilgængelig"
+
+#: src/universal-cp/device-treeview.c:703
+msgid "UPnP Network"
+msgstr "UPnP-netværk"
+
+#: src/universal-cp/device-treeview.c:716 src/universal-cp/event-treeview.c:407
+msgid "Device"
+msgstr "Enhed"
+
+#: src/universal-cp/event-treeview.c:406
+msgid "Time"
+msgstr "Klokkeslæt"
+
+#: src/universal-cp/event-treeview.c:408
+msgid "Service"
+msgstr "Tjeneste"
+
+#: src/universal-cp/event-treeview.c:409
+msgid "State Variable"
+msgstr "Tilstandsvariabel"
