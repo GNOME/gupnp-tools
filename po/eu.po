@@ -1,0 +1,530 @@
+# Basque translation for gupnp-tools.
+# Copyright (C) 2019 gupnp-tools's COPYRIGHT HOLDER
+# This file is distributed under the same license as the gupnp-tools package.
+# Asier Sarasua Garmendia <asier.sarasua@gmail.com>, 2019.
+#
+msgid ""
+msgstr "Project-Id-Version: gupnp-tools gupnp-tools-0-8\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gupnp-tools/issues\n"
+"POT-Creation-Date: 2019-03-30 14:35+0000\n"
+"PO-Revision-Date: 2019-05-28 10:00+0100\n"
+"Last-Translator: Asier Sarasua Garmendia <asier.sarasua@gmail.com>\n"
+"Language-Team: Basque <librezale@librezale.eus>\n"
+"Language: eu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: data/didl-lite-dialog.ui.in:9
+msgid "GUPnP AV CP - Metadata View"
+msgstr "GUPnP AV CP - Metadatuen ikustailea"
+
+#: data/gupnp-av-cp.desktop.in:4
+msgid "UPnP AV Control Point"
+msgstr "UPnP AV kontrol-puntua"
+
+#: data/gupnp-av-cp.desktop.in:5
+msgid "Browse and control UPnP multimedia devices"
+msgstr "Arakatu eta kontrolatu UPnP multimedia-gailuak"
+
+#: data/gupnp-av-cp.ui:22 data/gupnp-av-cp.ui:208
+msgid "_Play"
+msgstr "_Erreproduzitu"
+
+#: data/gupnp-av-cp.ui:31
+msgid "Fetch the DIDL-Lite XML for this media object"
+msgstr ""
+
+#: data/gupnp-av-cp.ui:32
+msgid "Fetch _DIDL-Lite"
+msgstr ""
+
+#: data/gupnp-av-cp.ui:41
+msgid "Search…"
+msgstr "Bilatu..."
+
+#: data/gupnp-av-cp.ui:89
+msgid "GUPnP AV Control Point"
+msgstr "GUPnP AV kontrol-puntua"
+
+#: data/gupnp-av-cp.ui:104 data/gupnp-universal-cp.ui:424
+msgid "_File"
+msgstr "_Fitxategia"
+
+#: data/gupnp-av-cp.ui:113
+msgid "Close"
+msgstr "Itxi"
+
+#: data/gupnp-av-cp.ui:126
+msgid "_Tools"
+msgstr "_Tresnak"
+
+#: data/gupnp-av-cp.ui:136
+msgid "_Lenient Mode"
+msgstr ""
+
+#: data/gupnp-av-cp.ui:148 data/gupnp-universal-cp.ui:506
+msgid "_Help"
+msgstr "_Laguntza"
+
+#: data/gupnp-av-cp.ui:157 data/gupnp-universal-cp.ui:515
+msgid "About"
+msgstr "Honi buruz"
+
+#: data/gupnp-av-cp.ui:257
+msgid "P_ause"
+msgstr "_Pausatu"
+
+#: data/gupnp-av-cp.ui:306
+msgid "_Stop"
+msgstr "_Gelditu"
+
+#: data/gupnp-av-cp.ui:355
+msgid "Pre_vious"
+msgstr "_Aurrekoa"
+
+#: data/gupnp-av-cp.ui:418
+msgid "_Next"
+msgstr "_Hurrengoa"
+
+#: data/gupnp-av-cp.ui:467
+msgid "_Rescan"
+msgstr "_Berreskaneatu"
+
+#: data/gupnp-av-cp.ui:514
+msgid ""
+"Clears the CP's idea of the state of the currently selected AV Renderer. "
+"Useful for dealing with AV Renderers that don't report state changes."
+msgstr ""
+
+#: data/gupnp-av-cp.ui:525
+msgid "_Clear state"
+msgstr "_Garbitu egoera"
+
+#: data/gupnp-av-cp.ui:587
+msgid "_Renderer: "
+msgstr "_Errendatzailea: "
+
+#: data/gupnp-av-cp.ui:725 data/gupnp-network-light.ui:7
+#: data/gupnp-universal-cp.ui:8
+msgid "Copyright (C) 2007 Zeeshan Ali (Khattak)"
+msgstr "Copyright (C) 2007 Zeeshan Ali (Khattak)"
+
+#: data/gupnp-av-cp.ui:726
+msgid ""
+"An UPnP AV Control Point based on GUPnP framework.\n"
+"Inspired by Intel Tools for UPnP."
+msgstr ""
+
+#: data/gupnp-av-cp.ui:729 data/gupnp-network-light.ui:11
+#: data/gupnp-universal-cp.ui:12
+msgid "GUPnP homepage"
+msgstr "GUPnP aplikazioaren webgunea"
+
+#. TRANSLATORS: Replace this string with your names, one name per line.
+#: data/gupnp-av-cp.ui:731 data/gupnp-network-light.ui:13
+#: data/gupnp-universal-cp.ui:14
+msgid "translator-credits"
+msgstr "Asier Sarasua Garmendia <asier.sarasua@gmail.com>"
+
+#: data/gupnp-network-light.desktop.in:4
+msgid "UPnP Network Light"
+msgstr "UPnP sareko argia"
+
+#: data/gupnp-network-light.desktop.in:5
+msgid "Sample UPnP application for controlling lights"
+msgstr ""
+
+#: data/gupnp-network-light.ui:8
+msgid ""
+"A virtual network light bulb based on GUPnP framework.\n"
+"Inspired by Intel Tools for UPnP."
+msgstr ""
+
+#: data/gupnp-network-light.ui:38
+msgid "GUPnP Network Light"
+msgstr "GUPnP sareko argia"
+
+#: data/gupnp-network-light.ui:63
+msgctxt "network-light"
+msgid "_On"
+msgstr "_Aktibatuta"
+
+#: data/gupnp-network-light.ui:83
+msgid "_Increase luminance by 20%"
+msgstr ""
+
+#: data/gupnp-network-light.ui:92
+msgid "_Decrease luminance by 20%"
+msgstr ""
+
+#: data/gupnp-network-light.ui:107
+msgid "_About"
+msgstr "Honi _buruz"
+
+#: data/gupnp-universal-cp.desktop.in:4
+msgid "UPnP Universal Control Point"
+msgstr ""
+
+#: data/gupnp-universal-cp.desktop.in:5
+msgid "Inspect and control UPnP devices across your local network"
+msgstr ""
+
+#: data/gupnp-universal-cp.ui:9
+msgid ""
+"A Generic Control Point based on GUPnP framework.\n"
+"Inspired by Intel Tools for UPnP."
+msgstr ""
+
+#: data/gupnp-universal-cp.ui:42
+msgid "Action Invocation"
+msgstr ""
+
+#: data/gupnp-universal-cp.ui:106
+msgid "_Invoke"
+msgstr ""
+
+#: data/gupnp-universal-cp.ui:176
+msgid "device"
+msgstr "gailua"
+
+#: data/gupnp-universal-cp.ui:189
+msgid "service"
+msgstr "zerbitzua"
+
+#: data/gupnp-universal-cp.ui:202
+msgid "action"
+msgstr "ekintza"
+
+#: data/gupnp-universal-cp.ui:245
+msgid "'in' arguments"
+msgstr ""
+
+#: data/gupnp-universal-cp.ui:278
+msgid "'out' arguments"
+msgstr ""
+
+#: data/gupnp-universal-cp.ui:312
+msgid "Copy value"
+msgstr "Kopiatu balioa"
+
+#: data/gupnp-universal-cp.ui:321
+msgid "Copy all details"
+msgstr "Kopiatu xehetasun guztiak"
+
+#: data/gupnp-universal-cp.ui:333
+msgid "Invoke"
+msgstr "Deitu"
+
+#: data/gupnp-universal-cp.ui:342
+msgid "Subscribe to events"
+msgstr "Harpidetu gertaeratara"
+
+#: data/gupnp-universal-cp.ui:357 data/gupnp-universal-cp.ui:468
+msgid "_Expand all devices"
+msgstr "_Zabaldu gailu guztiak"
+
+#: data/gupnp-universal-cp.ui:366 data/gupnp-universal-cp.ui:477
+msgid "_Collapse all devices"
+msgstr "_Tolestu gailu guztiak"
+
+#: data/gupnp-universal-cp.ui:378
+msgid "Copy event"
+msgstr "Kopiatu gertaera"
+
+#: data/gupnp-universal-cp.ui:387
+msgid "Copy all events"
+msgstr "Kopiatu gertaera guztiak"
+
+#: data/gupnp-universal-cp.ui:402
+msgid "_Clear event log"
+msgstr "_Garbitu gertaeren erregistroa"
+
+#. default details
+#: data/gupnp-universal-cp.ui:410 src/universal-cp/device-treeview.c:37
+msgid "GUPnP Universal Control Point"
+msgstr "GUPnP kontrol-puntu unibertsala"
+
+#: data/gupnp-universal-cp.ui:433
+msgid "Clear event log"
+msgstr "Garbitu gertaeren erregistroa"
+
+#: data/gupnp-universal-cp.ui:447
+msgid "Quit"
+msgstr "Irten"
+
+#: data/gupnp-universal-cp.ui:459
+msgid "_View"
+msgstr "_Ikusi"
+
+#: data/gupnp-universal-cp.ui:492
+msgid "Event _log"
+msgstr "Gertaeren e_gunkaria"
+
+#: data/search-dialog.ui:12
+msgid "Show _DIDL…"
+msgstr "Erakutsi _DIDL…"
+
+#: data/search-dialog.ui:49
+msgid "_Close"
+msgstr "_Itxi"
+
+#: data/search-dialog.ui:81
+msgid "UPnP search expression"
+msgstr "UPnP bilaketa-adierazpena"
+
+#: data/search-dialog.ui:107
+msgid "column"
+msgstr "zutabea"
+
+#: src/av-cp/main.c:49 src/network-light/main.c:48 src/universal-cp/main.c:41
+msgid "Network PORT to use for UPnP"
+msgstr ""
+
+#: src/av-cp/main.c:50 src/network-light/main.c:49 src/universal-cp/main.c:42
+msgid "Network interfaces to use for UPnP communication"
+msgstr ""
+
+#: src/av-cp/main.c:51
+msgid "Application part of the User-Agent header to use for UPnP communication"
+msgstr ""
+
+#: src/av-cp/main.c:225 src/network-light/main.c:104
+#: src/universal-cp/main.c:149
+msgid "- UPnP AV control point"
+msgstr ""
+
+#: src/av-cp/main.c:230 src/network-light/main.c:109
+#: src/universal-cp/main.c:154
+#, c-format
+msgid "Could not parse options: %s\n"
+msgstr ""
+
+#: src/av-cp/search-dialog.c:440 src/av-cp/search-dialog.c:579
+msgid "Search failed"
+msgstr "Bilaketak huts egin du"
+
+#: src/av-cp/search-dialog.c:444
+#, c-format
+msgid "Error message was: %s"
+msgstr ""
+
+#: src/av-cp/search-dialog.c:488
+#, c-format
+msgid "Searching on %s"
+msgstr ""
+
+#: src/av-cp/search-dialog.c:491
+#, c-format
+msgid "Searching in %s on %s"
+msgstr ""
+
+#: src/av-cp/search-dialog.c:583
+#, c-format
+msgid "Search criteria invalid: %s"
+msgstr ""
+
+#: src/av-cp/search-dialog.c:689
+#, c-format
+msgid "Error fetching detailed information: %s"
+msgstr ""
+
+#: src/network-light/main.c:50
+msgid "Friendly name for this UPnP light"
+msgstr ""
+
+#: src/network-light/main.c:51
+msgid "Apply change exclusively to this UPnP light"
+msgstr ""
+
+#: src/universal-cp/action-dialog.c:693
+#, c-format
+msgid ""
+"Action failed.\n"
+"\n"
+"Error %d: %s"
+msgstr "Ekintzak huts egin du.\n"
+"\n"
+"%d errorea: %s"
+
+#: src/universal-cp/details-treeview.c:198
+#: src/universal-cp/details-treeview.c:226
+#: src/universal-cp/details-treeview.c:252
+#: src/universal-cp/details-treeview.c:431
+msgid "Name"
+msgstr "Izena"
+
+#: src/universal-cp/details-treeview.c:200
+msgid "Direction"
+msgstr "Norabidea"
+
+#: src/universal-cp/details-treeview.c:205
+msgid "Related State Variable"
+msgstr "Erlazionatutako egoera-aldagaia"
+
+#: src/universal-cp/details-treeview.c:207
+msgid "Is Return Value"
+msgstr ""
+
+#: src/universal-cp/details-treeview.c:208
+#: src/universal-cp/details-treeview.c:255
+msgid "Yes"
+msgstr "Bai"
+
+#: src/universal-cp/details-treeview.c:208
+#: src/universal-cp/details-treeview.c:255
+msgid "No"
+msgstr "Ez"
+
+#: src/universal-cp/details-treeview.c:228
+msgid "Number of Arguments"
+msgstr "Argumentu kopurua"
+
+#: src/universal-cp/details-treeview.c:254
+msgid "Send Events"
+msgstr "Bidali gertaerak"
+
+#: src/universal-cp/details-treeview.c:256
+msgid "GType"
+msgstr "GType"
+
+#: src/universal-cp/details-treeview.c:259
+msgid "Default Value"
+msgstr "Balio lehenetsia"
+
+#: src/universal-cp/details-treeview.c:265
+msgid "Minimum"
+msgstr "Gutxienekoa"
+
+#: src/universal-cp/details-treeview.c:269
+msgid "Maximum"
+msgstr "Gehienekoa"
+
+#: src/universal-cp/details-treeview.c:273
+msgid "Step"
+msgstr "Urratsa"
+
+#: src/universal-cp/details-treeview.c:293
+msgid "Allowed Values"
+msgstr "Onartutako balioak"
+
+#: src/universal-cp/details-treeview.c:317
+#: src/universal-cp/details-treeview.c:364
+msgid "Location"
+msgstr "Kokalekua"
+
+#: src/universal-cp/details-treeview.c:322
+#: src/universal-cp/details-treeview.c:369
+msgid "UDN"
+msgstr "UDN"
+
+#: src/universal-cp/details-treeview.c:327
+#: src/universal-cp/details-treeview.c:374
+msgid "Type"
+msgstr "Mota"
+
+#: src/universal-cp/details-treeview.c:332
+#: src/universal-cp/details-treeview.c:379
+msgid "Base URL"
+msgstr "Oinarrizko URLa"
+
+#: src/universal-cp/details-treeview.c:337
+msgid "Service ID"
+msgstr "Zerbitzuaren IDa"
+
+#: src/universal-cp/details-treeview.c:339
+msgid "Service URL"
+msgstr "Zerbitzuaren URLa"
+
+#: src/universal-cp/details-treeview.c:341
+msgid "Control URL"
+msgstr ""
+
+#: src/universal-cp/details-treeview.c:343
+msgid "Event Subscription URL"
+msgstr ""
+
+#: src/universal-cp/details-treeview.c:384
+msgid "Friendly Name"
+msgstr ""
+
+#: src/universal-cp/details-treeview.c:386
+msgid "Manufacturer"
+msgstr "Fabrikatzailea"
+
+#: src/universal-cp/details-treeview.c:388
+msgid "Manufacturer URL"
+msgstr ""
+
+#: src/universal-cp/details-treeview.c:390
+msgid "Model Description"
+msgstr "Modeloaren deskribapena"
+
+#: src/universal-cp/details-treeview.c:392
+msgid "Model Name"
+msgstr "Modeloaren izena"
+
+#: src/universal-cp/details-treeview.c:394
+msgid "Model Number"
+msgstr "Modeloaren zenbakia"
+
+#: src/universal-cp/details-treeview.c:396
+msgid "Model URL"
+msgstr "Modeloaren URLa"
+
+#: src/universal-cp/details-treeview.c:398
+msgid "Serial Number"
+msgstr "Serie-zenbakia"
+
+#: src/universal-cp/details-treeview.c:400
+msgid "UPC"
+msgstr "UPC"
+
+#: src/universal-cp/details-treeview.c:402
+msgid "Presentation URL"
+msgstr "Aurkezpenaren URLa"
+
+#: src/universal-cp/details-treeview.c:432
+#: src/universal-cp/event-treeview.c:410
+msgid "Value"
+msgstr "Balioa"
+
+#: src/universal-cp/device-treeview.c:70
+msgid "Software"
+msgstr "Softwarea"
+
+#: src/universal-cp/device-treeview.c:72
+msgid "Version"
+msgstr "Bertsioa"
+
+#: src/universal-cp/device-treeview.c:74
+msgid "Author"
+msgstr "Egilea"
+
+#: src/universal-cp/device-treeview.c:483
+msgid "State variables"
+msgstr "Egoera-aldagaiak"
+
+#: src/universal-cp/device-treeview.c:524
+msgid "Information not available"
+msgstr "Informazioa ez dago erabilgarri"
+
+#: src/universal-cp/device-treeview.c:703
+msgid "UPnP Network"
+msgstr "UPnP sarea"
+
+#: src/universal-cp/device-treeview.c:716 src/universal-cp/event-treeview.c:407
+msgid "Device"
+msgstr "Gailua"
+
+#: src/universal-cp/event-treeview.c:406
+msgid "Time"
+msgstr "Ordua"
+
+#: src/universal-cp/event-treeview.c:408
+msgid "Service"
+msgstr "Zerbitzua"
+
+#: src/universal-cp/event-treeview.c:409
+msgid "State Variable"
+msgstr "Egoera-aldagaia"
