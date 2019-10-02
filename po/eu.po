@@ -6,8 +6,8 @@
 msgid ""
 msgstr "Project-Id-Version: gupnp-tools gupnp-tools-0-8\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gupnp-tools/issues\n"
-"POT-Creation-Date: 2019-03-30 14:35+0000\n"
-"PO-Revision-Date: 2019-05-28 10:00+0100\n"
+"POT-Creation-Date: 2019-05-28 15:51+0000\n"
+"PO-Revision-Date: 2019-10-02 10:00+0100\n"
 "Last-Translator: Asier Sarasua Garmendia <asier.sarasua@gmail.com>\n"
 "Language-Team: Basque <librezale@librezale.eus>\n"
 "Language: eu\n"
@@ -33,15 +33,15 @@ msgstr "_Erreproduzitu"
 
 #: data/gupnp-av-cp.ui:31
 msgid "Fetch the DIDL-Lite XML for this media object"
-msgstr ""
+msgstr "Eskuratu DIDL-Lite XMLa multimedia-objektu honetarako"
 
 #: data/gupnp-av-cp.ui:32
 msgid "Fetch _DIDL-Lite"
-msgstr ""
+msgstr "Eskuratu _DIDL-Lite"
 
 #: data/gupnp-av-cp.ui:41
 msgid "Search…"
-msgstr "Bilatu..."
+msgstr "Bilatu…"
 
 #: data/gupnp-av-cp.ui:89
 msgid "GUPnP AV Control Point"
@@ -61,7 +61,7 @@ msgstr "_Tresnak"
 
 #: data/gupnp-av-cp.ui:136
 msgid "_Lenient Mode"
-msgstr ""
+msgstr "Modu _barkabera"
 
 #: data/gupnp-av-cp.ui:148 data/gupnp-universal-cp.ui:506
 msgid "_Help"
@@ -95,7 +95,7 @@ msgstr "_Berreskaneatu"
 msgid ""
 "Clears the CP's idea of the state of the currently selected AV Renderer. "
 "Useful for dealing with AV Renderers that don't report state changes."
-msgstr ""
+msgstr "Garbitu unean hautatutako AV errendatzailearen egoeraren CP idea. Erabilgarria egoera-aldaketen berri ematen ez duten AV errendatzaileekin."
 
 #: data/gupnp-av-cp.ui:525
 msgid "_Clear state"
@@ -114,7 +114,8 @@ msgstr "Copyright (C) 2007 Zeeshan Ali (Khattak)"
 msgid ""
 "An UPnP AV Control Point based on GUPnP framework.\n"
 "Inspired by Intel Tools for UPnP."
-msgstr ""
+msgstr "GUPnP lan-markoan oinarritutako UPnP AV kontrol-puntua.\n"
+"Intel Tools for UPnP aplikazioan inspiratua."
 
 #: data/gupnp-av-cp.ui:729 data/gupnp-network-light.ui:11
 #: data/gupnp-universal-cp.ui:12
@@ -133,13 +134,14 @@ msgstr "UPnP sareko argia"
 
 #: data/gupnp-network-light.desktop.in:5
 msgid "Sample UPnP application for controlling lights"
-msgstr ""
+msgstr "Agiak kontrolatzeko adibideko UPnP aplikazioa"
 
 #: data/gupnp-network-light.ui:8
 msgid ""
 "A virtual network light bulb based on GUPnP framework.\n"
 "Inspired by Intel Tools for UPnP."
-msgstr ""
+msgstr "GUPnp lan-markoan oinarritutako sareko argi birtuala.\n"
+"Intel Tools for UPnP aplikazioan inspiratua."
 
 #: data/gupnp-network-light.ui:38
 msgid "GUPnP Network Light"
@@ -152,11 +154,11 @@ msgstr "_Aktibatuta"
 
 #: data/gupnp-network-light.ui:83
 msgid "_Increase luminance by 20%"
-msgstr ""
+msgstr "_Handiagotu luminantzia %20"
 
 #: data/gupnp-network-light.ui:92
 msgid "_Decrease luminance by 20%"
-msgstr ""
+msgstr "_Txikiagotu luminantzia %20"
 
 #: data/gupnp-network-light.ui:107
 msgid "_About"
@@ -164,25 +166,26 @@ msgstr "Honi _buruz"
 
 #: data/gupnp-universal-cp.desktop.in:4
 msgid "UPnP Universal Control Point"
-msgstr ""
+msgstr "UPnP kontrol-puntu unibertsala"
 
 #: data/gupnp-universal-cp.desktop.in:5
 msgid "Inspect and control UPnP devices across your local network"
-msgstr ""
+msgstr "Ikuskatu eta kontrolatu UPnP gailuak zure sare lokalean"
 
 #: data/gupnp-universal-cp.ui:9
 msgid ""
 "A Generic Control Point based on GUPnP framework.\n"
 "Inspired by Intel Tools for UPnP."
-msgstr ""
+msgstr "GUPnP lan-markoan oinarritutako kontrol-puntu generikoa.\n"
+"Intel Tools for UPnP aplikazioan inspiratua."
 
 #: data/gupnp-universal-cp.ui:42
 msgid "Action Invocation"
-msgstr ""
+msgstr "Ekintzak deitzea"
 
 #: data/gupnp-universal-cp.ui:106
 msgid "_Invoke"
-msgstr ""
+msgstr "_Deitu"
 
 #: data/gupnp-universal-cp.ui:176
 msgid "device"
@@ -198,11 +201,11 @@ msgstr "ekintza"
 
 #: data/gupnp-universal-cp.ui:245
 msgid "'in' arguments"
-msgstr ""
+msgstr "'in' argumentuak"
 
 #: data/gupnp-universal-cp.ui:278
 msgid "'out' arguments"
-msgstr ""
+msgstr "'out' argumentuak"
 
 #: data/gupnp-universal-cp.ui:312
 msgid "Copy value"
@@ -267,7 +270,7 @@ msgstr "Erakutsi _DIDL…"
 
 #: data/search-dialog.ui:49
 msgid "_Close"
-msgstr "_Itxi"
+msgstr "It_xi"
 
 #: data/search-dialog.ui:81
 msgid "UPnP search expression"
@@ -279,26 +282,26 @@ msgstr "zutabea"
 
 #: src/av-cp/main.c:49 src/network-light/main.c:48 src/universal-cp/main.c:41
 msgid "Network PORT to use for UPnP"
-msgstr ""
+msgstr "UPnP protokolorako erabiliko de sareko ATAKA"
 
 #: src/av-cp/main.c:50 src/network-light/main.c:49 src/universal-cp/main.c:42
 msgid "Network interfaces to use for UPnP communication"
-msgstr ""
+msgstr "UPnP komunikaziorako erabiliko diren sareko interfazeak"
 
 #: src/av-cp/main.c:51
 msgid "Application part of the User-Agent header to use for UPnP communication"
-msgstr ""
+msgstr "UPnP komunikaziorako erabiliko de User-Agent goiburuaren aplikazioaren zatia"
 
 #: src/av-cp/main.c:225 src/network-light/main.c:104
 #: src/universal-cp/main.c:149
 msgid "- UPnP AV control point"
-msgstr ""
+msgstr "- UPnP AV kontrol puntua"
 
 #: src/av-cp/main.c:230 src/network-light/main.c:109
 #: src/universal-cp/main.c:154
 #, c-format
 msgid "Could not parse options: %s\n"
-msgstr ""
+msgstr "Ezin dira aukerak analizatu: %s\n"
 
 #: src/av-cp/search-dialog.c:440 src/av-cp/search-dialog.c:579
 msgid "Search failed"
@@ -307,35 +310,35 @@ msgstr "Bilaketak huts egin du"
 #: src/av-cp/search-dialog.c:444
 #, c-format
 msgid "Error message was: %s"
-msgstr ""
+msgstr "Errore-mezua honakoa da: %s"
 
 #: src/av-cp/search-dialog.c:488
 #, c-format
 msgid "Searching on %s"
-msgstr ""
+msgstr "Hemen bilatzen: %s"
 
 #: src/av-cp/search-dialog.c:491
 #, c-format
 msgid "Searching in %s on %s"
-msgstr ""
+msgstr "%s hemen bilatzen: %s"
 
 #: src/av-cp/search-dialog.c:583
 #, c-format
 msgid "Search criteria invalid: %s"
-msgstr ""
+msgstr "Bilaketa-irizpide baliogabea: %s"
 
 #: src/av-cp/search-dialog.c:689
 #, c-format
 msgid "Error fetching detailed information: %s"
-msgstr ""
+msgstr "Errorea informazio xehea eskuratzean: %s"
 
 #: src/network-light/main.c:50
 msgid "Friendly name for this UPnP light"
-msgstr ""
+msgstr "UPnP argi honen izen erraza"
 
 #: src/network-light/main.c:51
 msgid "Apply change exclusively to this UPnP light"
-msgstr ""
+msgstr "Aplikatu aldaketa UPnP argi honi soilik"
 
 #: src/universal-cp/action-dialog.c:693
 #, c-format
@@ -438,15 +441,15 @@ msgstr "Zerbitzuaren URLa"
 
 #: src/universal-cp/details-treeview.c:341
 msgid "Control URL"
-msgstr ""
+msgstr "Kontrolaren URLa"
 
 #: src/universal-cp/details-treeview.c:343
 msgid "Event Subscription URL"
-msgstr ""
+msgstr "Gertaera-harpidetzaren URLa"
 
 #: src/universal-cp/details-treeview.c:384
 msgid "Friendly Name"
-msgstr ""
+msgstr "Izen erraza"
 
 #: src/universal-cp/details-treeview.c:386
 msgid "Manufacturer"
@@ -454,7 +457,7 @@ msgstr "Fabrikatzailea"
 
 #: src/universal-cp/details-treeview.c:388
 msgid "Manufacturer URL"
-msgstr ""
+msgstr "Fabrikatzailearen URLa"
 
 #: src/universal-cp/details-treeview.c:390
 msgid "Model Description"
