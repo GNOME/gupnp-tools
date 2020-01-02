@@ -7,25 +7,22 @@ endif
 didl_dialog_ui = configure_file(input: 'didl-lite-dialog.ui.in', output: 'didl-lite-dialog.ui', configuration : didl_dialog_data)
 
 install_data(['xml/Dimming-scpd.xml', 'xml/network-light-desc.xml', 'xml/SwitchPower-scpd.xml'], install_dir : join_paths(shareddir, 'xml'))
-install_data(['pixmaps/av-cp.png',
-              'pixmaps/media-renderer.png',
-              'pixmaps/network-light-22x22.png',
-              'pixmaps/network-light-256x256.png',
-              'pixmaps/network-light-off.png',
-              'pixmaps/network-light-on.png',
-              'pixmaps/universal-cp.png',
-              'pixmaps/upnp-action-arg-in.png',
-              'pixmaps/upnp-action-arg-out.png',
-              'pixmaps/upnp-device.png',
-              'pixmaps/upnp-service.png',
-              'pixmaps/upnp-state-variable.png'], install_dir : join_paths(shareddir, 'pixmaps'))
+install_data(
+    [
+        'pixmaps/media-renderer.png',
+        'pixmaps/network-light-22x22.png',
+        'pixmaps/network-light-off.png',
+        'pixmaps/network-light-on.png',
+        'pixmaps/upnp-action-arg-in.png',
+        'pixmaps/upnp-action-arg-out.png',
+        'pixmaps/upnp-device.png',
+        'pixmaps/upnp-service.png',
+        'pixmaps/upnp-state-variable.png'
+    ],
+    install_dir : join_paths(shareddir, 'pixmaps')
+)
 
-install_data([
-              'pixmaps/network-light-256x256.png',
-              'pixmaps/universal-cp.png',
-              'pixmaps/av-cp.png'],
-              install_dir : join_paths(get_option('datadir'), 'icons', 'hicolor', '256x256', 'apps'))
-
+install_subdir('pixmaps/hicolor', install_dir : join_paths(get_option('datadir'), 'icons'))
 
 desktop_conf = configuration_data()
 desktop_conf.set('PKGDATADIR', shareddir)

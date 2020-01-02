@@ -31,7 +31,7 @@
 #include "main.h"
 
 #define UI_FILE   "/org/gupnp/Tools/Network-Light/gupnp-network-light.ui"
-#define ICON_FILE "/org/gupnp/Tools/Network-Light/pixmaps/network-light-256x256.png"
+#define ICON_FILE "/org/gupnp/Tools/Network-Light/pixmaps/network-light.png"
 #define OFF_FILE  "/org/gupnp/Tools/Network-Light/pixmaps/network-light-off.png"
 #define ON_FILE   "/org/gupnp/Tools/Network-Light/pixmaps/network-light-on.png"
 

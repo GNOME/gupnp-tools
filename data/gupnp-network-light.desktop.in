@@ -5,7 +5,7 @@ Comment=Sample UPnP application for controlling lights
 Categories=GTK;Development;
 Exec=gupnp-network-light
 # Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-Icon=network-light-256x256
+Icon=network-light
 Terminal=false
 Type=Application
 StartupNotify=true

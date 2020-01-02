@@ -2,6 +2,6 @@
 <gresources>
     <gresource prefix='/org/gupnp/Tools/Universal-CP'>
         <file preprocess='xml-stripblanks'>gupnp-universal-cp.ui</file>
-        <file>pixmaps/universal-cp.png</file>
+        <file alias="pixmaps/universal-cp.png">pixmaps/hicolor/256x256/apps/universal-cp.png</file>
    </gresource>
 </gresources>
