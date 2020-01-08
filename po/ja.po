@@ -1,15 +1,16 @@
 # Japanese translation for gupnp-tools.
-# Copyright (C) 2013 gupnp-tools's COPYRIGHT HOLDER
+# Copyright (C) 2013, 2020 gupnp-tools's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gupnp-tools package.
 # Kentaro KAZUHAMA <kazken3@gmail.com>, 2013.
+# sicklylife <translation@sicklylife.jp>, 2020.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gupnp-tools master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gupnp-tools/issues\n"
 "POT-Creation-Date: 2020-01-02 08:22+0000\n"
-"PO-Revision-Date: 2013-02-07 03:22+0900\n"
-"Last-Translator: Kentaro KAZUHAMA <kazken3@gmail.com>\n"
+"PO-Revision-Date: 2020-01-09 00:00+0900\n"
+"Last-Translator: sicklylife <translation@sicklylife.jp>\n"
 "Language-Team: Japanese <gnome-translation@gnome.gr.jp>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
@@ -27,7 +28,7 @@ msgstr "UPnP AVコントロールポイント"
 
 #: data/gupnp-av-cp.desktop.in:5
 msgid "Browse and control UPnP multimedia devices"
-msgstr ""
+msgstr "UPnPメディアデバイスの参照と制御を行います"
 
 #: data/gupnp-av-cp.ui:22 data/gupnp-av-cp.ui:208
 msgid "_Play"
@@ -43,7 +44,7 @@ msgstr "DIDL-Liteを取得(_D)"
 
 #: data/gupnp-av-cp.ui:41
 msgid "Search…"
-msgstr ""
+msgstr "検索…"
 
 #: data/gupnp-av-cp.ui:89
 msgid "GUPnP AV Control Point"
@@ -55,7 +56,7 @@ msgstr "ファイル(_F)"
 
 #: data/gupnp-av-cp.ui:113
 msgid "Close"
-msgstr ""
+msgstr "閉じる"
 
 #: data/gupnp-av-cp.ui:126
 msgid "_Tools"
@@ -70,10 +71,8 @@ msgid "_Help"
 msgstr "ヘルプ(_H)"
 
 #: data/gupnp-av-cp.ui:157 data/gupnp-universal-cp.ui:515
-#, fuzzy
-#| msgid "_About"
 msgid "About"
-msgstr "このアプリケーションについて(_A)"
+msgstr "このアプリケーションについて"
 
 #: data/gupnp-av-cp.ui:257
 msgid "P_ause"
@@ -93,7 +92,7 @@ msgstr "進む(_N)"
 
 #: data/gupnp-av-cp.ui:467
 msgid "_Rescan"
-msgstr ""
+msgstr "再スキャン(_R)"
 
 #: data/gupnp-av-cp.ui:514
 msgid ""
@@ -133,7 +132,9 @@ msgstr "GUPnPのウェブサイト"
 #: data/gupnp-av-cp.ui:731 data/gupnp-network-light.ui:13
 #: data/gupnp-universal-cp.ui:14
 msgid "translator-credits"
-msgstr "Kentaro KAZUHAMA <kazken3@gmail.com>, 2013."
+msgstr ""
+"Kentaro KAZUHAMA <kazken3@gmail.com>\n"
+"sicklylife <translation@sicklylife.jp>"
 
 #: data/gupnp-network-light.desktop.in:4
 msgid "UPnP Network Light"
@@ -209,16 +210,12 @@ msgid "action"
 msgstr "アクション"
 
 #: data/gupnp-universal-cp.ui:245
-#, fuzzy
-#| msgid "<b>'in' arguments</b>"
 msgid "'in' arguments"
-msgstr "<b>'入力'引数</b>"
+msgstr "'入力'引数"
 
 #: data/gupnp-universal-cp.ui:278
-#, fuzzy
-#| msgid "<b>'out' arguments</b>"
 msgid "'out' arguments"
-msgstr "<b>'出力'引数</b>"
+msgstr "'出力'引数"
 
 #: data/gupnp-universal-cp.ui:312
 msgid "Copy value"
@@ -262,14 +259,12 @@ msgid "GUPnP Universal Control Point"
 msgstr "GUPnPユニバーサルコントロールポイント"
 
 #: data/gupnp-universal-cp.ui:433
-#, fuzzy
-#| msgid "_Clear event log"
 msgid "Clear event log"
-msgstr "イベントログを消去(_C)"
+msgstr "イベントログを消去"
 
 #: data/gupnp-universal-cp.ui:447
 msgid "Quit"
-msgstr ""
+msgstr "終了"
 
 #: data/gupnp-universal-cp.ui:459
 msgid "_View"
@@ -281,11 +276,11 @@ msgstr "イベントログ(_L)"
 
 #: data/search-dialog.ui:12
 msgid "Show _DIDL…"
-msgstr ""
+msgstr "DIDLを表示(_D)…"
 
 #: data/search-dialog.ui:49
 msgid "_Close"
-msgstr ""
+msgstr "閉じる(_C)"
 
 #: data/search-dialog.ui:81
 msgid "UPnP search expression"
@@ -297,57 +292,55 @@ msgstr ""
 
 #: src/av-cp/main.c:49 src/network-light/main.c:48 src/universal-cp/main.c:41
 msgid "Network PORT to use for UPnP"
-msgstr ""
+msgstr "UPnP用のネットワークポート番号"
 
 #: src/av-cp/main.c:50 src/network-light/main.c:49 src/universal-cp/main.c:42
 msgid "Network interfaces to use for UPnP communication"
-msgstr ""
+msgstr "UPnPでの通信に使うネットワークインターフェース"
 
 #: src/av-cp/main.c:51
 msgid "Application part of the User-Agent header to use for UPnP communication"
-msgstr ""
+msgstr "UPnPでの通信に使うユーザーエージェントのアプリケーション名部分"
 
 #: src/av-cp/main.c:225 src/network-light/main.c:104
 #: src/universal-cp/main.c:149
-#, fuzzy
-#| msgid "UPnP AV Control Point"
 msgid "- UPnP AV control point"
-msgstr "UPnP AVコントロールポイント"
+msgstr "- UPnP AVコントロールポイント"
 
 #: src/av-cp/main.c:230 src/network-light/main.c:109
 #: src/universal-cp/main.c:154
 #, c-format
 msgid "Could not parse options: %s\n"
-msgstr ""
+msgstr "オプションを解析できませんでした: %s\n"
 
 #: src/av-cp/search-dialog.c:440 src/av-cp/search-dialog.c:579
 msgid "Search failed"
-msgstr ""
+msgstr "検索に失敗しました"
 
 #: src/av-cp/search-dialog.c:444
 #, c-format
 msgid "Error message was: %s"
-msgstr ""
+msgstr "エラーメッセージ: %s"
 
 #: src/av-cp/search-dialog.c:488
 #, c-format
 msgid "Searching on %s"
-msgstr ""
+msgstr "%s で検索"
 
 #: src/av-cp/search-dialog.c:491
 #, c-format
 msgid "Searching in %s on %s"
-msgstr ""
+msgstr "%s を %s で検索"
 
 #: src/av-cp/search-dialog.c:583
 #, c-format
 msgid "Search criteria invalid: %s"
-msgstr ""
+msgstr "不正な検索条件です: %s"
 
 #: src/av-cp/search-dialog.c:689
 #, c-format
 msgid "Error fetching detailed information: %s"
-msgstr ""
+msgstr "詳細情報の取得中にエラー: %s"
 
 #: src/network-light/main.c:50
 msgid "Friendly name for this UPnP light"
