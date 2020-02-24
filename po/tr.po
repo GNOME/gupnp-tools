@@ -4,101 +4,101 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gupnp-tools master\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gupnp-"
-"tools&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-11-24 22:17+0000\n"
-"PO-Revision-Date: 2016-03-19 15:38+0200\n"
-"Last-Translator: Gökhan Gurbetoğlu <ggurbet@gmail.com>\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gupnp-tools/issues\n"
+"POT-Creation-Date: 2018-12-02 11:50+0000\n"
+"PO-Revision-Date: 2019-02-26 05:46+0300\n"
+"Last-Translator: Serdar Sağlam <teknomobil@yandex.com>\n"
 "Language-Team: Türkçe <gnome-turk@gnome.org>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Gtranslator 2.91.6\n"
+"X-Generator: Poedit 2.2.1\n"
 "X-POOTLE-MTIME: 1429370203.000000\n"
 
-#: ../data/gupnp-av-cp.desktop.in.in.h:1
+#: data/didl-lite-dialog.ui.in:9
+msgid "GUPnP AV CP - Metadata View"
+msgstr "GUPnP AV CP - Üstveri Görünümü"
+
+#: data/gupnp-av-cp.desktop.in:4
 msgid "UPnP AV Control Point"
 msgstr "UPnP AV Denetim Noktası"
 
-#: ../data/gupnp-av-cp.ui.in.h:1 ../data/gupnp-network-light.ui.h:1
-#: ../data/gupnp-universal-cp.ui.h:1
-msgid "Copyright (C) 2007 Zeeshan Ali (Khattak)"
-msgstr "Telif Hakkı (C) 2007 Zeeshan Ali (Khattak)"
+#: data/gupnp-av-cp.desktop.in:5
+msgid "Browse and control UPnP multimedia devices"
+msgstr "UPnP medya aygıtlarına göz at ve kontrol et"
 
-#: ../data/gupnp-av-cp.ui.in.h:2
-msgid ""
-"An UPnP AV Control Point based on GUPnP framework.\n"
-"Inspired by Intel Tools for UPnP."
-msgstr ""
-"UPnP AV Denetim Nokatsı, GUPnP çatısı tabanlıdır.\n"
-"UPnP için Intel Araçları'ndan esinlenilmiştir."
+#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
+#: data/gupnp-av-cp.desktop.in:9
+msgid "av-cp"
+msgstr "av-cp"
 
-#: ../data/gupnp-av-cp.ui.in.h:4 ../data/gupnp-network-light.ui.h:4
-#: ../data/gupnp-universal-cp.ui.h:4
-msgid "GUPnP homepage"
-msgstr "GUPnP ana sayfa"
-
-#. TRANSLATORS: Replace this string with your names, one name per line.
-#: ../data/gupnp-av-cp.ui.in.h:6 ../data/gupnp-network-light.ui.h:6
-#: ../data/gupnp-universal-cp.ui.h:6
-msgid "translator-credits"
-msgstr "Kaan Özdinçer <kaanozdincer@gmail.com>"
-
-#: ../data/gupnp-av-cp.ui.in.h:7
-msgid "GUPnP AV Control Point"
-msgstr "GUPnP AV Denetim Noktası"
-
-#: ../data/gupnp-av-cp.ui.in.h:8 ../data/gupnp-universal-cp.ui.h:24
-msgid "_File"
-msgstr "_Dosya"
-
-#: ../data/gupnp-av-cp.ui.in.h:9
-msgid "Close"
-msgstr "Kapat"
-
-#: ../data/gupnp-av-cp.ui.in.h:10
-msgid "_Tools"
-msgstr "_Araçlar"
-
-#: ../data/gupnp-av-cp.ui.in.h:11
-msgid "_Lenient Mode"
-msgstr "_Hafif Kip"
-
-#: ../data/gupnp-av-cp.ui.in.h:12 ../data/gupnp-universal-cp.ui.h:29
-msgid "_Help"
-msgstr "_Yardım"
-
-#: ../data/gupnp-av-cp.ui.in.h:13 ../data/gupnp-universal-cp.ui.h:30
-msgid "About"
-msgstr "Hakkında"
-
-#: ../data/gupnp-av-cp.ui.in.h:14
+#: data/gupnp-av-cp.ui:22 data/gupnp-av-cp.ui:208
 msgid "_Play"
 msgstr "_Oynat"
 
-#: ../data/gupnp-av-cp.ui.in.h:15
+#: data/gupnp-av-cp.ui:31
+msgid "Fetch the DIDL-Lite XML for this media object"
+msgstr "Bu ortam nesnesi için DIDL-Lite XML çek"
+
+#: data/gupnp-av-cp.ui:32
+msgid "Fetch _DIDL-Lite"
+msgstr "_DIDL-Lite Çek"
+
+#: data/gupnp-av-cp.ui:41
+msgid "Search…"
+msgstr "Ara…"
+
+#: data/gupnp-av-cp.ui:89
+msgid "GUPnP AV Control Point"
+msgstr "GUPnP AV Denetim Noktası"
+
+#: data/gupnp-av-cp.ui:104 data/gupnp-universal-cp.ui:424
+msgid "_File"
+msgstr "_Dosya"
+
+#: data/gupnp-av-cp.ui:113
+msgid "Close"
+msgstr "Kapat"
+
+#: data/gupnp-av-cp.ui:126
+msgid "_Tools"
+msgstr "_Araçlar"
+
+#: data/gupnp-av-cp.ui:136
+msgid "_Lenient Mode"
+msgstr "_Hafif Kip"
+
+#: data/gupnp-av-cp.ui:148 data/gupnp-universal-cp.ui:506
+msgid "_Help"
+msgstr "_Yardım"
+
+#: data/gupnp-av-cp.ui:157 data/gupnp-universal-cp.ui:515
+msgid "About"
+msgstr "Hakkında"
+
+#: data/gupnp-av-cp.ui:257
 msgid "P_ause"
 msgstr "Durakla_t"
 
-#: ../data/gupnp-av-cp.ui.in.h:16
+#: data/gupnp-av-cp.ui:306
 msgid "_Stop"
 msgstr "_Durdur"
 
-#: ../data/gupnp-av-cp.ui.in.h:17
+#: data/gupnp-av-cp.ui:355
 msgid "Pre_vious"
 msgstr "_Önceki"
 
-#: ../data/gupnp-av-cp.ui.in.h:18
+#: data/gupnp-av-cp.ui:418
 msgid "_Next"
 msgstr "_Sonraki"
 
-#: ../data/gupnp-av-cp.ui.in.h:19
-msgid "Rescan"
-msgstr "Yeniden Tara"
+#: data/gupnp-av-cp.ui:467
+msgid "_Rescan"
+msgstr "_Yeniden Tara"
 
-#: ../data/gupnp-av-cp.ui.in.h:20
+#: data/gupnp-av-cp.ui:514
 msgid ""
 "Clears the CP's idea of the state of the currently selected AV Renderer. "
 "Useful for dealing with AV Renderers that don't report state changes."
@@ -107,31 +107,54 @@ msgstr ""
 "değişikliklerini bildirmeyen AV Gerçekleştiricileri ile başa çıkmak için "
 "kullanışlıdır."
 
-#: ../data/gupnp-av-cp.ui.in.h:21
+#: data/gupnp-av-cp.ui:525
 msgid "_Clear state"
 msgstr "Durumu _temizle"
 
-#: ../data/gupnp-av-cp.ui.in.h:22
+#: data/gupnp-av-cp.ui:587
 msgid "_Renderer: "
 msgstr "_Gerçekleyici: "
 
-#: ../data/gupnp-av-cp.ui.in.h:23
-msgid "GUPnP AV CP - Metadata View"
-msgstr "GUPnP AV CP - Üstveri Görünümü"
+#: data/gupnp-av-cp.ui:725 data/gupnp-network-light.ui:7
+#: data/gupnp-universal-cp.ui:8
+msgid "Copyright (C) 2007 Zeeshan Ali (Khattak)"
+msgstr "Telif Hakkı (C) 2007 Zeeshan Ali (Khattak)"
 
-#: ../data/gupnp-av-cp.ui.in.h:24
-msgid "Fetch the DIDL-Lite XML for this media object"
-msgstr "Bu ortam nesnesi için DIDL-Lite XML çek"
+#: data/gupnp-av-cp.ui:726
+msgid ""
+"An UPnP AV Control Point based on GUPnP framework.\n"
+"Inspired by Intel Tools for UPnP."
+msgstr ""
+"UPnP AV Denetim Nokatsı, GUPnP çatısı tabanlıdır.\n"
+"UPnP için Intel Araçları'ndan esinlenilmiştir."
 
-#: ../data/gupnp-av-cp.ui.in.h:25
-msgid "Fetch _DIDL-Lite"
-msgstr "_DIDL-Lite Çek"
+#: data/gupnp-av-cp.ui:729 data/gupnp-network-light.ui:11
+#: data/gupnp-universal-cp.ui:12
+msgid "GUPnP homepage"
+msgstr "GUPnP ana sayfa"
 
-#: ../data/gupnp-network-light.desktop.in.in.h:1
+#. TRANSLATORS: Replace this string with your names, one name per line.
+#: data/gupnp-av-cp.ui:731 data/gupnp-network-light.ui:13
+#: data/gupnp-universal-cp.ui:14
+msgid "translator-credits"
+msgstr ""
+"Kaan Özdinçer <kaanozdincer@gmail.com>\n"
+"Serdar Sağlam <teknomobil@msn.com>"
+
+#: data/gupnp-network-light.desktop.in:4
 msgid "UPnP Network Light"
 msgstr "UPnp Ağ Işığı"
 
-#: ../data/gupnp-network-light.ui.h:2
+#: data/gupnp-network-light.desktop.in:5
+msgid "Sample UPnP application for controlling lights"
+msgstr "Işıkları kontrol etmek için örnek UPnP uygulaması"
+
+#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
+#: data/gupnp-network-light.desktop.in:9
+msgid "network-light-256x256"
+msgstr "network-light-256x256"
+
+#: data/gupnp-network-light.ui:8
 msgid ""
 "A virtual network light bulb based on GUPnP framework.\n"
 "Inspired by Intel Tools for UPnP."
@@ -139,34 +162,41 @@ msgstr ""
 "GUPnP çatısı tabanlı bir sanal ağ ışığı lambası.\n"
 "UPnP için Intel Araçları'ndan esinlenilmiştir."
 
-#: ../data/gupnp-network-light.ui.h:7
+#: data/gupnp-network-light.ui:38
 msgid "GUPnP Network Light"
 msgstr "GUPnP Ağ Işığı"
 
-#: ../data/gupnp-network-light.ui.h:8
+#: data/gupnp-network-light.ui:63
 msgctxt "network-light"
 msgid "_On"
 msgstr "_Açık"
 
-#: ../data/gupnp-network-light.ui.h:10
-#, no-c-format
+#: data/gupnp-network-light.ui:83
 msgid "_Increase luminance by 20%"
 msgstr "Parlaklığı %20 _arttır"
 
-#: ../data/gupnp-network-light.ui.h:12
-#, no-c-format
+#: data/gupnp-network-light.ui:92
 msgid "_Decrease luminance by 20%"
 msgstr "Parlaklığı %20 a_zalt"
 
-#: ../data/gupnp-network-light.ui.h:13
+#: data/gupnp-network-light.ui:107
 msgid "_About"
 msgstr "_Hakkında"
 
-#: ../data/gupnp-universal-cp.desktop.in.in.h:1
+#: data/gupnp-universal-cp.desktop.in:4
 msgid "UPnP Universal Control Point"
 msgstr "UPnP Evrensel Denetim Noktası"
 
-#: ../data/gupnp-universal-cp.ui.h:2
+#: data/gupnp-universal-cp.desktop.in:5
+msgid "Inspect and control UPnP devices across your local network"
+msgstr "Yerel ağıdaki UPnP aygıtlarını inceleyin ve kontrol edin"
+
+#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
+#: data/gupnp-universal-cp.desktop.in:9
+msgid "universal-cp"
+msgstr "universal-cp"
+
+#: data/gupnp-universal-cp.ui:9
 msgid ""
 "A Generic Control Point based on GUPnP framework.\n"
 "Inspired by Intel Tools for UPnP."
@@ -174,113 +204,169 @@ msgstr ""
 "GUPnP çatısı tabanlı bir Genel Denetim Noktası.\n"
 "UPnP için Intel Araçları'ndan esinlenilmiştir."
 
-#: ../data/gupnp-universal-cp.ui.h:7
+#: data/gupnp-universal-cp.ui:42
 msgid "Action Invocation"
 msgstr "Eylem Yürütme"
 
-#: ../data/gupnp-universal-cp.ui.h:8
+#: data/gupnp-universal-cp.ui:106
 msgid "_Invoke"
 msgstr "_Yürüt"
 
-#: ../data/gupnp-universal-cp.ui.h:9
+#: data/gupnp-universal-cp.ui:176
 msgid "device"
 msgstr "aygıt"
 
-#: ../data/gupnp-universal-cp.ui.h:10
+#: data/gupnp-universal-cp.ui:189
 msgid "service"
 msgstr "hizmet"
 
-#: ../data/gupnp-universal-cp.ui.h:11
+#: data/gupnp-universal-cp.ui:202
 msgid "action"
 msgstr "eylem"
 
-#: ../data/gupnp-universal-cp.ui.h:12
+#: data/gupnp-universal-cp.ui:245
 msgid "'in' arguments"
 msgstr "'girdi' argümanları"
 
-#: ../data/gupnp-universal-cp.ui.h:13
+#: data/gupnp-universal-cp.ui:278
 msgid "'out' arguments"
 msgstr "'çıktı' argümanları"
 
-#: ../data/gupnp-universal-cp.ui.h:14
+#: data/gupnp-universal-cp.ui:312
 msgid "Copy value"
 msgstr "Değeri kopyala"
 
-#: ../data/gupnp-universal-cp.ui.h:15
+#: data/gupnp-universal-cp.ui:321
 msgid "Copy all details"
 msgstr "Tüm detayları kopyala"
 
-#: ../data/gupnp-universal-cp.ui.h:16
+#: data/gupnp-universal-cp.ui:333
 msgid "Invoke"
 msgstr "Yürüt"
 
-#: ../data/gupnp-universal-cp.ui.h:17
+#: data/gupnp-universal-cp.ui:342
 msgid "Subscribe to events"
 msgstr "Olaylara abone ol"
 
-#: ../data/gupnp-universal-cp.ui.h:18
+#: data/gupnp-universal-cp.ui:357 data/gupnp-universal-cp.ui:468
 msgid "_Expand all devices"
 msgstr "Tüm aygıtları _Genişlet"
 
-#: ../data/gupnp-universal-cp.ui.h:19
+#: data/gupnp-universal-cp.ui:366 data/gupnp-universal-cp.ui:477
 msgid "_Collapse all devices"
 msgstr "Tüm aygıtları _Daralt"
 
-#: ../data/gupnp-universal-cp.ui.h:20
+#: data/gupnp-universal-cp.ui:378
 msgid "Copy event"
 msgstr "Olayı kopyala"
 
-#: ../data/gupnp-universal-cp.ui.h:21
+#: data/gupnp-universal-cp.ui:387
 msgid "Copy all events"
 msgstr "Tüm olayları kopyala"
 
-#: ../data/gupnp-universal-cp.ui.h:22
+#: data/gupnp-universal-cp.ui:402
 msgid "_Clear event log"
 msgstr "Olay günlüğünü _temizle"
 
 #. default details
-#: ../data/gupnp-universal-cp.ui.h:23 ../src/universal-cp/device-treeview.c:35
+#: data/gupnp-universal-cp.ui:410 src/universal-cp/device-treeview.c:37
 msgid "GUPnP Universal Control Point"
 msgstr "GUPnP Evrensel Denetim Noktası"
 
-#: ../data/gupnp-universal-cp.ui.h:25
+#: data/gupnp-universal-cp.ui:433
 msgid "Clear event log"
 msgstr "Olay günlüğünü temizle"
 
-#: ../data/gupnp-universal-cp.ui.h:26
+#: data/gupnp-universal-cp.ui:447
 msgid "Quit"
 msgstr "Çık"
 
-#: ../data/gupnp-universal-cp.ui.h:27
+#: data/gupnp-universal-cp.ui:459
 msgid "_View"
 msgstr "_Görünüm"
 
-#: ../data/gupnp-universal-cp.ui.h:28
+#: data/gupnp-universal-cp.ui:492
 msgid "Event _log"
 msgstr "Olay _günlüğü"
 
-#: ../src/av-cp/main.c:47 ../src/network-light/main.c:46
-#: ../src/universal-cp/main.c:41
+#: data/search-dialog.ui:12
+msgid "Show _DIDL…"
+msgstr "_DIDL Göster…"
+
+#: data/search-dialog.ui:49
+msgid "_Close"
+msgstr "_Kapat"
+
+#: data/search-dialog.ui:81
+msgid "UPnP search expression"
+msgstr "UPnP arama ifadesi"
+
+#: data/search-dialog.ui:107
+msgid "column"
+msgstr "sütun"
+
+#: src/av-cp/main.c:49 src/network-light/main.c:48 src/universal-cp/main.c:41
 msgid "Network PORT to use for UPnP"
 msgstr "UPnp için kullanılacak ağ BAĞLANTI_NOKTASI"
 
-#: ../src/av-cp/main.c:48 ../src/network-light/main.c:47
-#: ../src/universal-cp/main.c:42
+#: src/av-cp/main.c:50 src/network-light/main.c:49 src/universal-cp/main.c:42
 msgid "Network interfaces to use for UPnP communication"
 msgstr "UPnP iletişimi için kullanılacak ağ arayüzleri"
 
-#: ../src/av-cp/main.c:197 ../src/network-light/main.c:100
-#: ../src/universal-cp/main.c:149
+#: src/av-cp/main.c:51
+msgid "Application part of the User-Agent header to use for UPnP communication"
+msgstr ""
+"UPnP iletişimi için kullanılacak Kullanıcı-İstemci başlığının uygulama kısmı"
+
+#: src/av-cp/main.c:225 src/network-light/main.c:104
+#: src/universal-cp/main.c:149
 msgid "- UPnP AV control point"
 msgstr "- UPnP AV denetim noktası"
 
-#: ../src/av-cp/main.c:202 ../src/network-light/main.c:105
-#: ../src/universal-cp/main.c:154
+#: src/av-cp/main.c:230 src/network-light/main.c:109
+#: src/universal-cp/main.c:154
 #, c-format
 msgid "Could not parse options: %s\n"
 msgstr "Seçenekler ayrıştırılamadı: %s\n"
 
-#: ../src/universal-cp/action-dialog.c:686
+#: src/av-cp/search-dialog.c:440 src/av-cp/search-dialog.c:579
+msgid "Search failed"
+msgstr "Arama başarısız"
+
+#: src/av-cp/search-dialog.c:444
+#, c-format
+msgid "Error message was: %s"
+msgstr "Hata iletisi: %s"
+
+#: src/av-cp/search-dialog.c:488
+#, c-format
+msgid "Searching on %s"
+msgstr "%s üzerinde ara"
+
+#: src/av-cp/search-dialog.c:491
+#, c-format
+msgid "Searching in %s on %s"
+msgstr "%s'de ara %s"
+
+#: src/av-cp/search-dialog.c:583
+#, c-format
+msgid "Search criteria invalid: %s"
+msgstr "Arama ölçütü geçersiz: %s"
+
+#: src/av-cp/search-dialog.c:689
+#, c-format
+msgid "Error fetching detailed information: %s"
+msgstr "Ayrıntılı bilgi getirilirken hata oldu: %s"
+
+#: src/network-light/main.c:50
+msgid "Friendly name for this UPnP light"
+msgstr "Bu UPnP ışığı için kolay ad"
+
+#: src/network-light/main.c:51
+msgid "Apply change exclusively to this UPnP light"
+msgstr "Değişikliği yalnızca bu UPnP ışığa Uygula"
+
+#: src/universal-cp/action-dialog.c:693
 #, c-format
 msgid ""
 "Action failed.\n"
@@ -291,186 +377,184 @@ msgstr ""
 "\n"
 "Hata %d: %s"
 
-#: ../src/universal-cp/details-treeview.c:192
-#: ../src/universal-cp/details-treeview.c:220
-#: ../src/universal-cp/details-treeview.c:246
-#: ../src/universal-cp/details-treeview.c:425
+#: src/universal-cp/details-treeview.c:198
+#: src/universal-cp/details-treeview.c:226
+#: src/universal-cp/details-treeview.c:252
+#: src/universal-cp/details-treeview.c:431
 msgid "Name"
 msgstr "İsim"
 
-#: ../src/universal-cp/details-treeview.c:194
+#: src/universal-cp/details-treeview.c:200
 msgid "Direction"
 msgstr "Yön"
 
-#: ../src/universal-cp/details-treeview.c:199
+#: src/universal-cp/details-treeview.c:205
 msgid "Related State Variable"
 msgstr "İlişkili Durum Değişkeni"
 
-#: ../src/universal-cp/details-treeview.c:201
-#, fuzzy
+#: src/universal-cp/details-treeview.c:207
 msgid "Is Return Value"
-msgstr "Dönüş Değeri mi?"
+msgstr "Dönüş Değeri Mi"
 
-#: ../src/universal-cp/details-treeview.c:202
-#: ../src/universal-cp/details-treeview.c:249
+#: src/universal-cp/details-treeview.c:208
+#: src/universal-cp/details-treeview.c:255
 msgid "Yes"
 msgstr "Evet"
 
-#: ../src/universal-cp/details-treeview.c:202
-#: ../src/universal-cp/details-treeview.c:249
+#: src/universal-cp/details-treeview.c:208
+#: src/universal-cp/details-treeview.c:255
 msgid "No"
 msgstr "Hayır"
 
-#: ../src/universal-cp/details-treeview.c:222
+#: src/universal-cp/details-treeview.c:228
 msgid "Number of Arguments"
 msgstr "Argüman Sayısı"
 
-#: ../src/universal-cp/details-treeview.c:248
+#: src/universal-cp/details-treeview.c:254
 msgid "Send Events"
 msgstr "Olayları Gönder"
 
-#: ../src/universal-cp/details-treeview.c:250
+#: src/universal-cp/details-treeview.c:256
 msgid "GType"
 msgstr "GType"
 
-#: ../src/universal-cp/details-treeview.c:253
+#: src/universal-cp/details-treeview.c:259
 msgid "Default Value"
 msgstr "Öntanımlı Değer"
 
-#: ../src/universal-cp/details-treeview.c:259
+#: src/universal-cp/details-treeview.c:265
 msgid "Minimum"
 msgstr "Asgari"
 
-#: ../src/universal-cp/details-treeview.c:263
+#: src/universal-cp/details-treeview.c:269
 msgid "Maximum"
 msgstr "Azami"
 
-#: ../src/universal-cp/details-treeview.c:267
+#: src/universal-cp/details-treeview.c:273
 msgid "Step"
 msgstr "Adım"
 
-#: ../src/universal-cp/details-treeview.c:287
+#: src/universal-cp/details-treeview.c:293
 msgid "Allowed Values"
 msgstr "İzinli Değerler"
 
-#: ../src/universal-cp/details-treeview.c:311
-#: ../src/universal-cp/details-treeview.c:358
+#: src/universal-cp/details-treeview.c:317
+#: src/universal-cp/details-treeview.c:364
 msgid "Location"
 msgstr "Konum"
 
-#: ../src/universal-cp/details-treeview.c:316
-#: ../src/universal-cp/details-treeview.c:363
+#: src/universal-cp/details-treeview.c:322
+#: src/universal-cp/details-treeview.c:369
 msgid "UDN"
 msgstr "UDN"
 
-#: ../src/universal-cp/details-treeview.c:321
-#: ../src/universal-cp/details-treeview.c:368
+#: src/universal-cp/details-treeview.c:327
+#: src/universal-cp/details-treeview.c:374
 msgid "Type"
 msgstr "Tür"
 
-#: ../src/universal-cp/details-treeview.c:326
-#: ../src/universal-cp/details-treeview.c:373
+#: src/universal-cp/details-treeview.c:332
+#: src/universal-cp/details-treeview.c:379
 msgid "Base URL"
 msgstr "Taban URLsi"
 
-#: ../src/universal-cp/details-treeview.c:331
+#: src/universal-cp/details-treeview.c:337
 msgid "Service ID"
 msgstr "Hizmet Kimliği"
 
-#: ../src/universal-cp/details-treeview.c:333
+#: src/universal-cp/details-treeview.c:339
 msgid "Service URL"
 msgstr "Hizmet URLsi"
 
-#: ../src/universal-cp/details-treeview.c:335
+#: src/universal-cp/details-treeview.c:341
 msgid "Control URL"
 msgstr "Denetim URLsi"
 
-#: ../src/universal-cp/details-treeview.c:337
+#: src/universal-cp/details-treeview.c:343
 msgid "Event Subscription URL"
 msgstr "Olay Aboneliği URLsi"
 
-#: ../src/universal-cp/details-treeview.c:378
+#: src/universal-cp/details-treeview.c:384
 msgid "Friendly Name"
 msgstr "Tanıdık Ad"
 
-#: ../src/universal-cp/details-treeview.c:380
+#: src/universal-cp/details-treeview.c:386
 msgid "Manufacturer"
 msgstr "Üretici"
 
-#: ../src/universal-cp/details-treeview.c:382
+#: src/universal-cp/details-treeview.c:388
 msgid "Manufacturer URL"
 msgstr "Üretici URLsi"
 
-#: ../src/universal-cp/details-treeview.c:384
+#: src/universal-cp/details-treeview.c:390
 msgid "Model Description"
 msgstr "Model Tanımı"
 
-#: ../src/universal-cp/details-treeview.c:386
+#: src/universal-cp/details-treeview.c:392
 msgid "Model Name"
 msgstr "Model Adı"
 
-#: ../src/universal-cp/details-treeview.c:388
+#: src/universal-cp/details-treeview.c:394
 msgid "Model Number"
 msgstr "Model Numarası"
 
-#: ../src/universal-cp/details-treeview.c:390
+#: src/universal-cp/details-treeview.c:396
 msgid "Model URL"
 msgstr "Model URLsi"
 
-#: ../src/universal-cp/details-treeview.c:392
+#: src/universal-cp/details-treeview.c:398
 msgid "Serial Number"
 msgstr "Seri Numarası"
 
-#: ../src/universal-cp/details-treeview.c:394
+#: src/universal-cp/details-treeview.c:400
 msgid "UPC"
 msgstr "UPC"
 
-#: ../src/universal-cp/details-treeview.c:396
+#: src/universal-cp/details-treeview.c:402
 msgid "Presentation URL"
 msgstr "Sunum URLsi"
 
-#: ../src/universal-cp/details-treeview.c:426
-#: ../src/universal-cp/event-treeview.c:404
+#: src/universal-cp/details-treeview.c:432
+#: src/universal-cp/event-treeview.c:410
 msgid "Value"
 msgstr "Değer"
 
-#: ../src/universal-cp/device-treeview.c:68
+#: src/universal-cp/device-treeview.c:70
 msgid "Software"
 msgstr "Yazılım"
 
-#: ../src/universal-cp/device-treeview.c:70
+#: src/universal-cp/device-treeview.c:72
 msgid "Version"
 msgstr "Sürüm"
 
-#: ../src/universal-cp/device-treeview.c:72
+#: src/universal-cp/device-treeview.c:74
 msgid "Author"
 msgstr "Yazar"
 
-#: ../src/universal-cp/device-treeview.c:478
+#: src/universal-cp/device-treeview.c:483
 msgid "State variables"
 msgstr "Durum değişkenleri"
 
-#: ../src/universal-cp/device-treeview.c:519
+#: src/universal-cp/device-treeview.c:524
 msgid "Information not available"
 msgstr "Bilgi mevcut değil"
 
-#: ../src/universal-cp/device-treeview.c:697
+#: src/universal-cp/device-treeview.c:703
 msgid "UPnP Network"
 msgstr "UPnP Ağı"
 
-#: ../src/universal-cp/device-treeview.c:710
-#: ../src/universal-cp/event-treeview.c:401
+#: src/universal-cp/device-treeview.c:716 src/universal-cp/event-treeview.c:407
 msgid "Device"
 msgstr "Aygıt"
 
-#: ../src/universal-cp/event-treeview.c:400
+#: src/universal-cp/event-treeview.c:406
 msgid "Time"
 msgstr "Zaman"
 
-#: ../src/universal-cp/event-treeview.c:402
+#: src/universal-cp/event-treeview.c:408
 msgid "Service"
 msgstr "Hizmet"
 
-#: ../src/universal-cp/event-treeview.c:403
+#: src/universal-cp/event-treeview.c:409
 msgid "State Variable"
 msgstr "Durum Değişkeni"
