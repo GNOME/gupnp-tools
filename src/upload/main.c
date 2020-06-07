@@ -150,13 +150,18 @@ main (gint   argc,
                 return -1;
         }
 
-        if (argc < 3) {
+        if (argc < 2) {
                 char *help = NULL;
 
                 help = g_option_context_get_help (context, TRUE, NULL);
                 g_print ("%s\n", help);
                 g_free (help);
 
+                return -4;
+        }
+
+        if (udn == NULL) {
+                g_print ("Error: Please provide UDN for the target server\n");
                 return -4;
         }
 
