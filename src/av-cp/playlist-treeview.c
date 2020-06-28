@@ -967,7 +967,7 @@ append_media_server (GUPnPDeviceProxy *proxy,
                                                 "ContainerUpdateIDs",
                                                 G_TYPE_STRING,
                                                 on_container_update_ids,
-                                                NULL);
+                                                info);
                 gupnp_service_proxy_set_subscribed (content_dir, TRUE);
                 g_hash_table_insert (initial_notify, content_dir, content_dir);
 
