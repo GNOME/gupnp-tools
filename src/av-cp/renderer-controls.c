@@ -522,6 +522,7 @@ get_position_info_cb (GUPnPServiceProxy       *av_transport,
                       gpointer                 user_data)
 {
         gchar       *position;
+        gchar       *duration;
         const gchar *udn;
         GError      *error;
 
@@ -534,6 +535,9 @@ get_position_info_cb (GUPnPServiceProxy       *av_transport,
                                              "AbsTime",
                                              G_TYPE_STRING,
                                              &position,
+                                             "TrackDuration",
+                                             G_TYPE_STRING,
+                                             &duration,
                                              NULL)) {
                 g_warning ("Failed to get current media position"
                            "from media renderer '%s':%s\n",
@@ -545,7 +549,12 @@ get_position_info_cb (GUPnPServiceProxy       *av_transport,
         }
 
         set_position_scale_position (position);
+        set_position_scale_duration (duration);
+        char *tooltip = g_strdup_printf ("%s/%s", position, duration);
+        gtk_widget_set_tooltip_text (GTK_WIDGET (position_scale), tooltip);
+        g_free (tooltip);
         g_free (position);
+        g_free (duration);
 
 return_point:
         g_object_unref (av_transport);
