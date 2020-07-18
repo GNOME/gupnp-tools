@@ -23,6 +23,7 @@
 
 #include <string.h>
 
+#include "entry-completion.h"
 #include "search-dialog.h"
 #include "server-device.h"
 #include "didl-dialog.h"
@@ -376,6 +377,7 @@ search_dialog_init (SearchDialog *self)
         priv = search_dialog_get_instance_private (self);
 
         priv->parser = gupnp_search_criteria_parser_new ();
+        gtk_entry_set_completion (priv->search_dialog_entry, entry_completion_new ());
 
         GMenu *menu = g_menu_new ();
         g_menu_insert (menu, 0, _("Show _DIDL…"), "search.show-didl");
@@ -486,8 +488,12 @@ void
 search_dialog_set_server (SearchDialog *self, AVCPMediaServer *server)
 {
         SearchDialogPrivate *priv = search_dialog_get_instance_private (self);
+        GtkEntryCompletion *completion = gtk_entry_get_completion (priv->search_dialog_entry);
 
         priv->server = server;
+
+        entry_completion_set_search_criteria (ENTRY_COMPLETION (completion),
+                                              av_cp_media_server_get_search_caps (server));
 }
 
 void
