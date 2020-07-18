@@ -66,16 +66,16 @@ struct _SearchDialogPrivate {
 typedef struct _SearchDialogPrivate SearchDialogPrivate;
 G_DEFINE_TYPE_WITH_PRIVATE (SearchDialog, search_dialog, GTK_TYPE_DIALOG)
 
-void
+static void
 search_dialog_on_search_activate (SearchDialog *self, GtkEntry *entry);
 
-gboolean
+static gboolean
 search_dialog_on_listview_button_release (GtkWidget      *widget,
                                           GdkEventButton *event,
                                           gpointer        user_data);
 
-void
-search_dialog_on_didl_popup_activate (SearchDialog *self, gpointer user_data);
+static void
+search_dialog_on_didl_popup_activate (SearchDialog *self, GVariant *parameter, gpointer user_data);
 
 static void
 search_dialog_finalize (GObject *object);
@@ -352,6 +352,12 @@ search_dialog_class_init (SearchDialogClass *klass)
         gtk_widget_class_bind_template_child_private (widget_class,
                                                       SearchDialog,
                                                       search_dialog_treeview);
+        gtk_widget_class_bind_template_callback (widget_class,
+                                                 search_dialog_on_search_activate);
+        gtk_widget_class_bind_template_callback (widget_class,
+                                                 search_dialog_on_listview_button_release);
+        gtk_widget_class_bind_template_callback (widget_class, gtk_widget_hide);
+
 
         object_class->finalize = search_dialog_finalize;
         object_class->dispose = search_dialog_dispose;
@@ -361,16 +367,26 @@ static void
 search_dialog_init (SearchDialog *self)
 {
         SearchDialogPrivate *priv = NULL;
-        GtkBuilder *builder = gtk_builder_new ();
 
         gtk_widget_init_template (GTK_WIDGET (self));
         priv = search_dialog_get_instance_private (self);
 
         priv->parser = gupnp_search_criteria_parser_new ();
 
-        gtk_builder_add_from_resource (builder, DIALOG_RESOURCE_PATH, NULL);
-        gtk_builder_connect_signals (builder, self);
-        priv->popup_menu = GTK_WIDGET (gtk_builder_get_object (builder, "popup-menu"));
+        GMenu *menu = g_menu_new ();
+        g_menu_insert (menu, 0, _("Show _DIDL…"), "search.show-didl");
+        priv->popup_menu = gtk_menu_new_from_model (G_MENU_MODEL (menu));
+        g_object_unref (menu);
+
+        gtk_menu_attach_to_widget (GTK_MENU (priv->popup_menu), GTK_WIDGET (self), NULL);
+        GSimpleActionGroup *group = g_simple_action_group_new ();
+        GSimpleAction *action = g_simple_action_new ("show-didl", NULL);
+        g_signal_connect_swapped (G_OBJECT (action), "activate", G_CALLBACK (search_dialog_on_didl_popup_activate), self);
+        g_action_map_add_action (G_ACTION_MAP (group), G_ACTION (action));
+
+        gtk_widget_insert_action_group (GTK_WIDGET (self), "search", G_ACTION_GROUP (group));
+        g_object_unref (group);
+        g_object_unref (action);
 }
 
 static void
@@ -530,8 +546,7 @@ pulse_timer (gpointer user_data)
         return TRUE;
 }
 
-G_MODULE_EXPORT
-void
+static void
 search_dialog_on_search_activate (SearchDialog *self, GtkEntry *entry)
 {
         GError *error = NULL;
@@ -618,8 +633,7 @@ do_popup_menu (GtkMenu *menu, GtkWidget *widget, GdkEventButton *event)
 #endif
 }
 
-G_MODULE_EXPORT
-gboolean
+static gboolean
 search_dialog_on_listview_button_release (GtkWidget      *widget,
                                           GdkEventButton *event,
                                           gpointer        user_data)
@@ -724,9 +738,8 @@ search_dialog_on_metadata_ready (GObject *source,
         }
 }
 
-G_MODULE_EXPORT
-void
-search_dialog_on_didl_popup_activate (SearchDialog *self, gpointer user_data)
+static void
+search_dialog_on_didl_popup_activate (SearchDialog *self, GVariant *parameter, gpointer user_data)
 {
         SearchDialogPrivate *priv  = search_dialog_get_instance_private (self);
         GtkTreeView  *treeview = priv->search_dialog_treeview;

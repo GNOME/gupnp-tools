@@ -2,19 +2,6 @@
 <!-- Generated with glade 3.20.0 -->
 <interface>
   <requires lib="gtk+" version="3.10"/>
-  <object class="GtkMenu" id="popup-menu">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <child>
-      <object class="GtkMenuItem">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="label" translatable="yes">Show _DIDL…</property>
-        <property name="use_underline">True</property>
-        <signal name="activate" handler="search_dialog_on_didl_popup_activate" object="SearchDialog" swapped="yes"/>
-      </object>
-    </child>
-  </object>
   <object class="GtkListStore" id="search_dialog_liststore">
     <columns>
       <!-- column-name icon -->
