@@ -54,6 +54,11 @@ av_cp_media_server_introspect (AVCPMediaServer *self);
 static void
 av_cp_media_server_introspect_finish (AVCPMediaServer *self);
 
+static void
+av_cp_media_server_on_get_search_caps (GUPnPServiceProxy *proxy,
+                                       GUPnPServiceProxyAction *action,
+                                       gpointer user_data);
+
 enum _AVCPMediaServerInitState {
         NONE = 0,
         INITIALIZED,
@@ -65,6 +70,7 @@ typedef enum _AVCPMediaServerInitState AVCPMediaServerInitState;
 struct _AVCPMediaServerPrivate {
         GdkPixbuf *icon;
         char *default_sort_order;
+        char **search_caps;
         GList *tasks;
         AVCPMediaServerInitState state;
         GUPnPServiceProxy *content_directory;
@@ -82,6 +88,7 @@ enum
 {
         PROP_ICON = 1,
         PROP_SORT_ORDER,
+        PROP_SEARCH_CAPS,
         N_PROPERTIES
 };
 
@@ -112,6 +119,7 @@ av_cp_media_server_dispose (GObject *object)
 
         g_clear_object (&priv->icon);
         g_clear_object (&priv->content_directory);
+        g_clear_pointer (&priv->search_caps, g_strfreev);
 
         parent_class->dispose (object);
 }
@@ -131,6 +139,9 @@ av_cp_media_server_get_property (GObject    *obj,
                 break;
         case PROP_SORT_ORDER:
                 g_value_set_string (value, priv->default_sort_order);
+                break;
+        case PROP_SEARCH_CAPS:
+                g_value_set_pointer (value, priv->search_caps);
                 break;
         default:
                 G_OBJECT_WARN_INVALID_PROPERTY_ID (obj, property_id, spec);
@@ -180,10 +191,48 @@ av_cp_media_server_on_get_sort_caps (GUPnPServiceProxy *proxy,
 
                 g_free (sort_caps);
         }
+        g_object_notify (G_OBJECT (self), "sort-order");
+
+        gupnp_service_proxy_begin_action
+                        (priv->content_directory,
+                                "GetSearchCapabilities",
+                                av_cp_media_server_on_get_search_caps,
+                                self,
+                                NULL);
+}
+
+static void
+av_cp_media_server_on_get_search_caps (GUPnPServiceProxy *proxy,
+                                       GUPnPServiceProxyAction *action,
+                                       gpointer user_data)
+{
+        AVCPMediaServer *self = AV_CP_MEDIA_SERVER (user_data);
+        AVCPMediaServerPrivate *priv = av_cp_media_server_get_instance_private (self);
+
+
+        GError *error = NULL;
+        char *search_caps = NULL;
+
+        gupnp_service_proxy_end_action (proxy,
+                                        action,
+                                        &error,
+                                        "SearchCaps",
+                                        G_TYPE_STRING,
+                                        &search_caps,
+                                        NULL);
+        if (error != NULL) {
+                g_warning ("Failed to get sort caps from server: %s",
+                           error->message);
+                g_error_free (error);
+        } else if (search_caps != NULL) {
+                priv->search_caps = g_strsplit (search_caps, ",", -1);
+        } else {
+                priv->search_caps = g_strsplit ("upnp:class,@id", ",", -1);
+        }
+        g_object_notify (G_OBJECT (self), "search-caps");
 
         priv->state = INITIALIZED;
         av_cp_media_server_introspect_finish (self);
-        g_object_notify (G_OBJECT (self), "sort-order");
         g_object_unref (self);
 }
 
@@ -211,6 +260,13 @@ av_cp_media_server_class_init (AVCPMediaServerClass *klass)
                                      NULL,
                                      G_PARAM_STATIC_STRINGS |
                                      G_PARAM_READABLE);
+
+        av_cp_media_server_properties[PROP_SEARCH_CAPS] =
+                g_param_spec_pointer ("search-caps",
+                                      "search-caps",
+                                      "search-caps",
+                                      G_PARAM_STATIC_STRINGS |
+                                      G_PARAM_READABLE);
 
         g_object_class_install_properties (obj_class,
                                            N_PROPERTIES,
@@ -615,4 +671,11 @@ av_cp_media_server_search_finish (AVCPMediaServer  *self,
 {
         return av_cp_media_server_browse_finish (self, result, didl_xml,
                 total_matches, number_returned, error);
+}
+
+char**
+av_cp_media_server_get_search_caps (AVCPMediaServer *self) {
+        AVCPMediaServerPrivate *priv = av_cp_media_server_get_instance_private (self);
+
+        return priv->search_caps;
 }
