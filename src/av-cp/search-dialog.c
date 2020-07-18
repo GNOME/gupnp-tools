@@ -78,6 +78,9 @@ static void
 search_dialog_on_didl_popup_activate (SearchDialog *self, GVariant *parameter, gpointer user_data);
 
 static void
+search_dialog_on_icon_release (SearchDialog *self, GtkEntryIconPosition icon_pos, GdkEvent *event, gpointer user_data);
+
+static void
 search_dialog_finalize (GObject *object);
 
 static void
@@ -357,6 +360,7 @@ search_dialog_class_init (SearchDialogClass *klass)
         gtk_widget_class_bind_template_callback (widget_class,
                                                  search_dialog_on_listview_button_release);
         gtk_widget_class_bind_template_callback (widget_class, gtk_widget_hide);
+        gtk_widget_class_bind_template_callback (widget_class, search_dialog_on_icon_release);
 
 
         object_class->finalize = search_dialog_finalize;
@@ -440,7 +444,13 @@ search_dialog_on_search_task_done (gpointer user_data)
 
         g_source_remove (priv->pulse_timer);
         gtk_entry_set_progress_fraction (priv->search_dialog_entry, 0);
-        gtk_widget_set_sensitive (GTK_WIDGET (priv->search_dialog_entry), TRUE);
+        gtk_editable_set_editable (GTK_EDITABLE (priv->search_dialog_entry), TRUE);
+        g_object_set (G_OBJECT (priv->search_dialog_entry),
+                        "primary-icon-name",
+                        "edit-find-symbolic",
+                        "secondary-icon-activatable",
+                        TRUE,
+                        NULL);
 
         /* Only show visible error if dialog is visible. */
         if (priv->task->error != NULL &&
@@ -557,8 +567,15 @@ search_dialog_on_search_activate (SearchDialog *self, GtkEntry *entry)
 
         gupnp_search_criteria_parser_parse_text (priv->parser, text, &error);
         if (error == NULL) {
+
+                g_object_set (G_OBJECT (entry),
+                              "primary-icon-name",
+                              "media-playback-stop-symbolic",
+                              "secondary-icon-activatable",
+                              FALSE,
+                              NULL);
                 gtk_list_store_clear (priv->search_dialog_liststore);
-                gtk_widget_set_sensitive (GTK_WIDGET (entry), FALSE);
+                gtk_editable_set_editable (GTK_EDITABLE (entry), FALSE);
                 priv->pulse_timer = g_timeout_add_seconds (1, pulse_timer, self);
 
                 g_clear_pointer (&priv->task, search_task_free);
@@ -801,4 +818,20 @@ search_dialog_new (void)
                                            "use-header-bar",
                                            use_header == 1 ? TRUE : FALSE,
                                            NULL);
+}
+
+static void
+search_dialog_on_icon_release (SearchDialog *self, GtkEntryIconPosition icon_pos, GdkEvent *event, gpointer user_data)
+{
+        SearchDialogPrivate *priv  = search_dialog_get_instance_private (self);
+
+        if (icon_pos == GTK_ENTRY_ICON_PRIMARY) {
+                if (priv->task != NULL && priv->task->running) {
+                        search_task_cancel (priv->task);
+                } else {
+                        search_dialog_on_search_activate (self, user_data);
+                }
+        } else {
+                gtk_entry_set_text (GTK_ENTRY (user_data), "");
+        }
 }
