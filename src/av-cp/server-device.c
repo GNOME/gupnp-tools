@@ -396,7 +396,7 @@ av_cp_media_server_on_browse (GUPnPServiceProxy       *content_dir,
                 ret->didl_xml = didl_xml;
                 ret->number_returned = number_returned;
                 ret->total_matches = total_matches;
-                g_task_return_pointer (task, ret, NULL);
+                g_task_return_pointer (task, ret, g_free);
         }
 
         g_object_unref (task);
