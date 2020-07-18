@@ -783,3 +783,20 @@ search_dialog_on_didl_popup_activate (SearchDialog *self, GVariant *parameter, g
                 g_free (id);
         }
 }
+
+GtkDialog *
+search_dialog_new (void)
+{
+        GtkSettings *settings = gtk_settings_get_default ();
+        int use_header;
+
+        g_object_get (G_OBJECT (settings),
+                                "gtk-dialogs-use-header",
+                                &use_header,
+                                NULL);
+
+        return (GtkDialog *) g_object_new (SEARCH_DIALOG_TYPE,
+                                           "use-header-bar",
+                                           use_header == 1 ? TRUE : FALSE,
+                                           NULL);
+}

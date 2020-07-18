@@ -35,6 +35,9 @@ typedef struct _SearchDialogClass SearchDialogClass;
 
 GType search_dialog_get_type (void);
 
+GtkDialog *
+search_dialog_new ();
+
 void
 search_dialog_set_server (SearchDialog *self, AVCPMediaServer *server);
 

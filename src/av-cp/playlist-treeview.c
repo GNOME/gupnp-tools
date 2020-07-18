@@ -350,7 +350,7 @@ on_search_menu_item_activated (GtkMenuItem *menuitem,
                         -1);
 
     if (search_dialog == NULL) {
-        search_dialog = GTK_DIALOG (g_object_new (SEARCH_DIALOG_TYPE, NULL));
+        search_dialog = search_dialog_new ();
     }
 
     search_dialog_set_server (SEARCH_DIALOG (search_dialog), server);
