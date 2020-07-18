@@ -109,7 +109,17 @@ av_cp_didl_dialog_constructed (GObject *object)
 AVCPDidlDialog *
 av_cp_didl_dialog_new (void)
 {
-        return g_object_new (AV_CP_TYPE_DIDL_DIALOG, NULL);
+        GtkSettings *settings = gtk_settings_get_default ();
+        int use_header;
+
+        g_object_get (G_OBJECT (settings),
+                                "gtk-dialogs-use-header",
+                                &use_header,
+                                NULL);
+
+        return g_object_new (AV_CP_TYPE_DIDL_DIALOG,
+                             "use-header-bar", use_header == 1 ? TRUE : FALSE,
+                             NULL);
 }
 
 void
