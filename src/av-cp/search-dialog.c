@@ -442,9 +442,11 @@ search_dialog_on_search_task_done (gpointer user_data)
         gtk_entry_set_progress_fraction (priv->search_dialog_entry, 0);
         gtk_widget_set_sensitive (GTK_WIDGET (priv->search_dialog_entry), TRUE);
 
-        /* Only show visible error if dialog is visible. If it's not visible,
-         * it's likely to be a cancelled error */
+        /* Only show visible error if dialog is visible. */
         if (priv->task->error != NULL &&
+            !g_error_matches (priv->task->error,
+                              G_IO_ERROR,
+                              G_IO_ERROR_CANCELLED) &&
             gtk_widget_is_visible (GTK_WIDGET (self))) {
                 GtkWidget *dialog = NULL;
 
