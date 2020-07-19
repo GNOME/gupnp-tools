@@ -152,33 +152,46 @@ entry_completion_constructed (GObject *object)
         gtk_entry_completion_set_text_column (GTK_ENTRY_COMPLETION (self), 0);
 }
 
+static const char *keywords[] = {
+        "and",
+        "or",
+        "contains",
+        "doesNotContain",
+        "derivedFrom",
+        "exists",
+        "true",
+        "false",
+        ">", ">=", "<", "<=", "=", "!=", "*",
+        NULL
+};
+
 void
 entry_completion_set_search_criteria (EntryCompletion *self, char** criteria)
 {
         GtkTreeIter iter;
         gtk_list_store_clear (self->store);
-        // Prefill ListStore with the search expression keywords
-        gtk_list_store_insert_with_values (self->store, &iter, -1,
-                0, "and", -1);
-        gtk_list_store_insert_with_values (self->store, &iter, -1,
-                0, "or", -1);
-        gtk_list_store_insert_with_values (self->store, &iter, -1,
-                0, "contains", -1);
-        gtk_list_store_insert_with_values (self->store, &iter, -1,
-                0, "doesNotContain", -1);
-        gtk_list_store_insert_with_values (self->store, &iter, -1,
-                0, "derivedFrom", -1);
-        gtk_list_store_insert_with_values (self->store, &iter, -1,
-                0, "exists", -1);
-        gtk_list_store_insert_with_values (self->store, &iter, -1,
-                0, "true", -1);
-        gtk_list_store_insert_with_values (self->store, &iter, -1,
-                0, "false", -1);
 
-        char **it = criteria;
+        // Prefill ListStore with the search expression keywords
+        char **it = keywords;
         while (*it != NULL) {
-                gtk_list_store_insert_with_values (self->store, &iter, -1,
-                        0, *it, -1);
+                gtk_list_store_insert_with_values (self->store,
+                                                   &iter,
+                                                   -1,
+                                                   0,
+                                                   *it,
+                                                   -1);
+                it++;
+        }
+
+        // Add the properties supported by the search criteria
+        it = criteria;
+        while (*it != NULL) {
+                gtk_list_store_insert_with_values (self->store,
+                                                   &iter,
+                                                   -1,
+                                                   0,
+                                                   *it,
+                                                   -1);
                 it++;
         }
 }
