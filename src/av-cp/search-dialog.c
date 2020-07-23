@@ -377,20 +377,28 @@ search_dialog_init (SearchDialog *self)
         priv = search_dialog_get_instance_private (self);
 
         priv->parser = gupnp_search_criteria_parser_new ();
-        gtk_entry_set_completion (priv->search_dialog_entry, entry_completion_new ());
+        gtk_entry_set_completion (priv->search_dialog_entry,
+                                  entry_completion_new ());
 
         GMenu *menu = g_menu_new ();
         g_menu_insert (menu, 0, _("Show _DIDL…"), "search.show-didl");
         priv->popup_menu = gtk_menu_new_from_model (G_MENU_MODEL (menu));
         g_object_unref (menu);
 
-        gtk_menu_attach_to_widget (GTK_MENU (priv->popup_menu), GTK_WIDGET (self), NULL);
+        gtk_menu_attach_to_widget (GTK_MENU (priv->popup_menu),
+                                   GTK_WIDGET (self),
+                                   NULL);
         GSimpleActionGroup *group = g_simple_action_group_new ();
         GSimpleAction *action = g_simple_action_new ("show-didl", NULL);
-        g_signal_connect_swapped (G_OBJECT (action), "activate", G_CALLBACK (search_dialog_on_didl_popup_activate), self);
+        g_signal_connect_swapped (G_OBJECT (action),
+                                  "activate",
+                                  G_CALLBACK (search_dialog_on_didl_popup_activate),
+                                  self);
         g_action_map_add_action (G_ACTION_MAP (group), G_ACTION (action));
 
-        gtk_widget_insert_action_group (GTK_WIDGET (self), "search", G_ACTION_GROUP (group));
+        gtk_widget_insert_action_group (GTK_WIDGET (self),
+                                        "search",
+                                        G_ACTION_GROUP (group));
         g_object_unref (group);
         g_object_unref (action);
 }

@@ -552,29 +552,35 @@ get_rendering_control (GUPnPDeviceProxy *proxy)
 }
 
 static void
-get_protocol_info_cb (GUPnPServiceProxy       *cm,
-                      GUPnPServiceProxyAction *action,
-                      gpointer                 user_data)
+get_protocol_info_cb (GObject *object, GAsyncResult *res, gpointer user_data)
 {
         gchar      *sink_protocol_info;
         const gchar *udn;
-        GError      *error;
+        GError *error = NULL;
+        GUPnPServiceProxyAction *action;
+        GUPnPServiceProxy *proxy = GUPNP_SERVICE_PROXY (object);
 
-        udn = gupnp_service_info_get_udn (GUPNP_SERVICE_INFO (cm));
+        udn = gupnp_service_info_get_udn (GUPNP_SERVICE_INFO (object));
+        action = gupnp_service_proxy_call_action_finish (proxy, res, &error);
+        if (error != NULL) {
+                g_warning ("Failed to get sink protocl info from "
+                           "media renderer '%s': %s",
+                           udn,
+                           error->message);
 
-        error = NULL;
-        if (!gupnp_service_proxy_end_action (cm,
-                                             action,
-                                             &error,
-                                             "Sink",
-                                             G_TYPE_STRING,
-                                             &sink_protocol_info,
-                                             NULL)) {
+                goto return_point;
+        }
+
+        if (!gupnp_service_proxy_action_get_result (action,
+                                                    &error,
+                                                    "Sink",
+                                                    G_TYPE_STRING,
+                                                    &sink_protocol_info,
+                                                    NULL)) {
                 g_warning ("Failed to get sink protocol info from "
                            "media renderer '%s':%s\n",
                            udn,
                            error->message);
-                g_error_free (error);
 
                 goto return_point;
         }
@@ -598,33 +604,40 @@ get_protocol_info_cb (GUPnPServiceProxy       *cm,
         }
 
 return_point:
-        g_object_unref (cm);
+        g_clear_error (&error);
+        g_object_unref (object);
 }
 
 static void
-get_transport_info_cb (GUPnPServiceProxy       *av_transport,
-                      GUPnPServiceProxyAction *action,
-                      gpointer                 user_data)
+get_transport_info_cb (GObject *object, GAsyncResult *res, gpointer user_data)
 {
         gchar       *state_name;
         const gchar *udn;
-        GError      *error;
+        GError *error = NULL;
+        GUPnPServiceProxyAction *action;
+        GUPnPServiceProxy *proxy = GUPNP_SERVICE_PROXY (object);
 
-        udn = gupnp_service_info_get_udn (GUPNP_SERVICE_INFO (av_transport));
+        action = gupnp_service_proxy_call_action_finish (proxy, res, &error);
+        udn = gupnp_service_info_get_udn (GUPNP_SERVICE_INFO (object));
+        if (error != NULL) {
+                g_warning ("Failed to get transport info from media renderer"
+                           " '%s':%s",
+                           udn,
+                           error->message);
 
-        error = NULL;
-        if (!gupnp_service_proxy_end_action (av_transport,
-                                             action,
-                                             &error,
-                                             "CurrentTransportState",
-                                             G_TYPE_STRING,
-                                             &state_name,
-                                             NULL)) {
+                goto return_point;
+        }
+
+        if (!gupnp_service_proxy_action_get_result (action,
+                                                    &error,
+                                                    "CurrentTransportState",
+                                                    G_TYPE_STRING,
+                                                    &state_name,
+                                                    NULL)) {
                 g_warning ("Failed to get transport info from media renderer"
                            " '%s':%s\n",
                            udn,
                            error->message);
-                g_error_free (error);
 
                 goto return_point;
         }
@@ -636,34 +649,40 @@ get_transport_info_cb (GUPnPServiceProxy       *av_transport,
         }
 
 return_point:
-        g_object_unref (av_transport);
+        g_clear_error (&error);
+        g_object_unref (object);
 }
 
 static void
-get_volume_cb (GUPnPServiceProxy       *rendering_control,
-               GUPnPServiceProxyAction *action,
-               gpointer                 user_data)
+get_volume_cb (GObject *object, GAsyncResult *res, gpointer user_data)
 {
         guint        volume;
         const gchar *udn;
-        GError      *error;
+        GError *error = NULL;
+        GUPnPServiceProxyAction *action;
+        GUPnPServiceProxy *proxy = GUPNP_SERVICE_PROXY (object);
 
-        udn = gupnp_service_info_get_udn
-                                (GUPNP_SERVICE_INFO (rendering_control));
+        udn = gupnp_service_info_get_udn (GUPNP_SERVICE_INFO (object));
+        action = gupnp_service_proxy_call_action_finish (proxy, res, &error);
+        if (error != NULL) {
+                g_warning ("Failed to get volume info from media renderer"
+                           " '%s':%s",
+                           udn,
+                           error->message);
 
-        error = NULL;
-        if (!gupnp_service_proxy_end_action (rendering_control,
-                                             action,
-                                             &error,
-                                             "CurrentVolume",
-                                             G_TYPE_UINT,
-                                             &volume,
-                                             NULL)) {
+                goto return_point;
+        }
+
+        if (!gupnp_service_proxy_action_get_result (action,
+                                                    &error,
+                                                    "CurrentVolume",
+                                                    G_TYPE_UINT,
+                                                    &volume,
+                                                    NULL)) {
                 g_warning ("Failed to get volume from media renderer"
                            " '%s':%s\n",
                            udn,
                            error->message);
-                g_error_free (error);
 
                 goto return_point;
         }
@@ -671,33 +690,41 @@ get_volume_cb (GUPnPServiceProxy       *rendering_control,
         set_volume (udn, volume);
 
 return_point:
-        g_object_unref (rendering_control);
+        g_clear_error (&error);
+        g_object_unref (object);
 }
 
 static void
-get_media_info_cb (GUPnPServiceProxy       *av_transport,
-                   GUPnPServiceProxyAction *action,
-                   gpointer                 user_data)
+
+get_media_info_cb (GObject *object, GAsyncResult *res, gpointer user_data)
 {
         gchar       *duration;
         const gchar *udn;
-        GError      *error;
+        GError *error = NULL;
+        GUPnPServiceProxyAction *action;
+        GUPnPServiceProxy *proxy = GUPNP_SERVICE_PROXY (object);
 
-        udn = gupnp_service_info_get_udn (GUPNP_SERVICE_INFO (av_transport));
+        action = gupnp_service_proxy_call_action_finish (proxy, res, &error);
+        udn = gupnp_service_info_get_udn (GUPNP_SERVICE_INFO (object));
+        if (error != NULL) {
+                g_warning ("Failed to get media info from media renderer"
+                           " '%s':%s",
+                           udn,
+                           error->message);
 
-        error = NULL;
-        if (!gupnp_service_proxy_end_action (av_transport,
-                                             action,
-                                             &error,
-                                             "MediaDuration",
-                                             G_TYPE_STRING,
-                                             &duration,
-                                             NULL)) {
+                goto return_point;
+        }
+
+        if (!gupnp_service_proxy_action_get_result (action,
+                                                    &error,
+                                                    "MediaDuration",
+                                                    G_TYPE_STRING,
+                                                    &duration,
+                                                    NULL)) {
                 g_warning ("Failed to get current media duration"
                            "from media renderer '%s':%s\n",
                            udn,
                            error->message);
-                g_error_free (error);
 
                 goto return_point;
         }
@@ -706,7 +733,8 @@ get_media_info_cb (GUPnPServiceProxy       *av_transport,
         g_free (duration);
 
 return_point:
-        g_object_unref (av_transport);
+        g_clear_error (&error);
+        g_object_unref (object);
 }
 
 void
@@ -743,33 +771,54 @@ add_media_renderer (GUPnPDeviceProxy *proxy)
                                                rendering_control,
                                                udn);
 
-        gupnp_service_proxy_begin_action (g_object_ref (cm),
-                                          "GetProtocolInfo",
-                                          get_protocol_info_cb,
-                                          NULL,
-                                          NULL);
+        GUPnPServiceProxyAction *action;
 
-        gupnp_service_proxy_begin_action (g_object_ref (av_transport),
-                                          "GetTransportInfo",
-                                          get_transport_info_cb,
-                                          NULL,
-                                          "InstanceID", G_TYPE_UINT, 0,
-                                          NULL);
+        action = gupnp_service_proxy_action_new ("GetProtocolInfo", NULL);
+        gupnp_service_proxy_call_action_async (g_object_ref (cm),
+                                               action,
+                                               NULL,
+                                               get_protocol_info_cb,
+                                               NULL);
+        gupnp_service_proxy_action_unref (action);
 
-        gupnp_service_proxy_begin_action (g_object_ref (av_transport),
-                                          "GetMediaInfo",
-                                          get_media_info_cb,
-                                          NULL,
-                                          "InstanceID", G_TYPE_UINT, 0,
-                                          NULL);
+        action = gupnp_service_proxy_action_new ("GetTransportInfo",
+                                                 "InstanceID",
+                                                 G_TYPE_UINT,
+                                                 0,
+                                                 NULL);
+        gupnp_service_proxy_call_action_async (g_object_ref (av_transport),
+                                               action,
+                                               NULL,
+                                               get_transport_info_cb,
+                                               NULL);
+        gupnp_service_proxy_action_unref (action);
 
-        gupnp_service_proxy_begin_action (g_object_ref (rendering_control),
-                                          "GetVolume",
-                                          get_volume_cb,
-                                          NULL,
-                                          "InstanceID", G_TYPE_UINT, 0,
-                                          "Channel", G_TYPE_STRING, "Master",
-                                          NULL);
+        action = gupnp_service_proxy_action_new ("GetMediaInfo",
+                                                 "InstanceID",
+                                                 G_TYPE_UINT,
+                                                 0,
+                                                 NULL);
+        gupnp_service_proxy_call_action_async (g_object_ref (av_transport),
+                                               action,
+                                               NULL,
+                                               get_media_info_cb,
+                                               NULL);
+        gupnp_service_proxy_action_unref (action);
+
+        action = gupnp_service_proxy_action_new ("GetVolume",
+                                                 "InstanceID",
+                                                 G_TYPE_UINT,
+                                                 0,
+                                                 "Channel",
+                                                 G_TYPE_STRING,
+                                                 "Master",
+                                                 NULL);
+        gupnp_service_proxy_call_action_async (g_object_ref (rendering_control),
+                                               action,
+                                               NULL,
+                                               get_volume_cb,
+                                               NULL);
+        gupnp_service_proxy_action_unref (action);
 
         g_object_unref (rendering_control);
 no_rendering_control:

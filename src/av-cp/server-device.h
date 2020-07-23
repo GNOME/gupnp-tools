@@ -111,7 +111,7 @@ av_cp_media_server_search_finish (AVCPMediaServer  *self,
                                   guint32          *number_returned,
                                   GError          **error);
 
-char**
+char const * const *
 av_cp_media_server_get_search_caps (AVCPMediaServer *self);
 
 G_END_DECLS

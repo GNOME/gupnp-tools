@@ -100,34 +100,39 @@ set_av_transport_uri_data_free (SetAVTransportURIData *data)
 }
 
 static void
-av_transport_action_cb (GUPnPServiceProxy       *av_transport,
-                        GUPnPServiceProxyAction *action,
-                        gpointer                 user_data)
+av_transport_action_cb (GObject *object, GAsyncResult *res, gpointer user_data)
 {
         const char *action_name;
-        GError *error;
+        GError *error = NULL;
+        GUPnPServiceProxyAction *action;
+        const char *udn;
+        GUPnPServiceProxy *proxy = GUPNP_SERVICE_PROXY (object);
 
         action_name = (const char *) user_data;
 
         error = NULL;
-        if (!gupnp_service_proxy_end_action (av_transport,
-                                             action,
-                                             &error,
-                                             NULL)) {
-                const char *udn;
-
-                udn = gupnp_service_info_get_udn
-                                        (GUPNP_SERVICE_INFO (av_transport));
-
+        udn = gupnp_service_info_get_udn (GUPNP_SERVICE_INFO (object));
+        action = gupnp_service_proxy_call_action_finish (proxy, res, &error);
+        if (error != NULL) {
                 g_warning ("Failed to send action '%s' to '%s': %s",
                            action_name,
                            udn,
                            error->message);
 
-                g_error_free (error);
+                goto out;
         }
 
-        g_object_unref (av_transport);
+        if (!gupnp_service_proxy_action_get_result (action, &error, NULL)) {
+
+                g_warning ("Failed to send action '%s' to '%s': %s",
+                           action_name,
+                           udn,
+                           error->message);
+        }
+
+out:
+        g_clear_error (&error);
+        g_object_unref (object);
 }
 
 static void
@@ -171,11 +176,11 @@ create_av_transport_args (char **additional_args, GList **out_values)
 }
 
 void
-av_transport_send_action (const char *action,
-                          char *additional_args[])
+av_transport_send_action (const char *action_name, char *additional_args[])
 {
         GUPnPServiceProxy *av_transport;
         GList             *names, *values;
+        GUPnPServiceProxyAction *action;
 
         av_transport = get_selected_av_transport (NULL);
         if (av_transport == NULL) {
@@ -184,13 +189,17 @@ av_transport_send_action (const char *action,
         }
 
         names = create_av_transport_args (additional_args, &values);
+        action = gupnp_service_proxy_action_new_from_list (action_name,
+                                                           names,
+                                                           values);
 
-        gupnp_service_proxy_begin_action_list (av_transport,
+        gupnp_service_proxy_call_action_async (av_transport,
                                                action,
-                                               names,
-                                               values,
+                                               NULL,
                                                av_transport_action_cb,
-                                               (char *) action);
+                                               (char *) action_name);
+
+        gupnp_service_proxy_action_unref (action);
         g_list_free_full (names, g_free);
         g_list_free_full (values, g_value_free);
 }
@@ -204,20 +213,24 @@ play (void)
 }
 
 static void
-set_av_transport_uri_cb (GUPnPServiceProxy       *av_transport,
-                         GUPnPServiceProxyAction *action,
-                         gpointer                 user_data)
+set_av_transport_uri_cb (GObject *object, GAsyncResult *res, gpointer user_data)
 {
-        SetAVTransportURIData *data;
-        GError                *error;
+        SetAVTransportURIData *data = (SetAVTransportURIData *) user_data;
+        GError *error = NULL;
+        const char *udn;
 
-        data = (SetAVTransportURIData *) user_data;
+        udn = gupnp_service_info_get_udn (GUPNP_SERVICE_INFO (object));
 
-        error = NULL;
-        if (gupnp_service_proxy_end_action (av_transport,
-                                            action,
-                                            &error,
-                                            NULL)) {
+        gupnp_service_proxy_call_action_finish (GUPNP_SERVICE_PROXY (object),
+                                                res,
+                                                &error);
+
+        if (error != NULL) {
+                g_warning ("Failed to set URI '%s' on %s: %s",
+                           gupnp_didl_lite_resource_get_uri (data->resource),
+                           udn,
+                           error->message);
+        } else {
                 long duration ;
                 if (data->callback) {
                         data->callback ();
@@ -230,22 +243,11 @@ set_av_transport_uri_cb (GUPnPServiceProxy       *av_transport,
                                              0.0,
                                              duration);
                 }
-        } else {
-                const char *udn;
-
-                udn = gupnp_service_info_get_udn
-                                        (GUPNP_SERVICE_INFO (av_transport));
-
-                g_warning ("Failed to set URI '%s' on %s: %s",
-                           gupnp_didl_lite_resource_get_uri (data->resource),
-                           udn,
-                           error->message);
-
-                g_error_free (error);
         }
 
+        g_clear_error (&error);
         set_av_transport_uri_data_free (data);
-        g_object_unref (av_transport);
+        g_object_unref (object);
 }
 
 G_MODULE_EXPORT
@@ -334,6 +336,7 @@ set_av_transport_uri (const char *metadata,
         SetAVTransportURIData *data;
         GUPnPDIDLLiteResource *resource;
         const char            *uri;
+        GUPnPServiceProxyAction *action;
 
         av_transport = get_selected_av_transport (NULL);
         if (av_transport == NULL) {
@@ -353,20 +356,24 @@ set_av_transport_uri (const char *metadata,
         data = set_av_transport_uri_data_new (callback, resource);
         uri = gupnp_didl_lite_resource_get_uri (resource);
 
-        gupnp_service_proxy_begin_action (av_transport,
-                                          "SetAVTransportURI",
-                                          set_av_transport_uri_cb,
-                                          data,
-                                          "InstanceID",
-                                          G_TYPE_UINT,
-                                          0,
-                                          "CurrentURI",
-                                          G_TYPE_STRING,
-                                          uri,
-                                          "CurrentURIMetaData",
-                                          G_TYPE_STRING,
-                                          metadata,
-                                          NULL);
+        action = gupnp_service_proxy_action_new ("SetAVTransportURI",
+                                                 "InstanceID",
+                                                 G_TYPE_UINT,
+                                                 0,
+                                                 "CurrentURI",
+                                                 G_TYPE_STRING,
+                                                 uri,
+                                                 "CurrentURIMetaData",
+                                                 G_TYPE_STRING,
+                                                 metadata,
+                                                 NULL);
+
+        gupnp_service_proxy_call_action_async (av_transport,
+                                               action,
+                                               NULL,
+                                               set_av_transport_uri_cb,
+                                               data);
+        gupnp_service_proxy_action_unref (action);
 }
 
 G_MODULE_EXPORT
@@ -517,33 +524,40 @@ set_position_scale_position (const char *position_str)
 }
 
 static void
-get_position_info_cb (GUPnPServiceProxy       *av_transport,
-                      GUPnPServiceProxyAction *action,
-                      gpointer                 user_data)
+get_position_info_cb (GObject *object, GAsyncResult *res, gpointer user_data)
 {
         gchar       *position;
         gchar       *duration;
         const gchar *udn;
-        GError      *error;
+        GError *error = NULL;
+        GUPnPServiceProxyAction *action;
+        GUPnPServiceProxy *proxy = GUPNP_SERVICE_PROXY (object);
 
-        udn = gupnp_service_info_get_udn (GUPNP_SERVICE_INFO (av_transport));
+        udn = gupnp_service_info_get_udn (GUPNP_SERVICE_INFO (object));
 
-        error = NULL;
-        if (!gupnp_service_proxy_end_action (av_transport,
-                                             action,
-                                             &error,
-                                             "AbsTime",
-                                             G_TYPE_STRING,
-                                             &position,
-                                             "TrackDuration",
-                                             G_TYPE_STRING,
-                                             &duration,
-                                             NULL)) {
+        action = gupnp_service_proxy_call_action_finish (proxy, res, &error);
+        if (error != NULL) {
                 g_warning ("Failed to get current media position"
                            "from media renderer '%s':%s\n",
                            udn,
                            error->message);
-                g_error_free (error);
+
+                goto return_point;
+        }
+
+        if (!gupnp_service_proxy_action_get_result (action,
+                                                    &error,
+                                                    "AbsTime",
+                                                    G_TYPE_STRING,
+                                                    &position,
+                                                    "TrackDuration",
+                                                    G_TYPE_STRING,
+                                                    &duration,
+                                                    NULL)) {
+                g_warning ("Failed to get current media position"
+                           "from media renderer '%s':%s\n",
+                           udn,
+                           error->message);
 
                 goto return_point;
         }
@@ -557,25 +571,35 @@ get_position_info_cb (GUPnPServiceProxy       *av_transport,
         g_free (duration);
 
 return_point:
-        g_object_unref (av_transport);
+        g_clear_error (&error);
+        g_object_unref (object);
 }
 
 static gboolean
 update_position (gpointer data)
 {
         GUPnPServiceProxy *av_transport;
+        GUPnPServiceProxyAction *action;
 
         av_transport = get_selected_av_transport (NULL);
         if (av_transport == NULL) {
                 return FALSE;
         }
 
-        gupnp_service_proxy_begin_action (av_transport,
-                                          "GetPositionInfo",
-                                          get_position_info_cb,
-                                          NULL,
-                                          "InstanceID", G_TYPE_UINT, 0,
-                                          NULL);
+        action = gupnp_service_proxy_action_new ("GetPositionInfo",
+                                                 "InstanceID",
+                                                 G_TYPE_UINT,
+                                                 0,
+                                                 NULL);
+
+        gupnp_service_proxy_call_action_async (av_transport,
+                                               action,
+                                               NULL,
+                                               get_position_info_cb,
+                                               NULL);
+
+        gupnp_service_proxy_action_unref (action);
+
         return TRUE;
 }
 
@@ -678,21 +702,16 @@ prepare_controls_for_state (PlaybackState state)
 }
 
 static void
-set_volume_cb (GUPnPServiceProxy       *rendering_control,
-               GUPnPServiceProxyAction *action,
-               gpointer                 user_data)
+set_volume_cb (GObject *object, GAsyncResult *res, gpointer user_data)
 {
         GError *error;
+        GUPnPServiceProxy *proxy = GUPNP_SERVICE_PROXY (object);
 
         error = NULL;
-        if (!gupnp_service_proxy_end_action (rendering_control,
-                                             action,
-                                             &error,
-                                             NULL)) {
+        if (!gupnp_service_proxy_call_action_finish (proxy, res, &error)) {
                 const char *udn;
 
-                udn = gupnp_service_info_get_udn
-                        (GUPNP_SERVICE_INFO (rendering_control));
+                udn = gupnp_service_info_get_udn (GUPNP_SERVICE_INFO (object));
 
                 g_warning ("Failed to set volume of %s: %s",
                            udn,
@@ -704,7 +723,7 @@ set_volume_cb (GUPnPServiceProxy       *rendering_control,
                 set_volume_scale (get_selected_renderer_volume ());
         }
 
-        g_object_unref (rendering_control);
+        g_object_unref (object);
 }
 
 G_MODULE_EXPORT
@@ -714,6 +733,7 @@ on_volume_scale_value_changed (GtkRange *range,
 {
         GUPnPServiceProxy *rendering_control;
         guint              desired_volume;
+        GUPnPServiceProxyAction *action;
 
         rendering_control = get_selected_rendering_control ();
         if (rendering_control == NULL) {
@@ -723,20 +743,25 @@ on_volume_scale_value_changed (GtkRange *range,
 
         desired_volume = (guint) gtk_range_get_value (range);
 
-        gupnp_service_proxy_begin_action (rendering_control,
-                                          "SetVolume",
-                                          set_volume_cb,
-                                          NULL,
-                                          "InstanceID",
-                                          G_TYPE_UINT,
-                                          0,
-                                          "Channel",
-                                          G_TYPE_STRING,
-                                          "Master",
-                                          "DesiredVolume",
-                                          G_TYPE_UINT,
-                                          desired_volume,
-                                          NULL);
+        action = gupnp_service_proxy_action_new ("SetVolume",
+                                                 "InstanceID",
+                                                 G_TYPE_UINT,
+                                                 0,
+                                                 "Channel",
+                                                 G_TYPE_STRING,
+                                                 "Master",
+                                                 "DesiredVolume",
+                                                 G_TYPE_UINT,
+                                                 desired_volume,
+                                                 NULL);
+
+        gupnp_service_proxy_call_action_async (rendering_control,
+                                               action,
+                                               NULL,
+                                               set_volume_cb,
+                                               NULL);
+
+        gupnp_service_proxy_action_unref (action);
 
         return TRUE;
 }

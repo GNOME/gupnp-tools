@@ -9,7 +9,7 @@ G_BEGIN_DECLS
 
 G_DECLARE_FINAL_TYPE (EntryCompletion, entry_completion, ENTRY, COMPLETION, GtkEntryCompletion)
 
-EntryCompletion *entry_completion_new (void);
-void entry_completion_set_search_criteria (EntryCompletion *self, char** criteria);
+GtkEntryCompletion *entry_completion_new (void);
+void entry_completion_set_search_criteria (EntryCompletion *self, char const * const * criteria);
 
 G_END_DECLS

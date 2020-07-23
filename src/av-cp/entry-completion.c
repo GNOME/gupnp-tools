@@ -1,5 +1,7 @@
 #include "entry-completion.h"
 
+#include <libgupnp-av/gupnp-av.h>
+
 static void
 entry_completion_constructed (GObject *self);
 
@@ -10,16 +12,10 @@ struct _EntryCompletion
         GtkListStore *store;
 };
 
+
 G_DEFINE_TYPE (EntryCompletion, entry_completion, GTK_TYPE_ENTRY_COMPLETION)
 
-enum {
-        PROP_0,
-        N_PROPS
-};
-
-static GParamSpec *properties [N_PROPS];
-
-EntryCompletion *
+GtkEntryCompletion *
 entry_completion_new (void)
 {
         return g_object_new (ENTRY_TYPE_COMPLETION, NULL);
@@ -58,10 +54,14 @@ entry_completion_set_property (GObject      *object,
 }
 
 static gboolean
-entry_completion_on_match_selected (GtkEntryCompletion *self, GtkTreeModel *model, GtkTreeIter *iter, gpointer user_data)
+entry_completion_on_match_selected (GtkEntryCompletion *self,
+                                    GtkTreeModel       *model,
+                                    GtkTreeIter        *iter)
 {
         char *match = NULL;
-        GtkEntry *entry = gtk_entry_completion_get_entry (self);
+        GtkEntry *entry;
+
+        entry = GTK_ENTRY (gtk_entry_completion_get_entry (self));
         gtk_tree_model_get (model, iter, 0, &match, -1);
         
         char *old_text = g_strdup (gtk_entry_get_text (entry));
@@ -71,7 +71,10 @@ entry_completion_on_match_selected (GtkEntryCompletion *self, GtkTreeModel *mode
                 *needle = '\0';
         }
 
-        char *new_text = g_strconcat (needle == NULL ? "" : old_text, match, NULL);
+        char *new_text = g_strconcat (needle == NULL ? ""
+                                                     : old_text,
+                                      match,
+                                      NULL);
         gtk_entry_set_text (entry, new_text);
         gtk_editable_set_position (GTK_EDITABLE (entry), strlen (new_text));
         g_free (new_text);
@@ -99,12 +102,13 @@ entry_completion_on_match (GtkEntryCompletion *self, const char *key, GtkTreeIte
 {
         GtkTreeModel *model = gtk_entry_completion_get_model (self);
         char *candidate;
-        GtkEntry *entry = gtk_entry_completion_get_entry (self);
+        GtkWidget *entry;
         gboolean retval = FALSE;
 
+        entry  = gtk_entry_completion_get_entry (self);
         gtk_tree_model_get (model, iter, 0, &candidate, -1);
 
-        char *needle = strrchr (key, ' ');
+        const char *needle = strrchr (key, ' ');
         if (needle != NULL) {
                 if ((needle - key)> gtk_editable_get_position (GTK_EDITABLE (entry))) {
                         g_print ("Position wrong\n");
@@ -166,13 +170,13 @@ static const char *keywords[] = {
 };
 
 void
-entry_completion_set_search_criteria (EntryCompletion *self, char** criteria)
+entry_completion_set_search_criteria (EntryCompletion *self, char const * const * criteria)
 {
         GtkTreeIter iter;
         gtk_list_store_clear (self->store);
 
         // Prefill ListStore with the search expression keywords
-        char **it = keywords;
+        char const * const *it = keywords;
         while (*it != NULL) {
                 gtk_list_store_insert_with_values (self->store,
                                                    &iter,

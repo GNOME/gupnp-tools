@@ -55,8 +55,8 @@ static void
 av_cp_media_server_introspect_finish (AVCPMediaServer *self);
 
 static void
-av_cp_media_server_on_get_search_caps (GUPnPServiceProxy *proxy,
-                                       GUPnPServiceProxyAction *action,
+av_cp_media_server_on_get_search_caps (GObject *object,
+                                       GAsyncResult *res,
                                        gpointer user_data);
 
 enum _AVCPMediaServerInitState {
@@ -154,80 +154,107 @@ av_cp_media_server_on_icon_updated (GUPnPDeviceInfo *info,
                                     GdkPixbuf       *icon);
 
 static void
-av_cp_media_server_on_get_sort_caps (GUPnPServiceProxy *proxy,
-                                     GUPnPServiceProxyAction *action,
-                                     gpointer user_data)
+av_cp_media_server_on_get_sort_caps (GObject      *object,
+                                     GAsyncResult *res,
+                                     gpointer      user_data)
 {
         AVCPMediaServer *self = AV_CP_MEDIA_SERVER (user_data);
         AVCPMediaServerPrivate *priv = av_cp_media_server_get_instance_private (self);
-
+        GUPnPServiceProxyAction *action;
 
         GError *error = NULL;
         char *sort_caps = NULL;
 
-        gupnp_service_proxy_end_action (proxy,
-                                        action,
-                                        &error,
-                                        "SortCaps",
-                                        G_TYPE_STRING,
-                                        &sort_caps,
-                                        NULL);
+        action = gupnp_service_proxy_call_action_finish
+                                                (GUPNP_SERVICE_PROXY (object),
+                                                 res,
+                                                 &error);
+
         if (error != NULL) {
-                g_warning ("Failed to get sort caps from server: %s",
+                g_warning ("GetSortCapabilities call failed: %s",
                            error->message);
-                g_error_free (error);
-        } else if (sort_caps != NULL) {
-                GString *default_sort_order = g_string_new (NULL);
-                if (strstr (sort_caps, "upnp:class") != NULL) {
-                        g_string_append (default_sort_order, "+upnp:class,");
+                g_clear_error (&error);
+        } else {
+                gupnp_service_proxy_action_get_result (action,
+                                                       &error,
+                                                       "SortCaps",
+                                                       G_TYPE_STRING,
+                                                       &sort_caps,
+                                                       NULL);
+                if (error != NULL) {
+                        g_warning ("Failed to get sort caps from server: %s",
+                                error->message);
+                        g_error_free (error);
+                } else if (sort_caps != NULL) {
+                        GString *default_sort_order = g_string_new (NULL);
+                        if (strstr (sort_caps, "upnp:class") != NULL) {
+                                g_string_append (default_sort_order,
+                                                 "+upnp:class,");
+                        }
+
+                        if (strstr (sort_caps, "dc:title") != NULL) {
+                                g_string_append (default_sort_order,
+                                                 "+dc:title");
+                        }
+
+                        priv->default_sort_order =
+                                        g_string_free (default_sort_order, FALSE);
+
+                        g_free (sort_caps);
                 }
-
-                if (strstr (sort_caps, "dc:title") != NULL) {
-                        g_string_append (default_sort_order, "+dc:title");
-                }
-
-                priv->default_sort_order =
-                                g_string_free (default_sort_order, FALSE);
-
-                g_free (sort_caps);
         }
         g_object_notify (G_OBJECT (self), "sort-order");
 
-        gupnp_service_proxy_begin_action
-                        (priv->content_directory,
-                                "GetSearchCapabilities",
-                                av_cp_media_server_on_get_search_caps,
-                                self,
-                                NULL);
+        action = gupnp_service_proxy_action_new ("GetSearchCapabilities",
+                                                 NULL);
+
+        gupnp_service_proxy_call_action_async
+                                       (priv->content_directory,
+                                        action,
+                                        NULL,
+                                        av_cp_media_server_on_get_search_caps,
+                                        self);
+
+        gupnp_service_proxy_action_unref (action);
 }
 
 static void
-av_cp_media_server_on_get_search_caps (GUPnPServiceProxy *proxy,
-                                       GUPnPServiceProxyAction *action,
-                                       gpointer user_data)
+av_cp_media_server_on_get_search_caps (GObject      *object,
+                                       GAsyncResult *res,
+                                       gpointer      user_data)
 {
         AVCPMediaServer *self = AV_CP_MEDIA_SERVER (user_data);
         AVCPMediaServerPrivate *priv = av_cp_media_server_get_instance_private (self);
-
+        GUPnPServiceProxyAction *action;
 
         GError *error = NULL;
         char *search_caps = NULL;
 
-        gupnp_service_proxy_end_action (proxy,
-                                        action,
-                                        &error,
-                                        "SearchCaps",
-                                        G_TYPE_STRING,
-                                        &search_caps,
-                                        NULL);
+        action = gupnp_service_proxy_call_action_finish
+                                                (GUPNP_SERVICE_PROXY (object),
+                                                 res,
+                                                 &error);
+
         if (error != NULL) {
-                g_warning ("Failed to get sort caps from server: %s",
+                g_warning ("GetSearchCapabilites call failed: %s",
                            error->message);
-                g_error_free (error);
-        } else if (search_caps != NULL) {
-                priv->search_caps = g_strsplit (search_caps, ",", -1);
+                g_clear_error (&error);
         } else {
-                priv->search_caps = g_strsplit ("upnp:class,@id", ",", -1);
+                gupnp_service_proxy_action_get_result (action,
+                                                       &error,
+                                                       "SearchCaps",
+                                                       G_TYPE_STRING,
+                                                       &search_caps,
+                                                       NULL);
+                if (error != NULL) {
+                        g_warning ("Failed to get sort caps from server: %s",
+                                error->message);
+                        g_error_free (error);
+                } else if (search_caps != NULL) {
+                        priv->search_caps = g_strsplit (search_caps, ",", -1);
+                } else {
+                        priv->search_caps = g_strsplit ("upnp:class,@id", ",", -1);
+                }
         }
         g_object_notify (G_OBJECT (self), "search-caps");
 
@@ -289,12 +316,19 @@ av_cp_media_server_on_icon_updated (GUPnPDeviceInfo *info,
         av_cp_media_server_get_content_directory (self);
 
         if (priv->content_directory != NULL) {
-                gupnp_service_proxy_begin_action
-                                (priv->content_directory,
-                                 "GetSortCapabilities",
-                                 av_cp_media_server_on_get_sort_caps,
-                                 g_object_ref (self),
-                                 NULL);
+                GUPnPServiceProxyAction *action;
+
+                action = gupnp_service_proxy_action_new ("GetSortCapabilities",
+                                                         NULL);
+
+                gupnp_service_proxy_call_action_async
+                                        (priv->content_directory,
+                                         action,
+                                         NULL,
+                                         av_cp_media_server_on_get_sort_caps,
+                                         g_object_ref (self));
+
+                gupnp_service_proxy_action_unref (action);
         } else {
                 g_debug ("Invalid MediaServer device without ContentDirectory");
                 priv->state = INIT_FAILED;
@@ -421,9 +455,9 @@ typedef struct _BrowseReturn {
 } BrowseReturn;
 
 static void
-av_cp_media_server_on_browse (GUPnPServiceProxy       *content_dir,
-                              GUPnPServiceProxyAction *action,
-                              gpointer                 user_data)
+av_cp_media_server_on_browse (GObject      *source,
+                              GAsyncResult *result,
+                              gpointer      user_data)
 {
         GTask   *task = G_TASK (user_data);
         GError  *error = NULL;
@@ -431,28 +465,39 @@ av_cp_media_server_on_browse (GUPnPServiceProxy       *content_dir,
         guint32  number_returned;
         guint32  total_matches;
 
-        gupnp_service_proxy_end_action (content_dir,
-                                        action,
-                                        &error,
-                                        /* OUT args */
-                                        "Result",
-                                        G_TYPE_STRING,
-                                        &didl_xml,
-                                        "NumberReturned",
-                                        G_TYPE_UINT,
-                                        &number_returned,
-                                        "TotalMatches",
-                                        G_TYPE_UINT,
-                                        &total_matches,
-                                        NULL);
+        GUPnPServiceProxyAction *action;
+
+        action = gupnp_service_proxy_call_action_finish
+                                                (GUPNP_SERVICE_PROXY (source),
+                                                 result,
+                                                 &error);
         if (error != NULL) {
                 g_task_return_error (task, error);
         } else {
-                BrowseReturn *ret = g_new0 (BrowseReturn, 1);
-                ret->didl_xml = didl_xml;
-                ret->number_returned = number_returned;
-                ret->total_matches = total_matches;
-                g_task_return_pointer (task, ret, g_free);
+                gupnp_service_proxy_action_get_result (action,
+                                                       &error,
+                                                       /* OUT args */
+                                                       "Result",
+                                                       G_TYPE_STRING,
+                                                       &didl_xml,
+                                                       "NumberReturned",
+                                                       G_TYPE_UINT,
+                                                       &number_returned,
+                                                       "TotalMatches",
+                                                       G_TYPE_UINT,
+                                                       &total_matches,
+                                                       NULL);
+
+                if (error != NULL) {
+                        g_task_return_error (task, error);
+                } else {
+                        BrowseReturn *ret = g_new0 (BrowseReturn, 1);
+                        ret->didl_xml = didl_xml;
+                        ret->number_returned = number_returned;
+                        ret->total_matches = total_matches;
+
+                        g_task_return_pointer (task, ret, g_free);
+                }
         }
 
         g_object_unref (task);
@@ -472,31 +517,37 @@ av_cp_media_server_browse_async (AVCPMediaServer     *self,
         const char *sort_order =  priv->default_sort_order == NULL ?
                                          "" :
                                          priv->default_sort_order;
+        GUPnPServiceProxyAction *action = NULL;
 
-        gupnp_service_proxy_begin_action (priv->content_directory,
-                                          "Browse",
-                                          av_cp_media_server_on_browse,
-                                          task,
-                                          /* IN args */
-                                          "ObjectID",
-                                          G_TYPE_STRING,
-                                          container_id,
-                                          "BrowseFlag",
-                                          G_TYPE_STRING,
-                                          "BrowseDirectChildren",
-                                          "Filter",
-                                          G_TYPE_STRING,
-                                          "@childCount",
-                                          "StartingIndex",
-                                          G_TYPE_UINT,
-                                          starting_index,
-                                          "RequestedCount",
-                                          G_TYPE_UINT,
-                                          requested_count,
-                                          "SortCriteria",
-                                          G_TYPE_STRING,
-                                          sort_order,
-                                          NULL);
+        action = gupnp_service_proxy_action_new ("Browse",
+                                                 /* IN args */
+                                                 "ObjectID",
+                                                 G_TYPE_STRING,
+                                                 container_id,
+                                                 "BrowseFlag",
+                                                 G_TYPE_STRING,
+                                                 "BrowseDirectChildren",
+                                                 "Filter",
+                                                 G_TYPE_STRING,
+                                                 "@childCount",
+                                                 "StartingIndex",
+                                                 G_TYPE_UINT,
+                                                 starting_index,
+                                                 "RequestedCount",
+                                                 G_TYPE_UINT,
+                                                 requested_count,
+                                                 "SortCriteria",
+                                                 G_TYPE_STRING,
+                                                 sort_order,
+                                                 NULL);
+
+        gupnp_service_proxy_call_action_async (priv->content_directory,
+                                               action,
+                                               g_task_get_cancellable (task),
+                                               av_cp_media_server_on_browse,
+                                               task);
+
+        gupnp_service_proxy_action_unref (action);
 }
 
 gboolean
@@ -536,26 +587,35 @@ av_cp_media_server_browse_finish (AVCPMediaServer  *self,
 }
 
 static void
-av_cp_media_server_on_browse_metadata (GUPnPServiceProxy       *content_dir,
-                                       GUPnPServiceProxyAction *action,
-                                       gpointer                 user_data)
+av_cp_media_server_on_browse_metadata (GObject      *object,
+                                       GAsyncResult *res,
+                                       gpointer      user_data)
 {
         GTask   *task = G_TASK (user_data);
         GError  *error = NULL;
         char    *didl_xml = NULL;
+        GUPnPServiceProxyAction *action = NULL;
 
-        gupnp_service_proxy_end_action (content_dir,
-                                        action,
-                                        &error,
-                                        /* OUT args */
-                                        "Result",
-                                        G_TYPE_STRING,
-                                        &didl_xml,
-                                        NULL);
+        action = gupnp_service_proxy_call_action_finish
+                                                (GUPNP_SERVICE_PROXY (object),
+                                                                      res,
+                                                                      &error);
+
         if (error != NULL) {
                 g_task_return_error (task, error);
         } else {
-                g_task_return_pointer (task, didl_xml, g_free);
+                gupnp_service_proxy_action_get_result (action,
+                                                       &error,
+                                                       /* OUT args */
+                                                       "Result",
+                                                       G_TYPE_STRING,
+                                                       &didl_xml,
+                                                       NULL);
+                if (error != NULL) {
+                        g_task_return_error (task, error);
+                } else {
+                        g_task_return_pointer (task, didl_xml, g_free);
+                }
         }
 
         g_object_unref (task);
@@ -570,31 +630,37 @@ av_cp_media_server_browse_metadata_async (AVCPMediaServer     *self,
 {
         GTask *task = g_task_new (self, cancellable, callback, user_data);
         AVCPMediaServerPrivate *priv = av_cp_media_server_get_instance_private (self);
+        GUPnPServiceProxyAction *action;
 
-        gupnp_service_proxy_begin_action
+        action = gupnp_service_proxy_action_new ("Browse",
+                                                 /* IN args */
+                                                 "ObjectID",
+                                                 G_TYPE_STRING,
+                                                 id,
+                                                 "BrowseFlag",
+                                                 G_TYPE_STRING,
+                                                 "BrowseMetadata",
+                                                 "Filter",
+                                                 G_TYPE_STRING,
+                                                 "*",
+                                                 "StartingIndex",
+                                                 G_TYPE_UINT,
+                                                 0,
+                                                 "RequestedCount",
+                                                 G_TYPE_UINT, 0,
+                                                 "SortCriteria",
+                                                 G_TYPE_STRING,
+                                                 "",
+                                                 NULL);
+
+        gupnp_service_proxy_call_action_async
                                 (priv->content_directory,
-                                 "Browse",
+                                 action,
+                                 g_task_get_cancellable (task),
                                  av_cp_media_server_on_browse_metadata,
-                                 task,
-                                 /* IN args */
-                                 "ObjectID",
-                                 G_TYPE_STRING,
-                                 id,
-                                 "BrowseFlag",
-                                 G_TYPE_STRING,
-                                 "BrowseMetadata",
-                                 "Filter",
-                                 G_TYPE_STRING,
-                                 "*",
-                                 "StartingIndex",
-                                 G_TYPE_UINT,
-                                 0,
-                                 "RequestedCount",
-                                 G_TYPE_UINT, 0,
-                                 "SortCriteria",
-                                 G_TYPE_STRING,
-                                 "",
-                                 NULL);
+                                 task);
+
+        gupnp_service_proxy_action_unref (action);
 }
 
 gboolean
@@ -635,30 +701,36 @@ av_cp_media_server_search_async (AVCPMediaServer     *self,
         GTask *task = g_task_new (self, cancellable, callback, user_data);
         AVCPMediaServerPrivate *priv = av_cp_media_server_get_instance_private (self);
 
-        gupnp_service_proxy_begin_action (priv->content_directory,
-                                          "Search",
-                                          av_cp_media_server_on_browse,
-                                          task,
-                                          /* IN args */
-                                          "ContainerID",
-                                          G_TYPE_STRING,
-                                          container_id,
-                                          "SearchCriteria",
-                                          G_TYPE_STRING,
-                                          search_criteria,
-                                          "Filter",
-                                          G_TYPE_STRING,
-                                          "*",
-                                          "StartingIndex",
-                                          G_TYPE_UINT,
-                                          starting_index,
-                                          "RequestedCount",
-                                          G_TYPE_UINT,
-                                          requested_count,
-                                          "SortCriteria",
-                                          G_TYPE_STRING,
-                                          "",
-                                          NULL);
+        GUPnPServiceProxyAction *action;
+        action = gupnp_service_proxy_action_new ("Search",
+                                                /* IN args */
+                                                "ContainerID",
+                                                G_TYPE_STRING,
+                                                container_id,
+                                                "SearchCriteria",
+                                                G_TYPE_STRING,
+                                                search_criteria,
+                                                "Filter",
+                                                G_TYPE_STRING,
+                                                "*",
+                                                "StartingIndex",
+                                                G_TYPE_UINT,
+                                                starting_index,
+                                                "RequestedCount",
+                                                G_TYPE_UINT,
+                                                requested_count,
+                                                "SortCriteria",
+                                                G_TYPE_STRING,
+                                                "",
+                                                NULL);
+
+        gupnp_service_proxy_call_action_async (priv->content_directory,
+                                               action,
+                                               g_task_get_cancellable (task),
+                                               av_cp_media_server_on_browse,
+                                               task);
+
+        gupnp_service_proxy_action_unref (action);
 }
 
 gboolean
@@ -673,9 +745,9 @@ av_cp_media_server_search_finish (AVCPMediaServer  *self,
                 total_matches, number_returned, error);
 }
 
-char**
+char const * const *
 av_cp_media_server_get_search_caps (AVCPMediaServer *self) {
         AVCPMediaServerPrivate *priv = av_cp_media_server_get_instance_private (self);
 
-        return priv->search_caps;
+        return (char const * const *) priv->search_caps;
 }
