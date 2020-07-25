@@ -182,22 +182,31 @@ parse_result (const char *result)
 }
 
 static void
-create_object_cb (GUPnPServiceProxy       *cds_proxy,
-                  GUPnPServiceProxyAction *action,
-                  gpointer                 user_data)
+create_object_cb (GObject *object, GAsyncResult *res, gpointer user_data)
 {
-        GError *error;
+        GError *error = NULL;
         char *result;
         const char *import_uri;
+        GUPnPServiceProxyAction *action;
+        GUPnPServiceProxy *proxy = GUPNP_SERVICE_PROXY (object);
 
         error = NULL;
-        if (!gupnp_service_proxy_end_action (cds_proxy,
-                                             action,
-                                             &error,
-                                             "Result",
-                                                G_TYPE_STRING,
-                                                &result,
-                                             NULL)) {
+
+        action = gupnp_service_proxy_call_action_finish (proxy, res, &error);
+        if (error != NULL) {
+                g_critical ("CreateObject call failed: %s", error->message);
+                g_clear_error (&error);
+                item_created (NULL);
+
+                return;
+        }
+
+        if (!gupnp_service_proxy_action_get_result (action,
+                                                    &error,
+                                                    "Result",
+                                                    G_TYPE_STRING,
+                                                    &result,
+                                                    NULL)) {
                 g_critical ("Failed to create new item on remote container: %s",
                             error->message);
 
@@ -231,6 +240,7 @@ create_item (const char        *file_path,
              const char        *container_id)
 {
         char *didl;
+        GUPnPServiceProxyAction *action;
 
         didl = create_didl_for_file (file_path, title, container_id);
         if (didl == NULL) {
@@ -239,15 +249,20 @@ create_item (const char        *file_path,
                 return;
         }
 
-        gupnp_service_proxy_begin_action (cds_proxy,
-                                          "CreateObject",
-                                          create_object_cb,
-                                          NULL,
-                                          "ContainerID",
-                                                G_TYPE_STRING,
-                                                container_id,
-                                          "Elements",
-                                                G_TYPE_STRING,
-                                                didl,
-                                          NULL);
+        action = gupnp_service_proxy_action_new ("CreateObject",
+                                                 "ContainerID",
+                                                 G_TYPE_STRING,
+                                                 container_id,
+                                                 "Elements",
+                                                 G_TYPE_STRING,
+                                                 didl,
+                                                 NULL);
+
+        gupnp_service_proxy_call_action_async (cds_proxy,
+                                               action,
+                                               NULL,
+                                               create_object_cb,
+                                               NULL);
+
+        gupnp_service_proxy_action_unref (action);
 }

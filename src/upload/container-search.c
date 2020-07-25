@@ -72,22 +72,34 @@ parse_result (const char *result)
 }
 
 static void
-browse_cb (GUPnPServiceProxy       *cds_proxy,
-           GUPnPServiceProxyAction *action,
-           gpointer                 user_data)
+browse_cb (GObject *object, GAsyncResult *res, gpointer user_data)
 {
-        GError *error;
-        char *result;
-        char *container_id;
+        GError *error = NULL;
+        char *result = NULL;
+        char *container_id = NULL;
+        GUPnPServiceProxyAction *action = NULL;
+        GUPnPServiceProxy *proxy = GUPNP_SERVICE_PROXY (object);
 
-        error = NULL;
-        if (!gupnp_service_proxy_end_action (cds_proxy,
-                                             action,
-                                             &error,
-                                             "Result",
-                                                G_TYPE_STRING,
-                                                &result,
-                                             NULL)) {
+        action = gupnp_service_proxy_call_action_finish (proxy, res, &error);
+
+        if (error != NULL) {
+                g_critical ("Failed to browse root container: %s",
+                            error->message);
+
+                g_error_free (error);
+
+                application_exit ();
+
+                return;
+        }
+
+        gupnp_service_proxy_action_get_result (action,
+                                               &error,
+                                               "Restul",
+                                               G_TYPE_STRING,
+                                               &result,
+                                               NULL);
+        if (error != NULL) {
                 g_critical ("Failed to browse root container: %s",
                             error->message);
 
@@ -119,29 +131,35 @@ browse_cb (GUPnPServiceProxy       *cds_proxy,
 void
 search_container (GUPnPServiceProxy *cds_proxy)
 {
-        gupnp_service_proxy_begin_action (cds_proxy,
-                                          "Browse",
-                                          browse_cb,
-                                          NULL,
-                                          /* IN args */
-                                          "ObjectID",
-                                                G_TYPE_STRING,
-                                                "0",
-                                          "BrowseFlag",
-                                                G_TYPE_STRING,
-                                                "BrowseDirectChildren",
-                                          "Filter",
-                                                G_TYPE_STRING,
-                                                "*",
-                                          "StartingIndex",
-                                                G_TYPE_UINT,
-                                                0,
-                                          "RequestedCount",
-                                                G_TYPE_UINT,
-                                                0,
-                                          "SortCriteria",
-                                                G_TYPE_STRING,
-                                                "",
-                                          NULL);
+        GUPnPServiceProxyAction *action = NULL;
+        action = gupnp_service_proxy_action_new ("Browse",
+                                                 /* IN args */
+                                                 "ObjectID",
+                                                 G_TYPE_STRING,
+                                                 "0",
+                                                 "BrowseFlag",
+                                                 G_TYPE_STRING,
+                                                 "BrowseDirectChildren",
+                                                 "Filter",
+                                                 G_TYPE_STRING,
+                                                 "*",
+                                                 "StartingIndex",
+                                                 G_TYPE_UINT,
+                                                 0,
+                                                 "RequestedCount",
+                                                 G_TYPE_UINT,
+                                                 0,
+                                                 "SortCriteria",
+                                                 G_TYPE_STRING,
+                                                 "",
+                                                 NULL);
+
+        gupnp_service_proxy_call_action_async (cds_proxy,
+                                               action,
+                                               NULL,
+                                               browse_cb,
+                                               NULL);
+
+        gupnp_service_proxy_action_unref (action);
 }
 

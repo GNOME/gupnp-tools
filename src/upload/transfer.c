@@ -36,9 +36,9 @@ typedef struct
 } TrackTransferData;
 
 static void
-get_transfer_progress_cb (GUPnPServiceProxy       *cds_proxy,
-                          GUPnPServiceProxyAction *action,
-                          gpointer                 user_data)
+get_transfer_progress_cb (GObject *object,
+                          GAsyncResult *result,
+                          gpointer user_data)
 {
         GError *error;
         TrackTransferData *data;
@@ -50,19 +50,31 @@ get_transfer_progress_cb (GUPnPServiceProxy       *cds_proxy,
         error = NULL;
         total = length = 0;
         status = NULL;
-        if (!gupnp_service_proxy_end_action (cds_proxy,
-                                             action,
-                                             &error,
-                                             "TransferStatus",
-                                                G_TYPE_STRING,
-                                                &status,
-                                             "TransferLength",
-                                                G_TYPE_UINT64,
-                                                &length,
-                                             "TransferTotal",
-                                                G_TYPE_UINT64,
-                                                &total,
-                                             NULL)) {
+        gupnp_service_proxy_call_action_finish (GUPNP_SERVICE_PROXY (object),
+                                                result,
+                                                &error);
+        if (error != NULL) {
+                g_critical ("Failed to track file transfer: %s",
+                            error->message);
+                g_clear_error (&error);
+
+                transfer_completed ();
+
+                return;
+        }
+
+        if (!gupnp_service_proxy_action_get_result (data->action,
+                                                    &error,
+                                                    "TransferStatus",
+                                                    G_TYPE_STRING,
+                                                    &status,
+                                                    "TransferLength",
+                                                    G_TYPE_UINT64,
+                                                    &length,
+                                                    "TransferTotal",
+                                                    G_TYPE_UINT64,
+                                                    &total,
+                                                    NULL)) {
                 g_critical ("Failed to track file transfer: %s",
                             error->message);
 
@@ -104,15 +116,19 @@ track_transfer (gpointer user_data)
                 return TRUE;
         }
 
-        data->action = gupnp_service_proxy_begin_action (
-                                        data->cds_proxy,
-                                        "GetTransferProgress",
-                                        get_transfer_progress_cb,
-                                        data,
-                                        "TransferID",
-                                                G_TYPE_UINT,
-                                                data->transfer_id,
-                                        NULL);
+        data->action = gupnp_service_proxy_action_new ("GetTransferProgress",
+                                                       "TransferID",
+                                                       G_TYPE_UINT,
+                                                       data->transfer_id,
+                                                       NULL);
+
+        gupnp_service_proxy_call_action_async (data->cds_proxy,
+                                               data->action,
+                                               NULL,
+                                               get_transfer_progress_cb,
+                                               data);
+
+        gupnp_service_proxy_action_unref (data->action);
 
         return TRUE;
 }
@@ -134,24 +150,36 @@ start_tracking_transfer (GUPnPServiceProxy *cds_proxy,
 }
 
 static void
-import_resource_cb (GUPnPServiceProxy       *cds_proxy,
-                    GUPnPServiceProxyAction *action,
-                    gpointer                 user_data)
+import_resource_cb (GObject *object, GAsyncResult *result, gpointer user_data)
 {
         GError *error;
         guint   transfer_id;
         char   *file_name;
+        GUPnPServiceProxyAction *action;
+        GUPnPServiceProxy *proxy = GUPNP_SERVICE_PROXY (object);
 
         file_name = (gchar *) user_data;
 
         error = NULL;
-        if (!gupnp_service_proxy_end_action (cds_proxy,
-                                             action,
-                                             &error,
-                                             "TransferID",
-                                                G_TYPE_UINT,
-                                                &transfer_id,
-                                             NULL)) {
+        action = gupnp_service_proxy_call_action_finish (proxy, result, &error);
+        if (error != NULL) {
+                g_critical ("Failed to start file transfer: %s",
+                            error->message);
+
+                g_free (file_name);
+                g_error_free (error);
+
+                transfer_completed ();
+
+                return;
+        }
+
+        if (!gupnp_service_proxy_action_get_result (action,
+                                                    &error,
+                                                    "TransferID",
+                                                    G_TYPE_UINT,
+                                                    &transfer_id,
+                                                    NULL)) {
                 g_critical ("Failed to start file transfer: %s",
                             error->message);
 
@@ -164,7 +192,7 @@ import_resource_cb (GUPnPServiceProxy       *cds_proxy,
         }
 
         g_print ("Uploading %s: 00%%", file_name);
-        start_tracking_transfer (cds_proxy, transfer_id);
+        start_tracking_transfer (GUPNP_SERVICE_PROXY (object), transfer_id);
 
         g_free (file_name);
 }
@@ -177,6 +205,7 @@ start_transfer (const char        *file_path,
 {
         char *source_uri;
         char *file_name;
+        GUPnPServiceProxyAction *action;
 
         if (!g_path_is_absolute (file_path)) {
                 g_critical ("Given file path '%s' is not absolute.", file_path);
@@ -195,17 +224,22 @@ start_transfer (const char        *file_path,
                                       file_path);
 
         file_name = g_path_get_basename (file_path);
-        gupnp_service_proxy_begin_action (cds_proxy,
-                                          "ImportResource",
-                                          import_resource_cb,
-                                          file_name,
-                                          "SourceURI",
-                                                G_TYPE_STRING,
-                                                source_uri,
-                                          "DestinationURI",
-                                                G_TYPE_STRING,
-                                                dest_uri,
-                                          NULL);
+        action = gupnp_service_proxy_action_new ("ImportResource",
+                                                 "SourceURI",
+                                                 G_TYPE_STRING,
+                                                 source_uri,
+                                                 "DestinationURI",
+                                                 G_TYPE_STRING,
+                                                 dest_uri,
+                                                 NULL);
+
+        gupnp_service_proxy_call_action_async (cds_proxy,
+                                               action,
+                                               NULL,
+                                               import_resource_cb,
+                                               file_name);
+
+        gupnp_service_proxy_action_unref (action);
 
         g_free (source_uri);
 }
