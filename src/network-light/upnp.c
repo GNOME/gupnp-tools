@@ -409,9 +409,9 @@ static void init_uuid (void)
         char *udn;
 
         uuid = gupnp_get_uuid ();
+        const xmlDoc *xml_doc = gupnp_xml_doc_get_doc (doc);
 
-        uuid_node = xml_util_get_element ((xmlNode *) doc,
-                gupnp_xml_doc_get_doc (doc),
+        uuid_node = xml_util_get_element ((xmlNode *) xml_doc,
                                           "root",
                                           "device",
                                           "UDN",
