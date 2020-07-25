@@ -255,6 +255,8 @@ av_cp_media_server_on_get_search_caps (GObject      *object,
                 } else {
                         priv->search_caps = g_strsplit ("upnp:class,@id", ",", -1);
                 }
+
+                g_free (search_caps);
         }
         g_object_notify (G_OBJECT (self), "search-caps");
 
