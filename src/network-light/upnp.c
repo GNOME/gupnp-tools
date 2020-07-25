@@ -430,18 +430,19 @@ static void init_uuid (void)
         g_free (udn);
 }
 
-static void on_service_proxy_action_ret (GUPnPServiceProxy *proxy,
-                                  GUPnPServiceProxyAction *action,
-                                  gpointer user_data)
+static void
+on_service_proxy_action_ret (GObject *object,
+                             GAsyncResult *result,
+                             gpointer user_data)
 {
         GError *error = NULL;
 
-        gupnp_service_proxy_end_action (proxy,
-                                        action,
-                                        &error,
-                                        NULL);
-        if (error) {
-                GUPnPServiceInfo *info = GUPNP_SERVICE_INFO (proxy);
+        gupnp_service_proxy_call_action_finish (GUPNP_SERVICE_PROXY (object),
+                                                result,
+                                                &error);
+
+        if (error != NULL) {
+                GUPnPServiceInfo *info = GUPNP_SERVICE_INFO (object);
 
                 g_warning ("Failed to call action \"%s\" on \"%s\": %s",
                            (char *) user_data,
@@ -464,18 +465,24 @@ set_all_status (gboolean status)
              proxy_node = g_list_next (proxy_node)) {
                 GUPnPServiceProxy *proxy;
                 char *action_name;
+                GUPnPServiceProxyAction *action;
 
                 proxy = GUPNP_SERVICE_PROXY (proxy_node->data);
                 action_name = g_strdup ("SetTarget");
 
-                gupnp_service_proxy_begin_action (proxy,
-                                                  action_name,
-                                                  on_service_proxy_action_ret,
-                                                  action_name,
-                                                  "newTargetValue",
-                                                  G_TYPE_BOOLEAN,
-                                                  status,
-                                                  NULL);
+                action = gupnp_service_proxy_action_new (action_name,
+                                                         "newTargetValue",
+                                                         G_TYPE_BOOLEAN,
+                                                         status,
+                                                         NULL);
+
+                gupnp_service_proxy_call_action_async (
+                        proxy,
+                        action,
+                        NULL,
+                        on_service_proxy_action_ret,
+                        NULL);
+                gupnp_service_proxy_action_unref (action);
         }
 }
 
@@ -489,18 +496,25 @@ set_all_load_level (gint load_level)
              proxy_node = g_list_next (proxy_node)) {
                 GUPnPServiceProxy *proxy;
                 char *action_name;
+                GUPnPServiceProxyAction *action;
 
                 proxy = GUPNP_SERVICE_PROXY (proxy_node->data);
                 action_name = g_strdup ("SetLoadLevelTarget");
 
-                gupnp_service_proxy_begin_action (proxy,
-                                                  action_name,
-                                                  on_service_proxy_action_ret,
-                                                  action_name,
-                                                  "newLoadlevelTarget",
-                                                  G_TYPE_UINT,
-                                                  load_level,
-                                                  NULL);
+                action = gupnp_service_proxy_action_new (action_name,
+                                                         "newLoadlevelTarget",
+                                                         G_TYPE_UINT,
+                                                         load_level,
+                                                         NULL);
+
+                gupnp_service_proxy_call_action_async (
+                        proxy,
+                        action,
+                        NULL,
+                        on_service_proxy_action_ret,
+                        action_name);
+
+                gupnp_service_proxy_action_unref (action);
         }
 }
 
