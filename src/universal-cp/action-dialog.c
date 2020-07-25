@@ -662,14 +662,14 @@ display_action_out_arguments (GHashTable *out_args)
 }
 
 static void
-on_action_complete (GUPnPServiceProxy       *proxy,
-                    GUPnPServiceProxyAction *action,
-                    gpointer                 user_data)
+on_action_complete (GObject *object, GAsyncResult *result, gpointer user_data)
 {
         GUPnPServiceIntrospection *introspection;
         GUPnPServiceActionInfo    *action_info;
         GHashTable                *out_args;
         GError                    *error = NULL;
+        GUPnPServiceProxy *proxy = GUPNP_SERVICE_PROXY (object);
+        GUPnPServiceProxyAction *action;
 
         action_info = get_selected_action (NULL, &introspection);
         if (action_info == NULL)
@@ -677,11 +677,8 @@ on_action_complete (GUPnPServiceProxy       *proxy,
 
         out_args = retrieve_out_action_arguments (introspection, action_info);
 
-        gupnp_service_proxy_end_action_hash (proxy,
-                                             action,
-                                             out_args,
-                                             &error);
-        if (error) {
+        action = gupnp_service_proxy_call_action_finish (proxy, result, &error);
+        if (error != NULL) {
                 GtkWidget *error_dialog;
 
                 error_dialog =
@@ -697,11 +694,30 @@ on_action_complete (GUPnPServiceProxy       *proxy,
                 gtk_dialog_run (GTK_DIALOG (error_dialog));
                 gtk_widget_destroy (error_dialog);
 
-                g_error_free (error);
+                goto out;
+        }
+
+        gupnp_service_proxy_action_get_result_hash (action, out_args, &error);
+        if (error != NULL) {
+                GtkWidget *error_dialog;
+
+                error_dialog = gtk_message_dialog_new (
+                        GTK_WINDOW (dialog),
+                        GTK_DIALOG_MODAL,
+                        GTK_MESSAGE_ERROR,
+                        GTK_BUTTONS_CLOSE,
+                        _ ("Action failed.\n\nError %d: %s"),
+                        error->code,
+                        error->message);
+
+                gtk_dialog_run (GTK_DIALOG (error_dialog));
+                gtk_widget_destroy (error_dialog);
         } else {
                 display_action_out_arguments (out_args);
         }
 
+out:
+        g_clear_error (&error);
         g_hash_table_destroy (out_args);
         g_object_unref (introspection);
 }
@@ -715,6 +731,7 @@ on_action_invocation (GtkButton *button,
         GUPnPServiceIntrospection *introspection;
         GUPnPServiceActionInfo    *action_info;
         GList                     *in_names = NULL, *in_values = NULL;
+        GUPnPServiceProxyAction *action;
 
         action_info = get_selected_action (&proxy, &introspection);
         if (action_info == NULL)
@@ -725,12 +742,16 @@ on_action_invocation (GtkButton *button,
                                       &in_names,
                                       &in_values);
 
-        gupnp_service_proxy_begin_action_list (proxy,
-                                               action_info->name,
-                                               in_names,
-                                               in_values,
+        action = gupnp_service_proxy_action_new_from_list (action_info->name,
+                                                           in_names,
+                                                           in_values);
+
+        gupnp_service_proxy_call_action_async (proxy,
+                                               action,
+                                               NULL,
                                                on_action_complete,
                                                NULL);
+        gupnp_service_proxy_action_unref (action);
 
         g_list_free (in_names);
         g_list_free_full (in_values, g_value_free);
