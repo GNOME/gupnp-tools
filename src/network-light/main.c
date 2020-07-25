@@ -108,8 +108,12 @@ main (int argc, char **argv)
         if (!g_option_context_parse (context, &argc, &argv, &error)) {
                 g_print (_("Could not parse options: %s\n"), error->message);
 
+                g_option_context_free (context);
+
                 return -4;
         }
+
+        g_option_context_free (context);
 
         if (!init_ui (&argc, &argv, name, exclusive)) {
                 return -1;

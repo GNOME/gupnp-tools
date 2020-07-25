@@ -158,6 +158,8 @@ notify_status_change (gboolean status)
                                       status,
                                       NULL);
         }
+
+        g_list_free (network_lights);
 }
 
 void
@@ -179,6 +181,8 @@ notify_load_level_change (gint load_level)
                                       load_level,
                                       NULL);
         }
+
+        g_list_free (network_lights);
 }
 
 G_MODULE_EXPORT
@@ -481,7 +485,7 @@ set_all_status (gboolean status)
                         action,
                         NULL,
                         on_service_proxy_action_ret,
-                        NULL);
+                        action_name);
                 gupnp_service_proxy_action_unref (action);
         }
 }
@@ -584,11 +588,15 @@ on_network_light_unavailable (GUPnPControlPoint *control_point,
                 remove_service_from_list (info, &switch_proxies);
         }
 
+        g_clear_object (&info);
+
         info = gupnp_device_info_get_service (GUPNP_DEVICE_INFO (light_proxy),
                                               DIMMING_SERVICE);
         if (info) {
                 remove_service_from_list (info, &dimming_proxies);
         }
+
+        g_clear_object (&info);
 }
 
 static gboolean
