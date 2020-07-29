@@ -43,14 +43,22 @@
 static int upnp_port = 0;
 static char **interfaces = NULL;
 static char *user_agent = NULL;
+static gboolean ipv4 = TRUE;
+static gboolean ipv6 = TRUE;
 
+// clang-format off
 static GOptionEntry entries[] =
 {
         { "port", 'p', 0, G_OPTION_ARG_INT, &upnp_port, N_("Network PORT to use for UPnP"), "PORT" },
         { "interface", 'i', 0, G_OPTION_ARG_STRING_ARRAY, &interfaces, N_("Network interfaces to use for UPnP communication"), "INTERFACE" },
         { "user-agent", 'u', 0, G_OPTION_ARG_STRING, &user_agent, N_("Application part of the User-Agent header to use for UPnP communication"), "USER-AGENT" },
+        { "v4", '4', 0, G_OPTION_ARG_NONE, &ipv4, N_("Use the IPv4 protocol family"), NULL },
+        { "v6", '6', 0, G_OPTION_ARG_NONE, &ipv6, N_("Use the IPv6 protocol family"), NULL },
+        { "no-v4", 0, G_OPTION_FLAG_REVERSE, G_OPTION_ARG_NONE, &ipv4, N_("Do not use the IPv4 protocol family"), NULL },
+        { "no-v6", 0, G_OPTION_FLAG_REVERSE, G_OPTION_ARG_NONE, &ipv6, N_("Do not use the IPv6 protocol family"), NULL },
         { NULL }
 };
+// clang-format on
 
 static GUPnPContextManager *context_manager;
 
@@ -141,6 +149,7 @@ init_upnp (int port)
         GUPnPWhiteList *white_list;
         GtkButton *button;
         GUPnPResourceFactory *factory;
+        GSocketFamily family = G_SOCKET_FAMILY_INVALID;
 
 #if !GLIB_CHECK_VERSION(2, 35, 0)
         g_type_init ();
@@ -170,7 +179,18 @@ init_upnp (int port)
                 "urn:schemas-upnp-org:device:MediaServer:4",
                 AV_CP_TYPE_MEDIA_SERVER);
 
-        context_manager = gupnp_context_manager_create (port);
+        if (!(ipv4 && ipv6)) {
+                if (ipv4) {
+                        family = G_SOCKET_FAMILY_IPV4;
+                } else if (ipv6) {
+                        family = G_SOCKET_FAMILY_IPV6;
+                }
+        }
+
+        context_manager =
+                gupnp_context_manager_create_full (GSSDP_UDA_VERSION_1_0,
+                                                   family,
+                                                   port);
         g_assert (context_manager != NULL);
 
         if (interfaces != NULL) {
