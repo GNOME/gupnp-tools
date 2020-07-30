@@ -1,15 +1,15 @@
 # Swedish translation for gupnp-tools.
-# Copyright © 2016-2019 gupnp-tools's COPYRIGHT HOLDER
+# Copyright © 2016-2020 gupnp-tools's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gupnp-tools package.
-# Anders Jonsson <anders.jonsson@norsjovallen.se>, 2016, 2018, 2019.
+# Anders Jonsson <anders.jonsson@norsjovallen.se>, 2016, 2018, 2019, 2020.
 # Josef Andersson <josef.andersson@fripost.org>, 2017.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gupnp-tools master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gupnp-tools/issues\n"
-"POT-Creation-Date: 2018-12-02 11:50+0000\n"
-"PO-Revision-Date: 2019-01-08 00:15+0100\n"
+"POT-Creation-Date: 2020-07-29 20:47+0000\n"
+"PO-Revision-Date: 2020-07-30 13:20+0200\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.2\n"
+"X-Generator: Poedit 2.3.1\n"
 
 #: data/didl-lite-dialog.ui.in:9
 msgid "GUPnP AV CP - Metadata View"
@@ -30,11 +30,6 @@ msgstr "UPnP AV-kontrollpunkt"
 #: data/gupnp-av-cp.desktop.in:5
 msgid "Browse and control UPnP multimedia devices"
 msgstr "Bläddra bland och styr UPnP-multimediaenheter"
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: data/gupnp-av-cp.desktop.in:9
-msgid "av-cp"
-msgstr "av-cp"
 
 #: data/gupnp-av-cp.ui:22 data/gupnp-av-cp.ui:208
 msgid "_Play"
@@ -154,11 +149,6 @@ msgstr "UPnP nätverkslampa"
 msgid "Sample UPnP application for controlling lights"
 msgstr "UPnP-exempelprogram för att styra lampor"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: data/gupnp-network-light.desktop.in:9
-msgid "network-light-256x256"
-msgstr "network-light-256x256"
-
 #: data/gupnp-network-light.ui:8
 msgid ""
 "A virtual network light bulb based on GUPnP framework.\n"
@@ -195,11 +185,6 @@ msgstr "UPnP universell kontrollpunkt"
 #: data/gupnp-universal-cp.desktop.in:5
 msgid "Inspect and control UPnP devices across your local network"
 msgstr "Inspektera och styr UPnP-enheter över ditt lokala nätverk"
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: data/gupnp-universal-cp.desktop.in:9
-msgid "universal-cp"
-msgstr "universal-cp"
 
 #: data/gupnp-universal-cp.ui:9
 msgid ""
@@ -294,70 +279,86 @@ msgstr "_Visa"
 msgid "Event _log"
 msgstr "Händelse_logg"
 
-#: data/search-dialog.ui:12
-msgid "Show _DIDL…"
-msgstr "Visa _DIDL…"
-
-#: data/search-dialog.ui:49
+#: data/search-dialog.ui:39
 msgid "_Close"
 msgstr "_Stäng"
 
-#: data/search-dialog.ui:81
+#: data/search-dialog.ui:71
 msgid "UPnP search expression"
 msgstr "UPnP-sökuttryck"
 
-#: data/search-dialog.ui:107
+#: data/search-dialog.ui:98
 msgid "column"
 msgstr "kolumn"
 
-#: src/av-cp/main.c:49 src/network-light/main.c:48 src/universal-cp/main.c:41
+#: src/av-cp/main.c:52 src/network-light/main.c:48 src/universal-cp/main.c:41
 msgid "Network PORT to use for UPnP"
 msgstr "NätverksPORT att använda för UPnP"
 
-#: src/av-cp/main.c:50 src/network-light/main.c:49 src/universal-cp/main.c:42
+#: src/av-cp/main.c:53 src/network-light/main.c:49 src/universal-cp/main.c:42
 msgid "Network interfaces to use for UPnP communication"
 msgstr "Nätverksgränssnitt att använda för UPnP-kommunikation"
 
-#: src/av-cp/main.c:51
+#: src/av-cp/main.c:54
 msgid "Application part of the User-Agent header to use for UPnP communication"
 msgstr "Programdel av User-Agent-rubriken att använda för UPnP-kommunikation"
 
-#: src/av-cp/main.c:225 src/network-light/main.c:104
+#: src/av-cp/main.c:55
+msgid "Use the IPv4 protocol family"
+msgstr "Använd IPv4-protokollfamiljen"
+
+#: src/av-cp/main.c:56
+msgid "Use the IPv6 protocol family"
+msgstr "Använd IPv6-protokollfamiljen"
+
+#: src/av-cp/main.c:57
+msgid "Do not use the IPv4 protocol family"
+msgstr "Använd inte IPv4-protokollfamiljen"
+
+#: src/av-cp/main.c:58
+msgid "Do not use the IPv6 protocol family"
+msgstr "Använd inte IPv6-protokollfamiljen"
+
+#: src/av-cp/main.c:245 src/network-light/main.c:104
 #: src/universal-cp/main.c:149
 msgid "- UPnP AV control point"
 msgstr "- UPnP AV-kontrollpunkt"
 
-#: src/av-cp/main.c:230 src/network-light/main.c:109
+#: src/av-cp/main.c:250 src/network-light/main.c:109
 #: src/universal-cp/main.c:154
 #, c-format
 msgid "Could not parse options: %s\n"
 msgstr "Kunde inte tolka flaggor: %s\n"
 
-#: src/av-cp/search-dialog.c:440 src/av-cp/search-dialog.c:579
+#: src/av-cp/search-dialog.c:384
+msgid "Show _DIDL…"
+msgstr "Visa _DIDL…"
+
+#: src/av-cp/search-dialog.c:478 src/av-cp/search-dialog.c:627
 msgid "Search failed"
 msgstr "Misslyckades med sökning"
 
-#: src/av-cp/search-dialog.c:444
+#: src/av-cp/search-dialog.c:482
 #, c-format
 msgid "Error message was: %s"
 msgstr "Felmeddelandet var: %s"
 
-#: src/av-cp/search-dialog.c:488
+#: src/av-cp/search-dialog.c:530
 #, c-format
 msgid "Searching on %s"
 msgstr "Söker på %s"
 
-#: src/av-cp/search-dialog.c:491
+#: src/av-cp/search-dialog.c:533
 #, c-format
 msgid "Searching in %s on %s"
 msgstr "Söker i %s på %s"
 
-#: src/av-cp/search-dialog.c:583
+#: src/av-cp/search-dialog.c:631
 #, c-format
 msgid "Search criteria invalid: %s"
 msgstr "Sökkriterier ogiltiga: %s"
 
-#: src/av-cp/search-dialog.c:689
+#: src/av-cp/search-dialog.c:736
 #, c-format
 msgid "Error fetching detailed information: %s"
 msgstr "Fel vid hämtning av detaljerad information: %s"
@@ -370,7 +371,7 @@ msgstr "Smeknamn för denna UPnP-lampa"
 msgid "Apply change exclusively to this UPnP light"
 msgstr "Tillämpa ändring bara för denna UPnP-lampa"
 
-#: src/universal-cp/action-dialog.c:693
+#: src/universal-cp/action-dialog.c:690 src/universal-cp/action-dialog.c:709
 #, c-format
 msgid ""
 "Action failed.\n"
@@ -564,6 +565,15 @@ msgstr "Tjänst"
 #: src/universal-cp/event-treeview.c:409
 msgid "State Variable"
 msgstr "Tillståndsvariabel"
+
+#~ msgid "av-cp"
+#~ msgstr "av-cp"
+
+#~ msgid "network-light-256x256"
+#~ msgstr "network-light-256x256"
+
+#~ msgid "universal-cp"
+#~ msgstr "universal-cp"
 
 #~ msgid "@PKGDATADIR@/pixmaps/av-cp.png"
 #~ msgstr "@PKGDATADIR@/pixmaps/av-cp.png"
