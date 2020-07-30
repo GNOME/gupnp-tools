@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gupnp-tools gupnp-tools-0-8\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gupnp-tools/issues\n"
-"POT-Creation-Date: 2020-02-24 21:47+0000\n"
-"PO-Revision-Date: 2020-04-03 13:11+0300\n"
+"POT-Creation-Date: 2020-07-29 20:47+0000\n"
+"PO-Revision-Date: 2020-07-30 12:58+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
 "%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Lokalize 20.07.70\n"
+"X-Generator: Lokalize 20.03.70\n"
 
 #: data/didl-lite-dialog.ui.in:9
 msgid "GUPnP AV CP - Metadata View"
@@ -101,9 +101,9 @@ msgid ""
 "Clears the CP's idea of the state of the currently selected AV Renderer. "
 "Useful for dealing with AV Renderers that don't report state changes."
 msgstr ""
-"Спорожняє дані контрольних точок щодо стану поточного вибраного обробника"
-" звуку і відео. Корисно для роботи з обробниками звуку і відео, які не"
-" повідомляють про зміни стану."
+"Спорожняє дані контрольних точок щодо стану поточного вибраного обробника "
+"звуку і відео. Корисно для роботи з обробниками звуку і відео, які не "
+"повідомляють про зміни стану."
 
 #: data/gupnp-av-cp.ui:525
 msgid "_Clear state"
@@ -275,77 +275,93 @@ msgstr "П_ерегляд"
 msgid "Event _log"
 msgstr "_Журнал подій"
 
-#: data/search-dialog.ui:12
-msgid "Show _DIDL…"
-msgstr "По_казати DIDL…"
-
-#: data/search-dialog.ui:49
+#: data/search-dialog.ui:39
 msgid "_Close"
 msgstr "З_акрити"
 
-#: data/search-dialog.ui:81
+#: data/search-dialog.ui:71
 msgid "UPnP search expression"
 msgstr "Вираз для пошуку UPnP"
 
-#: data/search-dialog.ui:107
+#: data/search-dialog.ui:98
 msgid "column"
 msgstr "позиція"
 
-#: src/av-cp/main.c:49 src/network-light/main.c:48 src/universal-cp/main.c:41
+#: src/av-cp/main.c:52 src/network-light/main.c:48 src/universal-cp/main.c:41
 msgid "Network PORT to use for UPnP"
 msgstr "ПОРТ мережі, яким слід скористатися для UPnP"
 
-#: src/av-cp/main.c:50 src/network-light/main.c:49 src/universal-cp/main.c:42
+#: src/av-cp/main.c:53 src/network-light/main.c:49 src/universal-cp/main.c:42
 msgid "Network interfaces to use for UPnP communication"
 msgstr "Мережеві інтерфейси для використання у обміні даними UPnP"
 
-#: src/av-cp/main.c:51
+#: src/av-cp/main.c:54
 msgid "Application part of the User-Agent header to use for UPnP communication"
 msgstr ""
-"Частина запису програми заголовка User-Agent, якою слід скористатися для"
-" обміну даними UPnP"
+"Частина запису програми заголовка User-Agent, якою слід скористатися для "
+"обміну даними UPnP"
 
-#: src/av-cp/main.c:225 src/network-light/main.c:104
+#: src/av-cp/main.c:55
+msgid "Use the IPv4 protocol family"
+msgstr "Використати сімейство протоколів IPv4"
+
+#: src/av-cp/main.c:56
+msgid "Use the IPv6 protocol family"
+msgstr "Використати сімейство протоколів IPv6"
+
+#: src/av-cp/main.c:57
+msgid "Do not use the IPv4 protocol family"
+msgstr "Не використовувати сімейство протоколів IPv4"
+
+#: src/av-cp/main.c:58
+msgid "Do not use the IPv6 protocol family"
+msgstr "Не використовувати сімейство протоколів IPv6"
+
+#: src/av-cp/main.c:245 src/network-light/main.c:104
 #: src/universal-cp/main.c:149
 msgid "- UPnP AV control point"
 msgstr "– Контрольна точка AV UPnP"
 
-#: src/av-cp/main.c:230 src/network-light/main.c:109
+#: src/av-cp/main.c:250 src/network-light/main.c:109
 #: src/universal-cp/main.c:154
 #, c-format
 msgid "Could not parse options: %s\n"
 msgstr "Не вдалося обробити параметри: %s\n"
 
-#: src/av-cp/search-dialog.c:440 src/av-cp/search-dialog.c:579
+#: src/av-cp/search-dialog.c:384
+msgid "Show _DIDL…"
+msgstr "По_казати DIDL…"
+
+#: src/av-cp/search-dialog.c:478 src/av-cp/search-dialog.c:627
 msgid "Search failed"
 msgstr "Помилка пошуку"
 
-#: src/av-cp/search-dialog.c:444
+#: src/av-cp/search-dialog.c:482
 #, c-format
 msgid "Error message was: %s"
 msgstr "Повідомлення про помилку: %s"
 
-#: src/av-cp/search-dialog.c:488
+#: src/av-cp/search-dialog.c:530
 #, c-format
 msgid "Searching on %s"
 msgstr "Шукаємо у %s"
 
-#: src/av-cp/search-dialog.c:491
+#: src/av-cp/search-dialog.c:533
 #, c-format
 msgid "Searching in %s on %s"
 msgstr "Шукаємо у %s на %s"
 
-#: src/av-cp/search-dialog.c:583
+#: src/av-cp/search-dialog.c:631
 #, c-format
 msgid "Search criteria invalid: %s"
 msgstr "Некоректний критерій пошуку: %s"
 
-#: src/av-cp/search-dialog.c:689
+#: src/av-cp/search-dialog.c:736
 #, c-format
 msgid "Error fetching detailed information: %s"
 msgstr ""
-"Помилка при отриманні докладних відомостейError fetching detailed"
-" information: %s"
+"Помилка при отриманні докладних відомостейError fetching detailed "
+"information: %s"
 
 #: src/network-light/main.c:50
 msgid "Friendly name for this UPnP light"
@@ -355,7 +371,7 @@ msgstr "Зручна назва для цього «світла» UPnP"
 msgid "Apply change exclusively to this UPnP light"
 msgstr "Застосувати зміни лише до цього «світла» UPnP"
 
-#: src/universal-cp/action-dialog.c:693
+#: src/universal-cp/action-dialog.c:690 src/universal-cp/action-dialog.c:709
 #, c-format
 msgid ""
 "Action failed.\n"
