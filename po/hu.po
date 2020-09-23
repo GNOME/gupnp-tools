@@ -1,22 +1,22 @@
 # Hungarian translation for gupnp-tools.
-# Copyright (C) 2014, 2017. Free Software Foundation, Inc.
+# Copyright (C) 2014, 2017, 2020. Free Software Foundation, Inc.
 # This file is distributed under the same license as the gupnp-tools package.
 #
-# Balázs Úr <urbalazs@gmail.com>, 2014, 2017.
+# Balázs Úr <ur.balazs at fsf dot hu>, 2014, 2017, 2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: gupnp-tools master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gupnp-tools/issues\n"
-"POT-Creation-Date: 2018-12-02 11:50+0000\n"
-"PO-Revision-Date: 2018-12-13 12:02+0100\n"
-"Last-Translator: Meskó Balázs <mesko.balazs@fsf.hu>\n"
-"Language-Team: Hungarian <openscope at googlegroups dot com>\n"
+"POT-Creation-Date: 2020-07-29 20:47+0000\n"
+"PO-Revision-Date: 2020-09-23 17:35+0200\n"
+"Last-Translator: Balázs Úr <ur.balazs at fsf dot hu>\n"
+"Language-Team: Hungarian <gnome-hu-list at gnome dot org>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.1.1\n"
+"X-Generator: Lokalize 19.12.3\n"
 
 #: data/didl-lite-dialog.ui.in:9
 msgid "GUPnP AV CP - Metadata View"
@@ -29,11 +29,6 @@ msgstr "UPnP AV vezérlőpont"
 #: data/gupnp-av-cp.desktop.in:5
 msgid "Browse and control UPnP multimedia devices"
 msgstr "Tallózza és vezérelje az UPnP multimédiás eszközöket"
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: data/gupnp-av-cp.desktop.in:9
-msgid "av-cp"
-msgstr "av-cp"
 
 #: data/gupnp-av-cp.ui:22 data/gupnp-av-cp.ui:208
 msgid "_Play"
@@ -139,7 +134,7 @@ msgstr "GUPnP honlap"
 #: data/gupnp-universal-cp.ui:14
 msgid "translator-credits"
 msgstr ""
-"Úr Balázs <urbalazs@gmail.com>, 2014.\n"
+"Úr Balázs <ur.balazs at fsf dot hu>, 2014, 2020.\n"
 "Meskó Balázs <mesko.balazs az fsf dot hu>, 2018."
 
 #: data/gupnp-network-light.desktop.in:4
@@ -149,12 +144,6 @@ msgstr "UPnP hálózati fény"
 #: data/gupnp-network-light.desktop.in:5
 msgid "Sample UPnP application for controlling lights"
 msgstr "Példa UPnP alkalmazás lámpák vezérléséhez"
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: data/gupnp-network-light.desktop.in:9
-#| msgid "@PKGDATADIR@/pixmaps/network-light-256x256.png"
-msgid "network-light-256x256"
-msgstr "network-light-256x256"
 
 #: data/gupnp-network-light.ui:8
 msgid ""
@@ -192,11 +181,6 @@ msgstr "UPnP egyetemes vezérlőpont"
 #: data/gupnp-universal-cp.desktop.in:5
 msgid "Inspect and control UPnP devices across your local network"
 msgstr "Vizsgálja meg és vezérelje a helyi hálózatán található UPnP eszközöket"
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: data/gupnp-universal-cp.desktop.in:9
-msgid "universal-cp"
-msgstr "universal-cp"
 
 #: data/gupnp-universal-cp.ui:9
 msgid ""
@@ -291,72 +275,88 @@ msgstr "_Nézet"
 msgid "Event _log"
 msgstr "Esemény _napló"
 
-#: data/search-dialog.ui:12
-msgid "Show _DIDL…"
-msgstr "_DIDL megjelenítése…"
-
-#: data/search-dialog.ui:49
+#: data/search-dialog.ui:39
 msgid "_Close"
 msgstr "_Bezárás"
 
-#: data/search-dialog.ui:81
+#: data/search-dialog.ui:71
 msgid "UPnP search expression"
 msgstr "UPnP keresési kifejezés"
 
-#: data/search-dialog.ui:107
+#: data/search-dialog.ui:98
 msgid "column"
 msgstr "oszlop"
 
-#: src/av-cp/main.c:49 src/network-light/main.c:48 src/universal-cp/main.c:41
+#: src/av-cp/main.c:52 src/network-light/main.c:48 src/universal-cp/main.c:41
 msgid "Network PORT to use for UPnP"
 msgstr "Az UPnP-hez használt hálózati PORT"
 
-#: src/av-cp/main.c:50 src/network-light/main.c:49 src/universal-cp/main.c:42
+#: src/av-cp/main.c:53 src/network-light/main.c:49 src/universal-cp/main.c:42
 msgid "Network interfaces to use for UPnP communication"
 msgstr "Az UPnP kommunikációhoz használandó hálózati csatolók"
 
-#: src/av-cp/main.c:51
+#: src/av-cp/main.c:54
 msgid "Application part of the User-Agent header to use for UPnP communication"
 msgstr ""
 "A User-Agent fejléc alkalmazás része, amely az UPnP kommunikációhoz lesz "
 "használva"
 
-#: src/av-cp/main.c:225 src/network-light/main.c:104
+#: src/av-cp/main.c:55
+msgid "Use the IPv4 protocol family"
+msgstr "Az IPv4 protokollcsalád használata"
+
+#: src/av-cp/main.c:56
+msgid "Use the IPv6 protocol family"
+msgstr "Az IPv6 protokollcsalád használata"
+
+#: src/av-cp/main.c:57
+msgid "Do not use the IPv4 protocol family"
+msgstr "Ne használja az IPv4 protokollcsaládot"
+
+#: src/av-cp/main.c:58
+msgid "Do not use the IPv6 protocol family"
+msgstr "Ne használja az IPv6 protokollcsaládot"
+
+#: src/av-cp/main.c:245 src/network-light/main.c:104
 #: src/universal-cp/main.c:149
 msgid "- UPnP AV control point"
 msgstr "- UPnP AV vezérlőpont"
 
-#: src/av-cp/main.c:230 src/network-light/main.c:109
+#: src/av-cp/main.c:250 src/network-light/main.c:109
 #: src/universal-cp/main.c:154
 #, c-format
 msgid "Could not parse options: %s\n"
 msgstr "Nem sikerült feldolgozni a kapcsolókat: %s\n"
 
-#: src/av-cp/search-dialog.c:440 src/av-cp/search-dialog.c:579
+#: src/av-cp/search-dialog.c:384
+msgid "Show _DIDL…"
+msgstr "_DIDL megjelenítése…"
+
+#: src/av-cp/search-dialog.c:478 src/av-cp/search-dialog.c:627
 msgid "Search failed"
 msgstr "A keresés sikertelen"
 
-#: src/av-cp/search-dialog.c:444
+#: src/av-cp/search-dialog.c:482
 #, c-format
 msgid "Error message was: %s"
 msgstr "A hibaüzenet ez volt: %s"
 
-#: src/av-cp/search-dialog.c:488
+#: src/av-cp/search-dialog.c:530
 #, c-format
 msgid "Searching on %s"
 msgstr "Keresés ezen: %s"
 
-#: src/av-cp/search-dialog.c:491
+#: src/av-cp/search-dialog.c:533
 #, c-format
 msgid "Searching in %s on %s"
 msgstr "Keresés ebben: %s, ezen: %s"
 
-#: src/av-cp/search-dialog.c:583
+#: src/av-cp/search-dialog.c:631
 #, c-format
 msgid "Search criteria invalid: %s"
 msgstr "A keresési feltétel érvénytelen: %s"
 
-#: src/av-cp/search-dialog.c:689
+#: src/av-cp/search-dialog.c:736
 #, c-format
 msgid "Error fetching detailed information: %s"
 msgstr "Hiba a részletes információk lekérésekor: %s"
@@ -369,7 +369,7 @@ msgstr "Barátságos név ehhez az UPnP fényhez"
 msgid "Apply change exclusively to this UPnP light"
 msgstr "Változtatás alkalmazása kizárólag ehhez az UPnP fényhez"
 
-#: src/universal-cp/action-dialog.c:693
+#: src/universal-cp/action-dialog.c:690 src/universal-cp/action-dialog.c:709
 #, c-format
 msgid ""
 "Action failed.\n"
@@ -561,6 +561,16 @@ msgstr "Szolgáltatás"
 #: src/universal-cp/event-treeview.c:409
 msgid "State Variable"
 msgstr "Állapotváltozó"
+
+#~ msgid "av-cp"
+#~ msgstr "av-cp"
+
+#~| msgid "@PKGDATADIR@/pixmaps/network-light-256x256.png"
+#~ msgid "network-light-256x256"
+#~ msgstr "network-light-256x256"
+
+#~ msgid "universal-cp"
+#~ msgstr "universal-cp"
 
 #~ msgid "@PKGDATADIR@/pixmaps/av-cp.png"
 #~ msgstr "@PKGDATADIR@/pixmaps/av-cp.png"
