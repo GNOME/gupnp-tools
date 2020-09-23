@@ -1,22 +1,22 @@
 # Spanish translation for gupnp-tools.
 # Copyright (C) 2012 gupnp-tools's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gupnp-tools package.
-# Daniel Mustieles <daniel.mustieles@gmail.com>, 2012, 2013, 2014, 2016, 2017, 2018.
+# Daniel Mustieles <daniel.mustieles@gmail.com>, 2012-2020.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gupnp-tools master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gupnp-tools/issues\n"
-"POT-Creation-Date: 2018-11-02 11:52+0000\n"
-"PO-Revision-Date: 2018-11-15 12:12+0100\n"
+"POT-Creation-Date: 2020-07-29 20:47+0000\n"
+"PO-Revision-Date: 2020-09-23 09:18+0200\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
-"Language-Team: es <gnome-es-list@gnome.org>\n"
-"Language: es\n"
+"Language-Team: Spanish - Spain <gnome-es-list@gnome.org>\n"
+"Language: es_ES\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Gtranslator 2.91.7\n"
+"X-Generator: Gtranslator 3.38.0\n"
 
 #: data/didl-lite-dialog.ui.in:9
 msgid "GUPnP AV CP - Metadata View"
@@ -29,11 +29,6 @@ msgstr "Punto de control AV de UPnP"
 #: data/gupnp-av-cp.desktop.in:5
 msgid "Browse and control UPnP multimedia devices"
 msgstr "Examinar y controlar dispositivos multimedia UPnP"
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: data/gupnp-av-cp.desktop.in:9
-msgid "av-cp"
-msgstr "av-cp"
 
 #: data/gupnp-av-cp.ui:22 data/gupnp-av-cp.ui:208
 msgid "_Play"
@@ -55,7 +50,7 @@ msgstr "Buscar…"
 msgid "GUPnP AV Control Point"
 msgstr "Punto de control AV de GUPnP"
 
-#: data/gupnp-av-cp.ui:104 data/gupnp-universal-cp.ui:423
+#: data/gupnp-av-cp.ui:104 data/gupnp-universal-cp.ui:424
 msgid "_File"
 msgstr "_Archivo"
 
@@ -71,11 +66,11 @@ msgstr "Herramien_tas"
 msgid "_Lenient Mode"
 msgstr "Modo _indulgente"
 
-#: data/gupnp-av-cp.ui:148 data/gupnp-universal-cp.ui:505
+#: data/gupnp-av-cp.ui:148 data/gupnp-universal-cp.ui:506
 msgid "_Help"
 msgstr "Ay_uda"
 
-#: data/gupnp-av-cp.ui:157 data/gupnp-universal-cp.ui:514
+#: data/gupnp-av-cp.ui:157 data/gupnp-universal-cp.ui:515
 msgid "About"
 msgstr "Acerca de"
 
@@ -148,11 +143,6 @@ msgstr "Luz de red UPnP"
 msgid "Sample UPnP application for controlling lights"
 msgstr "Sencilla aplicación UPnP para controlar luces"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: data/gupnp-network-light.desktop.in:9
-msgid "network-light-256x256"
-msgstr "network-light-256x256"
-
 #: data/gupnp-network-light.ui:8
 msgid ""
 "A virtual network light bulb based on GUPnP framework.\n"
@@ -190,11 +180,6 @@ msgstr "Punto de control de UPnP universal"
 msgid "Inspect and control UPnP devices across your local network"
 msgstr "Inspeccionar y controlar dispositivos UPnP en su red local"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: data/gupnp-universal-cp.desktop.in:9
-msgid "universal-cp"
-msgstr "universal-cp"
-
 #: data/gupnp-universal-cp.ui:9
 msgid ""
 "A Generic Control Point based on GUPnP framework.\n"
@@ -203,157 +188,172 @@ msgstr ""
 "Un punto de control genérico basado en el entorno de trabajo GUPnP.\n"
 "Inspirado en las herramientas de Intel para UPnP."
 
-#: data/gupnp-universal-cp.ui:41
+#: data/gupnp-universal-cp.ui:42
 msgid "Action Invocation"
 msgstr "Invocación de la acción"
 
-#: data/gupnp-universal-cp.ui:105
+#: data/gupnp-universal-cp.ui:106
 msgid "_Invoke"
 msgstr "_Invocar"
 
-#: data/gupnp-universal-cp.ui:175
+#: data/gupnp-universal-cp.ui:176
 msgid "device"
 msgstr "dispositivo"
 
-#: data/gupnp-universal-cp.ui:188
+#: data/gupnp-universal-cp.ui:189
 msgid "service"
 msgstr "servicio"
 
-#: data/gupnp-universal-cp.ui:201
+#: data/gupnp-universal-cp.ui:202
 msgid "action"
 msgstr "acción"
 
-#: data/gupnp-universal-cp.ui:244
+#: data/gupnp-universal-cp.ui:245
 msgid "'in' arguments"
 msgstr "argumentos de entrada"
 
-#: data/gupnp-universal-cp.ui:277
+#: data/gupnp-universal-cp.ui:278
 msgid "'out' arguments"
 msgstr "argumentos de salida"
 
-#: data/gupnp-universal-cp.ui:311
+#: data/gupnp-universal-cp.ui:312
 msgid "Copy value"
 msgstr "Copiar valor"
 
-#: data/gupnp-universal-cp.ui:320
+#: data/gupnp-universal-cp.ui:321
 msgid "Copy all details"
 msgstr "Copiar todos los detalles"
 
-#: data/gupnp-universal-cp.ui:332
+#: data/gupnp-universal-cp.ui:333
 msgid "Invoke"
 msgstr "Invokar"
 
-#: data/gupnp-universal-cp.ui:341
+#: data/gupnp-universal-cp.ui:342
 msgid "Subscribe to events"
 msgstr "Suscribirse a todos los eventos"
 
-#: data/gupnp-universal-cp.ui:356 data/gupnp-universal-cp.ui:467
+#: data/gupnp-universal-cp.ui:357 data/gupnp-universal-cp.ui:468
 msgid "_Expand all devices"
 msgstr "_Expandir todos los dispositivos"
 
-#: data/gupnp-universal-cp.ui:365 data/gupnp-universal-cp.ui:476
+#: data/gupnp-universal-cp.ui:366 data/gupnp-universal-cp.ui:477
 msgid "_Collapse all devices"
 msgstr "_Contraer todos los dispositivos"
 
-#: data/gupnp-universal-cp.ui:377
+#: data/gupnp-universal-cp.ui:378
 msgid "Copy event"
 msgstr "Copiar evento"
 
-#: data/gupnp-universal-cp.ui:386
+#: data/gupnp-universal-cp.ui:387
 msgid "Copy all events"
 msgstr "Copiar todos los eventos"
 
-#: data/gupnp-universal-cp.ui:401
+#: data/gupnp-universal-cp.ui:402
 msgid "_Clear event log"
 msgstr "_Limpiar el registro de eventos"
 
 #. default details
-#: data/gupnp-universal-cp.ui:409 src/universal-cp/device-treeview.c:37
+#: data/gupnp-universal-cp.ui:410 src/universal-cp/device-treeview.c:37
 msgid "GUPnP Universal Control Point"
 msgstr "Punto de control de GUPnP universal"
 
-#: data/gupnp-universal-cp.ui:432
+#: data/gupnp-universal-cp.ui:433
 msgid "Clear event log"
 msgstr "Limpiar el registro de eventos"
 
-#: data/gupnp-universal-cp.ui:446
+#: data/gupnp-universal-cp.ui:447
 msgid "Quit"
 msgstr "Salir"
 
-#: data/gupnp-universal-cp.ui:458
+#: data/gupnp-universal-cp.ui:459
 msgid "_View"
 msgstr "_Ver"
 
-#: data/gupnp-universal-cp.ui:491
+#: data/gupnp-universal-cp.ui:492
 msgid "Event _log"
 msgstr "Registro de _eventos"
 
-#: data/search-dialog.ui:12
-msgid "Show _DIDL…"
-msgstr "Mostrar _DIDL…"
-
-#: data/search-dialog.ui:49
+#: data/search-dialog.ui:39
 msgid "_Close"
 msgstr "_Cerrar"
 
-#: data/search-dialog.ui:81
+#: data/search-dialog.ui:71
 msgid "UPnP search expression"
 msgstr "Expresión de búsqueda UPnP"
 
-#: data/search-dialog.ui:107
+#: data/search-dialog.ui:98
 msgid "column"
 msgstr "columna"
 
-#: src/av-cp/main.c:49 src/network-light/main.c:48 src/universal-cp/main.c:41
+#: src/av-cp/main.c:52 src/network-light/main.c:48 src/universal-cp/main.c:41
 msgid "Network PORT to use for UPnP"
 msgstr "PUERTO de red que usar para UPnP"
 
-#: src/av-cp/main.c:50 src/network-light/main.c:49 src/universal-cp/main.c:42
+#: src/av-cp/main.c:53 src/network-light/main.c:49 src/universal-cp/main.c:42
 msgid "Network interfaces to use for UPnP communication"
 msgstr "Interfaces de red que usar para comunicación UPnP"
 
-#: src/av-cp/main.c:51
-#| msgid "Network interfaces to use for UPnP communication"
+#: src/av-cp/main.c:54
 msgid "Application part of the User-Agent header to use for UPnP communication"
 msgstr ""
 "Aplicación parte de la cabecera User-Agent que usar para la comunicación UPnP"
 
-#: src/av-cp/main.c:225 src/network-light/main.c:104
+#: src/av-cp/main.c:55
+msgid "Use the IPv4 protocol family"
+msgstr "Usar la familia de protocolos IPv4"
+
+#: src/av-cp/main.c:56
+msgid "Use the IPv6 protocol family"
+msgstr "Usar la familia de protocolos IPv6"
+
+#: src/av-cp/main.c:57
+msgid "Do not use the IPv4 protocol family"
+msgstr "No usar la familia de protocolos IPv4"
+
+#: src/av-cp/main.c:58
+msgid "Do not use the IPv6 protocol family"
+msgstr "No usar la familia de protocolos IPv6"
+
+#: src/av-cp/main.c:245 src/network-light/main.c:104
 #: src/universal-cp/main.c:149
 msgid "- UPnP AV control point"
 msgstr "- Punto de control AV de UPnP"
 
-#: src/av-cp/main.c:230 src/network-light/main.c:109
+#: src/av-cp/main.c:250 src/network-light/main.c:109
 #: src/universal-cp/main.c:154
 #, c-format
 msgid "Could not parse options: %s\n"
 msgstr "No se pudieron analizar las opciones: %s\n"
 
-#: src/av-cp/search-dialog.c:440 src/av-cp/search-dialog.c:579
+#: src/av-cp/search-dialog.c:384
+msgid "Show _DIDL…"
+msgstr "Mostrar _DIDL…"
+
+#: src/av-cp/search-dialog.c:478 src/av-cp/search-dialog.c:627
 msgid "Search failed"
 msgstr "Falló al buscar"
 
-#: src/av-cp/search-dialog.c:444
+#: src/av-cp/search-dialog.c:482
 #, c-format
 msgid "Error message was: %s"
 msgstr "El mensaje de error es: %s"
 
-#: src/av-cp/search-dialog.c:488
+#: src/av-cp/search-dialog.c:530
 #, c-format
 msgid "Searching on %s"
 msgstr "Buscando en %s"
 
-#: src/av-cp/search-dialog.c:491
+#: src/av-cp/search-dialog.c:533
 #, c-format
 msgid "Searching in %s on %s"
 msgstr "Buscando en %s en %s"
 
-#: src/av-cp/search-dialog.c:583
+#: src/av-cp/search-dialog.c:631
 #, c-format
 msgid "Search criteria invalid: %s"
 msgstr "Criterio de búsqueda no válido: %s"
 
-#: src/av-cp/search-dialog.c:689
+#: src/av-cp/search-dialog.c:736
 #, c-format
 msgid "Error fetching detailed information: %s"
 msgstr "Error al obtener la información detallada: %s"
@@ -366,7 +366,7 @@ msgstr "Nombre amigable para esta luz UPnP"
 msgid "Apply change exclusively to this UPnP light"
 msgstr "Aplicar cambio exclusivamente para esta luz UPnP"
 
-#: src/universal-cp/action-dialog.c:693
+#: src/universal-cp/action-dialog.c:690 src/universal-cp/action-dialog.c:709
 #, c-format
 msgid ""
 "Action failed.\n"
@@ -558,6 +558,15 @@ msgstr "Servicio"
 #: src/universal-cp/event-treeview.c:409
 msgid "State Variable"
 msgstr "Variable de estado"
+
+#~ msgid "av-cp"
+#~ msgstr "av-cp"
+
+#~ msgid "network-light-256x256"
+#~ msgstr "network-light-256x256"
+
+#~ msgid "universal-cp"
+#~ msgstr "universal-cp"
 
 #~ msgid "@PKGDATADIR@/pixmaps/av-cp.png"
 #~ msgstr "@PKGDATADIR@/pixmaps/av-cp.png"
