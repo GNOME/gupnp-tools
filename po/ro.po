@@ -7,8 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gupnp-tools master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gupnp-tools/issues\n"
-"POT-Creation-Date: 2020-07-18 16:59+0000\n"
-"PO-Revision-Date: 2020-07-24 14:11+0300\n"
+"POT-Creation-Date: 2020-07-29 20:47+0000\n"
+"PO-Revision-Date: 2021-01-07 16:05+0200\n"
+"Last-Translator: Florentina Mușat <florentina.musat.28@gmail.com>\n"
 "Language-Team: Romanian <gnomero-list@lists.sourceforge.net>\n"
 "Language: ro\n"
 "MIME-Version: 1.0\n"
@@ -16,8 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
 "20)) ? 1 : 2);;\n"
-"Last-Translator: Florentina Mușat <florentina.musat.28@gmail.com>\n"
-"X-Generator: Poedit 2.4\n"
+"X-Generator: Poedit 2.4.2\n"
 
 #: data/didl-lite-dialog.ui.in:9
 msgid "GUPnP AV CP - Metadata View"
@@ -134,7 +134,8 @@ msgstr "Pagină principală GUPnP"
 #: data/gupnp-universal-cp.ui:14
 msgid "translator-credits"
 msgstr ""
-"Florentina Mușat <florentina [dot] musat [dot] 28 [at] gmail [dot] com>, 2020"
+"Florentina Mușat <florentina [dot] musat [dot] 28 [at] gmail [dot] com>, "
+"2020-2021"
 
 #: data/gupnp-network-light.desktop.in:4
 msgid "UPnP Network Light"
@@ -286,60 +287,76 @@ msgstr "Expresie de căutare UPnP"
 msgid "column"
 msgstr "coloană"
 
-#: src/av-cp/main.c:49 src/network-light/main.c:48 src/universal-cp/main.c:41
+#: src/av-cp/main.c:52 src/network-light/main.c:48 src/universal-cp/main.c:41
 msgid "Network PORT to use for UPnP"
 msgstr "PORT de rețea de utilizat pentru UPnP"
 
-#: src/av-cp/main.c:50 src/network-light/main.c:49 src/universal-cp/main.c:42
+#: src/av-cp/main.c:53 src/network-light/main.c:49 src/universal-cp/main.c:42
 msgid "Network interfaces to use for UPnP communication"
 msgstr "Interfețe de rețea de utilizat pentru comunicația UPnP"
 
-#: src/av-cp/main.c:51
+#: src/av-cp/main.c:54
 msgid "Application part of the User-Agent header to use for UPnP communication"
 msgstr ""
 "Partea de aplicație a antetului Utilizator-Agent de utilizat pentru "
 "comunicația UPnP"
 
-#: src/av-cp/main.c:225 src/network-light/main.c:104
+#: src/av-cp/main.c:55
+msgid "Use the IPv4 protocol family"
+msgstr "Utilizează familia de protocoale IPv4"
+
+#: src/av-cp/main.c:56
+msgid "Use the IPv6 protocol family"
+msgstr "Utilizează familia de protocoale IPv6"
+
+#: src/av-cp/main.c:57
+msgid "Do not use the IPv4 protocol family"
+msgstr "Nu utiliza familia de protocoale IPv4"
+
+#: src/av-cp/main.c:58
+msgid "Do not use the IPv6 protocol family"
+msgstr "Nu utiliza familia de protocoale IPv6"
+
+#: src/av-cp/main.c:245 src/network-light/main.c:104
 #: src/universal-cp/main.c:149
 msgid "- UPnP AV control point"
 msgstr "- Punct de control UPnP AV"
 
-#: src/av-cp/main.c:230 src/network-light/main.c:109
+#: src/av-cp/main.c:250 src/network-light/main.c:109
 #: src/universal-cp/main.c:154
 #, c-format
 msgid "Could not parse options: %s\n"
 msgstr "Nu s-au putut parsa opțiunile: %s\n"
 
-#: src/av-cp/search-dialog.c:383
+#: src/av-cp/search-dialog.c:384
 msgid "Show _DIDL…"
 msgstr "Arată _DIDL…"
 
-#: src/av-cp/search-dialog.c:470 src/av-cp/search-dialog.c:619
+#: src/av-cp/search-dialog.c:478 src/av-cp/search-dialog.c:627
 msgid "Search failed"
 msgstr "Căutarea a eșuat"
 
-#: src/av-cp/search-dialog.c:474
+#: src/av-cp/search-dialog.c:482
 #, c-format
 msgid "Error message was: %s"
 msgstr "Mesajul de eroare a fost: %s"
 
-#: src/av-cp/search-dialog.c:522
+#: src/av-cp/search-dialog.c:530
 #, c-format
 msgid "Searching on %s"
 msgstr "Se caută pe %s"
 
-#: src/av-cp/search-dialog.c:525
+#: src/av-cp/search-dialog.c:533
 #, c-format
 msgid "Searching in %s on %s"
 msgstr "Se caută în %s pe %s"
 
-#: src/av-cp/search-dialog.c:623
+#: src/av-cp/search-dialog.c:631
 #, c-format
 msgid "Search criteria invalid: %s"
 msgstr "Criterii de căutare nevalide: %s"
 
-#: src/av-cp/search-dialog.c:728
+#: src/av-cp/search-dialog.c:736
 #, c-format
 msgid "Error fetching detailed information: %s"
 msgstr "Eroare la aducerea informațiilor detaliate: %s"
@@ -352,7 +369,7 @@ msgstr "Nume prietenos pentru această lumină UPnP"
 msgid "Apply change exclusively to this UPnP light"
 msgstr "Aplică modificarea exclusiv la această lumină UPnP"
 
-#: src/universal-cp/action-dialog.c:693
+#: src/universal-cp/action-dialog.c:690 src/universal-cp/action-dialog.c:709
 #, c-format
 msgid ""
 "Action failed.\n"
