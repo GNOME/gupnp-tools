@@ -1,14 +1,14 @@
 # Serbian translation for gupnp-tools.
 # Copyright © 2013 gupnp-tools's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gupnp-tools package.
-# Мирослав Николић <miroslavnikolic@rocketmail.com>, 2013—2017.
+# Мирослав Николић <miroslavnikolic@rocketmail.com>, 2013—2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: gupnp-tools master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gupnp-tools/issues\n"
-"POT-Creation-Date: 2018-12-02 11:50+0000\n"
-"PO-Revision-Date: 2019-03-11 19:17+0100\n"
-"Last-Translator: Марко М. Костић <marko.m.kostic@gmail.com>\n"
+"POT-Creation-Date: 2020-07-29 20:47+0000\n"
+"PO-Revision-Date: 2021-01-20 10:37+0200\n"
+"Last-Translator: Мирослав Николић <miroslavnikolic@rocketmail.com>\n"
 "Language-Team: српски <gnome-sr@googlegroups.org>\n"
 "Language: sr\n"
 "MIME-Version: 1.0\n"
@@ -17,7 +17,6 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=n==1? 3 : n%10==1 && n%100!=11 ? 0 : n"
 "%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Project-Style: gnome\n"
-"X-Generator: Poedit 2.2.1\n"
 
 #: data/didl-lite-dialog.ui.in:9
 msgid "GUPnP AV CP - Metadata View"
@@ -30,11 +29,6 @@ msgstr "УПнП АВ управљачка тачка"
 #: data/gupnp-av-cp.desktop.in:5
 msgid "Browse and control UPnP multimedia devices"
 msgstr "Прегледаје и управљање УПнП мултимедијалним уређајима"
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: data/gupnp-av-cp.desktop.in:9
-msgid "av-cp"
-msgstr "av-cp"
 
 #: data/gupnp-av-cp.ui:22 data/gupnp-av-cp.ui:208
 msgid "_Play"
@@ -152,11 +146,6 @@ msgstr "УПнП мрежно светло"
 msgid "Sample UPnP application for controlling lights"
 msgstr "Примерак УПнП програма за управљање светлима"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: data/gupnp-network-light.desktop.in:9
-msgid "network-light-256x256"
-msgstr "network-light-256x256"
-
 #: data/gupnp-network-light.ui:8
 msgid ""
 "A virtual network light bulb based on GUPnP framework.\n"
@@ -193,11 +182,6 @@ msgstr "УПнП свеопшта управљачка тачка"
 #: data/gupnp-universal-cp.desktop.in:5
 msgid "Inspect and control UPnP devices across your local network"
 msgstr "Проверавајте и управљајте УПнП уређајима унутар ваше локалне мреже"
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: data/gupnp-universal-cp.desktop.in:9
-msgid "universal-cp"
-msgstr "universal-cp"
 
 #: data/gupnp-universal-cp.ui:9
 msgid ""
@@ -292,72 +276,88 @@ msgstr "_Преглед"
 msgid "Event _log"
 msgstr "Дневник _догађаја"
 
-#: data/search-dialog.ui:12
-msgid "Show _DIDL…"
-msgstr "Прикажи _ДИДЛ…"
-
-#: data/search-dialog.ui:49
+#: data/search-dialog.ui:39
 msgid "_Close"
 msgstr "_Затвори"
 
-#: data/search-dialog.ui:81
+#: data/search-dialog.ui:71
 msgid "UPnP search expression"
 msgstr "Израз УПнП претраге"
 
-#: data/search-dialog.ui:107
+#: data/search-dialog.ui:98
 msgid "column"
 msgstr "колона"
 
-#: src/av-cp/main.c:49 src/network-light/main.c:48 src/universal-cp/main.c:41
+#: src/av-cp/main.c:52 src/network-light/main.c:48 src/universal-cp/main.c:41
 msgid "Network PORT to use for UPnP"
 msgstr "Мрежни ПРИКЉУЧНИК за коришћење за УПнП"
 
-#: src/av-cp/main.c:50 src/network-light/main.c:49 src/universal-cp/main.c:42
+#: src/av-cp/main.c:53 src/network-light/main.c:49 src/universal-cp/main.c:42
 msgid "Network interfaces to use for UPnP communication"
 msgstr "Мрежно сучеље које се користи за УПнП везе"
 
-#: src/av-cp/main.c:51
+#: src/av-cp/main.c:54
 msgid "Application part of the User-Agent header to use for UPnP communication"
 msgstr ""
 "Апликативни део заглавља корисничког агента које се користи за УПнП "
 "комуникацију"
 
-#: src/av-cp/main.c:225 src/network-light/main.c:104
+#: src/av-cp/main.c:55
+msgid "Use the IPv4 protocol family"
+msgstr "Користи фамилију ИПв4 протокола"
+
+#: src/av-cp/main.c:56
+msgid "Use the IPv6 protocol family"
+msgstr "Користи фамилију ИПв6 протокола"
+
+#: src/av-cp/main.c:57
+msgid "Do not use the IPv4 protocol family"
+msgstr "Не користи фамилију ИПв4 протокола"
+
+#: src/av-cp/main.c:58
+msgid "Do not use the IPv6 protocol family"
+msgstr "Не користи фамилију ИПв6 протокола"
+
+#: src/av-cp/main.c:245 src/network-light/main.c:104
 #: src/universal-cp/main.c:149
 msgid "- UPnP AV control point"
 msgstr "— УПнП АВ управљачка тачка"
 
-#: src/av-cp/main.c:230 src/network-light/main.c:109
+#: src/av-cp/main.c:250 src/network-light/main.c:109
 #: src/universal-cp/main.c:154
 #, c-format
 msgid "Could not parse options: %s\n"
 msgstr "Не могу да обрадим могућности: %s\n"
 
-#: src/av-cp/search-dialog.c:440 src/av-cp/search-dialog.c:579
+#: src/av-cp/search-dialog.c:384
+msgid "Show _DIDL…"
+msgstr "Прикажи _ДИДЛ…"
+
+#: src/av-cp/search-dialog.c:478 src/av-cp/search-dialog.c:627
 msgid "Search failed"
 msgstr "Претрага није успела"
 
-#: src/av-cp/search-dialog.c:444
+#: src/av-cp/search-dialog.c:482
 #, c-format
 msgid "Error message was: %s"
 msgstr "Порука грешке беше: %s"
 
-#: src/av-cp/search-dialog.c:488
+#: src/av-cp/search-dialog.c:530
 #, c-format
 msgid "Searching on %s"
 msgstr "Тражим на „%s“"
 
-#: src/av-cp/search-dialog.c:491
+#: src/av-cp/search-dialog.c:533
 #, c-format
 msgid "Searching in %s on %s"
 msgstr "Тражим у „%s“ на „%s“"
 
-#: src/av-cp/search-dialog.c:583
+#: src/av-cp/search-dialog.c:631
 #, c-format
 msgid "Search criteria invalid: %s"
 msgstr "Услов претраге је неисправан: %s"
 
-#: src/av-cp/search-dialog.c:689
+#: src/av-cp/search-dialog.c:736
 #, c-format
 msgid "Error fetching detailed information: %s"
 msgstr "Грешка довлачења опширних података: %s"
@@ -370,7 +370,7 @@ msgstr "Пријатељско име за ово УПнП светло"
 msgid "Apply change exclusively to this UPnP light"
 msgstr "Примени измену само на ово УПнП светло"
 
-#: src/universal-cp/action-dialog.c:693
+#: src/universal-cp/action-dialog.c:690 src/universal-cp/action-dialog.c:709
 #, c-format
 msgid ""
 "Action failed.\n"
@@ -562,6 +562,15 @@ msgstr "Услуга"
 #: src/universal-cp/event-treeview.c:409
 msgid "State Variable"
 msgstr "Променљива стања"
+
+#~ msgid "av-cp"
+#~ msgstr "av-cp"
+
+#~ msgid "network-light-256x256"
+#~ msgstr "network-light-256x256"
+
+#~ msgid "universal-cp"
+#~ msgstr "universal-cp"
 
 #~ msgid "@PKGDATADIR@/pixmaps/av-cp.png"
 #~ msgstr "@PKGDATADIR@/pixmaps/av-cp.png"
