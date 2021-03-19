@@ -1,14 +1,14 @@
 # Basque translation for gupnp-tools.
 # Copyright (C) 2019 gupnp-tools's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gupnp-tools package.
-# Asier Sarasua Garmendia <asier.sarasua@gmail.com>, 2019.
+# Asier Sarasua Garmendia <asiersarasua@ni.eus>, 2019, 2021.
 #
 msgid ""
 msgstr "Project-Id-Version: gupnp-tools gupnp-tools-0-8\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gupnp-tools/issues\n"
-"POT-Creation-Date: 2019-05-28 15:51+0000\n"
-"PO-Revision-Date: 2019-10-02 10:00+0100\n"
-"Last-Translator: Asier Sarasua Garmendia <asier.sarasua@gmail.com>\n"
+"POT-Creation-Date: 2021-01-22 21:29+0000\n"
+"PO-Revision-Date: 2021-03-19 10:00+0100\n"
+"Last-Translator: Asier Sarasua Garmendia <asier.sarasua@ni.eus>\n"
 "Language-Team: Basque <librezale@librezale.eus>\n"
 "Language: eu\n"
 "MIME-Version: 1.0\n"
@@ -367,7 +367,7 @@ msgstr "Erlazionatutako egoera-aldagaia"
 
 #: src/universal-cp/details-treeview.c:207
 msgid "Is Return Value"
-msgstr ""
+msgstr "Itzulitako balioa da"
 
 #: src/universal-cp/details-treeview.c:208
 #: src/universal-cp/details-treeview.c:255
