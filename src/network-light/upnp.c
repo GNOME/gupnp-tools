@@ -767,7 +767,7 @@ context_equal (GUPnPContext *context1, GUPnPContext *context2)
 }
 
 gboolean
-init_upnp (gchar **interfaces, guint port, gchar *name)
+init_upnp (gchar **interfaces, guint port, gchar *name, gboolean ipv4, gboolean ipv6)
 {
         GUPnPWhiteList *white_list;
 
@@ -783,7 +783,22 @@ init_upnp (gchar **interfaces, guint port, gchar *name)
                 return FALSE;
         }
 
-        context_manager = gupnp_context_manager_create (port);
+        // Default: Both
+        GSocketFamily family = G_SOCKET_FAMILY_INVALID;
+        if (!ipv4 && ipv6) {
+            g_debug ("Option a");
+            family = G_SOCKET_FAMILY_IPV6;
+        } else if (ipv4 && !ipv6) {
+            g_debug ("Option b");
+            family = G_SOCKET_FAMILY_IPV4;
+        } else {
+            g_debug ("Option c");
+            // Neither? Just do nothing and enable both
+        }
+
+        context_manager = gupnp_context_manager_create_full (GSSDP_UDA_VERSION_1_0,
+                                                             family,
+                                                             port);
         g_assert (context_manager != NULL);
 
         if (interfaces != NULL) {

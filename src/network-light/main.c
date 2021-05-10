@@ -42,15 +42,23 @@ static int      upnp_port = 0;
 static char   **interfaces = NULL;
 static char    *name = NULL;
 static gboolean exclusive;
+static gboolean ipv4 = TRUE;
+static gboolean ipv6 = TRUE;
 
+// clang-format off
 static GOptionEntry entries[] =
 {
         { "port", 'p', 0, G_OPTION_ARG_INT, &upnp_port, N_("Network PORT to use for UPnP"), "PORT" },
         { "interface", 'i', 0, G_OPTION_ARG_STRING_ARRAY, &interfaces, N_("Network interfaces to use for UPnP communication"), "INTERFACE" },
         { "name", 'n', 0, G_OPTION_ARG_STRING, &name, N_("Friendly name for this UPnP light"), "NAME" },
         { "exclusive", 'x', 0, G_OPTION_ARG_NONE, &exclusive, N_("Apply change exclusively to this UPnP light"), NULL },
+        { "v4", '4', 0, G_OPTION_ARG_NONE, &ipv4, N_("Use IPv4"), NULL },
+        { "v6", '6', 0, G_OPTION_ARG_NONE, &ipv6, N_("Use IPv6"), NULL },
+        { "no-v4",  0, G_OPTION_FLAG_REVERSE, G_OPTION_ARG_NONE, &ipv4, N_("No not use IPv4"), NULL },
+        { "no-v6", 0, G_OPTION_FLAG_REVERSE, G_OPTION_ARG_NONE, &ipv6, N_("Do not use IPv6"), NULL },
         { NULL }
 };
+// clang-format on
 
 void
 set_status (gboolean status)
@@ -119,7 +127,7 @@ main (int argc, char **argv)
                 return -1;
         }
 
-        if (!init_upnp (interfaces, upnp_port, name)) {
+        if (!init_upnp (interfaces, upnp_port, name, ipv4, ipv6)) {
                 return -2;
         }
 
