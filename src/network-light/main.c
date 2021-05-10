@@ -54,7 +54,7 @@ static GOptionEntry entries[] =
         { "exclusive", 'x', 0, G_OPTION_ARG_NONE, &exclusive, N_("Apply change exclusively to this UPnP light"), NULL },
         { "v4", '4', 0, G_OPTION_ARG_NONE, &ipv4, N_("Use IPv4"), NULL },
         { "v6", '6', 0, G_OPTION_ARG_NONE, &ipv6, N_("Use IPv6"), NULL },
-        { "no-v4",  0, G_OPTION_FLAG_REVERSE, G_OPTION_ARG_NONE, &ipv4, N_("No not use IPv4"), NULL },
+        { "no-v4",  0, G_OPTION_FLAG_REVERSE, G_OPTION_ARG_NONE, &ipv4, N_("Do not use IPv4"), NULL },
         { "no-v6", 0, G_OPTION_FLAG_REVERSE, G_OPTION_ARG_NONE, &ipv6, N_("Do not use IPv6"), NULL },
         { NULL }
 };
