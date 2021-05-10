@@ -35,14 +35,53 @@
 
 static int upnp_port = 0;
 static char **interfaces = NULL;
+static gboolean ipv4 = TRUE;
+static gboolean ipv6 = TRUE;
+static GSSDPUDAVersion uda_version = GSSDP_UDA_VERSION_1_0;
 
+static gboolean
+parse_uda_version (const gchar *option_name,
+                   const gchar *value,
+                   gpointer data,
+                   GError **error);
+
+// clang-format off
 static GOptionEntry entries[] =
 {
         { "port", 'p', 0, G_OPTION_ARG_INT, &upnp_port, N_("Network PORT to use for UPnP"), "PORT" },
         { "interface", 'i', 0, G_OPTION_ARG_STRING_ARRAY, &interfaces, N_("Network interfaces to use for UPnP communication"), "INTERFACE" },
-        { NULL }
+        { "v4", '4', 0, G_OPTION_ARG_NONE, &ipv4, N_("Use the IPv4 protocol family"), NULL },
+        { "v6", '6', 0, G_OPTION_ARG_NONE, &ipv6, N_("Use the IPv6 protocol family"), NULL },
+        { "no-v4", 0, G_OPTION_FLAG_REVERSE, G_OPTION_ARG_NONE, &ipv4, N_("Do not use the IPv4 protocol family"), NULL },
+        { "no-v6", 0, G_OPTION_FLAG_REVERSE, G_OPTION_ARG_NONE, &ipv6, N_("Do not use the IPv6 protocol family"), NULL },
+        { "uda-version", 'v', 0, G_OPTION_ARG_CALLBACK, parse_uda_version, N_("The UDA version to use"), "VERSION"},
+        { NULL, 0, 0, 0, NULL, NULL, NULL }
 };
+// clang-format on
 
+static gboolean
+parse_uda_version (const gchar *option_name,
+                   const gchar *value,
+                   gpointer data,
+                   GError **error)
+{
+        if (g_str_equal (value, "1.0")) {
+                uda_version = GSSDP_UDA_VERSION_1_0;
+        } else if (g_str_equal (value, "1.1")) {
+                uda_version = GSSDP_UDA_VERSION_1_1;
+        } else {
+                char *msg = g_strconcat ("Invalid UDA version: ", value, NULL);
+                g_set_error (error,
+                             G_IO_ERROR,
+                             G_IO_ERROR_INVALID_ARGUMENT,
+                             msg);
+                g_free (msg);
+
+                return FALSE;
+        }
+
+        return TRUE;
+}
 
 void
 application_exit (void);
@@ -95,12 +134,19 @@ static gboolean
 init_upnp (void)
 {
         GUPnPWhiteList *white_list;
+        GSocketFamily family = G_SOCKET_FAMILY_INVALID;
 
-#if !GLIB_CHECK_VERSION(2, 35, 0)
-        g_type_init ();
-#endif
+        if (!(ipv4 && ipv6)) {
+                if (ipv4) {
+                        family = G_SOCKET_FAMILY_IPV4;
+                } else if (ipv6) {
+                        family = G_SOCKET_FAMILY_IPV6;
+                }
+        }
 
-        context_manager = gupnp_context_manager_create (upnp_port);
+        context_manager = gupnp_context_manager_create_full (uda_version,
+                                                             family,
+                                                             upnp_port);
         g_assert (context_manager != NULL);
 
         if (interfaces != NULL) {
