@@ -1,15 +1,15 @@
 # Swedish translation for gupnp-tools.
-# Copyright © 2016-2020 gupnp-tools's COPYRIGHT HOLDER
+# Copyright © 2016-2021 gupnp-tools's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gupnp-tools package.
-# Anders Jonsson <anders.jonsson@norsjovallen.se>, 2016, 2018, 2019, 2020.
+# Anders Jonsson <anders.jonsson@norsjovallen.se>, 2016, 2018, 2019, 2020, 2021.
 # Josef Andersson <josef.andersson@fripost.org>, 2017.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gupnp-tools master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gupnp-tools/issues\n"
-"POT-Creation-Date: 2020-07-29 20:47+0000\n"
-"PO-Revision-Date: 2020-07-30 13:20+0200\n"
+"POT-Creation-Date: 2021-05-10 13:34+0000\n"
+"PO-Revision-Date: 2021-05-10 22:52+0200\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.3.1\n"
+"X-Generator: Poedit 2.4.2\n"
 
 #: data/didl-lite-dialog.ui.in:9
 msgid "GUPnP AV CP - Metadata View"
@@ -291,11 +291,11 @@ msgstr "UPnP-sökuttryck"
 msgid "column"
 msgstr "kolumn"
 
-#: src/av-cp/main.c:52 src/network-light/main.c:48 src/universal-cp/main.c:41
+#: src/av-cp/main.c:52 src/network-light/main.c:51 src/universal-cp/main.c:51
 msgid "Network PORT to use for UPnP"
 msgstr "NätverksPORT att använda för UPnP"
 
-#: src/av-cp/main.c:53 src/network-light/main.c:49 src/universal-cp/main.c:42
+#: src/av-cp/main.c:53 src/network-light/main.c:52 src/universal-cp/main.c:52
 msgid "Network interfaces to use for UPnP communication"
 msgstr "Nätverksgränssnitt att använda för UPnP-kommunikation"
 
@@ -303,29 +303,29 @@ msgstr "Nätverksgränssnitt att använda för UPnP-kommunikation"
 msgid "Application part of the User-Agent header to use for UPnP communication"
 msgstr "Programdel av User-Agent-rubriken att använda för UPnP-kommunikation"
 
-#: src/av-cp/main.c:55
+#: src/av-cp/main.c:55 src/universal-cp/main.c:53
 msgid "Use the IPv4 protocol family"
 msgstr "Använd IPv4-protokollfamiljen"
 
-#: src/av-cp/main.c:56
+#: src/av-cp/main.c:56 src/universal-cp/main.c:54
 msgid "Use the IPv6 protocol family"
 msgstr "Använd IPv6-protokollfamiljen"
 
-#: src/av-cp/main.c:57
+#: src/av-cp/main.c:57 src/universal-cp/main.c:55
 msgid "Do not use the IPv4 protocol family"
 msgstr "Använd inte IPv4-protokollfamiljen"
 
-#: src/av-cp/main.c:58
+#: src/av-cp/main.c:58 src/universal-cp/main.c:56
 msgid "Do not use the IPv6 protocol family"
 msgstr "Använd inte IPv6-protokollfamiljen"
 
-#: src/av-cp/main.c:245 src/network-light/main.c:104
-#: src/universal-cp/main.c:149
+#: src/av-cp/main.c:245 src/network-light/main.c:112
+#: src/universal-cp/main.c:195
 msgid "- UPnP AV control point"
 msgstr "- UPnP AV-kontrollpunkt"
 
-#: src/av-cp/main.c:250 src/network-light/main.c:109
-#: src/universal-cp/main.c:154
+#: src/av-cp/main.c:250 src/network-light/main.c:117
+#: src/universal-cp/main.c:200
 #, c-format
 msgid "Could not parse options: %s\n"
 msgstr "Kunde inte tolka flaggor: %s\n"
@@ -363,13 +363,29 @@ msgstr "Sökkriterier ogiltiga: %s"
 msgid "Error fetching detailed information: %s"
 msgstr "Fel vid hämtning av detaljerad information: %s"
 
-#: src/network-light/main.c:50
+#: src/network-light/main.c:53
 msgid "Friendly name for this UPnP light"
 msgstr "Smeknamn för denna UPnP-lampa"
 
-#: src/network-light/main.c:51
+#: src/network-light/main.c:54
 msgid "Apply change exclusively to this UPnP light"
 msgstr "Tillämpa ändring bara för denna UPnP-lampa"
+
+#: src/network-light/main.c:55
+msgid "Use IPv4"
+msgstr "Använd IPv4"
+
+#: src/network-light/main.c:56
+msgid "Use IPv6"
+msgstr "Använd IPv6"
+
+#: src/network-light/main.c:57
+msgid "Do not use IPv4"
+msgstr "Använd inte IPv4"
+
+#: src/network-light/main.c:58
+msgid "Do not use IPv6"
+msgstr "Använd inte IPv6"
 
 #: src/universal-cp/action-dialog.c:690 src/universal-cp/action-dialog.c:709
 #, c-format
@@ -566,17 +582,6 @@ msgstr "Tjänst"
 msgid "State Variable"
 msgstr "Tillståndsvariabel"
 
-#~ msgid "av-cp"
-#~ msgstr "av-cp"
-
-#~ msgid "network-light-256x256"
-#~ msgstr "network-light-256x256"
-
-#~ msgid "universal-cp"
-#~ msgstr "universal-cp"
-
-#~ msgid "@PKGDATADIR@/pixmaps/av-cp.png"
-#~ msgstr "@PKGDATADIR@/pixmaps/av-cp.png"
-
-#~ msgid "@PKGDATADIR@/pixmaps/universal-cp.png"
-#~ msgstr "@PKGDATADIR@/pixmaps/universal-cp.png"
+#: src/universal-cp/main.c:57
+msgid "The UDA version to use"
+msgstr "UDA-versionen att använda"
