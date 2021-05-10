@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gupnp-tools gupnp-tools-0-8\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gupnp-tools/issues\n"
-"POT-Creation-Date: 2021-05-10 10:20+0000\n"
-"PO-Revision-Date: 2021-05-10 15:38+0300\n"
+"POT-Creation-Date: 2021-05-10 13:34+0000\n"
+"PO-Revision-Date: 2021-05-10 21:15+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -286,11 +286,11 @@ msgstr "Вираз для пошуку UPnP"
 msgid "column"
 msgstr "позиція"
 
-#: src/av-cp/main.c:52 src/network-light/main.c:51 src/universal-cp/main.c:41
+#: src/av-cp/main.c:52 src/network-light/main.c:51 src/universal-cp/main.c:51
 msgid "Network PORT to use for UPnP"
 msgstr "ПОРТ мережі, яким слід скористатися для UPnP"
 
-#: src/av-cp/main.c:53 src/network-light/main.c:52 src/universal-cp/main.c:42
+#: src/av-cp/main.c:53 src/network-light/main.c:52 src/universal-cp/main.c:52
 msgid "Network interfaces to use for UPnP communication"
 msgstr "Мережеві інтерфейси для використання у обміні даними UPnP"
 
@@ -300,29 +300,29 @@ msgstr ""
 "Частина запису програми заголовка User-Agent, якою слід скористатися для "
 "обміну даними UPnP"
 
-#: src/av-cp/main.c:55
+#: src/av-cp/main.c:55 src/universal-cp/main.c:53
 msgid "Use the IPv4 protocol family"
 msgstr "Використати сімейство протоколів IPv4"
 
-#: src/av-cp/main.c:56
+#: src/av-cp/main.c:56 src/universal-cp/main.c:54
 msgid "Use the IPv6 protocol family"
 msgstr "Використати сімейство протоколів IPv6"
 
-#: src/av-cp/main.c:57
+#: src/av-cp/main.c:57 src/universal-cp/main.c:55
 msgid "Do not use the IPv4 protocol family"
 msgstr "Не використовувати сімейство протоколів IPv4"
 
-#: src/av-cp/main.c:58
+#: src/av-cp/main.c:58 src/universal-cp/main.c:56
 msgid "Do not use the IPv6 protocol family"
 msgstr "Не використовувати сімейство протоколів IPv6"
 
 #: src/av-cp/main.c:245 src/network-light/main.c:112
-#: src/universal-cp/main.c:149
+#: src/universal-cp/main.c:195
 msgid "- UPnP AV control point"
 msgstr "– Контрольна точка AV UPnP"
 
 #: src/av-cp/main.c:250 src/network-light/main.c:117
-#: src/universal-cp/main.c:154
+#: src/universal-cp/main.c:200
 #, c-format
 msgid "Could not parse options: %s\n"
 msgstr "Не вдалося обробити параметри: %s\n"
@@ -372,21 +372,18 @@ msgstr "Застосувати зміни лише до цього «світл�
 
 #: src/network-light/main.c:55
 msgid "Use IPv4"
-msgstr ""
-"Використовувати IPv4"
+msgstr "Використовувати IPv4"
 
 #: src/network-light/main.c:56
 msgid "Use IPv6"
-msgstr ""
-"Використовувати IPv6"
+msgstr "Використовувати IPv6"
 
 #: src/network-light/main.c:57
-msgid "No not use IPv4"
-msgstr ""
-"Не використовувати IPv4"
+#| msgid "No not use IPv4"
+msgid "Do not use IPv4"
+msgstr "Не використовувати IPv4"
 
 #: src/network-light/main.c:58
-#| msgid "Do not use the IPv6 protocol family"
 msgid "Do not use IPv6"
 msgstr "Не використовувати IPv6"
 
@@ -582,3 +579,8 @@ msgstr "Служба"
 #: src/universal-cp/event-treeview.c:409
 msgid "State Variable"
 msgstr "Змінна стану"
+
+#: src/universal-cp/main.c:57
+msgid "The UDA version to use"
+msgstr ""
+"Версія UDA, яку слід використати"
