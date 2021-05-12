@@ -1,14 +1,14 @@
 # Spanish translation for gupnp-tools.
 # Copyright (C) 2012 gupnp-tools's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gupnp-tools package.
-# Daniel Mustieles <daniel.mustieles@gmail.com>, 2012-2020.
+# Daniel Mustieles <daniel.mustieles@gmail.com>, 2012-2021.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gupnp-tools master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gupnp-tools/issues\n"
-"POT-Creation-Date: 2020-07-29 20:47+0000\n"
-"PO-Revision-Date: 2020-09-23 09:18+0200\n"
+"POT-Creation-Date: 2021-05-10 13:34+0000\n"
+"PO-Revision-Date: 2021-05-12 11:25+0200\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Spanish - Spain <gnome-es-list@gnome.org>\n"
 "Language: es_ES\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Gtranslator 3.38.0\n"
+"X-Generator: Gtranslator 40.0\n"
 
 #: data/didl-lite-dialog.ui.in:9
 msgid "GUPnP AV CP - Metadata View"
@@ -285,11 +285,11 @@ msgstr "Expresión de búsqueda UPnP"
 msgid "column"
 msgstr "columna"
 
-#: src/av-cp/main.c:52 src/network-light/main.c:48 src/universal-cp/main.c:41
+#: src/av-cp/main.c:52 src/network-light/main.c:51 src/universal-cp/main.c:51
 msgid "Network PORT to use for UPnP"
 msgstr "PUERTO de red que usar para UPnP"
 
-#: src/av-cp/main.c:53 src/network-light/main.c:49 src/universal-cp/main.c:42
+#: src/av-cp/main.c:53 src/network-light/main.c:52 src/universal-cp/main.c:52
 msgid "Network interfaces to use for UPnP communication"
 msgstr "Interfaces de red que usar para comunicación UPnP"
 
@@ -298,29 +298,29 @@ msgid "Application part of the User-Agent header to use for UPnP communication"
 msgstr ""
 "Aplicación parte de la cabecera User-Agent que usar para la comunicación UPnP"
 
-#: src/av-cp/main.c:55
+#: src/av-cp/main.c:55 src/universal-cp/main.c:53
 msgid "Use the IPv4 protocol family"
 msgstr "Usar la familia de protocolos IPv4"
 
-#: src/av-cp/main.c:56
+#: src/av-cp/main.c:56 src/universal-cp/main.c:54
 msgid "Use the IPv6 protocol family"
 msgstr "Usar la familia de protocolos IPv6"
 
-#: src/av-cp/main.c:57
+#: src/av-cp/main.c:57 src/universal-cp/main.c:55
 msgid "Do not use the IPv4 protocol family"
 msgstr "No usar la familia de protocolos IPv4"
 
-#: src/av-cp/main.c:58
+#: src/av-cp/main.c:58 src/universal-cp/main.c:56
 msgid "Do not use the IPv6 protocol family"
 msgstr "No usar la familia de protocolos IPv6"
 
-#: src/av-cp/main.c:245 src/network-light/main.c:104
-#: src/universal-cp/main.c:149
+#: src/av-cp/main.c:245 src/network-light/main.c:112
+#: src/universal-cp/main.c:195
 msgid "- UPnP AV control point"
 msgstr "- Punto de control AV de UPnP"
 
-#: src/av-cp/main.c:250 src/network-light/main.c:109
-#: src/universal-cp/main.c:154
+#: src/av-cp/main.c:250 src/network-light/main.c:117
+#: src/universal-cp/main.c:200
 #, c-format
 msgid "Could not parse options: %s\n"
 msgstr "No se pudieron analizar las opciones: %s\n"
@@ -358,13 +358,31 @@ msgstr "Criterio de búsqueda no válido: %s"
 msgid "Error fetching detailed information: %s"
 msgstr "Error al obtener la información detallada: %s"
 
-#: src/network-light/main.c:50
+#: src/network-light/main.c:53
 msgid "Friendly name for this UPnP light"
 msgstr "Nombre amigable para esta luz UPnP"
 
-#: src/network-light/main.c:51
+#: src/network-light/main.c:54
 msgid "Apply change exclusively to this UPnP light"
 msgstr "Aplicar cambio exclusivamente para esta luz UPnP"
+
+#: src/network-light/main.c:55
+msgid "Use IPv4"
+msgstr "Usar IPv4"
+
+#: src/network-light/main.c:56
+msgid "Use IPv6"
+msgstr "Usar IPv6"
+
+#: src/network-light/main.c:57
+#| msgid "Do not use the IPv4 protocol family"
+msgid "Do not use IPv4"
+msgstr "No usar IPv4"
+
+#: src/network-light/main.c:58
+#| msgid "Do not use the IPv6 protocol family"
+msgid "Do not use IPv6"
+msgstr "No usar IPv6"
 
 #: src/universal-cp/action-dialog.c:690 src/universal-cp/action-dialog.c:709
 #, c-format
@@ -558,6 +576,10 @@ msgstr "Servicio"
 #: src/universal-cp/event-treeview.c:409
 msgid "State Variable"
 msgstr "Variable de estado"
+
+#: src/universal-cp/main.c:57
+msgid "The UDA version to use"
+msgstr "La versión de UDA que usar"
 
 #~ msgid "av-cp"
 #~ msgstr "av-cp"
