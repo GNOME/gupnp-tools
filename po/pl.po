@@ -1,15 +1,15 @@
 # Polish translation for gupnp-tools.
-# Copyright © 2012-2020 the gupnp-tools authors.
+# Copyright © 2012-2021 the gupnp-tools authors.
 # This file is distributed under the same license as the gupnp-tools package.
-# Piotr Drąg <piotrdrag@gmail.com>, 2012-2020.
-# Aviary.pl <community-poland@mozilla.org>, 2012-2020.
+# Piotr Drąg <piotrdrag@gmail.com>, 2012-2021.
+# Aviary.pl <community-poland@mozilla.org>, 2012-2021.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gupnp-tools\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gupnp-tools/issues\n"
-"POT-Creation-Date: 2020-07-29 20:47+0000\n"
-"PO-Revision-Date: 2020-08-02 13:40+0200\n"
+"POT-Creation-Date: 2021-05-10 13:34+0000\n"
+"PO-Revision-Date: 2021-05-16 12:20+0200\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <community-poland@mozilla.org>\n"
 "Language: pl\n"
@@ -135,8 +135,8 @@ msgstr "Witryna GUPnP"
 #: data/gupnp-universal-cp.ui:14
 msgid "translator-credits"
 msgstr ""
-"Piotr Drąg <piotrdrag@gmail.com>, 2012-2020\n"
-"Aviary.pl <community-poland@mozilla.org>, 2012-2020"
+"Piotr Drąg <piotrdrag@gmail.com>, 2012-2021\n"
+"Aviary.pl <community-poland@mozilla.org>, 2012-2021"
 
 #: data/gupnp-network-light.desktop.in:4
 msgid "UPnP Network Light"
@@ -288,11 +288,11 @@ msgstr "Wyrażenie wyszukiwania UPnP"
 msgid "column"
 msgstr "kolumna"
 
-#: src/av-cp/main.c:52 src/network-light/main.c:48 src/universal-cp/main.c:41
+#: src/av-cp/main.c:52 src/network-light/main.c:51 src/universal-cp/main.c:51
 msgid "Network PORT to use for UPnP"
 msgstr "PORT sieciowy używany do UPnP"
 
-#: src/av-cp/main.c:53 src/network-light/main.c:49 src/universal-cp/main.c:42
+#: src/av-cp/main.c:53 src/network-light/main.c:52 src/universal-cp/main.c:52
 msgid "Network interfaces to use for UPnP communication"
 msgstr "Interfejsy sieciowe używane do komunikacji UPnP"
 
@@ -301,29 +301,29 @@ msgid "Application part of the User-Agent header to use for UPnP communication"
 msgstr ""
 "Część programu nagłówka identyfikatora programu używanego do komunikacji UPnP"
 
-#: src/av-cp/main.c:55
+#: src/av-cp/main.c:55 src/universal-cp/main.c:53
 msgid "Use the IPv4 protocol family"
 msgstr "Używa rodziny protokołów IPv4"
 
-#: src/av-cp/main.c:56
+#: src/av-cp/main.c:56 src/universal-cp/main.c:54
 msgid "Use the IPv6 protocol family"
 msgstr "Używa rodziny protokołów IPv6"
 
-#: src/av-cp/main.c:57
+#: src/av-cp/main.c:57 src/universal-cp/main.c:55
 msgid "Do not use the IPv4 protocol family"
 msgstr "Bez używania rodziny protokołów IPv4"
 
-#: src/av-cp/main.c:58
+#: src/av-cp/main.c:58 src/universal-cp/main.c:56
 msgid "Do not use the IPv6 protocol family"
 msgstr "Bez używania rodziny protokołów IPv6"
 
-#: src/av-cp/main.c:245 src/network-light/main.c:104
-#: src/universal-cp/main.c:149
+#: src/av-cp/main.c:245 src/network-light/main.c:112
+#: src/universal-cp/main.c:195
 msgid "- UPnP AV control point"
 msgstr "— punkt kontrolny UPnP AV"
 
-#: src/av-cp/main.c:250 src/network-light/main.c:109
-#: src/universal-cp/main.c:154
+#: src/av-cp/main.c:250 src/network-light/main.c:117
+#: src/universal-cp/main.c:200
 #, c-format
 msgid "Could not parse options: %s\n"
 msgstr "Nie można przetworzyć opcji: %s\n"
@@ -361,13 +361,29 @@ msgstr "Nieprawidłowe kryteria wyszukiwania: %s"
 msgid "Error fetching detailed information: %s"
 msgstr "Błąd podczas pobierania szczegółowych informacji: %s"
 
-#: src/network-light/main.c:50
+#: src/network-light/main.c:53
 msgid "Friendly name for this UPnP light"
 msgstr "Nazwa tego światła UPnP zrozumiała dla użytkownika"
 
-#: src/network-light/main.c:51
+#: src/network-light/main.c:54
 msgid "Apply change exclusively to this UPnP light"
 msgstr "Zastosowuje zmianę tylko dla tego światła UPnP"
+
+#: src/network-light/main.c:55
+msgid "Use IPv4"
+msgstr "Używa protokołu IPv4"
+
+#: src/network-light/main.c:56
+msgid "Use IPv6"
+msgstr "Używa protokołu IPv6"
+
+#: src/network-light/main.c:57
+msgid "Do not use IPv4"
+msgstr "Bez używania protokołu IPv4"
+
+#: src/network-light/main.c:58
+msgid "Do not use IPv6"
+msgstr "Bez używania protokołu IPv6"
 
 #: src/universal-cp/action-dialog.c:690 src/universal-cp/action-dialog.c:709
 #, c-format
@@ -561,3 +577,7 @@ msgstr "Usługa"
 #: src/universal-cp/event-treeview.c:409
 msgid "State Variable"
 msgstr "Zmienna stanu"
+
+#: src/universal-cp/main.c:57
+msgid "The UDA version to use"
+msgstr "Używana wersja UDA"
