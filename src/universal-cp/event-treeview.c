@@ -309,7 +309,11 @@ get_display_value (const char *value)
         if (size > MAX_VALUE_SIZE)
                 size = MAX_VALUE_SIZE;
 
+#if GLIB_CHECK_VERSION(2,68,0)
+        display_value = g_memdup2 (value, size + 1);
+#else
         display_value = g_memdup (value, size + 1);
+#endif
         display_value[size] = '\0';
 
         return display_value;
