@@ -566,6 +566,7 @@ get_position_info_cb (GObject *object, GAsyncResult *res, gpointer user_data)
         set_position_scale_duration (duration);
         char *tooltip = g_strdup_printf ("%s/%s", position, duration);
         gtk_widget_set_tooltip_text (GTK_WIDGET (position_scale), tooltip);
+        gtk_widget_set_has_tooltip (GTK_WIDGET (position_scale), TRUE);
         g_free (tooltip);
         g_free (position);
         g_free (duration);
