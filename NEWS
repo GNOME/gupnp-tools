@@ -1,3 +1,69 @@
+0.10.1
+======
+
+- All
+   - Fix various smaller memory leaks
+   - Stop using deprecated functions from GUPnP
+   - Update icons
+   - New translations and update of existing translations
+
+- Upload:
+   - Check that a UDN was provided
+
+- AV-CP:
+   - Some visual improvements like headerbars and symbolic icons
+   - Search dialog provides entry completion
+   - Add IPv6 support if available
+
+- Network Light:
+   - Add IPv6 support if available
+
+
+Bugs fixed in this release:
+ - https://gitlab.gnome.org/GNOME/gupnp-tools/issues/3
+ - https://gitlab.gnome.org/GNOME/gupnp-tools/issues/6
+
+Merge requests included in this release:
+ - https://gitlab.gnome.org/GNOME/gupnp-tools/merge_requests/3
+
+All contributors to this release:
+ - Jens Georg <mail@jensge.org>
+ - Yuri Chornoivan <yurchor@ukr.net>
+ - Florentina Mușat <florentina.musat.28@gmail.com>
+ - Andika Triwidada <atriwidada@gnome.org>
+ - Rafael Fontenelle <rafaelff@gnome.org>
+ - Piotr Drąg <piotrdrag@gmail.com>
+ - Daniel Mustieles <daniel.mustieles@gmail.com>
+ - Anders Jonsson <anders.jonsson@norsjovallen.se>
+ - sicklylife <translation@sicklylife.jp>
+ - Ask Hjorth Larsen <asklarsen@gmail.com>
+ - Emin Tufan Çetin <etcetin@gmail.com>
+ - Fabio Tomat <f.t.public@gmail.com>
+ - Мирослав Николић <miroslavnikolic@rocketmail.com>
+ - Marek Černocký <marek@manet.cz>
+ - Balázs Úr <balazs@urbalazs.hu>
+ - Dušan Kazik <prescott66@gmail.com>
+ - Serdar Sağlam <teknomobil@msn.com>
+ - Fabrice Fontaine <fontaine.fabrice@gmail.com>
+ - Asier Sarasua Garmendia <asier.sarasua@gmail.com>
+
+Added/updated translations:
+ - cs.po, courtesy of Marek Černocký
+ - es.po, courtesy of Daniel Mustieles
+ - eu.po, courtesy of Asier Sarasua Garmendia
+ - fur.po, courtesy of Fabio Tomat
+ - hu.po, courtesy of Balázs Úr
+ - id.po, courtesy of Andika Triwidada
+ - ja.po, courtesy of sicklylife
+ - pl.po, courtesy of Piotr Drąg
+ - pt_BR.po, courtesy of Rafael Fontenelle
+ - ro.po, courtesy of Florentina Mușat
+ - sk.po, courtesy of Dušan Kazik
+ - sr.po, courtesy of Мирослав Николић
+ - sv.po, courtesy of Anders Jonsson
+ - tr.po, courtesy of Emin Tufan Çetin
+ - uk.po, courtesy of Yuri Chornoivan
+
 0.10.0
 ======
 
