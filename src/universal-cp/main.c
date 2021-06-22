@@ -70,11 +70,10 @@ parse_uda_version (const gchar *option_name,
         } else if (g_str_equal (value, "1.1")) {
                 uda_version = GSSDP_UDA_VERSION_1_1;
         } else {
-                char *msg = g_strconcat ("Invalid UDA version: ", value, NULL);
                 g_set_error (error,
                              G_IO_ERROR,
                              G_IO_ERROR_INVALID_ARGUMENT,
-                             msg);
+                             "Invalid UDA version: %s", value);
                 g_free (msg);
 
                 return FALSE;
