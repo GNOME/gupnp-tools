@@ -74,7 +74,6 @@ parse_uda_version (const gchar *option_name,
                              G_IO_ERROR,
                              G_IO_ERROR_INVALID_ARGUMENT,
                              "Invalid UDA version: %s", value);
-                g_free (msg);
 
                 return FALSE;
         }
