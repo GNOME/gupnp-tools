@@ -131,7 +131,8 @@ on_context_available (GUPnPContextManager *manager,
 static gboolean
 init_upnp (void)
 {
-        GUPnPWhiteList *white_list;
+        GUPnPContextFilter *context_filter;
+
         GSocketFamily family = G_SOCKET_FAMILY_INVALID;
 
         if (!(ipv4 && ipv6)) {
@@ -148,10 +149,10 @@ init_upnp (void)
         g_assert (context_manager != NULL);
 
         if (interfaces != NULL) {
-                white_list = gupnp_context_manager_get_white_list
-                                            (context_manager);
-                gupnp_white_list_add_entryv (white_list, interfaces);
-                gupnp_white_list_set_enabled (white_list, TRUE);
+                context_filter = gupnp_context_manager_get_context_filter (
+                        context_manager);
+                gupnp_context_filter_add_entryv (context_filter, interfaces);
+                gupnp_context_filter_set_enabled (context_filter, TRUE);
         }
 
         g_signal_connect (context_manager,
