@@ -151,10 +151,6 @@ init_upnp (int port)
         GUPnPResourceFactory *factory;
         GSocketFamily family = G_SOCKET_FAMILY_INVALID;
 
-#if !GLIB_CHECK_VERSION(2, 35, 0)
-        g_type_init ();
-#endif
-
         factory = gupnp_resource_factory_get_default ();
 
         /* Work-around bgo#764498 */
