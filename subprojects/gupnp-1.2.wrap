@@ -1,6 +1,6 @@
 [wrap-git]
 url = https://gitlab.gnome.org/GNOME/gupnp.git
-revision = master
+revision = gupnp-1.4
 depth = 1
  
 [provides]
