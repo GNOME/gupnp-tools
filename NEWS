@@ -1,3 +1,31 @@
+0.10.2 (stable)
+===============
+
+- Universal CP:
+   - Fix format message error
+
+- Translation updates
+
+Bugs fixed in this release:
+ - https://gitlab.gnome.org/GNOME/gupnp-tools/issues/20
+ - https://gitlab.gnome.org/GNOME/gupnp-tools/issues/21
+
+All contributors to this release:
+ - Jens Georg <mail@jensge.org>
+ - Dušan Kazik <prescott66@gmail.com>
+ - Мирослав Николић <miroslavnikolic@rocketmail.com>
+ - Balázs Úr <balazs@urbalazs.hu>
+ - Ask Hjorth Larsen <asklarsen@gmail.com>
+ - Marek Černocký <marek@manet.cz>
+ - Boyuan Yang <073plan@gmail.com>
+
+Added/updated translations:
+ - cs.po, courtesy of Marek Černocký
+ - hu.po, courtesy of Balázs Úr
+ - sk.po, courtesy of Dušan Kazik
+ - sr.po, courtesy of Мирослав Николић
+ - zh_CN.po, courtesy of tuhaihe
+
 0.10.1
 ======
 
