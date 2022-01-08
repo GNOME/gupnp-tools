@@ -388,6 +388,12 @@ on_device_icon_available (GUPnPDeviceInfo *info,
         GtkTreeIter   device_iter;
         const char   *udn;
 
+        // There was no icon or there was an error getting that
+        // icon. Just keep the default then
+        if (icon == NULL) {
+                return;
+        }
+
         model = gtk_tree_view_get_model (GTK_TREE_VIEW (treeview));
         g_assert (model != NULL);
 
