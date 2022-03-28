@@ -221,10 +221,18 @@ set_av_transport_uri_cb (GObject *object, GAsyncResult *res, gpointer user_data)
 
         udn = gupnp_service_info_get_udn (GUPNP_SERVICE_INFO (object));
 
-        gupnp_service_proxy_call_action_finish (GUPNP_SERVICE_PROXY (object),
-                                                res,
-                                                &error);
+        GUPnPServiceProxyAction *action;
+        action = gupnp_service_proxy_call_action_finish (
+                GUPNP_SERVICE_PROXY (object),
+                res,
+                &error);
 
+        // The above call will only catch issues with the HTTP transport, not
+        // with the call itself. So we need to call an empty get on the action
+        // as well to get any SOAP error
+        if (error == NULL) {
+                gupnp_service_proxy_action_get_result (action, &error, NULL);
+        }
         if (error != NULL) {
                 g_warning ("Failed to set URI '%s' on %s: %s",
                            gupnp_didl_lite_resource_get_uri (data->resource),
@@ -707,9 +715,17 @@ set_volume_cb (GObject *object, GAsyncResult *res, gpointer user_data)
 {
         GError *error;
         GUPnPServiceProxy *proxy = GUPNP_SERVICE_PROXY (object);
+        GUPnPServiceProxyAction *action;
 
         error = NULL;
-        if (!gupnp_service_proxy_call_action_finish (proxy, res, &error)) {
+        action = gupnp_service_proxy_call_action_finish (proxy, res, &error);
+
+        if (error == NULL) {
+                // No transport error, check for SOAP error
+                gupnp_service_proxy_action_get_result (action, &error, NULL);
+        }
+
+        if (error != NULL) {
                 const char *udn;
 
                 udn = gupnp_service_info_get_udn (GUPNP_SERVICE_INFO (object));

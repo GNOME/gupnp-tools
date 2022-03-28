@@ -440,10 +440,17 @@ on_service_proxy_action_ret (GObject *object,
                              gpointer user_data)
 {
         GError *error = NULL;
+        GUPnPServiceProxyAction *action;
 
-        gupnp_service_proxy_call_action_finish (GUPNP_SERVICE_PROXY (object),
-                                                result,
-                                                &error);
+        action = gupnp_service_proxy_call_action_finish (
+                GUPNP_SERVICE_PROXY (object),
+                result,
+                &error);
+
+        if (error == NULL) {
+                // Check for SOAP transport error
+                gupnp_service_proxy_action_get_result (action, &error, NULL);
+        }
 
         if (error != NULL) {
                 GUPnPServiceInfo *info = GUPNP_SERVICE_INFO (object);

@@ -44,15 +44,20 @@ get_transfer_progress_cb (GObject *object,
         TrackTransferData *data;
         guint64 total, length;
         gchar *status;
+        GUPnPServiceProxyAction *action;
 
         data = (TrackTransferData *) user_data;
 
         error = NULL;
         total = length = 0;
         status = NULL;
-        gupnp_service_proxy_call_action_finish (GUPNP_SERVICE_PROXY (object),
-                                                result,
-                                                &error);
+        action = gupnp_service_proxy_call_action_finish (
+                GUPNP_SERVICE_PROXY (object),
+                result,
+                &error);
+        if (error == NULL) {
+                gupnp_service_proxy_action_get_result (action, &error, NULL);
+        }
         if (error != NULL) {
                 g_critical ("Failed to track file transfer: %s",
                             error->message);
