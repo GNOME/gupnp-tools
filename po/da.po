@@ -2,19 +2,21 @@
 # Copyright (C) 2019 gupnp-tools's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gupnp-tools package.
 # scootergrisen, 2019.
+# Alan Mortensen <alanmortensen.am@gmail.com>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: gupnp-tools master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gupnp-tools/issues\n"
-"POT-Creation-Date: 2020-07-29 20:47+0000\n"
-"PO-Revision-Date: 2020-11-30 00:00+0200\n"
-"Last-Translator: scootergrisen\n"
+"POT-Creation-Date: 2021-09-11 11:29+0000\n"
+"PO-Revision-Date: 2022-03-21 19:08+0100\n"
+"Last-Translator: Alan Mortensen <alanmortensen.am@gmail.com>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "Language: da\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 2.3\n"
 
 #: data/didl-lite-dialog.ui.in:9
 msgid "GUPnP AV CP - Metadata View"
@@ -287,11 +289,11 @@ msgstr "UPnP-søgeudtryk"
 msgid "column"
 msgstr "kolonne"
 
-#: src/av-cp/main.c:52 src/network-light/main.c:48 src/universal-cp/main.c:41
+#: src/av-cp/main.c:52 src/network-light/main.c:51 src/universal-cp/main.c:51
 msgid "Network PORT to use for UPnP"
 msgstr "NetværksPORT som skal bruges til UPnP"
 
-#: src/av-cp/main.c:53 src/network-light/main.c:49 src/universal-cp/main.c:42
+#: src/av-cp/main.c:53 src/network-light/main.c:52 src/universal-cp/main.c:52
 msgid "Network interfaces to use for UPnP communication"
 msgstr "Netværksgrænseflader som skal bruges til UPnP-kommunikation"
 
@@ -300,29 +302,29 @@ msgid "Application part of the User-Agent header to use for UPnP communication"
 msgstr ""
 "Programdel af User-Agent-headeren som skal bruges til UPnP-kommunikation"
 
-#: src/av-cp/main.c:55
+#: src/av-cp/main.c:55 src/universal-cp/main.c:53
 msgid "Use the IPv4 protocol family"
 msgstr "Brug IPv4-protokolfamilien"
 
-#: src/av-cp/main.c:56
+#: src/av-cp/main.c:56 src/universal-cp/main.c:54
 msgid "Use the IPv6 protocol family"
 msgstr "Brug IPv6-protokolfamilien"
 
-#: src/av-cp/main.c:57
+#: src/av-cp/main.c:57 src/universal-cp/main.c:55
 msgid "Do not use the IPv4 protocol family"
 msgstr "Brug ikke IPv4-protokolfamilien"
 
-#: src/av-cp/main.c:58
+#: src/av-cp/main.c:58 src/universal-cp/main.c:56
 msgid "Do not use the IPv6 protocol family"
 msgstr "Brug ikke IPv6-protokolfamilien"
 
-#: src/av-cp/main.c:245 src/network-light/main.c:104
-#: src/universal-cp/main.c:149
+#: src/av-cp/main.c:245 src/network-light/main.c:112
+#: src/universal-cp/main.c:193
 msgid "- UPnP AV control point"
 msgstr "- AV-styrepunkt for UPnP"
 
-#: src/av-cp/main.c:250 src/network-light/main.c:109
-#: src/universal-cp/main.c:154
+#: src/av-cp/main.c:250 src/network-light/main.c:117
+#: src/universal-cp/main.c:198
 #, c-format
 msgid "Could not parse options: %s\n"
 msgstr "Kunne ikke fortolke tilvalg: %s\n"
@@ -360,13 +362,29 @@ msgstr "Ugyldigt søgekriterium: %s"
 msgid "Error fetching detailed information: %s"
 msgstr "Fejl ved indhentning af detaljeret information: %s"
 
-#: src/network-light/main.c:50
+#: src/network-light/main.c:53
 msgid "Friendly name for this UPnP light"
 msgstr "Kaldenavn til UPnP-lyset"
 
-#: src/network-light/main.c:51
+#: src/network-light/main.c:54
 msgid "Apply change exclusively to this UPnP light"
 msgstr "Anvend kun ændringen på dette UPnP-lys"
+
+#: src/network-light/main.c:55
+msgid "Use IPv4"
+msgstr "Brug IPv4"
+
+#: src/network-light/main.c:56
+msgid "Use IPv6"
+msgstr "Brug IPv6"
+
+#: src/network-light/main.c:57
+msgid "Do not use IPv4"
+msgstr "Brug ikke IPv4"
+
+#: src/network-light/main.c:58
+msgid "Do not use IPv6"
+msgstr "Brug ikke IPv6"
 
 #: src/universal-cp/action-dialog.c:690 src/universal-cp/action-dialog.c:709
 #, c-format
@@ -517,7 +535,7 @@ msgid "Presentation URL"
 msgstr "Præsentations-URL"
 
 #: src/universal-cp/details-treeview.c:432
-#: src/universal-cp/event-treeview.c:410
+#: src/universal-cp/event-treeview.c:414
 msgid "Value"
 msgstr "Værdi"
 
@@ -545,18 +563,22 @@ msgstr "Information ikke tilgængelig"
 msgid "UPnP Network"
 msgstr "UPnP-netværk"
 
-#: src/universal-cp/device-treeview.c:716 src/universal-cp/event-treeview.c:407
+#: src/universal-cp/device-treeview.c:716 src/universal-cp/event-treeview.c:411
 msgid "Device"
 msgstr "Enhed"
 
-#: src/universal-cp/event-treeview.c:406
+#: src/universal-cp/event-treeview.c:410
 msgid "Time"
 msgstr "Klokkeslæt"
 
-#: src/universal-cp/event-treeview.c:408
+#: src/universal-cp/event-treeview.c:412
 msgid "Service"
 msgstr "Tjeneste"
 
-#: src/universal-cp/event-treeview.c:409
+#: src/universal-cp/event-treeview.c:413
 msgid "State Variable"
 msgstr "Tilstandsvariabel"
+
+#: src/universal-cp/main.c:57
+msgid "The UDA version to use"
+msgstr "UDA-versionen der skal bruges"
