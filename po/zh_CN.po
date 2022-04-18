@@ -2,20 +2,22 @@
 # Copyright (C) 2013 gupnp-tools's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gupnp-tools package.
 # tuhaihe <1132321739qq@gmail.com>, 2013.
+# lumingzh <lumingzh@qq.com>, 2022.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gupnp-tools master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gupnp-tools/issues\n"
-"POT-Creation-Date: 2021-06-22 08:33+0000\n"
-"PO-Revision-Date: 2021-06-30 10:51-0400\n"
-"Last-Translator: tuhaihe <1132321739qq@gmail.com>\n"
-"Language-Team: Chinese (China) <i18n-zh@googlegroups.com>\n"
+"POT-Creation-Date: 2021-06-30 14:52+0000\n"
+"PO-Revision-Date: 2022-04-18 18:28+0800\n"
+"Last-Translator: lumingzh <lumingzh@qq.com>\n"
+"Language-Team: Chinese - China <i18n-zh@googlegroups.com>\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.0\n"
+"X-Generator: Gtranslator 42.0\n"
+"Plural-Forms: nplurals=1; plural=0\n"
 
 #: data/didl-lite-dialog.ui.in:9
 msgid "GUPnP AV CP - Metadata View"
@@ -94,13 +96,12 @@ msgid "_Rescan"
 msgstr "重新扫描(_R)"
 
 #: data/gupnp-av-cp.ui:514
-#, fuzzy
 msgid ""
 "Clears the CP's idea of the state of the currently selected AV Renderer. "
 "Useful for dealing with AV Renderers that don't report state changes."
 msgstr ""
-"清理现已选 AV 渲染器状态的控制点 IDEA。对处理 AV 渲染器有用但不会报告状态变"
-"更。"
+"清理现已选 AV 渲染器状态的控制点 IDEA。对处理不会报告状态变更的 AV 渲染器有"
+"用。"
 
 #: data/gupnp-av-cp.ui:525
 msgid "_Clear state"
@@ -295,9 +296,8 @@ msgid "Network interfaces to use for UPnP communication"
 msgstr "用于 UPnP 通讯的网络接口"
 
 #: src/av-cp/main.c:54
-#, fuzzy
 msgid "Application part of the User-Agent header to use for UPnP communication"
-msgstr "用于 UPnP 通讯的网络接口"
+msgstr "用于 UPnP 通讯的用户代理标头的应用程序部分"
 
 #: src/av-cp/main.c:55 src/universal-cp/main.c:53
 msgid "Use the IPv4 protocol family"
