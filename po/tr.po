@@ -1,28 +1,28 @@
 # Turkish translation for gupnp-tools.
-# Copyright (C) 2015-2019 gupnp-tools's COPYRIGHT HOLDER
+# Copyright (C) 2015-2022 gupnp-tools's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gupnp-tools package.
 #
 # Simge Sezgin <simgesezgin88@gmail.com>, 2015.
 # Gökhan Gurbetoğlu <ggurbet@gmail.com>, 2016.
 # Kaan Özdinçer <kaanozdincer@gmail.com>, 2019.
 # Serdar Sağlam <teknomobil@yandex.com>, 2019.
-# Sabri Ünal <libreajans@gmail.com>, 2019.
 # Emin Tufan Çetin <etcetin@gmail.com>, 2020.
+# Sabri Ünal <libreajans@gmail.com>, 2019, 2022.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gupnp-tools master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gupnp-tools/issues\n"
-"POT-Creation-Date: 2020-07-29 20:47+0000\n"
-"PO-Revision-Date: 2020-11-29 00:40+0300\n"
-"Last-Translator: Emin Tufan Çetin <etcetin@gmail.com>\n"
+"POT-Creation-Date: 2021-05-10 13:34+0000\n"
+"PO-Revision-Date: 2022-04-24 02:49+0300\n"
+"Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Türkçe <gnome-turk@gnome.org>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 3.0.1\n"
 "X-POOTLE-MTIME: 1429370203.000000\n"
 
 #: data/didl-lite-dialog.ui.in:9
@@ -173,7 +173,7 @@ msgstr "_Açık"
 
 #: data/gupnp-network-light.ui:83
 msgid "_Increase luminance by 20%"
-msgstr "Parlaklığı %20 a_zalt"
+msgstr "_Parlaklığı %20 artır"
 
 #: data/gupnp-network-light.ui:92
 msgid "_Decrease luminance by 20%"
@@ -296,11 +296,11 @@ msgstr "UPnP arama ifadesi"
 msgid "column"
 msgstr "sütun"
 
-#: src/av-cp/main.c:52 src/network-light/main.c:48 src/universal-cp/main.c:41
+#: src/av-cp/main.c:52 src/network-light/main.c:51 src/universal-cp/main.c:51
 msgid "Network PORT to use for UPnP"
 msgstr "UPnp için kullanılacak ağ BAĞLANTI NOKTASI"
 
-#: src/av-cp/main.c:53 src/network-light/main.c:49 src/universal-cp/main.c:42
+#: src/av-cp/main.c:53 src/network-light/main.c:52 src/universal-cp/main.c:52
 msgid "Network interfaces to use for UPnP communication"
 msgstr "UPnP iletişimi için kullanılacak ağ arayüzleri"
 
@@ -309,29 +309,29 @@ msgid "Application part of the User-Agent header to use for UPnP communication"
 msgstr ""
 "UPnP iletişimi için kullanılacak Kullanıcı-Aracısı başlığının uygulama bölümü"
 
-#: src/av-cp/main.c:55
+#: src/av-cp/main.c:55 src/universal-cp/main.c:53
 msgid "Use the IPv4 protocol family"
 msgstr "IPv4 iletişim kuralı ailesini kullan"
 
-#: src/av-cp/main.c:56
+#: src/av-cp/main.c:56 src/universal-cp/main.c:54
 msgid "Use the IPv6 protocol family"
 msgstr "IPv6 iletişim kuralı ailesini kullan"
 
-#: src/av-cp/main.c:57
+#: src/av-cp/main.c:57 src/universal-cp/main.c:55
 msgid "Do not use the IPv4 protocol family"
 msgstr "IPv4 iletişim kuralı ailesini kullanma"
 
-#: src/av-cp/main.c:58
+#: src/av-cp/main.c:58 src/universal-cp/main.c:56
 msgid "Do not use the IPv6 protocol family"
 msgstr "IPv6 iletişim kuralı ailesini kullanma"
 
-#: src/av-cp/main.c:245 src/network-light/main.c:104
-#: src/universal-cp/main.c:149
+#: src/av-cp/main.c:245 src/network-light/main.c:112
+#: src/universal-cp/main.c:195
 msgid "- UPnP AV control point"
 msgstr "- UPnP AV denetim noktası"
 
-#: src/av-cp/main.c:250 src/network-light/main.c:109
-#: src/universal-cp/main.c:154
+#: src/av-cp/main.c:250 src/network-light/main.c:117
+#: src/universal-cp/main.c:200
 #, c-format
 msgid "Could not parse options: %s\n"
 msgstr "Seçenekler ayrıştırılamadı: %s\n"
@@ -369,13 +369,29 @@ msgstr "Arama ölçütü geçersiz: %s"
 msgid "Error fetching detailed information: %s"
 msgstr "Ayrıntılı bilgi getirilirken hata oldu: %s"
 
-#: src/network-light/main.c:50
+#: src/network-light/main.c:53
 msgid "Friendly name for this UPnP light"
 msgstr "Bu UPnP ışığı için kolay ad"
 
-#: src/network-light/main.c:51
+#: src/network-light/main.c:54
 msgid "Apply change exclusively to this UPnP light"
 msgstr "Değişikliği yalnızca bu UPnP ışığa uygula"
+
+#: src/network-light/main.c:55
+msgid "Use IPv4"
+msgstr "IPv4 Kullan"
+
+#: src/network-light/main.c:56
+msgid "Use IPv6"
+msgstr "IPv6 Kullan"
+
+#: src/network-light/main.c:57
+msgid "Do not use IPv4"
+msgstr "IPv4 kullanma"
+
+#: src/network-light/main.c:58
+msgid "Do not use IPv6"
+msgstr "IPv6 kullanma"
 
 #: src/universal-cp/action-dialog.c:690 src/universal-cp/action-dialog.c:709
 #, c-format
@@ -569,6 +585,10 @@ msgstr "Hizmet"
 #: src/universal-cp/event-treeview.c:409
 msgid "State Variable"
 msgstr "Durum Değişkeni"
+
+#: src/universal-cp/main.c:57
+msgid "The UDA version to use"
+msgstr "Kullanılacak UDA sürümü"
 
 #~ msgid "av-cp"
 #~ msgstr "av-cp"
