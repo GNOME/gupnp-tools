@@ -1024,7 +1024,6 @@ remove_media_server (GUPnPDeviceProxy *proxy)
                       compare_media_server,
                       (gpointer) udn,
                       FALSE)) {
-                unschedule_icon_update (info);
                 gtk_tree_store_remove (GTK_TREE_STORE (model), &iter);
         }
 }

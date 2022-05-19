@@ -324,7 +324,16 @@ remove_device (GUPnPDeviceInfo *info)
                 return;
 
         if (find_device (model, udn, &root_iter, &iter)) {
-                unschedule_icon_update (info);
+                GCancellable *cancellable =
+                        g_object_get_data (G_OBJECT (info),
+                                           "icon-download-cancellable");
+                if (cancellable != NULL) {
+                        g_cancellable_cancel (cancellable);
+
+                        g_object_set_data (G_OBJECT (info),
+                                           "icon-download-cancellable",
+                                           NULL);
+                }
                 gtk_tree_store_remove (GTK_TREE_STORE (model), &iter);
         }
 }
@@ -380,13 +389,21 @@ on_state_variable_changed (GUPnPServiceProxy *proxy,
 }
 
 static void
-on_device_icon_available (GUPnPDeviceInfo *info,
-                          GdkPixbuf       *icon)
+on_device_icon_available (GObject *source,
+                          GAsyncResult *res,
+                          gpointer user_data)
 {
         GtkTreeModel *model;
         GtkTreeIter   root_iter;
         GtkTreeIter   device_iter;
         const char   *udn;
+        g_autoptr (GError) error = NULL;
+        g_autoptr (GdkPixbuf) icon = NULL;
+
+        icon = update_icon_finish (GUPNP_DEVICE_INFO (source), res, &error);
+        if (error != NULL) {
+                g_debug ("Failed to download icon: %s", error->message);
+        }
 
         // There was no icon or there was an error getting that
         // icon. Just keep the default then
@@ -394,21 +411,22 @@ on_device_icon_available (GUPnPDeviceInfo *info,
                 return;
         }
 
-        model = gtk_tree_view_get_model (GTK_TREE_VIEW (treeview));
+        model = gtk_tree_view_get_model (GTK_TREE_VIEW (user_data));
         g_assert (model != NULL);
 
-        udn = gupnp_device_info_get_udn (info);
+        udn = gupnp_device_info_get_udn (GUPNP_DEVICE_INFO (source));
 
         if (!gtk_tree_model_get_iter_first (model, &root_iter))
                 return;
 
-        if (find_device (model, udn, &root_iter, &device_iter))
+        if (find_device (model, udn, &root_iter, &device_iter)) {
+                g_object_set_data (source, "icon-download-cancellable", NULL);
+
                 gtk_tree_store_set (GTK_TREE_STORE (model),
                                     &device_iter,
                                     0, icon,
                                     -1);
-
-        g_clear_object (&icon);
+        }
 }
 
 static void
@@ -553,20 +571,24 @@ append_introspection (GUPnPServiceProxy         *proxy,
 }
 
 static void
-got_introspection (GUPnPServiceInfo          *info,
-                   GUPnPServiceIntrospection *introspection,
-                   const GError              *error,
-                   gpointer                   user_data)
+got_introspection (GObject *source, GAsyncResult *res, gpointer user_data)
 {
         GtkTreeModel *model;
         GtkTreeIter  *service_iter;
+        GError *error = NULL;
+
+        GUPnPServiceIntrospection *introspection =
+                gupnp_service_info_introspect_finish (
+                        GUPNP_SERVICE_INFO (source),
+                        res,
+                        &error);
 
         service_iter = (GtkTreeIter *) user_data;
 
         model = gtk_tree_view_get_model (GTK_TREE_VIEW (treeview));
         g_assert (model != NULL);
 
-        append_introspection (GUPNP_SERVICE_PROXY (info),
+        append_introspection (GUPNP_SERVICE_PROXY (source),
                               introspection,
                               GTK_TREE_STORE (model),
                               service_iter);
@@ -576,7 +598,9 @@ got_introspection (GUPnPServiceInfo          *info,
                 g_object_unref (introspection);
 
                 /* Services are subscribed to by default */
-                gupnp_service_proxy_set_subscribed (GUPNP_SERVICE_PROXY (info), TRUE);
+                gupnp_service_proxy_set_subscribed (
+                        GUPNP_SERVICE_PROXY (source),
+                        TRUE);
         }
 }
 
@@ -602,9 +626,10 @@ append_service_tree (GUPnPServiceInfo *info,
                                  5, ICON_SERVICE,
                                  -1);
 
-                gupnp_service_info_get_introspection_async (info,
-                                                            got_introspection,
-                                                            service_iter);
+                gupnp_service_info_introspect_async (info,
+                                                     NULL,
+                                                     got_introspection,
+                                                     service_iter);
 
                 g_free (id);
         }
@@ -621,6 +646,7 @@ append_device_tree (GUPnPDeviceInfo *info,
         if (friendly_name) {
                 GtkTreeIter device_iter;
                 GList *child;
+                GCancellable *cancellable = g_cancellable_new ();
 
                 gtk_tree_store_insert_with_values
                                 (GTK_TREE_STORE (model),
@@ -632,7 +658,14 @@ append_device_tree (GUPnPDeviceInfo *info,
                                  -1);
                 g_free (friendly_name);
 
-                schedule_icon_update (info, on_device_icon_available);
+                g_object_set_data_full (G_OBJECT (info),
+                                        "icon-download-cancellable",
+                                        cancellable,
+                                        g_object_unref);
+                update_icon_async (info,
+                                   cancellable,
+                                   on_device_icon_available,
+                                   treeview);
 
                 /* Append the embedded devices */
                 child = gupnp_device_info_list_devices (info);

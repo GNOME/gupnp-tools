@@ -1,4 +1,4 @@
-project('gupnp-tools', ['c'], version: '0.10.2')
+project('gupnp-tools', ['c'], version: '0.11.0')
 
 gnome = import('gnome')
 i18n = import('i18n')
@@ -7,9 +7,9 @@ if host_machine.system() == 'windows'
     win = import('windows')
 endif
 
-gssdp = dependency('gssdp-1.2', version: '>= 1.2.0', default_options: ['sniffer=false'])
-gupnp = dependency('gupnp-1.2', version: '>= 1.4.0')
-soup = dependency('libsoup-2.4', version: '>= 2.42')
+gssdp = dependency('gssdp-1.6', version: '>= 1.5.0', default_options: ['sniffer=false'])
+gupnp = dependency('gupnp-1.6', version: '>= 1.5.1')
+soup = dependency('libsoup-3.0', version: '>= 3.0')
 gupnp_av = dependency('gupnp-av-1.0', version: '>= 0.5.5', required: get_option('av-tools'))
 gtk = dependency('gtk+-3.0', version: '>= 3.10')
 glib = dependency('glib-2.0', version: '>= 2.24')
