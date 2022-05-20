@@ -1,3 +1,28 @@
+0.10.3 (stable)
+===============
+
+ - Fix deprecated function calls
+ - Fix empty icon for devices with no icons
+ - Translation updates
+
+Bugs fixed in this release:
+ - https://gitlab.gnome.org/GNOME/gupnp-tools/issues/23
+
+All contributors to this release:
+ - Jens Georg <mail@jensge.org>
+ - Sabri Ünal <libreajans@gmail.com>
+ - Hugo Carvalho <hugokarvalho@hotmail.com>
+ - Luming Zh <lumingzh@qq.com>
+ - Asier Sarasua Garmendia <asiersarasua@ni.eus>
+ - Alan Mortensen <alanmortensen.am@gmail.com>
+
+Added/updated translations:
+ - da.po, courtesy of Alan Mortensen
+ - eu.po, courtesy of Asier Sarasua Garmendia
+ - pt.po, courtesy of Hugo Carvalho
+ - tr.po, courtesy of Sabri Ünal
+ - zh_CN.po, courtesy of lumingzh
+
 0.10.2 (stable)
 ===============
 
