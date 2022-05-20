@@ -340,12 +340,20 @@ set_duration (const gchar *udn,
 }
 
 static void
-on_device_icon_available (GUPnPDeviceInfo *info,
-                          GdkPixbuf       *icon)
+on_device_icon_available (GObject *source,
+                          GAsyncResult *res,
+                          gpointer user_data)
 {
         GtkTreeModel *model;
         GtkTreeIter   iter;
         const char   *udn;
+        g_autoptr (GdkPixbuf) icon;
+        g_autoptr (GError) error = NULL;
+
+        icon = update_icon_finish (GUPNP_DEVICE_INFO (source), res, &error);
+        if (error != NULL) {
+                g_debug ("Failed to download icon: %s", error->message);
+        }
 
         if (icon == NULL)
                 return;
@@ -353,7 +361,7 @@ on_device_icon_available (GUPnPDeviceInfo *info,
         model = gtk_combo_box_get_model (GTK_COMBO_BOX (renderer_combo));
         g_assert (model != NULL);
 
-        udn = gupnp_device_info_get_udn (info);
+        udn = gupnp_device_info_get_udn (GUPNP_DEVICE_INFO (source));
 
         if (find_renderer (model, udn, &iter)) {
                 gtk_list_store_set (GTK_LIST_STORE (model),
@@ -362,7 +370,7 @@ on_device_icon_available (GUPnPDeviceInfo *info,
                                     -1);
         }
 
-        g_object_unref (icon);
+        g_object_set_data (source, "icon-download-cancellable", NULL);
 }
 
 static void
@@ -516,7 +524,12 @@ append_media_renderer_to_tree (GUPnPDeviceProxy  *proxy,
         gupnp_service_proxy_set_subscribed (av_transport, TRUE);
         gupnp_service_proxy_set_subscribed (rendering_control, TRUE);
 
-        schedule_icon_update (info, on_device_icon_available);
+        GCancellable *cancellable = g_cancellable_new ();
+        g_object_set_data_full (G_OBJECT (info),
+                                "icon-download-cancellable",
+                                cancellable,
+                                g_object_unref);
+        update_icon_async (info, cancellable, on_device_icon_available, NULL);
 
         if (was_empty)
                 gtk_combo_box_set_active_iter (combo, &iter);
@@ -846,7 +859,16 @@ remove_media_renderer (GUPnPDeviceProxy *proxy)
         model = gtk_combo_box_get_model (combo);
 
         if (find_renderer (model, udn, &iter)) {
-                unschedule_icon_update (info);
+                GCancellable *cancellable =
+                        g_object_get_data (G_OBJECT (info),
+                                           "icon-download-cancellable");
+                if (cancellable != NULL) {
+                        g_cancellable_cancel (cancellable);
+
+                        g_object_set_data (G_OBJECT (info),
+                                           "icon-download-cancellable",
+                                           NULL);
+                }
                 gtk_list_store_remove (GTK_LIST_STORE (model), &iter);
                 gtk_combo_box_set_active (combo, 0);
         }

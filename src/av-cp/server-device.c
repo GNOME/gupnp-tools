@@ -150,8 +150,9 @@ av_cp_media_server_get_property (GObject    *obj,
 }
 
 static void
-av_cp_media_server_on_icon_updated (GUPnPDeviceInfo *info,
-                                    GdkPixbuf       *icon);
+av_cp_media_server_on_icon_updated (GObject *source,
+                                    GAsyncResult *res,
+                                    gpointer user_data);
 
 static void
 av_cp_media_server_on_get_sort_caps (GObject      *object,
@@ -308,13 +309,20 @@ av_cp_media_server_init (AVCPMediaServer *self)
 }
 
 static void
-av_cp_media_server_on_icon_updated (GUPnPDeviceInfo *info,
-                                    GdkPixbuf       *icon)
+av_cp_media_server_on_icon_updated (GObject *source,
+                                    GAsyncResult *res,
+                                    gpointer user_data)
 {
-        AVCPMediaServer *self = AV_CP_MEDIA_SERVER (info);
+        AVCPMediaServer *self = AV_CP_MEDIA_SERVER (source);
         AVCPMediaServerPrivate *priv = av_cp_media_server_get_instance_private (self);
+        g_autoptr (GError) error = NULL;
 
-        priv->icon = icon;
+        priv->icon =
+                update_icon_finish (GUPNP_DEVICE_INFO (source), res, &error);
+        if (error != NULL) {
+                g_debug ("Failed to download device icon: %s", error->message);
+        }
+
         av_cp_media_server_get_content_directory (self);
 
         if (priv->content_directory != NULL) {
@@ -401,8 +409,10 @@ av_cp_media_server_init_finish (GAsyncInitable *initable,
 static void
 av_cp_media_server_introspect (AVCPMediaServer *self)
 {
-        schedule_icon_update (GUPNP_DEVICE_INFO (self),
-                              av_cp_media_server_on_icon_updated);
+        update_icon_async (GUPNP_DEVICE_INFO (self),
+                           NULL,
+                           av_cp_media_server_on_icon_updated,
+                           NULL);
 }
 
 static void

@@ -197,7 +197,7 @@ on_get_status (GUPnPService       *service,
                                   get_status (),
                                   NULL);
 
-        gupnp_service_action_return (action);
+        gupnp_service_action_return_success (action);
 }
 
 G_MODULE_EXPORT
@@ -212,7 +212,7 @@ on_get_target (GUPnPService       *service,
                                   get_status (),
                                   NULL);
 
-        gupnp_service_action_return (action);
+        gupnp_service_action_return_success (action);
 }
 
 G_MODULE_EXPORT
@@ -228,7 +228,7 @@ on_set_target (GUPnPService       *service,
                                   G_TYPE_BOOLEAN,
                                   &status,
                                   NULL);
-        gupnp_service_action_return (action);
+        gupnp_service_action_return_success (action);
 
         set_status (status);
 }
@@ -267,7 +267,7 @@ on_get_load_level_status (GUPnPService       *service,
                                   get_load_level (),
                                   NULL);
 
-        gupnp_service_action_return (action);
+        gupnp_service_action_return_success (action);
 }
 
 G_MODULE_EXPORT
@@ -282,7 +282,7 @@ on_get_load_level_target (GUPnPService       *service,
                                   get_load_level (),
                                   NULL);
 
-        gupnp_service_action_return (action);
+        gupnp_service_action_return_success (action);
 }
 
 G_MODULE_EXPORT
@@ -298,7 +298,7 @@ on_set_load_level_target (GUPnPService       *service,
                                   G_TYPE_UINT,
                                   &load_level,
                                   NULL);
-        gupnp_service_action_return (action);
+        gupnp_service_action_return_success (action);
 
         if (load_level > 100)
                 load_level = 100;
@@ -809,10 +809,10 @@ init_upnp (gchar **interfaces, guint port, gchar *name, gboolean ipv4, gboolean 
         g_assert (context_manager != NULL);
 
         if (interfaces != NULL) {
-                white_list = gupnp_context_manager_get_white_list
-                                            (context_manager);
-                gupnp_white_list_add_entryv (white_list, interfaces);
-                gupnp_white_list_set_enabled (white_list, TRUE);
+                white_list = gupnp_context_manager_get_context_filter (
+                        context_manager);
+                gupnp_context_filter_add_entryv (white_list, interfaces);
+                gupnp_context_filter_set_enabled (white_list, TRUE);
         }
 
         g_signal_connect (context_manager,
