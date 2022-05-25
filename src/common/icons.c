@@ -92,9 +92,6 @@ on_got_icon (GObject *source, GAsyncResult *res, gpointer user_data)
 {
         GError *error = NULL;
         g_autoptr (GTask) task = G_TASK (user_data);
-        SoupMessage *message =
-                soup_session_get_async_result_message (SOUP_SESSION (source),
-                                                       res);
 
         g_autoptr (GBytes) body =
                 soup_session_send_and_read_finish (SOUP_SESSION (source),
@@ -107,13 +104,17 @@ on_got_icon (GObject *source, GAsyncResult *res, gpointer user_data)
                 return;
         }
 
+        SoupMessage *message =
+                soup_session_get_async_result_message (SOUP_SESSION (source),
+                                                       res);
+
         if (!SOUP_STATUS_IS_SUCCESSFUL (soup_message_get_status (message))) {
                 g_task_return_error (
                         task,
                         g_error_new (G_IO_ERROR,
                                      G_IO_ERROR_FAILED,
                                      "Unable to  download icon: %s",
-                                     error->message));
+                                     soup_message_get_reason_phrase (message)));
                 return;
         }
 
