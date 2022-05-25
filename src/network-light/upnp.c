@@ -776,7 +776,7 @@ context_equal (GUPnPContext *context1, GUPnPContext *context2)
 gboolean
 init_upnp (gchar **interfaces, guint port, gchar *name, gboolean ipv4, gboolean ipv6)
 {
-        GUPnPWhiteList *white_list;
+        GUPnPContextFilter *context_filter;
 
         switch_proxies = NULL;
         dimming_proxies = NULL;
@@ -809,10 +809,10 @@ init_upnp (gchar **interfaces, guint port, gchar *name, gboolean ipv4, gboolean 
         g_assert (context_manager != NULL);
 
         if (interfaces != NULL) {
-                white_list = gupnp_context_manager_get_context_filter (
+                context_filter = gupnp_context_manager_get_context_filter (
                         context_manager);
-                gupnp_context_filter_add_entryv (white_list, interfaces);
-                gupnp_context_filter_set_enabled (white_list, TRUE);
+                gupnp_context_filter_add_entryv (context_filter, interfaces);
+                gupnp_context_filter_set_enabled (context_filter, TRUE);
         }
 
         g_signal_connect (context_manager,
