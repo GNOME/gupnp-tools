@@ -421,8 +421,10 @@ get_action_arg_widget_info (GtkWidget                 *arg_widget,
                                         introspection,
                                         arg_info->related_state_variable);
 
-        if (arg_info->direction == GUPNP_SERVICE_ACTION_ARG_DIRECTION_OUT)
+        if (arg_info->direction == GUPNP_SERVICE_ACTION_ARG_DIRECTION_OUT) {
+                *value = NULL;
                 return arg_info->name;
+        }
 
         *value = g_slice_alloc0 (sizeof (GValue));
         g_value_init (*value, variable_info->type);
