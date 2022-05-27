@@ -114,6 +114,89 @@ class DeviceInfo(Gtk.Box):
         self.group.add(DetailRow("Serial Number", device.proxy.get_serial_number()))
 
 
+class Section(GObject.Object):
+    def __init__(self, name):
+        self.name = name
+        super(Section, self).__init__()
+
+class DeviceContents(Gtk.Box):
+    def __init__(self, device):
+        super().__init__(orientation=Gtk.Orientation.VERTICAL)
+
+        self.device = device
+        scrolled = Gtk.ScrolledWindow.new()
+        list_view = Gtk.ListView()
+        list_view.add_css_class("navigation-sidebar")
+        scrolled.set_child(list_view)
+        model = Gtk.TreeListModel.new(self.get_device_model(device), False, True, self.get_device_model)
+
+        selection = Gtk.SingleSelection.new(model)
+        list_view.set_model(selection)
+        scrolled.set_vexpand(True)
+        self.append(scrolled)
+        factory = Gtk.SignalListItemFactory()
+        factory.connect ("setup", self.on_setup)
+        factory.connect ("bind", self.on_bind)
+
+        list_view.set_factory(factory)
+
+    def on_setup(self, foo, item):
+        expander = Gtk.TreeExpander()
+        l = Gtk.Label()
+        expander.set_child (l)
+        item.set_child(expander)
+
+    def on_bind(self, foo, item):
+        content = item.get_item().get_item()
+        print(content)
+        expander = item.get_child()
+        expander.set_list_row(item.get_item())
+        if isinstance(content, Section):
+            expander.get_child().set_label(content.name)
+        elif isinstance(content, GUPnP.ServiceInfo):
+            expander.get_child().set_label(content.get_id())
+        elif isinstance(content, GUPnP.DeviceInfo):
+            expander.get_child().set_label(content.get_friendly_name())
+        elif isinstance(content, GUPnP.ServiceActionInfo):
+            expander.get_child().set_label(content.name)
+
+
+    def get_device_model(self, item):
+        if isinstance(item, GUPnP.DeviceInfo):
+            model = Gio.ListStore.new(Section)
+            devices = item.list_device_types()
+            if len(devices) > 0:
+                model.append(Section("Devices"))
+
+            services = item.list_service_types()
+            if len(services) > 0:
+                model.append(Section("Services"))
+
+            return model
+
+        if isinstance(item, Section):
+            if item.name == "Services":
+                services = self.device.list_services()
+
+                model = Gio.ListStore.new(GUPnP.ServiceInfo)
+                for service in services:
+                    model.append(service)
+
+                return model
+
+        if isinstance(item, GUPnP.ServiceInfo):
+            #model = Gio.ListStore.new(GUPnP.ServiceActionInfo)
+            item.introspect_async (None, lambda source, res: self.on_introspection(source, res, None))
+            return None
+
+        return None
+
+    def on_introspection(self, source, res, model):
+        introspection = source.introspect_finish(res)
+
+        [print(x.name) for x in introspection.list_actions()]
+
+
 class AppWindow(Adw.ApplicationWindow):
     def __init__(self, app, context):
         super().__init__(application=app, title="GUPnP Universal Control Point")
@@ -126,12 +209,16 @@ class AppWindow(Adw.ApplicationWindow):
         paned.set_vexpand(True)
         box.append(paned)
         self.set_content(box)
+
+        self.navigation_stack = Gtk.Stack.new()
         scrollable = Gtk.ScrolledWindow.new()
         lb = Gtk.ListBox()
         lb.bind_model(self.device_model, self.on_widget)
         lb.connect('row-selected', self.on_row_activated)
         scrollable.set_child(lb)
-        paned.set_start_child(scrollable)
+        self.navigation_stack.add_child(scrollable)
+        paned.set_start_child(self.navigation_stack)
+
         stack = Gtk.Stack.new()
         status = Adw.StatusPage.new()
         status.set_icon_name("network-wired-symbolic")
@@ -155,9 +242,13 @@ class AppWindow(Adw.ApplicationWindow):
         details = DeviceInfo(device_proxy)
         self.stack.add_child(details)
         self.stack.set_visible_child(details)
+        c = DeviceContents(device_proxy.proxy)
+        self.navigation_stack.add_child(c)
+        self.navigation_stack.set_visible_child(c)
 
 def on_activate(app):
-    context = GUPnP.Context.new ('wlp3s0', 0)
+    context = GUPnP.Context (interface='wlp3s0', address_family=Gio.SocketFamily.IPV6)
+    context.init()
 
     w = AppWindow(app, context)
     w.present()
