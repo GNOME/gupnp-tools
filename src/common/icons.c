@@ -54,12 +54,16 @@ get_icon_url_data_free (GetIconURLData *data)
 G_DEFINE_AUTOPTR_CLEANUP_FUNC (GetIconURLData, get_icon_url_data_free)
 
 static GdkPixbuf *
-get_icon_from_bytes (GBytes *icon_data, GetIconURLData *data, GError **error)
+get_icon_from_bytes (GBytes *icon_data,
+                     const char *mime,
+                     int source_width,
+                     int source_height,
+                     GError **error)
 {
         g_autoptr (GdkPixbufLoader) loader;
         GdkPixbuf       *pixbuf;
 
-        loader = gdk_pixbuf_loader_new_with_mime_type (data->mime_type, error);
+        loader = gdk_pixbuf_loader_new_with_mime_type (mime, error);
         if (loader == NULL)
                 return NULL;
 
@@ -70,7 +74,7 @@ get_icon_from_bytes (GBytes *icon_data, GetIconURLData *data, GError **error)
                 gint   height;
 
                 /* Preserve the aspect-ratio of the original image */
-                aspect_ratio = (gfloat) data->width / data->height;
+                aspect_ratio = (gfloat) source_width / source_height;
                 height = (gint) (PREFERED_WIDTH / aspect_ratio);
                 pixbuf = gdk_pixbuf_scale_simple (pixbuf,
                                                   PREFERED_WIDTH,
@@ -92,10 +96,17 @@ on_got_icon (GObject *source, GAsyncResult *res, gpointer user_data)
 {
         GError *error = NULL;
         g_autoptr (GTask) task = G_TASK (user_data);
+        g_autofree char *mime = NULL;
+        int width;
+        int height;
 
-        g_autoptr (GBytes) body =
-                soup_session_send_and_read_finish (SOUP_SESSION (source),
+        g_autoptr (GBytes) icon =
+                gupnp_device_info_get_icon_finish (GUPNP_DEVICE_INFO (source),
                                                    res,
+                                                   &mime,
+                                                   NULL,
+                                                   &width,
+                                                   &height,
                                                    &error);
 
         if (error != NULL) {
@@ -104,22 +115,13 @@ on_got_icon (GObject *source, GAsyncResult *res, gpointer user_data)
                 return;
         }
 
-        SoupMessage *message =
-                soup_session_get_async_result_message (SOUP_SESSION (source),
-                                                       res);
+        GdkPixbuf *device_icon = icon == NULL ? NULL
+                                              : get_icon_from_bytes (icon,
+                                                                     mime,
+                                                                     width,
+                                                                     height,
+                                                                     &error);
 
-        if (!SOUP_STATUS_IS_SUCCESSFUL (soup_message_get_status (message))) {
-                g_task_return_error (
-                        task,
-                        g_error_new (G_IO_ERROR,
-                                     G_IO_ERROR_FAILED,
-                                     "Unable to  download icon: %s",
-                                     soup_message_get_reason_phrase (message)));
-                return;
-        }
-
-        GdkPixbuf *device_icon =
-                get_icon_from_bytes (body, g_task_get_task_data (task), &error);
         if (error != NULL) {
                 g_task_return_error (task, error);
 
@@ -135,59 +137,17 @@ update_icon_async (GUPnPDeviceInfo *info,
                    GAsyncReadyCallback callback,
                    gpointer user_data)
 {
-        g_autoptr (GTask) task =
-                g_task_new (info, cancellable, callback, user_data);
+        GTask *task = g_task_new (info, cancellable, callback, user_data);
 
-        g_autoptr (GetIconURLData) data;
-        g_autofree char *icon_url;
-
-        data = g_slice_new0 (GetIconURLData);
-
-        icon_url = gupnp_device_info_get_icon_url (info,
-                                                   NULL,
-                                                   PREFERED_DEPTH,
-                                                   PREFERED_WIDTH,
-                                                   PREFERED_HEIGHT,
-                                                   TRUE,
-                                                   &data->mime_type,
-                                                   NULL,
-                                                   &data->width,
-                                                   &data->height);
-
-        if (icon_url == NULL) {
-                g_task_return_pointer (task, NULL, NULL);
-
-                return;
-        }
-
-        g_autofree char *new_url =
-                gupnp_context_rewrite_uri (gupnp_device_info_get_context (info),
-                                           icon_url);
-        g_autoptr (SoupMessage) message =
-                soup_message_new (SOUP_METHOD_GET, new_url);
-
-        if (message == NULL) {
-                g_task_return_error (task,
-                                     g_error_new (G_URI_ERROR,
-                                                  G_URI_ERROR_FAILED,
-                                                  "Could not parse icon url %s",
-                                                  new_url));
-
-                return;
-        }
-
-        g_task_set_task_data (task,
-                              g_steal_pointer (&data),
-                              (GDestroyNotify) get_icon_url_data_free);
-
-        soup_session_send_and_read_async (download_session,
-                                          message,
-                                          G_PRIORITY_LOW,
+        gupnp_device_info_get_icon_async (info,
+                                          NULL,
+                                          PREFERED_DEPTH,
+                                          PREFERED_WIDTH,
+                                          PREFERED_HEIGHT,
+                                          TRUE,
                                           cancellable,
                                           on_got_icon,
                                           task);
-
-        g_steal_pointer (&task);
 }
 
 GdkPixbuf *
