@@ -74,9 +74,9 @@ parse_result (const char *result)
 static void
 browse_cb (GObject *object, GAsyncResult *res, gpointer user_data)
 {
-        GError *error = NULL;
-        char *result = NULL;
-        char *container_id = NULL;
+        g_autoptr (GError) error = NULL;
+        g_autofree char *result = NULL;
+        g_autofree char *container_id = NULL;
         GUPnPServiceProxyAction *action = NULL;
         GUPnPServiceProxy *proxy = GUPNP_SERVICE_PROXY (object);
 
@@ -85,9 +85,6 @@ browse_cb (GObject *object, GAsyncResult *res, gpointer user_data)
         if (error != NULL) {
                 g_critical ("Failed to browse root container: %s",
                             error->message);
-
-                g_error_free (error);
-
                 application_exit ();
 
                 return;
@@ -102,9 +99,6 @@ browse_cb (GObject *object, GAsyncResult *res, gpointer user_data)
         if (error != NULL) {
                 g_critical ("Failed to browse root container: %s",
                             error->message);
-
-                g_error_free (error);
-
                 application_exit ();
 
                 return;
@@ -115,17 +109,11 @@ browse_cb (GObject *object, GAsyncResult *res, gpointer user_data)
         container_id = parse_result (result);
         if (container_id == NULL) {
                 g_critical ("Failed to find a suitable container for upload.");
-                g_free (result);
 
                 application_exit ();
-
-                return;
         } else {
                 container_found (container_id);
-                g_free (container_id);
         }
-
-        g_free (result);
 }
 
 void

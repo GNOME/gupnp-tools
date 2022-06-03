@@ -40,15 +40,14 @@ get_transfer_progress_cb (GObject *object,
                           GAsyncResult *result,
                           gpointer user_data)
 {
-        GError *error;
+        g_autoptr (GError) error = NULL;
         TrackTransferData *data;
-        guint64 total, length;
-        gchar *status;
+        guint64 total = 0, length = 0;
+        g_autofree gchar *status = NULL;
         GUPnPServiceProxyAction *action;
 
         data = (TrackTransferData *) user_data;
 
-        error = NULL;
         total = length = 0;
         status = NULL;
         action = gupnp_service_proxy_call_action_finish (
@@ -58,6 +57,7 @@ get_transfer_progress_cb (GObject *object,
         if (error == NULL) {
                 gupnp_service_proxy_action_get_result (action, &error, NULL);
         }
+
         if (error != NULL) {
                 g_critical ("Failed to track file transfer: %s",
                             error->message);

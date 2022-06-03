@@ -134,13 +134,9 @@ gint
 main (gint   argc,
       gchar *argv[])
 {
-        GError *error = NULL;
+        g_autoptr (GError) error = NULL;
         gint i;
-        GOptionContext *context;
-
-#if !GLIB_CHECK_VERSION(2, 35, 0)
-        g_type_init ();
-#endif
+        g_autoptr (GOptionContext) context;
 
         context = g_option_context_new ("- Upload files to UPnP MediaServer");
         g_option_context_add_main_entries (context, entries, GETTEXT_PACKAGE);
@@ -151,11 +147,10 @@ main (gint   argc,
         }
 
         if (argc < 2) {
-                char *help = NULL;
+                g_autofree char *help = NULL;
 
                 help = g_option_context_get_help (context, TRUE, NULL);
                 g_print ("%s\n", help);
-                g_free (help);
 
                 return -4;
         }
@@ -184,8 +179,7 @@ main (gint   argc,
         upnp_context = gupnp_context_new (interface, 0, &error);
         if (error) {
                 g_printerr ("Error creating the GUPnP context: %s\n",
-			    error->message);
-                g_error_free (error);
+                            error->message);
 
                 return -6;
         }
@@ -206,7 +200,6 @@ main (gint   argc,
         g_clear_pointer (&main_loop, g_main_loop_unref);
         deinit_control_point ();
         g_object_unref (upnp_context);
-        g_option_context_free (context);
         g_free (dest_container);
         g_free (interface);
 
