@@ -8,3 +8,4 @@ endif
 subdir('discover')
 subdir('network-light')
 subdir('universal-cp')
+subdir('event-dumper')
