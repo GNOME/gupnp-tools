@@ -412,7 +412,7 @@ static void init_uuid (void)
         xmlNode *uuid_node;
         char *udn;
 
-        uuid = gupnp_get_uuid ();
+        uuid = g_uuid_string_random ();
         const xmlDoc *xml_doc = gupnp_xml_doc_get_doc (doc);
 
         uuid_node = xml_util_get_element ((xmlNode *) xml_doc,
