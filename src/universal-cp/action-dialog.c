@@ -20,12 +20,10 @@
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  */
 
+#include <config.h>
+
 #include <string.h>
 #include <stdlib.h>
-
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
 
 #include <gmodule.h>
 #include <glib/gi18n.h>

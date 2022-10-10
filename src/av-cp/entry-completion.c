@@ -1,3 +1,5 @@
+#include <config.h>
+
 #include "entry-completion.h"
 
 #include <libgupnp-av/gupnp-av.h>

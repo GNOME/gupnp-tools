@@ -18,12 +18,11 @@
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  */
 
-#include <string.h>
-#include <stdlib.h>
-#ifdef HAVE_CONFIG_H
 #include <config.h>
-#endif
+
 #include <gmodule.h>
+#include <stdlib.h>
+#include <string.h>
 
 #include "gui.h"
 #include "playlist-treeview.h"

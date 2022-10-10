@@ -20,6 +20,8 @@
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  */
 
+#include <config.h>
+
 #include <libgupnp/gupnp-root-device.h>
 #include <libgupnp/gupnp-service.h>
 #include <stdio.h>
@@ -27,10 +29,6 @@
 #include <string.h>
 #include <gmodule.h>
 #include <glib/gstdio.h>
-
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
 
 #include "gui.h"
 #include "upnp.h"

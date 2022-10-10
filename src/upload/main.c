@@ -18,12 +18,11 @@
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  */
 
-#include <libgupnp/gupnp.h>
-#include <string.h>
-#include <stdlib.h>
-#ifdef HAVE_CONFIG_H
 #include <config.h>
-#endif
+
+#include <libgupnp/gupnp.h>
+#include <stdlib.h>
+#include <string.h>
 
 #include "control_point.h"
 #include "item-creation.h"
@@ -176,7 +175,11 @@ main (gint   argc,
         }
 
         error = NULL;
-        upnp_context = gupnp_context_new (interface, 0, &error);
+        upnp_context = gupnp_context_new_full (interface,
+                                               NULL,
+                                               0,
+                                               GSSDP_UDA_VERSION_1_0,
+                                               &error);
         if (error) {
                 g_printerr ("Error creating the GUPnP context: %s\n",
                             error->message);

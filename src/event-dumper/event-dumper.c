@@ -1,3 +1,5 @@
+#include <config.h>
+
 #include <glib-unix.h>
 #include <glib.h>
 #include <libgupnp/gupnp.h>

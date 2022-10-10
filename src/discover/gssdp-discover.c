@@ -21,6 +21,8 @@
  * Boston, MA 02111-1307, USA.
  */
 
+#include <config.h>
+
 #include <glib.h>
 #include <libgssdp/gssdp.h>
 #include <stdlib.h>
@@ -87,10 +89,6 @@ int main (int argc, char *argv[]) {
         GOptionContext *context;
         GSSDPDiscover discover;
 
-#if !GLIB_CHECK_VERSION(2, 35, 0)
-        g_type_init ();
-#endif
-
         context = g_option_context_new ("- discover devices using SSDP");
         g_option_context_add_main_entries (context, entries, NULL);
 
@@ -102,7 +100,11 @@ int main (int argc, char *argv[]) {
 
         g_option_context_free (context);
 
-        discover.client = gssdp_client_new (interface, &error);
+        discover.client = gssdp_client_new_full (interface,
+                                                 NULL,
+                                                 0,
+                                                 GSSDP_UDA_VERSION_1_0,
+                                                 &error);
         if (error != NULL) {
                 g_warning ("Failed to create GSSDP client: %s", error->message);
                 g_error_free (error);

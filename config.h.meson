@@ -5,3 +5,5 @@
 #mesondefine DATA_DIR
 #mesondefine GETTEXT_PACKAGE
 #mesondefine LOCALEDIR
+#mesondefine GLIB_VERSION_MIN_REQUIRED
+#mesondefine GLIB_VERSION_MAX_ALLOWED
