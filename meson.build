@@ -1,4 +1,4 @@
-project('gupnp-tools', ['c'], version: '0.11.0')
+project('gupnp-tools', ['c'], version: '0.12.0')
 
 gnome = import('gnome')
 i18n = import('i18n')

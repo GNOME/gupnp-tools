@@ -1,3 +1,52 @@
+0.12.0 (stable)
+===============
+
+Dependency changes:
+    - GLib required is now 2.68
+    - GUPnP requirement up to 1.6
+    - Libsoup requirement up to 3.0
+
+- All
+    - Port to GUPnP 1.6 and Libsoup3
+    - Fix inconsistencies regarding action errors
+    - Use more g_autoptr
+    - Drop gupnp_get_uuid() where used.
+    - Translation updates
+
+- Common
+    - Fix potential NULL pointer dereference
+    - Use GUPnP utility functions for download of icons
+
+- Universal CP:
+    - Fix missing icon on download error
+    - Fix uninitialized out value
+
+- Event Dumper:
+    - Added new tool for dumping UPnP events on command line
+
+Bugs fixed in this release:
+ - https://gitlab.gnome.org/GNOME/gupnp-tools/issues/23
+
+Merge requests included in this release:
+ - https://gitlab.gnome.org/GNOME/gupnp-tools/merge_requests/4
+
+All contributors to this release:
+ - Jens Georg <mail@jensge.org>
+ - Jürgen Benvenuti <gastornis@posteo.org>
+ - Sabri Ünal <libreajans@gmail.com>
+ - Hugo Carvalho <hugokarvalho@hotmail.com>
+ - Luming Zh <lumingzh@qq.com>
+ - Asier Sarasua Garmendia <asiersarasua@ni.eus>
+ - Alan Mortensen <alanmortensen.am@gmail.com>
+
+Added/updated translations:
+ - da.po, courtesy of Alan Mortensen
+ - de.po, courtesy of Jürgen Benvenuti
+ - eu.po, courtesy of Asier Sarasua Garmendia
+ - pt.po, courtesy of Hugo Carvalho
+ - tr.po, courtesy of Sabri Ünal
+ - zh_CN.po, courtesy of lumingzh
+
 0.10.2 (stable)
 ===============
 
