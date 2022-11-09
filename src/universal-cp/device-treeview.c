@@ -574,7 +574,7 @@ got_introspection (GObject *source, GAsyncResult *res, gpointer user_data)
 {
         GtkTreeModel *model;
         GtkTreeIter  *service_iter;
-        GError *error = NULL;
+        g_autoptr (GError) error = NULL;
 
         GUPnPServiceIntrospection *introspection =
                 gupnp_service_info_introspect_finish (
@@ -582,17 +582,32 @@ got_introspection (GObject *source, GAsyncResult *res, gpointer user_data)
                         res,
                         &error);
 
+        if (g_error_matches (error, G_IO_ERROR, G_IO_ERROR_CANCELLED)) {
+                return;
+        }
+
+        if (error != NULL) {
+                g_warning ("Failed to get introspection for device: %s",
+                           error->message);
+
+                return;
+        }
+
         service_iter = (GtkTreeIter *) user_data;
 
         model = gtk_tree_view_get_model (GTK_TREE_VIEW (treeview));
         g_assert (model != NULL);
+
+        if (!gtk_tree_store_iter_is_valid (GTK_TREE_STORE (model),
+                                           service_iter)) {
+                goto out;
+        }
 
         append_introspection (GUPNP_SERVICE_PROXY (source),
                               introspection,
                               GTK_TREE_STORE (model),
                               service_iter);
 
-        g_slice_free (GtkTreeIter, service_iter);
         if (introspection != NULL) {
                 g_object_unref (introspection);
 
@@ -601,6 +616,8 @@ got_introspection (GObject *source, GAsyncResult *res, gpointer user_data)
                         GUPNP_SERVICE_PROXY (source),
                         TRUE);
         }
+out:
+        g_slice_free (GtkTreeIter, service_iter);
 }
 
 static void
