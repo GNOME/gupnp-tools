@@ -1,0 +1,566 @@
+# Georgian translation for gupnp-tools.
+# Copyright (C) 2022 gupnp-tools's COPYRIGHT HOLDER
+# This file is distributed under the same license as the gupnp-tools package.
+# NorwayFun <temuri.doghonadze@gmail.com>, 2022.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gupnp-tools master\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gupnp-tools/issues\n"
+"POT-Creation-Date: 2022-11-09 13:36+0000\n"
+"PO-Revision-Date: 2022-11-23 03:15+0100\n"
+"Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
+"Language-Team: Georgian <ka@li.org>\n"
+"Language: ka\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.2\n"
+
+#: data/didl-lite-dialog.ui.in:9
+msgid "GUPnP AV CP - Metadata View"
+msgstr "GUPnP AV CP - მეტამონაცემების ნახვა"
+
+#: data/gupnp-av-cp.desktop.in:4
+msgid "UPnP AV Control Point"
+msgstr "UPnP AV საკონტროლო წერტილი"
+
+#: data/gupnp-av-cp.desktop.in:5
+msgid "Browse and control UPnP multimedia devices"
+msgstr "დაათვალიერეთ და აკონტროლეთ UPnP მულტიმედია მოწყობილობები"
+
+#: data/gupnp-av-cp.ui:22 data/gupnp-av-cp.ui:208
+msgid "_Play"
+msgstr "_დაკვრა"
+
+#: data/gupnp-av-cp.ui:31
+msgid "Fetch the DIDL-Lite XML for this media object"
+msgstr "მიიღეთ DIDL-Lite XML ამ მედია ობიექტისთვის"
+
+#: data/gupnp-av-cp.ui:32
+msgid "Fetch _DIDL-Lite"
+msgstr "Fetch _DIDL-Lite"
+
+#: data/gupnp-av-cp.ui:41
+msgid "Search…"
+msgstr "ძებნა…"
+
+#: data/gupnp-av-cp.ui:89
+msgid "GUPnP AV Control Point"
+msgstr "GUPnP AV კონტროლის წერტილი"
+
+#: data/gupnp-av-cp.ui:104 data/gupnp-universal-cp.ui:424
+msgid "_File"
+msgstr "_ფაილი"
+
+#: data/gupnp-av-cp.ui:113
+msgid "Close"
+msgstr "დაკეტვა"
+
+#: data/gupnp-av-cp.ui:126
+msgid "_Tools"
+msgstr "_ხელსაწყოები"
+
+#: data/gupnp-av-cp.ui:136
+msgid "_Lenient Mode"
+msgstr "_Lenient რეჟიმი"
+
+#: data/gupnp-av-cp.ui:148 data/gupnp-universal-cp.ui:506
+msgid "_Help"
+msgstr "_დახმარება"
+
+#: data/gupnp-av-cp.ui:157 data/gupnp-universal-cp.ui:515
+msgid "About"
+msgstr "შესახებ"
+
+#: data/gupnp-av-cp.ui:257
+msgid "P_ause"
+msgstr "_პაუზა"
+
+#: data/gupnp-av-cp.ui:306
+msgid "_Stop"
+msgstr "_შეჩერება"
+
+#: data/gupnp-av-cp.ui:355
+msgid "Pre_vious"
+msgstr "_წინა"
+
+#: data/gupnp-av-cp.ui:418
+msgid "_Next"
+msgstr "_შემდეგი"
+
+#: data/gupnp-av-cp.ui:467
+msgid "_Rescan"
+msgstr "_თავიდან სკანირება"
+
+#: data/gupnp-av-cp.ui:514
+msgid ""
+"Clears the CP's idea of the state of the currently selected AV Renderer. "
+"Useful for dealing with AV Renderers that don't report state changes."
+msgstr ""
+
+#: data/gupnp-av-cp.ui:525
+msgid "_Clear state"
+msgstr "_მდგომარეობის გასუფთავება"
+
+#: data/gupnp-av-cp.ui:587
+msgid "_Renderer: "
+msgstr "_რენდერერი: "
+
+#: data/gupnp-av-cp.ui:725 data/gupnp-network-light.ui:7
+#: data/gupnp-universal-cp.ui:8
+msgid "Copyright (C) 2007 Zeeshan Ali (Khattak)"
+msgstr ""
+
+#: data/gupnp-av-cp.ui:726
+msgid ""
+"An UPnP AV Control Point based on GUPnP framework.\n"
+"Inspired by Intel Tools for UPnP."
+msgstr ""
+
+#: data/gupnp-av-cp.ui:729 data/gupnp-network-light.ui:11
+#: data/gupnp-universal-cp.ui:12
+msgid "GUPnP homepage"
+msgstr ""
+
+#. TRANSLATORS: Replace this string with your names, one name per line.
+#: data/gupnp-av-cp.ui:731 data/gupnp-network-light.ui:13
+#: data/gupnp-universal-cp.ui:14
+msgid "translator-credits"
+msgstr "თემური დოღონაძე"
+
+#: data/gupnp-network-light.desktop.in:4
+msgid "UPnP Network Light"
+msgstr ""
+
+#: data/gupnp-network-light.desktop.in:5
+msgid "Sample UPnP application for controlling lights"
+msgstr ""
+
+#: data/gupnp-network-light.ui:8
+msgid ""
+"A virtual network light bulb based on GUPnP framework.\n"
+"Inspired by Intel Tools for UPnP."
+msgstr ""
+
+#: data/gupnp-network-light.ui:38
+msgid "GUPnP Network Light"
+msgstr ""
+
+#: data/gupnp-network-light.ui:63
+msgctxt "network-light"
+msgid "_On"
+msgstr "_ჩართ"
+
+#: data/gupnp-network-light.ui:83
+msgid "_Increase luminance by 20%"
+msgstr ""
+
+#: data/gupnp-network-light.ui:92
+msgid "_Decrease luminance by 20%"
+msgstr ""
+
+#: data/gupnp-network-light.ui:107
+msgid "_About"
+msgstr "_შესახებ"
+
+#: data/gupnp-universal-cp.desktop.in:4
+msgid "UPnP Universal Control Point"
+msgstr ""
+
+#: data/gupnp-universal-cp.desktop.in:5
+msgid "Inspect and control UPnP devices across your local network"
+msgstr ""
+
+#: data/gupnp-universal-cp.ui:9
+msgid ""
+"A Generic Control Point based on GUPnP framework.\n"
+"Inspired by Intel Tools for UPnP."
+msgstr ""
+
+#: data/gupnp-universal-cp.ui:42
+msgid "Action Invocation"
+msgstr ""
+
+#: data/gupnp-universal-cp.ui:106
+msgid "_Invoke"
+msgstr "_ჩაწოდება"
+
+#: data/gupnp-universal-cp.ui:176
+msgid "device"
+msgstr "მოწყობილობა"
+
+#: data/gupnp-universal-cp.ui:189
+msgid "service"
+msgstr "service"
+
+#: data/gupnp-universal-cp.ui:202
+msgid "action"
+msgstr "action"
+
+#: data/gupnp-universal-cp.ui:245
+msgid "'in' arguments"
+msgstr ""
+
+#: data/gupnp-universal-cp.ui:278
+msgid "'out' arguments"
+msgstr ""
+
+#: data/gupnp-universal-cp.ui:312
+msgid "Copy value"
+msgstr "დააკოპირეთ მნიშვნელობა"
+
+#: data/gupnp-universal-cp.ui:321
+msgid "Copy all details"
+msgstr ""
+
+#: data/gupnp-universal-cp.ui:333
+msgid "Invoke"
+msgstr "ჩაწოდება"
+
+#: data/gupnp-universal-cp.ui:342
+msgid "Subscribe to events"
+msgstr ""
+
+#: data/gupnp-universal-cp.ui:357 data/gupnp-universal-cp.ui:468
+msgid "_Expand all devices"
+msgstr ""
+
+#: data/gupnp-universal-cp.ui:366 data/gupnp-universal-cp.ui:477
+msgid "_Collapse all devices"
+msgstr ""
+
+#: data/gupnp-universal-cp.ui:378
+msgid "Copy event"
+msgstr ""
+
+#: data/gupnp-universal-cp.ui:387
+msgid "Copy all events"
+msgstr ""
+
+#: data/gupnp-universal-cp.ui:402
+msgid "_Clear event log"
+msgstr ""
+
+#. default details
+#: data/gupnp-universal-cp.ui:410 src/universal-cp/device-treeview.c:36
+msgid "GUPnP Universal Control Point"
+msgstr ""
+
+#: data/gupnp-universal-cp.ui:433
+msgid "Clear event log"
+msgstr "ჟურნალის გასუფთავება"
+
+#: data/gupnp-universal-cp.ui:447
+msgid "Quit"
+msgstr "გასვლა"
+
+#: data/gupnp-universal-cp.ui:459
+msgid "_View"
+msgstr "_ხედი"
+
+#: data/gupnp-universal-cp.ui:492
+msgid "Event _log"
+msgstr "მოვლენების _ჟურნალი"
+
+#: data/search-dialog.ui:39
+msgid "_Close"
+msgstr "და_კეტვა"
+
+#: data/search-dialog.ui:71
+msgid "UPnP search expression"
+msgstr ""
+
+#: data/search-dialog.ui:98
+msgid "column"
+msgstr "სვეტი"
+
+#: src/av-cp/main.c:50 src/network-light/main.c:49 src/universal-cp/main.c:49
+msgid "Network PORT to use for UPnP"
+msgstr ""
+
+#: src/av-cp/main.c:51 src/network-light/main.c:50 src/universal-cp/main.c:50
+msgid "Network interfaces to use for UPnP communication"
+msgstr ""
+
+#: src/av-cp/main.c:52
+msgid "Application part of the User-Agent header to use for UPnP communication"
+msgstr ""
+
+#: src/av-cp/main.c:53 src/universal-cp/main.c:51
+msgid "Use the IPv4 protocol family"
+msgstr ""
+
+#: src/av-cp/main.c:54 src/universal-cp/main.c:52
+msgid "Use the IPv6 protocol family"
+msgstr ""
+
+#: src/av-cp/main.c:55 src/universal-cp/main.c:53
+msgid "Do not use the IPv4 protocol family"
+msgstr ""
+
+#: src/av-cp/main.c:56 src/universal-cp/main.c:54
+msgid "Do not use the IPv6 protocol family"
+msgstr ""
+
+#: src/av-cp/main.c:239 src/network-light/main.c:110
+#: src/universal-cp/main.c:192
+msgid "- UPnP AV control point"
+msgstr ""
+
+#: src/av-cp/main.c:244 src/network-light/main.c:115
+#: src/universal-cp/main.c:197
+#, c-format
+msgid "Could not parse options: %s\n"
+msgstr ""
+
+#: src/av-cp/search-dialog.c:386
+msgid "Show _DIDL…"
+msgstr ""
+
+#: src/av-cp/search-dialog.c:480 src/av-cp/search-dialog.c:629
+msgid "Search failed"
+msgstr "ძებნის შეცდომა"
+
+#: src/av-cp/search-dialog.c:484
+#, c-format
+msgid "Error message was: %s"
+msgstr ""
+
+#: src/av-cp/search-dialog.c:532
+#, c-format
+msgid "Searching on %s"
+msgstr ""
+
+#: src/av-cp/search-dialog.c:535
+#, c-format
+msgid "Searching in %s on %s"
+msgstr ""
+
+#: src/av-cp/search-dialog.c:633
+#, c-format
+msgid "Search criteria invalid: %s"
+msgstr ""
+
+#: src/av-cp/search-dialog.c:738
+#, c-format
+msgid "Error fetching detailed information: %s"
+msgstr ""
+
+#: src/network-light/main.c:51
+msgid "Friendly name for this UPnP light"
+msgstr ""
+
+#: src/network-light/main.c:52
+msgid "Apply change exclusively to this UPnP light"
+msgstr ""
+
+#: src/network-light/main.c:53
+msgid "Use IPv4"
+msgstr ""
+
+#: src/network-light/main.c:54
+msgid "Use IPv6"
+msgstr "IPv6-ის გამოყენება"
+
+#: src/network-light/main.c:55
+msgid "Do not use IPv4"
+msgstr ""
+
+#: src/network-light/main.c:56
+msgid "Do not use IPv6"
+msgstr ""
+
+#: src/universal-cp/action-dialog.c:690 src/universal-cp/action-dialog.c:709
+#, c-format
+msgid ""
+"Action failed.\n"
+"\n"
+"Error %d: %s"
+msgstr ""
+
+#: src/universal-cp/details-treeview.c:197
+#: src/universal-cp/details-treeview.c:225
+#: src/universal-cp/details-treeview.c:251
+#: src/universal-cp/details-treeview.c:430
+msgid "Name"
+msgstr "სახელი"
+
+#: src/universal-cp/details-treeview.c:199
+msgid "Direction"
+msgstr "მიმართულება"
+
+#: src/universal-cp/details-treeview.c:204
+msgid "Related State Variable"
+msgstr ""
+
+#: src/universal-cp/details-treeview.c:206
+msgid "Is Return Value"
+msgstr ""
+
+#: src/universal-cp/details-treeview.c:207
+#: src/universal-cp/details-treeview.c:254
+msgid "Yes"
+msgstr "დიახ"
+
+#: src/universal-cp/details-treeview.c:207
+#: src/universal-cp/details-treeview.c:254
+msgid "No"
+msgstr "არა"
+
+#: src/universal-cp/details-treeview.c:227
+msgid "Number of Arguments"
+msgstr ""
+
+#: src/universal-cp/details-treeview.c:253
+msgid "Send Events"
+msgstr "მოვლენების გაგზავნა"
+
+#: src/universal-cp/details-treeview.c:255
+msgid "GType"
+msgstr "GType"
+
+#: src/universal-cp/details-treeview.c:258
+msgid "Default Value"
+msgstr "ნაგულისხმები მნიშვნელობა"
+
+#: src/universal-cp/details-treeview.c:264
+msgid "Minimum"
+msgstr "მინიმუმი"
+
+#: src/universal-cp/details-treeview.c:268
+msgid "Maximum"
+msgstr "მაქსიმუმი"
+
+#: src/universal-cp/details-treeview.c:272
+msgid "Step"
+msgstr "ბიჯი"
+
+#: src/universal-cp/details-treeview.c:292
+msgid "Allowed Values"
+msgstr "ნებადართული მნიშვნელობები"
+
+#: src/universal-cp/details-treeview.c:316
+#: src/universal-cp/details-treeview.c:363
+msgid "Location"
+msgstr "მდებარეობა"
+
+#: src/universal-cp/details-treeview.c:321
+#: src/universal-cp/details-treeview.c:368
+msgid "UDN"
+msgstr "UDN"
+
+#: src/universal-cp/details-treeview.c:326
+#: src/universal-cp/details-treeview.c:373
+msgid "Type"
+msgstr "ტიპი"
+
+#: src/universal-cp/details-treeview.c:331
+#: src/universal-cp/details-treeview.c:378
+msgid "Base URL"
+msgstr "ძირითადი URL"
+
+#: src/universal-cp/details-treeview.c:336
+msgid "Service ID"
+msgstr "სერვისის ID"
+
+#: src/universal-cp/details-treeview.c:338
+msgid "Service URL"
+msgstr "სერვისის URL"
+
+#: src/universal-cp/details-treeview.c:340
+msgid "Control URL"
+msgstr "კონტროლის ღ₾"
+
+#: src/universal-cp/details-treeview.c:342
+msgid "Event Subscription URL"
+msgstr ""
+
+#: src/universal-cp/details-treeview.c:383
+msgid "Friendly Name"
+msgstr "მეგობრული სახელი"
+
+#: src/universal-cp/details-treeview.c:385
+msgid "Manufacturer"
+msgstr "მწარმოებელი"
+
+#: src/universal-cp/details-treeview.c:387
+msgid "Manufacturer URL"
+msgstr ""
+
+#: src/universal-cp/details-treeview.c:389
+msgid "Model Description"
+msgstr ""
+
+#: src/universal-cp/details-treeview.c:391
+msgid "Model Name"
+msgstr "Მოდელის სახელი"
+
+#: src/universal-cp/details-treeview.c:393
+msgid "Model Number"
+msgstr ""
+
+#: src/universal-cp/details-treeview.c:395
+msgid "Model URL"
+msgstr "მოდელის URL"
+
+#: src/universal-cp/details-treeview.c:397
+msgid "Serial Number"
+msgstr "სერიული ნომერი"
+
+#: src/universal-cp/details-treeview.c:399
+msgid "UPC"
+msgstr "UPC"
+
+#: src/universal-cp/details-treeview.c:401
+msgid "Presentation URL"
+msgstr "პრეზენტაციის URL"
+
+#: src/universal-cp/details-treeview.c:431
+#: src/universal-cp/event-treeview.c:409
+msgid "Value"
+msgstr "მნიშვნელობა"
+
+#: src/universal-cp/device-treeview.c:69
+msgid "Software"
+msgstr "პროგრამები"
+
+#: src/universal-cp/device-treeview.c:71
+msgid "Version"
+msgstr "ვერსია"
+
+#: src/universal-cp/device-treeview.c:73
+msgid "Author"
+msgstr "ავტორი"
+
+#: src/universal-cp/device-treeview.c:506
+msgid "State variables"
+msgstr "აღწერილი ცვლადები"
+
+#: src/universal-cp/device-treeview.c:547
+msgid "Information not available"
+msgstr "ინფორმაცია მიუწვდომელია"
+
+#: src/universal-cp/device-treeview.c:758
+msgid "UPnP Network"
+msgstr "UPnP ქსელი"
+
+#: src/universal-cp/device-treeview.c:771 src/universal-cp/event-treeview.c:406
+msgid "Device"
+msgstr "მოწყობილობა"
+
+#: src/universal-cp/event-treeview.c:405
+msgid "Time"
+msgstr "დრო"
+
+#: src/universal-cp/event-treeview.c:407
+msgid "Service"
+msgstr "სერვისი"
+
+#: src/universal-cp/event-treeview.c:408
+msgid "State Variable"
+msgstr "მდგმარეობის ცვლადი"
+
+#: src/universal-cp/main.c:55
+msgid "The UDA version to use"
+msgstr "UDA ვერსია გამოსაყენებლად"
