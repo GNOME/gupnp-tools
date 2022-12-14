@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gupnp-tools master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gupnp-tools/issues\n"
-"POT-Creation-Date: 2021-05-10 13:34+0000\n"
-"PO-Revision-Date: 2022-04-24 02:49+0300\n"
+"POT-Creation-Date: 2022-07-29 19:30+0000\n"
+"PO-Revision-Date: 2022-12-11 14:12+0300\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Türkçe <gnome-turk@gnome.org>\n"
 "Language: tr\n"
@@ -22,12 +22,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.1.1\n"
 "X-POOTLE-MTIME: 1429370203.000000\n"
 
 #: data/didl-lite-dialog.ui.in:9
 msgid "GUPnP AV CP - Metadata View"
-msgstr "GUPnP AV CP - Üstveri Görünümü"
+msgstr "GUPnP AV CP - Üst Veri Görünümü"
 
 #: data/gupnp-av-cp.desktop.in:4
 msgid "UPnP AV Control Point"
@@ -325,13 +325,13 @@ msgstr "IPv4 iletişim kuralı ailesini kullanma"
 msgid "Do not use the IPv6 protocol family"
 msgstr "IPv6 iletişim kuralı ailesini kullanma"
 
-#: src/av-cp/main.c:245 src/network-light/main.c:112
-#: src/universal-cp/main.c:195
+#: src/av-cp/main.c:241 src/network-light/main.c:112
+#: src/universal-cp/main.c:194
 msgid "- UPnP AV control point"
 msgstr "- UPnP AV denetim noktası"
 
-#: src/av-cp/main.c:250 src/network-light/main.c:117
-#: src/universal-cp/main.c:200
+#: src/av-cp/main.c:246 src/network-light/main.c:117
+#: src/universal-cp/main.c:199
 #, c-format
 msgid "Could not parse options: %s\n"
 msgstr "Seçenekler ayrıştırılamadı: %s\n"
@@ -393,7 +393,7 @@ msgstr "IPv4 kullanma"
 msgid "Do not use IPv6"
 msgstr "IPv6 kullanma"
 
-#: src/universal-cp/action-dialog.c:690 src/universal-cp/action-dialog.c:709
+#: src/universal-cp/action-dialog.c:692 src/universal-cp/action-dialog.c:711
 #, c-format
 msgid ""
 "Action failed.\n"
@@ -542,7 +542,7 @@ msgid "Presentation URL"
 msgstr "Sunum URLsi"
 
 #: src/universal-cp/details-treeview.c:432
-#: src/universal-cp/event-treeview.c:410
+#: src/universal-cp/event-treeview.c:414
 msgid "Value"
 msgstr "Değer"
 
@@ -558,31 +558,31 @@ msgstr "Sürüm"
 msgid "Author"
 msgstr "Yazar"
 
-#: src/universal-cp/device-treeview.c:483
+#: src/universal-cp/device-treeview.c:507
 msgid "State variables"
 msgstr "Durum değişkenleri"
 
-#: src/universal-cp/device-treeview.c:524
+#: src/universal-cp/device-treeview.c:548
 msgid "Information not available"
 msgstr "Bilgi mevcut değil"
 
-#: src/universal-cp/device-treeview.c:703
+#: src/universal-cp/device-treeview.c:742
 msgid "UPnP Network"
 msgstr "UPnP Ağı"
 
-#: src/universal-cp/device-treeview.c:716 src/universal-cp/event-treeview.c:407
+#: src/universal-cp/device-treeview.c:755 src/universal-cp/event-treeview.c:411
 msgid "Device"
 msgstr "Aygıt"
 
-#: src/universal-cp/event-treeview.c:406
+#: src/universal-cp/event-treeview.c:410
 msgid "Time"
 msgstr "Zaman"
 
-#: src/universal-cp/event-treeview.c:408
+#: src/universal-cp/event-treeview.c:412
 msgid "Service"
 msgstr "Hizmet"
 
-#: src/universal-cp/event-treeview.c:409
+#: src/universal-cp/event-treeview.c:413
 msgid "State Variable"
 msgstr "Durum Değişkeni"
 
