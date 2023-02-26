@@ -7,14 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gupnp-tools master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gupnp-tools/issues\n"
-"POT-Creation-Date: 2020-07-29 20:47+0000\n"
-"PO-Revision-Date: 2021-01-23 08:20+0100\n"
-"Last-Translator: Fabio Tomat <f.t.public@gmail.com>\n"
-"Language-Team: Friulian <fur@li.org>\n"
+"POT-Creation-Date: 2023-01-25 20:34+0000\n"
+"PO-Revision-Date: 2023-01-31 09:41+0000\n"
+"Last-Translator: Fabio T. <f.t.public@gmail.com>\n"
+"Language-Team: Friulian <f.t.public@gmail.com>\n"
 "Language: fur\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Editor: HaiPO 1.4 beta\n"
 "X-Generator: Poedit 2.4.2\n"
 
 #: data/didl-lite-dialog.ui.in:9
@@ -252,7 +253,7 @@ msgid "_Clear event log"
 msgstr "_Nete regjistri event"
 
 #. default details
-#: data/gupnp-universal-cp.ui:410 src/universal-cp/device-treeview.c:37
+#: data/gupnp-universal-cp.ui:410 src/universal-cp/device-treeview.c:36
 msgid "GUPnP Universal Control Point"
 msgstr "Pont di control universâl GUPnP"
 
@@ -284,87 +285,104 @@ msgstr "Espression di ricercje UPnP"
 msgid "column"
 msgstr "colone"
 
-#: src/av-cp/main.c:52 src/network-light/main.c:48 src/universal-cp/main.c:41
+#: src/av-cp/main.c:50 src/network-light/main.c:49 src/universal-cp/main.c:49
 msgid "Network PORT to use for UPnP"
 msgstr "PUARTE di rêt di doprâ par UPnP"
 
-#: src/av-cp/main.c:53 src/network-light/main.c:49 src/universal-cp/main.c:42
+#: src/av-cp/main.c:51 src/network-light/main.c:50 src/universal-cp/main.c:50
 msgid "Network interfaces to use for UPnP communication"
 msgstr "Interfacis di rêt di doprâ pe comunicazion UPnP"
 
-#: src/av-cp/main.c:54
-msgid "Application part of the User-Agent header to use for UPnP communication"
+#: src/av-cp/main.c:52
+msgid ""
+"Application part of the User-Agent header to use for UPnP communication"
 msgstr ""
 "Part de aplicazion de intestazion dal Agjent-Utent di doprâ pes "
 "comunicazions UPnP"
 
-#: src/av-cp/main.c:55
+#: src/av-cp/main.c:53 src/universal-cp/main.c:51
 msgid "Use the IPv4 protocol family"
 msgstr "Dopre la famee di protocoi IPv4"
 
-#: src/av-cp/main.c:56
+#: src/av-cp/main.c:54 src/universal-cp/main.c:52
 msgid "Use the IPv6 protocol family"
 msgstr "Dopre la famee di protocoi IPv6"
 
-#: src/av-cp/main.c:57
+#: src/av-cp/main.c:55 src/universal-cp/main.c:53
 msgid "Do not use the IPv4 protocol family"
 msgstr "No sta doprâ la famee di protocoi IPv4"
 
-#: src/av-cp/main.c:58
+#: src/av-cp/main.c:56 src/universal-cp/main.c:54
 msgid "Do not use the IPv6 protocol family"
 msgstr "No sta doprâ la famee di protocoi IPv6"
 
-#: src/av-cp/main.c:245 src/network-light/main.c:104
-#: src/universal-cp/main.c:149
+#: src/av-cp/main.c:239 src/network-light/main.c:110
+#: src/universal-cp/main.c:192
 msgid "- UPnP AV control point"
 msgstr "- Pont di control AV di UPnP"
 
-#: src/av-cp/main.c:250 src/network-light/main.c:109
-#: src/universal-cp/main.c:154
+#: src/av-cp/main.c:244 src/network-light/main.c:115
+#: src/universal-cp/main.c:197
 #, c-format
 msgid "Could not parse options: %s\n"
 msgstr "Impussibil analizâ lis opzions: %s\n"
 
-#: src/av-cp/search-dialog.c:384
+#: src/av-cp/search-dialog.c:386
 msgid "Show _DIDL…"
 msgstr "Mostre _DIDL…"
 
-#: src/av-cp/search-dialog.c:478 src/av-cp/search-dialog.c:627
+#: src/av-cp/search-dialog.c:480 src/av-cp/search-dialog.c:629
 msgid "Search failed"
 msgstr "Ricercje falide"
 
-#: src/av-cp/search-dialog.c:482
+#: src/av-cp/search-dialog.c:484
 #, c-format
 msgid "Error message was: %s"
 msgstr "Il messaç di erôr al jere: %s"
 
-#: src/av-cp/search-dialog.c:530
+#: src/av-cp/search-dialog.c:532
 #, c-format
 msgid "Searching on %s"
 msgstr "Daûr a cirî su %s"
 
-#: src/av-cp/search-dialog.c:533
+#: src/av-cp/search-dialog.c:535
 #, c-format
 msgid "Searching in %s on %s"
 msgstr "Daûr a cirî in %s su %s"
 
-#: src/av-cp/search-dialog.c:631
+#: src/av-cp/search-dialog.c:633
 #, c-format
 msgid "Search criteria invalid: %s"
 msgstr "Criteri di ricercje no valit: %s"
 
-#: src/av-cp/search-dialog.c:736
+#: src/av-cp/search-dialog.c:738
 #, c-format
 msgid "Error fetching detailed information: %s"
 msgstr "Erôr tal otignî lis informazions detaiadis: %s"
 
-#: src/network-light/main.c:50
+#: src/network-light/main.c:51
 msgid "Friendly name for this UPnP light"
 msgstr "Non selezionât dal utent par cheste lûs UPnP"
 
-#: src/network-light/main.c:51
+#: src/network-light/main.c:52
 msgid "Apply change exclusively to this UPnP light"
 msgstr "Apliche cambi dome par cheste lûs UPnP"
+
+#: src/network-light/main.c:53
+msgid "Use IPv4"
+msgstr "Dopre IPv4"
+
+#: src/network-light/main.c:54
+msgid "Use IPv6"
+msgstr "Dopre IPv6"
+
+#: src/network-light/main.c:55
+msgid "Do not use IPv4"
+msgstr "No sta doprâ IPv4"
+
+#: src/network-light/main.c:56
+msgid "Do not use IPv6"
+msgstr "No sta doprâ IPv6"
 
 #: src/universal-cp/action-dialog.c:690 src/universal-cp/action-dialog.c:709
 #, c-format
@@ -377,187 +395,192 @@ msgstr ""
 "\n"
 "Erôr %d: %s"
 
-#: src/universal-cp/details-treeview.c:198
-#: src/universal-cp/details-treeview.c:226
-#: src/universal-cp/details-treeview.c:252
-#: src/universal-cp/details-treeview.c:431
+#: src/universal-cp/details-treeview.c:197
+#: src/universal-cp/details-treeview.c:225
+#: src/universal-cp/details-treeview.c:251
+#: src/universal-cp/details-treeview.c:430
 msgid "Name"
 msgstr "Non"
 
-#: src/universal-cp/details-treeview.c:200
+#: src/universal-cp/details-treeview.c:199
 msgid "Direction"
 msgstr "Direzion"
 
-#: src/universal-cp/details-treeview.c:205
+#: src/universal-cp/details-treeview.c:204
 msgid "Related State Variable"
 msgstr "Variabile di stât relazionade"
 
-#: src/universal-cp/details-treeview.c:207
+#: src/universal-cp/details-treeview.c:206
 msgid "Is Return Value"
 msgstr "Al è il valôr tornât indaûr"
 
-#: src/universal-cp/details-treeview.c:208
-#: src/universal-cp/details-treeview.c:255
+#: src/universal-cp/details-treeview.c:207
+#: src/universal-cp/details-treeview.c:254
 msgid "Yes"
 msgstr "Sì"
 
-#: src/universal-cp/details-treeview.c:208
-#: src/universal-cp/details-treeview.c:255
+#: src/universal-cp/details-treeview.c:207
+#: src/universal-cp/details-treeview.c:254
 msgid "No"
 msgstr "No"
 
-#: src/universal-cp/details-treeview.c:228
+#: src/universal-cp/details-treeview.c:227
 msgid "Number of Arguments"
 msgstr "Numar di argoments"
 
-#: src/universal-cp/details-treeview.c:254
+#: src/universal-cp/details-treeview.c:253
 msgid "Send Events"
 msgstr "Invie events"
 
-#: src/universal-cp/details-treeview.c:256
+#: src/universal-cp/details-treeview.c:255
 msgid "GType"
 msgstr "GType"
 
-#: src/universal-cp/details-treeview.c:259
+#: src/universal-cp/details-treeview.c:258
 msgid "Default Value"
 msgstr "Valôr predefinît"
 
-#: src/universal-cp/details-treeview.c:265
+#: src/universal-cp/details-treeview.c:264
 msgid "Minimum"
 msgstr "Minim"
 
-#: src/universal-cp/details-treeview.c:269
+#: src/universal-cp/details-treeview.c:268
 msgid "Maximum"
 msgstr "Massim"
 
-#: src/universal-cp/details-treeview.c:273
+#: src/universal-cp/details-treeview.c:272
 msgid "Step"
 msgstr "Pas"
 
-#: src/universal-cp/details-treeview.c:293
+#: src/universal-cp/details-treeview.c:292
 msgid "Allowed Values"
 msgstr "Valôrs permès"
 
-#: src/universal-cp/details-treeview.c:317
-#: src/universal-cp/details-treeview.c:364
+#: src/universal-cp/details-treeview.c:316
+#: src/universal-cp/details-treeview.c:363
 msgid "Location"
 msgstr "Lûc"
 
-#: src/universal-cp/details-treeview.c:322
-#: src/universal-cp/details-treeview.c:369
+#: src/universal-cp/details-treeview.c:321
+#: src/universal-cp/details-treeview.c:368
 msgid "UDN"
 msgstr "UDN"
 
-#: src/universal-cp/details-treeview.c:327
-#: src/universal-cp/details-treeview.c:374
+#: src/universal-cp/details-treeview.c:326
+#: src/universal-cp/details-treeview.c:373
 msgid "Type"
 msgstr "Gjenar"
 
-#: src/universal-cp/details-treeview.c:332
-#: src/universal-cp/details-treeview.c:379
+#: src/universal-cp/details-treeview.c:331
+#: src/universal-cp/details-treeview.c:378
 msgid "Base URL"
 msgstr "URL base"
 
-#: src/universal-cp/details-treeview.c:337
+#: src/universal-cp/details-treeview.c:336
 msgid "Service ID"
 msgstr "ID servizi"
 
-#: src/universal-cp/details-treeview.c:339
+#: src/universal-cp/details-treeview.c:338
 msgid "Service URL"
 msgstr "URL servizi"
 
-#: src/universal-cp/details-treeview.c:341
+#: src/universal-cp/details-treeview.c:340
 msgid "Control URL"
 msgstr "URL control"
 
-#: src/universal-cp/details-treeview.c:343
+#: src/universal-cp/details-treeview.c:342
 msgid "Event Subscription URL"
 msgstr "URL sotscrizion event"
 
-#: src/universal-cp/details-treeview.c:384
+#: src/universal-cp/details-treeview.c:383
 msgid "Friendly Name"
 msgstr "Non facil"
 
-#: src/universal-cp/details-treeview.c:386
+#: src/universal-cp/details-treeview.c:385
 msgid "Manufacturer"
 msgstr "Produtôr"
 
-#: src/universal-cp/details-treeview.c:388
+#: src/universal-cp/details-treeview.c:387
 msgid "Manufacturer URL"
 msgstr "URL produtôr"
 
-#: src/universal-cp/details-treeview.c:390
+#: src/universal-cp/details-treeview.c:389
 msgid "Model Description"
 msgstr "Descrizion model"
 
-#: src/universal-cp/details-treeview.c:392
+#: src/universal-cp/details-treeview.c:391
 msgid "Model Name"
 msgstr "Non model"
 
-#: src/universal-cp/details-treeview.c:394
+#: src/universal-cp/details-treeview.c:393
 msgid "Model Number"
 msgstr "Numar model"
 
-#: src/universal-cp/details-treeview.c:396
+#: src/universal-cp/details-treeview.c:395
 msgid "Model URL"
 msgstr "URL model"
 
-#: src/universal-cp/details-treeview.c:398
+#: src/universal-cp/details-treeview.c:397
 msgid "Serial Number"
 msgstr "Numar seriâl"
 
-#: src/universal-cp/details-treeview.c:400
+#: src/universal-cp/details-treeview.c:399
 msgid "UPC"
 msgstr "UPC"
 
-#: src/universal-cp/details-treeview.c:402
+#: src/universal-cp/details-treeview.c:401
 msgid "Presentation URL"
 msgstr "URL presentazion"
 
-#: src/universal-cp/details-treeview.c:432
-#: src/universal-cp/event-treeview.c:410
+#: src/universal-cp/details-treeview.c:431
+#: src/universal-cp/event-treeview.c:409
 msgid "Value"
 msgstr "Valôr"
 
-#: src/universal-cp/device-treeview.c:70
+#: src/universal-cp/device-treeview.c:69
 msgid "Software"
 msgstr "Software"
 
-#: src/universal-cp/device-treeview.c:72
+#: src/universal-cp/device-treeview.c:71
 msgid "Version"
 msgstr "Version"
 
-#: src/universal-cp/device-treeview.c:74
+#: src/universal-cp/device-treeview.c:73
 msgid "Author"
 msgstr "Autôr"
 
-#: src/universal-cp/device-treeview.c:483
+#: src/universal-cp/device-treeview.c:506
 msgid "State variables"
 msgstr "Variabilis di stât"
 
-#: src/universal-cp/device-treeview.c:524
+#: src/universal-cp/device-treeview.c:547
 msgid "Information not available"
 msgstr "Informazion no disponibile"
 
-#: src/universal-cp/device-treeview.c:703
+#: src/universal-cp/device-treeview.c:758
 msgid "UPnP Network"
 msgstr "Rêt UPnP"
 
-#: src/universal-cp/device-treeview.c:716 src/universal-cp/event-treeview.c:407
+#: src/universal-cp/device-treeview.c:771
+#: src/universal-cp/event-treeview.c:406
 msgid "Device"
 msgstr "Dispositîf"
 
-#: src/universal-cp/event-treeview.c:406
+#: src/universal-cp/event-treeview.c:405
 msgid "Time"
 msgstr "Ore"
 
-#: src/universal-cp/event-treeview.c:408
+#: src/universal-cp/event-treeview.c:407
 msgid "Service"
 msgstr "Servizi"
 
-#: src/universal-cp/event-treeview.c:409
+#: src/universal-cp/event-treeview.c:408
 msgid "State Variable"
 msgstr "Variabile di stât"
+
+#: src/universal-cp/main.c:55
+msgid "The UDA version to use"
+msgstr "La version di UDA di doprâ"
 
 #~ msgid "@PKGDATADIR@/pixmaps/av-cp.png"
 #~ msgstr "@PKGDATADIR@/pixmaps/av-cp.png"
