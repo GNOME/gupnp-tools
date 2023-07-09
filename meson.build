@@ -7,7 +7,7 @@ if host_machine.system() == 'windows'
     win = import('windows')
 endif
 
-gssdp = dependency('gssdp-1.6', version: '>= 1.6.0', default_options: ['sniffer=false'])
+gssdp = dependency('gssdp-1.6', version : '>= 1.6.2', default_options: ['sniffer=false', 'manpages=false', 'gtk_doc=false'], fallback: 'gssdp-1.6')
 gupnp = dependency('gupnp-1.6', version: '>= 1.6.0')
 soup = dependency('libsoup-3.0', version: '>= 3.0')
 gupnp_av = dependency('gupnp-av-1.0', version: '>= 0.5.5', required: get_option('av-tools'))
