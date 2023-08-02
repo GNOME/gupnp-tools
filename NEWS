@@ -1,3 +1,15 @@
+0.12.1 (stable)
+===============
+
+- Universal CP:
+    - Do not crash if a device disappears
+
+- Fix issue with meson 1.2.0
+- Translation updates
+
+Bugs fixed in this release:
+ - https://gitlab.gnome.org/GNOME/gupnp-tools/issues/24
+
 0.12.0 (stable)
 ===============
 
