@@ -34,7 +34,11 @@ pretty_print_xml (const char *xml)
         char *text;
         int length;
 
-        doc = xmlRecoverMemory (xml, strlen (xml));
+        doc = xmlReadMemory (xml,
+                             strlen (xml),
+                             NULL,
+                             NULL,
+                             XML_PARSE_NONET | XML_PARSE_RECOVER);
 
         if (!doc)
                 return NULL;
