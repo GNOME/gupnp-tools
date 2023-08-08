@@ -113,7 +113,6 @@ entry_completion_on_match (GtkEntryCompletion *self, const char *key, GtkTreeIte
         const char *needle = strrchr (key, ' ');
         if (needle != NULL) {
                 if ((needle - key)> gtk_editable_get_position (GTK_EDITABLE (entry))) {
-                        g_print ("Position wrong\n");
                         goto out;
                 }
                 needle++;
