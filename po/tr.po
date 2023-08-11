@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gupnp-tools master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gupnp-tools/issues\n"
-"POT-Creation-Date: 2022-07-29 19:30+0000\n"
-"PO-Revision-Date: 2022-12-11 14:12+0300\n"
+"POT-Creation-Date: 2023-01-25 20:34+0000\n"
+"PO-Revision-Date: 2023-07-02 14:39+0300\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Türkçe <gnome-turk@gnome.org>\n"
 "Language: tr\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.2.2\n"
 "X-POOTLE-MTIME: 1429370203.000000\n"
 
 #: data/didl-lite-dialog.ui.in:9
@@ -264,7 +264,7 @@ msgid "_Clear event log"
 msgstr "Olay günlüğünü _temizle"
 
 #. default details
-#: data/gupnp-universal-cp.ui:410 src/universal-cp/device-treeview.c:37
+#: data/gupnp-universal-cp.ui:410 src/universal-cp/device-treeview.c:36
 msgid "GUPnP Universal Control Point"
 msgstr "GUPnP Evrensel Denetim Noktası"
 
@@ -296,104 +296,104 @@ msgstr "UPnP arama ifadesi"
 msgid "column"
 msgstr "sütun"
 
-#: src/av-cp/main.c:52 src/network-light/main.c:51 src/universal-cp/main.c:51
+#: src/av-cp/main.c:50 src/network-light/main.c:49 src/universal-cp/main.c:49
 msgid "Network PORT to use for UPnP"
 msgstr "UPnp için kullanılacak ağ BAĞLANTI NOKTASI"
 
-#: src/av-cp/main.c:53 src/network-light/main.c:52 src/universal-cp/main.c:52
+#: src/av-cp/main.c:51 src/network-light/main.c:50 src/universal-cp/main.c:50
 msgid "Network interfaces to use for UPnP communication"
 msgstr "UPnP iletişimi için kullanılacak ağ arayüzleri"
 
-#: src/av-cp/main.c:54
+#: src/av-cp/main.c:52
 msgid "Application part of the User-Agent header to use for UPnP communication"
 msgstr ""
 "UPnP iletişimi için kullanılacak Kullanıcı-Aracısı başlığının uygulama bölümü"
 
-#: src/av-cp/main.c:55 src/universal-cp/main.c:53
+#: src/av-cp/main.c:53 src/universal-cp/main.c:51
 msgid "Use the IPv4 protocol family"
 msgstr "IPv4 iletişim kuralı ailesini kullan"
 
-#: src/av-cp/main.c:56 src/universal-cp/main.c:54
+#: src/av-cp/main.c:54 src/universal-cp/main.c:52
 msgid "Use the IPv6 protocol family"
 msgstr "IPv6 iletişim kuralı ailesini kullan"
 
-#: src/av-cp/main.c:57 src/universal-cp/main.c:55
+#: src/av-cp/main.c:55 src/universal-cp/main.c:53
 msgid "Do not use the IPv4 protocol family"
 msgstr "IPv4 iletişim kuralı ailesini kullanma"
 
-#: src/av-cp/main.c:58 src/universal-cp/main.c:56
+#: src/av-cp/main.c:56 src/universal-cp/main.c:54
 msgid "Do not use the IPv6 protocol family"
 msgstr "IPv6 iletişim kuralı ailesini kullanma"
 
-#: src/av-cp/main.c:241 src/network-light/main.c:112
-#: src/universal-cp/main.c:194
+#: src/av-cp/main.c:239 src/network-light/main.c:110
+#: src/universal-cp/main.c:192
 msgid "- UPnP AV control point"
 msgstr "- UPnP AV denetim noktası"
 
-#: src/av-cp/main.c:246 src/network-light/main.c:117
-#: src/universal-cp/main.c:199
+#: src/av-cp/main.c:244 src/network-light/main.c:115
+#: src/universal-cp/main.c:197
 #, c-format
 msgid "Could not parse options: %s\n"
 msgstr "Seçenekler ayrıştırılamadı: %s\n"
 
-#: src/av-cp/search-dialog.c:384
+#: src/av-cp/search-dialog.c:386
 msgid "Show _DIDL…"
 msgstr "_DIDL Göster…"
 
-#: src/av-cp/search-dialog.c:478 src/av-cp/search-dialog.c:627
+#: src/av-cp/search-dialog.c:480 src/av-cp/search-dialog.c:629
 msgid "Search failed"
 msgstr "Arama başarısız"
 
-#: src/av-cp/search-dialog.c:482
+#: src/av-cp/search-dialog.c:484
 #, c-format
 msgid "Error message was: %s"
 msgstr "Hata iletisi: %s"
 
-#: src/av-cp/search-dialog.c:530
+#: src/av-cp/search-dialog.c:532
 #, c-format
 msgid "Searching on %s"
 msgstr "%s üzerinde ara"
 
-#: src/av-cp/search-dialog.c:533
+#: src/av-cp/search-dialog.c:535
 #, c-format
 msgid "Searching in %s on %s"
 msgstr "%2$s üstünde %1$s aranıyor"
 
-#: src/av-cp/search-dialog.c:631
+#: src/av-cp/search-dialog.c:633
 #, c-format
 msgid "Search criteria invalid: %s"
 msgstr "Arama ölçütü geçersiz: %s"
 
-#: src/av-cp/search-dialog.c:736
+#: src/av-cp/search-dialog.c:738
 #, c-format
 msgid "Error fetching detailed information: %s"
 msgstr "Ayrıntılı bilgi getirilirken hata oldu: %s"
 
-#: src/network-light/main.c:53
+#: src/network-light/main.c:51
 msgid "Friendly name for this UPnP light"
 msgstr "Bu UPnP ışığı için kolay ad"
 
-#: src/network-light/main.c:54
+#: src/network-light/main.c:52
 msgid "Apply change exclusively to this UPnP light"
 msgstr "Değişikliği yalnızca bu UPnP ışığa uygula"
 
-#: src/network-light/main.c:55
+#: src/network-light/main.c:53
 msgid "Use IPv4"
 msgstr "IPv4 Kullan"
 
-#: src/network-light/main.c:56
+#: src/network-light/main.c:54
 msgid "Use IPv6"
 msgstr "IPv6 Kullan"
 
-#: src/network-light/main.c:57
+#: src/network-light/main.c:55
 msgid "Do not use IPv4"
 msgstr "IPv4 kullanma"
 
-#: src/network-light/main.c:58
+#: src/network-light/main.c:56
 msgid "Do not use IPv6"
 msgstr "IPv6 kullanma"
 
-#: src/universal-cp/action-dialog.c:692 src/universal-cp/action-dialog.c:711
+#: src/universal-cp/action-dialog.c:690 src/universal-cp/action-dialog.c:709
 #, c-format
 msgid ""
 "Action failed.\n"
@@ -404,189 +404,189 @@ msgstr ""
 "\n"
 "Hata %d: %s"
 
-#: src/universal-cp/details-treeview.c:198
-#: src/universal-cp/details-treeview.c:226
-#: src/universal-cp/details-treeview.c:252
-#: src/universal-cp/details-treeview.c:431
+#: src/universal-cp/details-treeview.c:197
+#: src/universal-cp/details-treeview.c:225
+#: src/universal-cp/details-treeview.c:251
+#: src/universal-cp/details-treeview.c:430
 msgid "Name"
 msgstr "Ad"
 
-#: src/universal-cp/details-treeview.c:200
+#: src/universal-cp/details-treeview.c:199
 msgid "Direction"
 msgstr "Yön"
 
-#: src/universal-cp/details-treeview.c:205
+#: src/universal-cp/details-treeview.c:204
 msgid "Related State Variable"
 msgstr "İlişkili Durum Değişkeni"
 
-#: src/universal-cp/details-treeview.c:207
+#: src/universal-cp/details-treeview.c:206
 msgid "Is Return Value"
 msgstr "Dönüş Değeri Mi"
 
-#: src/universal-cp/details-treeview.c:208
-#: src/universal-cp/details-treeview.c:255
+#: src/universal-cp/details-treeview.c:207
+#: src/universal-cp/details-treeview.c:254
 msgid "Yes"
 msgstr "Evet"
 
-#: src/universal-cp/details-treeview.c:208
-#: src/universal-cp/details-treeview.c:255
+#: src/universal-cp/details-treeview.c:207
+#: src/universal-cp/details-treeview.c:254
 msgid "No"
 msgstr "Hayır"
 
-#: src/universal-cp/details-treeview.c:228
+#: src/universal-cp/details-treeview.c:227
 msgid "Number of Arguments"
 msgstr "Argüman Sayısı"
 
-#: src/universal-cp/details-treeview.c:254
+#: src/universal-cp/details-treeview.c:253
 msgid "Send Events"
 msgstr "Olayları Gönder"
 
-#: src/universal-cp/details-treeview.c:256
+#: src/universal-cp/details-treeview.c:255
 msgid "GType"
 msgstr "GType"
 
-#: src/universal-cp/details-treeview.c:259
+#: src/universal-cp/details-treeview.c:258
 msgid "Default Value"
 msgstr "Öntanımlı Değer"
 
-#: src/universal-cp/details-treeview.c:265
+#: src/universal-cp/details-treeview.c:264
 msgid "Minimum"
 msgstr "Asgari"
 
-#: src/universal-cp/details-treeview.c:269
+#: src/universal-cp/details-treeview.c:268
 msgid "Maximum"
 msgstr "Azami"
 
-#: src/universal-cp/details-treeview.c:273
+#: src/universal-cp/details-treeview.c:272
 msgid "Step"
 msgstr "Adım"
 
-#: src/universal-cp/details-treeview.c:293
+#: src/universal-cp/details-treeview.c:292
 msgid "Allowed Values"
 msgstr "İzinli Değerler"
 
-#: src/universal-cp/details-treeview.c:317
-#: src/universal-cp/details-treeview.c:364
+#: src/universal-cp/details-treeview.c:316
+#: src/universal-cp/details-treeview.c:363
 msgid "Location"
 msgstr "Konum"
 
-#: src/universal-cp/details-treeview.c:322
-#: src/universal-cp/details-treeview.c:369
+#: src/universal-cp/details-treeview.c:321
+#: src/universal-cp/details-treeview.c:368
 msgid "UDN"
 msgstr "UDN"
 
-#: src/universal-cp/details-treeview.c:327
-#: src/universal-cp/details-treeview.c:374
+#: src/universal-cp/details-treeview.c:326
+#: src/universal-cp/details-treeview.c:373
 msgid "Type"
 msgstr "Tür"
 
-#: src/universal-cp/details-treeview.c:332
-#: src/universal-cp/details-treeview.c:379
+#: src/universal-cp/details-treeview.c:331
+#: src/universal-cp/details-treeview.c:378
 msgid "Base URL"
-msgstr "Taban URLsi"
+msgstr "Taban URLʼsi"
 
-#: src/universal-cp/details-treeview.c:337
+#: src/universal-cp/details-treeview.c:336
 msgid "Service ID"
 msgstr "Hizmet Kimliği"
 
-#: src/universal-cp/details-treeview.c:339
+#: src/universal-cp/details-treeview.c:338
 msgid "Service URL"
-msgstr "Hizmet URLsi"
+msgstr "Hizmet URLʼsi"
 
-#: src/universal-cp/details-treeview.c:341
+#: src/universal-cp/details-treeview.c:340
 msgid "Control URL"
-msgstr "Denetim URLsi"
+msgstr "Denetim URLʼsi"
 
-#: src/universal-cp/details-treeview.c:343
+#: src/universal-cp/details-treeview.c:342
 msgid "Event Subscription URL"
-msgstr "Olay Aboneliği URLsi"
+msgstr "Olay Aboneliği URLʼsi"
 
-#: src/universal-cp/details-treeview.c:384
+#: src/universal-cp/details-treeview.c:383
 msgid "Friendly Name"
 msgstr "Tanıdık Ad"
 
-#: src/universal-cp/details-treeview.c:386
+#: src/universal-cp/details-treeview.c:385
 msgid "Manufacturer"
 msgstr "Üretici"
 
-#: src/universal-cp/details-treeview.c:388
+#: src/universal-cp/details-treeview.c:387
 msgid "Manufacturer URL"
-msgstr "Üretici URLsi"
+msgstr "Üretici URLʼsi"
 
-#: src/universal-cp/details-treeview.c:390
+#: src/universal-cp/details-treeview.c:389
 msgid "Model Description"
 msgstr "Model Tanımı"
 
-#: src/universal-cp/details-treeview.c:392
+#: src/universal-cp/details-treeview.c:391
 msgid "Model Name"
 msgstr "Model Adı"
 
-#: src/universal-cp/details-treeview.c:394
+#: src/universal-cp/details-treeview.c:393
 msgid "Model Number"
 msgstr "Model Numarası"
 
-#: src/universal-cp/details-treeview.c:396
+#: src/universal-cp/details-treeview.c:395
 msgid "Model URL"
-msgstr "Model URLsi"
+msgstr "Model URLʼsi"
 
-#: src/universal-cp/details-treeview.c:398
+#: src/universal-cp/details-treeview.c:397
 msgid "Serial Number"
 msgstr "Seri Numarası"
 
-#: src/universal-cp/details-treeview.c:400
+#: src/universal-cp/details-treeview.c:399
 msgid "UPC"
 msgstr "UPC"
 
-#: src/universal-cp/details-treeview.c:402
+#: src/universal-cp/details-treeview.c:401
 msgid "Presentation URL"
-msgstr "Sunum URLsi"
+msgstr "Sunum URLʼsi"
 
-#: src/universal-cp/details-treeview.c:432
-#: src/universal-cp/event-treeview.c:414
+#: src/universal-cp/details-treeview.c:431
+#: src/universal-cp/event-treeview.c:409
 msgid "Value"
 msgstr "Değer"
 
-#: src/universal-cp/device-treeview.c:70
+#: src/universal-cp/device-treeview.c:69
 msgid "Software"
 msgstr "Yazılım"
 
-#: src/universal-cp/device-treeview.c:72
+#: src/universal-cp/device-treeview.c:71
 msgid "Version"
 msgstr "Sürüm"
 
-#: src/universal-cp/device-treeview.c:74
+#: src/universal-cp/device-treeview.c:73
 msgid "Author"
 msgstr "Yazar"
 
-#: src/universal-cp/device-treeview.c:507
+#: src/universal-cp/device-treeview.c:506
 msgid "State variables"
 msgstr "Durum değişkenleri"
 
-#: src/universal-cp/device-treeview.c:548
+#: src/universal-cp/device-treeview.c:547
 msgid "Information not available"
 msgstr "Bilgi mevcut değil"
 
-#: src/universal-cp/device-treeview.c:742
+#: src/universal-cp/device-treeview.c:758
 msgid "UPnP Network"
 msgstr "UPnP Ağı"
 
-#: src/universal-cp/device-treeview.c:755 src/universal-cp/event-treeview.c:411
+#: src/universal-cp/device-treeview.c:771 src/universal-cp/event-treeview.c:406
 msgid "Device"
 msgstr "Aygıt"
 
-#: src/universal-cp/event-treeview.c:410
+#: src/universal-cp/event-treeview.c:405
 msgid "Time"
 msgstr "Zaman"
 
-#: src/universal-cp/event-treeview.c:412
+#: src/universal-cp/event-treeview.c:407
 msgid "Service"
 msgstr "Hizmet"
 
-#: src/universal-cp/event-treeview.c:413
+#: src/universal-cp/event-treeview.c:408
 msgid "State Variable"
 msgstr "Durum Değişkeni"
 
-#: src/universal-cp/main.c:57
+#: src/universal-cp/main.c:55
 msgid "The UDA version to use"
 msgstr "Kullanılacak UDA sürümü"
 
