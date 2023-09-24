@@ -17,16 +17,13 @@ on_variable_notify (GUPnPServiceProxy *proxy,
 {
         g_autoptr (GDateTime) dt = g_date_time_new_now_local ();
         g_autofree char *timestr = g_date_time_format_iso8601 (dt);
-        g_auto (GValue) v = G_VALUE_INIT;
-        g_value_init (&v, G_TYPE_STRING);
-        g_value_transform (value, &v);
 
         g_print ("%s|%s|%s|%s|%s\n",
                  timestr,
                  gupnp_service_info_get_udn (GUPNP_SERVICE_INFO (user_data)),
                  gupnp_service_info_get_id (GUPNP_SERVICE_INFO (user_data)),
                  variable,
-                 g_value_get_string (&v));
+                 g_value_get_string (value));
 }
 
 void
@@ -67,7 +64,7 @@ on_introspection (GObject *source, GAsyncResult *res, gpointer user_data)
 
                 gupnp_service_proxy_add_notify (GUPNP_SERVICE_PROXY (source),
                                                 info->name,
-                                                info->type,
+                                                G_TYPE_STRING,
                                                 on_variable_notify,
                                                 source);
         }
