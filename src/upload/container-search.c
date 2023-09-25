@@ -94,7 +94,7 @@ browse_cb (GObject *object, GAsyncResult *res, gpointer user_data)
 
         gupnp_service_proxy_action_get_result (action,
                                                &error,
-                                               "Restul",
+                                               "Result",
                                                G_TYPE_STRING,
                                                &result,
                                                NULL);
