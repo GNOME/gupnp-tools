@@ -22,6 +22,7 @@
 
 #include "pretty-print.h"
 
+#include <libxml/globals.h>
 #include <libxml/xmlreader.h>
 
 #include <string.h>
