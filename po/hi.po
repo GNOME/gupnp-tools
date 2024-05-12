@@ -1,0 +1,579 @@
+# Hindi translation for gupnp-tools.
+# Copyright (C) 2024 gupnp-tools's COPYRIGHT HOLDER
+# This file is distributed under the same license as the gupnp-tools package.
+# Scrambled777 <weblate.scrambled777@simplelogin.com>, 2024.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gupnp-tools master\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gupnp-tools/issues/\n"
+"POT-Creation-Date: 2024-04-07 15:34+0000\n"
+"PO-Revision-Date: 2024-04-29 21:07+0530\n"
+"Last-Translator: Scrambled777 <weblate.scrambled777@simplelogin.com>\n"
+"Language-Team: Hindi\n"
+"Language: hi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Gtranslator 46.1\n"
+
+#: data/didl-lite-dialog.ui.in:9
+msgid "GUPnP AV CP - Metadata View"
+msgstr "GUPnP AV CP - मेटाडेटा दृश्य"
+
+#: data/gupnp-av-cp.desktop.in:4
+msgid "UPnP AV Control Point"
+msgstr "UPnP AV नियंत्रण बिंदु"
+
+#: data/gupnp-av-cp.desktop.in:5
+msgid "Browse and control UPnP multimedia devices"
+msgstr "UPnP मल्टीमीडिया उपकरण ब्राउज़ और नियंत्रित करें"
+
+#: data/gupnp-av-cp.ui:22 data/gupnp-av-cp.ui:208
+msgid "_Play"
+msgstr "चलाएं (_P)"
+
+#: data/gupnp-av-cp.ui:31
+msgid "Fetch the DIDL-Lite XML for this media object"
+msgstr "इस मीडिया वस्तु के लिए DIDL-Lite XML प्राप्त करें"
+
+#: data/gupnp-av-cp.ui:32
+msgid "Fetch _DIDL-Lite"
+msgstr "_DIDL-Lite लाएं"
+
+#: data/gupnp-av-cp.ui:41
+msgid "Search…"
+msgstr "खोजें…"
+
+#: data/gupnp-av-cp.ui:89
+msgid "GUPnP AV Control Point"
+msgstr "GUPnP AV नियंत्रण बिंदु"
+
+#: data/gupnp-av-cp.ui:104 data/gupnp-universal-cp.ui:424
+msgid "_File"
+msgstr "फाइल (_F)"
+
+#: data/gupnp-av-cp.ui:113
+msgid "Close"
+msgstr "बंद करें"
+
+#: data/gupnp-av-cp.ui:126
+msgid "_Tools"
+msgstr "औजार (_T)"
+
+#: data/gupnp-av-cp.ui:136
+msgid "_Lenient Mode"
+msgstr "उदार मोड (_L)"
+
+#: data/gupnp-av-cp.ui:148 data/gupnp-universal-cp.ui:506
+msgid "_Help"
+msgstr "सहायता (_H)"
+
+#: data/gupnp-av-cp.ui:157 data/gupnp-universal-cp.ui:515
+msgid "About"
+msgstr "gupnp-tools के बारे में"
+
+#: data/gupnp-av-cp.ui:257
+msgid "P_ause"
+msgstr "विरामित करें (_a)"
+
+#: data/gupnp-av-cp.ui:306
+msgid "_Stop"
+msgstr "रोकें (_S)"
+
+#: data/gupnp-av-cp.ui:355
+msgid "Pre_vious"
+msgstr "पिछला (_v)"
+
+#: data/gupnp-av-cp.ui:418
+msgid "_Next"
+msgstr "अगला (_N)"
+
+#: data/gupnp-av-cp.ui:467
+msgid "_Rescan"
+msgstr "पुनःस्कैन करें (_R)"
+
+#: data/gupnp-av-cp.ui:514
+msgid ""
+"Clears the CP's idea of the state of the currently selected AV Renderer. "
+"Useful for dealing with AV Renderers that don't report state changes."
+msgstr ""
+"वर्तमान में चयनित AV रेंडरर की स्थिति के बारे में CP के विचार को साफ करता है। AV रेंडरर्स से "
+"निपटने के लिए उपयोगी जो स्थिति परिवर्तनों की रिपोर्ट नहीं करते हैं।"
+
+#: data/gupnp-av-cp.ui:525
+msgid "_Clear state"
+msgstr "स्थिति साफ करें (_C)"
+
+#: data/gupnp-av-cp.ui:587
+msgid "_Renderer: "
+msgstr "रेंडरर (_R): "
+
+#: data/gupnp-av-cp.ui:725 data/gupnp-network-light.ui:7
+#: data/gupnp-universal-cp.ui:8
+msgid "Copyright (C) 2007 Zeeshan Ali (Khattak)"
+msgstr "कॉपीराइट (C) 2007 जीशान अली (खट्टक)"
+
+#: data/gupnp-av-cp.ui:726
+msgid ""
+"An UPnP AV Control Point based on GUPnP framework.\n"
+"Inspired by Intel Tools for UPnP."
+msgstr ""
+"GUPnP ढांचे पर आधारित एक UPnP AV नियंत्रण बिंदु।\n"
+"UPnP के लिए Intel टूल्स से प्रेरित।"
+
+#: data/gupnp-av-cp.ui:729 data/gupnp-network-light.ui:11
+#: data/gupnp-universal-cp.ui:12
+msgid "GUPnP homepage"
+msgstr "GUPnP मुखपृष्ठ"
+
+#. TRANSLATORS: Replace this string with your names, one name per line.
+#: data/gupnp-av-cp.ui:731 data/gupnp-network-light.ui:13
+#: data/gupnp-universal-cp.ui:14
+msgid "translator-credits"
+msgstr "Scrambled777 <weblate.scrambled777@simplelogin.com>"
+
+#: data/gupnp-network-light.desktop.in:4
+msgid "UPnP Network Light"
+msgstr "UPnP नेटवर्क लाइट"
+
+#: data/gupnp-network-light.desktop.in:5
+msgid "Sample UPnP application for controlling lights"
+msgstr "रोशनी को नियंत्रित करने के लिए नमूना UPnP अनुप्रयोग"
+
+#: data/gupnp-network-light.ui:8
+msgid ""
+"A virtual network light bulb based on GUPnP framework.\n"
+"Inspired by Intel Tools for UPnP."
+msgstr ""
+"GUPnP ढांचे पर आधारित एक आभासी नेटवर्क लाइट बल्ब।\n"
+"UPnP के लिए Intel टूल्स से प्रेरित।"
+
+#: data/gupnp-network-light.ui:38
+msgid "GUPnP Network Light"
+msgstr "GUPnP नेटवर्क लाइट"
+
+#: data/gupnp-network-light.ui:63
+msgctxt "network-light"
+msgid "_On"
+msgstr "चालू (_O)"
+
+#: data/gupnp-network-light.ui:83
+msgid "_Increase luminance by 20%"
+msgstr "चमक को 20% बढ़ाएं (_I)"
+
+#: data/gupnp-network-light.ui:92
+msgid "_Decrease luminance by 20%"
+msgstr "चमक को 20% घटाएं (_D)"
+
+#: data/gupnp-network-light.ui:107
+msgid "_About"
+msgstr "gupnp-tools के बारे में (_A)"
+
+#: data/gupnp-universal-cp.desktop.in:4
+msgid "UPnP Universal Control Point"
+msgstr "UPnP सार्वभौमिक नियंत्रण बिंदु"
+
+#: data/gupnp-universal-cp.desktop.in:5
+msgid "Inspect and control UPnP devices across your local network"
+msgstr "अपने स्थानीय नेटवर्क पर UPnP उपकरणों का निरीक्षण और नियंत्रण करें"
+
+#: data/gupnp-universal-cp.ui:9
+msgid ""
+"A Generic Control Point based on GUPnP framework.\n"
+"Inspired by Intel Tools for UPnP."
+msgstr ""
+"GUPnP ढांचे पर आधारित एक सामान्य नियंत्रण बिंदु।\n"
+"UPnP के लिए Intel टूल्स से प्रेरित।"
+
+#: data/gupnp-universal-cp.ui:42
+msgid "Action Invocation"
+msgstr "कार्रवाई आह्वान"
+
+#: data/gupnp-universal-cp.ui:106
+msgid "_Invoke"
+msgstr "आह्वान करें (_I)"
+
+#: data/gupnp-universal-cp.ui:176
+msgid "device"
+msgstr "उपकरण"
+
+#: data/gupnp-universal-cp.ui:189
+msgid "service"
+msgstr "सेवा"
+
+#: data/gupnp-universal-cp.ui:202
+msgid "action"
+msgstr "कार्रवाई"
+
+#: data/gupnp-universal-cp.ui:245
+msgid "'in' arguments"
+msgstr "'in' तर्क"
+
+#: data/gupnp-universal-cp.ui:278
+msgid "'out' arguments"
+msgstr "'out' तर्क"
+
+#: data/gupnp-universal-cp.ui:312
+msgid "Copy value"
+msgstr "मान कॉपी करें"
+
+#: data/gupnp-universal-cp.ui:321
+msgid "Copy all details"
+msgstr "सभी विवरण कॉपी करें"
+
+#: data/gupnp-universal-cp.ui:333
+msgid "Invoke"
+msgstr "आह्वान करें"
+
+#: data/gupnp-universal-cp.ui:342
+msgid "Subscribe to events"
+msgstr "घटनाओं की सदस्यता लें"
+
+#: data/gupnp-universal-cp.ui:357 data/gupnp-universal-cp.ui:468
+msgid "_Expand all devices"
+msgstr "सभी उपकरणों को विस्तृत करें (_E)"
+
+#: data/gupnp-universal-cp.ui:366 data/gupnp-universal-cp.ui:477
+msgid "_Collapse all devices"
+msgstr "सभी उपकरणों को संक्षिप्त करें (_C)"
+
+#: data/gupnp-universal-cp.ui:378
+msgid "Copy event"
+msgstr "घटना कॉपी करें"
+
+#: data/gupnp-universal-cp.ui:387
+msgid "Copy all events"
+msgstr "सभी घटनाएं कॉपी करें"
+
+#: data/gupnp-universal-cp.ui:402
+msgid "_Clear event log"
+msgstr "घटना लॉग साफ करें (_C)"
+
+#. default details
+#: data/gupnp-universal-cp.ui:410 src/universal-cp/device-treeview.c:36
+msgid "GUPnP Universal Control Point"
+msgstr "GUPnP सार्वभौमिक नियंत्रण बिंदु"
+
+#: data/gupnp-universal-cp.ui:433
+msgid "Clear event log"
+msgstr "घटना लॉग साफ करें"
+
+#: data/gupnp-universal-cp.ui:447
+msgid "Quit"
+msgstr "छोड़ें"
+
+#: data/gupnp-universal-cp.ui:459
+msgid "_View"
+msgstr "देखें (_V)"
+
+#: data/gupnp-universal-cp.ui:492
+msgid "Event _log"
+msgstr "घटना लॉग (_l)"
+
+#: data/search-dialog.ui:39
+msgid "_Close"
+msgstr "बंद करें (_C)"
+
+#: data/search-dialog.ui:71
+msgid "UPnP search expression"
+msgstr "UPnP खोज अभिव्यक्ति"
+
+#: data/search-dialog.ui:98
+msgid "column"
+msgstr "स्तंभ"
+
+#: src/av-cp/main.c:50 src/network-light/main.c:49 src/universal-cp/main.c:49
+msgid "Network PORT to use for UPnP"
+msgstr "UPnP के लिए उपयोग हेतु नेटवर्क पोर्ट"
+
+#: src/av-cp/main.c:51 src/network-light/main.c:50 src/universal-cp/main.c:50
+msgid "Network interfaces to use for UPnP communication"
+msgstr "UPnP संचार के लिए उपयोग किए जाने वाले नेटवर्क इंटरफ़ेस"
+
+#: src/av-cp/main.c:52
+msgid "Application part of the User-Agent header to use for UPnP communication"
+msgstr ""
+"UPnP संचार के लिए उपयोग करने के लिए उपयोगकर्ता-अभिकर्ता शीर्षलेख का अनुप्रयोग भाग"
+
+#: src/av-cp/main.c:53 src/universal-cp/main.c:51
+msgid "Use the IPv4 protocol family"
+msgstr "IPv4 प्रोटोकॉल परिवार का उपयोग करें"
+
+#: src/av-cp/main.c:54 src/universal-cp/main.c:52
+msgid "Use the IPv6 protocol family"
+msgstr "IPv6 प्रोटोकॉल परिवार का उपयोग करें"
+
+#: src/av-cp/main.c:55 src/universal-cp/main.c:53
+msgid "Do not use the IPv4 protocol family"
+msgstr "IPv4 प्रोटोकॉल परिवार का उपयोग न करें"
+
+#: src/av-cp/main.c:56 src/universal-cp/main.c:54
+msgid "Do not use the IPv6 protocol family"
+msgstr "IPv6 प्रोटोकॉल परिवार का उपयोग न करें"
+
+#: src/av-cp/main.c:239 src/network-light/main.c:110
+#: src/universal-cp/main.c:192
+msgid "- UPnP AV control point"
+msgstr "- UPnP AV नियंत्रण बिंदु"
+
+#: src/av-cp/main.c:244 src/network-light/main.c:115
+#: src/universal-cp/main.c:197
+#, c-format
+msgid "Could not parse options: %s\n"
+msgstr "विकल्प का विश्लेषण नहीं कर सका: %s\n"
+
+#: src/av-cp/search-dialog.c:386
+msgid "Show _DIDL…"
+msgstr "_DIDL दिखाएं…"
+
+#: src/av-cp/search-dialog.c:480 src/av-cp/search-dialog.c:629
+msgid "Search failed"
+msgstr "खोज विफल रही"
+
+#: src/av-cp/search-dialog.c:484
+#, c-format
+msgid "Error message was: %s"
+msgstr "त्रुटि संदेश था: %s"
+
+#: src/av-cp/search-dialog.c:532
+#, c-format
+msgid "Searching on %s"
+msgstr "%s पर खोजा जा रहा है"
+
+#: src/av-cp/search-dialog.c:535
+#, c-format
+msgid "Searching in %s on %s"
+msgstr "%1$s पर %2$s में खोजा जा रहा है"
+
+#: src/av-cp/search-dialog.c:633
+#, c-format
+msgid "Search criteria invalid: %s"
+msgstr "खोज मापदंड अमान्य: %s"
+
+#: src/av-cp/search-dialog.c:738
+#, c-format
+msgid "Error fetching detailed information: %s"
+msgstr "विस्तृत जानकारी प्राप्त करने में त्रुटि: %s"
+
+#: src/network-light/main.c:51
+msgid "Friendly name for this UPnP light"
+msgstr "इस UPnP लाइट के लिए अनुकूल नाम"
+
+#: src/network-light/main.c:52
+msgid "Apply change exclusively to this UPnP light"
+msgstr "परिवर्तन विशेष रूप से इस UPnP लाइट पर लागू करें"
+
+#: src/network-light/main.c:53
+msgid "Use IPv4"
+msgstr "IPv4 का प्रयोग करें"
+
+#: src/network-light/main.c:54
+msgid "Use IPv6"
+msgstr "IPv6 का प्रयोग करें"
+
+#: src/network-light/main.c:55
+msgid "Do not use IPv4"
+msgstr "IPv4 का प्रयोग न करें"
+
+#: src/network-light/main.c:56
+msgid "Do not use IPv6"
+msgstr "IPv6 का प्रयोग न करें"
+
+#: src/universal-cp/action-dialog.c:690 src/universal-cp/action-dialog.c:709
+#, c-format
+msgid ""
+"Action failed.\n"
+"\n"
+"Error %d: %s"
+msgstr ""
+"कार्रवाई विफल रही।\n"
+"\n"
+"त्रुटि %d: %s"
+
+#: src/universal-cp/details-treeview.c:197
+#: src/universal-cp/details-treeview.c:225
+#: src/universal-cp/details-treeview.c:251
+#: src/universal-cp/details-treeview.c:430
+msgid "Name"
+msgstr "नाम"
+
+#: src/universal-cp/details-treeview.c:199
+msgid "Direction"
+msgstr "दिशा"
+
+#: src/universal-cp/details-treeview.c:204
+msgid "Related State Variable"
+msgstr "संबंधित अवस्था चर"
+
+#: src/universal-cp/details-treeview.c:206
+msgid "Is Return Value"
+msgstr "रिटर्न मान है"
+
+#: src/universal-cp/details-treeview.c:207
+#: src/universal-cp/details-treeview.c:254
+msgid "Yes"
+msgstr "हाँ"
+
+#: src/universal-cp/details-treeview.c:207
+#: src/universal-cp/details-treeview.c:254
+msgid "No"
+msgstr "नहीं"
+
+#: src/universal-cp/details-treeview.c:227
+msgid "Number of Arguments"
+msgstr "तर्कों की संख्या"
+
+#: src/universal-cp/details-treeview.c:253
+msgid "Send Events"
+msgstr "घटनाएं भेजें"
+
+#: src/universal-cp/details-treeview.c:255
+msgid "GType"
+msgstr "GType"
+
+#: src/universal-cp/details-treeview.c:258
+msgid "Default Value"
+msgstr "तयशुदा मान"
+
+#: src/universal-cp/details-treeview.c:264
+msgid "Minimum"
+msgstr "न्यूनतम"
+
+#: src/universal-cp/details-treeview.c:268
+msgid "Maximum"
+msgstr "अधिकतम"
+
+#: src/universal-cp/details-treeview.c:272
+msgid "Step"
+msgstr "चरण"
+
+#: src/universal-cp/details-treeview.c:292
+msgid "Allowed Values"
+msgstr "अनुमत मान"
+
+#: src/universal-cp/details-treeview.c:316
+#: src/universal-cp/details-treeview.c:363
+msgid "Location"
+msgstr "स्थान"
+
+#: src/universal-cp/details-treeview.c:321
+#: src/universal-cp/details-treeview.c:368
+msgid "UDN"
+msgstr "UDN"
+
+#: src/universal-cp/details-treeview.c:326
+#: src/universal-cp/details-treeview.c:373
+msgid "Type"
+msgstr "प्रकार"
+
+#: src/universal-cp/details-treeview.c:331
+#: src/universal-cp/details-treeview.c:378
+msgid "Base URL"
+msgstr "आधार URL"
+
+#: src/universal-cp/details-treeview.c:336
+msgid "Service ID"
+msgstr "सेवा ID"
+
+#: src/universal-cp/details-treeview.c:338
+msgid "Service URL"
+msgstr "सेवा URL"
+
+#: src/universal-cp/details-treeview.c:340
+msgid "Control URL"
+msgstr "नियंत्रण URL"
+
+#: src/universal-cp/details-treeview.c:342
+msgid "Event Subscription URL"
+msgstr "घटना सदस्यता URL"
+
+#: src/universal-cp/details-treeview.c:383
+msgid "Friendly Name"
+msgstr "मित्रतापूर्ण नाम"
+
+#: src/universal-cp/details-treeview.c:385
+msgid "Manufacturer"
+msgstr "उत्पादक"
+
+#: src/universal-cp/details-treeview.c:387
+msgid "Manufacturer URL"
+msgstr "उत्पादक URL"
+
+#: src/universal-cp/details-treeview.c:389
+msgid "Model Description"
+msgstr "मॉडल विवरण"
+
+#: src/universal-cp/details-treeview.c:391
+msgid "Model Name"
+msgstr "मॉडल नाम"
+
+#: src/universal-cp/details-treeview.c:393
+msgid "Model Number"
+msgstr "मॉडल संख्या"
+
+#: src/universal-cp/details-treeview.c:395
+msgid "Model URL"
+msgstr "मॉडल URL"
+
+#: src/universal-cp/details-treeview.c:397
+msgid "Serial Number"
+msgstr "क्रम संख्या"
+
+#: src/universal-cp/details-treeview.c:399
+msgid "UPC"
+msgstr "UPC"
+
+#: src/universal-cp/details-treeview.c:401
+msgid "Presentation URL"
+msgstr "प्रस्तुति URL"
+
+#: src/universal-cp/details-treeview.c:431
+#: src/universal-cp/event-treeview.c:409
+msgid "Value"
+msgstr "मान"
+
+#: src/universal-cp/device-treeview.c:69
+msgid "Software"
+msgstr "सॉफ्टवेयर"
+
+#: src/universal-cp/device-treeview.c:71
+msgid "Version"
+msgstr "संस्करण"
+
+#: src/universal-cp/device-treeview.c:73
+msgid "Author"
+msgstr "लेखक"
+
+#: src/universal-cp/device-treeview.c:506
+msgid "State variables"
+msgstr "अवस्था चर"
+
+#: src/universal-cp/device-treeview.c:547
+msgid "Information not available"
+msgstr "जानकारी उपलब्ध नहीं है"
+
+#: src/universal-cp/device-treeview.c:758
+msgid "UPnP Network"
+msgstr "UPnP नेटवर्क"
+
+#: src/universal-cp/device-treeview.c:771 src/universal-cp/event-treeview.c:406
+msgid "Device"
+msgstr "उपकरण"
+
+#: src/universal-cp/event-treeview.c:405
+msgid "Time"
+msgstr "समय"
+
+#: src/universal-cp/event-treeview.c:407
+msgid "Service"
+msgstr "सेवा"
+
+#: src/universal-cp/event-treeview.c:408
+msgid "State Variable"
+msgstr "अवस्था चर"
+
+#: src/universal-cp/main.c:55
+msgid "The UDA version to use"
+msgstr "उपयोग करने के लिए UDA संस्करण"
