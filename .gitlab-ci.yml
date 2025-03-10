@@ -3,7 +3,7 @@ include:
     - remote: 'https://gitlab.gnome.org/Infrastructure/freedesktop-ci-templates/-/raw/e195d80f35b45cc73668be3767b923fd76c70ed5/templates/fedora.yml'
     - component: "gitlab.gnome.org/GNOME/citemplates/release-service@master"
       inputs:
-        dist-job-name: build-fedora:41@x86_64
+        dist-job-name: build-fedora@x86_64
         # gupnp tags are always of the format {PROJECT_NAME}-{version}
         tarball-artifact-path: "build/meson-dist/${CI_COMMIT_TAG}.tar.xz"
     - project: "GNOME/citemplates"
@@ -60,7 +60,8 @@ check-merge-request:
   stage: build
   script:
       - meson . build --prefix=/usr -Db_coverage=true
-      - ninja -C build
+      - meson compile -C build
+      - meson dist -C build --no-tests
   artifacts:
       expire_in: 1 day
       paths:
