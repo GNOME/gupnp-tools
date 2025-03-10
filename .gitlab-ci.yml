@@ -1,7 +1,7 @@
 include:
     - remote: "https://gitlab.gnome.org/Infrastructure/freedesktop-ci-templates/-/raw/e195d80f35b45cc73668be3767b923fd76c70ed5/templates/ci-fairy.yml"
     - remote: 'https://gitlab.gnome.org/Infrastructure/freedesktop-ci-templates/-/raw/e195d80f35b45cc73668be3767b923fd76c70ed5/templates/fedora.yml'
-    - component: "gitlab.gnome.org/GNOME/citemplates/release-service@master"
+    - component: "gitlab.gnome.org/GNOME/citemplates/release-service@@release-service-sandbox"
       inputs:
         dist-job-name: build-fedora@x86_64
         # gupnp tags are always of the format {PROJECT_NAME}-{version}
