@@ -1,3 +1,35 @@
+0.12.2 (stable)
+===============
+
+- Common:
+    - Remove deprecated libxml calls
+- AV CP:
+    - Remove some stray debug output
+- EventDumper:
+    - Code cleanup
+- Uploader:
+    - Fix parsing the Browse result
+
+Bugs fixed in this release:
+ - https://gitlab.gnome.org/GNOME/gupnp-tools/issues/27
+ - https://gitlab.gnome.org/GNOME/gupnp-tools/issues/28
+
+Merge requests included in this release:
+ - https://gitlab.gnome.org/GNOME/gupnp-tools/merge_requests/6
+ - https://gitlab.gnome.org/GNOME/gupnp-tools/merge_requests/5
+
+All contributors to this release:
+ - Jens Georg <mail@jensge.org>
+ - Sabri Ünal <libreajans@gmail.com>
+ - Bartłomiej Piotrowski <b@bpiotrowski.pl>
+ - Scrambled 777 <weblate.scrambled777@simplelogin.com>
+ - Martin <miles@filmsi.net>
+
+Added/updated translations:
+ - hi.po, courtesy of Scrambled777
+ - sl.po, courtesy of Martin Srebotnjak
+ - tr.po, courtesy of Sabri Ünal
+
 0.12.1 (stable)
 ===============
 
