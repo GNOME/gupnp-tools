@@ -1,0 +1,581 @@
+# Italian translation for gupnp-tools.
+# Copyright (C) 2025 gupnp-tools's COPYRIGHT HOLDER
+# This file is distributed under the same license as the gupnp-tools package.
+# Salvatore Cocuzza <info@salvatorecocuzza.it>,  2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gupnp-tools master\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gupnp-tools/issues/\n"
+"POT-Creation-Date: 2025-10-11 00:14+0000\n"
+"PO-Revision-Date: 2025-11-12 11:51+0100\n"
+"Last-Translator: Salvatore Cocuzza <info@salvatorecocuzza.it>\n"
+"Language-Team: Italian <tp@lists.linux.it>\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.8\n"
+
+#: data/didl-lite-dialog.ui.in:9
+msgid "GUPnP AV CP - Metadata View"
+msgstr "GUPnP AV CP - Visualizzazione metadati"
+
+#: data/gupnp-av-cp.desktop.in:3
+msgid "UPnP AV Control Point"
+msgstr "Punto di controllo AV UPnP"
+
+#: data/gupnp-av-cp.desktop.in:4
+msgid "Browse and control UPnP multimedia devices"
+msgstr "Consulta e controlla dispositivi multimediali UPnP"
+
+#: data/gupnp-av-cp.ui:22 data/gupnp-av-cp.ui:208
+msgid "_Play"
+msgstr "Ri_produci"
+
+#: data/gupnp-av-cp.ui:31
+msgid "Fetch the DIDL-Lite XML for this media object"
+msgstr "Recupera l'XML DIDL-Lite per questo oggetto multimediale"
+
+#: data/gupnp-av-cp.ui:32
+msgid "Fetch _DIDL-Lite"
+msgstr "Recupera _DIDL-Lite"
+
+#: data/gupnp-av-cp.ui:41
+msgid "Search…"
+msgstr "Cerca…"
+
+#: data/gupnp-av-cp.ui:89
+msgid "GUPnP AV Control Point"
+msgstr "Punto di controllo AV GUPnP"
+
+#: data/gupnp-av-cp.ui:104 data/gupnp-universal-cp.ui:424
+msgid "_File"
+msgstr "_File"
+
+#: data/gupnp-av-cp.ui:113
+msgid "Close"
+msgstr "Chiudi"
+
+#: data/gupnp-av-cp.ui:126
+msgid "_Tools"
+msgstr "S_trumenti"
+
+#: data/gupnp-av-cp.ui:136
+msgid "_Lenient Mode"
+msgstr "Modalità _indulgente"
+
+#: data/gupnp-av-cp.ui:148 data/gupnp-universal-cp.ui:506
+msgid "_Help"
+msgstr "A_iuto"
+
+#: data/gupnp-av-cp.ui:157 data/gupnp-universal-cp.ui:515
+msgid "About"
+msgstr "Informazioni"
+
+#: data/gupnp-av-cp.ui:257
+msgid "P_ause"
+msgstr "P_ausa"
+
+#: data/gupnp-av-cp.ui:306
+msgid "_Stop"
+msgstr "Arre_sta"
+
+#: data/gupnp-av-cp.ui:355
+msgid "Pre_vious"
+msgstr "Pre_cedente"
+
+#: data/gupnp-av-cp.ui:418
+msgid "_Next"
+msgstr "S_uccessivo"
+
+#: data/gupnp-av-cp.ui:467
+msgid "_Rescan"
+msgstr "_Riscansiona"
+
+#: data/gupnp-av-cp.ui:514
+msgid ""
+"Clears the CP's idea of the state of the currently selected AV Renderer. "
+"Useful for dealing with AV Renderers that don't report state changes."
+msgstr ""
+"Cancella l'idea del punto di controllo sullo stato del renderer AV "
+"attualmente selezionato. Utile per gestire renderer AV che non riportano "
+"cambiamenti di stato."
+
+#: data/gupnp-av-cp.ui:525
+msgid "_Clear state"
+msgstr "Ca_ncella stato"
+
+#: data/gupnp-av-cp.ui:587
+msgid "_Renderer: "
+msgstr "R_enderer: "
+
+#: data/gupnp-av-cp.ui:725 data/gupnp-network-light.ui:7
+#: data/gupnp-universal-cp.ui:8
+msgid "Copyright (C) 2007 Zeeshan Ali (Khattak)"
+msgstr "Copyright (C) 2007 Zeeshan Ali (Khattak)"
+
+#: data/gupnp-av-cp.ui:726
+msgid ""
+"An UPnP AV Control Point based on GUPnP framework.\n"
+"Inspired by Intel Tools for UPnP."
+msgstr ""
+"Un punto di controllo AV UPnP basato sul framework GUPnP.\n"
+"Ispirato dagli Intel Tools for UPnP."
+
+#: data/gupnp-av-cp.ui:729 data/gupnp-network-light.ui:11
+#: data/gupnp-universal-cp.ui:12
+msgid "GUPnP homepage"
+msgstr "Pagina iniziale di GUPnP"
+
+#. TRANSLATORS: Replace this string with your names, one name per line.
+#: data/gupnp-av-cp.ui:731 data/gupnp-network-light.ui:13
+#: data/gupnp-universal-cp.ui:14
+msgid "translator-credits"
+msgstr "Salvatore Cocuzza <info@salvatorecocuzza.it>"
+
+#: data/gupnp-network-light.desktop.in:3
+msgid "UPnP Network Light"
+msgstr "Luce di rete UPnP"
+
+#: data/gupnp-network-light.desktop.in:4
+msgid "Sample UPnP application for controlling lights"
+msgstr "Applicazione UPnP di esempio per controllare luci"
+
+#: data/gupnp-network-light.ui:8
+msgid ""
+"A virtual network light bulb based on GUPnP framework.\n"
+"Inspired by Intel Tools for UPnP."
+msgstr ""
+"Una lampadina di rete virtuale basata sul framework GUPnP.\n"
+"Ispirata dagli Intel Tools for UPnP."
+
+#: data/gupnp-network-light.ui:38
+msgid "GUPnP Network Light"
+msgstr "Luce di rete GUPnP"
+
+#: data/gupnp-network-light.ui:63
+msgctxt "network-light"
+msgid "_On"
+msgstr "_Accesa"
+
+#: data/gupnp-network-light.ui:83
+msgid "_Increase luminance by 20%"
+msgstr "_Aumenta luminanza del 20%"
+
+#: data/gupnp-network-light.ui:92
+msgid "_Decrease luminance by 20%"
+msgstr "_Diminuisci luminanza del 20%"
+
+#: data/gupnp-network-light.ui:107
+msgid "_About"
+msgstr "_Informazioni"
+
+#: data/gupnp-universal-cp.desktop.in:3
+msgid "UPnP Universal Control Point"
+msgstr "Punto di controllo universale UPnP"
+
+#: data/gupnp-universal-cp.desktop.in:4
+msgid "Inspect and control UPnP devices across your local network"
+msgstr "Ispeziona e controlla dispositivi UPnP sulla rete locale"
+
+#: data/gupnp-universal-cp.ui:9
+msgid ""
+"A Generic Control Point based on GUPnP framework.\n"
+"Inspired by Intel Tools for UPnP."
+msgstr ""
+"Un punto di controllo generico basato sul framework GUPnP.\n"
+"Ispirato da Intel Tools for UPnP."
+
+#: data/gupnp-universal-cp.ui:42
+msgid "Action Invocation"
+msgstr "Invocazione azione"
+
+#: data/gupnp-universal-cp.ui:106
+msgid "_Invoke"
+msgstr "_Invoca"
+
+#: data/gupnp-universal-cp.ui:176
+msgid "device"
+msgstr "dispositivo"
+
+#: data/gupnp-universal-cp.ui:189
+msgid "service"
+msgstr "servizio"
+
+#: data/gupnp-universal-cp.ui:202
+msgid "action"
+msgstr "azione"
+
+#: data/gupnp-universal-cp.ui:245
+msgid "'in' arguments"
+msgstr "argomenti 'in'"
+
+#: data/gupnp-universal-cp.ui:278
+msgid "'out' arguments"
+msgstr "argomenti 'out'"
+
+#: data/gupnp-universal-cp.ui:312
+msgid "Copy value"
+msgstr "Copia valore"
+
+#: data/gupnp-universal-cp.ui:321
+msgid "Copy all details"
+msgstr "Copia tutti i dettagli"
+
+#: data/gupnp-universal-cp.ui:333
+msgid "Invoke"
+msgstr "Invoca"
+
+#: data/gupnp-universal-cp.ui:342
+msgid "Subscribe to events"
+msgstr "Sottoscrivi agli eventi"
+
+#: data/gupnp-universal-cp.ui:357 data/gupnp-universal-cp.ui:468
+msgid "_Expand all devices"
+msgstr "_Espandi tutti i dispositivi"
+
+#: data/gupnp-universal-cp.ui:366 data/gupnp-universal-cp.ui:477
+msgid "_Collapse all devices"
+msgstr "_Comprimi tutti i dispositivi"
+
+#: data/gupnp-universal-cp.ui:378
+msgid "Copy event"
+msgstr "Copia evento"
+
+#: data/gupnp-universal-cp.ui:387
+msgid "Copy all events"
+msgstr "Copia tutti gli eventi"
+
+#: data/gupnp-universal-cp.ui:402
+msgid "_Clear event log"
+msgstr "_Cancella registro eventi"
+
+#. default details
+#: data/gupnp-universal-cp.ui:410 src/universal-cp/device-treeview.c:36
+msgid "GUPnP Universal Control Point"
+msgstr "Punto di controllo universale GUPnP"
+
+#: data/gupnp-universal-cp.ui:433
+msgid "Clear event log"
+msgstr "Cancella registro eventi"
+
+#: data/gupnp-universal-cp.ui:447
+msgid "Quit"
+msgstr "Esci"
+
+#: data/gupnp-universal-cp.ui:459
+msgid "_View"
+msgstr "_Visualizza"
+
+#: data/gupnp-universal-cp.ui:492
+msgid "Event _log"
+msgstr "_Registro eventi"
+
+#: data/search-dialog.ui:39
+msgid "_Close"
+msgstr "_Chiudi"
+
+#: data/search-dialog.ui:71
+msgid "UPnP search expression"
+msgstr "Espressione di ricerca UPnP"
+
+#: data/search-dialog.ui:98
+msgid "column"
+msgstr "colonna"
+
+#: src/av-cp/main.c:50 src/network-light/main.c:49 src/universal-cp/main.c:49
+msgid "Network PORT to use for UPnP"
+msgstr "Porta di rete da usare per UPnP"
+
+#: src/av-cp/main.c:51 src/network-light/main.c:50 src/universal-cp/main.c:50
+msgid "Network interfaces to use for UPnP communication"
+msgstr "Interfacce di rete da usare per la comunicazione UPnP"
+
+#: src/av-cp/main.c:52
+msgid "Application part of the User-Agent header to use for UPnP communication"
+msgstr ""
+"Applicazione parte dell'intestazione User-Agent da usare per la "
+"comunicazione UPnP"
+
+#: src/av-cp/main.c:53 src/universal-cp/main.c:51
+msgid "Use the IPv4 protocol family"
+msgstr "Usa la famiglia di protocolli IPv4"
+
+#: src/av-cp/main.c:54 src/universal-cp/main.c:52
+msgid "Use the IPv6 protocol family"
+msgstr "Usa la famiglia di protocolli IPv6"
+
+#: src/av-cp/main.c:55 src/universal-cp/main.c:53
+msgid "Do not use the IPv4 protocol family"
+msgstr "Non usare la famiglia di protocolli IPv4"
+
+#: src/av-cp/main.c:56 src/universal-cp/main.c:54
+msgid "Do not use the IPv6 protocol family"
+msgstr "Non usare la famiglia di protocolli IPv6"
+
+#: src/av-cp/main.c:239 src/network-light/main.c:110
+#: src/universal-cp/main.c:192
+msgid "- UPnP AV control point"
+msgstr "- Punto di controllo AV UPnP"
+
+#: src/av-cp/main.c:244 src/network-light/main.c:115
+#: src/universal-cp/main.c:197
+#, c-format
+msgid "Could not parse options: %s\n"
+msgstr "Impossibile analizzare le opzioni: %s\n"
+
+#: src/av-cp/search-dialog.c:386
+msgid "Show _DIDL…"
+msgstr "Mostra _DIDL…"
+
+#: src/av-cp/search-dialog.c:480 src/av-cp/search-dialog.c:629
+msgid "Search failed"
+msgstr "Ricerca non riuscita"
+
+#: src/av-cp/search-dialog.c:484
+#, c-format
+msgid "Error message was: %s"
+msgstr "Il messaggio di errore era: %s"
+
+#: src/av-cp/search-dialog.c:532
+#, c-format
+msgid "Searching on %s"
+msgstr "Ricerca su %s"
+
+#: src/av-cp/search-dialog.c:535
+#, c-format
+msgid "Searching in %s on %s"
+msgstr "Ricerca in %s su %s"
+
+#: src/av-cp/search-dialog.c:633
+#, c-format
+msgid "Search criteria invalid: %s"
+msgstr "Criteri di ricerca non validi: %s"
+
+#: src/av-cp/search-dialog.c:738
+#, c-format
+msgid "Error fetching detailed information: %s"
+msgstr "Errore nel recuperare informazioni dettagliate: %s"
+
+#: src/network-light/main.c:51
+msgid "Friendly name for this UPnP light"
+msgstr "Nome amichevole per questa luce UPnP"
+
+#: src/network-light/main.c:52
+msgid "Apply change exclusively to this UPnP light"
+msgstr "Applica la modifica esclusivamente a questa luce UPnP"
+
+#: src/network-light/main.c:53
+msgid "Use IPv4"
+msgstr "Usa IPv4"
+
+#: src/network-light/main.c:54
+msgid "Use IPv6"
+msgstr "Usa IPv6"
+
+#: src/network-light/main.c:55
+msgid "Do not use IPv4"
+msgstr "Non usare IPv4"
+
+#: src/network-light/main.c:56
+msgid "Do not use IPv6"
+msgstr "Non usare IPv6"
+
+#: src/universal-cp/action-dialog.c:690 src/universal-cp/action-dialog.c:709
+#, c-format
+msgid ""
+"Action failed.\n"
+"\n"
+"Error %d: %s"
+msgstr ""
+"Azione non riuscita.\n"
+"\n"
+"Errore %d: %s"
+
+#: src/universal-cp/details-treeview.c:197
+#: src/universal-cp/details-treeview.c:225
+#: src/universal-cp/details-treeview.c:251
+#: src/universal-cp/details-treeview.c:430
+msgid "Name"
+msgstr "Nome"
+
+#: src/universal-cp/details-treeview.c:199
+msgid "Direction"
+msgstr "Direzione"
+
+#: src/universal-cp/details-treeview.c:204
+msgid "Related State Variable"
+msgstr "Variabile di stato correlata"
+
+#: src/universal-cp/details-treeview.c:206
+msgid "Is Return Value"
+msgstr "È un valore di ritorno"
+
+#: src/universal-cp/details-treeview.c:207
+#: src/universal-cp/details-treeview.c:254
+msgid "Yes"
+msgstr "Sì"
+
+#: src/universal-cp/details-treeview.c:207
+#: src/universal-cp/details-treeview.c:254
+msgid "No"
+msgstr "No"
+
+#: src/universal-cp/details-treeview.c:227
+msgid "Number of Arguments"
+msgstr "Numero di argomenti"
+
+#: src/universal-cp/details-treeview.c:253
+msgid "Send Events"
+msgstr "Invia eventi"
+
+#: src/universal-cp/details-treeview.c:255
+msgid "GType"
+msgstr "GType"
+
+#: src/universal-cp/details-treeview.c:258
+msgid "Default Value"
+msgstr "Valore predefinito"
+
+#: src/universal-cp/details-treeview.c:264
+msgid "Minimum"
+msgstr "Minimo"
+
+#: src/universal-cp/details-treeview.c:268
+msgid "Maximum"
+msgstr "Massimo"
+
+#: src/universal-cp/details-treeview.c:272
+msgid "Step"
+msgstr "Passo"
+
+#: src/universal-cp/details-treeview.c:292
+msgid "Allowed Values"
+msgstr "Valori consentiti"
+
+#: src/universal-cp/details-treeview.c:316
+#: src/universal-cp/details-treeview.c:363
+msgid "Location"
+msgstr "Posizione"
+
+#: src/universal-cp/details-treeview.c:321
+#: src/universal-cp/details-treeview.c:368
+msgid "UDN"
+msgstr "UDN"
+
+#: src/universal-cp/details-treeview.c:326
+#: src/universal-cp/details-treeview.c:373
+msgid "Type"
+msgstr "Tipo"
+
+#: src/universal-cp/details-treeview.c:331
+#: src/universal-cp/details-treeview.c:378
+msgid "Base URL"
+msgstr "URL di base"
+
+#: src/universal-cp/details-treeview.c:336
+msgid "Service ID"
+msgstr "ID servizio"
+
+#: src/universal-cp/details-treeview.c:338
+msgid "Service URL"
+msgstr "URL del servizio"
+
+#: src/universal-cp/details-treeview.c:340
+msgid "Control URL"
+msgstr "URL di controllo"
+
+#: src/universal-cp/details-treeview.c:342
+msgid "Event Subscription URL"
+msgstr "URL di sottoscrizione eventi"
+
+#: src/universal-cp/details-treeview.c:383
+msgid "Friendly Name"
+msgstr "Nome amichevole"
+
+#: src/universal-cp/details-treeview.c:385
+msgid "Manufacturer"
+msgstr "Produttore"
+
+#: src/universal-cp/details-treeview.c:387
+msgid "Manufacturer URL"
+msgstr "URL del produttore"
+
+#: src/universal-cp/details-treeview.c:389
+msgid "Model Description"
+msgstr "Descrizione del modello"
+
+#: src/universal-cp/details-treeview.c:391
+msgid "Model Name"
+msgstr "Nome del modello"
+
+#: src/universal-cp/details-treeview.c:393
+msgid "Model Number"
+msgstr "Numero del modello"
+
+#: src/universal-cp/details-treeview.c:395
+msgid "Model URL"
+msgstr "URL del modello"
+
+#: src/universal-cp/details-treeview.c:397
+msgid "Serial Number"
+msgstr "Numero di serie"
+
+#: src/universal-cp/details-treeview.c:399
+msgid "UPC"
+msgstr "UPC"
+
+#: src/universal-cp/details-treeview.c:401
+msgid "Presentation URL"
+msgstr "URL di presentazione"
+
+#: src/universal-cp/details-treeview.c:431
+#: src/universal-cp/event-treeview.c:409
+msgid "Value"
+msgstr "Valore"
+
+#: src/universal-cp/device-treeview.c:69
+msgid "Software"
+msgstr "Software"
+
+#: src/universal-cp/device-treeview.c:71
+msgid "Version"
+msgstr "Versione"
+
+#: src/universal-cp/device-treeview.c:73
+msgid "Author"
+msgstr "Autore"
+
+#: src/universal-cp/device-treeview.c:506
+msgid "State variables"
+msgstr "Variabili di stato"
+
+#: src/universal-cp/device-treeview.c:547
+msgid "Information not available"
+msgstr "Informazioni non disponibili"
+
+#: src/universal-cp/device-treeview.c:758
+msgid "UPnP Network"
+msgstr "Rete UPnP"
+
+#: src/universal-cp/device-treeview.c:771 src/universal-cp/event-treeview.c:406
+msgid "Device"
+msgstr "Dispositivo"
+
+#: src/universal-cp/event-treeview.c:405
+msgid "Time"
+msgstr "Ora"
+
+#: src/universal-cp/event-treeview.c:407
+msgid "Service"
+msgstr "Servizio"
+
+#: src/universal-cp/event-treeview.c:408
+msgid "State Variable"
+msgstr "Variabile di stato"
+
+#: src/universal-cp/main.c:55
+msgid "The UDA version to use"
+msgstr "La versione UDA da usare"
