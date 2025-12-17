@@ -1,0 +1,546 @@
+# Russian translation for gupnp-tools.
+# Copyright (C) 2025 gupnp-tools's COPYRIGHT HOLDER
+# This file is distributed under the same license as the gupnp-tools package.
+# Александр Вахрамеев <yasson2008@ya.ru>,  2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gupnp-tools gupnp-tools-0-8\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gupnp-tools/issues/\n"
+"POT-Creation-Date: 2025-12-10 20:05+0000\n"
+"PO-Revision-Date: 2025-12-12 18:28+0300\n"
+"Last-Translator: Fraxinus Acer\n"
+"Language-Team: Russian <ru@li.org>\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Poedit 3.8\n"
+
+#: data/didl-lite-dialog.ui.in:9
+msgid "GUPnP AV CP - Metadata View"
+msgstr "GUPnP AV CP - Просмотр метаданных"
+
+#: data/gupnp-av-cp.desktop.in:3
+msgid "UPnP AV Control Point"
+msgstr "Точка управления AV UPnP"
+
+#: data/gupnp-av-cp.desktop.in:4
+msgid "Browse and control UPnP multimedia devices"
+msgstr "Просмотр мультимедийных устройств UPnP и управление ими"
+
+#: data/gupnp-av-cp.ui:22 data/gupnp-av-cp.ui:208
+msgid "_Play"
+msgstr "_Запуск"
+
+#: data/gupnp-av-cp.ui:31
+msgid "Fetch the DIDL-Lite XML for this media object"
+msgstr "Извлечь DIDL-облегченный XML-файл для этого медиаобъекта"
+
+#: data/gupnp-av-cp.ui:32
+msgid "Fetch _DIDL-Lite"
+msgstr "Извлечь _DIDL-Облегченный"
+
+#: data/gupnp-av-cp.ui:41
+msgid "Search…"
+msgstr "Поиск…"
+
+#: data/gupnp-av-cp.ui:89
+msgid "GUPnP AV Control Point"
+msgstr "Точка управления GUPnP AV"
+
+#: data/gupnp-av-cp.ui:104 data/gupnp-universal-cp.ui:424
+msgid "_File"
+msgstr "_Файл"
+
+#: data/gupnp-av-cp.ui:113
+msgid "Close"
+msgstr "Закрыть"
+
+#: data/gupnp-av-cp.ui:126
+msgid "_Tools"
+msgstr "_Инструменты"
+
+#: data/gupnp-av-cp.ui:136
+msgid "_Lenient Mode"
+msgstr "_Простой режим"
+
+#: data/gupnp-av-cp.ui:148 data/gupnp-universal-cp.ui:506
+msgid "_Help"
+msgstr "_Помощь"
+
+#: data/gupnp-av-cp.ui:157 data/gupnp-universal-cp.ui:515
+msgid "About"
+msgstr "О программе"
+
+#: data/gupnp-av-cp.ui:257
+msgid "P_ause"
+msgstr "_Пауза"
+
+#: data/gupnp-av-cp.ui:306
+msgid "_Stop"
+msgstr "_Стоп"
+
+#: data/gupnp-av-cp.ui:355
+msgid "Pre_vious"
+msgstr "Пре_дыдущий"
+
+#: data/gupnp-av-cp.ui:418
+msgid "_Next"
+msgstr "_Следующий"
+
+#: data/gupnp-av-cp.ui:467
+msgid "_Rescan"
+msgstr "_Пересканировать"
+
+#: data/gupnp-av-cp.ui:514
+msgid ""
+"Clears the CP's idea of the state of the currently selected AV Renderer. "
+"Useful for dealing with AV Renderers that don't report state changes."
+msgstr ""
+"Очищает представление CP о состоянии выбранного в данный момент средства "
+"визуализации. Полезно для работы с средствами визуализации, которые не "
+"сообщают об изменениях состояния."
+
+#: data/gupnp-av-cp.ui:525
+msgid "_Clear state"
+msgstr "_Очистить состояние"
+
+#: data/gupnp-av-cp.ui:587
+msgid "_Renderer: "
+msgstr "_Визуализатор: "
+
+#: data/gupnp-av-cp.ui:725 data/gupnp-network-light.ui:7
+#: data/gupnp-universal-cp.ui:8
+msgid "Copyright (C) 2007 Zeeshan Ali (Khattak)"
+msgstr "Авторские права (C) 2007 Zeeshan Ali (Khattak)"
+
+#: data/gupnp-av-cp.ui:726
+msgid ""
+"An UPnP AV Control Point based on GUPnP framework.\n"
+"Inspired by Intel Tools for UPnP."
+msgstr ""
+"AV-точка управления UPnP, основанная на платформе GUPnP framework.\n"
+"Вдохновлена Intel Tools для UPnP."
+
+#: data/gupnp-av-cp.ui:729 data/gupnp-network-light.ui:11
+#: data/gupnp-universal-cp.ui:12
+msgid "GUPnP homepage"
+msgstr "Веб-сайт GUPnP"
+
+#. TRANSLATORS: Replace this string with your names, one name per line.
+#: data/gupnp-av-cp.ui:731 data/gupnp-network-light.ui:13
+#: data/gupnp-universal-cp.ui:14
+msgid "translator-credits"
+msgstr "Fraxinus Acer, 2025"
+
+#: data/gupnp-network-light.desktop.in:3
+msgid "UPnP Network Light"
+msgstr "Индикатор сети UPnP"
+
+#: data/gupnp-network-light.desktop.in:4
+msgid "Sample UPnP application for controlling lights"
+msgstr "Пример приложения UPnP для управления освещением"
+
+#: data/gupnp-network-light.ui:8
+msgid ""
+"A virtual network light bulb based on GUPnP framework.\n"
+"Inspired by Intel Tools for UPnP."
+msgstr ""
+"Лампочка виртуальной сети, основанная на платформе GUPnP.\n"
+"Вдохновлена Intel Tools для UPnP."
+
+#: data/gupnp-network-light.ui:38
+msgid "GUPnP Network Light"
+msgstr "Индикатор сети GUPnP"
+
+#: data/gupnp-network-light.ui:63
+msgctxt "network-light"
+msgid "_On"
+msgstr "_Включить"
+
+#: data/gupnp-network-light.ui:83
+msgid "_Increase luminance by 20%"
+msgstr "_ Увеличить яркость на 20%"
+
+#: data/gupnp-network-light.ui:92
+msgid "_Decrease luminance by 20%"
+msgstr "У_меньшить яркость на 20%"
+
+#: data/gupnp-network-light.ui:107
+msgid "_About"
+msgstr "О программе"
+
+#: data/gupnp-universal-cp.desktop.in:3
+msgid "UPnP Universal Control Point"
+msgstr "Универсальная точка управления UPnP"
+
+#: data/gupnp-universal-cp.desktop.in:4
+msgid "Inspect and control UPnP devices across your local network"
+msgstr "Проверяйте устройства UPnP в вашей локальной сети и управляйте ими"
+
+#: data/gupnp-universal-cp.ui:9
+msgid ""
+"A Generic Control Point based on GUPnP framework.\n"
+"Inspired by Intel Tools for UPnP."
+msgstr ""
+"Универсальная точка управления, основанная на платформе GUPnP.\n"
+"Вдохновлена Intel Tools для UPnP."
+
+#: data/gupnp-universal-cp.ui:42
+msgid "Action Invocation"
+msgstr "Вызов действия"
+
+#: data/gupnp-universal-cp.ui:106
+msgid "_Invoke"
+msgstr "_Вызов"
+
+#: data/gupnp-universal-cp.ui:176
+msgid "device"
+msgstr "устройство"
+
+#: data/gupnp-universal-cp.ui:189
+msgid "service"
+msgstr "сервис"
+
+#: data/gupnp-universal-cp.ui:202
+msgid "action"
+msgstr "действие"
+
+#: data/gupnp-universal-cp.ui:245
+msgid "'in' arguments"
+msgstr "\"входящие\" аргументы"
+
+#: data/gupnp-universal-cp.ui:278
+msgid "'out' arguments"
+msgstr "\"исходящие\" аргументы"
+
+#: data/gupnp-universal-cp.ui:312
+msgid "Copy value"
+msgstr "Копировать значение"
+
+#: data/gupnp-universal-cp.ui:321
+msgid "Copy all details"
+msgstr "Копировать все детали"
+
+#: data/gupnp-universal-cp.ui:333
+msgid "Invoke"
+msgstr "Вызов"
+
+#: data/gupnp-universal-cp.ui:342
+msgid "Subscribe to events"
+msgstr "Подписаться на события"
+
+#: data/gupnp-universal-cp.ui:357 data/gupnp-universal-cp.ui:468
+msgid "_Expand all devices"
+msgstr "За_пустить все устройства"
+
+#: data/gupnp-universal-cp.ui:366 data/gupnp-universal-cp.ui:477
+msgid "_Collapse all devices"
+msgstr "_Остановить все устройства"
+
+#: data/gupnp-universal-cp.ui:378
+msgid "Copy event"
+msgstr "Копировать событие"
+
+#: data/gupnp-universal-cp.ui:387
+msgid "Copy all events"
+msgstr "Копировать все события"
+
+#: data/gupnp-universal-cp.ui:402
+msgid "_Clear event log"
+msgstr "_Очистить лог событий"
+
+#. default details
+#: data/gupnp-universal-cp.ui:410 src/universal-cp/device-treeview.c:37
+msgid "GUPnP Universal Control Point"
+msgstr "Универсальная точка контроля GUPnP"
+
+#: data/gupnp-universal-cp.ui:433
+msgid "Clear event log"
+msgstr "Очистить лог событий"
+
+#: data/gupnp-universal-cp.ui:447
+msgid "Quit"
+msgstr "Выход"
+
+#: data/gupnp-universal-cp.ui:459
+msgid "_View"
+msgstr "_Вид"
+
+#: data/gupnp-universal-cp.ui:492
+msgid "Event _log"
+msgstr "_Лог события"
+
+#: data/search-dialog.ui:12
+msgid "Show _DIDL…"
+msgstr "Показать _DIDL…"
+
+#: data/search-dialog.ui:49
+msgid "_Close"
+msgstr "_Закрыть"
+
+#: data/search-dialog.ui:81
+msgid "UPnP search expression"
+msgstr "Поисковое выражение UPnP"
+
+#: data/search-dialog.ui:107
+msgid "column"
+msgstr "столбец"
+
+#: src/av-cp/main.c:49 src/network-light/main.c:48 src/universal-cp/main.c:41
+msgid "Network PORT to use for UPnP"
+msgstr "Сетевой ПОРТ, используемый для UPnP"
+
+#: src/av-cp/main.c:50 src/network-light/main.c:49 src/universal-cp/main.c:42
+msgid "Network interfaces to use for UPnP communication"
+msgstr "Сетевые интерфейсы, используемые для связи по протоколу UPnP"
+
+#: src/av-cp/main.c:51
+msgid "Application part of the User-Agent header to use for UPnP communication"
+msgstr ""
+"Прикладная часть заголовка User-Agent, используемая для связи по протоколу "
+"UPnP"
+
+#: src/av-cp/main.c:225 src/network-light/main.c:104
+#: src/universal-cp/main.c:149
+msgid "- UPnP AV control point"
+msgstr "- Точка управления AV UPnP"
+
+#: src/av-cp/main.c:230 src/network-light/main.c:109
+#: src/universal-cp/main.c:154
+#, c-format
+msgid "Could not parse options: %s\n"
+msgstr "Не удалось проанализировать параметры: %s\n"
+
+#: src/av-cp/search-dialog.c:440 src/av-cp/search-dialog.c:579
+msgid "Search failed"
+msgstr "Поиск не удался"
+
+#: src/av-cp/search-dialog.c:444
+#, c-format
+msgid "Error message was: %s"
+msgstr "Сообщение об ошибке: %s"
+
+#: src/av-cp/search-dialog.c:488
+#, c-format
+msgid "Searching on %s"
+msgstr "Поиск по %s"
+
+#: src/av-cp/search-dialog.c:491
+#, c-format
+msgid "Searching in %s on %s"
+msgstr "Поиск в %s на %s"
+
+#: src/av-cp/search-dialog.c:583
+#, c-format
+msgid "Search criteria invalid: %s"
+msgstr "Неверные критерии поиска: %s"
+
+#: src/av-cp/search-dialog.c:689
+#, c-format
+msgid "Error fetching detailed information: %s"
+msgstr "Ошибка при получении подробной информации: %s"
+
+#: src/network-light/main.c:50
+msgid "Friendly name for this UPnP light"
+msgstr "Удобное название для этого источника света UPnP"
+
+#: src/network-light/main.c:51
+msgid "Apply change exclusively to this UPnP light"
+msgstr "Примените изменения исключительно к этому индикатору UPnP"
+
+#: src/universal-cp/action-dialog.c:693
+#, c-format
+msgid ""
+"Action failed.\n"
+"\n"
+"Error %d: %s"
+msgstr ""
+"Действие завершилось ошибкой.\n"
+"\n"
+"Ошибка %d: %s"
+
+#: src/universal-cp/details-treeview.c:198
+#: src/universal-cp/details-treeview.c:226
+#: src/universal-cp/details-treeview.c:252
+#: src/universal-cp/details-treeview.c:431
+msgid "Name"
+msgstr "Имя"
+
+#: src/universal-cp/details-treeview.c:200
+msgid "Direction"
+msgstr "Путь"
+
+#: src/universal-cp/details-treeview.c:205
+msgid "Related State Variable"
+msgstr "Связанная переменная состояния"
+
+#: src/universal-cp/details-treeview.c:207
+msgid "Is Return Value"
+msgstr "Является возвращаемым значением"
+
+#: src/universal-cp/details-treeview.c:208
+#: src/universal-cp/details-treeview.c:255
+msgid "Yes"
+msgstr "Да"
+
+#: src/universal-cp/details-treeview.c:208
+#: src/universal-cp/details-treeview.c:255
+msgid "No"
+msgstr "Нет"
+
+#: src/universal-cp/details-treeview.c:228
+msgid "Number of Arguments"
+msgstr "Количество аргументов"
+
+#: src/universal-cp/details-treeview.c:254
+msgid "Send Events"
+msgstr "Отправка событий"
+
+#: src/universal-cp/details-treeview.c:256
+msgid "GType"
+msgstr "GType"
+
+#: src/universal-cp/details-treeview.c:259
+msgid "Default Value"
+msgstr "Значение по умолчанию"
+
+#: src/universal-cp/details-treeview.c:265
+msgid "Minimum"
+msgstr "Минимальный"
+
+#: src/universal-cp/details-treeview.c:269
+msgid "Maximum"
+msgstr "Максимальный"
+
+#: src/universal-cp/details-treeview.c:273
+msgid "Step"
+msgstr "Шаг"
+
+#: src/universal-cp/details-treeview.c:293
+msgid "Allowed Values"
+msgstr "Допустимые значения"
+
+#: src/universal-cp/details-treeview.c:317
+#: src/universal-cp/details-treeview.c:364
+msgid "Location"
+msgstr "Расположение"
+
+#: src/universal-cp/details-treeview.c:322
+#: src/universal-cp/details-treeview.c:369
+msgid "UDN"
+msgstr "UDN"
+
+#: src/universal-cp/details-treeview.c:327
+#: src/universal-cp/details-treeview.c:374
+msgid "Type"
+msgstr "Тип"
+
+#: src/universal-cp/details-treeview.c:332
+#: src/universal-cp/details-treeview.c:379
+msgid "Base URL"
+msgstr "Базовый URL-адрес"
+
+#: src/universal-cp/details-treeview.c:337
+msgid "Service ID"
+msgstr "Сервис ID"
+
+#: src/universal-cp/details-treeview.c:339
+msgid "Service URL"
+msgstr "URL-адрес службы"
+
+#: src/universal-cp/details-treeview.c:341
+msgid "Control URL"
+msgstr "Управляющий URL-адрес"
+
+#: src/universal-cp/details-treeview.c:343
+msgid "Event Subscription URL"
+msgstr "URL-адрес подписки на мероприятие"
+
+#: src/universal-cp/details-treeview.c:384
+msgid "Friendly Name"
+msgstr "Понятное имя"
+
+#: src/universal-cp/details-treeview.c:386
+msgid "Manufacturer"
+msgstr "Производитель"
+
+#: src/universal-cp/details-treeview.c:388
+msgid "Manufacturer URL"
+msgstr "URL-адрес производителя"
+
+#: src/universal-cp/details-treeview.c:390
+msgid "Model Description"
+msgstr "Описание модели"
+
+#: src/universal-cp/details-treeview.c:392
+msgid "Model Name"
+msgstr "Название модели"
+
+#: src/universal-cp/details-treeview.c:394
+msgid "Model Number"
+msgstr "Номер модели"
+
+#: src/universal-cp/details-treeview.c:396
+msgid "Model URL"
+msgstr "URL-адрес модели"
+
+#: src/universal-cp/details-treeview.c:398
+msgid "Serial Number"
+msgstr "Серийный номер"
+
+#: src/universal-cp/details-treeview.c:400
+msgid "UPC"
+msgstr "UPC"
+
+#: src/universal-cp/details-treeview.c:402
+msgid "Presentation URL"
+msgstr "URL-адрес презентации"
+
+#: src/universal-cp/details-treeview.c:432
+#: src/universal-cp/event-treeview.c:410
+msgid "Value"
+msgstr "Значение"
+
+#: src/universal-cp/device-treeview.c:70
+msgid "Software"
+msgstr "Программное обеспечение"
+
+#: src/universal-cp/device-treeview.c:72
+msgid "Version"
+msgstr "Версия"
+
+#: src/universal-cp/device-treeview.c:74
+msgid "Author"
+msgstr "Автор"
+
+#: src/universal-cp/device-treeview.c:483
+msgid "State variables"
+msgstr "Переменные состояния"
+
+#: src/universal-cp/device-treeview.c:524
+msgid "Information not available"
+msgstr "Информация недоступна"
+
+#: src/universal-cp/device-treeview.c:703
+msgid "UPnP Network"
+msgstr "Сеть UPnP"
+
+#: src/universal-cp/device-treeview.c:716 src/universal-cp/event-treeview.c:407
+msgid "Device"
+msgstr "Устройство"
+
+#: src/universal-cp/event-treeview.c:406
+msgid "Time"
+msgstr "Время"
+
+#: src/universal-cp/event-treeview.c:408
+msgid "Service"
+msgstr "Сервис"
+
+#: src/universal-cp/event-treeview.c:409
+msgid "State Variable"
+msgstr "Переменная состояния"
