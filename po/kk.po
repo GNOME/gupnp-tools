@@ -1,0 +1,547 @@
+# Kazakh translation for gupnp-tools.
+# Copyright (C) 2026 gupnp-tools's COPYRIGHT HOLDER
+# This file is distributed under the same license as the gupnp-tools package.
+# Baurzhan Muftakhidinov <baurthefirst@gmail.com>,  2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gupnp-tools gupnp-tools-0-8\n"
+"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/browse.cgi?"
+"product=GUPnP&component=gupnp-tools\n"
+"POT-Creation-Date: 2018-11-11 07:48+0000\n"
+"PO-Revision-Date: 2026-03-14 23:57+0500\n"
+"Last-Translator: Baurzhan Muftakhidinov <baurthefirst@gmail.com>\n"
+"Language-Team: Kazakh <Kazakh>\n"
+"Language: kk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.9\n"
+
+#: data/didl-lite-dialog.ui.in:9
+msgid "GUPnP AV CP - Metadata View"
+msgstr "GUPnP AV CP - Метадеректерді көру"
+
+#: data/gupnp-av-cp.desktop.in:3
+msgid "UPnP AV Control Point"
+msgstr "UPnP AV басқару нүктесі"
+
+#: data/gupnp-av-cp.desktop.in:4
+msgid "Browse and control UPnP multimedia devices"
+msgstr "UPnP мультимедиа құрылғыларын шолу және басқару"
+
+#: data/gupnp-av-cp.ui:22 data/gupnp-av-cp.ui:208
+msgid "_Play"
+msgstr "_Ойнату"
+
+#: data/gupnp-av-cp.ui:31
+msgid "Fetch the DIDL-Lite XML for this media object"
+msgstr "Осы медиа объекті үшін DIDL-Lite XML-ді алу"
+
+#: data/gupnp-av-cp.ui:32
+msgid "Fetch _DIDL-Lite"
+msgstr "_DIDL-Lite алу"
+
+#: data/gupnp-av-cp.ui:41
+msgid "Search…"
+msgstr "Іздеу…"
+
+#: data/gupnp-av-cp.ui:89
+msgid "GUPnP AV Control Point"
+msgstr "GUPnP AV басқару нүктесі"
+
+#: data/gupnp-av-cp.ui:104 data/gupnp-universal-cp.ui:424
+msgid "_File"
+msgstr "_Файл"
+
+#: data/gupnp-av-cp.ui:113
+msgid "Close"
+msgstr "Жабу"
+
+#: data/gupnp-av-cp.ui:126
+msgid "_Tools"
+msgstr "_Саймандар"
+
+#: data/gupnp-av-cp.ui:136
+msgid "_Lenient Mode"
+msgstr "_Жұмсақ режимі"
+
+#: data/gupnp-av-cp.ui:148 data/gupnp-universal-cp.ui:506
+msgid "_Help"
+msgstr "_Көмек"
+
+#: data/gupnp-av-cp.ui:157 data/gupnp-universal-cp.ui:515
+msgid "About"
+msgstr "Осы туралы"
+
+#: data/gupnp-av-cp.ui:257
+msgid "P_ause"
+msgstr "_Аялдату"
+
+#: data/gupnp-av-cp.ui:306
+msgid "_Stop"
+msgstr "_Тоқтату"
+
+#: data/gupnp-av-cp.ui:355
+msgid "Pre_vious"
+msgstr "А_лдыңғы"
+
+#: data/gupnp-av-cp.ui:418
+msgid "_Next"
+msgstr "_Келесі"
+
+#: data/gupnp-av-cp.ui:467
+msgid "_Rescan"
+msgstr "Қайта _сканерлеу"
+
+#: data/gupnp-av-cp.ui:514
+msgid ""
+"Clears the CP's idea of the state of the currently selected AV Renderer. "
+"Useful for dealing with AV Renderers that don't report state changes."
+msgstr ""
+"Қазір таңдалған AV Renderer күйі туралы ақпаратты тазартады. Күй "
+"өзгерістері туралы хабарламайтын AV Renderer құрылғыларымен жұмыс істегенде "
+"пайдалы."
+
+#: data/gupnp-av-cp.ui:525
+msgid "_Clear state"
+msgstr "Күйді _тазарту"
+
+#: data/gupnp-av-cp.ui:587
+msgid "_Renderer: "
+msgstr "_Renderer: "
+
+#: data/gupnp-av-cp.ui:725 data/gupnp-network-light.ui:7
+#: data/gupnp-universal-cp.ui:8
+msgid "Copyright (C) 2007 Zeeshan Ali (Khattak)"
+msgstr "Copyright (C) 2007 Zeeshan Ali (Khattak)"
+
+#: data/gupnp-av-cp.ui:726
+msgid ""
+"An UPnP AV Control Point based on GUPnP framework.\n"
+"Inspired by Intel Tools for UPnP."
+msgstr ""
+"GUPnP фреймворкіне негізделген UPnP AV басқару нүктесі.\n"
+"Intel Tools for UPnP негізінде жасалған."
+
+#: data/gupnp-av-cp.ui:729 data/gupnp-network-light.ui:11
+#: data/gupnp-universal-cp.ui:12
+msgid "GUPnP homepage"
+msgstr "GUPnP үй парақшасы"
+
+#. TRANSLATORS: Replace this string with your names, one name per line.
+#: data/gupnp-av-cp.ui:731 data/gupnp-network-light.ui:13
+#: data/gupnp-universal-cp.ui:14
+msgid "translator-credits"
+msgstr "Baurzhan Muftakhidinov <baurthefirst@gmail.com>"
+
+#: data/gupnp-network-light.desktop.in:3
+msgid "UPnP Network Light"
+msgstr "UPnP желілік жарығы"
+
+#: data/gupnp-network-light.desktop.in:4
+msgid "Sample UPnP application for controlling lights"
+msgstr "Жарықты басқаруға арналған үлгі UPnP қолданбасы"
+
+#: data/gupnp-network-light.ui:8
+msgid ""
+"A virtual network light bulb based on GUPnP framework.\n"
+"Inspired by Intel Tools for UPnP."
+msgstr ""
+"GUPnP фреймворкіне негізделген виртуалды желілік жарық шамы.\n"
+"Intel Tools for UPnP негізінде жасалған."
+
+#: data/gupnp-network-light.ui:38
+msgid "GUPnP Network Light"
+msgstr "GUPnP желілік жарығы"
+
+#: data/gupnp-network-light.ui:63
+msgctxt "network-light"
+msgid "_On"
+msgstr "Іске қ_осылған"
+
+#: data/gupnp-network-light.ui:83
+msgid "_Increase luminance by 20%"
+msgstr "Жарықтықты 20%-ға _арттыру"
+
+#: data/gupnp-network-light.ui:92
+msgid "_Decrease luminance by 20%"
+msgstr "Жарықтықты 20%-ға _азайту"
+
+#: data/gupnp-network-light.ui:107
+msgid "_About"
+msgstr "Осы _туралы"
+
+#: data/gupnp-universal-cp.desktop.in:3
+msgid "UPnP Universal Control Point"
+msgstr "UPnP универсалды басқару нүктесі"
+
+#: data/gupnp-universal-cp.desktop.in:4
+msgid "Inspect and control UPnP devices across your local network"
+msgstr "Жергілікті желідегі UPnP құрылғыларын тексеру және басқару"
+
+#: data/gupnp-universal-cp.ui:9
+msgid ""
+"A Generic Control Point based on GUPnP framework.\n"
+"Inspired by Intel Tools for UPnP."
+msgstr ""
+"GUPnP фреймворкіне негізделген жалпы басқару нүктесі.\n"
+"Intel Tools for UPnP негізінде жасалған."
+
+#: data/gupnp-universal-cp.ui:42
+msgid "Action Invocation"
+msgstr "Әрекетті шақыру"
+
+#: data/gupnp-universal-cp.ui:106
+msgid "_Invoke"
+msgstr "_Шақыру"
+
+#: data/gupnp-universal-cp.ui:176
+msgid "device"
+msgstr "құрылғы"
+
+#: data/gupnp-universal-cp.ui:189
+msgid "service"
+msgstr "қызмет"
+
+#: data/gupnp-universal-cp.ui:202
+msgid "action"
+msgstr "әрекет"
+
+#: data/gupnp-universal-cp.ui:245
+msgid "'in' arguments"
+msgstr "«кіріс» аргументтері"
+
+#: data/gupnp-universal-cp.ui:278
+msgid "'out' arguments"
+msgstr "«шығыс» аргументтері"
+
+#: data/gupnp-universal-cp.ui:312
+msgid "Copy value"
+msgstr "Мәнді көшіру"
+
+#: data/gupnp-universal-cp.ui:321
+msgid "Copy all details"
+msgstr "Барлық мәліметтерді көшіру"
+
+#: data/gupnp-universal-cp.ui:333
+msgid "Invoke"
+msgstr "Шақыру"
+
+#: data/gupnp-universal-cp.ui:342
+msgid "Subscribe to events"
+msgstr "Оқиғаларға жазылу"
+
+#: data/gupnp-universal-cp.ui:357 data/gupnp-universal-cp.ui:468
+msgid "_Expand all devices"
+msgstr "Барлық құрылғыларды _жазу"
+
+#: data/gupnp-universal-cp.ui:366 data/gupnp-universal-cp.ui:477
+msgid "_Collapse all devices"
+msgstr "Барлық құрылғыларды _жинау"
+
+#: data/gupnp-universal-cp.ui:378
+msgid "Copy event"
+msgstr "Оқиғаны көшіру"
+
+#: data/gupnp-universal-cp.ui:387
+msgid "Copy all events"
+msgstr "Барлық оқиғаларды көшіру"
+
+#: data/gupnp-universal-cp.ui:402
+msgid "_Clear event log"
+msgstr "Оқиғалар журналын _тазарту"
+
+#. default details
+#: data/gupnp-universal-cp.ui:410 src/universal-cp/device-treeview.c:37
+msgid "GUPnP Universal Control Point"
+msgstr "GUPnP универсалды басқару нүктесі"
+
+#: data/gupnp-universal-cp.ui:433
+msgid "Clear event log"
+msgstr "Оқиғалар журналын тазарту"
+
+#: data/gupnp-universal-cp.ui:447
+msgid "Quit"
+msgstr "Шығу"
+
+#: data/gupnp-universal-cp.ui:459
+msgid "_View"
+msgstr "_Көру"
+
+#: data/gupnp-universal-cp.ui:492
+msgid "Event _log"
+msgstr "Оқиғалар _журналы"
+
+#: data/search-dialog.ui:12
+msgid "Show _DIDL…"
+msgstr "_DIDL көрсету…"
+
+#: data/search-dialog.ui:49
+msgid "_Close"
+msgstr "_Жабу"
+
+#: data/search-dialog.ui:81
+msgid "UPnP search expression"
+msgstr "UPnP іздеу өрнегі"
+
+#: data/search-dialog.ui:107
+msgid "column"
+msgstr "баған"
+
+#: src/av-cp/main.c:49 src/network-light/main.c:48 src/universal-cp/main.c:41
+msgid "Network PORT to use for UPnP"
+msgstr "UPnP үшін пайдаланылатын желілік ПОРТ"
+
+#: src/av-cp/main.c:50 src/network-light/main.c:49 src/universal-cp/main.c:42
+msgid "Network interfaces to use for UPnP communication"
+msgstr "UPnP байланысы үшін пайдаланылатын желілік интерфейстер"
+
+#: src/av-cp/main.c:51
+msgid ""
+"Application part of the User-Agent header to use for UPnP communication"
+msgstr ""
+"UPnP байланысы үшін пайдаланылатын User-Agent тақырыптамасының қолданба "
+"бөлігі"
+
+#: src/av-cp/main.c:225 src/network-light/main.c:104
+#: src/universal-cp/main.c:149
+msgid "- UPnP AV control point"
+msgstr "- UPnP AV басқару нүктесі"
+
+#: src/av-cp/main.c:230 src/network-light/main.c:109
+#: src/universal-cp/main.c:154
+#, c-format
+msgid "Could not parse options: %s\n"
+msgstr "Опцияларды талдау мүмкін болмады: %s\n"
+
+#: src/av-cp/search-dialog.c:440 src/av-cp/search-dialog.c:579
+msgid "Search failed"
+msgstr "Іздеу сәтсіз аяқталды"
+
+#: src/av-cp/search-dialog.c:444
+#, c-format
+msgid "Error message was: %s"
+msgstr "Қате туралы хабарлама: %s"
+
+#: src/av-cp/search-dialog.c:488
+#, c-format
+msgid "Searching on %s"
+msgstr "%s ішінен іздеу"
+
+#: src/av-cp/search-dialog.c:491
+#, c-format
+msgid "Searching in %s on %s"
+msgstr "%s ішіндегі %s нысанынан іздеу"
+
+#: src/av-cp/search-dialog.c:583
+#, c-format
+msgid "Search criteria invalid: %s"
+msgstr "Іздеу критерийі қате: %s"
+
+#: src/av-cp/search-dialog.c:689
+#, c-format
+msgid "Error fetching detailed information: %s"
+msgstr "Толық ақпаратты алу қатесі: %s"
+
+#: src/network-light/main.c:50
+msgid "Friendly name for this UPnP light"
+msgstr "Осы UPnP жарығының ыңғайлы аты"
+
+#: src/network-light/main.c:51
+msgid "Apply change exclusively to this UPnP light"
+msgstr "Өзгерісті тек осы UPnP жарығына іске асыру"
+
+#: src/universal-cp/action-dialog.c:693
+#, c-format
+msgid ""
+"Action failed.\n"
+"\n"
+"Error %d: %s"
+msgstr ""
+"Әрекет сәтсіз аяқталды.\n"
+"\n"
+"Қате %d: %s"
+
+#: src/universal-cp/details-treeview.c:198
+#: src/universal-cp/details-treeview.c:226
+#: src/universal-cp/details-treeview.c:252
+#: src/universal-cp/details-treeview.c:431
+msgid "Name"
+msgstr "Аты"
+
+#: src/universal-cp/details-treeview.c:200
+msgid "Direction"
+msgstr "Бағыты"
+
+#: src/universal-cp/details-treeview.c:205
+msgid "Related State Variable"
+msgstr "Қатысты күй айнымалысы"
+
+#: src/universal-cp/details-treeview.c:207
+msgid "Is Return Value"
+msgstr "Қайтарылатын мән бе"
+
+#: src/universal-cp/details-treeview.c:208
+#: src/universal-cp/details-treeview.c:255
+msgid "Yes"
+msgstr "Иә"
+
+#: src/universal-cp/details-treeview.c:208
+#: src/universal-cp/details-treeview.c:255
+msgid "No"
+msgstr "Жоқ"
+
+#: src/universal-cp/details-treeview.c:228
+msgid "Number of Arguments"
+msgstr "Аргументтер саны"
+
+#: src/universal-cp/details-treeview.c:254
+msgid "Send Events"
+msgstr "Оқиғаларды жіберу"
+
+#: src/universal-cp/details-treeview.c:256
+msgid "GType"
+msgstr "GType"
+
+#: src/universal-cp/details-treeview.c:259
+msgid "Default Value"
+msgstr "Бастапқы мәні"
+
+#: src/universal-cp/details-treeview.c:265
+msgid "Minimum"
+msgstr "Минимум"
+
+#: src/universal-cp/details-treeview.c:269
+msgid "Maximum"
+msgstr "Максимум"
+
+#: src/universal-cp/details-treeview.c:273
+msgid "Step"
+msgstr "Қадам"
+
+#: src/universal-cp/details-treeview.c:293
+msgid "Allowed Values"
+msgstr "Рұқсат етілген мәндер"
+
+#: src/universal-cp/details-treeview.c:317
+#: src/universal-cp/details-treeview.c:364
+msgid "Location"
+msgstr "Орналасуы"
+
+#: src/universal-cp/details-treeview.c:322
+#: src/universal-cp/details-treeview.c:369
+msgid "UDN"
+msgstr "UDN"
+
+#: src/universal-cp/details-treeview.c:327
+#: src/universal-cp/details-treeview.c:374
+msgid "Type"
+msgstr "Түрі"
+
+#: src/universal-cp/details-treeview.c:332
+#: src/universal-cp/details-treeview.c:379
+msgid "Base URL"
+msgstr "Негізгі URL"
+
+#: src/universal-cp/details-treeview.c:337
+msgid "Service ID"
+msgstr "Қызмет идентификаторы"
+
+#: src/universal-cp/details-treeview.c:339
+msgid "Service URL"
+msgstr "Қызмет URL мекенжайы"
+
+#: src/universal-cp/details-treeview.c:341
+msgid "Control URL"
+msgstr "Басқару URL мекенжайы"
+
+#: src/universal-cp/details-treeview.c:343
+msgid "Event Subscription URL"
+msgstr "Оқиғаға жазылу URL мекенжайы"
+
+#: src/universal-cp/details-treeview.c:384
+msgid "Friendly Name"
+msgstr "Ыңғайлы аты"
+
+#: src/universal-cp/details-treeview.c:386
+msgid "Manufacturer"
+msgstr "Өндіруші"
+
+#: src/universal-cp/details-treeview.c:388
+msgid "Manufacturer URL"
+msgstr "Өндіруші URL мекенжайы"
+
+#: src/universal-cp/details-treeview.c:390
+msgid "Model Description"
+msgstr "Модель сипаттамасы"
+
+#: src/universal-cp/details-treeview.c:392
+msgid "Model Name"
+msgstr "Модель аты"
+
+#: src/universal-cp/details-treeview.c:394
+msgid "Model Number"
+msgstr "Модель нөмірі"
+
+#: src/universal-cp/details-treeview.c:396
+msgid "Model URL"
+msgstr "Модель URL мекенжайы"
+
+#: src/universal-cp/details-treeview.c:398
+msgid "Serial Number"
+msgstr "Сериялық нөмірі"
+
+#: src/universal-cp/details-treeview.c:400
+msgid "UPC"
+msgstr "UPC"
+
+#: src/universal-cp/details-treeview.c:402
+msgid "Presentation URL"
+msgstr "Презентация URL мекенжайы"
+
+#: src/universal-cp/details-treeview.c:432
+#: src/universal-cp/event-treeview.c:410
+msgid "Value"
+msgstr "Мәні"
+
+#: src/universal-cp/device-treeview.c:70
+msgid "Software"
+msgstr "Бағдарламалық қамтама"
+
+#: src/universal-cp/device-treeview.c:72
+msgid "Version"
+msgstr "Нұсқасы"
+
+#: src/universal-cp/device-treeview.c:74
+msgid "Author"
+msgstr "Авторы"
+
+#: src/universal-cp/device-treeview.c:483
+msgid "State variables"
+msgstr "Күй айнымалылары"
+
+#: src/universal-cp/device-treeview.c:524
+msgid "Information not available"
+msgstr "Ақпарат қолжетімді емес"
+
+#: src/universal-cp/device-treeview.c:703
+msgid "UPnP Network"
+msgstr "UPnP желісі"
+
+#: src/universal-cp/device-treeview.c:716
+#: src/universal-cp/event-treeview.c:407
+msgid "Device"
+msgstr "Құрылғы"
+
+#: src/universal-cp/event-treeview.c:406
+msgid "Time"
+msgstr "Уақыт"
+
+#: src/universal-cp/event-treeview.c:408
+msgid "Service"
+msgstr "Қызмет"
+
+#: src/universal-cp/event-treeview.c:409
+msgid "State Variable"
+msgstr "Күй айнымалысы"
