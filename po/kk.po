@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: gupnp-tools gupnp-tools-0-8\n"
 "Report-Msgid-Bugs-To: https://bugzilla.gnome.org/browse.cgi?"
 "product=GUPnP&component=gupnp-tools\n"
-"POT-Creation-Date: 2018-11-11 07:48+0000\n"
-"PO-Revision-Date: 2026-03-14 23:57+0500\n"
+"POT-Creation-Date: 2023-11-24 17:13+0000\n"
+"PO-Revision-Date: 2026-03-15 15:16+0500\n"
 "Last-Translator: Baurzhan Muftakhidinov <baurthefirst@gmail.com>\n"
 "Language-Team: Kazakh <Kazakh>\n"
 "Language: kk\n"
@@ -253,7 +253,7 @@ msgid "_Clear event log"
 msgstr "Оқиғалар журналын _тазарту"
 
 #. default details
-#: data/gupnp-universal-cp.ui:410 src/universal-cp/device-treeview.c:37
+#: data/gupnp-universal-cp.ui:410 src/universal-cp/device-treeview.c:36
 msgid "GUPnP Universal Control Point"
 msgstr "GUPnP универсалды басқару нүктесі"
 
@@ -273,86 +273,118 @@ msgstr "_Көру"
 msgid "Event _log"
 msgstr "Оқиғалар _журналы"
 
-#: data/search-dialog.ui:12
-msgid "Show _DIDL…"
-msgstr "_DIDL көрсету…"
-
-#: data/search-dialog.ui:49
+#: data/search-dialog.ui:39
 msgid "_Close"
 msgstr "_Жабу"
 
-#: data/search-dialog.ui:81
+#: data/search-dialog.ui:71
 msgid "UPnP search expression"
 msgstr "UPnP іздеу өрнегі"
 
-#: data/search-dialog.ui:107
+#: data/search-dialog.ui:98
 msgid "column"
 msgstr "баған"
 
-#: src/av-cp/main.c:49 src/network-light/main.c:48 src/universal-cp/main.c:41
+#: src/av-cp/main.c:50 src/network-light/main.c:49 src/universal-cp/main.c:49
 msgid "Network PORT to use for UPnP"
 msgstr "UPnP үшін пайдаланылатын желілік ПОРТ"
 
-#: src/av-cp/main.c:50 src/network-light/main.c:49 src/universal-cp/main.c:42
+#: src/av-cp/main.c:51 src/network-light/main.c:50 src/universal-cp/main.c:50
 msgid "Network interfaces to use for UPnP communication"
 msgstr "UPnP байланысы үшін пайдаланылатын желілік интерфейстер"
 
-#: src/av-cp/main.c:51
+#: src/av-cp/main.c:52
 msgid ""
 "Application part of the User-Agent header to use for UPnP communication"
 msgstr ""
 "UPnP байланысы үшін пайдаланылатын User-Agent тақырыптамасының қолданба "
 "бөлігі"
 
-#: src/av-cp/main.c:225 src/network-light/main.c:104
-#: src/universal-cp/main.c:149
+#: src/av-cp/main.c:53 src/universal-cp/main.c:51
+msgid "Use the IPv4 protocol family"
+msgstr "IPv4 протоколдар тобын пайдалану"
+
+#: src/av-cp/main.c:54 src/universal-cp/main.c:52
+msgid "Use the IPv6 protocol family"
+msgstr "IPv6 протоколдар тобын пайдалану"
+
+#: src/av-cp/main.c:55 src/universal-cp/main.c:53
+msgid "Do not use the IPv4 protocol family"
+msgstr "IPv4 протоколдар тобын пайдаланбау"
+
+#: src/av-cp/main.c:56 src/universal-cp/main.c:54
+msgid "Do not use the IPv6 protocol family"
+msgstr "IPv6 протоколдар тобын пайдаланбау"
+
+#: src/av-cp/main.c:239 src/network-light/main.c:110
+#: src/universal-cp/main.c:192
 msgid "- UPnP AV control point"
 msgstr "- UPnP AV басқару нүктесі"
 
-#: src/av-cp/main.c:230 src/network-light/main.c:109
-#: src/universal-cp/main.c:154
+#: src/av-cp/main.c:244 src/network-light/main.c:115
+#: src/universal-cp/main.c:197
 #, c-format
 msgid "Could not parse options: %s\n"
 msgstr "Опцияларды талдау мүмкін болмады: %s\n"
 
-#: src/av-cp/search-dialog.c:440 src/av-cp/search-dialog.c:579
+#: src/av-cp/search-dialog.c:386
+msgid "Show _DIDL…"
+msgstr "_DIDL көрсету…"
+
+#: src/av-cp/search-dialog.c:480 src/av-cp/search-dialog.c:629
 msgid "Search failed"
 msgstr "Іздеу сәтсіз аяқталды"
 
-#: src/av-cp/search-dialog.c:444
+#: src/av-cp/search-dialog.c:484
 #, c-format
 msgid "Error message was: %s"
 msgstr "Қате туралы хабарлама: %s"
 
-#: src/av-cp/search-dialog.c:488
+#: src/av-cp/search-dialog.c:532
 #, c-format
 msgid "Searching on %s"
 msgstr "%s ішінен іздеу"
 
-#: src/av-cp/search-dialog.c:491
+#: src/av-cp/search-dialog.c:535
 #, c-format
 msgid "Searching in %s on %s"
 msgstr "%s ішіндегі %s нысанынан іздеу"
 
-#: src/av-cp/search-dialog.c:583
+#: src/av-cp/search-dialog.c:633
 #, c-format
 msgid "Search criteria invalid: %s"
 msgstr "Іздеу критерийі қате: %s"
 
-#: src/av-cp/search-dialog.c:689
+#: src/av-cp/search-dialog.c:738
 #, c-format
 msgid "Error fetching detailed information: %s"
 msgstr "Толық ақпаратты алу қатесі: %s"
 
-#: src/network-light/main.c:50
+#: src/network-light/main.c:51
 msgid "Friendly name for this UPnP light"
 msgstr "Осы UPnP жарығының ыңғайлы аты"
 
-#: src/network-light/main.c:51
+#: src/network-light/main.c:52
 msgid "Apply change exclusively to this UPnP light"
 msgstr "Өзгерісті тек осы UPnP жарығына іске асыру"
 
-#: src/universal-cp/action-dialog.c:693
+#: src/network-light/main.c:53
+msgid "Use IPv4"
+msgstr "IPv4 пайдалану"
+
+#: src/network-light/main.c:54
+msgid "Use IPv6"
+msgstr "IPv6 пайдалану"
+
+#: src/network-light/main.c:55
+msgid "Do not use IPv4"
+msgstr "IPv4 пайдаланбау"
+
+#: src/network-light/main.c:56
+msgid "Do not use IPv6"
+msgstr "IPv6 пайдаланбау"
+
+#: src/universal-cp/action-dialog.c:690 src/universal-cp/action-dialog.c:709
 #, c-format
 msgid ""
 "Action failed.\n"
@@ -363,185 +395,189 @@ msgstr ""
 "\n"
 "Қате %d: %s"
 
-#: src/universal-cp/details-treeview.c:198
-#: src/universal-cp/details-treeview.c:226
-#: src/universal-cp/details-treeview.c:252
-#: src/universal-cp/details-treeview.c:431
+#: src/universal-cp/details-treeview.c:197
+#: src/universal-cp/details-treeview.c:225
+#: src/universal-cp/details-treeview.c:251
+#: src/universal-cp/details-treeview.c:430
 msgid "Name"
 msgstr "Аты"
 
-#: src/universal-cp/details-treeview.c:200
+#: src/universal-cp/details-treeview.c:199
 msgid "Direction"
 msgstr "Бағыты"
 
-#: src/universal-cp/details-treeview.c:205
+#: src/universal-cp/details-treeview.c:204
 msgid "Related State Variable"
 msgstr "Қатысты күй айнымалысы"
 
-#: src/universal-cp/details-treeview.c:207
+#: src/universal-cp/details-treeview.c:206
 msgid "Is Return Value"
 msgstr "Қайтарылатын мән бе"
 
-#: src/universal-cp/details-treeview.c:208
-#: src/universal-cp/details-treeview.c:255
+#: src/universal-cp/details-treeview.c:207
+#: src/universal-cp/details-treeview.c:254
 msgid "Yes"
 msgstr "Иә"
 
-#: src/universal-cp/details-treeview.c:208
-#: src/universal-cp/details-treeview.c:255
+#: src/universal-cp/details-treeview.c:207
+#: src/universal-cp/details-treeview.c:254
 msgid "No"
 msgstr "Жоқ"
 
-#: src/universal-cp/details-treeview.c:228
+#: src/universal-cp/details-treeview.c:227
 msgid "Number of Arguments"
 msgstr "Аргументтер саны"
 
-#: src/universal-cp/details-treeview.c:254
+#: src/universal-cp/details-treeview.c:253
 msgid "Send Events"
 msgstr "Оқиғаларды жіберу"
 
-#: src/universal-cp/details-treeview.c:256
+#: src/universal-cp/details-treeview.c:255
 msgid "GType"
 msgstr "GType"
 
-#: src/universal-cp/details-treeview.c:259
+#: src/universal-cp/details-treeview.c:258
 msgid "Default Value"
 msgstr "Бастапқы мәні"
 
-#: src/universal-cp/details-treeview.c:265
+#: src/universal-cp/details-treeview.c:264
 msgid "Minimum"
 msgstr "Минимум"
 
-#: src/universal-cp/details-treeview.c:269
+#: src/universal-cp/details-treeview.c:268
 msgid "Maximum"
 msgstr "Максимум"
 
-#: src/universal-cp/details-treeview.c:273
+#: src/universal-cp/details-treeview.c:272
 msgid "Step"
 msgstr "Қадам"
 
-#: src/universal-cp/details-treeview.c:293
+#: src/universal-cp/details-treeview.c:292
 msgid "Allowed Values"
 msgstr "Рұқсат етілген мәндер"
 
-#: src/universal-cp/details-treeview.c:317
-#: src/universal-cp/details-treeview.c:364
+#: src/universal-cp/details-treeview.c:316
+#: src/universal-cp/details-treeview.c:363
 msgid "Location"
 msgstr "Орналасуы"
 
-#: src/universal-cp/details-treeview.c:322
-#: src/universal-cp/details-treeview.c:369
+#: src/universal-cp/details-treeview.c:321
+#: src/universal-cp/details-treeview.c:368
 msgid "UDN"
 msgstr "UDN"
 
-#: src/universal-cp/details-treeview.c:327
-#: src/universal-cp/details-treeview.c:374
+#: src/universal-cp/details-treeview.c:326
+#: src/universal-cp/details-treeview.c:373
 msgid "Type"
 msgstr "Түрі"
 
-#: src/universal-cp/details-treeview.c:332
-#: src/universal-cp/details-treeview.c:379
+#: src/universal-cp/details-treeview.c:331
+#: src/universal-cp/details-treeview.c:378
 msgid "Base URL"
 msgstr "Негізгі URL"
 
-#: src/universal-cp/details-treeview.c:337
+#: src/universal-cp/details-treeview.c:336
 msgid "Service ID"
 msgstr "Қызмет идентификаторы"
 
-#: src/universal-cp/details-treeview.c:339
+#: src/universal-cp/details-treeview.c:338
 msgid "Service URL"
 msgstr "Қызмет URL мекенжайы"
 
-#: src/universal-cp/details-treeview.c:341
+#: src/universal-cp/details-treeview.c:340
 msgid "Control URL"
 msgstr "Басқару URL мекенжайы"
 
-#: src/universal-cp/details-treeview.c:343
+#: src/universal-cp/details-treeview.c:342
 msgid "Event Subscription URL"
 msgstr "Оқиғаға жазылу URL мекенжайы"
 
-#: src/universal-cp/details-treeview.c:384
+#: src/universal-cp/details-treeview.c:383
 msgid "Friendly Name"
 msgstr "Ыңғайлы аты"
 
-#: src/universal-cp/details-treeview.c:386
+#: src/universal-cp/details-treeview.c:385
 msgid "Manufacturer"
 msgstr "Өндіруші"
 
-#: src/universal-cp/details-treeview.c:388
+#: src/universal-cp/details-treeview.c:387
 msgid "Manufacturer URL"
 msgstr "Өндіруші URL мекенжайы"
 
-#: src/universal-cp/details-treeview.c:390
+#: src/universal-cp/details-treeview.c:389
 msgid "Model Description"
 msgstr "Модель сипаттамасы"
 
-#: src/universal-cp/details-treeview.c:392
+#: src/universal-cp/details-treeview.c:391
 msgid "Model Name"
 msgstr "Модель аты"
 
-#: src/universal-cp/details-treeview.c:394
+#: src/universal-cp/details-treeview.c:393
 msgid "Model Number"
 msgstr "Модель нөмірі"
 
-#: src/universal-cp/details-treeview.c:396
+#: src/universal-cp/details-treeview.c:395
 msgid "Model URL"
 msgstr "Модель URL мекенжайы"
 
-#: src/universal-cp/details-treeview.c:398
+#: src/universal-cp/details-treeview.c:397
 msgid "Serial Number"
 msgstr "Сериялық нөмірі"
 
-#: src/universal-cp/details-treeview.c:400
+#: src/universal-cp/details-treeview.c:399
 msgid "UPC"
 msgstr "UPC"
 
-#: src/universal-cp/details-treeview.c:402
+#: src/universal-cp/details-treeview.c:401
 msgid "Presentation URL"
 msgstr "Презентация URL мекенжайы"
 
-#: src/universal-cp/details-treeview.c:432
-#: src/universal-cp/event-treeview.c:410
+#: src/universal-cp/details-treeview.c:431
+#: src/universal-cp/event-treeview.c:409
 msgid "Value"
 msgstr "Мәні"
 
-#: src/universal-cp/device-treeview.c:70
+#: src/universal-cp/device-treeview.c:69
 msgid "Software"
 msgstr "Бағдарламалық қамтама"
 
-#: src/universal-cp/device-treeview.c:72
+#: src/universal-cp/device-treeview.c:71
 msgid "Version"
 msgstr "Нұсқасы"
 
-#: src/universal-cp/device-treeview.c:74
+#: src/universal-cp/device-treeview.c:73
 msgid "Author"
 msgstr "Авторы"
 
-#: src/universal-cp/device-treeview.c:483
+#: src/universal-cp/device-treeview.c:506
 msgid "State variables"
 msgstr "Күй айнымалылары"
 
-#: src/universal-cp/device-treeview.c:524
+#: src/universal-cp/device-treeview.c:547
 msgid "Information not available"
 msgstr "Ақпарат қолжетімді емес"
 
-#: src/universal-cp/device-treeview.c:703
+#: src/universal-cp/device-treeview.c:758
 msgid "UPnP Network"
 msgstr "UPnP желісі"
 
-#: src/universal-cp/device-treeview.c:716
-#: src/universal-cp/event-treeview.c:407
+#: src/universal-cp/device-treeview.c:771
+#: src/universal-cp/event-treeview.c:406
 msgid "Device"
 msgstr "Құрылғы"
 
-#: src/universal-cp/event-treeview.c:406
+#: src/universal-cp/event-treeview.c:405
 msgid "Time"
 msgstr "Уақыт"
 
-#: src/universal-cp/event-treeview.c:408
+#: src/universal-cp/event-treeview.c:407
 msgid "Service"
 msgstr "Қызмет"
 
-#: src/universal-cp/event-treeview.c:409
+#: src/universal-cp/event-treeview.c:408
 msgid "State Variable"
 msgstr "Күй айнымалысы"
+
+#: src/universal-cp/main.c:55
+msgid "The UDA version to use"
+msgstr "Пайдаланылатын UDA нұсқасы"
