@@ -1,0 +1,590 @@
+# Bulgarian translation of gupnp-tools po-file.
+# Copyright (C) 2026 twlvnn kraftwerk <kraft_werk@tutanota.com>.
+# This file is distributed under the same license as the gupnp-tools package.
+# twlvnn kraftwerk <kraft_werk@tutanota.com>,  2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gupnp-tools master\n"
+"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/browse.cgi?"
+"product=GUPnP&component=gupnp-tools\n"
+"POT-Creation-Date: 2023-11-24 17:13+0000\n"
+"PO-Revision-Date: 2026-04-05 20:31+0200\n"
+"Last-Translator: twlvnn kraftwerk <kraft_werk@tutanota.com>\n"
+"Language-Team: Bulgarian\n"
+"Language: bg\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.8\n"
+
+#: data/didl-lite-dialog.ui.in:9
+msgid "GUPnP AV CP - Metadata View"
+msgstr "GUPnP AV CP — изглед на метаданни"
+
+#: data/gupnp-av-cp.desktop.in:3
+msgid "UPnP AV Control Point"
+msgstr "Контролна точка за UPnP AV"
+
+#: data/gupnp-av-cp.desktop.in:4
+msgid "Browse and control UPnP multimedia devices"
+msgstr "Разглеждане и управление на UPnP мултимедийни устройства по UPnP"
+
+#: data/gupnp-av-cp.ui:22 data/gupnp-av-cp.ui:208
+msgid "_Play"
+msgstr "_Пускане"
+
+#: data/gupnp-av-cp.ui:31
+msgid "Fetch the DIDL-Lite XML for this media object"
+msgstr "Доставяне на DIDL-Lite XML за този медиен обект"
+
+#: data/gupnp-av-cp.ui:32
+msgid "Fetch _DIDL-Lite"
+msgstr "_Доставяне на DIDL-Lite"
+
+#: data/gupnp-av-cp.ui:41
+msgid "Search…"
+msgstr "Търсене…"
+
+#: data/gupnp-av-cp.ui:89
+msgid "GUPnP AV Control Point"
+msgstr "Контролна точка на GUPnP AV"
+
+#: data/gupnp-av-cp.ui:104 data/gupnp-universal-cp.ui:424
+msgid "_File"
+msgstr "_Файл"
+
+#: data/gupnp-av-cp.ui:113
+msgid "Close"
+msgstr "Затваряне"
+
+#: data/gupnp-av-cp.ui:126
+msgid "_Tools"
+msgstr "_Инструменти"
+
+#: data/gupnp-av-cp.ui:136
+msgid "_Lenient Mode"
+msgstr "_Нестрог режим"
+
+#: data/gupnp-av-cp.ui:148 data/gupnp-universal-cp.ui:506
+msgid "_Help"
+msgstr "Помо_щ"
+
+#: data/gupnp-av-cp.ui:157 data/gupnp-universal-cp.ui:515
+msgid "About"
+msgstr "Относно"
+
+#: data/gupnp-av-cp.ui:257
+msgid "P_ause"
+msgstr "_Пауза"
+
+#: data/gupnp-av-cp.ui:306
+msgid "_Stop"
+msgstr "_Спиране"
+
+#: data/gupnp-av-cp.ui:355
+msgid "Pre_vious"
+msgstr "П_редишно"
+
+#: data/gupnp-av-cp.ui:418
+msgid "_Next"
+msgstr "_Следващо"
+
+#: data/gupnp-av-cp.ui:467
+msgid "_Rescan"
+msgstr "_Презареждане"
+
+#: data/gupnp-av-cp.ui:514
+msgid ""
+"Clears the CP's idea of the state of the currently selected AV Renderer. "
+"Useful for dealing with AV Renderers that don't report state changes."
+msgstr ""
+"Изчиства представата на контролната точка за състоянието на избрания в "
+"момента АV вариант за изобразяване. Полезно при работа с устройства, които "
+"не съобщават за промени в състоянието си."
+
+#: data/gupnp-av-cp.ui:525
+msgid "_Clear state"
+msgstr "_Изчистване на състоянието"
+
+#: data/gupnp-av-cp.ui:587
+msgid "_Renderer: "
+msgstr "_Вариант за изобразяване: "
+
+#: data/gupnp-av-cp.ui:725 data/gupnp-network-light.ui:7
+#: data/gupnp-universal-cp.ui:8
+msgid "Copyright (C) 2007 Zeeshan Ali (Khattak)"
+msgstr "Авторски права (C) 2007 Zeeshan Ali (Khattak)"
+
+#: data/gupnp-av-cp.ui:726
+msgid ""
+"An UPnP AV Control Point based on GUPnP framework.\n"
+"Inspired by Intel Tools for UPnP."
+msgstr ""
+"Контролна точка за UPnP AV на базата на GUPnP.\n"
+"Вдъхновена от Intel Tools for UPnP."
+
+#: data/gupnp-av-cp.ui:729 data/gupnp-network-light.ui:11
+#: data/gupnp-universal-cp.ui:12
+msgid "GUPnP homepage"
+msgstr "Начална страница на GUPnP"
+
+#. TRANSLATORS: Replace this string with your names, one name per line.
+#: data/gupnp-av-cp.ui:731 data/gupnp-network-light.ui:13
+#: data/gupnp-universal-cp.ui:14
+msgid "translator-credits"
+msgstr ""
+"twlvnn kraftwerk &lt;<a "
+"href='mailto:kraft_werk@tutanota.com'>kraft_werk@tutanota.com</a>&gt;\n"
+"\n"
+"Проектът за превод на GNOME има нужда от подкрепа.\n"
+"Научете повече за нас на <a href='https://fsa-bg.org/project/gtp'>уеб сайта</"
+"a> ни.\n"
+"Докладвайте за грешки в превода в <a href='https://fsa-bg.org/project/gtp/"
+"newticket'>съответния раздел</a>."
+
+#: data/gupnp-network-light.desktop.in:3
+msgid "UPnP Network Light"
+msgstr "Мрежова лампа за UPnP"
+
+#: data/gupnp-network-light.desktop.in:4
+msgid "Sample UPnP application for controlling lights"
+msgstr "Примерна програма за управление на осветление по UPnP"
+
+#: data/gupnp-network-light.ui:8
+msgid ""
+"A virtual network light bulb based on GUPnP framework.\n"
+"Inspired by Intel Tools for UPnP."
+msgstr ""
+"Виртуална мрежова лампа, ползваща GUPnP.\n"
+"Вдъхновена е от Intel Tools for UPnP."
+
+#: data/gupnp-network-light.ui:38
+msgid "GUPnP Network Light"
+msgstr "Мрежова лампа по GUPnP"
+
+#: data/gupnp-network-light.ui:63
+msgctxt "network-light"
+msgid "_On"
+msgstr "_Вкл."
+
+#: data/gupnp-network-light.ui:83
+msgid "_Increase luminance by 20%"
+msgstr "_Увеличаване на яркостта с 20%"
+
+#: data/gupnp-network-light.ui:92
+msgid "_Decrease luminance by 20%"
+msgstr "_Намаляване на яркостта с 20%"
+
+#: data/gupnp-network-light.ui:107
+msgid "_About"
+msgstr "_Относно"
+
+#: data/gupnp-universal-cp.desktop.in:3
+msgid "UPnP Universal Control Point"
+msgstr "Универсална контролна точка по UPnP"
+
+#: data/gupnp-universal-cp.desktop.in:4
+msgid "Inspect and control UPnP devices across your local network"
+msgstr "Проверка и управление на устройствата във локалната ви мрежа по UPnP"
+
+#: data/gupnp-universal-cp.ui:9
+msgid ""
+"A Generic Control Point based on GUPnP framework.\n"
+"Inspired by Intel Tools for UPnP."
+msgstr ""
+"Стандартна контролна точка, ползваща GUPnP.\n"
+"Вдъхновена от Intel Tools за UPnP."
+
+#: data/gupnp-universal-cp.ui:42
+msgid "Action Invocation"
+msgstr "Извикване на действие"
+
+#: data/gupnp-universal-cp.ui:106
+msgid "_Invoke"
+msgstr "_Извикване"
+
+#: data/gupnp-universal-cp.ui:176
+msgid "device"
+msgstr "устройство"
+
+#: data/gupnp-universal-cp.ui:189
+msgid "service"
+msgstr "услуга"
+
+#: data/gupnp-universal-cp.ui:202
+msgid "action"
+msgstr "действие"
+
+#: data/gupnp-universal-cp.ui:245
+msgid "'in' arguments"
+msgstr "входни аргументи (in)"
+
+#: data/gupnp-universal-cp.ui:278
+msgid "'out' arguments"
+msgstr "изходни аргументи (out)"
+
+#: data/gupnp-universal-cp.ui:312
+msgid "Copy value"
+msgstr "Копиране на стойността"
+
+#: data/gupnp-universal-cp.ui:321
+msgid "Copy all details"
+msgstr "Копиране на всички подробности"
+
+#: data/gupnp-universal-cp.ui:333
+msgid "Invoke"
+msgstr "Извикване"
+
+#: data/gupnp-universal-cp.ui:342
+msgid "Subscribe to events"
+msgstr "Абониране за събитията"
+
+#: data/gupnp-universal-cp.ui:357 data/gupnp-universal-cp.ui:468
+msgid "_Expand all devices"
+msgstr "_Разгъване на всички устройства"
+
+#: data/gupnp-universal-cp.ui:366 data/gupnp-universal-cp.ui:477
+msgid "_Collapse all devices"
+msgstr "_Свиване на всички устройства"
+
+#: data/gupnp-universal-cp.ui:378
+msgid "Copy event"
+msgstr "Копиране на събитието"
+
+#: data/gupnp-universal-cp.ui:387
+msgid "Copy all events"
+msgstr "Копиране на всички събития"
+
+#: data/gupnp-universal-cp.ui:402
+msgid "_Clear event log"
+msgstr "_Изчистване на журнала на събитията"
+
+#. default details
+#: data/gupnp-universal-cp.ui:410 src/universal-cp/device-treeview.c:36
+msgid "GUPnP Universal Control Point"
+msgstr "Универсална контролна точка по GUPnP"
+
+#: data/gupnp-universal-cp.ui:433
+msgid "Clear event log"
+msgstr "Изчистване на журнала на събитията"
+
+#: data/gupnp-universal-cp.ui:447
+msgid "Quit"
+msgstr "Спиране на програмата"
+
+#: data/gupnp-universal-cp.ui:459
+msgid "_View"
+msgstr "_Изглед"
+
+#: data/gupnp-universal-cp.ui:492
+msgid "Event _log"
+msgstr "_Журнал на събитията"
+
+#: data/search-dialog.ui:39
+msgid "_Close"
+msgstr "_Затваряне"
+
+#: data/search-dialog.ui:71
+msgid "UPnP search expression"
+msgstr "Израз за търсене за UPnP"
+
+#: data/search-dialog.ui:98
+msgid "column"
+msgstr "колона"
+
+#: src/av-cp/main.c:50 src/network-light/main.c:49 src/universal-cp/main.c:49
+msgid "Network PORT to use for UPnP"
+msgstr "Мрежов порт, който да се използва за UPnP"
+
+#: src/av-cp/main.c:51 src/network-light/main.c:50 src/universal-cp/main.c:50
+msgid "Network interfaces to use for UPnP communication"
+msgstr "Мрежови интерфейси, които да се използват за комуникация по UPnP"
+
+#: src/av-cp/main.c:52
+msgid "Application part of the User-Agent header to use for UPnP communication"
+msgstr ""
+"Частта за програмата в заглавната част за потребителския агент (User-Agent), "
+"която да се използва за комуникация по UPnP"
+
+#: src/av-cp/main.c:53 src/universal-cp/main.c:51
+msgid "Use the IPv4 protocol family"
+msgstr "Използване на семейството протоколи IPv4"
+
+#: src/av-cp/main.c:54 src/universal-cp/main.c:52
+msgid "Use the IPv6 protocol family"
+msgstr "Използване на семейството протоколи IPv6"
+
+#: src/av-cp/main.c:55 src/universal-cp/main.c:53
+msgid "Do not use the IPv4 protocol family"
+msgstr "Без използване на семейството от протоколи IPv4"
+
+#: src/av-cp/main.c:56 src/universal-cp/main.c:54
+msgid "Do not use the IPv6 protocol family"
+msgstr "Без използване на семейството от протоколи IPv6"
+
+#: src/av-cp/main.c:239 src/network-light/main.c:110
+#: src/universal-cp/main.c:192
+msgid "- UPnP AV control point"
+msgstr "- контролна точка за UPnP AV"
+
+#: src/av-cp/main.c:244 src/network-light/main.c:115
+#: src/universal-cp/main.c:197
+#, c-format
+msgid "Could not parse options: %s\n"
+msgstr "Опциите не може да се анализират: %s\n"
+
+#: src/av-cp/search-dialog.c:386
+msgid "Show _DIDL…"
+msgstr "Показване на _DIDL…"
+
+#: src/av-cp/search-dialog.c:480 src/av-cp/search-dialog.c:629
+msgid "Search failed"
+msgstr "Търсенето е неуспешно"
+
+#: src/av-cp/search-dialog.c:484
+#, c-format
+msgid "Error message was: %s"
+msgstr "Съобщението за грешка бе: %s"
+
+#: src/av-cp/search-dialog.c:532
+#, c-format
+msgid "Searching on %s"
+msgstr "Търсене в %s"
+
+#: src/av-cp/search-dialog.c:535
+#, c-format
+msgid "Searching in %s on %s"
+msgstr "Търсене в %s на %s"
+
+#: src/av-cp/search-dialog.c:633
+#, c-format
+msgid "Search criteria invalid: %s"
+msgstr "Неправилни критерии за търсене: %s"
+
+#: src/av-cp/search-dialog.c:738
+#, c-format
+msgid "Error fetching detailed information: %s"
+msgstr "Подробната информация не може да се достави: %s"
+
+#: src/network-light/main.c:51
+msgid "Friendly name for this UPnP light"
+msgstr "Лесно за запомняне име по UPnP за тази лампа"
+
+#: src/network-light/main.c:52
+msgid "Apply change exclusively to this UPnP light"
+msgstr "Прилагане на промяната по UPnP само за тази лампа"
+
+#: src/network-light/main.c:53
+msgid "Use IPv4"
+msgstr "Използване на IPv4"
+
+#: src/network-light/main.c:54
+msgid "Use IPv6"
+msgstr "Използване на IPv6"
+
+#: src/network-light/main.c:55
+msgid "Do not use IPv4"
+msgstr "Без използване на IPv4"
+
+#: src/network-light/main.c:56
+msgid "Do not use IPv6"
+msgstr "Без използване на IPv6"
+
+#: src/universal-cp/action-dialog.c:690 src/universal-cp/action-dialog.c:709
+#, c-format
+msgid ""
+"Action failed.\n"
+"\n"
+"Error %d: %s"
+msgstr ""
+"Неуспешно действие.\n"
+"\n"
+"Грешка %d: %s"
+
+#: src/universal-cp/details-treeview.c:197
+#: src/universal-cp/details-treeview.c:225
+#: src/universal-cp/details-treeview.c:251
+#: src/universal-cp/details-treeview.c:430
+msgid "Name"
+msgstr "Име"
+
+#: src/universal-cp/details-treeview.c:199
+msgid "Direction"
+msgstr "Посока"
+
+#: src/universal-cp/details-treeview.c:204
+msgid "Related State Variable"
+msgstr "Свързана променлива на състоянието"
+
+#: src/universal-cp/details-treeview.c:206
+msgid "Is Return Value"
+msgstr "Дали е стойност за връщане"
+
+#: src/universal-cp/details-treeview.c:207
+#: src/universal-cp/details-treeview.c:254
+msgid "Yes"
+msgstr "Да"
+
+#: src/universal-cp/details-treeview.c:207
+#: src/universal-cp/details-treeview.c:254
+msgid "No"
+msgstr "Не"
+
+#: src/universal-cp/details-treeview.c:227
+msgid "Number of Arguments"
+msgstr "Брой аргументи"
+
+#: src/universal-cp/details-treeview.c:253
+msgid "Send Events"
+msgstr "Изпращане на събития"
+
+#: src/universal-cp/details-treeview.c:255
+msgid "GType"
+msgstr "GType"
+
+#: src/universal-cp/details-treeview.c:258
+msgid "Default Value"
+msgstr "Стандартна стойност"
+
+#: src/universal-cp/details-treeview.c:264
+msgid "Minimum"
+msgstr "Минимум"
+
+#: src/universal-cp/details-treeview.c:268
+msgid "Maximum"
+msgstr "Максимум"
+
+#: src/universal-cp/details-treeview.c:272
+msgid "Step"
+msgstr "Стъпка"
+
+#: src/universal-cp/details-treeview.c:292
+msgid "Allowed Values"
+msgstr "Позволени стойности"
+
+#: src/universal-cp/details-treeview.c:316
+#: src/universal-cp/details-treeview.c:363
+msgid "Location"
+msgstr "Местоположение"
+
+#: src/universal-cp/details-treeview.c:321
+#: src/universal-cp/details-treeview.c:368
+msgid "UDN"
+msgstr "UDN"
+
+#: src/universal-cp/details-treeview.c:326
+#: src/universal-cp/details-treeview.c:373
+msgid "Type"
+msgstr "Вид"
+
+#: src/universal-cp/details-treeview.c:331
+#: src/universal-cp/details-treeview.c:378
+msgid "Base URL"
+msgstr "Основен адрес"
+
+#: src/universal-cp/details-treeview.c:336
+msgid "Service ID"
+msgstr "Ид-р на услугата"
+
+#: src/universal-cp/details-treeview.c:338
+msgid "Service URL"
+msgstr "Адрес на услугата"
+
+#: src/universal-cp/details-treeview.c:340
+msgid "Control URL"
+msgstr "Адрес за управление"
+
+#: src/universal-cp/details-treeview.c:342
+msgid "Event Subscription URL"
+msgstr "Адрес за абонаментa за събитие"
+
+#: src/universal-cp/details-treeview.c:383
+msgid "Friendly Name"
+msgstr "Лесно за запомняне име"
+
+#: src/universal-cp/details-treeview.c:385
+msgid "Manufacturer"
+msgstr "Производител"
+
+#: src/universal-cp/details-treeview.c:387
+msgid "Manufacturer URL"
+msgstr "Адрес на производителя"
+
+#: src/universal-cp/details-treeview.c:389
+msgid "Model Description"
+msgstr "Описание на модела"
+
+#: src/universal-cp/details-treeview.c:391
+msgid "Model Name"
+msgstr "Име на модела"
+
+#: src/universal-cp/details-treeview.c:393
+msgid "Model Number"
+msgstr "Номер на модела"
+
+#: src/universal-cp/details-treeview.c:395
+msgid "Model URL"
+msgstr "Адрес на модела"
+
+#: src/universal-cp/details-treeview.c:397
+msgid "Serial Number"
+msgstr "Сериен номер"
+
+#: src/universal-cp/details-treeview.c:399
+msgid "UPC"
+msgstr "UPC"
+
+#: src/universal-cp/details-treeview.c:401
+msgid "Presentation URL"
+msgstr "Адрес на презентацията"
+
+#: src/universal-cp/details-treeview.c:431
+#: src/universal-cp/event-treeview.c:409
+msgid "Value"
+msgstr "Стойност"
+
+#: src/universal-cp/device-treeview.c:69
+msgid "Software"
+msgstr "Софтуер"
+
+#: src/universal-cp/device-treeview.c:71
+msgid "Version"
+msgstr "Версия"
+
+#: src/universal-cp/device-treeview.c:73
+msgid "Author"
+msgstr "Автор"
+
+#: src/universal-cp/device-treeview.c:506
+msgid "State variables"
+msgstr "Променливи на състоянието"
+
+#: src/universal-cp/device-treeview.c:547
+msgid "Information not available"
+msgstr "Информацията липсва"
+
+#: src/universal-cp/device-treeview.c:758
+msgid "UPnP Network"
+msgstr "Мрежа с UPnP"
+
+#: src/universal-cp/device-treeview.c:771 src/universal-cp/event-treeview.c:406
+msgid "Device"
+msgstr "Устройство"
+
+#: src/universal-cp/event-treeview.c:405
+msgid "Time"
+msgstr "Време"
+
+#: src/universal-cp/event-treeview.c:407
+msgid "Service"
+msgstr "Услуга"
+
+#: src/universal-cp/event-treeview.c:408
+msgid "State Variable"
+msgstr "Променлива на състоянието"
+
+#: src/universal-cp/main.c:55
+msgid "The UDA version to use"
+msgstr "Версията на UDA, която да се използва"
