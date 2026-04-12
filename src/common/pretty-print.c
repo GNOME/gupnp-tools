@@ -31,7 +31,6 @@ char *
 pretty_print_xml (const char *xml)
 {
         xmlDocPtr doc;
-        int old_value;
         char *text;
         int length;
 
@@ -44,14 +43,11 @@ pretty_print_xml (const char *xml)
         if (!doc)
                 return NULL;
 
-        old_value = xmlIndentTreeOutput;
-        xmlIndentTreeOutput = 1;
         xmlDocDumpFormatMemoryEnc (doc,
                                    (xmlChar **) &text,
                                    &length,
                                    "UTF-8",
                                    1);
-        xmlIndentTreeOutput = old_value;
         xmlFreeDoc (doc);
 
         return text;
