@@ -1,3 +1,18 @@
+0.12.4 (stable)
+===============
+
+
+Bugs fixed in this release:
+ - https://gitlab.gnome.org/GNOME/gupnp-tools/issues/29
+
+Merge requests included in this release:
+ - https://gitlab.gnome.org/GNOME/gupnp-tools/merge_requests/8
+ - https://gitlab.gnome.org/GNOME/gupnp-tools/merge_requests/7
+
+All contributors to this release:
+ - Jan Tojnar <jtojnar@gmail.com>
+ - Balló György <ballogyor@gmail.com>
+
 0.12.3 (stable)
 ===============
 
