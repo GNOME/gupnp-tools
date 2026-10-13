@@ -1,0 +1,580 @@
+# Norwegian Nynorsk translation for gupnp-tools.
+# Copyright (C) 2026 gupnp-tools's COPYRIGHT HOLDER
+# This file is distributed under the same license as the gupnp-tools package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gupnp-tools master\n"
+"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/browse.cgi?"
+"product=GUPnP&component=gupnp-tools\n"
+"POT-Creation-Date: 2026-06-27 11:57+0000\n"
+"PO-Revision-Date: 2026-10-12 12:00+0200\n"
+"Last-Translator: Roy-Magne Mo <rmo@sunnmore.net>\n"
+"Language-Team: Norwegian Nynorsk <i18n-nn@lister.ping.uio.no>\n"
+"Language: nn\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: data/didl-lite-dialog.ui.in:9
+msgid "GUPnP AV CP - Metadata View"
+msgstr "GUPnP AV CP – metadatavising"
+
+#: data/gupnp-av-cp.desktop.in:3
+msgid "UPnP AV Control Point"
+msgstr "UPnP AV Control Point"
+
+#: data/gupnp-av-cp.desktop.in:4
+msgid "Browse and control UPnP multimedia devices"
+msgstr "Bla gjennom og styr UPnP-multimedieeiningar"
+
+#: data/gupnp-av-cp.ui:22 data/gupnp-av-cp.ui:208
+msgid "_Play"
+msgstr "_Spel av"
+
+#: data/gupnp-av-cp.ui:31
+msgid "Fetch the DIDL-Lite XML for this media object"
+msgstr "Hent DIDL-Lite-XML for dette medieobjektet"
+
+#: data/gupnp-av-cp.ui:32
+msgid "Fetch _DIDL-Lite"
+msgstr "_Hent DIDL-Lite"
+
+#: data/gupnp-av-cp.ui:41
+msgid "Search…"
+msgstr "Søk …"
+
+#: data/gupnp-av-cp.ui:89
+msgid "GUPnP AV Control Point"
+msgstr "GUPnP AV-kontrollpunkt"
+
+#: data/gupnp-av-cp.ui:104 data/gupnp-universal-cp.ui:424
+msgid "_File"
+msgstr "_Fil"
+
+#: data/gupnp-av-cp.ui:113
+msgid "Close"
+msgstr "Lukk"
+
+#: data/gupnp-av-cp.ui:126
+msgid "_Tools"
+msgstr "_Verktøy"
+
+#: data/gupnp-av-cp.ui:136
+msgid "_Lenient Mode"
+msgstr "_Toleransemodus"
+
+#: data/gupnp-av-cp.ui:148 data/gupnp-universal-cp.ui:506
+msgid "_Help"
+msgstr "_Hjelp"
+
+#: data/gupnp-av-cp.ui:157 data/gupnp-universal-cp.ui:515
+msgid "About"
+msgstr "Om"
+
+#: data/gupnp-av-cp.ui:257
+msgid "P_ause"
+msgstr "P_ause"
+
+#: data/gupnp-av-cp.ui:306
+msgid "_Stop"
+msgstr "_Stopp"
+
+#: data/gupnp-av-cp.ui:355
+msgid "Pre_vious"
+msgstr "_Førre"
+
+#: data/gupnp-av-cp.ui:418
+msgid "_Next"
+msgstr "_Neste"
+
+#: data/gupnp-av-cp.ui:467
+msgid "_Rescan"
+msgstr "_Skann på nytt"
+
+#: data/gupnp-av-cp.ui:514
+msgid ""
+"Clears the CP's idea of the state of the currently selected AV Renderer. "
+"Useful for dealing with AV Renderers that don't report state changes."
+msgstr ""
+"Tømmer kontrollpunktet si oppfatning av tilstanden til den valde AV-"
+"renderaren. Nyttig for AV-renderarar som ikkje rapporterer "
+"tilstandsendringar."
+
+#: data/gupnp-av-cp.ui:525
+msgid "_Clear state"
+msgstr "_Tømm tilstand"
+
+#: data/gupnp-av-cp.ui:587
+msgid "_Renderer: "
+msgstr "_Renderar: "
+
+#: data/gupnp-av-cp.ui:725 data/gupnp-network-light.ui:7
+#: data/gupnp-universal-cp.ui:8
+msgid "Copyright (C) 2007 Zeeshan Ali (Khattak)"
+msgstr "Copyright (C) 2007 Zeeshan Ali (Khattak)"
+
+#: data/gupnp-av-cp.ui:726
+msgid ""
+"An UPnP AV Control Point based on GUPnP framework.\n"
+"Inspired by Intel Tools for UPnP."
+msgstr ""
+"Eit UPnP AV-kontrollpunkt basert på rammeverket GUPnP.\n"
+"Inspirert av Intel Tools for UPnP."
+
+#: data/gupnp-av-cp.ui:729 data/gupnp-network-light.ui:11
+#: data/gupnp-universal-cp.ui:12
+msgid "GUPnP homepage"
+msgstr "GUPnP-heimesida"
+
+#. TRANSLATORS: Replace this string with your names, one name per line.
+#: data/gupnp-av-cp.ui:731 data/gupnp-network-light.ui:13
+#: data/gupnp-universal-cp.ui:14
+msgid "translator-credits"
+msgstr "Roy-Magne Mo <rmo@sunnmore.net>"
+
+#: data/gupnp-network-light.desktop.in:3
+msgid "UPnP Network Light"
+msgstr "UPnP-nettverkslys"
+
+#: data/gupnp-network-light.desktop.in:4
+msgid "Sample UPnP application for controlling lights"
+msgstr "Prøve-app for UPnP-styring av lys"
+
+#: data/gupnp-network-light.ui:8
+msgid ""
+"A virtual network light bulb based on GUPnP framework.\n"
+"Inspired by Intel Tools for UPnP."
+msgstr ""
+"Ei virtuell lyspære på nettverket, basert på rammeverket GUPnP.\n"
+"Inspirert av Intel Tools for UPnP."
+
+#: data/gupnp-network-light.ui:38
+msgid "GUPnP Network Light"
+msgstr "GUPnP-nettverkslys"
+
+#: data/gupnp-network-light.ui:63
+msgctxt "network-light"
+msgid "_On"
+msgstr "_På"
+
+#: data/gupnp-network-light.ui:83
+msgid "_Increase luminance by 20%"
+msgstr "_Auk lysstyrken med 20 %"
+
+#: data/gupnp-network-light.ui:92
+msgid "_Decrease luminance by 20%"
+msgstr "_Minsk lysstyrken med 20 %"
+
+#: data/gupnp-network-light.ui:107
+msgid "_About"
+msgstr "_Om"
+
+#: data/gupnp-universal-cp.desktop.in:3
+msgid "UPnP Universal Control Point"
+msgstr "UPnP Universal Control Point"
+
+#: data/gupnp-universal-cp.desktop.in:4
+msgid "Inspect and control UPnP devices across your local network"
+msgstr "Inspiser og styr UPnP-einingar på det lokale nettverket ditt"
+
+#: data/gupnp-universal-cp.ui:9
+msgid ""
+"A Generic Control Point based on GUPnP framework.\n"
+"Inspired by Intel Tools for UPnP."
+msgstr ""
+"Eit generisk kontrollpunkt basert på rammeverket GUPnP.\n"
+"Inspirert av Intel Tools for UPnP."
+
+#: data/gupnp-universal-cp.ui:42
+msgid "Action Invocation"
+msgstr "Utføring av handling"
+
+#: data/gupnp-universal-cp.ui:106
+msgid "_Invoke"
+msgstr "_Køyr"
+
+#: data/gupnp-universal-cp.ui:176
+msgid "device"
+msgstr "eining"
+
+#: data/gupnp-universal-cp.ui:189
+msgid "service"
+msgstr "teneste"
+
+#: data/gupnp-universal-cp.ui:202
+msgid "action"
+msgstr "handling"
+
+#: data/gupnp-universal-cp.ui:245
+msgid "'in' arguments"
+msgstr "«in»-argument"
+
+#: data/gupnp-universal-cp.ui:278
+msgid "'out' arguments"
+msgstr "«out»-argument"
+
+#: data/gupnp-universal-cp.ui:312
+msgid "Copy value"
+msgstr "Kopier verdi"
+
+#: data/gupnp-universal-cp.ui:321
+msgid "Copy all details"
+msgstr "Kopier alle detaljar"
+
+#: data/gupnp-universal-cp.ui:333
+msgid "Invoke"
+msgstr "Køyr"
+
+#: data/gupnp-universal-cp.ui:342
+msgid "Subscribe to events"
+msgstr "Abonner på hendingar"
+
+#: data/gupnp-universal-cp.ui:357 data/gupnp-universal-cp.ui:468
+msgid "_Expand all devices"
+msgstr "_Utvid alle einingar"
+
+#: data/gupnp-universal-cp.ui:366 data/gupnp-universal-cp.ui:477
+msgid "_Collapse all devices"
+msgstr "_Slå saman alle einingar"
+
+#: data/gupnp-universal-cp.ui:378
+msgid "Copy event"
+msgstr "Kopier hending"
+
+#: data/gupnp-universal-cp.ui:387
+msgid "Copy all events"
+msgstr "Kopier alle hendingar"
+
+#: data/gupnp-universal-cp.ui:402
+msgid "_Clear event log"
+msgstr "_Tømm hendingslogg"
+
+#. default details
+#: data/gupnp-universal-cp.ui:410 src/universal-cp/device-treeview.c:36
+msgid "GUPnP Universal Control Point"
+msgstr "GUPnP Universal Control Point"
+
+#: data/gupnp-universal-cp.ui:433
+msgid "Clear event log"
+msgstr "Tøm hendingslogg"
+
+#: data/gupnp-universal-cp.ui:447
+msgid "Quit"
+msgstr "Avslutt"
+
+#: data/gupnp-universal-cp.ui:459
+msgid "_View"
+msgstr "_Vis"
+
+#: data/gupnp-universal-cp.ui:492
+msgid "Event _log"
+msgstr "_Hendingslogg"
+
+#: data/search-dialog.ui:39
+msgid "_Close"
+msgstr "_Lukk"
+
+#: data/search-dialog.ui:71
+msgid "UPnP search expression"
+msgstr "UPnP-søkjeuttrykk"
+
+#: data/search-dialog.ui:98
+msgid "column"
+msgstr "kolonne"
+
+#: src/av-cp/main.c:50 src/network-light/main.c:49 src/universal-cp/main.c:49
+msgid "Network PORT to use for UPnP"
+msgstr "Nettverksport som skal brukast for UPnP"
+
+#: src/av-cp/main.c:51 src/network-light/main.c:50 src/universal-cp/main.c:50
+msgid "Network interfaces to use for UPnP communication"
+msgstr "Nettverksgrensesnitt som skal brukast til UPnP-kommunikasjon"
+
+#: src/av-cp/main.c:52
+msgid "Application part of the User-Agent header to use for UPnP communication"
+msgstr ""
+"Programdel av User-Agent-headeren som skal brukast i UPnP-kommunikasjon"
+
+#: src/av-cp/main.c:53 src/universal-cp/main.c:51
+msgid "Use the IPv4 protocol family"
+msgstr "Bruk IPv4-protokollfamilien"
+
+#: src/av-cp/main.c:54 src/universal-cp/main.c:52
+msgid "Use the IPv6 protocol family"
+msgstr "Bruk IPv6-protokollfamilien"
+
+#: src/av-cp/main.c:55 src/universal-cp/main.c:53
+msgid "Do not use the IPv4 protocol family"
+msgstr "Ikkje bruk IPv4-protokollfamilien"
+
+#: src/av-cp/main.c:56 src/universal-cp/main.c:54
+msgid "Do not use the IPv6 protocol family"
+msgstr "Ikkje bruk IPv6-protokollfamilien"
+
+#: src/av-cp/main.c:239 src/network-light/main.c:110
+#: src/universal-cp/main.c:192
+msgid "- UPnP AV control point"
+msgstr "- UPnP AV-kontrollpunkt"
+
+#: src/av-cp/main.c:244 src/network-light/main.c:115
+#: src/universal-cp/main.c:197
+#, c-format
+msgid "Could not parse options: %s\n"
+msgstr "Klarte ikkje tolke val: %s\n"
+
+#: src/av-cp/search-dialog.c:386
+msgid "Show _DIDL…"
+msgstr "Vis _DIDL …"
+
+#: src/av-cp/search-dialog.c:480 src/av-cp/search-dialog.c:629
+msgid "Search failed"
+msgstr "Søket feila"
+
+#: src/av-cp/search-dialog.c:484
+#, c-format
+msgid "Error message was: %s"
+msgstr "Feilmeldinga var: %s"
+
+#: src/av-cp/search-dialog.c:532
+#, c-format
+msgid "Searching on %s"
+msgstr "Søkjer på %s"
+
+#: src/av-cp/search-dialog.c:535
+#, c-format
+msgid "Searching in %s on %s"
+msgstr "Søkjer i %s på %s"
+
+#: src/av-cp/search-dialog.c:633
+#, c-format
+msgid "Search criteria invalid: %s"
+msgstr "Ugyldige søkjekriterium: %s"
+
+#: src/av-cp/search-dialog.c:738
+#, c-format
+msgid "Error fetching detailed information: %s"
+msgstr "Feil ved henting av detaljert informasjon: %s"
+
+#: src/network-light/main.c:51
+msgid "Friendly name for this UPnP light"
+msgstr "Venleg namn for dette UPnP-lyset"
+
+#: src/network-light/main.c:52
+msgid "Apply change exclusively to this UPnP light"
+msgstr "Bruk endringa berre på dette UPnP-lyset"
+
+#: src/network-light/main.c:53
+msgid "Use IPv4"
+msgstr "Bruk IPv4"
+
+#: src/network-light/main.c:54
+msgid "Use IPv6"
+msgstr "Bruk IPv6"
+
+#: src/network-light/main.c:55
+msgid "Do not use IPv4"
+msgstr "Ikkje bruk IPv4"
+
+#: src/network-light/main.c:56
+msgid "Do not use IPv6"
+msgstr "Ikkje bruk IPv6"
+
+#: src/universal-cp/action-dialog.c:690 src/universal-cp/action-dialog.c:709
+#, c-format
+msgid ""
+"Action failed.\n"
+"\n"
+"Error %d: %s"
+msgstr ""
+"Handlinga mislukkast.\n"
+"\n"
+"Feil %d: %s"
+
+#: src/universal-cp/details-treeview.c:197
+#: src/universal-cp/details-treeview.c:225
+#: src/universal-cp/details-treeview.c:251
+#: src/universal-cp/details-treeview.c:430
+msgid "Name"
+msgstr "Namn"
+
+#: src/universal-cp/details-treeview.c:199
+msgid "Direction"
+msgstr "Retning"
+
+#: src/universal-cp/details-treeview.c:204
+msgid "Related State Variable"
+msgstr "Tilhøyrande tilstandsvariabel"
+
+#: src/universal-cp/details-treeview.c:206
+msgid "Is Return Value"
+msgstr "Er returverdi"
+
+#: src/universal-cp/details-treeview.c:207
+#: src/universal-cp/details-treeview.c:254
+msgid "Yes"
+msgstr "Ja"
+
+#: src/universal-cp/details-treeview.c:207
+#: src/universal-cp/details-treeview.c:254
+msgid "No"
+msgstr "Nei"
+
+#: src/universal-cp/details-treeview.c:227
+msgid "Number of Arguments"
+msgstr "Tal på argument"
+
+#: src/universal-cp/details-treeview.c:253
+msgid "Send Events"
+msgstr "Send hendingar"
+
+#: src/universal-cp/details-treeview.c:255
+msgid "GType"
+msgstr "GType"
+
+#: src/universal-cp/details-treeview.c:258
+msgid "Default Value"
+msgstr "Standardverdi"
+
+#: src/universal-cp/details-treeview.c:264
+msgid "Minimum"
+msgstr "Minimum"
+
+#: src/universal-cp/details-treeview.c:268
+msgid "Maximum"
+msgstr "Maksimum"
+
+#: src/universal-cp/details-treeview.c:272
+msgid "Step"
+msgstr "Steg"
+
+#: src/universal-cp/details-treeview.c:292
+msgid "Allowed Values"
+msgstr "Tillatne verdiar"
+
+#: src/universal-cp/details-treeview.c:316
+#: src/universal-cp/details-treeview.c:363
+msgid "Location"
+msgstr "Plassering"
+
+#: src/universal-cp/details-treeview.c:321
+#: src/universal-cp/details-treeview.c:368
+msgid "UDN"
+msgstr "UDN"
+
+#: src/universal-cp/details-treeview.c:326
+#: src/universal-cp/details-treeview.c:373
+msgid "Type"
+msgstr "Type"
+
+#: src/universal-cp/details-treeview.c:331
+#: src/universal-cp/details-treeview.c:378
+msgid "Base URL"
+msgstr "Basis-URL"
+
+#: src/universal-cp/details-treeview.c:336
+msgid "Service ID"
+msgstr "Teneste-ID"
+
+#: src/universal-cp/details-treeview.c:338
+msgid "Service URL"
+msgstr "Teneste-URL"
+
+#: src/universal-cp/details-treeview.c:340
+msgid "Control URL"
+msgstr "Kontroll-URL"
+
+#: src/universal-cp/details-treeview.c:342
+msgid "Event Subscription URL"
+msgstr "URL for hendingsabonnement"
+
+#: src/universal-cp/details-treeview.c:383
+msgid "Friendly Name"
+msgstr "Venleg namn"
+
+#: src/universal-cp/details-treeview.c:385
+msgid "Manufacturer"
+msgstr "Produsent"
+
+#: src/universal-cp/details-treeview.c:387
+msgid "Manufacturer URL"
+msgstr "Produsent-URL"
+
+#: src/universal-cp/details-treeview.c:389
+msgid "Model Description"
+msgstr "Modellskildring"
+
+#: src/universal-cp/details-treeview.c:391
+msgid "Model Name"
+msgstr "Modellnamn"
+
+#: src/universal-cp/details-treeview.c:393
+msgid "Model Number"
+msgstr "Modellnummer"
+
+#: src/universal-cp/details-treeview.c:395
+msgid "Model URL"
+msgstr "Modell-URL"
+
+#: src/universal-cp/details-treeview.c:397
+msgid "Serial Number"
+msgstr "Serienummer"
+
+#: src/universal-cp/details-treeview.c:399
+msgid "UPC"
+msgstr "UPC"
+
+#: src/universal-cp/details-treeview.c:401
+msgid "Presentation URL"
+msgstr "Presentasjons-URL"
+
+#: src/universal-cp/details-treeview.c:431
+#: src/universal-cp/event-treeview.c:409
+msgid "Value"
+msgstr "Verdi"
+
+#: src/universal-cp/device-treeview.c:69
+msgid "Software"
+msgstr "Programvare"
+
+#: src/universal-cp/device-treeview.c:71
+msgid "Version"
+msgstr "Versjon"
+
+#: src/universal-cp/device-treeview.c:73
+msgid "Author"
+msgstr "Forfattar"
+
+#: src/universal-cp/device-treeview.c:506
+msgid "State variables"
+msgstr "Tilstandsvariablar"
+
+#: src/universal-cp/device-treeview.c:547
+msgid "Information not available"
+msgstr "Informasjon er ikkje tilgjengeleg"
+
+#: src/universal-cp/device-treeview.c:758
+msgid "UPnP Network"
+msgstr "UPnP-nettverk"
+
+#: src/universal-cp/device-treeview.c:771 src/universal-cp/event-treeview.c:406
+msgid "Device"
+msgstr "Eining"
+
+#: src/universal-cp/event-treeview.c:405
+msgid "Time"
+msgstr "Tid"
+
+#: src/universal-cp/event-treeview.c:407
+msgid "Service"
+msgstr "Teneste"
+
+#: src/universal-cp/event-treeview.c:408
+msgid "State Variable"
+msgstr "Tilstandsvariabel"
+
+#: src/universal-cp/main.c:55
+msgid "The UDA version to use"
+msgstr "UDA-versjonen som skal brukast"
